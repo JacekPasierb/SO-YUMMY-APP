@@ -1,0 +1,47 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  margin-top: 44px;
+  @media screen and (min-width: 768px) {
+    gap: 18px;
+    margin-top: 40px;
+  }
+}
+.link {
+  padding: 12px 24px 12px 24px;
+
+  border-radius: 24px 44px;
+  @media screen and (min-width: 768px) {
+    padding: 22px 44px 22px 44px;
+  }
+}
+.linkRegister {
+  background-color: #8baa36;
+   transition: all 0.3s;
+}
+.linkRegister:hover {
+  background-color: transparent;
+  border: 1px solid #fafafa;
+  color: #fafafa;
+ 
+}
+.linkSignin {
+  background-color: transparent;
+  border: 1px solid #fafafa;
+    transition: all 0.3s; 
+}
+.linkSignin:hover {
+  background-color: #8baa36;
+  border: 1px solid #8baa36;
+  color: #fafafa;
+
+}
+.linkText {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fafafa;
+}
