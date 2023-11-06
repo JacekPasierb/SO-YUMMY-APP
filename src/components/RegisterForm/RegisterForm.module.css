@@ -1,0 +1,74 @@
+.formRegister {
+  background-color: #2a2c36;
+  border-radius: 12px 20px;
+
+  padding: 32px 28px;
+}
+.boxInput {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.titleRegister {
+  font-family: Poppins;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #fafafa;
+}
+.inputRegister {
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  border: 0;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.inputRegister::placeholder {
+  font-family: Poppins;
+  font-size: 14px;
+  padding-left: 8px;
+  color: #fafafa;
+}
+.inputIcon {
+  width: 18px;
+  height: 18px;
+  margin-left: 14px;
+  margin-right: 8px;
+}
+.inputWithIcon {
+  display: flex;
+  align-items: center;
+  border: 1px solid #8a8787;
+  border-radius: 6px;
+  padding-block: 12px;
+}
+.inputWithIcon:focus-within {
+  border-color: #fafafa; 
+}
+
+.inputWithIcon:hover {
+  border-color: #fafafa;
+}
+.btnRegister {
+  font-family: Poppins;
+  font-style: normal;
+  line-height: 18px;
+  font-size: 16px;
+  text-align: center;
+  color: #fafafa;
+
+  background-color: #8baa36;
+  padding: 12px 106px;
+  min-width: 100%;
+
+  transition: all 0.3s;
+}
+.btnRegister:hover {
+  border-color: #8baa36;
+  background-color: #fafafa;
+  color: #8baa36;
+}

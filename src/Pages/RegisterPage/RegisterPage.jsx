@@ -1,10 +1,13 @@
-import React from 'react'
-import AuthForm from '../../components/AuthForm/AuthForm'
+import React from "react";
+import AuthForm from "../../components/AuthForm/AuthForm";
+import css from "./RegisterPage.module.css";
 
 const RegisterPage = () => {
   return (
-    <AuthForm/>
-  )
-}
+    
+      <AuthForm />
+   
+  );
+};
 
-export default RegisterPage
+export default RegisterPage;
