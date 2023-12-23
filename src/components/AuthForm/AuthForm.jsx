@@ -16,13 +16,18 @@ const AuthForm = () => {
       <div className={css.container}>
         {pathname === "/register" && (
           <>
-            <RegisterForm /> <Link className={css.linkForm} to="/signin">Sign in</Link>
+            <RegisterForm />{" "}
+            <Link className={css.linkForm} to="/signin">
+              Sign in
+            </Link>
           </>
         )}
         {pathname === "/signin" && (
           <>
             <SigninForm />
-            <Link to="/register">Registration</Link>
+            <Link className={css.linkForm} to="/register">
+              Registration
+            </Link>
           </>
         )}
       </div>
