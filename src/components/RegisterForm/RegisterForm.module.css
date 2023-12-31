@@ -3,6 +3,8 @@
   border-radius: 12px 20px;
 
   padding: 32px 28px;
+
+
 }
 .boxInput {
   display: flex;
@@ -14,13 +16,13 @@
   font-family: Poppins;
   font-size: 24px;
   line-height: 28px;
-
+text-align: left;
   color: #fafafa;
 }
 .inputRegister {
   background-color: transparent;
   outline: none;
-  width: 100%;
+
   border: 0;
   font-family: Poppins;
   font-size: 18px;
@@ -95,13 +97,13 @@
 }
 
 .additionalErrorIcon {
-  width: 20px;
-  height: 20px;
+  width: 5%;
+  
   margin-right: 10px;
 }
 .additionalSuccessIcon {
-  width: 20px;
-  height: 20px;
+  width: 5%;
+  
   margin-right: 10px;
   fill: green;
   stroke: green;

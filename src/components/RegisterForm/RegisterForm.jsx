@@ -19,10 +19,11 @@ const RegisterForm = () => {
         values
       );
 
-      if (response.status === 200) {
-        setSubmitStatus("success");
+      if (response.status === 201) {
+        return setSubmitStatus("success");
       } else {
-        setSubmitStatus("error");
+        
+        return setSubmitStatus("error");
       }
     } catch (error) {
       setSubmitStatus("error");
@@ -31,7 +32,7 @@ const RegisterForm = () => {
     }
   };
   return (
-    <div>
+    
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
         validate={validate}
@@ -180,7 +181,7 @@ const RegisterForm = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    
   );
 };
 

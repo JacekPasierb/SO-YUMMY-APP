@@ -11,27 +11,24 @@ const AuthForm = () => {
   const { pathname } = location;
 
   return (
-    <div className={css.boxAuth}>
-      <img className={css.ss} src={a} />
-      <div className={css.container}>
-        {pathname === "/register" && (
-          <>
-            <RegisterForm />{" "}
-            <Link className={css.linkForm} to="/signin">
-              Sign in
-            </Link>
-          </>
-        )}
-        {pathname === "/signin" && (
-          <>
-            <SigninForm />
-            <Link className={css.linkForm} to="/register">
-              Registration
-            </Link>
-          </>
-        )}
-      </div>
-    </div>
+    <>
+      {pathname === "/register" && (
+        <>
+          <RegisterForm />{" "}
+          <Link className={css.linkForm} to="/signin">
+            Sign in
+          </Link>
+        </>
+      )}
+      {pathname === "/signin" && (
+        <>
+          <SigninForm />
+          <Link className={css.linkForm} to="/register">
+            Registration
+          </Link>
+        </>
+      )}
+    </>
   );
 };
 

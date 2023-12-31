@@ -1,7 +1,8 @@
 .boxAuth {
   height: 100vh;
-  width: 100vw;
+  width: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -29,11 +30,13 @@
   align-items: center;
 }
 .linkForm {
-    font-family: Poppins;
-    font-size: 14px;
-    color: #FAFAFA;
-    text-decoration: underline;
+  font-family: Poppins;
+  font-size: 14px;
+  color: #fafafa;
+  text-decoration: underline;
+  text-align: center;
 }
 .linkForm:hover {
-    
 }
+
+

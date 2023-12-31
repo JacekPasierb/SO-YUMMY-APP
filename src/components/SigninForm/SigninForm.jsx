@@ -125,12 +125,12 @@ const SigninForm = () => {
               </div>
             </div>
             {submitStatus === "success" && (
-              <div className={css.successMessage}>Registration successful!</div>
+              <div className={css.successMessage}>Login successful!</div>
             )}
 
             {submitStatus === "error" && (
               <div className={css.errorMessage}>
-                Registration failed. Please try again.
+                Login failed. Please try again.
               </div>
             )}
             <button type="submit" className={css.btnRegister}>
