@@ -58,7 +58,7 @@
     top: 345px;
   }
   @media screen and (min-width: 1200px) {
-    top: 116px;
+    top: 200px;
     margin-right: 180px;
   }
 }
