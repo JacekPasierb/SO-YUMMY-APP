@@ -5,7 +5,7 @@ const SharedLayout = () => {
   return (
       <>
           <Header />
-          <Footer/>
+          {/* <Footer/> */}
       </>
   )
 }
