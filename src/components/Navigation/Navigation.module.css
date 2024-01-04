@@ -1,10 +1,29 @@
 .navigation {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 }
-.navText {
-    font-size: 14px;
-    line-height: 22.4px;
-    color: #23262A;
+.link {
+  text-decoration: none;
+}
+.link .navText {
+    
+  font-size: 14px;
+  line-height: 22.4px;
+  color: #23262a;
+}
+.link:hover .navText,
+.link:focus .navText,
+.link:active .navText {
+  color: #8baa36;
+}
+
+.iconSearch {
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+  stroke: rgb(0, 0, 0);
+}
+.iconSearch:hover {
+  stroke: #8baa36;
 }
