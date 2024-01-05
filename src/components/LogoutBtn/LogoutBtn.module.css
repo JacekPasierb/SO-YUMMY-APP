@@ -1,0 +1,17 @@
+.logoutBtn {
+    padding: 12px 24px;
+    background-color: #8BAA36;
+    border-radius: 24px 44px;
+    border-color: transparent;
+    color: #FAFAFA;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
+.icon {
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+}

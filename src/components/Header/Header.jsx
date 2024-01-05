@@ -30,11 +30,19 @@ const Header = () => {
             {matches.medium && (
               <div className={`${css.container} ${css.headerBox}`}>
                 <Logo />
+                <div className={css.mobileBox}>
+                  <UserLogo />
+                  <HamburgerMenu />
+                </div>
+              </div>
+            )}
+            {matches.large && (
+              <div className={`${css.container} ${css.headerBox}`}>
+                <Logo />
                 <Navigation />
                 <UserLogo />
               </div>
             )}
-            {matches.large && <p>I am large!</p>}
           </>
         )}
       </Media>

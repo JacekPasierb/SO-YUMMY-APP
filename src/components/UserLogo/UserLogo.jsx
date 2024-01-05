@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./UserLogo.module.css";
 import avatar from "../../images/avatar.jpg";
 import menu from "../../images/menuIkona.png";
+import UserLogoModal from "../UserLogoModal/UserLogoModal";
 
 const UserLogo = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLogoClick = () => {
+    setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
+  };
+
   return (
-    <div className={css.boxAvatar}>
+    <div className={css.boxAvatar} onClick={handleLogoClick}>
       <img
         src={avatar}
         alt="avatar"
@@ -14,6 +21,7 @@ const UserLogo = () => {
         className={css.boxAvatar__avatar}
       />
       <span className={css.boxAvatar__username}>Username</span>
+      {isModalOpen && <UserLogoModal onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 };

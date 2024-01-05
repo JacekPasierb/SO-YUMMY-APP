@@ -1,6 +1,7 @@
 .boxAvatar {
     display: flex;
     align-items: center;
+    position: relative;
 }
 .boxAvatar__avatar {
     border-radius: 50%;
