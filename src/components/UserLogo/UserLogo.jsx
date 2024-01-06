@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./UserLogo.module.css";
 import avatar from "../../images/avatar.jpg";
-import menu from "../../images/menuIkona.png";
+
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
 
 const UserLogo = () => {
@@ -21,7 +21,7 @@ const UserLogo = () => {
         className={css.boxAvatar__avatar}
       />
       <span className={css.boxAvatar__username}>Username</span>
-      {isModalOpen && <UserLogoModal onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && <UserLogoModal />}
     </div>
   );
 };

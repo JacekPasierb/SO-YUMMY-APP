@@ -1,0 +1,45 @@
+.editProfileModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 24px;
+  border: 1px solid #8baa36;
+  border-radius: 10px;
+  background-color: white;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.iconClose {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.btnSave {
+  padding: 14px 84px;
+  margin-top: 24px;
+  background-color: #8baa36;
+  border-radius: 6px;
+  border-color: transparent;
+  color: #fafafa;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+.iconUser {
+    width: 18px;
+    height: 18px;
+    fill: #FFFFFF;
+    stroke:#23262A;
+    
+}
