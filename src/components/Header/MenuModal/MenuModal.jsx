@@ -3,6 +3,8 @@ import css from "./MenuModal.module.css";
 import close from "../../../images/x.png";
 import Logo from "../Logo/logo";
 import NavigationMobile from "../NavigationMobile/NavigationMobile";
+
+import ThemeToggler from "../ThemeToggler/ThemeToggler";
 const MenuModal = ({ onClose }) => {
   return (
     <div className={css.backgroundMenuModal}>
@@ -16,7 +18,10 @@ const MenuModal = ({ onClose }) => {
             onClick={onClose}
           />
         </div>
-        <NavigationMobile />
+              <NavigationMobile onClose={ onClose} />
+        <div className={css.switcher}>
+          <ThemeToggler />
+        </div>
       </div>
     </div>
   );

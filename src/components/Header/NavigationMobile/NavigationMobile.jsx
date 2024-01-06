@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import css from "./NavigationMobile.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
 
-const NavigationMobile = () => {
+const NavigationMobile = ({onClose}) => {
   return (
-    <nav className={css.navigation}>
+    <nav className={css.navigation} onClick={onClose}>
       <NavLink to="/categories/:categoryName" className={css.link}>
         <span className={css.navText}>Categories</span>
       </NavLink>
@@ -24,7 +24,7 @@ const NavigationMobile = () => {
       <NavLink to="/search " className={css.link}>
         <svg className={css.iconSearch}>
           <use href={sprite + `#icon-search`}></use>
-        </svg>{" "}
+        </svg>
         <span className={css.navText}>Shearch</span>
       </NavLink>
     </nav>
