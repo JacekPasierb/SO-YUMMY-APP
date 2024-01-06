@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import css from "./EditProfile.module.css";
-import sprite from "../../assets/icons/sprite.svg";
+import sprite from "../../../assets/icons/sprite.svg";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 const EditProfile = () => {
@@ -16,7 +16,7 @@ const EditProfile = () => {
           <use href={sprite + `#icon-edit-01`}></use>
         </svg>
       </button>
-      {isEditModalOpen && (<EditProfileModal/>)}
+      {isEditModalOpen && (<EditProfileModal onClose={handleEditModalClick}/>)}
     </>
   );
 };

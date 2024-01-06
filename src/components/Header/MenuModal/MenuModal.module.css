@@ -1,0 +1,24 @@
+.backgroundMenuModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ebf3d4;
+  
+}
+.headModal {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+.iconClose {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+ 
+}
+.menuModal {
+    padding: 16px 18px;
+}

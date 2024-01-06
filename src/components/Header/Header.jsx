@@ -1,10 +1,10 @@
 import React from "react";
-import Logo from "../Logo/logo";
+import Logo from "./Logo/logo";
 import css from "./Header.module.css";
-import UserLogo from "../UserLogo/UserLogo";
-import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import UserLogo from "./UserLogo/UserLogo";
+import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Media from "react-media";
-import Navigation from "../Navigation/Navigation";
+import Navigation from "./Navigation/Navigation";
 
 const Header = () => {
   return (

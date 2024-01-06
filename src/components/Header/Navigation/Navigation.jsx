@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Navigation.module.css";
 import { NavLink } from "react-router-dom";
-import sprite from "../../assets/icons/sprite.svg";
+import sprite from "../../../assets/icons/sprite.svg";
 
 const Navigation = () => {
   return (

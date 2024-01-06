@@ -1,0 +1,58 @@
+.logoutModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  padding: 44px 24px;
+  border: 1px solid #8baa36;
+  border-radius: 10px;
+  background-color: #fafafa;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+}
+.iconClose {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+.btnsBox {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+.btnLogout {
+  padding: 14px 18px;
+  background-color: #8baa36;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  line-height: 18px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+.btnCancel {
+  padding: 14px 18px;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  line-height: 18px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+.logoutText {
+  font-size: 14px;
+  line-height: 18px;
+  white-space: nowrap;
+}
