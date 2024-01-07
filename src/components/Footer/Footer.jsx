@@ -3,6 +3,7 @@ import css from "./Footer.module.css";
 import logoFooter from "../../images/logoFooter.png";
 import Nav from "./Nav/Nav";
 import SubscribeForm from "./SubscribeForm/SubscribeForm";
+import FollowUs from "./FollowUs/FollowUs";
 
 const Footer = () => {
   return (
@@ -20,7 +21,7 @@ const Footer = () => {
       <nav className={css.footerNav}>
         <Nav />
         <SubscribeForm />
-              {/* <FollowUs/> */}
+              <FollowUs/>
       </nav>
     </footer>
   );

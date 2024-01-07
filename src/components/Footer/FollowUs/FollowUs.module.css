@@ -1,0 +1,10 @@
+.listSocial {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    margin-top: 44px;
+}
+.iconSocial {
+    width: 20px;
+    height: 20px;
+}
