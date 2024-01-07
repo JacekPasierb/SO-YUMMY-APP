@@ -24,7 +24,7 @@ const SubscribeForm = () => {
     <Formik initialValues={{ email: "" }} onSubmit={onSubmit}>
       {({ isSubmitting, isValid }) => (
         <Form>
-          <div>
+          <div className={css.inputContainer}>
             <label>
               <div className={css.inputBox}>
                 <svg className={css.iconEmail}>
@@ -39,7 +39,11 @@ const SubscribeForm = () => {
                   className={css.inputEmail}
                 />
               </div>
-              <ErrorMessage name="email" component="div" />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={css.inputError}
+              />
             </label>
           </div>
 

@@ -5,6 +5,7 @@ import UserLogo from "./UserLogo/UserLogo";
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Media from "react-media";
 import Navigation from "./Navigation/Navigation";
+import ThemeToggler from "./ThemeToggler/ThemeToggler";
 
 const Header = () => {
   return (
@@ -41,6 +42,7 @@ const Header = () => {
                 <Logo />
                 <Navigation />
                 <UserLogo />
+                <ThemeToggler/>
               </div>
             )}
           </>
