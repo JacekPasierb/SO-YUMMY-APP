@@ -8,7 +8,7 @@ import ThemeToggler from "../ThemeToggler/ThemeToggler";
 const MenuModal = ({ onClose }) => {
   return (
     <div className={css.backgroundMenuModal}>
-      <div className={css.menuModal}>
+      <div className={` ${css.container} ${css.menuModal}`}>
         <div className={css.headModal}>
           <Logo />
           <img
@@ -18,7 +18,7 @@ const MenuModal = ({ onClose }) => {
             onClick={onClose}
           />
         </div>
-              <NavigationMobile onClose={ onClose} />
+        <NavigationMobile onClose={onClose} />
         <div className={css.switcher}>
           <ThemeToggler />
         </div>

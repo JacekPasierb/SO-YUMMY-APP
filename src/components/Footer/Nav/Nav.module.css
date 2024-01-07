@@ -1,0 +1,15 @@
+.navigationMain {
+    margin-block: 32px;
+}
+.navigationList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+}
+.link {
+    font-size: 14px;
+    line-height: 18px;
+    color: #FAFAFA;
+    
+}

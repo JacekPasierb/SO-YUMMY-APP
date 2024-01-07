@@ -1,5 +1,9 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
+<symbol id="icon-emai" viewBox="0 0 41 32">
+<path fill="none" stroke="#fafafa" style="stroke: var(--color1, #fafafa)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.7429" d="M5.943 2.286h29.257c0.969 0.003 1.898 0.365 2.583 1.007s1.071 1.513 1.074 2.421v20.571c-0.003 0.909-0.389 1.779-1.074 2.421s-1.614 1.005-2.583 1.007h-29.257c-0.969-0.003-1.898-0.365-2.583-1.007s-1.071-1.513-1.074-2.421v-20.571c0.003-0.908 0.389-1.779 1.074-2.421s1.614-1.004 2.583-1.007v0z"></path>
+<path fill="none" stroke="#fafafa" style="stroke: var(--color1, #fafafa)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.7429" d="M38.857 5.713l-18.286 12-18.286-12"></path>
+</symbol>
 <symbol id="icon-plus" viewBox="0 0 32 32">
 <path fill="none" stroke="#fafafa" style="stroke: var(--color1, #fafafa)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M16 6.667v18.667"></path>
 <path fill="none" stroke="#fafafa" style="stroke: var(--color1, #fafafa)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M6.667 16h18.667"></path>

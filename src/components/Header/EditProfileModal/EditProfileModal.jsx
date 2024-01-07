@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import css from "./EditProfileModal.module.css";
 import close from "../../../images/x.png";
 import sprite from "../../../assets/icons/sprite.svg";
 
 const EditProfileModal = ({ onClose }) => {
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    const handleClickOutside = (e) => {
+       if (modalRef.current && !modalRef.current.contains(e.target)) {
+         onClose();
+       }
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [onClose]);
  
   return (
-    <div  className={css.editProfileModal}>
-      <img src={close} alt="ikona zamykająca modal" className={css.iconClose} onClick={onClose} />
+    <div ref={modalRef} className={css.editProfileModal}>
+      <img
+        src={close}
+        alt="ikona zamykająca modal"
+        className={css.iconClose}
+        onClick={onClose}
+      />
       <form className={css.form}>
         <div className={css.logoBackground}>
           <svg className={css.iconPicture}>

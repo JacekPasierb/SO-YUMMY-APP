@@ -1,0 +1,28 @@
+.footer {
+  background-color: #22252a;
+  padding-block: 28px 18px;
+}
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo {
+  width: 30px;
+  height: 30px;
+  background-color: #ebf3d4;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+.titleBox {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #fafafa;
+}
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

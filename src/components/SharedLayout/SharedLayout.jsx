@@ -1,15 +1,16 @@
-import React from 'react'
-import Header from '../Header/Header'
-import { Outlet } from 'react-router'
+import React from "react";
+import Header from "../Header/Header";
+import { Outlet } from "react-router";
+import Footer from "../Footer/Footer";
 
 const SharedLayout = () => {
   return (
-      <>
+    <>
       <Header />
-      <Outlet/>
-          {/* <Footer/> */}
-      </>
-  )
-}
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
 
-export default SharedLayout
+export default SharedLayout;

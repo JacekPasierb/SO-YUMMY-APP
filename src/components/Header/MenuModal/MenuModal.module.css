@@ -6,6 +6,9 @@
   min-width: 100vw;
   min-height: 100vh;
   background-color: #ebf3d4;
+background-image: url("../../../images/kisspng-pasta.png");
+background-repeat: no-repeat;
+background-position: bottom 0px right 0px;
 
   display: flex;
  
@@ -16,6 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 18px;
 }
 .iconClose {
   width: 32px;
@@ -31,4 +35,20 @@ display: flex;
 }
 .switcher {
     align-items: start;
+    margin-bottom: 18px;
+}
+.container {
+  padding: 0 16px;
+  margin: 0 auto;
+  max-width: 100%;
+
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+  }
 }
