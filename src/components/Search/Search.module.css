@@ -1,0 +1,26 @@
+.inputSearch {
+  display: inline-block;
+  border: 1px solid #f0f0f0;
+  border-radius: 24px 44px;
+  background-color: #FFFFFF;
+}
+.input {
+  border: none;
+  outline: none;
+  margin-left: 32px;
+  font-size: 12px;
+
+  color: #bdbdbd;
+}
+.input:focus {
+  color: #000000;
+}
+.btn {
+  border: none;
+  border-radius: 24px 44px;
+  background-color: #22252a;
+  color: #fafafa;
+  font-size: 14px;
+  line-height: normal;
+  padding: 16px 32px;
+}

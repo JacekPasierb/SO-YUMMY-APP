@@ -1,0 +1,51 @@
+.imageRecipes {
+  position: relative;
+}
+.boxRecipes {
+  position: absolute;
+  top: 30%;
+  right: 5px;
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  border-radius: 8px;
+  padding: 8px;
+}
+.fontRecipes {
+  font-size: 12px;
+  line-height: 18px;
+  color: #3e4462;
+}
+.fontRecipesInnerColor {
+  color: #8baa36;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-top: 4px;
+
+  font-size: 10px;
+  line-height: 12px;
+  color: #3E4462;
+  padding: 0;
+}
+.icon {
+  width: 48px;
+  height: 48px;
+  margin-left: 4px;
+}
+.chooseBox {
+    background-image: url("../../images/recipesMobile1x.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+width: 320px;
+height: 296px;
+    position: relative;
+    margin-top: 44px;
+    margin-bottom: 24px;
+}

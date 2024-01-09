@@ -30,3 +30,8 @@ color: #8BAA36;
     
     color: #23262A;
 }
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

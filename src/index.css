@@ -16,7 +16,7 @@ body {
   /* display: flex;
   justify-content: center; */
   min-width: 320px;
- 
+ background-color: #FAFAFA;
  box-sizing: border-box;
 }
 
@@ -46,10 +46,7 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+ 
   a:hover {
     color: #fafafa;
   }
