@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import css from "./EditProfileModal.module.css";
-import close from "../../../images/x.png";
+import close from "../../../images/X.png";
 import sprite from "../../../assets/icons/sprite.svg";
 
 const EditProfileModal = ({ onClose }) => {

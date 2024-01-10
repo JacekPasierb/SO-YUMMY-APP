@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./LogoutModal.module.css";
-import close from "../../../images/x.png";
+import close from "../../../images/X.png";
 
 const LogoutModal = ({onClose}) => {
   return (
