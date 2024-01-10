@@ -6,7 +6,7 @@ import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Media from "react-media";
 import Navigation from "./Navigation/Navigation";
 import ThemeToggler from "./ThemeToggler/ThemeToggler";
-import Logo from "./Logo/logo";
+import Logo from "./Logo/Logo";
 
 const Header = () => {
   return (
