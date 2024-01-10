@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./MenuModal.module.css";
 import close from "../../../images/X.png";
-import Logo from "../Logo/logo";
+import Logo from "../Logo/Logo";
 import NavigationMobile from "../NavigationMobile/NavigationMobile";
 
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
