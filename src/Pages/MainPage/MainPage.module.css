@@ -13,11 +13,22 @@
     width: 1200px;
   }
 }
+.background {
+  background-image: url("../../images/spinachMobile1x.png"), url("../../images//bckg2Mobile1x.png"),url("../../images/bg3Mobile1x.png");
+  background-repeat: no-repeat;
+  
+  background-position: top -10px left 0,top right 0,top 120px right 0;
+
+  
+}
+
 .title {
     font-size: 60px;
     line-height: 60px;
     text-align: center;
     color: #22252A;
+    padding-top: 68px;
+    margin: 0;
 }
 .titleInnerColor {
 color: #8BAA36;

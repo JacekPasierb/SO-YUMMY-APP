@@ -5,7 +5,7 @@ import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYour
 
 const MainPage = () => {
   return (
-    <main>
+    <main className={css.background}>
       <div className={`${css.container} ${css.flex}`}>
         <h1 className={css.title}>
           <span className={css.titleInnerColor}>So</span>Yummy
