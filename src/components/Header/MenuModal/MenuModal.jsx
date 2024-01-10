@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./MenuModal.module.css";
-import close from "../../../images/x.png";
+import close from "../../../images/X.png";
 import Logo from "../Logo/logo";
 import NavigationMobile from "../NavigationMobile/NavigationMobile";
 
