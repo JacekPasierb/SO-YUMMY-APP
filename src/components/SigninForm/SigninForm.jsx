@@ -6,27 +6,27 @@ import icons from "../../assets/icons/sprite.svg";
 
 import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
-import axios from "axios";
+
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import { logIn } from "../../redux/auth/operations";
+import { selectError } from "../../redux/auth/selectors";
 
 const SigninForm = () => {
-   const [submitStatus, setSubmitStatus] = useState(null);
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.auth.error);
+  const navigate = useNavigate();
+  const handleSubmit = async (values, { resetForm }) => {
     try {
-      // Wykorzystaj Axios do wysłania danych na backend
-      const response = await axios.post(
-        "https://so-yummy-app-backend.vercel.app/api/users/signin",
-        values
-      );
+      const result = await dispatch(logIn(values));
 
-      if (response.status === 200) {
-        setSubmitStatus("success");
-      } else {
-        setSubmitStatus("error");
+      if (logIn.fulfilled.match(result)) {
+        resetForm();
+        navigate("/main");
       }
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setSubmitting(false);
+    } catch (err) {
+      console.error(err.message);
+      dispatch(selectError("Login failed ⚠"));
     }
   };
   return (
@@ -124,15 +124,7 @@ const SigninForm = () => {
                 />
               </div>
             </div>
-            {submitStatus === "success" && (
-              <div className={css.successMessage}>Login successful!</div>
-            )}
 
-            {submitStatus === "error" && (
-              <div className={css.errorMessage}>
-                Login failed. Please try again.
-              </div>
-            )}
             <button type="submit" className={css.btnRegister}>
               Sign up
             </button>
