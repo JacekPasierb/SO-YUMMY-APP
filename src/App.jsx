@@ -7,31 +7,37 @@ import SharedLayout from "./components/SharedLayout/SharedLayout";
 import MainPage from "./Pages/MainPage/MainPage";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/operations";
+import { useAuth } from "./hooks/useAuth";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 
 
 const App = () => {
   const dispatch = useDispatch();
-
-   useEffect(() => {
-     const currentPath = window.location.pathname;
-     if (currentPath === "/main" ) {
+ const isRefreshing = useSelector(selectIsRefreshing);
+  useEffect(() => {
+ 
+    const currentPath = window.location.pathname;
+        console.log("ccc",currentPath);
+     if (currentPath === "/main" || currentPath === "/signin") {
        dispatch(refreshUser());
      }
    }, [dispatch]);
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <>
       <Routes>
-        <Route path="/" element={<WelcomePage />}></Route>
+        <Route path="/" element={<WelcomePage />}/>
         <Route path="/register" element={<RegisterPage />} />
         <Route
           path="/signin"
           element={
             <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
           }
-        ></Route>
-        <Route path="/" element={<SharedLayout />}>
+        />
+        <Route  path="/" element={<SharedLayout />}>
           <Route
             path="/main"
             element={<PrivateRoute component={<MainPage />} />}
