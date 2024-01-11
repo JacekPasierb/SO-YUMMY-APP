@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { setAuthSuccess, setAuthError } from "./authSlice";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "./selectors";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
 
@@ -45,6 +47,7 @@ export const logIn = createAsyncThunk(
         thunkAPI.dispatch(setAuthError("Login failed ⚠"));
         return thunkAPI.rejectWithValue("Login failed ⚠");
       }
+    
     } catch (err) {
       console.error(err.message);
       thunkAPI.dispatch(setAuthError("Login failed ⚠"));
@@ -79,15 +82,17 @@ export const refreshUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 console.log("oooo");
     if (persistedToken === null) {
+      console.log("ttt");
       // If there is no token, exit without performing any request
       return thunkAPI.rejectWithValue("Unable to fetch user");
     }
-
+console.log("eeee");
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
+      console.log("per",persistedToken);
         const res = await axios.get("/api/users/current");
-      
+      console.log("dddd",res.data.data);
       return res.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

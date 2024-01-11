@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes, redirect } from "react-router";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import SigninPage from "./Pages/SigninPage/SigninPage";
@@ -12,24 +12,23 @@ import { refreshUser } from "./redux/auth/operations";
 import { useAuth } from "./hooks/useAuth";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 
-
 const App = () => {
   const dispatch = useDispatch();
- const isRefreshing = useSelector(selectIsRefreshing);
+  const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
- 
-    const currentPath = window.location.pathname;
-        console.log("ccc",currentPath);
-     if (currentPath === "/main" || currentPath === "/signin") {
-       dispatch(refreshUser());
-     }
-   }, [dispatch]);
+    dispatch(refreshUser());
+  }, [dispatch]);
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
     <>
       <Routes>
-        <Route path="/" element={<WelcomePage />}/>
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
+          }
+        />
         <Route path="/register" element={<RegisterPage />} />
         <Route
           path="/signin"
@@ -37,7 +36,7 @@ const App = () => {
             <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
           }
         />
-        <Route  path="/" element={<SharedLayout />}>
+        <Route path="/" element={<SharedLayout />}>
           <Route
             path="/main"
             element={<PrivateRoute component={<MainPage />} />}
