@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import css from "./UserInfoModal.module.css";
+import css from "./EditProfile.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
-const UserInfoModal = () => {
+const EditProfile = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const handleEditModalClick = () => {
     setIsEditModalOpen((prevIsEditModalOpen) => !prevIsEditModalOpen);
@@ -25,4 +25,4 @@ const UserInfoModal = () => {
   );
 };
 
-export default UserInfoModal;
+export default EditProfile;

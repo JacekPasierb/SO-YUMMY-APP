@@ -2,7 +2,7 @@ import React from "react";
 import css from "./UserLogoModal.module.css";
 
 import LogoutBtn from "../LogoutBtn/LogoutBtn";
-import UserInfoModal from "../UserInfoModal/UserInfoModal";
+import UserInfoModal from "../EditProfile/EditProfile";
 
 const UserLogoModal = () => {
   const handleModalClick = (event) => {
