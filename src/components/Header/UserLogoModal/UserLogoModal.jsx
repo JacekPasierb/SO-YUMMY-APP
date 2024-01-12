@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import css from "./UserLogoModal.module.css";
-import EditProfile from "../EditProfile/EditProfile";
+
 import LogoutBtn from "../LogoutBtn/LogoutBtn";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import UserInfoModal from "../UserInfoModal/UserInfoModal";
 
 const UserLogoModal = () => {
   const handleModalClick = (event) => {
@@ -12,7 +12,7 @@ const UserLogoModal = () => {
 
   return (
     <div onClick={handleModalClick} className={css.userModal}>
-      <EditProfile /> <LogoutBtn />
+      <UserInfoModal /> <LogoutBtn />
     </div>
   );
 };

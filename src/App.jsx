@@ -11,15 +11,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/operations";
 import { useAuth } from "./hooks/useAuth";
 import { selectIsRefreshing } from "./redux/auth/selectors";
+import { Loader } from "./components/Loader/Loader";
 
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+   <Loader/>
   ) : (
     <>
       <Routes>
@@ -29,7 +31,12 @@ const App = () => {
             <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
           }
         />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/main" component={<RegisterPage />} />
+          }
+        />
         <Route
           path="/signin"
           element={

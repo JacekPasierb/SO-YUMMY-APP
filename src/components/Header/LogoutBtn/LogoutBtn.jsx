@@ -7,6 +7,8 @@ const LogoutBtn = () => {
 
   const handleLogoutModalClick = () => {
     setIsLogoutModalOpen((prevIsLogoutModalOpen) => !prevIsLogoutModalOpen);
+
+    
   };
 
   return (

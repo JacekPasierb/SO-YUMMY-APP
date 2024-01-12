@@ -3,12 +3,17 @@ import css from "./UserLogo.module.css";
 import avatar from "../../../images/avatar.jpg";
 
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
+import { selectIsUserLogoModalOpen } from "../../../redux/global/globalSelectors";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsUserLogoModalOpen } from "../../../redux/global/globalSlice";
 
 const UserLogo = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const dispatch = useDispatch();
+  const isUserLogoModalOpen = useSelector(selectIsUserLogoModalOpen);
   const handleLogoClick = () => {
-    setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
+    isUserLogoModalOpen
+      ? dispatch(setIsUserLogoModalOpen(false))
+      : dispatch(setIsUserLogoModalOpen(true));
   };
 
   return (
@@ -21,7 +26,7 @@ const UserLogo = () => {
         className={css.boxAvatar__avatar}
       />
       <span className={css.boxAvatar__username}>Username</span>
-      {isModalOpen && <UserLogoModal />}
+      {isUserLogoModalOpen && <UserLogoModal />}
     </div>
   );
 };
