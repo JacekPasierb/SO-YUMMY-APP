@@ -1,5 +1,5 @@
 .inputSearch {
-  display: flex;
+  display: inline-block;
   flex-wrap: nowrap;
   border: 1px solid #f0f0f0;
   border-radius: 24px 44px;
