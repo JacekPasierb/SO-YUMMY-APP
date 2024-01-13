@@ -5,6 +5,7 @@
   border-radius: 24px 44px;
   background-color: #FFFFFF;
   margin-bottom: 83px;
+  max-width: 100%;
 }
 .input {
   border: none;
