@@ -1,5 +1,5 @@
 .inputSearch {
-  display: inline-block;
+  display: flex;
   flex-wrap: nowrap;
   border: 1px solid #f0f0f0;
   border-radius: 24px 44px;
@@ -11,7 +11,7 @@
   outline: none;
   padding-left: 32px;
   font-size: 12px;
-
+background-color: transparent;
   color: #bdbdbd;
 }
 .input:focus {
