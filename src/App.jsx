@@ -21,7 +21,7 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? (
-   <Loader/>
+    <Loader />
   ) : (
     <>
       <Routes>

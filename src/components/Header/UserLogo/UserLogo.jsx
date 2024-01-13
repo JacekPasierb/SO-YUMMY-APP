@@ -5,15 +5,21 @@ import avatar from "../../../images/avatar.jpg";
 import UserLogoModal from "../UserLogoModal/UserLogoModal";
 import { selectIsUserLogoModalOpen } from "../../../redux/global/globalSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsUserLogoModalOpen } from "../../../redux/global/globalSlice";
+import {
+  setIsLogoutModalOpen,
+  setIsUserLogoModalOpen,
+} from "../../../redux/global/globalSlice";
 
 const UserLogo = () => {
   const dispatch = useDispatch();
   const isUserLogoModalOpen = useSelector(selectIsUserLogoModalOpen);
   const handleLogoClick = () => {
-    isUserLogoModalOpen
-      ? dispatch(setIsUserLogoModalOpen(false))
-      : dispatch(setIsUserLogoModalOpen(true));
+    if (isUserLogoModalOpen) {
+      dispatch(setIsUserLogoModalOpen(false));
+      dispatch(setIsLogoutModalOpen(false));
+    } else {
+      dispatch(setIsUserLogoModalOpen(true));
+    }
   };
 
   return (

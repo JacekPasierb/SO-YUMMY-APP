@@ -2,19 +2,22 @@ import React from "react";
 import css from "./LogoutModal.module.css";
 import close from "../../../images/X.png";
 import { useDispatch } from "react-redux";
-import { logOut } from "../../../redux/auth/operations";
+import { logOut, refreshUser } from "../../../redux/auth/operations";
+import { setIsLogoutModalOpen, setIsUserLogoModalOpen } from "../../../redux/global/globalSlice";
+import { Navigate } from "react-router";
 
 const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
-      try {
-      
+    try {
       await dispatch(logOut());
+      dispatch(setIsLogoutModalOpen(false));
+      dispatch(setIsUserLogoModalOpen(false));
     } catch (error) {
       console.error("Error during logout:", error);
     }
-  }
+  };
   return (
     <div className={css.logoutModal}>
       <img

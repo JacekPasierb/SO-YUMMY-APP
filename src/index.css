@@ -16,8 +16,8 @@ body {
   /* display: flex;
   justify-content: center; */
   min-width: 320px;
- background-color: #FAFAFA;
- box-sizing: border-box;
+  background-color: #fafafa;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -32,10 +32,8 @@ ul {
 }
 a {
   text-decoration: none;
-  
 }
 button {
- 
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -46,7 +44,6 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
- 
   a:hover {
     color: #fafafa;
   }

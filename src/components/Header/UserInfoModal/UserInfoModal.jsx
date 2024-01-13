@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import css from "./EditProfileModal.module.css";
+import css from "./UserInfoModal.module.css";
 import close from "../../../images/X.png";
 import sprite from "../../../assets/icons/sprite.svg";
 
-const EditProfileModal = ({ onClose }) => {
+const UserInfoModal = ({ onClose }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -64,4 +64,4 @@ const EditProfileModal = ({ onClose }) => {
   );
 };
 
-export default EditProfileModal;
+export default UserInfoModal;
