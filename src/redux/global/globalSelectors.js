@@ -6,3 +6,7 @@ export const selectIsUserLogoModalOpen = (state) =>
 
 export const selectIsUserInfoModalOpen = (state) =>
   state.global.isUserInfoModalOpen;
+
+  export const selectIsMenuModalOpen = (state) =>
+    state.global.isMenuModalOpen;
+

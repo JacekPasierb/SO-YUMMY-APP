@@ -5,6 +5,7 @@ import Logo from "../Logo/Logo";
 import NavigationMobile from "../NavigationMobile/NavigationMobile";
 
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
+
 const MenuModal = ({ onClose }) => {
   return (
     <div className={css.backgroundMenuModal}>

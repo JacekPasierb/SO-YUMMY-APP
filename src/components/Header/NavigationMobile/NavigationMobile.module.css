@@ -6,6 +6,10 @@
   gap: 32px;
 
   margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+  }
 }
 .link {
   text-decoration: none;
@@ -13,10 +17,14 @@
   align-items: center;
 }
 .link .navText {
-    
   font-size: 18px;
   line-height: 18px;
-  color: #22252A;
+  color: #22252a;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
 }
 .link:hover .navText,
 .link:focus .navText,
@@ -25,11 +33,17 @@
 }
 
 .iconSearch {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   fill: transparent;
   stroke: rgb(0, 0, 0);
+  
   margin-right: 8px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
 }
 .iconSearch:hover {
   stroke: #8baa36;

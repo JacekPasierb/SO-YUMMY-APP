@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isUserLogoModalOpen: false,
   isUserInfoModalOpen: false,
-
   isLogoutModalOpen: false,
+  isMenuModalOpen: false,
 };
 
 export const globalSlice = createSlice({
@@ -20,14 +20,18 @@ export const globalSlice = createSlice({
     setIsLogoutModalOpen: (state, action) => {
       state.isLogoutModalOpen = action.payload;
     },
+    setIsMenuModalOpen: (state, action) => {
+      state.isMenuModalOpen = action.payload;
+    },
   },
 });
 
 export const {
   setIsModalLogoutOpen,
   setIsUserLogoModalOpen,
-    setIsUserInfoModalOpen,
+  setIsUserInfoModalOpen,
   setIsLogoutModalOpen,
+  setIsMenuModalOpen,
 } = globalSlice.actions;
 
 export const globalReducer = globalSlice.reducer;

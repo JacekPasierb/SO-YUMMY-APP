@@ -7,7 +7,7 @@ import css from "./Logo.module.css";
 const Logo = () => {
     return (
       <Link to="/" className={css.link}>
-        <img src={logo} alt="logo" width="40" height="40" />
+        <img src={logo} alt="logo" width="40" height="40" className={ css.iconLogo} />
       </Link>
     );
 }
