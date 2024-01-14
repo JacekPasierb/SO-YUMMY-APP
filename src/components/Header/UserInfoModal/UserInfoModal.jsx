@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "../../../redux/auth/operations";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../hooks/useAuth";
+import IconCloseModal from "../../IconCloseModal/IconCloseModal";
 
 const UserInfoModal = ({ onClose }) => {
   const modalRef = useRef(null);
@@ -35,10 +36,10 @@ const UserInfoModal = ({ onClose }) => {
     };
   }, [onClose]);
 
-  const handleSubmit = async (values,{resetForm}) => {
+  const handleSubmit = async (values, { resetForm }) => {
     dispatch(
       updateUser({
-        name: values.name
+        name: values.name,
       })
     );
     toast.info("Verification link sent to email. Check your mail.");
@@ -46,12 +47,7 @@ const UserInfoModal = ({ onClose }) => {
   };
   return (
     <div ref={modalRef} className={css.editProfileModal}>
-      <img
-        src={close}
-        alt="ikona zamykająca modal"
-        className={css.iconClose}
-        onClick={onClose}
-      />
+      <IconCloseModal onClose={onClose} />
       <Formik
         initialValues={{ name: "" }}
         validate={validate}

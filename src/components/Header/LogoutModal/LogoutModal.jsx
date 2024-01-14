@@ -3,8 +3,12 @@ import css from "./LogoutModal.module.css";
 import close from "../../../images/X.png";
 import { useDispatch } from "react-redux";
 import { logOut, refreshUser } from "../../../redux/auth/operations";
-import { setIsLogoutModalOpen, setIsUserLogoModalOpen } from "../../../redux/global/globalSlice";
-import { Navigate } from "react-router";
+import {
+  setIsLogoutModalOpen,
+  setIsUserLogoModalOpen,
+} from "../../../redux/global/globalSlice";
+
+import IconCloseModal from "../../IconCloseModal/IconCloseModal";
 
 const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -20,18 +24,13 @@ const LogoutModal = ({ onClose }) => {
   };
   return (
     <div className={css.logoutModal}>
-      <img
-        src={close}
-        alt="ikona zamykająca modal"
-        className={css.iconClose}
-        onClick={onClose}
-      />
+      <IconCloseModal onClose={onClose} />
       <p className={css.logoutText}>Are you sure you want to log out?</p>
       <div className={css.btnsBox}>
-        <button type="button" onClick={handleLogout} className={css.btnLogout}>
+        <button type="button" onClick={handleLogout} className={`${css.btn} ${css.btnLogout}`}>
           Log out
         </button>
-        <button type="button" onClick={onClose} className={css.btnCancel}>
+        <button type="button" onClick={onClose} className={`${css.btn} ${css.btnCancel}`}>
           Cancel
         </button>
       </div>

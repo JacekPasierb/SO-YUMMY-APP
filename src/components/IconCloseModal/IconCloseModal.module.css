@@ -1,0 +1,15 @@
+.iconClose {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+
+    top: 24px;
+    right: 24px;
+  }
+}
