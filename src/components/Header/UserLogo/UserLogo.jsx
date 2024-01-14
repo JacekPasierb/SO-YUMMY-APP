@@ -9,9 +9,11 @@ import {
   setIsLogoutModalOpen,
   setIsUserLogoModalOpen,
 } from "../../../redux/global/globalSlice";
+import { useAuth } from "../../../hooks/useAuth";
 
 const UserLogo = () => {
   const dispatch = useDispatch();
+  const { user } = useAuth();
   const isUserLogoModalOpen = useSelector(selectIsUserLogoModalOpen);
   const handleLogoClick = () => {
     if (isUserLogoModalOpen) {
@@ -31,7 +33,7 @@ const UserLogo = () => {
         height="34"
         className={css.boxAvatar__avatar}
       />
-      <span className={css.boxAvatar__username}>Username</span>
+      <span className={css.boxAvatar__username}>{user.name}</span>
       {isUserLogoModalOpen && <UserLogoModal />}
     </div>
   );

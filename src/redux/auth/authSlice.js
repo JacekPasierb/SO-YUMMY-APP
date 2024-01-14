@@ -1,4 +1,4 @@
-import { register, logIn, logOut, refreshUser } from "./operations";
+import { register, logIn, logOut, refreshUser, updateUser } from "./operations";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -64,6 +64,14 @@ const authSlice = createSlice({
     });
     builder.addCase(refreshUser.rejected, (state) => {
       state.isRefreshing = false;
+    });
+    builder.addCase(updateUser.fulfilled, (state, action) => {
+      // Tutaj możesz zaktualizować stan dla użytkownika po pomyślnej aktualizacji
+      state.user = action.payload;
+    });
+    builder.addCase(updateUser.rejected, (state, action) => {
+      // Tutaj możesz obsłużyć ewentualne błędy podczas aktualizacji
+      console.error("Błąd podczas aktualizacji użytkownika:", action.payload);
     });
   },
 });

@@ -98,3 +98,20 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const updateUser = createAsyncThunk(
+  "auth/updateUser",
+  async (userData, thunkAPI) => {
+    try {
+      const res = await axios.put("/api/users/update", userData);
+
+      // Jeśli aktualizacja przebiegnie pomyślnie, możesz zaktualizować dane w stanie Redux.
+      // Należy pamiętać, że w tym przypadku nie musisz dodatkowo zmieniać nagłówka autoryzacyjnego,
+      // ponieważ token jest już przechowywany w nagłówku po zalogowaniu.
+
+      return res.data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
