@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 18px;
+  padding-top: 18px;
   @media screen and (min-width: 768px) {
    
   }

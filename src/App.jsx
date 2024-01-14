@@ -12,6 +12,7 @@ import { refreshUser } from "./redux/auth/operations";
 import { useAuth } from "./hooks/useAuth";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Loader } from "./components/Loader/Loader";
+import { selectTheme } from "./redux/global/globalSelectors";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,11 @@ const App = () => {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+  const theme = useSelector(selectTheme);
+  
+  useEffect(() => {
+    document.body.className = theme === "light" ? null: "dark-theme";
+  }, [theme]);
   return isRefreshing ? (
     <Loader />
   ) : (

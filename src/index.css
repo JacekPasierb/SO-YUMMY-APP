@@ -51,3 +51,11 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+
+/* dark-theme.css */
+body.dark-theme {
+  background-color: black;
+  color: white;
+}

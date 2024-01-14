@@ -8,5 +8,8 @@ export const selectIsUserInfoModalOpen = (state) =>
   state.global.isUserInfoModalOpen;
 
   export const selectIsMenuModalOpen = (state) =>
-    state.global.isMenuModalOpen;
+  state.global.isMenuModalOpen;
+
+    export const selectTheme = (state) =>
+      state.global.theme;
 

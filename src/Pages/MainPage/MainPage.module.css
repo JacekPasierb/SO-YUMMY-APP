@@ -13,6 +13,7 @@
     width: 1200px;
   }
 }
+
 .background {
   background-image: url("../../images/spinachMobile1x.png"), url("../../images//bckg2Mobile1x.png"),url("../../images/bg3Mobile1x.png");
   background-repeat: no-repeat;
