@@ -9,10 +9,19 @@
   min-height: 100vh;
   background-color: #ebf3d4;
   background-image: url("../../../images/kisspng-pasta.png");
+
   background-repeat: no-repeat;
   background-position: bottom 0px right 0px;
+  background-size: 100%, 100%;
 
   display: flex;
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url("../../../images/kisspng-pasta2x.png");
+    background-size: 100%, 100%;
+  }
 }
 
 .container {
@@ -58,5 +67,4 @@
 
 .switcher {
   align-items: start;
-  
 }
