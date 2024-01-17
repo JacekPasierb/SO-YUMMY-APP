@@ -23,7 +23,7 @@ const SubscribeForm = () => {
   return (
     <Formik initialValues={{ email: "" }} onSubmit={onSubmit}>
       {({ isSubmitting, isValid }) => (
-        <Form>
+        <Form className={css.form}>
           <div className={css.inputContainer}>
             <label>
               <div className={css.inputBox}>

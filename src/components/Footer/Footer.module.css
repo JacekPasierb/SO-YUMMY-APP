@@ -1,6 +1,48 @@
 .footer {
   background-color: #22252a;
-  padding-block: 28px 18px;
+  
+
+ 
+}
+
+.container {
+  padding: 0 16px;
+ 
+  width: 100%;
+ padding-bottom: 18px;
+ padding-top: 28px;
+  @media screen and (min-width: 480px) {
+    
+  }
+  @media screen and (min-width: 768px) {
+    padding: 0 32px;
+    padding-bottom: 24px;
+   padding-top: 50px;
+  
+  }
+  @media screen and (min-width: 1200px) {
+  
+    padding-bottom: 50px;
+    padding-top: 64px;
+  }
+}
+.footerBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  
+  
+ @media screen and (min-width: 768px) {
+    margin-bottom: 72px;
+   
+  }
+}
+.footerBoxAssaid {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .logoBox {
   display: flex;
@@ -13,16 +55,50 @@
   background-color: #ebf3d4;
   border-radius: 6px;
   margin-right: 8px;
+
+    @media screen and (min-width: 768px) {
+ width: 44px;
+  height: 44px;
+    margin-right: 12px;
+   
+  }
 }
 .titleBox {
   font-size: 18px;
   font-weight: bold;
   line-height: 18px;
   color: #fafafa;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+    line-height: 28px;
+   
+  }
 }
 .footerNav {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.list {
+  list-style: circle;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+padding-left: 40px;
+   @media screen and (min-width: 1200px) {
+    gap: 12px;
+   
+  }
+}
+.listItem {
+  font-size: 14px;
+  line-height: 18px;
+  color: #FAFAFA;
+   @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 24px;
+   
+  }
 }
