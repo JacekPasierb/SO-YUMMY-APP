@@ -1,22 +1,19 @@
 .background {
-
-  background-image: 
-    url("../../images/bg3Mobile1x.png");
+  background-image: url("../../images/bg3Mobile1x.png");
   background-repeat: no-repeat;
 
-  background-position:  top 160px right 0;
+  background-position: top 160px right 0;
 
-   @media screen and (min-width: 768px) {
-   background-image:  url("../../images/bg3Tablet1x.png");
-  background-repeat: no-repeat;
+  @media screen and (min-width: 768px) {
+    background-image: url("../../images/bg3Tablet1x.png");
+    background-repeat: no-repeat;
 
-
-  background-position:  top 0px right 0px;
-
-
+    background-position: top 0px right 0px;
   }
   @media screen and (min-width: 1200px) {
-   
+    background-image: url("../../images/bg3Desctop1x.png");
+    background-repeat: no-repeat;
+
+    background-position: top 0px right 0px;
   }
- 
 }

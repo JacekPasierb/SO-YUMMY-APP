@@ -4,41 +4,42 @@
   max-width: 100%;
 
   @media screen and (min-width: 480px) {
-    
   }
   @media screen and (min-width: 768px) {
     padding: 0 32px;
-   
   }
   @media screen and (min-width: 1200px) {
-   width: 1200px;
+    width: 1200px;
   }
 }
 
 .background {
-
   background-image: url("../../images/spinachMobile1x.png"),
     url("../../images//bckg2Mobile1x.png");
   background-repeat: no-repeat;
 
   background-position: top -10px left 0, top right 0;
-padding-top: 68px;
-   @media screen and (min-width: 768px) {
-   background-image: url("../../images/spinachTablet1x.png"),
-    url("../../images/bckg2Tablet1x.png");
- 
-  background-repeat: no-repeat;
+  padding-top: 68px;
+  @media screen and (min-width: 768px) {
+    background-image: url("../../images/spinachTablet1x.png"),
+      url("../../images/bckg2Tablet1x.png");
 
+    background-repeat: no-repeat;
 
-  background-position: top -10px left 0, bottom 0px right 0;
-padding-top: 95px;
-padding-bottom: 130px;
-
+    background-position: top -10px left 0, bottom 0px right 0;
+    padding-top: 95px;
+    padding-bottom: 130px;
   }
   @media screen and (min-width: 1200px) {
-   
+      background-image: url("../../images/spinachDesctop1x.png"),
+      url("../../images/kisspng-pastaDesctop.png");
+
+    background-repeat: no-repeat;
+
+    background-position: top -10px left 0, bottom 80px right 0px;
+    padding-top: 62px;
+    padding-bottom: 235px;
   }
- 
 }
 
 .title {
@@ -46,11 +47,10 @@ padding-bottom: 130px;
   line-height: 60px;
   text-align: center;
   color: #22252a;
-  
+
   margin: 0;
 
-    @media screen and (min-width: 768px) {
-    
+  @media screen and (min-width: 768px) {
     font-size: 72px;
     line-height: 72px;
   }
@@ -65,8 +65,6 @@ padding-bottom: 130px;
   text-align: center;
 
   color: #23262a;
-
-  
 }
 .flex {
   display: flex;
@@ -74,6 +72,6 @@ padding-bottom: 130px;
   align-items: center;
 
   @media screen and (min-width: 768px) {
-   flex-direction: row;
+    flex-direction: row;
   }
 }
