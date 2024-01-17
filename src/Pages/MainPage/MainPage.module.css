@@ -4,46 +4,76 @@
   max-width: 100%;
 
   @media screen and (min-width: 480px) {
-    width: 480px;
+    
   }
   @media screen and (min-width: 768px) {
-    width: 768px;
+    padding: 0 32px;
+   
   }
   @media screen and (min-width: 1200px) {
-    width: 1200px;
+   width: 1200px;
   }
 }
 
 .background {
-  background-image: url("../../images/spinachMobile1x.png"), url("../../images//bckg2Mobile1x.png"),url("../../images/bg3Mobile1x.png");
-  background-repeat: no-repeat;
-  
-  background-position: top -10px left 0,top right 0,top 120px right 0;
 
-  
+  background-image: url("../../images/spinachMobile1x.png"),
+    url("../../images//bckg2Mobile1x.png");
+  background-repeat: no-repeat;
+
+  background-position: top -10px left 0, top right 0;
+padding-top: 68px;
+   @media screen and (min-width: 768px) {
+   background-image: url("../../images/spinachTablet1x.png"),
+    url("../../images/bckg2Tablet1x.png");
+ 
+  background-repeat: no-repeat;
+
+
+  background-position: top -10px left 0, bottom 0px right 0;
+padding-top: 95px;
+padding-bottom: 130px;
+
+  }
+  @media screen and (min-width: 1200px) {
+   
+  }
+ 
 }
 
 .title {
-    font-size: 60px;
-    line-height: 60px;
-    text-align: center;
-    color: #22252A;
-    padding-top: 68px;
-    margin: 0;
+  font-size: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #22252a;
+  
+  margin: 0;
+
+    @media screen and (min-width: 768px) {
+    
+    font-size: 72px;
+    line-height: 72px;
+  }
 }
 .titleInnerColor {
-color: #8BAA36;
+  color: #8baa36;
 }
 .description {
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: -2%;
-    text-align: center;
-    
-    color: #23262A;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -2%;
+  text-align: center;
+
+  color: #23262a;
+
+  
 }
 .flex {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+   flex-direction: row;
+  }
 }

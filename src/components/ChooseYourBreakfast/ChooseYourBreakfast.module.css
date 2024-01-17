@@ -3,19 +3,45 @@
 }
 .boxRecipes {
   position: absolute;
-  top: 30%;
-  right: 5px;
-  max-width: 70%;
+  top: 20%;
+  right: 0px;
+  max-width: 75%;
+
   display: flex;
   flex-direction: column;
   background-color: #fafafa;
   border-radius: 8px;
   padding: 8px;
+
+  @media screen and (min-width: 768px) {
+    top: 45%;
+    right: 10%;
+    width: 100%;
+    
+  }
 }
+ @media screen and (min-width: 768px) {
+   .boxRecipes::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  left: 20px;
+
+  width: 80%;
+  height: 100%;
+  background: url("../../images/Group53.png") no-repeat;
+  background-size: cover;
+}
+  }
+
 .fontRecipes {
   font-size: 12px;
   line-height: 18px;
   color: #3e4462;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 }
 .fontRecipesInnerColor {
   color: #8baa36;
@@ -30,7 +56,7 @@
 
   font-size: 10px;
   line-height: 12px;
-  color: #3E4462;
+  color: #3e4462;
   padding: 0;
 }
 .icon {
@@ -39,13 +65,11 @@
   margin-left: 4px;
 }
 .chooseBox {
-    background-image: url("../../images/recipesMobile1x.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-width: 320px;
-height: 296px;
-    position: relative;
-    margin-top: 44px;
-    margin-bottom: 24px;
+  width: 100%;
+  height: 100%;
+}
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
