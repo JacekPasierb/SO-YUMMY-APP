@@ -21,29 +21,35 @@ const Header = () => {
         {(matches) => (
           <>
             {matches.small && (
-              <div className={`${css.container} ${css.headerBox}`}>
-                <Logo />
-                <div className={css.mobileBox}>
-                  <UserLogo />
-                  <HamburgerMenu />
+              <div className={css.header}>
+                <div className={`${css.container} ${css.headerBox}`}>
+                  <Logo />
+                  <div className={css.mobileBox}>
+                    <UserLogo />
+                    <HamburgerMenu />
+                  </div>
                 </div>
               </div>
             )}
             {matches.medium && (
-              <div className={`${css.container} ${css.headerBox}`}>
-                <Logo />
-                <div className={css.mobileBox}>
-                  <UserLogo />
-                  <HamburgerMenu />
+              <div className={css.header}>
+                <div className={`${css.container} ${css.headerBox}`}>
+                  <Logo />
+                  <div className={css.mobileBox}>
+                    <UserLogo />
+                    <HamburgerMenu />
+                  </div>
                 </div>
               </div>
             )}
             {matches.large && (
-              <div className={`${css.container} ${css.headerBox}`}>
-                <Logo />
-                <Navigation />
-                <UserLogo />
-                <ThemeToggler/>
+              <div className={css.header}>
+                <div className={`${css.container} ${css.headerBox}`}>
+                  <Logo />
+                  <Navigation />
+                  <UserLogo />
+                  <ThemeToggler />
+                </div>
               </div>
             )}
           </>
