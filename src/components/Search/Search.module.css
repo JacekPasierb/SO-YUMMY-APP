@@ -4,10 +4,10 @@
   justify-content: space-between;
   border: 1px solid #f0f0f0;
   border-radius: 24px 44px;
-  background-color: red;
+  background-color: #FFFFFF;
   margin-top: 24px;
   margin-bottom: 83px;
-  /* max-width: 100%; */
+ 
 
    @media screen and (min-width: 768px) {
     
@@ -19,7 +19,7 @@
 .input {
   border: none;
   outline: none;
-  /* padding-left: 32px; */
+  padding-left: 32px;
   font-size: 12px;
 background-color: transparent;
   color: #bdbdbd;
