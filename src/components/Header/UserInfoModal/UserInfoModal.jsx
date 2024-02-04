@@ -60,7 +60,8 @@ const UserInfoModal = ({ onClose }) => {
           <div className={css.logoBackground}>
             <img
               src={user.avatar || DEFAULT_AVATAR}
-              style={{ borderRadius: "50%", width:"100px", height:"100px" }}
+              style={{ borderRadius: "50% "}}
+              className={css.iconPicture}
             />
             {/* <svg className={css.iconPicture}>
               <use href={sprite + `#icon-Icon`}></use>

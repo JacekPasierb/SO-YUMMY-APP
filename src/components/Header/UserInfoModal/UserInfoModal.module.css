@@ -123,8 +123,7 @@
 .iconPicture {
   width: 40px;
   height: 40px;
-  fill: #d9d9d9;
-  stroke: #c4c4c4;
+ 
 
   @media screen and (min-width: 768px) {
     width: 47px;
