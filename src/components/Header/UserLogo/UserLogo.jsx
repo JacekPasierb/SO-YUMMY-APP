@@ -27,7 +27,7 @@ const UserLogo = () => {
   return (
     <div className={css.boxAvatar} onClick={handleLogoClick}>
       <img
-        src={avatar}
+        src={user.avatar}
         alt="avatar"
         width="34"
         height="34"
