@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import css from "./UserInfoModal.module.css";
 import close from "../../../images/X.png";
 import sprite from "../../../assets/icons/sprite.svg";
@@ -14,6 +14,7 @@ const UserInfoModal = ({ onClose }) => {
   const modalRef = useRef(null);
   const dispatch = useDispatch();
   const { user } = useAuth();
+ 
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === "Escape") {
@@ -55,9 +56,10 @@ const UserInfoModal = ({ onClose }) => {
       >
         <Form className={css.form}>
           <div className={css.logoBackground}>
-            <svg className={css.iconPicture}>
-              <use href={`${user.avatar} || ${sprite + `#icon-Icon`}`}></use>
-            </svg>
+            <img src={user.avatar} className={css.iconPicture}/>
+            {/* <svg className={css.iconPicture}>
+              <use href={sprite + `#icon-Icon`}></use>
+            </svg> */}
             <button type="button" className={css.btnAdd}>
               <svg className={css.iconPlus}>
                 <use href={sprite + `#icon-plus`}></use>
