@@ -10,13 +10,13 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../../hooks/useAuth";
 import IconCloseModal from "../../IconCloseModal/IconCloseModal";
 export const DEFAULT_AVATAR =
-  'https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg';
+  "https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg";
 
 const UserInfoModal = ({ onClose }) => {
   const modalRef = useRef(null);
   const dispatch = useDispatch();
   const { user } = useAuth();
- 
+
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === "Escape") {
@@ -58,7 +58,10 @@ const UserInfoModal = ({ onClose }) => {
       >
         <Form className={css.form}>
           <div className={css.logoBackground}>
-            <img src={user.avatar || DEFAULT_AVATAR} width="100%" height="100%"/>
+            <img
+              src={user.avatar || DEFAULT_AVATAR}
+              style={{ border: "50%" }}
+            />
             {/* <svg className={css.iconPicture}>
               <use href={sprite + `#icon-Icon`}></use>
             </svg> */}
