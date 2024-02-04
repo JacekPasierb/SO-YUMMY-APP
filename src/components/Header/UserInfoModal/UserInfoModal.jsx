@@ -58,7 +58,7 @@ const UserInfoModal = ({ onClose }) => {
       >
         <Form className={css.form}>
           <div className={css.logoBackground}>
-            <img src={user.avatar || DEFAULT_AVATAR} className={css.iconPicture}/>
+            <img src={user.avatar || DEFAULT_AVATAR} width="100%" height="100%"/>
             {/* <svg className={css.iconPicture}>
               <use href={sprite + `#icon-Icon`}></use>
             </svg> */}
