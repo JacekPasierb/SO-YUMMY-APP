@@ -123,7 +123,6 @@
 .iconPicture {
   width: 40px;
   height: 40px;
- 
 
   @media screen and (min-width: 768px) {
     width: 47px;
@@ -135,7 +134,6 @@
   height: 88px;
   background-color: #d9d9d9;
   border-radius: 50%;
-  
 
   display: flex;
   justify-content: center;
@@ -146,8 +144,16 @@
   @media screen and (min-width: 768px) {
     width: 103px;
     height: 103px;
-    
   }
+}
+.logoBackground::after {
+  position: absolute;
+  right: 0;
+  bottom: -5%;
+  transform: translateX(-50%);
+  content: url('../../../images/plus.svg');
+  width: 24px;
+  height: 24px;
 }
 .btnAdd {
   width: 24px;
@@ -165,3 +171,8 @@
   width: 18px;
   height: 18px;
 }
+.inputFile {
+  display: none;
+}
+
+
