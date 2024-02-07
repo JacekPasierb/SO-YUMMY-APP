@@ -40,86 +40,88 @@ const UserInfoModal = ({ onClose }) => {
     };
   }, [onClose]);
 
-  const handleSubmit = async (values, { resetForm }) => {
-
+  const handleSubmit = async (values) => {
     dispatch(
       updateUser({
-        name: values.name,
-        avatar: imageDataUrl,
+        name: values.name ? values.name : user.name,
+        avatar: values.avatar || user.avatar,
       })
     );
     toast.info("Verification link sent to email. Check your mail.");
-    resetForm();
+    onClose();
   };
   return (
     <div ref={modalRef} className={css.editProfileModal}>
       <IconCloseModal onClose={onClose} />
       <Formik
-        initialValues={{ avatar: "", name: "" }}
+        initialValues={{ avatar: "", name: user.name || "" }}
         validate={validate}
         onSubmit={handleSubmit}
       >
-        <Form className={css.form}>
-          <label htmlFor="avatar" className={css.btnChoose}>
-            {imageDataUrl ? (
-              <div className={css.logoBackground}>
-                <img
-                  src={imageDataUrl}
-                  alt="avatar"
-                  style={{
-                    borderRadius: "50% ",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                />
-              </div>
-            ) : (
-              <div className={css.logoBackground}>
-                <svg className={css.iconPicture}>
-                  <use href={sprite + `#icon-Icon`}></use>
-                </svg>
-              </div>
-            )}
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            id="avatar"
-            name="avatar"
-            onChange={(event) => {
-              const file = event.target.files[0];
-              if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                  setImageDataUrl(e.target.result);
-                  // Tutaj możesz zrobić coś z imageDataUrl, np. wyświetlić jako podgląd
-                };
-                reader.readAsDataURL(file);
-              }
-            }}
-            className={css.inputFile}
-          />
+        {({ setFieldValue }) => (
+          <Form className={css.form}>
+            <label htmlFor="avatar" className={css.btnChoose}>
+              {imageDataUrl ? (
+                <div className={css.logoBackground}>
+                  <img
+                    src={imageDataUrl}
+                    alt="avatar"
+                    style={{
+                      borderRadius: "50% ",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className={css.logoBackground}>
+                  <svg className={css.iconPicture}>
+                    <use href={sprite + `#icon-Icon`}></use>
+                  </svg>
+                </div>
+              )}
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              id="avatar"
+              name="avatar"
+              onChange={(event) => {
+                const file = event.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = (e) => {
+                    setImageDataUrl(e.target.result);
 
-          <div className={css.inputUsername}>
-            <svg className={css.iconUser}>
-              <use href={sprite + `#icon-Icon`}></use>
-            </svg>
-
-            <Field
-              name="name"
-              type="text"
-              placeholder={user.name}
-              className={css.input}
+                    setFieldValue("avatar", e.target.result);
+                  };
+                  reader.readAsDataURL(file);
+                }
+              }}
+              className={css.inputFile}
             />
 
-            <svg className={css.iconEdit}>
-              <use href={sprite + `#icon-edit-01`}></use>
-            </svg>
-          </div>
-          <button type="submit" className={css.btnSave}>
-            Save changes
-          </button>
-        </Form>
+            <div className={css.inputUsername}>
+              <svg className={css.iconUser}>
+                <use href={sprite + `#icon-Icon`}></use>
+              </svg>
+
+              <Field
+                name="name"
+                type="text"
+                placeholder={user.name}
+                className={css.input}
+              />
+
+              <svg className={css.iconEdit}>
+                <use href={sprite + `#icon-edit-01`}></use>
+              </svg>
+            </div>
+            <button type="submit" className={css.btnSave}>
+              Save changes
+            </button>
+          </Form>
+        )}
       </Formik>
     </div>
   );

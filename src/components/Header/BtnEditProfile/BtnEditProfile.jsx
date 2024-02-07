@@ -8,6 +8,7 @@ import { setIsUserInfoModalOpen } from "../../../redux/global/globalSlice";
 
 const BtnEditProfile = () => {
   const isUserInfoModalOpen = useSelector(selectIsUserInfoModalOpen);
+
   const dispatch = useDispatch();
 
   const handleModalClick = () => {
@@ -15,6 +16,7 @@ const BtnEditProfile = () => {
       ? dispatch(setIsUserInfoModalOpen(false))
       : dispatch(setIsUserInfoModalOpen(true));
   };
+
   return (
     <>
       <button
