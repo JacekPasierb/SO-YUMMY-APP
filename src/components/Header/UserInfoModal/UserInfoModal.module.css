@@ -140,7 +140,7 @@
   align-items: center;
 
   position: relative;
-
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     width: 103px;
     height: 103px;
@@ -151,7 +151,7 @@
   right: 0;
   bottom: -5%;
   transform: translateX(-50%);
-  content: url('../../../images/plus.svg');
+  content: url("../../../images/plus.svg");
   width: 24px;
   height: 24px;
 }
@@ -174,5 +174,3 @@
 .inputFile {
   display: none;
 }
-
-

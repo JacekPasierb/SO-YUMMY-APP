@@ -7,6 +7,8 @@ import Media from "react-media";
 import Navigation from "./Navigation/Navigation";
 import ThemeToggler from "./ThemeToggler/ThemeToggler";
 import Logo from "./Logo/Logo";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   return (

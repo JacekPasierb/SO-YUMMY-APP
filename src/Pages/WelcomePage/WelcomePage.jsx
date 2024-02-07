@@ -4,9 +4,12 @@ import sprite from "../../assets/icons/sprite.svg";
 import css from "./WelcomePage.module.css";
 import logo from "../../images/logo.png";
 
+
+
 const WelcomePage = () => {
      const screenWidth = window.innerWidth;
   return (
+    
     <div className={css.background}>
       <div className={css.boxContainer}>
         <img src={logo} alt="logo" className={css.iconLogo} />
@@ -20,7 +23,9 @@ const WelcomePage = () => {
               and retrieve your own recipes at any time.
             </p>
           </div>
+          
           <AuthNav />
+        
         </div>
       </div>
     </div>

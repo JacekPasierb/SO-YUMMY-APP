@@ -9,6 +9,7 @@ import {
 } from "../../../redux/global/globalSlice";
 
 import IconCloseModal from "../../IconCloseModal/IconCloseModal";
+import { toast } from "react-toastify";
 
 const LogoutModal = ({ onClose }) => {
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const LogoutModal = ({ onClose }) => {
       await dispatch(logOut());
       dispatch(setIsLogoutModalOpen(false));
       dispatch(setIsUserLogoModalOpen(false));
+
+      toast.success("Logged out successfully !");
     } catch (error) {
       console.error("Error during logout:", error);
     }
@@ -27,10 +30,18 @@ const LogoutModal = ({ onClose }) => {
       <IconCloseModal onClose={onClose} />
       <p className={css.logoutText}>Are you sure you want to log out?</p>
       <div className={css.btnsBox}>
-        <button type="button" onClick={handleLogout} className={`${css.btn} ${css.btnLogout}`}>
+        <button
+          type="button"
+          onClick={handleLogout}
+          className={`${css.btn} ${css.btnLogout}`}
+        >
           Log out
         </button>
-        <button type="button" onClick={onClose} className={`${css.btn} ${css.btnCancel}`}>
+        <button
+          type="button"
+          onClick={onClose}
+          className={`${css.btn} ${css.btnCancel}`}
+        >
           Cancel
         </button>
       </div>

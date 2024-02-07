@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { logIn } from "../../redux/auth/operations";
 import { selectError } from "../../redux/auth/selectors";
+import { toast } from "react-toastify";
 
 const SigninForm = () => {
   const dispatch = useDispatch();
@@ -23,10 +24,12 @@ const SigninForm = () => {
       if (logIn.fulfilled.match(result)) {
         resetForm();
         navigate("/main");
+        toast.success("Logged in success !")
       }
     } catch (err) {
       console.error(err.message);
       dispatch(selectError("Login failed ⚠"));
+      toast.error("Failed to log in")
     }
   };
   return (

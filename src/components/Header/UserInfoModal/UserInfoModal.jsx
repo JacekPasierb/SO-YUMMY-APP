@@ -6,9 +6,10 @@ import { Field, Formik, Form } from "formik";
 import { validate } from "./UserInfoModalValidatin";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../redux/auth/operations";
-import { toast } from "react-toastify";
+
 import { useAuth } from "../../../hooks/useAuth";
 import IconCloseModal from "../../IconCloseModal/IconCloseModal";
+import { toast } from "react-toastify";
 export const DEFAULT_AVATAR =
   "https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg";
 
@@ -47,12 +48,14 @@ const UserInfoModal = ({ onClose }) => {
         avatar: values.avatar || user.avatar,
       })
     );
-    toast.info("Verification link sent to email. Check your mail.");
+
+    toast.success("Succes, Update profile !");
     onClose();
   };
   return (
     <div ref={modalRef} className={css.editProfileModal}>
       <IconCloseModal onClose={onClose} />
+
       <Formik
         initialValues={{ avatar: "", name: user.name || "" }}
         validate={validate}
