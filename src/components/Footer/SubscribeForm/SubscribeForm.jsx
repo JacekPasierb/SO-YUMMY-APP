@@ -3,6 +3,7 @@ import css from "./SubscribeForm.module.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import sprite from "../../../assets/icons/sprite.svg";
 import { useAuth } from "../../../hooks/useAuth";
+import { addSubscribe } from "../../../API/subscribeAPI";
 
 const validateEmail = (value) => {
   let error;
@@ -14,10 +15,15 @@ const validateEmail = (value) => {
   return error;
 };
 
-const onSubmit = (values, { setSubmitting }) => {
-  // Tutaj możesz dodać kod do wysyłania wiadomości e-mail lub innych działań
-  console.log("Wysyłam e-mail:", values.email);
-  setSubmitting(false);
+const onSubmit = async (values, { setSubmitting }) => {
+
+  try {
+    await addSubscribe({ email: values.email });
+    console.log("Wysyłam e-mail:", values.email);
+    setSubmitting(true);
+  } catch (error) {
+    return error;
+  }
 };
 
 const SubscribeForm = () => {
