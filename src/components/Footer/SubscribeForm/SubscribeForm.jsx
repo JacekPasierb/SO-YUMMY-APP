@@ -2,6 +2,7 @@ import React from "react";
 import css from "./SubscribeForm.module.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import sprite from "../../../assets/icons/sprite.svg";
+import { useAuth } from "../../../hooks/useAuth";
 
 const validateEmail = (value) => {
   let error;
@@ -20,8 +21,10 @@ const onSubmit = (values, { setSubmitting }) => {
 };
 
 const SubscribeForm = () => {
+  const { user } = useAuth();
+
   return (
-    <Formik initialValues={{ email: "" }} onSubmit={onSubmit}>
+    <Formik initialValues={{ email: user.email }} onSubmit={onSubmit}>
       {({ isSubmitting, isValid }) => (
         <Form className={css.form}>
           <div className={css.inputContainer}>
