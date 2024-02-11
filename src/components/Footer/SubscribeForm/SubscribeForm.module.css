@@ -16,6 +16,10 @@
  margin-left: 12px;
   }
 }
+.btnSubscribe:disabled {
+  background-color: grey;
+  cursor: no-drop;
+}
 .inputEmail {
   background-color: transparent;
   border: none;
