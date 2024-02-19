@@ -22,9 +22,9 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
   const theme = useSelector(selectTheme);
-  
+
   useEffect(() => {
-    document.body.className = theme === "light" ? null: "dark-theme";
+    document.body.className = theme === "light" ? null : "dark-theme";
   }, [theme]);
   return isRefreshing ? (
     <Loader />

@@ -3,6 +3,7 @@ import css from "./MainPage.module.css";
 import Search from "../../components/Search/Search";
 import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYourBreakfast";
 import Media from "react-media";
+import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
 
 const MainPage = () => {
   return (
@@ -28,6 +29,7 @@ const MainPage = () => {
                 </p>
                 <ChooseYourBreakfast />
                 <Search />
+                <PreviewsCategories/>
               </div>
             </main>
           )}
@@ -47,6 +49,7 @@ const MainPage = () => {
                   <Search />
                 </div>
                 <ChooseYourBreakfast />
+                <PreviewsCategories/>
               </div>
             </main>
           )}
