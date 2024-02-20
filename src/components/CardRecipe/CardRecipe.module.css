@@ -5,6 +5,7 @@
 
 .recipeIMG {
   border-radius: 8px;
+  width: 100%;
 }
 .titleBox {
   background-color: white;
