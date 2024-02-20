@@ -9,15 +9,11 @@
 .categoriesList {
   list-style: none;
 
-  
-
   display: flex;
   flex-direction: column;
   gap: 32px;
 
   width: 100%;
-  
-
 }
 .titleCategories {
   margin: 0;
@@ -27,19 +23,17 @@
   line-height: 28px;
   color: #001833;
 
-align-self: start;
+  align-self: start;
 }
 .btn {
-    margin-top: 24px;
-    padding: 10px 24px;
-    background-color: #8AA936;
-    border-radius: 6px;
-    border:none;
-   
-    
+  margin-top: 24px;
+  padding: 10px 24px;
+  background-color: #8aa936;
+  border-radius: 6px;
+  border: none;
 }
 .categories {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
