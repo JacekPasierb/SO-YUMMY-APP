@@ -36,6 +36,7 @@ const MainPage = () => {
           {matches.medium && (
             <main className={css.background}>
               <div className={`${css.container} ${css.flex}`}>
+                <div className={css.flexMed}>
                 <div>
                   <h1 className={css.title}>
                     <span className={css.titleInnerColor}>So</span>Yummy
@@ -48,7 +49,7 @@ const MainPage = () => {
 
                   <Search />
                 </div>
-                <ChooseYourBreakfast />
+                <ChooseYourBreakfast /></div>
                 <PreviewsCategories/>
               </div>
             </main>
@@ -69,6 +70,7 @@ const MainPage = () => {
                   <Search />
                 </div>
                 <ChooseYourBreakfast />
+                <PreviewsCategories/>
               </div>
             </main>
           )}
