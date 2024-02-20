@@ -9,14 +9,14 @@
 .categoriesList {
   list-style: none;
 
-  margin-left: 50px;
+  
 
   display: flex;
   flex-direction: column;
   gap: 32px;
 
   width: 100%;
-  border: 1px solid blue;
+  border: 1px solid red;
 
 }
 .titleCategories {
