@@ -13,6 +13,7 @@ import { useAuth } from "./hooks/useAuth";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Loader } from "./components/Loader/Loader";
 import { selectTheme } from "./redux/global/globalSelectors";
+import CategoriesPage from "./Pages/CategoriesPage/CategoriesPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,10 @@ const App = () => {
             path="/main"
             element={<PrivateRoute component={<MainPage />} />}
           />
-          <Route path="/categories/:categoryName" />
+          <Route
+            path="/categories/:categoryName"
+            element={<PrivateRoute component={<CategoriesPage />} />}
+          />
           <Route path="/add" />
           <Route path="/my" />
           <Route path="/favorite" />

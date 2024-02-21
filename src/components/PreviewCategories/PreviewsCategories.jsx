@@ -34,18 +34,22 @@ const PreviewsCategories = () => {
       {recipesByMainCategory &&
         entri.map(([categories, recipes], idx) => {
           return (
-            <li key={`${categories}-${idx}`} className={css.categories}>
-              <h2 className={css.titleCategories}>{categories}</h2>
+            <li key={`${categories}-${idx}`} className={css.categoriesListItem}>
+              <h2 className={css.titleCategories}>
+                {categories.charAt(0).toUpperCase() + categories.slice(1)}
+              </h2>
               <ul className={css.recipesList}>
                 {recipes.map((recipe) => {
                   return (
-                    <li key={`${recipe._id}`}>
+                    <li key={`${recipe._id}`} className={css.recipesListItem}>
                       <CardRecipe dish={recipe} />
                     </li>
                   );
                 })}
               </ul>
-              <button type="button" className={css.btn}>See all</button>
+              <button type="button" className={css.btnCategories}>
+                See all
+              </button>
             </li>
           );
         })}

@@ -2,6 +2,8 @@
   background-color: #22252a;
   padding-bottom: 18px;
   padding-top: 28px;
+/*   margin top tymczasowy*/
+  margin-top: 50px; 
   @media screen and (min-width: 768px) {
     padding-bottom: 24px;
     padding-top: 50px;

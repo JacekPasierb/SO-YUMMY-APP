@@ -1,6 +1,6 @@
 .cardRecipe {
   position: relative;
-
+  width: 100%;
 }
 
 .recipeIMG {
@@ -9,13 +9,11 @@
 }
 .titleBox {
   background-color: white;
-  /* margin-inline: 18px;
-
-  padding: 16px;
-  border: 1px solid red; */
+ 
   width: calc((100% - 32px));
   border-radius: 8px;
   padding: 16px;
+  
   position: absolute;
   bottom: 26px;
   left: 16px;
@@ -25,5 +23,5 @@
 
   font-size: 16px;
   line-height: 20px;
-  color: #3E4462;
+  color: #3e4462;
 }

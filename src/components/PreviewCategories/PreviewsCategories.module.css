@@ -1,19 +1,18 @@
-.bg {
-}
-.recipesList {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
 .categoriesList {
   list-style: none;
+  margin-top: 64px;
+
+  width: 100%;
 
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+.categoriesListItem {
+  display: flex;
+  flex-direction: column;
 
-  width: 100%;
+  align-items: center;
 }
 .titleCategories {
   margin: 0;
@@ -25,15 +24,29 @@
 
   align-self: start;
 }
-.btn {
+
+.recipesList {
+  list-style: none;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.recipesListItem {
+  width: 100%;
+}
+
+.btnCategories {
   margin-top: 24px;
   padding: 10px 24px;
+
   background-color: #8aa936;
   border-radius: 6px;
   border: none;
-}
-.categories {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+
+  align-self: flex-end;
+
+  font-size: 14px;
+  line-height: 18px;
 }
