@@ -14,6 +14,8 @@ import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Loader } from "./components/Loader/Loader";
 import { selectTheme } from "./redux/global/globalSelectors";
 import CategoriesPage from "./Pages/CategoriesPage/CategoriesPage";
+import CategoriesByName from "./components/CategoriesByName/CategoriesByName";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,9 +23,10 @@ const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
+    console.log("ref", isRefreshing);
   }, [dispatch]);
   const theme = useSelector(selectTheme);
-
+  console.log("ppp", isRefreshing);
   useEffect(() => {
     document.body.className = theme === "light" ? null : "dark-theme";
   }, [theme]);
@@ -32,39 +35,43 @@ const App = () => {
   ) : (
     <>
       <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/main"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
+            }
+          />
+        </Route>
         <Route
           path="/"
-          element={
-            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute redirectTo="/main" component={<RegisterPage />} />
-          }
-        />
-        <Route
-          path="/signin"
-          element={
-            <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
-          }
-        />
-        <Route path="/" element={<SharedLayout />}>
-          <Route
-            path="/main"
-            element={<PrivateRoute component={<MainPage />} />}
-          />
-          <Route
-            path="/categories/:categoryName"
-            element={<PrivateRoute component={<CategoriesPage />} />}
-          />
+          element={<PrivateRoute component={<SharedLayout />} redirectTo="/" />}
+        >
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/categories" element={<CategoriesPage />}>
+            <Route path=":categoriesName" element={<CategoriesByName />} />
+          </Route>
           <Route path="/add" />
           <Route path="/my" />
           <Route path="/favorite" />
           <Route path="/shopping-list" />
+          <Route path="*" element={<Navigate to="/main" />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );

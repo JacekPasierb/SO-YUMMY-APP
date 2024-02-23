@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const PrivateRoute = ({ component: Component, redirectTo = "/" }) => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const shouldRedirect = !isLoggedIn && !isRefreshing;
-
+console.log("co",isRefreshing);
   return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
 };
 
