@@ -23,7 +23,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
-    console.log("ref", isRefreshing);
   }, [dispatch]);
   const theme = useSelector(selectTheme);
   console.log("ppp", isRefreshing);
@@ -36,40 +35,42 @@ const App = () => {
     <>
       <Routes>
         <Route
-          path="/"
+          path="/welcome"
           element={
-            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
+            <RestrictedRoute redirectTo="/" component={<WelcomePage />} />
           }
         />
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/main" component={<RegisterPage />} />
+            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
           }
         />
         <Route
           path="/signin"
           element={
-            <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
+            <RestrictedRoute redirectTo="/" component={<SigninPage />} />
           }
         />
 
-        <Route path="/" element={<SharedLayout />}>
-          <Route
-           path="/main"
-            element={<PrivateRoute component={<MainPage />} />}
-          />
+        <Route path="/" element={<PrivateRoute component={<SharedLayout />} />} >
+          <Route index element={<PrivateRoute component={<MainPage />} />} />
           <Route
             path="/categories"
             element={<PrivateRoute component={<CategoriesPage />} />}
           >
-            <Route path=":categoriesName" element={<CategoriesByName />} />
+            <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
-          <Route path="/add" />
-          <Route path="/my" />
-          <Route path="/favorite" />
-          <Route path="/shopping-list" />
-          <Route path="*" element={<Navigate to="/other" />} />
+          <Route path="/favourite" element={<PrivateRoute component="" />} />
+          <Route path="/my" element={<PrivateRoute component="" />} />
+          <Route path="/add" element={<PrivateRoute component="" />} />
+          <Route
+            path="/recipe/:recipeId"
+            element={<PrivateRoute component="" />}
+          />
+          <Route path="/search" element={<PrivateRoute component="" />} />
+          <Route path="/shopping" element={<PrivateRoute component="" />} />
+          <Route path="*"  element={<Navigate to="/err" />} />
         </Route>
       </Routes>
     </>
