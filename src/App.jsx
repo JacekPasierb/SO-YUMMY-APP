@@ -56,7 +56,7 @@ const App = () => {
 
         <Route path="/" element={<SharedLayout />}>
           <Route
-           index
+           path="/main"
             element={<PrivateRoute component={<MainPage />} />}
           />
           <Route
