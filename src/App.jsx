@@ -35,42 +35,41 @@ const App = () => {
   ) : (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/main"
-                component={<RegisterPage />}
-              />
-            }
-          />
-          <Route
-            path="/signin"
-            element={
-              <RestrictedRoute redirectTo="/main" component={<SigninPage />} />
-            }
-          />
-        </Route>
         <Route
           path="/"
-          element={<PrivateRoute component={<SharedLayout />} redirectTo="/" />}
-        >
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/categories" element={<CategoriesPage />}>
+          element={
+            <RestrictedRoute redirectTo="/" component={<WelcomePage />} />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <RestrictedRoute redirectTo="/" component={<SigninPage />} />
+          }
+        />
+
+        <Route path="/" element={<SharedLayout />}>
+          <Route
+           index
+            element={<PrivateRoute component={<MainPage />} />}
+          />
+          <Route
+            path="/categories"
+            element={<PrivateRoute component={<CategoriesPage />} />}
+          >
             <Route path=":categoriesName" element={<CategoriesByName />} />
           </Route>
           <Route path="/add" />
           <Route path="/my" />
           <Route path="/favorite" />
           <Route path="/shopping-list" />
-          <Route path="*" element={<Navigate to="/main" />} />
+          <Route path="*" element={<Navigate to="/other" />} />
         </Route>
       </Routes>
     </>

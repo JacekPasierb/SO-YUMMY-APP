@@ -1,12 +1,15 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
-import PropTypes from "prop-types";
 
-const PrivateRoute = ({ component: Component, redirectTo = "/" }) => {
+import PropTypes from "prop-types";
+import { useAuth } from "../../hooks/useAuth";
+import { Navigate } from "react-router";
+
+const PrivateRoute =  ({ component, redirectTo = "/signin" }) => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const shouldRedirect = !isLoggedIn && !isRefreshing;
-console.log("co",isRefreshing);
-  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  console.log("private zalogowany", shouldRedirect);
+  console.log("component2", component);
+  console.log("redirecty", redirectTo);
+  return shouldRedirect ?  <Navigate to={redirectTo} /> : component ;
 };
 
 PrivateRoute.propTypes = {
