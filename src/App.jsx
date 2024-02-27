@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Navigate, Route, Routes, redirect } from "react-router";
+import { Navigate, Route, Routes, redirect, useLocation } from "react-router";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import SigninPage from "./Pages/SigninPage/SigninPage";
@@ -20,15 +20,23 @@ import Layout from "./components/Layout/Layout";
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const location = useLocation();
+  const { pathname } = location;
+  useEffect(() => {
+    console.log("pathname", pathname);
+  }, [pathname]);
 
   useEffect(() => {
+    console.log("path1",pathname);
     dispatch(refreshUser());
+    console.log("path2",pathname);
   }, [dispatch]);
   const theme = useSelector(selectTheme);
-  console.log("ppp", isRefreshing);
+  
   useEffect(() => {
     document.body.className = theme === "light" ? null : "dark-theme";
   }, [theme]);
+  console.log("path3",pathname);
   return isRefreshing ? (
     <Loader />
   ) : (
@@ -53,7 +61,7 @@ const App = () => {
           }
         />
 
-        <Route path="/" element={<PrivateRoute component={<SharedLayout />} />} >
+        <Route path="/" element={<PrivateRoute component={<SharedLayout />} />}>
           <Route index element={<PrivateRoute component={<MainPage />} />} />
           <Route
             path="/categories"
@@ -69,7 +77,10 @@ const App = () => {
             element={<PrivateRoute component="" />}
           />
           <Route path="/search" element={<PrivateRoute component="" />} />
-          <Route path="/shopping-list" element={<PrivateRoute component="" />} />
+          <Route
+            path="/shopping-list"
+            element={<PrivateRoute component="" />}
+          />
           {/* <Route path="*"  element={<Navigate to="/err" />} /> */}
         </Route>
       </Routes>

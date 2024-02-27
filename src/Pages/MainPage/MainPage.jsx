@@ -6,7 +6,9 @@ import Media from "react-media";
 import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
 
 const MainPage = () => {
+
   return (
+    
     <Media
       queries={{
         small: "(max-width: 767px)",
