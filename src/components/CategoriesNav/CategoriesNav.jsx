@@ -23,9 +23,10 @@ const CategoriesNav = () => {
 
   useEffect(() => {
     if (categories.length > 0) {
-      const activeCategory = categories[value].toLowerCase();
+      const activeCategory = categories[value];
       console.log("va", activeCategory);
-      navigate(`/categories/${activeCategory}`);
+      navigate(`/categories/${activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)}`);
+  
     }
   }, [categories, navigate, value]);
 

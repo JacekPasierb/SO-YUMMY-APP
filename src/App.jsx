@@ -61,7 +61,7 @@ const App = () => {
           >
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
-          <Route path="/favourite" element={<PrivateRoute component="" />} />
+          <Route path="/favorite" element={<PrivateRoute component="" />} />
           <Route path="/my" element={<PrivateRoute component="" />} />
           <Route path="/add" element={<PrivateRoute component="" />} />
           <Route
@@ -69,8 +69,8 @@ const App = () => {
             element={<PrivateRoute component="" />}
           />
           <Route path="/search" element={<PrivateRoute component="" />} />
-          <Route path="/shopping" element={<PrivateRoute component="" />} />
-          <Route path="*"  element={<Navigate to="/err" />} />
+          <Route path="/shopping-list" element={<PrivateRoute component="" />} />
+          {/* <Route path="*"  element={<Navigate to="/err" />} /> */}
         </Route>
       </Routes>
     </>
