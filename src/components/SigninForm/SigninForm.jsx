@@ -23,7 +23,7 @@ const SigninForm = () => {
 
       if (logIn.fulfilled.match(result)) {
         resetForm();
-        navigate("/main");
+        navigate("/");
         toast.success("Logged in success !")
       }
     } catch (err) {
