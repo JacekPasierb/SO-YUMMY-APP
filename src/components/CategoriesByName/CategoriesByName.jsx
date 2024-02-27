@@ -4,10 +4,12 @@ import { useLocation, useNavigate, useParams } from "react-router";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import css from "./CategoriesByName.module.css";
+import { Loader } from "../Loader/Loader";
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
   const location = useLocation();
+const [isLoading, setIsLoading]=useState(false);
 
   const getPageFromQueryString = () => {
     const searchParams = new URLSearchParams(location.search);
@@ -21,13 +23,18 @@ const CategoriesByName = () => {
   const navigate = useNavigate();
   const getRecipesByCategory = async (page) => {
     try {
+      setIsLoading(true);
       const { data } = await axios.get(
         `./api/recipes/categories/${categoryName}?page=${page}&limit=8`
       );
+
       setRecipes(data.data.result);
       setTotalRecipes(data.data.total);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       console.error("Error fetching recipes by category: ", error);
+    }finally {
+      setIsLoading(false);
     }
   };
 
@@ -40,7 +47,8 @@ const CategoriesByName = () => {
   };
   return (
     <>
-      {recipes.length > 0 && (
+    {isLoading && <p>Loading recipes...</p>}
+      {recipes.length > 0 && !isLoading && (
         <ul className={css.recipesList}>
           {recipes.map((recipe) => {
             return (
