@@ -24,7 +24,7 @@ const SigninForm = () => {
       if (logIn.fulfilled.match(result)) {
         resetForm();
         navigate("/");
-        toast.success("Logged in success !")
+       
       }
     } catch (err) {
       console.error(err.message);

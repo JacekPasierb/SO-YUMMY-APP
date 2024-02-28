@@ -20,7 +20,9 @@ const BasicPagination = ({ count, onPageChange }) => {
             ".MuiPaginationItem-root.Mui-selected": {
               backgroundColor: "#EBF3D4",
             },
-           
+            ".Mui-selected:hover ": {
+              backgroundColor: "#EBF3D4",
+            },
             ".MuiPaginationItem-root:hover": {
               backgroundColor: "#EBF3D4",
             },
