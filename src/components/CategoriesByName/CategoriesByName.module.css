@@ -1,13 +1,10 @@
 .recipesListItem {
-    width: 100%;
+  width: 100%;
+}
+.recipesList {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 
- 
-  }
-  .recipesList {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-
-
-    margin-block: 32px;
-  }
+  margin-block: 32px;
+}

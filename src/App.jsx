@@ -27,16 +27,16 @@ const App = () => {
   }, [pathname]);
 
   useEffect(() => {
-    console.log("path1",pathname);
+    console.log("path1", pathname);
     dispatch(refreshUser());
-    console.log("path2",pathname);
+    console.log("path2", pathname);
   }, [dispatch]);
   const theme = useSelector(selectTheme);
-  
+
   useEffect(() => {
     document.body.className = theme === "light" ? null : "dark-theme";
   }, [theme]);
-  console.log("path3",pathname);
+  console.log("path3", pathname);
   return isRefreshing ? (
     <Loader />
   ) : (
@@ -61,7 +61,7 @@ const App = () => {
           }
         />
 
-        <Route path="/" element={<PrivateRoute component={<SharedLayout />} />}>
+        <Route path="/" element={<PrivateRoute  component={<SharedLayout />} />}>
           <Route index element={<PrivateRoute component={<MainPage />} />} />
           <Route
             path="/categories"

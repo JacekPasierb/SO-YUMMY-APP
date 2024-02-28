@@ -1,0 +1,12 @@
+.center {
+  align-items: center;
+}
+.pagination {
+ border-radius: 26px;
+  box-shadow: -5px 13px 14px -8px #6565658a;
+
+  padding: 14px;
+}
+.Mui-selected {
+  background-color: red;
+}

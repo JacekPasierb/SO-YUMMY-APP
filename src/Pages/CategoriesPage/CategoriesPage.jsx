@@ -5,14 +5,14 @@ import CategoriesNav from "../../components/CategoriesNav/CategoriesNav";
 
 const CategoriesPage = () => {
   return (
-    <>
-      <div className={`${css.container} `}>
+    <main className={css.background}>
+      <div className={`${css.container} ${css.flex}`}>
         <CategoriesNav />
         <Suspense>
           <Outlet />
         </Suspense>
       </div>
-    </>
+    </main>
   );
 };
 

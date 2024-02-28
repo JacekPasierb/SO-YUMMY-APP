@@ -9,7 +9,7 @@ import { Loader } from "../Loader/Loader";
 const CategoriesByName = () => {
   const { categoryName } = useParams();
   const location = useLocation();
-const [isLoading, setIsLoading]=useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getPageFromQueryString = () => {
     const searchParams = new URLSearchParams(location.search);
@@ -33,7 +33,7 @@ const [isLoading, setIsLoading]=useState(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       console.error("Error fetching recipes by category: ", error);
-    }finally {
+    } finally {
       setIsLoading(false);
     }
   };
@@ -47,7 +47,7 @@ const [isLoading, setIsLoading]=useState(false);
   };
   return (
     <>
-    {isLoading && <p>Loading recipes...</p>}
+      {isLoading && <p>Loading recipes...</p>}
       {recipes.length > 0 && !isLoading && (
         <ul className={css.recipesList}>
           {recipes.map((recipe) => {

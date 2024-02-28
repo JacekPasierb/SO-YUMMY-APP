@@ -6,9 +6,7 @@ import Media from "react-media";
 import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
 
 const MainPage = () => {
-
   return (
-    
     <Media
       queries={{
         small: "(max-width: 767px)",
@@ -31,7 +29,7 @@ const MainPage = () => {
                 </p>
                 <ChooseYourBreakfast />
                 <Search />
-                <PreviewsCategories/>
+                <PreviewsCategories />
               </div>
             </main>
           )}
@@ -39,20 +37,21 @@ const MainPage = () => {
             <main className={css.background}>
               <div className={`${css.container} ${css.flex}`}>
                 <div className={css.flexMed}>
-                <div>
-                  <h1 className={css.title}>
-                    <span className={css.titleInnerColor}>So</span>Yummy
-                  </h1>
-                  <p className={css.description}>
-                    "What to cook?" is not only a recipe app, it is, in fact,
-                    your cookbook. You can add your own recipes to save them for
-                    the future.
-                  </p>
+                  <div>
+                    <h1 className={css.title}>
+                      <span className={css.titleInnerColor}>So</span>Yummy
+                    </h1>
+                    <p className={css.description}>
+                      "What to cook?" is not only a recipe app, it is, in fact,
+                      your cookbook. You can add your own recipes to save them
+                      for the future.
+                    </p>
 
-                  <Search />
+                    <Search />
+                  </div>
+                  <ChooseYourBreakfast />
                 </div>
-                <ChooseYourBreakfast /></div>
-                <PreviewsCategories/>
+                <PreviewsCategories />
               </div>
             </main>
           )}
@@ -72,7 +71,7 @@ const MainPage = () => {
                   <Search />
                 </div>
                 <ChooseYourBreakfast />
-                <PreviewsCategories/>
+                <PreviewsCategories />
               </div>
             </main>
           )}
