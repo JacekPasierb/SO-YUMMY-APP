@@ -3,7 +3,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import css from "./BasicPagination.module.css";
 
-const BasicPagination = ({ count, onPageChange }) => {
+const BasicPagination = ({ count, page, onPageChange }) => {
   const handlePageChange = (event, page) => {
     if (onPageChange) {
       onPageChange(page);
@@ -16,6 +16,7 @@ const BasicPagination = ({ count, onPageChange }) => {
           count={count}
           onChange={handlePageChange}
           className={css.pagination}
+          page={page}
           sx={{
             ".MuiPaginationItem-root.Mui-selected": {
               backgroundColor: "#EBF3D4",

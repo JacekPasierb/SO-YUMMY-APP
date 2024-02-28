@@ -62,6 +62,7 @@ const CategoriesByName = () => {
 
       <BasicPagination
         count={Math.ceil(totalRecipes / 8)}
+        page={currentPage}
         onPageChange={handlePageChange}
       />
     </>
