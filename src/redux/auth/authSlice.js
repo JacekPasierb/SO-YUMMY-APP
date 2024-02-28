@@ -65,6 +65,7 @@ const authSlice = createSlice({
     });
     builder.addCase(refreshUser.rejected, (state) => {
       state.isRefreshing = false;
+      state.isLoggedIn = false;
     });
     builder.addCase(updateUser.fulfilled, (state, action) => {
       // Tutaj możesz zaktualizować stan dla użytkownika po pomyślnej aktualizacji
