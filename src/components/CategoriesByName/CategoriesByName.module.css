@@ -1,5 +1,10 @@
 .recipesListItem {
-  width: 100%;
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+  @media screen and (min-width: 1200px) {
+    flex-basis: calc((100% - 14 * 3px) / 4);
+  }
 }
 .recipesList {
   display: flex;
@@ -9,7 +14,11 @@
   margin-block: 32px;
 
   @media screen and (min-width: 768px) {
-   flex-direction: row;
-   flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  @media screen and (min-width: 1200px) {
+    gap: 14px;
   }
 }
