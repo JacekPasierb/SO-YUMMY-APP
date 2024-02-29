@@ -3,7 +3,8 @@ import css from "./PreviewsCategories.module.css";
 import axios from "axios";
 import { useMediaQuery } from "@react-hook/media-query";
 import CardRecipe from "../CardRecipe/CardRecipe";
-import { useNavigate } from "react-router";
+import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
+import { NavLink } from "react-router-dom";
 
 const PreviewsCategories = () => {
   const [recipesByMainCategory, setRecipesByMainCategory] = useState("");
@@ -22,47 +23,50 @@ const PreviewsCategories = () => {
     }
 
     const getRecipeByFourCategory = async () => {
-      const { data } = await axios.get(`./api/recipes?count=${count}`);
-
-      setRecipesByMainCategory(data.data);
+      try {
+        const { data } = await fetchRecipesByFourCategories(count);
+        setRecipesByMainCategory(data);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getRecipeByFourCategory();
   }, [isDesctop, isTablet]);
-  const entri = Object.entries(recipesByMainCategory);
-  const navigate = useNavigate();
-  const handleClick = (categories) => {
-    navigate(
-      `/categories/${categories.charAt(0).toUpperCase() + categories.slice(1)}`
-    );
-  };
+
   return (
     <ul className={css.categoriesList}>
       {recipesByMainCategory &&
-        entri.map(([categories, recipes], idx) => {
-          return (
-            <li key={`${categories}-${idx}`} className={css.categoriesListItem}>
-              <h2 className={css.titleCategories}>
-                {categories.charAt(0).toUpperCase() + categories.slice(1)}
-              </h2>
-              <ul className={css.recipesList}>
-                {recipes.map((recipe) => {
-                  return (
-                    <li key={`${recipe._id}`} className={css.recipesListItem}>
-                      <CardRecipe dish={recipe} />
-                    </li>
-                  );
-                })}
-              </ul>
-              <button
-                type="button"
-                onClick={() => handleClick(categories)}
-                className={css.btnCategories}
+        Object.entries(recipesByMainCategory).map(
+          ([categories, recipes], idx) => {
+            return (
+              <li
+                key={`${categories}-${idx}`}
+                className={css.categoriesListItem}
               >
-                See all
-              </button>
-            </li>
-          );
-        })}
+                <h2 className={css.titleCategories}>
+                  {categories.charAt(0).toUpperCase() + categories.slice(1)}
+                </h2>
+                <ul className={css.recipesList}>
+                  {recipes.map((recipe) => {
+                    return (
+                      <li key={`${recipe._id}`} className={css.recipesListItem}>
+                        <CardRecipe dish={recipe} />
+                      </li>
+                    );
+                  })}
+                </ul>
+                <NavLink
+                  to={`/categories/${
+                    categories.charAt(0).toUpperCase() + categories.slice(1)
+                  }`}
+                  className={css.btnCategories}
+                >
+                  See all
+                </NavLink>
+              </li>
+            );
+          }
+        )}
     </ul>
   );
 };

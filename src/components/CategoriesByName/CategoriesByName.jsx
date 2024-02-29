@@ -5,12 +5,14 @@ import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import css from "./CategoriesByName.module.css";
 import { Loader } from "../Loader/Loader";
+import { fetchRecipesByCategoryName } from "../../API/recipesAPI";
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
   const location = useLocation();
-  const [isLoading, setIsLoading] = useState(false);
 
+  const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getPageFromQueryString = () => {
     const searchParams = new URLSearchParams(location.search);
@@ -19,33 +21,44 @@ const CategoriesByName = () => {
 
   const currentPage = getPageFromQueryString();
 
-  const [recipes, setRecipes] = useState([]);
   const [totalRecipes, setTotalRecipes] = useState(0);
   const navigate = useNavigate();
-  const getRecipesByCategory = async (category, page) => {
-    try {
-      setIsLoading(true);
-      const { data } = await axios.get(
-        `./api/recipes/categories/${category}?page=${page}&limit=8`
-      );
-
-      setRecipes(data.data.result);
-      setTotalRecipes(data.data.total);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch (error) {
-      console.error("Error fetching recipes by category: ", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getRecipesByCategory(categoryName, currentPage);
-  }, [categoryName, currentPage]);
 
   const handlePageChange = (page) => {
     navigate(`?page=${page}`);
+ 
+    window.scrollTo(0, 0);
   };
+
+  useEffect(() => {
+    const getRecipesByCategoryName = async () => {
+      try {
+        console.log("st catName",categoryName);
+        console.log("st page",currentPage);
+        setIsLoading(true);
+        let category;
+        if (categoryName === ":categoryName" ) {
+          
+          category = "Beef";
+        
+        } else {
+          category = categoryName;
+        }
+
+        const { data } = await fetchRecipesByCategoryName(
+          categoryName
+        );
+        
+        setRecipes(data.result);
+        setTotalRecipes(data.total);
+      } catch (error) {
+        console.error("Error fetching recipes by category: ", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getRecipesByCategoryName();
+  }, [categoryName, currentPage]);
   return (
     <>
       {isLoading && <p>Loading recipes...</p>}
@@ -64,7 +77,6 @@ const CategoriesByName = () => {
       <BasicPagination
         count={Math.ceil(totalRecipes / 8)}
         page={currentPage}
-        
         onPageChange={handlePageChange}
       />
     </>

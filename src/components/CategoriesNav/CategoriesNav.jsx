@@ -12,6 +12,8 @@ const CategoriesNav = () => {
   const [categoriesList, setCategoriesList] = useState([]);
 
   const handleChange = (event, newValue) => {
+   
+    navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
 
@@ -39,6 +41,7 @@ const CategoriesNav = () => {
   useEffect(() => {
     if (categoriesList.length > 0) {
       const activeCategory = categoriesList[value];
+     
       navigate(
         `/categories/${
           activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)
