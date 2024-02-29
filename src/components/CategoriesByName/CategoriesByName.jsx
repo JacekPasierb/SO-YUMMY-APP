@@ -40,7 +40,6 @@ const CategoriesByName = () => {
   };
 
   useEffect(() => {
-    
     getRecipesByCategory(categoryName, currentPage);
   }, [categoryName, currentPage]);
 

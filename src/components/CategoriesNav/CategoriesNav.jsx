@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import css from "./CategoriesNav.module.css";
 import { useNavigate, useParams } from "react-router";
+import { fetchAllCategories } from "../../API/categoriesAPI";
 
 const CategoriesNav = () => {
   const navigate = useNavigate();
@@ -15,28 +16,25 @@ const CategoriesNav = () => {
   };
 
   useEffect(() => {
-    const getCategories = async () => {
-      const { data } = await axios.get(`./api/recipes/category-list`);
-      setCategoriesList(data.data.catArr);
-    };
-    getCategories();
-  }, []);
-
-  useEffect(() => {
-    if (categoriesList.length > 0) {
-      if (categoryName ) {
-        const idxActivCat = categoriesList.findIndex(
-          (cat) => cat.toLowerCase() === categoryName.toLowerCase()
-        );
-        if (idxActivCat !== -1) {
-          setValue(idxActivCat);
+    const getAllCategories = async () => {
+      try {
+        const { data } = await fetchAllCategories();
+        setCategoriesList(data.catArr);
+        
+        if (categoryName) {
+          const idxActivCat = categoriesList.findIndex(
+            (cat) => cat.toLowerCase() === categoryName.toLowerCase()
+          );
+          if (idxActivCat !== -1) {
+            setValue(idxActivCat);
+          }
         }
-      } else {
-        setValue(1);
-        console.log("ccccccccc");
+      } catch (error) {
+        console.log(error);
       }
-    }
-  }, [categoriesList, categoryName]);
+    };
+    getAllCategories();
+  }, [categoryName]);
 
   useEffect(() => {
     if (categoriesList.length > 0) {
@@ -47,7 +45,7 @@ const CategoriesNav = () => {
         }`
       );
     }
-  }, [value]);
+  }, [categoriesList,navigate, value]);
 
   return (
     <>

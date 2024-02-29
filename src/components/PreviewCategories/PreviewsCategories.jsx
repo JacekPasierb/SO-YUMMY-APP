@@ -30,10 +30,11 @@ const PreviewsCategories = () => {
   }, [isDesctop, isTablet]);
   const entri = Object.entries(recipesByMainCategory);
   const navigate = useNavigate();
-const handleClick = (categories) =>{
- 
-  navigate(`/categories/${categories.charAt(0).toUpperCase() + categories.slice(1)}`);
-}
+  const handleClick = (categories) => {
+    navigate(
+      `/categories/${categories.charAt(0).toUpperCase() + categories.slice(1)}`
+    );
+  };
   return (
     <ul className={css.categoriesList}>
       {recipesByMainCategory &&
@@ -52,7 +53,11 @@ const handleClick = (categories) =>{
                   );
                 })}
               </ul>
-              <button type="button" onClick={()=>handleClick(categories)} className={css.btnCategories}>
+              <button
+                type="button"
+                onClick={() => handleClick(categories)}
+                className={css.btnCategories}
+              >
                 See all
               </button>
             </li>
