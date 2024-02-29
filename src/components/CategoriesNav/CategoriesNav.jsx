@@ -2,33 +2,52 @@ import { Tab, Tabs } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import css from "./CategoriesNav.module.css";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const CategoriesNav = () => {
+  const navigate = useNavigate();
+  const { categoryName } = useParams();
   const [value, setValue] = useState(0);
-  const [categories, setCategories] = useState([]);
+  const [categoriesList, setCategoriesList] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getCategories = async () => {
       const { data } = await axios.get(`./api/recipes/category-list`);
-      setCategories(data.data.catArr);
+      setCategoriesList(data.data.catArr);
     };
     getCategories();
   }, []);
 
   useEffect(() => {
-    if (categories.length > 0) {
-      const activeCategory = categories[value];
-      console.log("va", activeCategory);
-      navigate(`/categories/${activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)}`);
-  
+    if (categoriesList.length > 0) {
+      if (categoryName ) {
+        const idxActivCat = categoriesList.findIndex(
+          (cat) => cat.toLowerCase() === categoryName.toLowerCase()
+        );
+        if (idxActivCat !== -1) {
+          setValue(idxActivCat);
+        }
+      } else {
+        setValue(1);
+        console.log("ccccccccc");
+      }
     }
-  }, [categories, navigate, value]);
+  }, [categoriesList, categoryName]);
+
+  useEffect(() => {
+    if (categoriesList.length > 0) {
+      const activeCategory = categoriesList[value];
+      navigate(
+        `/categories/${
+          activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)
+        }`
+      );
+    }
+  }, [value]);
 
   return (
     <>
@@ -60,7 +79,7 @@ const CategoriesNav = () => {
           },
         }}
       >
-        {categories.map((cat, idx) => {
+        {categoriesList.map((cat, idx) => {
           return (
             <Tab
               label={cat}

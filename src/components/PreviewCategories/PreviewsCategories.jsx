@@ -3,6 +3,7 @@ import css from "./PreviewsCategories.module.css";
 import axios from "axios";
 import { useMediaQuery } from "@react-hook/media-query";
 import CardRecipe from "../CardRecipe/CardRecipe";
+import { useNavigate } from "react-router";
 
 const PreviewsCategories = () => {
   const [recipesByMainCategory, setRecipesByMainCategory] = useState("");
@@ -28,7 +29,11 @@ const PreviewsCategories = () => {
     getRecipeByFourCategory();
   }, [isDesctop, isTablet]);
   const entri = Object.entries(recipesByMainCategory);
-
+  const navigate = useNavigate();
+const handleClick = (categories) =>{
+ 
+  navigate(`/categories/${categories.charAt(0).toUpperCase() + categories.slice(1)}`);
+}
   return (
     <ul className={css.categoriesList}>
       {recipesByMainCategory &&
@@ -47,7 +52,7 @@ const PreviewsCategories = () => {
                   );
                 })}
               </ul>
-              <button type="button" className={css.btnCategories}>
+              <button type="button" onClick={()=>handleClick(categories)} className={css.btnCategories}>
                 See all
               </button>
             </li>

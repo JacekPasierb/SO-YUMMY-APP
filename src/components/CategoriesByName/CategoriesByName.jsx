@@ -11,6 +11,7 @@ const CategoriesByName = () => {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
+
   const getPageFromQueryString = () => {
     const searchParams = new URLSearchParams(location.search);
     return parseInt(searchParams.get("page")) || 1;
@@ -21,11 +22,11 @@ const CategoriesByName = () => {
   const [recipes, setRecipes] = useState([]);
   const [totalRecipes, setTotalRecipes] = useState(0);
   const navigate = useNavigate();
-  const getRecipesByCategory = async (page) => {
+  const getRecipesByCategory = async (category, page) => {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
-        `./api/recipes/categories/${categoryName}?page=${page}&limit=8`
+        `./api/recipes/categories/${category}?page=${page}&limit=8`
       );
 
       setRecipes(data.data.result);
@@ -39,7 +40,8 @@ const CategoriesByName = () => {
   };
 
   useEffect(() => {
-    getRecipesByCategory(currentPage);
+    
+    getRecipesByCategory(categoryName, currentPage);
   }, [categoryName, currentPage]);
 
   const handlePageChange = (page) => {
@@ -63,6 +65,7 @@ const CategoriesByName = () => {
       <BasicPagination
         count={Math.ceil(totalRecipes / 8)}
         page={currentPage}
+        
         onPageChange={handlePageChange}
       />
     </>
