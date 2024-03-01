@@ -26,29 +26,25 @@ const CategoriesByName = () => {
 
   const handlePageChange = (page) => {
     navigate(`?page=${page}`);
- 
+
     window.scrollTo(0, 0);
   };
 
   useEffect(() => {
     const getRecipesByCategoryName = async () => {
       try {
-        console.log("st catName",categoryName);
-        console.log("st page",currentPage);
+        
         setIsLoading(true);
         let category;
-        if (categoryName === ":categoryName" ) {
-          
+        if (categoryName === ":categoryName" || "") {
           category = "Beef";
-        
+          navigate(`/categories/Beef`)
         } else {
           category = categoryName;
         }
 
-        const { data } = await fetchRecipesByCategoryName(
-          categoryName
-        );
-        
+        const { data } = await fetchRecipesByCategoryName(category,currentPage);
+
         setRecipes(data.result);
         setTotalRecipes(data.total);
       } catch (error) {

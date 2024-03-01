@@ -12,7 +12,6 @@ const CategoriesNav = () => {
   const [categoriesList, setCategoriesList] = useState([]);
 
   const handleChange = (event, newValue) => {
-   
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
@@ -21,16 +20,7 @@ const CategoriesNav = () => {
     const getAllCategories = async () => {
       try {
         const { data } = await fetchAllCategories();
-        setCategoriesList(data.catArr);
-        
-        if (categoryName) {
-          const idxActivCat = categoriesList.findIndex(
-            (cat) => cat.toLowerCase() === categoryName.toLowerCase()
-          );
-          if (idxActivCat !== -1) {
-            setValue(idxActivCat);
-          }
-        }
+        await setCategoriesList(data.catArr);
       } catch (error) {
         console.log(error);
       }
@@ -39,17 +29,18 @@ const CategoriesNav = () => {
   }, [categoryName]);
 
   useEffect(() => {
-    if (categoriesList.length > 0) {
-      const activeCategory = categoriesList[value];
-     
-      navigate(
-        `/categories/${
-          activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)
-        }`
+    if (categoryName) {
+      const idxActivCat = categoriesList.findIndex(
+        (cat) => cat.toLowerCase() === categoryName.toLowerCase()
       );
+      
+      if (idxActivCat === -1) {
+        return setValue(0);
+      } else {
+        return setValue(idxActivCat)
+      }
     }
-  }, [categoriesList,navigate, value]);
-
+  }), [categoryName];
   return (
     <>
       <h2 className={css.sectionTitle}>Categories</h2>
