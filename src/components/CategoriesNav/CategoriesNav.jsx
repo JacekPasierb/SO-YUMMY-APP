@@ -1,5 +1,5 @@
 import { Tab, Tabs } from "@mui/material";
-import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import css from "./CategoriesNav.module.css";
 import { useNavigate, useParams } from "react-router";
@@ -33,14 +33,14 @@ const CategoriesNav = () => {
       const idxActivCat = categoriesList.findIndex(
         (cat) => cat.toLowerCase() === categoryName.toLowerCase()
       );
-      
+
       if (idxActivCat === -1) {
         return setValue(0);
       } else {
-        return setValue(idxActivCat)
+        return setValue(idxActivCat);
       }
     }
-  }), [categoryName];
+  }, [categoryName, categoriesList]);
   return (
     <>
       <h2 className={css.sectionTitle}>Categories</h2>
