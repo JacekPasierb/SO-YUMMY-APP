@@ -1,49 +1,41 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import css from "./CategoriesByName.module.css";
-import { Loader } from "../Loader/Loader";
 import { fetchRecipesByCategoryName } from "../../API/recipesAPI";
+import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
-  const location = useLocation();
-
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  const getPageFromQueryString = () => {
-    const searchParams = new URLSearchParams(location.search);
-    return parseInt(searchParams.get("page")) || 1;
-  };
-
+  const [totalRecipes, setTotalRecipes] = useState(0);
   const currentPage = getPageFromQueryString();
 
-  const [totalRecipes, setTotalRecipes] = useState(0);
   const navigate = useNavigate();
 
   const handlePageChange = (page) => {
     navigate(`?page=${page}`);
-
     window.scrollTo(0, 0);
   };
 
   useEffect(() => {
     const getRecipesByCategoryName = async () => {
       try {
-        
         setIsLoading(true);
         let category;
         if (categoryName === ":categoryName" || "") {
           category = "Beef";
-          navigate(`/categories/Beef`)
+          navigate(`/categories/Beef`);
         } else {
           category = categoryName;
         }
 
-        const { data } = await fetchRecipesByCategoryName(category,currentPage);
+        const { data } = await fetchRecipesByCategoryName(
+          category,
+          currentPage
+        );
 
         setRecipes(data.result);
         setTotalRecipes(data.total);
@@ -55,6 +47,7 @@ const CategoriesByName = () => {
     };
     getRecipesByCategoryName();
   }, [categoryName, currentPage]);
+
   return (
     <>
       {isLoading && <p>Loading recipes...</p>}

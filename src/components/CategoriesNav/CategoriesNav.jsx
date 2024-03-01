@@ -41,6 +41,7 @@ const CategoriesNav = () => {
       }
     }
   }, [categoryName, categoriesList]);
+
   return (
     <>
       <h2 className={css.sectionTitle}>Categories</h2>
