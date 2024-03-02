@@ -50,7 +50,10 @@ const PreviewsCategories = () => {
                   {recipes.map((recipe) => {
                     return (
                       <li key={`${recipe._id}`} className={css.recipesListItem}>
-                        <CardRecipe dish={recipe} />
+                        <NavLink to={`/recipe/${recipe._id}`}>
+                          {" "}
+                          <CardRecipe dish={recipe} />
+                        </NavLink>
                       </li>
                     );
                   })}

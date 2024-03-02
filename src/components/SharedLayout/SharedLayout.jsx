@@ -7,11 +7,11 @@ import Copyrights from "../Copyrights/Copyrights";
 
 const SharedLayout = () => {
   return (
-    <div className={css.background}>
+    <>
       <Outlet />
       <Footer />
       <Copyrights />
-    </div>
+    </>
   );
 };
 

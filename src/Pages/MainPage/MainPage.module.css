@@ -15,35 +15,46 @@
 }
 
 .background {
-  background-image: url("../../images/spinachMobile1x.png"),
+  background-image: url("../../images/bg3Mobile1x.png"),
+    url("../../images/spinachMobile1x.png"),
     url("../../images//bckg2Mobile1x.png");
   background-repeat: no-repeat;
 
-  background-position: top -10px left 0, top right 0;
-  padding-top: 68px;
+  background-position: top 160px right 0, top -10px left 0, top right 0;
+  padding-bottom: 100px;
+
   @media screen and (min-width: 768px) {
-    background-image: url("../../images/spinachTablet1x.png"),
+    background-image: url("../../images/bg3Tablet1x.png"),
+      url("../../images/spinachTablet1x.png"),
       url("../../images/bckg2Tablet1x.png");
 
     background-repeat: no-repeat;
 
-    background-position: top -10px left 0, bottom 0px right 0;
-    padding-top: 95px;
-    padding-bottom: 130px;
+    background-position: top 0px right 0px, top -10px left 0, bottom 0px right 0;
+   padding-bottom: 200px;
+    
   }
   @media screen and (min-width: 1200px) {
-      background-image: url("../../images/spinachDesctop1x.png"),
+    background-image: url("../../images/bg3Desctop1x.png"),
+      url("../../images/spinachDesctop1x.png"),
       url("../../images/kisspng-pastaDesctop.png");
 
     background-repeat: no-repeat;
 
-    background-position: top -10px left 0, bottom 80px right 0px;
-    padding-top: 62px;
-    padding-bottom: 235px;
+    background-position: top 0px right 0px, top -10px left 0,
+      bottom 80px right 0px;
+    
+    
   }
 }
+.mainPageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-.title {
+  margin-top: 68px;
+}
+.appTitle {
   font-size: 60px;
   line-height: 60px;
   text-align: center;
@@ -59,7 +70,7 @@
 .titleInnerColor {
   color: #8baa36;
 }
-.description {
+.appDescription {
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -2%;
@@ -67,13 +78,7 @@
 
   color: #23262a;
 }
-.flex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-
-}
 .flexMed {
   display: flex;
   flex-direction: row;
