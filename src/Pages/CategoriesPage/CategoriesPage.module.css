@@ -13,3 +13,9 @@
     max-width: 1200px;
   }
 }
+.background {
+  padding-bottom: 100px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 200px;
+  }
+}

@@ -5,6 +5,7 @@ import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYour
 import Media from "react-media";
 import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
 import Header from "../../components/Header/Header";
+import Button from "../../components/Button/Button";
 
 const MainPage = () => {
   return (
@@ -32,6 +33,7 @@ const MainPage = () => {
                 <ChooseYourBreakfast />
                 <Search />
                 <PreviewsCategories />
+                <Button text={"Other categories"}/>
               </div>
             </main>
           )}
@@ -55,6 +57,7 @@ const MainPage = () => {
                   <ChooseYourBreakfast />
                 </div>
                 <PreviewsCategories />
+                <Button text={"Other categories"}/>
               </div>
             </main>
           )}
@@ -76,6 +79,7 @@ const MainPage = () => {
                 </div>
                 <ChooseYourBreakfast />
                 <PreviewsCategories />
+                <Button text={"Other categories"}/>
               </div>
             </main>
           )}
