@@ -4,6 +4,7 @@ import { fetchRecipeById } from "../../API/recipesAPI";
 import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import css from "./RecipePage.module.css"
 import Header from "../../components/Header/Header";
+import RecipeInngredientsList from "../../components/RecipeInngredientsList/RecipeInngredientsList";
 const RecipePage = () => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState({});
@@ -30,11 +31,14 @@ const RecipePage = () => {
     <>
       {isLoading && <p>Loading recipe...</p>}
       {!isLoading && (
-        <main className={css.receipePage}>
-          <section className={css.container}>
+        <main >
+          
+          <section className={css.receipePage} >
+            <div className={css.container}>
             <Header/>
-            <ReceipePageHero recipe={recipe} />
+            <ReceipePageHero recipe={recipe} /></div>
           </section>
+          <RecipeInngredientsList ingredients={recipe.ingredients}/>
         </main>
       )}
     </>
