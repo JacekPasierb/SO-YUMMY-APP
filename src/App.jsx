@@ -16,6 +16,7 @@ import { selectTheme } from "./redux/global/globalSelectors";
 import CategoriesPage from "./Pages/CategoriesPage/CategoriesPage";
 import CategoriesByName from "./components/CategoriesByName/CategoriesByName";
 import Layout from "./components/Layout/Layout";
+import RecipePage from "./Pages/RecipePage/RecipePage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -69,7 +70,7 @@ const App = () => {
           <Route path="/add" element={<PrivateRoute component="" />} />
           <Route
             path="/recipe/:recipeId"
-            element={<PrivateRoute component="" />}
+            element={<PrivateRoute component={<RecipePage/>} />}
           />
           <Route path="/search" element={<PrivateRoute component="" />} />
           <Route

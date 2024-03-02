@@ -1,0 +1,46 @@
+.receipeHeroBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 80px;
+}
+.recipeDescription {
+  font-size: 12px;
+  line-height: 16px;
+  color: #22252a;
+
+  text-align: center;
+
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+.btn {
+  border: 1px solid #8baa36;
+  border-radius: 24px 44px;
+  background-color: transparent;
+  padding: 10px 18px;
+
+  margin-bottom: 42px;
+
+  font-size: 10px;
+  color: #22252a;
+}
+.timeBox {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 90px;
+}
+.iconClock {
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+  fill: transparent;
+  stroke: black;
+}
+.timeText {
+    font-size: 10px;
+    line-height: 14px;
+    color: #23262A;
+}

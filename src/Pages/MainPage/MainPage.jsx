@@ -4,6 +4,7 @@ import Search from "../../components/Search/Search";
 import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYourBreakfast";
 import Media from "react-media";
 import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
+import Header from "../../components/Header/Header";
 
 const MainPage = () => {
   return (
@@ -17,8 +18,9 @@ const MainPage = () => {
       {(matches) => (
         <>
           {matches.small && (
-            <main className={css.background}>
+            <main className={css.background}>   <Header/>
               <div className={`${css.container} ${css.flex}`}>
+             
                 <h1 className={css.title}>
                   <span className={css.titleInnerColor}>So</span>Yummy
                 </h1>

@@ -8,7 +8,6 @@ import Copyrights from "../Copyrights/Copyrights";
 const SharedLayout = () => {
   return (
     <div className={css.background}>
-      <Header />
       <Outlet />
       <Footer />
       <Copyrights />

@@ -5,6 +5,7 @@ import CardRecipe from "../CardRecipe/CardRecipe";
 import css from "./CategoriesByName.module.css";
 import { fetchRecipesByCategoryName } from "../../API/recipesAPI";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+import { NavLink } from "react-router-dom";
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
@@ -56,7 +57,7 @@ const CategoriesByName = () => {
           {recipes.map((recipe) => {
             return (
               <li key={`${recipe._id}`} className={css.recipesListItem}>
-                <CardRecipe dish={recipe} />
+                <NavLink to={`/recipe/${recipe._id}`}><CardRecipe dish={recipe} /></NavLink>
               </li>
             );
           })}

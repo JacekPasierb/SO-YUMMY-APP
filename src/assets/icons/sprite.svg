@@ -57,5 +57,9 @@
 <path fill="none" stroke="#fafafa" style="stroke: var(--color3, #fafafa)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4545" d="M10.567 11.717v-4.444"></path>
 <path fill="none" stroke="#fafafa" style="stroke: var(--color3, #fafafa)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.4545" d="M23.273 8.208c0-0.491-0.422-0.889-0.941-0.889h-0.941c-1.559 0-2.823 1.194-2.823 2.667v5.333c0 1.159 0.788 2.136 1.882 2.503v4.117c0 0.736 0.633 1.333 1.412 1.333s1.412-0.597 1.412-1.333v-13.732z"></path>
 </symbol>
+<symbol id="icon-clock" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9714" d="M15.998 29.334c7.364 0 13.333-5.97 13.333-13.333s-5.97-13.333-13.333-13.333-13.333 5.97-13.333 13.333c0 7.364 5.97 13.333 13.333 13.333z"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9714" d="M16 8v8l5.333 2.667"></path>
+</symbol>
 </defs>
 </svg>
