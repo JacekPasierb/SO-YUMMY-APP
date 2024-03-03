@@ -13,3 +13,33 @@
       max-width: 1200px;
     }
   }
+  .ingredientsList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .ingredientCard {
+    background-color: green;
+    padding: 10px;
+    border-radius: 20px;
+
+  }
+  .headerListIngredients {
+    background-color: #8BAA36;
+    padding: 14px 12px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .flexHelp {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+  }
+  .titleList {
+    font-size: 10px;
+    color: #FAFAFA;
+  }

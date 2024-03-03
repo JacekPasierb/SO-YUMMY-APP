@@ -1,0 +1,33 @@
+.ingredientCard {
+  background-color: #ebf3d4;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+
+justify-content:space-between;
+}
+.imgIngredient {
+    margin-right: 8px;
+}
+.nameIngredient {
+    font-size: 12px;
+    line-height: 14px;
+    color: #3E4462;
+  
+}
+.measureIngredient {
+    background-color: #8BAA36;
+    padding: 4px;
+    font-size: 10px;
+    color:#FAFAFA;
+    margin-right: 28px;
+    border-radius: 4px;
+}
+.flexHelp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
