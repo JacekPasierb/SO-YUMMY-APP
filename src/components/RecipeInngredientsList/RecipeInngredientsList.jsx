@@ -7,7 +7,7 @@ import {
 import CardIngredient from "../CardIngredient/CardIngredient";
 
 const RecipeInngredientsList = ({ ingredients }) => {
-  const [ingredientsList, setIngredientsList] = useState([]);
+  const [ingredientsList, setIngredientsList] = useState();
 
   useEffect(() => {
     const fetchIngredientsData = async () => {
@@ -33,22 +33,27 @@ const RecipeInngredientsList = ({ ingredients }) => {
   }, [ingredients]);
 
   return (
-    <div className={css.container}>
-      <div className={css.headerListIngredients}>
-        <p className={css.titleList}>Ingredients</p>
-        <div className={css.flexHelp}>
-          <p className={css.titleList}>Number</p>
-          <p className={css.titleList}>Add to list</p>
+    <>
+    {!ingredientsList && <p>Loading ingredients..</p>}
+      {ingredientsList && (
+        <div className={`${css.container} ${css.ingredientsBox}`}>
+          <div className={css.headerListIngredients}>
+            <p className={css.titleList}>Ingredients</p>
+            <div className={css.flexHelp}>
+              <p className={css.titleList}>Number</p>
+              <p className={css.titleList}>Add to list</p>
+            </div>
+          </div>
+          <ul className={css.ingredientsList}>
+            {ingredientsList.map((ingredient) => (
+              <li key={ingredient._id}>
+                <CardIngredient ingredient={ingredient} />
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-      <ul className={css.ingredientsList}>
-        {ingredientsList.map((ingredient) => (
-          <li key={ingredient._id}>
-            <CardIngredient ingredient={ingredient} />
-          </li>
-        ))}
-      </ul>
-    </div>
+      )}
+    </>
   );
 };
 
