@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import css from "./PreviewsCategories.module.css";
-import axios from "axios";
+
 import { useMediaQuery } from "@react-hook/media-query";
 import CardRecipe from "../CardRecipe/CardRecipe";
-import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPopularRecipes } from "../../redux/recipes/operations";
@@ -11,7 +10,6 @@ import {
   selectIsLoading,
   selectPopularRecipes,
 } from "../../redux/recipes/selectors";
-import { selectIsRefreshing } from "../../redux/auth/selectors";
 
 const PreviewsCategories = () => {
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
