@@ -14,3 +14,21 @@ export const getPopularRecipes = createAsyncThunk(
     }
   }
 );
+
+export const getCategoryRecipes = createAsyncThunk(
+  "recipes/getCategoryRecipes",
+  async ({ category, page }, thunkAPI) => {
+    try {
+      const { data } = await axios.get(
+        `./api/recipes/categories/${category}?page=${page}&limit=8`
+      );
+      console.log("wyn", data);
+      return {
+        categoryRecipes: data.data.results,
+        totalRecipes: data.data.total,
+      };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

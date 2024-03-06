@@ -6,6 +6,9 @@ import css from "./CategoriesByName.module.css";
 import { fetchRecipesByCategoryName } from "../../API/recipesAPI";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { selectCategoryRecipes } from "../../redux/recipes/selectors";
+import { getCategoryRecipes } from "../../redux/recipes/operations";
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
@@ -13,7 +16,7 @@ const CategoriesByName = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [totalRecipes, setTotalRecipes] = useState(0);
   const currentPage = getPageFromQueryString();
-
+const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handlePageChange = (page) => {
@@ -22,6 +25,7 @@ const CategoriesByName = () => {
   };
 
   useEffect(() => {
+   
     const getRecipesByCategoryName = async () => {
       try {
         setIsLoading(true);
@@ -32,7 +36,9 @@ const CategoriesByName = () => {
         } else {
           category = categoryName;
         }
-
+        
+        dispatch(getCategoryRecipes({category,currentPage}))
+        
         const { data } = await fetchRecipesByCategoryName(
           category,
           currentPage
@@ -47,7 +53,7 @@ const CategoriesByName = () => {
       }
     };
     getRecipesByCategoryName();
-  }, [categoryName, currentPage]);
+  }, [dispatch, categoryName, currentPage]);
 
   return (
     <>
