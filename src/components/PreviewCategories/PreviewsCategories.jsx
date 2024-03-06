@@ -5,12 +5,20 @@ import { useMediaQuery } from "@react-hook/media-query";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getPopularRecipes } from "../../redux/recipes/operations";
+import {
+  selectIsLoading,
+  selectPopularRecipes,
+} from "../../redux/recipes/selectors";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
 
 const PreviewsCategories = () => {
-  const [recipesByMainCategory, setRecipesByMainCategory] = useState("");
-
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesctop = useMediaQuery("(min-width:1200px)");
+  const dispatch = useDispatch();
+  const recipesByMainCategory = useSelector(selectPopularRecipes);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     let count;
@@ -21,21 +29,12 @@ const PreviewsCategories = () => {
     } else {
       count = 1;
     }
-
-    const getRecipeByFourCategory = async () => {
-      try {
-        const { data } = await fetchRecipesByFourCategories(count);
-        setRecipesByMainCategory(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getRecipeByFourCategory();
-  }, [isDesctop, isTablet]);
+    dispatch(getPopularRecipes({ count }));
+  }, [dispatch, isDesctop, isTablet]);
 
   return (
     <ul className={css.categoriesList}>
-      {recipesByMainCategory &&
+      {!isLoading &&
         Object.entries(recipesByMainCategory).map(
           ([categories, recipes], idx) => {
             return (
