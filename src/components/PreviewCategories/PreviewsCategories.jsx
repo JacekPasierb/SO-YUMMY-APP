@@ -34,7 +34,10 @@ const PreviewsCategories = () => {
 
   return (
     <ul className={css.categoriesList}>
-      {!isLoading &&
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        recipesByMainCategory &&
         Object.entries(recipesByMainCategory).map(
           ([categories, recipes], idx) => {
             return (
@@ -68,7 +71,8 @@ const PreviewsCategories = () => {
               </li>
             );
           }
-        )}
+        )
+      )}
     </ul>
   );
 };
