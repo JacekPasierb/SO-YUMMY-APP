@@ -16,7 +16,7 @@ const RecipePage = () => {
       try {
         setIsLoading(true);
         const { data } = await fetchRecipeById(recipeId);
-       
+
         setRecipe(data.result);
       } catch (error) {
         console.log(error);
@@ -28,7 +28,7 @@ const RecipePage = () => {
     getRecipeById();
   }, [recipeId]);
 
-const {ingredients, thumb, instructions} = recipe;
+  const { ingredients, thumb, instructions } = recipe;
   return (
     <>
       {isLoading && <p>Loading recipe...</p>}
@@ -41,7 +41,7 @@ const {ingredients, thumb, instructions} = recipe;
             </div>
           </section>
           <RecipeInngredientsList ingredients={ingredients} />
-           <RecipePreparation img={thumb} instructions={instructions}/>
+          <RecipePreparation img={thumb} instructions={instructions} />
         </main>
       )}
     </>

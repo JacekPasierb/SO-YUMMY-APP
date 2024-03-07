@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import css from "./CategoriesByName.module.css";
-import { fetchRecipesByCategoryName } from "../../API/recipesAPI";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { selectCategoryRecipes } from "../../redux/recipes/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCategoryRecipes,
+  selectIsLoading,
+  selectTotalRecipes,
+} from "../../redux/recipes/selectors";
 import { getCategoryRecipes } from "../../redux/recipes/operations";
 
 const CategoriesByName = () => {
   const { categoryName } = useParams();
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [totalRecipes, setTotalRecipes] = useState(0);
+
   const currentPage = getPageFromQueryString();
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const recipes = useSelector(selectCategoryRecipes);
+  const totalRecipes = useSelector(selectTotalRecipes);
+  const isLoading = useSelector(selectIsLoading);
 
   const handlePageChange = (page) => {
     navigate(`?page=${page}`);
@@ -25,49 +29,37 @@ const dispatch = useDispatch();
   };
 
   useEffect(() => {
-   
-    const getRecipesByCategoryName = async () => {
-      try {
-        setIsLoading(true);
-        let category;
-        if (categoryName === ":categoryName" || "") {
-          category = "Beef";
-          navigate(`/categories/Beef`);
-        } else {
-          category = categoryName;
-        }
-        
-        dispatch(getCategoryRecipes({category,currentPage}))
-        
-        const { data } = await fetchRecipesByCategoryName(
-          category,
-          currentPage
-        );
+    let category;
+    if (categoryName === ":categoryName" || "") {
+      category = "Beef";
+      navigate(`/categories/Beef`);
+    } else {
+      category = categoryName;
+    }
 
-        setRecipes(data.result);
-        setTotalRecipes(data.total);
-      } catch (error) {
-        console.error("Error fetching recipes by category: ", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getRecipesByCategoryName();
+    dispatch(getCategoryRecipes({ category, currentPage }));
+    console.log("fort", recipes);
+    console.log("for", totalRecipes);
   }, [dispatch, categoryName, currentPage]);
 
   return (
     <>
-      {isLoading && <p>Loading recipes...</p>}
-      {recipes.length > 0 && !isLoading && (
-        <ul className={css.recipesList}>
-          {recipes.map((recipe) => {
-            return (
-              <li key={`${recipe._id}`} className={css.recipesListItem}>
-                <NavLink to={`/recipe/${recipe._id}`}><CardRecipe dish={recipe} /></NavLink>
-              </li>
-            );
-          })}
-        </ul>
+      {isLoading ? (
+        <p>Loading recipes...</p>
+      ) : (
+        recipes && (
+          <ul className={css.recipesList}>
+            {recipes.map((recipe) => {
+              return (
+                <li key={`${recipe._id}`} className={css.recipesListItem}>
+                  <NavLink to={`/recipe/${recipe._id}`}>
+                    <CardRecipe dish={recipe} />
+                  </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        )
       )}
 
       <BasicPagination

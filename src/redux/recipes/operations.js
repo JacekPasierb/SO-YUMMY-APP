@@ -22,9 +22,9 @@ export const getCategoryRecipes = createAsyncThunk(
       const { data } = await axios.get(
         `./api/recipes/categories/${category}?page=${page}&limit=8`
       );
-      console.log("wyn", data);
+     
       return {
-        categoryRecipes: data.data.results,
+        categoryRecipes: data.data.result,
         totalRecipes: data.data.total,
       };
     } catch (error) {

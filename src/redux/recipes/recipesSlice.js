@@ -33,7 +33,7 @@ const recipesSlice = createSlice({
       })
       .addCase(getCategoryRecipes.fulfilled, (state, action)=>{
         state.isLoading = false;
-        state.popularRecipes = action.payload.categoryRecipes;
+        state.categoryRecipes = action.payload.categoryRecipes;
         state.totalRecipes = action.payload.totalRecipes;
         state.error = null;
       })
