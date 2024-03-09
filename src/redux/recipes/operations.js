@@ -22,10 +22,40 @@ export const getCategoryRecipes = createAsyncThunk(
       const { data } = await axios.get(
         `./api/recipes/categories/${category}?page=${page}&limit=8`
       );
-     
+
       return {
         categoryRecipes: data.data.result,
         totalRecipes: data.data.total,
+      };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getRecipeById = createAsyncThunk(
+  "recipes/getRecipeById",
+  async (id, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`./api/recipes/${id}`);
+
+      return {
+        recipeById: data.data.result,
+      };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getIngredientById = createAsyncThunk(
+  "recipes/getIngredientById",
+  async (id, thunkAPI) => {
+    try {
+      const {data} = await axios.get(`./api/ingredients/${id}`);
+
+      return {
+        recipeById: data.data.result,
       };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

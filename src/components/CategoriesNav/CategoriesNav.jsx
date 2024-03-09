@@ -44,7 +44,7 @@ const CategoriesNav = () => {
 
   return (
     <>
-      <h2 className={css.sectionTitle}>Categories</h2>
+      
       <Tabs
         value={value}
         onChange={handleChange}

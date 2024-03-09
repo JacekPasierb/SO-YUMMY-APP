@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPopularRecipes, getCategoryRecipes } from "./operations";
+import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById } from "./operations";
 
 const initialState = {
   isLoading: false,
   popularRecipes: [],
   categoryRecipes: [],
+  recipeById:{},
+  ingredient:{},
   ownRecipes: [],
   totalRecipes: 0,
   error: null,
@@ -42,6 +44,36 @@ const recipesSlice = createSlice({
         state.error = null;
       })
       .addCase(getCategoryRecipes.rejected, (state, action) => {
+        state.isLoading = false;
+        if (action.payload) {
+          state.error = action.payload;
+        }
+      })
+      .addCase(getRecipeById.fulfilled,(state,action)=>{
+        state.isLoading = false;
+        state.recipeById = action.payload.recipeById;
+        state.error = null;
+      })
+      .addCase(getRecipeById.pending,(state)=>{
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getRecipeById.rejected,(state,action)=>{
+        state.isLoading = false;
+        if (action.payload) {
+          state.error = action.payload;
+        }
+      })
+      .addCase(getIngredientById.fulfilled,(state,action)=>{
+        state.isLoading = false;
+        state.ingredient = action.payload.ingredientById;
+        state.error = null;
+      })
+      .addCase(getIngredientById.pending,(state)=>{
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getIngredientById.rejected,(state,action)=>{
         state.isLoading = false;
         if (action.payload) {
           state.error = action.payload;

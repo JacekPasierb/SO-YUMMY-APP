@@ -11,7 +11,7 @@ const BasicPagination = ({ count, page, onPageChange }) => {
   };
   return (
     <>
-      <Stack spacing={2} className={css.center}>
+      <Stack spacing={1} className={css.center}>
         <Pagination
           count={count}
           onChange={handlePageChange}
@@ -31,12 +31,13 @@ const BasicPagination = ({ count, page, onPageChange }) => {
               outline: "none",
             },
             ".MuiPaginationItem-root": {
-              fontSize: "12px",
+              fontSize: "8px",
               color: "#22252A",
             },
             ".MuiSvgIcon-root": {
               color: "#A9A9A9",
             },
+            
           }}
         />
       </Stack>

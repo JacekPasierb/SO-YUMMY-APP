@@ -3,6 +3,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   border: 1px solid #f0f0f0;
+  width: 100%; /* test */
   border-radius: 24px 44px;
   background-color: #ffffff;
   margin-top: 24px;
@@ -17,7 +18,7 @@
 .input {
   border: none;
   outline: none;
-
+  width: 100%; /* test */
   font-size: 12px;
   background-color: transparent;
   color: #bdbdbd;

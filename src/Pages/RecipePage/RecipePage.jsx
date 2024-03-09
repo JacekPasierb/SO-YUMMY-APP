@@ -6,33 +6,28 @@ import css from "./RecipePage.module.css";
 import Header from "../../components/Header/Header";
 import RecipeInngredientsList from "../../components/RecipeInngredientsList/RecipeInngredientsList";
 import RecipePreparation from "../../components/RecipePreparation/RecipePreparation";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLoading, selectRecipeById } from "../../redux/recipes/selectors";
+import { getRecipeById } from "../../redux/recipes/operations";
 const RecipePage = () => {
   const { recipeId } = useParams();
-  const [recipe, setRecipe] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+ 
+
+const dispatch = useDispatch();
+const recipe = useSelector(selectRecipeById)
+const isLoading = useSelector(selectIsLoading)
 
   useEffect(() => {
-    const getRecipeById = async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await fetchRecipeById(recipeId);
-
-        setRecipe(data.result);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getRecipeById();
-  }, [recipeId]);
+   
+dispatch(getRecipeById(recipeId))
+   
+  }, [dispatch, recipeId]);
 
   const { ingredients, thumb, instructions } = recipe;
   return (
     <>
-      {isLoading && <p>Loading recipe...</p>}
-      {!isLoading && (
+      {isLoading ? <p>Loading recipe...</p> :
+      recipe && (
         <main>
           <section className={css.receipePage}>
             <div className={css.container}>

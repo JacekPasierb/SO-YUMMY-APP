@@ -19,29 +19,61 @@ const MainPage = () => {
       {(matches) => (
         <>
           {matches.small && (
-            <main className={css.background}>
+            <>
               <Header />
-              <div className={`${css.container} ${css.mainPageBox}`}>
-                <h1 className={css.appTitle}>
-                  <span className={css.titleInnerColor}>So</span>Yummy
-                </h1>
-                <p className={css.appDescription}>
-                  "What to cook?" is not only a recipe app, it is, in fact, your
-                  cookbook. You can add your own recipes to save them for the
-                  future.
-                </p>
-                <ChooseYourBreakfast />
-                <Search />
+              <main className={css.background}>
+                <div className={`${css.container} ${css.mainPageBox}`}>
+                  <h1 className={css.appTitle}>
+                    <span className={css.titleInnerColor}>So</span>Yummy
+                  </h1>
+                  <p className={css.appDescription}>
+                    "What to cook?" is not only a recipe app, it is, in fact,
+                    your cookbook. You can add your own recipes to save them for
+                    the future.
+                  </p>
+                  <ChooseYourBreakfast />
+                  <Search />
+                </div>
+              </main>
+              <div className={`${css.container} ${css.sectionBox}`}>
                 <PreviewsCategories />
-                <Button text={"Other categories"}/>
+                <Button text={"Other categories"} />
               </div>
-            </main>
+            </>
           )}
           {matches.medium && (
-            <main className={css.background}>
-              <Header />
-              <div className={`${css.container} ${css.mainPageBox}`}>
-                <div className={css.flexMed}>
+            <>
+              <main className={css.background}>
+                <Header />
+                <div className={`${css.container} ${css.mainPageBox}`}>
+                  <div className={css.flexMed}>
+                    <div>
+                      <h1 className={css.appTitle}>
+                        <span className={css.titleInnerColor}>So</span>Yummy
+                      </h1>
+                      <p className={css.appDescription}>
+                        "What to cook?" is not only a recipe app, it is, in
+                        fact, your cookbook. You can add your own recipes to
+                        save them for the future.
+                      </p>
+
+                      <Search />
+                    </div>
+                    <ChooseYourBreakfast />
+                  </div>
+                </div>
+              </main>
+              <div className={`${css.container} ${css.sectionBox}`}>
+                <PreviewsCategories />
+                <Button text={"Other categories"} />
+              </div>
+            </>
+          )}
+          {matches.large && (
+            <>
+              <main className={css.background}>
+                <Header />
+                <div className={`${css.container} ${css.mainPageBox}`}>
                   <div>
                     <h1 className={css.appTitle}>
                       <span className={css.titleInnerColor}>So</span>Yummy
@@ -56,32 +88,13 @@ const MainPage = () => {
                   </div>
                   <ChooseYourBreakfast />
                 </div>
-                <PreviewsCategories />
-                <Button text={"Other categories"}/>
-              </div>
-            </main>
-          )}
-          {matches.large && (
-            <main className={css.background}>
-              <Header />
+              </main>
               <div className={`${css.container} ${css.mainPageBox}`}>
-                <div>
-                  <h1 className={css.appTitle}>
-                    <span className={css.titleInnerColor}>So</span>Yummy
-                  </h1>
-                  <p className={css.appDescription}>
-                    "What to cook?" is not only a recipe app, it is, in fact,
-                    your cookbook. You can add your own recipes to save them for
-                    the future.
-                  </p>
-
-                  <Search />
-                </div>
-                <ChooseYourBreakfast />
+                
                 <PreviewsCategories />
-                <Button text={"Other categories"}/>
+                <Button text={"Other categories"} />
               </div>
-            </main>
+            </>
           )}
         </>
       )}
