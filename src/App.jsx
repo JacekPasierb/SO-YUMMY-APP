@@ -17,6 +17,8 @@ import CategoriesPage from "./Pages/CategoriesPage/CategoriesPage";
 import CategoriesByName from "./components/CategoriesByName/CategoriesByName";
 import Layout from "./components/Layout/Layout";
 import RecipePage from "./Pages/RecipePage/RecipePage";
+import AddRecipePage from "./Pages/AddRecipePage/AddRecipePage";
+import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -65,12 +67,18 @@ const App = () => {
           >
             <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
-          <Route path="/favorite" element={<PrivateRoute component="" />} />
+          <Route
+            path="/favorite"
+            element={<PrivateRoute component={<FavoritesPage />} />}
+          />
           <Route path="/my" element={<PrivateRoute component="" />} />
-          <Route path="/add" element={<PrivateRoute component="" />} />
+          <Route
+            path="/add"
+            element={<PrivateRoute component={<AddRecipePage />} />}
+          />
           <Route
             path="/recipe/:recipeId"
-            element={<PrivateRoute component={<RecipePage/>} />}
+            element={<PrivateRoute component={<RecipePage />} />}
           />
           <Route path="/search" element={<PrivateRoute component="" />} />
           <Route
