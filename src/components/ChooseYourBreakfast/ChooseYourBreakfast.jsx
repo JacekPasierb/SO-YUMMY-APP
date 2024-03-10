@@ -29,7 +29,7 @@ const ChooseYourBreakfast = () => {
       <div className={css.boxRecipes}>
         <span className={css.fontRecipes}>
           <span className={css.fontRecipesInnerColor}>
-            Delicious and healthy{" "}
+            Delicious and healthy
           </span>
           way to enjoy a variety of fresh ingredients in one satisfying meal
         </span>

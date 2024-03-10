@@ -43,8 +43,9 @@ const MainPage = () => {
           )}
           {matches.medium && (
             <>
+             
               <main className={css.background}>
-                <Header />
+              <Header />
                 <div className={`${css.container} ${css.mainPageBox}`}>
                   <div className={css.flexMed}>
                     <div>
@@ -71,8 +72,9 @@ const MainPage = () => {
           )}
           {matches.large && (
             <>
-              <main className={css.background}>
-                <Header />
+              <Header />
+              {/* <main className={css.background}>
+                
                 <div className={`${css.container} ${css.mainPageBox}`}>
                   <div>
                     <h1 className={css.appTitle}>
@@ -93,7 +95,7 @@ const MainPage = () => {
                 
                 <PreviewsCategories />
                 <Button text={"Other categories"} />
-              </div>
+              </div> */}
             </>
           )}
         </>

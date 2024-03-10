@@ -1,13 +1,13 @@
 .link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 .iconLogo {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 
-     @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 44px;
     height: 44px;
   }
