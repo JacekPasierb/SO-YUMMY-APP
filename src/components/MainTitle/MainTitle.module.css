@@ -1,6 +1,16 @@
 .mainTitle {
-    margin-block: 50px;
-    font-size: 28px;
-    line-height: 28px;
-    color: #001833;
+  margin-block: 50px;
+  font-size: 28px;
+  line-height: 28px;
+  color: #001833;
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+    line-height: 32px;
+    margin-top: 72px;
+  }
+  @media screen and (min-width: 1200px) {
+    font-size: 44px;
+    line-height: 44px;
+    margin-block: 100px;
+  }
 }

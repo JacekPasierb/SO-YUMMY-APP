@@ -31,13 +31,12 @@ const BasicPagination = ({ count, page, onPageChange }) => {
               outline: "none",
             },
             ".MuiPaginationItem-root": {
-              fontSize: "8px",
+              fontSize: "12px",
               color: "#22252A",
             },
             ".MuiSvgIcon-root": {
               color: "#A9A9A9",
             },
-            
           }}
         />
       </Stack>

@@ -11,9 +11,9 @@ const CategoriesPage = () => {
   }, []);
   return (
     <main className={css.background}>
+      <Header />
       <div className={`${css.container} ${css.flex}`}>
-        <Header/>
-        <MainTitle title={"Categories"}/>
+        <MainTitle title={"Categories"} />
         <CategoriesNav />
         <Suspense>
           <Outlet />
