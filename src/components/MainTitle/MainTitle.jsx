@@ -1,10 +1,12 @@
-import React from 'react'
-import css from "./MainTitle.module.css"
+import React from "react";
+import css from "./MainTitle.module.css";
 
-const MainTitle = ({title}) => {
+const MainTitle = ({ title }) => {
   return (
-    <h2 className={css.mainTitle}>{title}</h2>
-  )
-}
+    <div className={css.bgTitle}>
+      <h2 className={css.mainTitle}>{title}</h2>
+    </div>
+  );
+};
 
-export default MainTitle
+export default MainTitle;
