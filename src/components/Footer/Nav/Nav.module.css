@@ -1,25 +1,25 @@
 .navigationMain {
-    margin-block: 32px;
-    @media screen and (min-width: 768px) {
+  margin-block: 32px;
+  @media screen and (min-width: 768px) {
     margin-block: 0px;
-   
   }
 }
 .navigationList {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
 
-     @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     text-align: left;
-    gap:20px;
-   
+    gap: 20px;
+  }
+  @media screen and (min-width: 1200px) {
+    gap: 24px;
   }
 }
 .link {
-    font-size: 14px;
-    line-height: 18px;
-    color: #FAFAFA;
- 
+  font-size: 14px;
+  line-height: 18px;
+  color: #fafafa;
 }

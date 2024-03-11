@@ -112,8 +112,20 @@ const Footer = () => {
                   <nav className={css.footerNav}>
                     <Nav />
                   </nav>
+                  <div className={css.subscribeBox}>
+                  <div className={css.box}>
+                    <p className={css.subscribeTitle}>
+                      Subscribe to our Newsletter
+                    </p>
+                    <p className={css.subscribeDesc}>
+                      Subscribe up to our newsletter. Be in touch with latest
+                      news and special offers, etc.
+                    </p>
+                    </div>
+                    <SubscribeForm />
+                  </div>
                 </div>
-                <SubscribeForm />
+
                 <FollowUs />
               </div>
             </footer>

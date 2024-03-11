@@ -36,6 +36,9 @@
   @media screen and (min-width: 768px) {
     margin-bottom: 72px;
   }
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 0; /* sprawdzic*/
+  }
 }
 .footerBoxAssaid {
   display: flex;
@@ -43,6 +46,10 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 24px;
+
+  @media screen and (min-width: 1200px) {
+    gap: 40px;
+  }
 }
 .logoBox {
   display: flex;
@@ -71,6 +78,8 @@
   @media screen and (min-width: 768px) {
     font-size: 28px;
     line-height: 28px;
+
+    margin: 0;
   }
 }
 .footerNav {
@@ -93,8 +102,27 @@
   font-size: 14px;
   line-height: 18px;
   color: #fafafa;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
     font-size: 18px;
     line-height: 24px;
   }
+}
+.subscribeBox {
+  display: inline-block;
+}
+.subscribeTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fafafa;
+  margin: 0;
+}
+
+.subscribeDesc {
+  font-size: 14px;
+  line-height: 18px;
+  color: #fafafa;
+  margin-top: 14px;
+}
+.box {
+  max-width: 331px;
 }
