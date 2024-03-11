@@ -34,7 +34,11 @@ const RecipeInngredientsList = ({ ingredients }) => {
 
   return (
     <>
-    {!ingredientsList && <p>Loading ingredients..</p>}
+      {!ingredientsList && (
+        <div className={`${css.container} ${css.ingredientsBox}`}>
+          <p>Loading ingredients..</p>
+        </div>
+      )}
       {ingredientsList && (
         <div className={`${css.container} ${css.ingredientsBox}`}>
           <div className={css.headerListIngredients}>

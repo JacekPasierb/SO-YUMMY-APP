@@ -10,6 +10,7 @@ import {
   selectIsLoading,
   selectPopularRecipes,
 } from "../../redux/recipes/selectors";
+import TitleCategories from "../TitleCategories/TitleCategories";
 
 const PreviewsCategories = () => {
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
@@ -43,15 +44,12 @@ const PreviewsCategories = () => {
                 key={`${categories}-${idx}`}
                 className={css.categoriesListItem}
               >
-                <h2 className={css.titleCategories}>
-                  {categories.charAt(0).toUpperCase() + categories.slice(1)}
-                </h2>
+                <TitleCategories categories={categories} />
                 <ul className={css.recipesList}>
                   {recipes.map((recipe) => {
                     return (
                       <li key={`${recipe._id}`} className={css.recipesListItem}>
                         <NavLink to={`/recipe/${recipe._id}`}>
-                          {" "}
                           <CardRecipe dish={recipe} />
                         </NavLink>
                       </li>

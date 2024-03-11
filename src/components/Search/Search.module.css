@@ -14,6 +14,9 @@
     margin-bottom: 0px;
     width: 100%;
   }
+  @media screen and (min-width: 768px) {
+    margin-top: 50px;
+  }
 }
 .input {
   border: none;

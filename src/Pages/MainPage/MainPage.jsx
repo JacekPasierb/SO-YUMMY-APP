@@ -5,7 +5,9 @@ import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYour
 import Media from "react-media";
 import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
 import Header from "../../components/Header/Header";
-import Button from "../../components/Button/Button";
+import ButtonOtherCategories from "../../components/ButtonOtherCategories/ButtonOtherCategories";
+import AppTitle from "../../components/AppTitle/AppTitle";
+import AppDescription from "../../components/AppDescription/AppDescription";
 
 const MainPage = () => {
   return (
@@ -23,40 +25,27 @@ const MainPage = () => {
               <Header />
               <main className={css.background}>
                 <div className={`${css.container} ${css.mainPageBox}`}>
-                  <h1 className={css.appTitle}>
-                    <span className={css.titleInnerColor}>So</span>Yummy
-                  </h1>
-                  <p className={css.appDescription}>
-                    "What to cook?" is not only a recipe app, it is, in fact,
-                    your cookbook. You can add your own recipes to save them for
-                    the future.
-                  </p>
+                  <AppTitle />
+                  <AppDescription />
                   <ChooseYourBreakfast />
                   <Search />
                 </div>
               </main>
               <div className={`${css.container} ${css.sectionBox}`}>
                 <PreviewsCategories />
-                <Button text={"Other categories"} />
+                <ButtonOtherCategories text={"Other categories"} />
               </div>
             </>
           )}
           {matches.medium && (
             <>
-             
               <main className={css.background}>
-              <Header />
+                <Header />
                 <div className={`${css.container} ${css.mainPageBox}`}>
                   <div className={css.flexMed}>
                     <div>
-                      <h1 className={css.appTitle}>
-                        <span className={css.titleInnerColor}>So</span>Yummy
-                      </h1>
-                      <p className={css.appDescription}>
-                        "What to cook?" is not only a recipe app, it is, in
-                        fact, your cookbook. You can add your own recipes to
-                        save them for the future.
-                      </p>
+                      <AppTitle />
+                      <AppDescription />
 
                       <Search />
                     </div>
@@ -66,36 +55,30 @@ const MainPage = () => {
               </main>
               <div className={`${css.container} ${css.sectionBox}`}>
                 <PreviewsCategories />
-                <Button text={"Other categories"} />
+                <ButtonOtherCategories text={"Other categories"} />
               </div>
             </>
           )}
           {matches.large && (
             <>
-              <Header />
-              {/* <main className={css.background}>
-                
+              <main className={css.background}>
+                <Header />
                 <div className={`${css.container} ${css.mainPageBox}`}>
-                  <div>
-                    <h1 className={css.appTitle}>
-                      <span className={css.titleInnerColor}>So</span>Yummy
-                    </h1>
-                    <p className={css.appDescription}>
-                      "What to cook?" is not only a recipe app, it is, in fact,
-                      your cookbook. You can add your own recipes to save them
-                      for the future.
-                    </p>
+                  <div className={css.flexMed}>
+                    <div>
+                      <AppTitle />
+                      <AppDescription />
 
-                    <Search />
+                      <Search />
+                    </div>
+                    <ChooseYourBreakfast />
                   </div>
-                  <ChooseYourBreakfast />
                 </div>
               </main>
               <div className={`${css.container} ${css.mainPageBox}`}>
-                
                 <PreviewsCategories />
-                <Button text={"Other categories"} />
-              </div> */}
+                <ButtonOtherCategories text={"Other categories"} />
+              </div>
             </>
           )}
         </>

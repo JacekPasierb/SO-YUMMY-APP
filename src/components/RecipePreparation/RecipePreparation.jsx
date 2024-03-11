@@ -7,9 +7,8 @@ const RecipePreparation = ({ img, instructions }) => {
 
   useEffect(() => {
     if (instructions) {
-      console.log("o", instructions);
       const steps = instructions.split(". ");
-      console.log("ss", steps);
+
       setStep(steps);
     }
   }, [instructions]);
@@ -25,8 +24,8 @@ const RecipePreparation = ({ img, instructions }) => {
               <p className={css.descStep}>{`${step}`}</p>
             </li>
           ))}
-       
-      </ul> <img src={img} width="100%" height="100%" className={css.recipeImg}/>
+      </ul>{" "}
+      <img src={img} width="100%" height="100%" className={css.recipeImg} />
     </div>
   );
 };

@@ -32,14 +32,14 @@
     padding-bottom: 200px;
   }
   @media screen and (min-width: 1200px) {
-    background-image: url("../../images/bg3Desctop1x.png"),
-      url("../../images/spinachDesctop1x.png"),
-      url("../../images/kisspng-pastaDesctop.png");
+    background-image: url("../../images/kisspng-pastaDesctop.png"),
+      url("../../images/bg3Desctop1x.png"),
+      url("../../images/spinachDesctop1x.png");
 
     background-repeat: no-repeat;
 
-    background-position: top 0px right 0px, top -10px left 0,
-      bottom 80px right 0px;
+    background-position: bottom 80px right 0px, top 0px right 0px,
+      top -10px left 0;
   }
 }
 .mainPageBox {
@@ -48,40 +48,21 @@
   align-items: center;
 
   padding-top: 68px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 95px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding-top: 62px;
+  }
 }
 .sectionBox {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.appTitle {
-  font-size: 60px;
-  line-height: 60px;
-  text-align: center;
-  color: #22252a;
 
-  margin: 0;
 
-  @media screen and (min-width: 768px) {
-    font-size: 72px;
-    line-height: 72px;
-  }
-}
-.titleInnerColor {
-  color: #8baa36;
-}
-.appDescription {
-  font-size: 14px;
-  line-height: 18px;
-
-  text-align: center;
-
-  color: #23262a;
-
-  @media screen and (min-width: 768px) {
-    text-align: left;
-  }
-}
 
 .flexMed {
   display: flex;

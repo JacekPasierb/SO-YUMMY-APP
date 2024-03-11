@@ -1,0 +1,19 @@
+.titleCategories {
+  margin: 0;
+  margin-bottom: 32px;
+
+  font-size: 28px;
+  line-height: 28px;
+  color: #001833;
+
+  align-self: start;
+
+  @media screen and (min-width: 768px) {
+    font-size: 44px;
+    line-height: 44px;
+    margin-bottom: 40px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 50px;
+  }
+}

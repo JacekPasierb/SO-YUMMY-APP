@@ -38,8 +38,6 @@ const CategoriesByName = () => {
     }
 
     dispatch(getCategoryRecipes({ category, currentPage }));
-    console.log("fort", recipes);
-    console.log("for", totalRecipes);
   }, [dispatch, categoryName, currentPage]);
 
   return (
