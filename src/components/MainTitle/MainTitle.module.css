@@ -18,7 +18,7 @@
   background-image: url("../../images/Rectangle11.png"),
     url("../../images/Rectangle8.png"), url("../../images/Rectangle9.png");
   background-repeat: no-repeat;
-  background-position: top 13px left 110px, bottom 41px left 327px,
+  background-position: top 13px left 110px, bottom 41px right 94px,
     top 45px right 0px;
 
   @media screen and (min-width: 768px) {
