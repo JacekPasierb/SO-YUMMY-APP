@@ -23,7 +23,7 @@ dispatch(getRecipeById(recipeId))
    
   }, [dispatch, recipeId]);
 
-  const { ingredients, thumb, instructions } = recipe;
+  const { ingredients, thumb, instructions, preview } = recipe;
   return (
     <>
       {isLoading ? <p>Loading recipe...</p> :
@@ -37,7 +37,7 @@ dispatch(getRecipeById(recipeId))
             </div>
           </section>
           <RecipeInngredientsList ingredients={ingredients} />
-          <RecipePreparation img={thumb} instructions={instructions} />
+          <RecipePreparation img={preview} instructions={instructions} />
         </main>
       )}
     </>

@@ -17,8 +17,14 @@
   font-size: 24px;
   line-height: 24px;
   color: #3e4462;
-
+  margin-top: 0;
   margin-bottom: 28px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+  @media screen and (min-width: 1200px) {
+  }
 }
 .instructionsList {
   display: flex;
@@ -26,6 +32,15 @@
   gap: 14px;
 
   margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    gap: 18px;
+
+    margin-bottom: 50px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 0;
+  }
 }
 .instructionsListItem {
   display: flex;
@@ -33,22 +48,51 @@
 
   align-items: flex-start;
 }
-.numbStep {
-  padding: 2px 7px 2px 7px;
+.numbStepBox {
+  width: 21px;
+  height: 21px;
   background-color: #8baa36;
   border-radius: 100px;
+  margin-right: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 7px;
+}
+.numbStepText {
   font-size: 12px;
   color: #ffffff;
-  margin-right: 14px;
-  margin-block: 0;
+
+  margin: 0;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 }
 .descStep {
   margin-block: 0;
   font-size: 12px;
   line-height: 14px;
   color: #000000c1;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 .recipeImg {
-    border-radius: 8px;
-    margin-bottom: 100px;
+  border-radius: 8px;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1200px) {
+    align-items: flex-start;
+  }
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+    gap: 50px;
+  }
 }
