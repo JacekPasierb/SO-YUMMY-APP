@@ -30,8 +30,9 @@ dispatch(getRecipeById(recipeId))
       recipe && (
         <main>
           <section className={css.receipePage}>
+          <Header />
             <div className={css.container}>
-              <Header />
+              
               <ReceipePageHero recipe={recipe} />
             </div>
           </section>

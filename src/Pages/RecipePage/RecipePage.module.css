@@ -1,21 +1,45 @@
 .container {
-    padding: 0 16px;
-    margin: 0 auto;
-    width: 100%;
-  
-    @media screen and (min-width: 480px) {
-    }
-    @media screen and (min-width: 768px) {
-      padding: 0 32px;
-      max-width: 768px;
-    }
-    @media screen and (min-width: 1200px) {
-      max-width: 1200px;
+  padding: 0 16px;
+  margin: 0 auto;
+  width: 100%;
+
+  @media screen and (min-width: 480px) {
+  }
+  @media screen and (min-width: 768px) {
+    padding: 0 32px;
+    max-width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
+  }
+}
+.receipePage {
+  background-image: url("../../images/flat.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 32px;
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url("../../images/flat2x.jpg");
+  }
+  @media screen and (min-width: 768px) {
+    background-image: url("../../images/flatTablet.jpg");
+    margin-bottom: 50px;
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url("../../images/flatTablet2x.jpg");
     }
   }
-  .receipePage {
-    background-image: url("../../images/flat.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+  @media screen and (min-width: 1200px) {
+    background-image: url("../../images/flatDesctop.jpg");
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url("../../images/flatDesctop2x.jpg");
+    }
   }
+}

@@ -4,4 +4,12 @@
     color: #8BAA36;
 
     margin: 0;
+
+    @media screen and (min-width: 768px) {
+        font-size: 44px;
+        line-height: 44px;
+      }
+      @media screen and (min-width: 1200px) {
+        
+      }
 }
