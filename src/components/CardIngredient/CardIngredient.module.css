@@ -5,29 +5,67 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 10px;
+  padding: 10px 29px 10px 10px;
 
-justify-content:space-between;
+  justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    padding: 16px 58px 16px 24px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 1px 70px 1px 32px;
+  }
 }
 .imgIngredient {
-    margin-right: 8px;
+  margin-right: 8px;
+  @media screen and (min-width: 768px) {
+    width: 144px;
+    height: 146px;
+    margin-right: 24px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 180px;
+    height: 180px;
+    margin-right: 40px;
+  }
 }
 .nameIngredient {
-    font-size: 12px;
-    line-height: 14px;
-    color: #3E4462;
-  
+  font-size: 12px;
+  line-height: 14px;
+  color: #3e4462;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  @media screen and (min-width: 1200px) {
+  }
 }
-.measureIngredient {
-    background-color: #8BAA36;
-    padding: 4px;
-    font-size: 10px;
-    color:#FAFAFA;
-    margin-right: 28px;
-    border-radius: 4px;
+.measureIngredientBox {
+  background-color: #8baa36;
+  padding: 4px 4px;
+
+  margin-right: 28px;
+  border-radius: 4px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 78px;
+    padding: 4px 8px;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-right: 151px;
+  }
+}
+.measureIngredientText {
+  font-size: 10px;
+  color: #fafafa;
+  margin: 0;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
 }
 .flexHelp {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

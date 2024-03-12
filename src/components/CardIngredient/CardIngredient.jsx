@@ -15,8 +15,31 @@ const CardIngredient = ({ ingredient }) => {
         <p className={css.nameIngredient}>{ingredient.ttl}</p>
       </div>
       <div className={css.flexHelp}>
-        <p className={css.measureIngredient}>{ingredient.measure}</p>
-        <Checkbox />
+        <div className={css.measureIngredientBox}>
+          <p className={css.measureIngredientText}>{ingredient.measure}</p>
+        </div>
+        <Checkbox
+          sx={{
+            color: "#7E7E7E",
+            
+            '&.Mui-checked': {
+              color:"transparent",
+              stroke:"#7E7E7E",
+              
+            },
+            ".MuiSvgIcon-fontSizeMedium": {
+              width: "18px",
+              height: "18px",
+            },
+
+            "@media (min-width: 768px)": {
+              ".MuiSvgIcon-fontSizeMedium": {
+                width: "35px",
+                height: "35px",
+              },
+            },
+          }}
+        />
       </div>
     </div>
   );
