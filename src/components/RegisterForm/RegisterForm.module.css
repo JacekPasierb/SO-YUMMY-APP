@@ -1,20 +1,29 @@
 .formRegister {
   background-color: #2a2c36;
   border-radius: 30px;
-margin-bottom: 18px;
+  margin-bottom: 18px;
   padding: 32px 28px;
+
+  @media screen and (min-width: 768px) {
+    padding: 44px 50px;
+  }
 }
 .boxInput {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 12px;
   margin-bottom: 28px;
+
+  @media screen and (min-width: 768px) {
+    gap: 24px;
+    margin-bottom: 50px;
+  }
 }
 .titleRegister {
   font-family: Poppins;
   font-size: 24px;
   line-height: 28px;
-  letter-spacing: -2%;
+
   text-align: left;
   color: #fafafa;
 
@@ -29,15 +38,19 @@ margin-bottom: 18px;
 
   border: 0;
   font-family: Poppins;
-  font-size: 18px;
+  font-size: 14px;
   color: #ffffff;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    padding: 16px 18px;
+  }
 }
 
 .inputRegister::placeholder {
   font-family: Poppins;
   font-size: 14px;
-  letter-spacing: -2%;
-  padding-left: 8px;
+
   color: #fafafa;
 
   @media screen and (min-width: 768px) {
@@ -47,13 +60,12 @@ margin-bottom: 18px;
 .inputIcon {
   width: 18px;
   height: 18px;
-  margin-left: 14px;
+
   margin-right: 8px;
   stroke: #fafafa;
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
-    margin-left: 18px;
   }
 }
 .errorInputIcon {
@@ -64,9 +76,12 @@ margin-bottom: 18px;
   align-items: center;
   border: 1px solid #8a8787;
   border-radius: 6px;
-  padding-block: 12px;
+  padding: 12px 14px;
 
   position: relative;
+  @media screen and (min-width: 768px) {
+    padding: 16px 18px;
+  }
 }
 .inputWithIcon:focus-within {
   border-color: #fafafa;
@@ -93,6 +108,10 @@ margin-bottom: 18px;
   min-width: 100%;
 
   transition: all 0.3s;
+  
+  @media screen and (min-width: 768px) {
+    padding: 19px 170px;
+  }
 }
 .btnRegister:hover {
   border-color: #8baa36;
