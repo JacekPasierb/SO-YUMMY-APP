@@ -11,7 +11,27 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { toast } from "react-toastify";
 
+import { useMediaQuery } from "@react-hook/media-query";
+import logo1x from "../../images/logoMobile1x.png";
+import logo2x from "../../images/logoMobile2x.png";
+import logoTablet1x from "../../images/logoTablet1x.png";
+import logoTablet2x from "../../images/logoTablet2x.png";
+import logoDesktop1x from "../../images/logoDesctop1x.png";
+import logoDesktop2x from "../../images/logoDesctop2x.png";
 const RegisterForm = () => {
+  const isTablet = useMediaQuery("(min-width: 768px)");
+  const isDesctop = useMediaQuery("(min-width: 1200px)");
+  const isRetina = window.devicePixelRatio > 1;
+  let logoSrc;
+
+  if (isDesctop) {
+    logoSrc = isRetina ? logoDesktop2x : logoDesktop1x;
+  } else if (isTablet) {
+    logoSrc = isRetina ? logoTablet2x : logoTablet1x;
+  } else {
+    // Default image for smaller screens
+    logoSrc = isRetina ? logo2x : logo1x;
+  }
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, { resetForm }) => {
@@ -33,6 +53,7 @@ const RegisterForm = () => {
     >
       {({ errors, touched, setFieldTouched, setFieldValue }) => (
         <Form className={css.formRegister} autoComplete="off">
+           <img src={logoSrc} className={css.imggg}/>
           <h2 className={css.titleRegister}>Registration</h2>
           <div className={css.boxInput}>
             <div

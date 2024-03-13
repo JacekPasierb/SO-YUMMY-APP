@@ -1,4 +1,17 @@
+.imggg{
+  position: absolute;
+  top: -220px;
+  left: center;
+  z-index: -1;
+  background-position: center;
+
+  width: 285px;
+  height: 250px;
+
+}
+
 .formRegister {
+  position: relative;
   background-color: #2a2c36;
   border-radius: 30px;
   margin-bottom: 18px;
@@ -104,7 +117,7 @@
   color: #fafafa;
 
   background-color: #8baa36;
-  padding: 12px 106px;
+  padding-block: 12px ;
   min-width: 100%;
 
   transition: all 0.3s;
@@ -149,4 +162,7 @@
 }
 .successMessage {
   color: #ffffff;
+}
+.custom-input:-internal-autofill-selected {
+  background-color: yellow !important; /* Ustawienie koloru tła na żółty */
 }

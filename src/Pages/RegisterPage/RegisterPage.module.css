@@ -1,64 +1,20 @@
-.background {
-
-  min-height: 100vh;
-  background-color: rgb(250, 250, 250);
-  background-image: url(../../images/LogoMobile1x.png),
-    url(../../images/backgroundRegister.png);
-  background-repeat: no-repeat;
-  background-size: 285px, cover;
-  background-position: center top 86px, center top 322px;
-
-  text-align: center;
-
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url(../../images/LogoMobile2x.png),
-      url(../../images/backgroundRegister.png);
-  }
-
-  @media screen and (min-width: 768px) {
-    background-image: url(../../images/LogoTablet1x.png),
-      url(../../images/backgroundRegister.png);
-    background-size: 409px, cover;
-    background-position: center top 6px, center top 322px;
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(../../images/LogoTablet2x.png),
-        url(../../images/backgroundRegister.png);
-    }
-  }
-  @media screen and (min-width: 1200px) {
-    background-image: url(../../images/LogoDesctop1x.png),
-      url(../../images/backgroundRegister.png);
-    background-size: 532px, cover;
-    background-position: left 13px top 116px, center top 342px;
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(../../images/LogoDesctop2x.png),
-        url(../../images/backgroundRegister.png);
-    }
-  }
-}
-.form {
+.flex {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
   max-width: 335px;
-  margin-inline: auto;
+}
+.background {
+  display: flex;
+  align-items: center;
 
-  position: absolute;
-  top: 305px;
-  left: 0px;
-  right: 0px;
+  background-image: url("../../images/RectangleMobile1x.png");
+  background-repeat: no-repeat;
+  background-position: center top 230px;
+  background-size: cover;
+  height: 100%;
+  min-height: 100vh;
 
-  @media screen and (min-width: 768px) {
-    max-width: 500px;
-    top: 345px;
-  }
-  @media screen and (min-width: 1200px) {
-    top: 116px;
-    margin-right: 180px;
-  }
+  padding-inline: 20px;
+  padding-top: 87px;
 }
