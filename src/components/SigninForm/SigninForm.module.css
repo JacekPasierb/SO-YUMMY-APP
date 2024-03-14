@@ -1,20 +1,58 @@
+.imggg {
+  position: absolute;
+  top: -220px;
+  left: center;
+  z-index: -1;
+  background-position: center;
+
+  width: 285px;
+  height: 250px;
+  @media screen and (min-width: 768px) {
+    width: 409px;
+    height: 359px;
+    z-index: 0;
+    top: -346px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 532px;
+    height: 468px;
+    z-index: 0;
+    top: 0px;
+    left: -647px;
+  }
+}
 .formRegister {
+  position: relative;
   background-color: #2a2c36;
-  border-radius: 12px 20px;
-margin-bottom: 18px;
+  border-radius: 30px;
+  margin-bottom: 18px;
   padding: 32px 28px;
+
+  @media screen and (min-width: 768px) {
+    padding: 44px 50px;
+    margin-top: 280px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 44px 50px;
+    margin-top: 0;
+  }
 }
 .boxInput {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 12px;
   margin-bottom: 28px;
+
+  @media screen and (min-width: 768px) {
+    gap: 24px;
+    margin-bottom: 50px;
+  }
 }
 .titleRegister {
   font-family: Poppins;
   font-size: 24px;
   line-height: 28px;
-  letter-spacing: -2%;
+
   text-align: left;
   color: #fafafa;
 
@@ -26,20 +64,22 @@ margin-bottom: 18px;
 .inputRegister {
   background-color: transparent;
   outline: none;
-  width: 100%;
+
   border: 0;
   font-family: Poppins;
-  font-size: 18px;
+  font-size: 14px;
   color: #ffffff;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    padding: 16px 18px;
+  }
 }
-
-
 
 .inputRegister::placeholder {
   font-family: Poppins;
   font-size: 14px;
-  letter-spacing: -2%;
-  padding-left: 8px;
+
   color: #fafafa;
 
   @media screen and (min-width: 768px) {
@@ -49,13 +89,12 @@ margin-bottom: 18px;
 .inputIcon {
   width: 18px;
   height: 18px;
-  margin-left: 14px;
+
   margin-right: 8px;
-  stroke: #fafafa;
+
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
-    margin-left: 18px;
   }
 }
 .errorInputIcon {
@@ -66,9 +105,12 @@ margin-bottom: 18px;
   align-items: center;
   border: 1px solid #8a8787;
   border-radius: 6px;
-  padding-block: 12px;
+  padding: 12px 14px;
 
   position: relative;
+  @media screen and (min-width: 768px) {
+    padding: 16px 18px;
+  }
 }
 .inputWithIcon:focus-within {
   border-color: #fafafa;
@@ -91,10 +133,14 @@ margin-bottom: 18px;
   color: #fafafa;
 
   background-color: #8baa36;
-  padding: 12px 106px;
+  padding-block: 12px;
   min-width: 100%;
 
   transition: all 0.3s;
+
+  @media screen and (min-width: 768px) {
+    padding: 19px 170px;
+  }
 }
 .btnRegister:hover {
   border-color: #8baa36;
@@ -104,23 +150,26 @@ margin-bottom: 18px;
 .inputError {
   color: red;
   font-family: Poppins;
-  font-size: 14px;
+  font-size: 7px;
   padding-right: 5px;
 
   position: absolute;
-  bottom: -25px;
+  bottom: -11px;
   left: 0;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    bottom: -21px;
+  }
 }
 
 .additionalErrorIcon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+  position: absolute;
+  right: 10px;
 }
 .additionalSuccessIcon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+  position: absolute;
+  right: 10px;
   fill: green;
   stroke: green;
 }
@@ -129,4 +178,7 @@ margin-bottom: 18px;
 }
 .successMessage {
   color: #ffffff;
+}
+.custom-input:-internal-autofill-selected {
+  background-color: yellow !important; /* Ustawienie koloru tła na żółty */
 }

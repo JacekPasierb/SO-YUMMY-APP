@@ -6,10 +6,10 @@ import css from "./SigninPage.module.css";
 const SigninPage = () => {
   return (
     <main className={css.background}>
-      <div className={css.form}>
-        <AuthForm />
-      </div>
-    </main>
+    <div className={css.flex}>
+      <AuthForm />
+    </div>
+  </main>
   );
 };
 
