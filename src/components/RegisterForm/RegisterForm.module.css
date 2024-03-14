@@ -1,4 +1,4 @@
-.imggg{
+.imggg {
   position: absolute;
   top: -220px;
   left: center;
@@ -7,7 +7,19 @@
 
   width: 285px;
   height: 250px;
-
+  @media screen and (min-width: 768px) {
+    width: 409px;
+    height: 359px;
+    z-index: 0;
+    top: -346px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 532px;
+    height: 468px;
+    z-index: 0;
+    top: 100px;
+    left: -647px;
+  }
 }
 
 .formRegister {
@@ -19,6 +31,11 @@
 
   @media screen and (min-width: 768px) {
     padding: 44px 50px;
+    margin-top: 280px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 44px 50px;
+    margin-top: 0;
   }
 }
 .boxInput {
@@ -117,7 +134,7 @@
   color: #fafafa;
 
   background-color: #8baa36;
-  padding-block: 12px ;
+  padding-block: 12px;
   min-width: 100%;
 
   transition: all 0.3s;
