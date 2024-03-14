@@ -179,6 +179,3 @@
 .successMessage {
   color: #ffffff;
 }
-.custom-input:-internal-autofill-selected {
-  background-color: yellow !important; /* Ustawienie koloru tła na żółty */
-}

@@ -44,12 +44,11 @@ const SigninForm = () => {
       if (logIn.fulfilled.match(result)) {
         resetForm();
         navigate("/");
-       
       }
     } catch (err) {
       console.error(err.message);
       dispatch(selectError("Login failed ⚠"));
-      toast.error("Failed to log in")
+      toast.error("Failed to log in");
     }
   };
   return (
@@ -61,7 +60,7 @@ const SigninForm = () => {
       >
         {({ errors, touched, setFieldTouched, setFieldValue }) => (
           <Form className={css.formRegister} autoComplete="off">
-             <img src={logoSrc} className={css.imggg}/>
+            <img src={logoSrc} className={css.imggg} />
             <h2 className={css.titleRegister}>Sign In</h2>
             <div className={css.boxInput}>
               <div
@@ -82,6 +81,7 @@ const SigninForm = () => {
                   placeholder="Email"
                   className={css.inputRegister}
                   onBlur={() => setFieldTouched("email", true)}
+                  autoComplete="off"
                 />
                 {touched.email && errors.email && (
                   <img

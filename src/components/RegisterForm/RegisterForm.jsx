@@ -53,7 +53,7 @@ const RegisterForm = () => {
     >
       {({ errors, touched, setFieldTouched, setFieldValue }) => (
         <Form className={css.formRegister} autoComplete="off">
-           <img src={logoSrc} className={css.imggg}/>
+          <img src={logoSrc} className={css.imggg} />
           <h2 className={css.titleRegister}>Registration</h2>
           <div className={css.boxInput}>
             <div
