@@ -7,9 +7,6 @@ const RecipeDescriptionFields = () => {
   const [file, setFile] = useState();
   const [path, setPath] = useState("");
   const [categoriesList, setCategoriesList] = useState([]);
- 
- 
-
 
   const timeOptionsList = () => {
     const time = [];
@@ -82,7 +79,8 @@ const RecipeDescriptionFields = () => {
           className={css.input}
         />
       </div>
-      <div className={css.inputBox}>
+      <div className={`${css.inputBox} ${css.inputBox__select}`}>
+        <div>
         <label htmlFor="category" />
         <input
           type="text"
@@ -91,7 +89,7 @@ const RecipeDescriptionFields = () => {
           id="category"
           readOnly
           className={css.input}
-        />
+        /></div>
         <select id="cat" name="cat" className={css.select}>
           {categoriesList.map((category) => (
             <option value={category} key={category}>
@@ -100,16 +98,18 @@ const RecipeDescriptionFields = () => {
           ))}
         </select>
       </div>
-      <div className={css.inputBox}>
-        <label htmlFor="cookingTime" />
-        <input
-          type="text"
-          name="cookingTime"
-          id="cookingTime"
-          placeholder="Cooking time"
-          readOnly
-          className={css.input}
-        />
+      <div className={`${css.inputBox} ${css.inputBox__select}`}>
+        <div>
+          <label htmlFor="cookingTime" />
+          <input
+            type="text"
+            name="cookingTime"
+            id="cookingTime"
+            placeholder="Cooking time"
+            readOnly
+            className={css.input}
+          />
+        </div>
         <select id="time" name="time" className={css.select}>
           {timeOptionsList().map((t) => (
             <option value={t.value} key={t.label}>

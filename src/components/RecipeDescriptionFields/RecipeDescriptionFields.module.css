@@ -42,6 +42,10 @@
 .input::placeholder {
   font-size: 14px;
   color: #000000;
+  padding: 0;
+}
+.input:read-only {
+  width: 30vw;
 }
 .inputBox {
   display: flex;
@@ -52,12 +56,14 @@
   max-width: 100%;
 }
 .select {
-    border: none;
-    background-color: transparent;
-    outline: none;
+  border: none;
+  background-color: transparent;
+  outline: none;
 
-    font-size: 12px;
-    line-height: 12px;
+  font-size: 12px;
+  line-height: 12px;
 
-   
+}
+.inputBox__select {
+    justify-content: space-between;
 }
