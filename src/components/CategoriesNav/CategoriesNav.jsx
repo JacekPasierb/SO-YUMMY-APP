@@ -44,7 +44,6 @@ const CategoriesNav = () => {
 
   return (
     <>
-      
       <Tabs
         value={value}
         onChange={handleChange}
