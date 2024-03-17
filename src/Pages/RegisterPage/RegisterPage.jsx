@@ -7,7 +7,7 @@ const RegisterPage = () => {
   return (
     <main className={css.background}>
       <div className={css.flex}>
-        <AuthForm />
+        {/* <AuthForm /> */}
       </div>
     </main>
   );

@@ -1,4 +1,4 @@
-/* .recipeDescriptionFieldsBox {
+.recipeDescriptionFieldsBox {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -65,4 +65,4 @@
 }
 .inputBox__select {
   justify-content: space-between;
-} */
+}
