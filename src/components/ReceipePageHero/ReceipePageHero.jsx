@@ -2,9 +2,15 @@ import React from "react";
 import MainPageTitle from "../MainPageTitle/MainPageTitle";
 import css from "./ReceipePageHero.module.css";
 import sprite from "../../assets/icons/sprite.svg";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
 
 const ReceipePageHero = ({ recipe }) => {
   const { title, description, time } = recipe;
+  const { id: userId } = useSelector(selectUser);
+
+  console.log("id Uzytk", userId);
+  console.log("recipe", recipe);
   return (
     <div className={css.receipeHeroBox}>
       <MainPageTitle title={title} />

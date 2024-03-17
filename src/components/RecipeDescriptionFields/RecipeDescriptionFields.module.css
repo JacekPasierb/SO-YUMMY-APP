@@ -1,0 +1,20 @@
+.recipeDescriptionFieldsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pictureBox {
+  display: flex;
+  justify-content: center;
+
+  background-color: #8baa36;
+  padding: 102px 108px;
+  cursor: pointer;
+}
+.inputPicture {
+  display: none;
+}
+.iconAdd {
+  width: 64px;
+  height: 64px;
+}
