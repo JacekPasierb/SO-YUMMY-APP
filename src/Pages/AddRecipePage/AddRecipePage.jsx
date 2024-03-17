@@ -11,7 +11,7 @@ const AddRecipePage = () => {
         <Header />
         <div className={`${css.container} ${css.flex}`}>
           <MainTitle title={"Add recipe"} />
-          <AddRecipeForm />
+          <AddRecipeForm/>
         </div>
       </main>
     </>

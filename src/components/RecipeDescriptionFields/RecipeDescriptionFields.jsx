@@ -7,16 +7,10 @@ const RecipeDescriptionFields = () => {
   const [file, setFile] = useState();
   const [path, setPath] = useState("");
   const [categoriesList, setCategoriesList] = useState([]);
-  const [timeList, setTimeList] = useState([]);
-  const [isExpanded, setIsExpanded] = useState(false);
+ 
+ 
 
-  const handleSelectClick = () => {
-    setIsExpanded(true);
-  };
 
-  const handleBlur = () => {
-    setIsExpanded(false);
-  };
   const timeOptionsList = () => {
     const time = [];
     for (let i = 5; i <= 120; i += 5) {
