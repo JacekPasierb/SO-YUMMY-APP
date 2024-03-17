@@ -15,10 +15,10 @@ import { toast } from "react-toastify";
 import { useMediaQuery } from "@react-hook/media-query";
 import logo1x from "../../images/LogoMobile1x.png";
 import logo2x from "../../images/LogoMobile2x.png";
-import logoTablet1x from "../../images/logoTablet1x.png";
-import logoTablet2x from "../../images/logoTablet2x.png";
-import logoDesktop1x from "../../images/logoDesctop1x.png";
-import logoDesktop2x from "../../images/logoDesctop2x.png";
+import logoTablet1x from "../../images/LogoTablet1x.png";
+import logoTablet2x from "../../images/LogoTablet2x.png";
+import logoDesktop1x from "../../images/LogoDesctop1x.png";
+import logoDesktop2x from "../../images/LogoDesctop2x.png";
 
 const SigninForm = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
