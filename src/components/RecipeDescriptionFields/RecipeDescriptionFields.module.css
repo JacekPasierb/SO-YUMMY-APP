@@ -1,4 +1,4 @@
-.recipeDescriptionFieldsBox {
+/* .recipeDescriptionFieldsBox {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -44,9 +44,9 @@
   color: #000000;
   padding: 0;
 }
-/* .input:read-only {
+.input:read-only {
   width: 30vw;
-} */
+}
 .inputBox {
   display: flex;
   flex-direction: row;
@@ -62,8 +62,7 @@
 
   font-size: 12px;
   line-height: 12px;
-
 }
-/* .inputBox__select {
-    justify-content: space-between;
+.inputBox__select {
+  justify-content: space-between;
 } */
