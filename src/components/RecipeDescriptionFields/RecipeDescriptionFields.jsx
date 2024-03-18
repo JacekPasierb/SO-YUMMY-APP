@@ -90,9 +90,9 @@ const RecipeDescriptionFields = () => {
           readOnly
           className={css.input}
         /></div>
-        <select id="cat" name="cat" className={css.select}>
+        <select id="cat" name="cat" className={css.select} >
           {categoriesList.map((category) => (
-            <option value={category} key={category}>
+            <option value={category} key={category} >
               {category}
             </option>
           ))}
