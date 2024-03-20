@@ -68,5 +68,12 @@
 <symbol id="icon-arrow" viewBox="0 0 55 32">
 <path fill="none" stroke="#8baa36" style="stroke: var(--color1, #8baa36)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="9.1429" d="M50.286 4.571l-22.857 22.857-22.857-22.857"></path>
 </symbol>
+<symbol id="icon-Minus" viewBox="0 0 32 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M5 16h22"></path>
+</symbol>
+<symbol id="icon-Plus" viewBox="0 0 32 32">
+<path fill="none" stroke="#8baa36" style="stroke: var(--color1, #8baa36)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M5 16h22"></path>
+<path fill="none" stroke="#8baa36" style="stroke: var(--color1, #8baa36)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M16 5v22"></path>
+</symbol>
 </defs>
 </svg>

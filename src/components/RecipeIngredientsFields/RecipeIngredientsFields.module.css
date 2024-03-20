@@ -5,3 +5,29 @@
 .btn:focus {
   outline: none;
 }
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.counterBox {
+  border: 1px solid #33333355;
+  border-radius: 18px;
+  padding: 7px 14px;
+}
+.icon {
+  width: 14px;
+  height: 14px;
+}
+.iconMinus {
+  width: 14px;
+  height: 14px;
+  stroke: #3333334b;
+}
+.counterFont {
+  font-size: 14px;
+  line-height: 18px;
+  color: #333333;
+  margin: 0 8px;
+}
