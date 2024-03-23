@@ -5,6 +5,9 @@ import { fetchAllIngredients } from "../../API/ingredientsAPI";
 import { nanoid } from "@reduxjs/toolkit";
 import x from "../../images/X.png";
 import Select from "react-select";
+import { red } from "@mui/material/colors";
+import { selectIngredient } from "./selectStyles";
+import UnitInput from "../UnitInput/UnitInput";
 
 const RecipeIngredientsFields = () => {
   const [counter, setCounter] = useState(0);
@@ -65,37 +68,8 @@ const RecipeIngredientsFields = () => {
         {ingredients
           ? fields.map((field) => (
               <li key={field.id} className={css.rowItem}>
-                <Select
-                  options={options()}
-                  styles={{
-                    control: (styles) => ({
-                      ...styles,
-                      backgroundColor: "white",
-                      width: "100%",
-                    }),
-                    indicatorSeparator: (styles) => ({ ...styles, width: "0" }),
-
-                    dropdownIndicator: (styles, state) => ({
-                      ...styles,
-                      color: state.isFocused ? " #8BAA36" : " #8BAA36",
-                    }),
-                    container: (styles) => ({ ...styles, width: "100%" }),
-                  }}
-                />
-
-                <div className={css.unitBox}>
-                  <input
-                    type="number"
-                    min="0"
-                    className={`${css.inputNum} ${css.noSpinButtons}`}
-                  />
-                  <select name="unitOpt" className={css.selectUnit}>
-                    <option>tbs</option>
-                    <option>tsp</option>
-                    <option>kg</option>
-                    <option>g</option>
-                  </select>
-                </div>
+                <Select options={options()} styles={selectIngredient} />
+                <UnitInput />
                 <img src={x} />
               </li>
             ))

@@ -3,6 +3,8 @@ import Header from "../../components/Header/Header";
 import css from "./AddRecipePage.module.css";
 import MainTitle from "../../components/MainTitle/MainTitle.jsx";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm.jsx";
+import FollowUs from "../../components/FollowUs/FollowUs.jsx";
+import PopularRecipe from "../../components/PopularRecipe/PopularRecipe.jsx";
 
 const AddRecipePage = () => {
   return (
@@ -11,7 +13,8 @@ const AddRecipePage = () => {
         <Header />
         <div className={`${css.container} ${css.flex}`}>
           <MainTitle title={"Add recipe"} />
-          <AddRecipeForm/>
+          <AddRecipeForm />
+          <PopularRecipe />
         </div>
       </main>
     </>

@@ -20,6 +20,7 @@ const RecipeDescriptionFields = () => {
     const [file] = files;
     setFile(file);
     setPath(URL.createObjectURL(file));
+
   };
   useEffect(() => {
     const getCategories = async () => {
@@ -81,18 +82,19 @@ const RecipeDescriptionFields = () => {
       </div>
       <div className={`${css.inputBox} ${css.inputBox__select}`}>
         <div>
-        <label htmlFor="category" />
-        <input
-          type="text"
-          name="category"
-          placeholder="Category"
-          id="category"
-          readOnly
-          className={css.input}
-        /></div>
-        <select id="cat" name="cat" className={css.select} >
+          <label htmlFor="category" />
+          <input
+            type="text"
+            name="category"
+            placeholder="Category"
+            id="category"
+            readOnly
+            className={css.input}
+          />
+        </div>
+        <select id="cat" name="cat" className={css.select}>
           {categoriesList.map((category) => (
-            <option value={category} key={category} >
+            <option value={category} key={category}>
               {category}
             </option>
           ))}

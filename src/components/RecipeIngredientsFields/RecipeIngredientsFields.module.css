@@ -37,28 +37,7 @@
   width: 100%;
   justify-content: space-between;
 }
-input {
-  width: 100%;
-}
-.inputNum {
-  width: 3rem;
-  text-align: right;
-  border: none;
-  outline: none;
-}
-.selectUnit {
-  border: none;
-  outline: none;
-  background-color: transparent;
 
-  appearance: none;
-  background-image: url(../../images/Icon.svg);
-  background-repeat: no-repeat;
-  background-position: right;
-  padding-right: 20px;
-  stroke:    #8BAA36;
-  ;
-}
 
 .inputIngredient {
   appearance: none;
@@ -70,19 +49,7 @@ input {
   ;
 }
 
-.unitBox {
-  display: flex;
-  flex-direction: row;
-  border: 1px solid red;
-}
-.noSpinButtons::-webkit-outer-spin-button,
-.noSpinButtons::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.noSpinButtons {
-  -moz-appearance: textfield;
-}
+
 
 .box {
   display: flex;

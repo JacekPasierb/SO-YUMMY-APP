@@ -19,3 +19,8 @@
       padding-bottom: 200px;
     }
   }
+  .flex {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+  }
