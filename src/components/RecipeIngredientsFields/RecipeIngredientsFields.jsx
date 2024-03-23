@@ -3,31 +3,22 @@ import css from "./RecipeIngredientsFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
 import { nanoid } from "@reduxjs/toolkit";
-import { MenuItem, Select, TextField } from "@mui/material";
-import styled from "styled-components";
+import x from "../../images/X.png";
+import Select from "react-select";
 
 const RecipeIngredientsFields = () => {
   const [counter, setCounter] = useState(0);
   const [fields, setFields] = useState([]);
   const [ingredients, setIngredients] = useState([]);
-  const [inputValues, setInputValues] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
 
   const handleDecreament = () => {
     setCounter(counter === 0 ? 0 : counter - 1);
-
     setFields((prev) => [...prev.slice(0, prev.length - 1)]);
-
-    setInputValues((prev) => prev.slice(0, prev.length - 1));
   };
-  const Select = styled("div")``;
-  const MenuItem = styled("div")``;
-  const TextField = styled("input")``;
+
   const handleIncreament = () => {
     setCounter(counter + 1);
     setFields((prev) => [...prev, { id: nanoid(), inputValues: "", qty: "" }]);
-
-    setInputValues((prev) => [...prev, ""]);
   };
 
   useEffect(() => {
@@ -43,25 +34,13 @@ const RecipeIngredientsFields = () => {
 
     getIngredients();
   }, []);
-  const [inputValue, setInputValue] = useState("");
 
-  const handleInputChange = (event, index) => {
-    const newInputValues = [...inputValues];
-    newInputValues[index] = event.target.value;
-    setInputValues(newInputValues);
-  };
-  const [val, setVal] = useState("");
-
-  const handleChange = (event) => {
-    // handle selected option
-  };
-
-  const [filteredOptions, setFilteredOptions] = useState([]);
-  useEffect(() => {}, [filteredOptions]);
-
-  const handleSearchChange = (event) => {
-    const value = event.target.value.toLowerCase();
-    setVal(value);
+  const options = () => {
+    const options = [];
+    ingredients.map((ingredient) =>
+      options.push({ label: ingredient.ttl, value: ingredient.ttl })
+    );
+    return options;
   };
 
   return (
@@ -82,39 +61,27 @@ const RecipeIngredientsFields = () => {
           </button>
         </div>
       </div>
-      <ul>
+      <ul className={css.ingredientsList}>
         {ingredients
           ? fields.map((field) => (
-              <li
-                key={field.id}
-                className={css.rowItem}
-                
-              >
-                <div className={css.boxField} onClick={() => {
-                  setIsOpen(!isOpen);
-                }}>
-                  <TextField value={val} onChange={handleSearchChange} />
-                  <Select
-                    value=""
-                    onChange={handleChange}
-                    className={css.selectField}
-                  >
-                    {isOpen &&
-                      ingredients
-                        .filter((ingredient) =>
-                          ingredient.ttl.toLowerCase().includes(val)
-                        )
-                        .map((option) => (
-                          <MenuItem
-                            key={option._id}
-                            value={option.ttl}
-                            className={css.menuItem}
-                          >
-                            {option.ttl}
-                          </MenuItem>
-                        ))}
-                  </Select>
-                </div>
+              <li key={field.id} className={css.rowItem}>
+                <Select
+                  options={options()}
+                  styles={{
+                    control: (styles) => ({
+                      ...styles,
+                      backgroundColor: "white",
+                      width: "100%",
+                    }),
+                    indicatorSeparator: (styles) => ({ ...styles, width: "0" }),
+
+                    dropdownIndicator: (styles, state) => ({
+                      ...styles,
+                      color: state.isFocused ? " #8BAA36" : " #8BAA36",
+                    }),
+                    container: (styles) => ({ ...styles, width: "100%" }),
+                  }}
+                />
 
                 <div className={css.unitBox}>
                   <input
@@ -129,6 +96,7 @@ const RecipeIngredientsFields = () => {
                     <option>g</option>
                   </select>
                 </div>
+                <img src={x} />
               </li>
             ))
           : ""}

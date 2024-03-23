@@ -56,7 +56,8 @@ input {
   background-repeat: no-repeat;
   background-position: right;
   padding-right: 20px;
-  stroke: green;
+  stroke:    #8BAA36;
+  ;
 }
 
 .inputIngredient {
@@ -65,7 +66,8 @@ input {
   background-repeat: no-repeat;
   background-position: right;
   padding-right: 20px;
-  stroke: green;
+  stroke:    #8BAA36;
+  ;
 }
 
 .unitBox {
@@ -95,7 +97,7 @@ input {
   background-repeat: no-repeat;
   background-position: top 50% right 16px;
   padding-right: 20px;
-  stroke: green;
+  stroke: #8BAA36;
   cursor: pointer;
 }
 .boxField input {
@@ -140,4 +142,9 @@ input {
 .selectField:hover {
   border: none;
   outline: none;
+}
+.ingredientsList {
+   display: flex;
+   flex-direction: column;
+   gap: 18px;
 }
