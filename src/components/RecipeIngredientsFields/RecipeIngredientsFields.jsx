@@ -16,7 +16,7 @@ const RecipeIngredientsFields = () => {
   };
 
   const handleIncreament = () => {
-    setFields((prev) => [...prev, { id: nanoid(), inputValues: "", qty: "" }]);
+    setFields((prev) => [...prev, { id: nanoid() }]);
   };
 
   useEffect(() => {
