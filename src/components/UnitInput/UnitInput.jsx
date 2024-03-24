@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./UnitInput.module.css";
 import Select from "react-select";
+import { selectUnit } from "../RecipeIngredientsFields/selectStyles";
 
 const UnitInput = () => {
   const options = [
@@ -14,11 +15,16 @@ const UnitInput = () => {
       <input
         type="number"
         min="0"
+        max="999"
         className={`${css.inputNum} ${css.noSpinButtons}`}
       />
-      <Select name="unitOpt" options={options} className={css.selectUnit}/>
-       
-      
+      <Select
+        name="unitOpt"
+        options={options}
+        styles={selectUnit}
+        isSearchable={false}
+        defaultValue={[options[0]]}
+      />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 .unitBox {
   display: flex;
   flex-direction: row;
-  padding: 16px;
+background-color: #d9d9d94f;
+  
 }
 .noSpinButtons::-webkit-outer-spin-button,
 .noSpinButtons::-webkit-inner-spin-button {
@@ -16,9 +17,15 @@ input {
 }
 .inputNum {
   width: 3rem;
-  text-align: right;
+  text-align: center;
+  font-size: 14px;
+  color: #23262A;
   border: none;
   outline: none;
+  /* background-color: #d9d9d94f; */
+  background-color: transparent;
+  padding: 16px;
+  margin: 0;
 }
 .selectUnit {
   border: none;
