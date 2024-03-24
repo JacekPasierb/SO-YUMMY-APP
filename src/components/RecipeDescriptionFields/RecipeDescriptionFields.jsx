@@ -3,8 +3,19 @@ import css from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { fetchAllCategories } from "../../API/categoriesAPI";
 
-const RecipeDescriptionFields = () => {
-  const [file, setFile] = useState();
+const RecipeDescriptionFields = ({
+  file,
+  setFile,
+  titleRecipe,
+  setTitleRecipe,
+  descriptionRecipe,
+  setDescriptionRecipe,
+  categoryRecipe,
+  setCategoryRecipe,
+  cookingTime,
+  setCookingTime,
+}) => {
+  // const [file, setFile] = useState();
   const [path, setPath] = useState("");
   const [categoriesList, setCategoriesList] = useState([]);
 
@@ -20,7 +31,22 @@ const RecipeDescriptionFields = () => {
     const [file] = files;
     setFile(file);
     setPath(URL.createObjectURL(file));
-
+  };
+  const handleTitle = ({ currentTarget }) => {
+    const title = currentTarget.value;
+    setTitleRecipe(title);
+  };
+  const handleChange = ({ currentTarget }) => {
+    const about = currentTarget.value;
+    setDescriptionRecipe(about);
+  };
+  const handleCategory = ({ currentTarget }) => {
+    const category = currentTarget.value;
+    setCategoryRecipe(category);
+  };
+  const handleTime = ({ currentTarget }) => {
+    const cookingTime = currentTarget.value;
+    setCookingTime(cookingTime);
   };
   useEffect(() => {
     const getCategories = async () => {
@@ -66,6 +92,8 @@ const RecipeDescriptionFields = () => {
           type="text"
           name="title"
           id="title"
+          onChange={handleTitle}
+          value={titleRecipe}
           placeholder="Enter Item Title"
           className={css.input}
         />
@@ -76,6 +104,8 @@ const RecipeDescriptionFields = () => {
           type="text"
           name="about"
           id="about"
+          onChange={handleChange}
+          value={descriptionRecipe}
           placeholder="Enter about recipe"
           className={css.input}
         />
@@ -92,7 +122,13 @@ const RecipeDescriptionFields = () => {
             className={css.input}
           />
         </div>
-        <select id="cat" name="cat" className={css.select}>
+        <select
+          id="cat"
+          name="cat"
+          onChange={handleCategory}
+          value={categoryRecipe}
+          className={css.select}
+        >
           {categoriesList.map((category) => (
             <option value={category} key={category}>
               {category}
@@ -112,7 +148,12 @@ const RecipeDescriptionFields = () => {
             className={css.input}
           />
         </div>
-        <select id="time" name="time" className={css.select}>
+        <select
+          id="time"
+          name="time"
+          onChange={handleTime}
+          className={css.select}
+        >
           {timeOptionsList().map((t) => (
             <option value={t.value} key={t.label}>
               {t.label}

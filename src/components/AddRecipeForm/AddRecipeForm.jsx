@@ -14,7 +14,18 @@ const AddRecipeForm = () => {
 
   return (
     <form>
-      <RecipeDescriptionFields />
+      <RecipeDescriptionFields
+        file={file}
+        setFile={setFile}
+        titleRecipe={titleRecipe}
+        setTitleRecipe={setTitleRecipe}
+        descriptionRecipe={descriptionRecipe}
+        setDescriptionRecipe={setDescriptionRecipe}
+        categoryRecipe={categoryRecipe}
+        setCategoryRecipe={setCategoryRecipe}
+        cookingTime={cookingTime}
+        setCookingTime={setCookingTime}
+      />
       <RecipeIngredientsFields />
     </form>
   );
