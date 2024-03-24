@@ -7,16 +7,16 @@ import Select from "react-select";
 import { selectIngredient } from "./selectStyles";
 import UnitInput from "../UnitInput/UnitInput";
 
-const RecipeIngredientsFields = () => {
-  const [fields, setFields] = useState([]);
-  const [ingredients, setIngredients] = useState([]);
+const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
+  // const [fields, setFields] = useState([]);
+  const [dataIngredients, setDataIngredients] = useState([]);
 
   const handleDecreament = () => {
-    setFields((prev) => [...prev.slice(0, prev.length - 1)]);
+    setIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
   };
 
   const handleIncreament = () => {
-    setFields((prev) => [...prev, { id: nanoid() }]);
+    setIngredients((prev) => [...prev, { id: nanoid() }]);
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const RecipeIngredientsFields = () => {
       try {
         const { data } = await fetchAllIngredients();
 
-        setIngredients(data.ingredients);
+        setDataIngredients(data.ingredients);
       } catch (error) {
         console.log(error);
       }
@@ -35,14 +35,24 @@ const RecipeIngredientsFields = () => {
 
   const options = () => {
     const options = [];
-    ingredients.map((ingredient) =>
+    dataIngredients.map((ingredient) =>
       options.push({ label: ingredient.ttl, value: ingredient.ttl })
     );
     return options;
   };
   const remove = async (fieldId) => {
-    const newField = await fields.filter((field) => field.id !== fieldId);
-    setFields(newField);
+    const newField = await ingredients.filter(
+      (ingredient) => ingredient.id !== fieldId
+    );
+    setIngredients(newField);
+  };
+
+  const handleIngr = (index, selectedOption) => {
+    const updateFields = [...ingredients];
+    console.log("updateFields", updateFields);
+    updateFields[index].selectedValue = selectedOption.value;
+    setIngredients(updateFields);
+    console.log("Fields", ingredients[index]);
   };
   return (
     <>
@@ -54,7 +64,7 @@ const RecipeIngredientsFields = () => {
               <use href={sprite + `#icon-Minus`}></use>
             </svg>
           </button>
-          <span className={css.counterFont}>{fields.length}</span>
+          <span className={css.counterFont}>{ingredients.length}</span>
           <button type="button" className={css.btn} onClick={handleIncreament}>
             <svg className={css.icon}>
               <use href={sprite + `#icon-Plus`}></use>
@@ -63,13 +73,22 @@ const RecipeIngredientsFields = () => {
         </div>
       </div>
       <ul className={css.ingredientsList}>
-        {ingredients
-          ? fields.map((field) => (
-              <li key={field.id} className={css.rowItem}>
-                <Select options={options()} styles={selectIngredient} />
+        {dataIngredients
+          ? ingredients.map((ingredient, index) => (
+              <li key={ingredient.id} className={css.rowItem}>
+                <Select
+                  options={options()}
+                  onChange={(selectedOption) =>
+                    handleIngr(index, selectedOption)
+                  }
+                  styles={selectIngredient}
+                />
                 <UnitInput />
 
-                <button className={css.btnX} onClick={() => remove(field.id)}>
+                <button
+                  className={css.btnX}
+                  onClick={() => remove(ingredient.id)}
+                >
                   <svg className={css.iconX}>
                     <use href={sprite + `#icon-X`}></use>
                   </svg>

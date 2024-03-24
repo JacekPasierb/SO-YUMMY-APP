@@ -26,7 +26,10 @@ const AddRecipeForm = () => {
         cookingTime={cookingTime}
         setCookingTime={setCookingTime}
       />
-      <RecipeIngredientsFields />
+      <RecipeIngredientsFields
+        ingredients={ingredients}
+        setIngredients={setIngredients}
+      />
     </form>
   );
 };
