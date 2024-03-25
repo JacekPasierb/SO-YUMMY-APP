@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import css from "./AddRecipeForm.module.css";
 import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptionFields";
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
+import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
 
 const AddRecipeForm = () => {
   const [file, setFile] = useState("");
@@ -10,7 +11,7 @@ const AddRecipeForm = () => {
   const [categoryRecipe, setCategoryRecipe] = useState("");
   const [cookingTime, setCookingTime] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [instructionsRecipe, setInstructionsRecipe] = useState();
+  const [instructionsRecipe, setInstructionsRecipe] = useState("");
 
   return (
     <form>
@@ -29,6 +30,10 @@ const AddRecipeForm = () => {
       <RecipeIngredientsFields
         ingredients={ingredients}
         setIngredients={setIngredients}
+      />
+      <RecipePreparationFields
+        instructionsRecipe={instructionsRecipe}
+        setInstructionsRecipe={setInstructionsRecipe}
       />
     </form>
   );

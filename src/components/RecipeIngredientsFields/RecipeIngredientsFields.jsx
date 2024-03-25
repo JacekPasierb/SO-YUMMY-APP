@@ -83,7 +83,11 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
                   }
                   styles={selectIngredient}
                 />
-                <UnitInput />
+                <UnitInput
+                  ingredients={ingredients}
+                  setIngredients={setIngredients}
+                  index={index}
+                />
 
                 <button
                   className={css.btnX}

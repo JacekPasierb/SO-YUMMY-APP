@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import css from "./UnitInput.module.css";
 import Select from "react-select";
 import { selectUnit } from "../RecipeIngredientsFields/selectStyles";
 
-const UnitInput = () => {
+const UnitInput = ({ ingredients, setIngredients, index }) => {
   const options = [
     { label: "tbs", value: "tbs" },
     { label: "tsp", value: "tsp" },
     { label: "kg", value: "kg" },
     { label: "g", value: "g" },
   ];
+  const [unit, setUnit] = useState("");
+  const [numUnit, setNumUnit] = useState("");
+
+  const handleUnit = (selectedOption) => {
+    setUnit(selectedOption.value);
+  };
+  const handleNumUnit = ({ currentTarget }) => {
+    const num = currentTarget.value;
+    setNumUnit(num);
+  };
+
+  useEffect(() => {
+    const updateFields = [...ingredients];
+    updateFields[index].selectedUnit = `${numUnit} ${unit}`;
+    setIngredients(updateFields);
+  }, [unit, numUnit]);
+
   return (
     <div className={css.unitBox}>
       <input
@@ -17,6 +34,7 @@ const UnitInput = () => {
         min="0"
         max="999"
         className={`${css.inputNum} ${css.noSpinButtons}`}
+        onChange={handleNumUnit}
       />
       <Select
         name="unitOpt"
@@ -24,6 +42,7 @@ const UnitInput = () => {
         styles={selectUnit}
         isSearchable={false}
         defaultValue={[options[0]]}
+        onChange={(selectedOption) => handleUnit(selectedOption)}
       />
     </div>
   );
