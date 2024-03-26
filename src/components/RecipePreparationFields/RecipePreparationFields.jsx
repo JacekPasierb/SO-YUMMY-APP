@@ -21,6 +21,7 @@ const RecipePreparationFields = ({
           resize: "none",
           width: "100%",
           border: "none",
+          outline: "none",
           borderRadius: "6px",
           backgroundColor: "#d9d9d94f",
           padding: "9px 16px",

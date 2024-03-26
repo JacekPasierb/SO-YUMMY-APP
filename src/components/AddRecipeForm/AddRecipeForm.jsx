@@ -13,20 +13,26 @@ const AddRecipeForm = () => {
   const [ingredients, setIngredients] = useState([]);
   const [instructionsRecipe, setInstructionsRecipe] = useState("");
 
+  const dataForm = {
+    file,
+    setFile,
+    titleRecipe,
+    setTitleRecipe,
+    descriptionRecipe,
+    setDescriptionRecipe,
+    categoryRecipe,
+    setCategoryRecipe,
+    cookingTime,
+    setCookingTime,
+    ingredients,
+    setIngredients,
+    instructionsRecipe,
+    setInstructionsRecipe,
+  };
+
   return (
     <form>
-      <RecipeDescriptionFields
-        file={file}
-        setFile={setFile}
-        titleRecipe={titleRecipe}
-        setTitleRecipe={setTitleRecipe}
-        descriptionRecipe={descriptionRecipe}
-        setDescriptionRecipe={setDescriptionRecipe}
-        categoryRecipe={categoryRecipe}
-        setCategoryRecipe={setCategoryRecipe}
-        cookingTime={cookingTime}
-        setCookingTime={setCookingTime}
-      />
+      <RecipeDescriptionFields data={dataForm} />
       <RecipeIngredientsFields
         ingredients={ingredients}
         setIngredients={setIngredients}

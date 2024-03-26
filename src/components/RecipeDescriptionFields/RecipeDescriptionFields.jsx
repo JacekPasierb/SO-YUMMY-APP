@@ -4,6 +4,7 @@ import sprite from "../../assets/icons/sprite.svg";
 import { fetchAllCategories } from "../../API/categoriesAPI";
 
 const RecipeDescriptionFields = ({
+  data,
   file,
   setFile,
   titleRecipe,
@@ -29,24 +30,24 @@ const RecipeDescriptionFields = ({
   const handleFile = ({ currentTarget }) => {
     const { files } = currentTarget;
     const [file] = files;
-    setFile(file);
+    data.setFile(file);
     setPath(URL.createObjectURL(file));
   };
   const handleTitle = ({ currentTarget }) => {
     const title = currentTarget.value;
-    setTitleRecipe(title);
+    data.setTitleRecipe(title);
   };
   const handleChange = ({ currentTarget }) => {
     const about = currentTarget.value;
-    setDescriptionRecipe(about);
+    data.setDescriptionRecipe(about);
   };
   const handleCategory = ({ currentTarget }) => {
     const category = currentTarget.value;
-    setCategoryRecipe(category);
+    data.setCategoryRecipe(category);
   };
   const handleTime = ({ currentTarget }) => {
     const cookingTime = currentTarget.value;
-    setCookingTime(cookingTime);
+    data.setCookingTime(cookingTime);
   };
   useEffect(() => {
     const getCategories = async () => {
@@ -65,7 +66,7 @@ const RecipeDescriptionFields = ({
     <div className={css.recipeDescriptionFieldsBox}>
       <div>
         <label htmlFor="file">
-          {!file ? (
+          {!data.file ? (
             <div className={css.iconBox}>
               <svg className={css.iconAdd}>
                 <use href={sprite + `#icon-add`}></use>
@@ -93,7 +94,7 @@ const RecipeDescriptionFields = ({
           name="title"
           id="title"
           onChange={handleTitle}
-          value={titleRecipe}
+          value={data.titleRecipe}
           placeholder="Enter Item Title"
           className={css.input}
         />
@@ -105,7 +106,7 @@ const RecipeDescriptionFields = ({
           name="about"
           id="about"
           onChange={handleChange}
-          value={descriptionRecipe}
+          value={data.descriptionRecipe}
           placeholder="Enter about recipe"
           className={css.input}
         />
@@ -126,7 +127,7 @@ const RecipeDescriptionFields = ({
           id="cat"
           name="cat"
           onChange={handleCategory}
-          value={categoryRecipe}
+          value={data.categoryRecipe}
           className={css.select}
         >
           {categoriesList.map((category) => (

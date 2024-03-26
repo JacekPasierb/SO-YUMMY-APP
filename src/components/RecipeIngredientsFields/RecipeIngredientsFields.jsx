@@ -8,7 +8,6 @@ import { selectIngredient } from "./selectStyles";
 import UnitInput from "../UnitInput/UnitInput";
 
 const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
-  // const [fields, setFields] = useState([]);
   const [dataIngredients, setDataIngredients] = useState([]);
 
   const handleDecreament = () => {
@@ -49,10 +48,9 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
 
   const handleIngr = (index, selectedOption) => {
     const updateFields = [...ingredients];
-    console.log("updateFields", updateFields);
+
     updateFields[index].selectedValue = selectedOption.value;
     setIngredients(updateFields);
-    console.log("Fields", ingredients[index]);
   };
   return (
     <>
