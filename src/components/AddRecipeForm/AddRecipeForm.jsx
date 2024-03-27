@@ -3,6 +3,7 @@ import css from "./AddRecipeForm.module.css";
 import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptionFields";
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
+import axios from "axios";
 
 const AddRecipeForm = () => {
   const [file, setFile] = useState("");
@@ -29,9 +30,30 @@ const AddRecipeForm = () => {
     instructionsRecipe,
     setInstructionsRecipe,
   };
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("ok");
+    const data = {
+      preview: file,
+      title: titleRecipe,
+      description: descriptionRecipe,
+      category: categoryRecipe,
+      time: cookingTime,
+      ingredients: ingredients,
+      instructions: instructionsRecipe,
+    };
+    try {
+      console.log("try");
+      const red = await axios.post("/api/ownRecipes/add", data);
+      console.log("dodano",red);
+    } catch (error) {
+      console.log("blaednik",error);
+    }
+    
+   
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <RecipeDescriptionFields data={dataForm} />
       <RecipeIngredientsFields
         ingredients={ingredients}

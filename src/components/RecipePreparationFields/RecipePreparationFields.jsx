@@ -28,6 +28,7 @@ const RecipePreparationFields = ({
         }}
         onChange={handleArea}
       />
+      <button type="submit" className={css.btn}>Add</button>
     </>
   );
 };
