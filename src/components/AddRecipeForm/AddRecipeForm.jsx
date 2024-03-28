@@ -5,6 +5,12 @@ import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredient
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
 import axios from "axios";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
+import { useSelector } from "react-redux";
+import {
+  selectOwnRecipes,
+  selectPopularRecipes,
+  selectRecipeById,
+} from "../../redux/recipes/selectors";
 
 const AddRecipeForm = () => {
   const [file, setFile] = useState("");
@@ -55,22 +61,23 @@ const AddRecipeForm = () => {
       console.log("frf", ingre);
 
       const measure = ingredient.selectedUnit;
-      ingredientConvert.push({ ref: ingre[0], measure: measure });
+      ingredientConvert.push({ id: ingre[0], measure: measure });
     });
     console.log("nowa ing", ingredientConvert);
     const body = {
-      preview: file, // this problem
+      preview: "file", // this problem
       title: titleRecipe,
       description: descriptionRecipe,
       category: categoryRecipe,
       time: cookingTime,
-      ingredients: ingredientConvert, // this problem
+      ingredients: ingredientConvert, 
       instructions: instructionsRecipe,
     };
     const retur = await axios.post("./api/ownRecipes/add", body);
 
     console.log("sukces", retur);
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <RecipeDescriptionFields data={dataForm} />
