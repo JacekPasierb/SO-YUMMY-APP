@@ -75,10 +75,10 @@ setIsLoading(true)
     try {
       console.log("frfrfr");
      alert("co")
-      const response = await axios.post("/api/ownRecipes/picture", formData);
+      const response = await axios.post("/api/ownRecipes/picture");
       alert("nnic")
-      const imageUrl = response.data.secure_url;
-      console.log("IMG",imageUrl);
+      // const imageUrl = response.data.secure_url;
+      // console.log("IMG",imageUrl);
     } catch (error) {
       setIsLoading(false)
     }
@@ -97,7 +97,7 @@ setIsLoading(true)
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
       <RecipeDescriptionFields data={dataForm} />
       <RecipeIngredientsFields
         ingredients={ingredients}
