@@ -73,7 +73,8 @@ setIsLoading(true)
     formData.append("file", file);
     formData.append("upload_preset", "alex_preset");
     try {
-      const response = await axios.post("./api/ownRecipes/picture", formData);
+      console.log("frfrfr");
+      const response = await axios.post("/api/ownRecipes/picture", formData);
       const imageUrl = response.data.secure_url;
       console.log("IMG",imageUrl);
     } catch (error) {
