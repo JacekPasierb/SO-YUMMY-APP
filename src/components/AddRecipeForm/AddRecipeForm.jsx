@@ -23,7 +23,9 @@ const AddRecipeForm = () => {
   const [ingredientsAll, setIngredientsAll] = useState([]);
 
   const[isLoading,setIsLoading]= useState(false);
-
+useEffect(()=>{
+  console.log("file",file);
+},[file,setFile])
   useEffect(() => {
     const getIngredientsAll = async () => {
       const { data } = await fetchAllIngredients();
@@ -70,15 +72,20 @@ const AddRecipeForm = () => {
     console.log("nowa ing", ingredientConvert);
 setIsLoading(true)
     const formData = new FormData();
+    console.log("fuf",file);
     formData.append("file", file);
     formData.append("upload_preset", "alex_preset");
+   
     try {
-      console.log("frfrfr");
+      console.log("frfrfr",formData);
      alert("co")
       const response = await axios.post("/api/ownRecipes/picture", formData);
       alert("nnic")
+      const imageUrl = response.data.secure_url;
+      console.log("im",imageUrl);
       // const imageUrl = response.data.secure_url;
       // console.log("IMG",imageUrl);
+      setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
     }
