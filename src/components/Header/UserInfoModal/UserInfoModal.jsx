@@ -91,8 +91,10 @@ const UserInfoModal = ({ onClose }) => {
               name="avatar"
               onChange={(event) => {
                 const file = event.target.files[0];
+
                 if (file) {
                   const reader = new FileReader();
+
                   reader.onload = (e) => {
                     setImageDataUrl(e.target.result);
 

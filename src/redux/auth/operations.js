@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { setAuthSuccess, setAuthError } from "./authSlice";
 
-
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
 
 // Utility to add JWT
@@ -46,7 +45,6 @@ export const logIn = createAsyncThunk(
         thunkAPI.dispatch(setAuthError("Login failed ⚠"));
         return thunkAPI.rejectWithValue("Login failed ⚠");
       }
-    
     } catch (err) {
       console.error(err.message);
       thunkAPI.dispatch(setAuthError("Login failed ⚠"));
@@ -81,7 +79,6 @@ export const refreshUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-     
       // If there is no token, exit without performing any request
       return thunkAPI.rejectWithValue("Unable to fetch user");
     }
@@ -89,9 +86,9 @@ export const refreshUser = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      
-        const res = await axios.get("/api/users/current");
-     
+
+      const res = await axios.get("/api/users/current");
+
       return res.data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

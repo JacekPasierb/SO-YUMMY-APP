@@ -21,6 +21,9 @@ const AddRecipeForm = () => {
   const [ingredients, setIngredients] = useState([]);
   const [instructionsRecipe, setInstructionsRecipe] = useState("");
   const [ingredientsAll, setIngredientsAll] = useState([]);
+
+  const[isLoading,setIsLoading]= useState(false);
+
   useEffect(() => {
     const getIngredientsAll = async () => {
       const { data } = await fetchAllIngredients();
@@ -49,6 +52,7 @@ const AddRecipeForm = () => {
   useEffect(() => {
     console.log("ing", ingredients);
   }, [ingredients]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let ingredientConvert = [];
@@ -64,18 +68,29 @@ const AddRecipeForm = () => {
       ingredientConvert.push({ id: ingre[0], measure: measure });
     });
     console.log("nowa ing", ingredientConvert);
-    const body = {
-      preview: "file", // this problem
-      title: titleRecipe,
-      description: descriptionRecipe,
-      category: categoryRecipe,
-      time: cookingTime,
-      ingredients: ingredientConvert, 
-      instructions: instructionsRecipe,
-    };
-    const retur = await axios.post("./api/ownRecipes/add", body);
+setIsLoading(true)
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "alex_preset");
+    try {
+      const response = await axios.post("./api/ownRecipes/picture", formData);
+      const imageUrl = response.data.secure_url;
+      console.log("IMG",imageUrl);
+    } catch (error) {
+      setIsLoading(false)
+    }
+    // const body = {
+    //   preview: "file", // this problem
+    //   title: titleRecipe,
+    //   description: descriptionRecipe,
+    //   category: categoryRecipe,
+    //   time: cookingTime,
+    //   ingredients: ingredientConvert, 
+    //   instructions: instructionsRecipe,
+    // };
+    // const retur = await axios.post("./api/ownRecipes/add", body);
 
-    console.log("sukces", retur);
+  
   };
 
   return (
