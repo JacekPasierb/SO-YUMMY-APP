@@ -5,12 +5,6 @@ import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredient
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
 import axios from "axios";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
-import { useSelector } from "react-redux";
-import {
-  selectOwnRecipes,
-  selectPopularRecipes,
-  selectRecipeById,
-} from "../../redux/recipes/selectors";
 
 const AddRecipeForm = () => {
   const [file, setFile] = useState("");
@@ -22,19 +16,18 @@ const AddRecipeForm = () => {
   const [instructionsRecipe, setInstructionsRecipe] = useState("");
   const [ingredientsAll, setIngredientsAll] = useState([]);
 
-  const[isLoading,setIsLoading]= useState(false);
-useEffect(()=>{
-  console.log("file",file);
-},[file,setFile])
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const getIngredientsAll = async () => {
       const { data } = await fetchAllIngredients();
-      console.log("data", data.ingredients);
+
       setIngredientsAll(data.ingredients);
     };
+
     getIngredientsAll();
-    console.log("poka", ingredientsAll);
   }, []);
+
   const dataForm = {
     file,
     setFile,
@@ -51,12 +44,14 @@ useEffect(()=>{
     instructionsRecipe,
     setInstructionsRecipe,
   };
-  useEffect(() => {
-    console.log("ing", ingredients);
-  }, [ingredients]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!file) {
+      console.log("Nie wybrano pliku");
+      return; 
+    }
+
     let ingredientConvert = [];
 
     ingredients.map((ingredient) => {
@@ -64,30 +59,27 @@ useEffect(()=>{
       const ingre = ingredientsAll
         .filter((ing) => ing.ttl === ingredient.selectedValue)
         .map((ing) => ing._id);
-      console.log("frf", ingre);
+      
 
       const measure = ingredient.selectedUnit;
       ingredientConvert.push({ id: ingre[0], measure: measure });
     });
-    console.log("nowa ing", ingredientConvert);
-setIsLoading(true)
+   
+    setIsLoading(true);
     const formData = new FormData();
-    console.log("fuf",file);
     formData.append("file", file);
     formData.append("upload_preset", "alex_preset");
-   
+
     try {
-      console.log("frfrfr",formData);
-     alert("co")
       const response = await axios.post("/api/ownRecipes/picture", formData);
-      alert("nnic")
+      
       const imageUrl = response.data.secure_url;
-      console.log("im",imageUrl);
-      // const imageUrl = response.data.secure_url;
-      // console.log("IMG",imageUrl);
-      setIsLoading(false)
+    
+
+      setIsLoading(false);
     } catch (error) {
-      setIsLoading(false)
+      setIsLoading(false);
+      console.log("Ten błąd 500");
     }
     // const body = {
     //   preview: "file", // this problem
@@ -95,12 +87,10 @@ setIsLoading(true)
     //   description: descriptionRecipe,
     //   category: categoryRecipe,
     //   time: cookingTime,
-    //   ingredients: ingredientConvert, 
+    //   ingredients: ingredientConvert,
     //   instructions: instructionsRecipe,
     // };
     // const retur = await axios.post("./api/ownRecipes/add", body);
-
-  
   };
 
   return (
