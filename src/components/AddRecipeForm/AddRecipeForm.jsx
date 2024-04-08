@@ -5,6 +5,7 @@ import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredient
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
 import axios from "axios";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
+import { toast } from "react-toastify";
 
 const AddRecipeForm = () => {
   const [file, setFile] = useState("");
@@ -47,24 +48,57 @@ const AddRecipeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!file) {
-      console.log("Nie wybrano pliku");
-      return; 
-    }
 
     let ingredientConvert = [];
 
     ingredients.map((ingredient) => {
-      console.log("Składniki z przepisu", ingredient);
       const ingre = ingredientsAll
         .filter((ing) => ing.ttl === ingredient.selectedValue)
         .map((ing) => ing._id);
-      
 
       const measure = ingredient.selectedUnit;
       ingredientConvert.push({ id: ingre[0], measure: measure });
     });
-   
+    const inputs = {
+      file,
+      Title: titleRecipe,
+      Description: descriptionRecipe,
+      Category: categoryRecipe,
+      Time: cookingTime,
+      Ingredients: ingredientConvert,
+      Instructions: instructionsRecipe,
+    };
+
+    let ingredientsError = false;
+
+    for (const [key, value] of Object.entries(inputs)) {
+      if (value.length === 0) {
+        toast.error(`Please fill out the following field: ${key}`);
+        break;
+      }
+      if (key === "Ingredients") {
+        for (const v of value) {
+          if (!v.id || !v.measure || v.measure.trim().includes("undefined")) {
+            console.log("skladnik pr", v);
+            toast.error(`Please fill out the following field for ingredient`);
+            ingredientsError = true;
+            break;
+          }
+          console.log("skladnik", v);
+        }
+        if (ingredientsError) {
+          break;
+        }
+      } else if (key === "Instructions") {
+        value.replace(/ +/, " ").trim().length < 50 &&
+          toast.error(`Instructions is too short..`);
+        ingredientsError = true; // musze zrobic zeby jak instrukcja jest za krotki przerwal funkcje handlesubmit i nie pokazywal body w cosole.log
+        break;
+      }
+    }
+    if (ingredientsError) {
+      return;
+    }
     setIsLoading(true);
     const formData = new FormData();
     formData.append("file", file);
@@ -72,10 +106,16 @@ const AddRecipeForm = () => {
 
     try {
       const response = await axios.post("/api/ownRecipes/picture", formData);
-      
-      const imageUrl = response.data.secure_url;
-    
 
+      const imageUrl = response.data.secure_url;
+
+      const body = {
+        ...inputs,
+        imageUrl,
+        thumb: imageUrl,
+        preview: imageUrl,
+      };
+      console.log("body", body);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);

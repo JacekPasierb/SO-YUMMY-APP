@@ -10,8 +10,8 @@ const UnitInput = ({ ingredients, setIngredients, index }) => {
     { label: "kg", value: "kg" },
     { label: "g", value: "g" },
   ];
-  const [unit, setUnit] = useState("");
-  const [numUnit, setNumUnit] = useState("");
+  const [unit, setUnit] = useState("tbs");
+  const [numUnit, setNumUnit] = useState(0);
 
   const handleUnit = (selectedOption) => {
     setUnit(selectedOption.value);
@@ -33,6 +33,7 @@ const UnitInput = ({ ingredients, setIngredients, index }) => {
         type="number"
         min="0"
         max="999"
+        value={numUnit}
         className={`${css.inputNum} ${css.noSpinButtons}`}
         onChange={handleNumUnit}
       />
@@ -41,7 +42,8 @@ const UnitInput = ({ ingredients, setIngredients, index }) => {
         options={options}
         styles={selectUnit}
         isSearchable={false}
-        defaultValue={[options[0]]}
+       defaultValue={options[0]}
+       
         onChange={(selectedOption) => handleUnit(selectedOption)}
       />
     </div>

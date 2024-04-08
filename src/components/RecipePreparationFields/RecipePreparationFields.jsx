@@ -8,7 +8,7 @@ const RecipePreparationFields = ({
   const handleArea = ({ currentTarget }) => {
     const text = currentTarget.value;
 
-    setInstructionsRecipe(text);
+    setInstructionsRecipe(text.replace(/ +/, " ").trim());
   };
   return (
     <>

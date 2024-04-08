@@ -30,9 +30,11 @@ const RecipeDescriptionFields = ({
   const handleFile = ({ currentTarget }) => {
     const { files } = currentTarget;
     const [file] = files;
+
     data.setFile(file);
     setPath(URL.createObjectURL(file));
   };
+
   const handleTitle = ({ currentTarget }) => {
     const title = currentTarget.value;
     data.setTitleRecipe(title);
@@ -130,6 +132,9 @@ const RecipeDescriptionFields = ({
           value={data.categoryRecipe}
           className={css.select}
         >
+          <option value="" disabled>
+            Please choose category
+          </option>
           {categoriesList.map((category) => (
             <option value={category} key={category}>
               {category}
@@ -152,9 +157,13 @@ const RecipeDescriptionFields = ({
         <select
           id="time"
           name="time"
+          value={data.cookingTime}
           onChange={handleTime}
           className={css.select}
         >
+          <option value="" disabled>
+            Please choose time
+          </option>
           {timeOptionsList().map((t) => (
             <option value={t.value} key={t.label}>
               {t.label}
