@@ -110,6 +110,11 @@ const AddRecipeForm = () => {
         preview: imageUrl,
       };
       console.log("body", body);
+      const addRecipe = await axios.post("./api/ownRecipes/add", body);
+      if (addRecipe) {
+        
+        toast.success("Recipe added successfully");
+      }
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -124,7 +129,7 @@ const AddRecipeForm = () => {
     //   ingredients: ingredientConvert,
     //   instructions: instructionsRecipe,
     // };
-    // const retur = await axios.post("./api/ownRecipes/add", body);
+ 
   };
 
   return (
