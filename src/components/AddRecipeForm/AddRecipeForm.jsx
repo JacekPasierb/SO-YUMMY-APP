@@ -59,6 +59,7 @@ const AddRecipeForm = () => {
       const measure = ingredient.selectedUnit;
       ingredientConvert.push({ id: ingre[0], measure: measure });
     });
+
     const inputs = {
       file,
       Title: titleRecipe,
@@ -69,36 +70,29 @@ const AddRecipeForm = () => {
       Instructions: instructionsRecipe,
     };
 
-    let ingredientsError = false;
-
     for (const [key, value] of Object.entries(inputs)) {
       if (value.length === 0) {
         toast.error(`Please fill out the following field: ${key}`);
-        break;
+
+        return;
       }
+
       if (key === "Ingredients") {
         for (const v of value) {
           if (!v.id || !v.measure || v.measure.trim().includes("undefined")) {
-            console.log("skladnik pr", v);
             toast.error(`Please fill out the following field for ingredient`);
-            ingredientsError = true;
-            break;
+
+            return;
           }
-          console.log("skladnik", v);
-        }
-        if (ingredientsError) {
-          break;
         }
       } else if (key === "Instructions") {
-        value.replace(/ +/, " ").trim().length < 50 &&
+        if (value.replace(/ +/, " ").trim().length < 50) {
           toast.error(`Instructions is too short..`);
-        ingredientsError = true; // musze zrobic zeby jak instrukcja jest za krotki przerwal funkcje handlesubmit i nie pokazywal body w cosole.log
-        break;
+          return;
+        }
       }
     }
-    if (ingredientsError) {
-      return;
-    }
+
     setIsLoading(true);
     const formData = new FormData();
     formData.append("file", file);
