@@ -6,6 +6,7 @@ import RecipePreparationFields from "../RecipePreparationFields/RecipePreparatio
 import axios from "axios";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
 import { toast } from "react-toastify";
+import { ClimbingBoxLoader } from "react-spinners";
 
 const AddRecipeForm = () => {
   const [file, setFile] = useState("");
@@ -28,7 +29,15 @@ const AddRecipeForm = () => {
 
     getIngredientsAll();
   }, []);
-
+  const resetForm = () => {
+    setFile();
+    setTitleRecipe("");
+    setDescriptionRecipe("");
+    setCategoryRecipe("");
+    setCookingTime("");
+    setIngredients([]);
+    setInstructionsRecipe("");
+  };
   const dataForm = {
     file,
     setFile,
@@ -112,38 +121,36 @@ const AddRecipeForm = () => {
       console.log("body", body);
       const addRecipe = await axios.post("./api/ownRecipes/add", body);
       if (addRecipe) {
-        
+        resetForm();
         toast.success("Recipe added successfully");
       }
-      setIsLoading(false);
     } catch (error) {
+      console.error(error);
+    } finally {
       setIsLoading(false);
-      console.log("Ten błąd 500");
     }
-    // const body = {
-    //   preview: "file", // this problem
-    //   title: titleRecipe,
-    //   description: descriptionRecipe,
-    //   category: categoryRecipe,
-    //   time: cookingTime,
-    //   ingredients: ingredientConvert,
-    //   instructions: instructionsRecipe,
-    // };
- 
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <RecipeDescriptionFields data={dataForm} />
-      <RecipeIngredientsFields
-        ingredients={ingredients}
-        setIngredients={setIngredients}
-      />
-      <RecipePreparationFields
-        instructionsRecipe={instructionsRecipe}
-        setInstructionsRecipe={setInstructionsRecipe}
-      />
-    </form>
+    <>
+      {isLoading ? (
+        <div className={css.boxLoader}>
+          <ClimbingBoxLoader color="#8BAA36" />
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <RecipeDescriptionFields data={dataForm} />
+          <RecipeIngredientsFields
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+          />
+          <RecipePreparationFields
+            instructionsRecipe={instructionsRecipe}
+            setInstructionsRecipe={setInstructionsRecipe}
+          />
+        </form>
+      )}
+    </>
   );
 };
 

@@ -79,6 +79,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients }) => {
                   onChange={(selectedOption) =>
                     handleIngr(index, selectedOption)
                   }
+                  
                   styles={selectIngredient}
                 />
                 <UnitInput
