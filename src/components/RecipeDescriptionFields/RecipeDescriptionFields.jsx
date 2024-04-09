@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import css from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { fetchAllCategories } from "../../API/categoriesAPI";
+import { toast } from "react-toastify";
 
 const RecipeDescriptionFields = ({
   data,
@@ -16,7 +17,6 @@ const RecipeDescriptionFields = ({
   cookingTime,
   setCookingTime,
 }) => {
-  // const [file, setFile] = useState();
   const [path, setPath] = useState("");
   const [categoriesList, setCategoriesList] = useState([]);
 
@@ -31,6 +31,23 @@ const RecipeDescriptionFields = ({
     const { files } = currentTarget;
     const [file] = files;
 
+    let allowedImageTypes = ["image/jpeg", "image/jpg", "image/png"];
+
+    if (!file || !allowedImageTypes.includes(file.type)) {
+      toast.error("Wrong file type. Please, choose different image type", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
+      data.setFile(null);
+      return;
+    }
     data.setFile(file);
     setPath(URL.createObjectURL(file));
   };
