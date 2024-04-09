@@ -62,12 +62,12 @@ const AddRecipeForm = () => {
 
     const inputs = {
       file,
-      Title: titleRecipe,
-      Description: descriptionRecipe,
-      Category: categoryRecipe,
-      Time: cookingTime,
-      Ingredients: ingredientConvert,
-      Instructions: instructionsRecipe,
+      title: titleRecipe,
+      description: descriptionRecipe,
+      category: categoryRecipe,
+      time: cookingTime,
+      ingredients: ingredientConvert,
+      instructions: instructionsRecipe,
     };
 
     for (const [key, value] of Object.entries(inputs)) {
@@ -77,7 +77,7 @@ const AddRecipeForm = () => {
         return;
       }
 
-      if (key === "Ingredients") {
+      if (key === "ingredients") {
         for (const v of value) {
           if (!v.id || !v.measure || v.measure.trim().includes("undefined")) {
             toast.error(`Please fill out the following field for ingredient`);
@@ -85,7 +85,7 @@ const AddRecipeForm = () => {
             return;
           }
         }
-      } else if (key === "Instructions") {
+      } else if (key === "instructions") {
         if (value.replace(/ +/, " ").trim().length < 50) {
           toast.error(`Instructions is too short..`);
           return;
