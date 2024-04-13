@@ -1,16 +1,26 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Route, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import PropTypes from "prop-types";
+import React, { FC, useEffect } from "react";
 
-const RestrictedRoute: React.FC = ({ component: Component, redirectTo = "/" }) => {
+interface RestrictedRouteProps {
+  component:  React.ReactNode;
+  redirectTo?: string;
+}
+
+const RestrictedRoute: FC<RestrictedRouteProps> = ({
+  component: Component,
+  redirectTo = "/",
+}) => {
   const { isLoggedIn } = useAuth();
-console.log("res zalogowany", isLoggedIn);
-  return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
-};
+  console.log("res zalogowany", isLoggedIn);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate(redirectTo);
+    }
+  }, [isLoggedIn, navigate, redirectTo]);
 
-RestrictedRoute.propTypes = {
-  component: PropTypes.any.isRequired,
-  redirectTo: PropTypes.string,
+  return !isLoggedIn ? <Route element={<Component />} /> : null;
 };
 
 export default RestrictedRoute;

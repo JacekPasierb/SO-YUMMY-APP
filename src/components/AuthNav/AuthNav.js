@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import css from "./";
+import css from "./AuthNav.module.css";
 const AuthNav = () => {
     return (React.createElement(React.Fragment, null,
         React.createElement("nav", { className: css.navigation },

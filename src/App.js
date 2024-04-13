@@ -24,10 +24,10 @@ const App = () => {
     const { pathname } = location;
     useEffect(() => {
         dispatch(refreshUser());
-    }, [dispatch]);
+    }, []);
     const theme = useSelector(selectTheme);
     useEffect(() => {
-        document.body.className = theme === "light" ? null : "dark-theme";
+        document.body.className = theme === "light" ? "light" : "dark-theme";
     }, [theme]);
     return isRefreshing ? (React.createElement(Loader, null)) : (React.createElement(React.Fragment, null,
         React.createElement(Routes, null,

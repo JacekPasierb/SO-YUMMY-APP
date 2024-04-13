@@ -5,11 +5,12 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "strict": true,
+    "strictNullChecks": true,
     "typeRoots": ["./node_modules/@types"],
-    "jsx": "react",
-    
-   
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "types": ["react"],
+   "allowUmdGlobalAccess":false
   },
   "include": ["./", ".module.css"]
-
 }

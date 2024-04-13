@@ -1,13 +1,15 @@
-import { Navigate } from "react-router-dom";
+import { Route, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import PropTypes from "prop-types";
-const RestrictedRoute = ({ component: Component, redirectTo = "/" }) => {
+import { useEffect } from "react";
+const RestrictedRoute = ({ component: Component, redirectTo = "/", }) => {
     const { isLoggedIn } = useAuth();
     console.log("res zalogowany", isLoggedIn);
-    return isLoggedIn ? React.createElement(Navigate, { to: redirectTo }) : Component;
-};
-RestrictedRoute.propTypes = {
-    component: PropTypes.any.isRequired,
-    redirectTo: PropTypes.string,
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate(redirectTo);
+        }
+    }, [isLoggedIn, navigate, redirectTo]);
+    return !isLoggedIn ? React.createElement(Route, { element: React.createElement(Component, null) }) : null;
 };
 export default RestrictedRoute;

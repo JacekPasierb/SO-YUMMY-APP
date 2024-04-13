@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Navigate, Route, Routes, redirect, useLocation } from "react-router";
+
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import SigninPage from "./Pages/SigninPage/SigninPage";
@@ -19,20 +19,22 @@ import Layout from "./components/Layout/Layout";
 import RecipePage from "./Pages/RecipePage/RecipePage";
 import AddRecipePage from "./Pages/AddRecipePage/AddRecipePage";
 import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
+import { AppDispatch } from "./redux/store";
+import { Route, Routes, useLocation } from "react-router-dom";
 
-const App = () => {
-  const dispatch = useDispatch();
+const App: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
   const location = useLocation();
   const { pathname } = location;
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
+  }, []);
   const theme = useSelector(selectTheme);
 
   useEffect(() => {
-    document.body.className = theme === "light" ? null : "dark-theme";
+    document.body.className = theme === "light" ? "light" : "dark-theme";
   }, [theme]);
 
   return isRefreshing ? (
