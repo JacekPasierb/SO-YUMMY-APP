@@ -1,7 +1,8 @@
+import { jsx as _jsx } from "react/jsx-runtime";
 import { Route, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useEffect } from "react";
-const RestrictedRoute = ({ component: Component, redirectTo = "/", }) => {
+const RestrictedRoute = ({ component, redirectTo = "/", }) => {
     const { isLoggedIn } = useAuth();
     console.log("res zalogowany", isLoggedIn);
     const navigate = useNavigate();
@@ -10,6 +11,6 @@ const RestrictedRoute = ({ component: Component, redirectTo = "/", }) => {
             navigate(redirectTo);
         }
     }, [isLoggedIn, navigate, redirectTo]);
-    return !isLoggedIn ? React.createElement(Route, { element: React.createElement(Component, null) }) : null;
+    return !isLoggedIn ? _jsx(Route, { element: component }) : null;
 };
 export default RestrictedRoute;

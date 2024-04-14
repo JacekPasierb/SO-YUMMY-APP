@@ -1,12 +1,8 @@
-import React from "react";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import css from "./FavoritesPage.module.css";
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/MainTitle";
 const FavoritesPage = () => {
-    return (React.createElement(React.Fragment, null,
-        React.createElement(Header, null),
-        React.createElement("main", { className: css.background },
-            React.createElement("div", { className: `${css.container} ${css.flex}` },
-                React.createElement(MainTitle, { title: "Favorites" })))));
+    return (_jsxs(_Fragment, { children: [_jsx(Header, {}), _jsx("main", { className: css.background, children: _jsx("div", { className: `${css.container} ${css.flex}`, children: _jsx(MainTitle, { title: "Favorites" }) }) })] }));
 };
 export default FavoritesPage;

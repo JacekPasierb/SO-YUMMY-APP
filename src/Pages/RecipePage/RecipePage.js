@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import css from "./RecipePage.module.css";
@@ -17,12 +18,6 @@ const RecipePage = () => {
         dispatch(getRecipeById(recipeId));
     }, [dispatch, recipeId]);
     const { ingredients, thumb, instructions, preview } = recipe;
-    return (React.createElement(React.Fragment, null, isLoading ? (React.createElement("p", null, "Loading recipe...")) : (recipe && (React.createElement("main", null,
-        React.createElement("section", { className: css.receipePage },
-            React.createElement(Header, null),
-            React.createElement("div", { className: css.container },
-                React.createElement(ReceipePageHero, { recipe: recipe }))),
-        React.createElement(RecipeInngredientsList, { ingredients: ingredients }),
-        React.createElement(RecipePreparation, { img: preview, instructions: instructions }))))));
+    return (_jsx(_Fragment, { children: isLoading ? (_jsx("p", { children: "Loading recipe..." })) : (recipe && (_jsxs("main", { children: [_jsxs("section", { className: css.receipePage, children: [_jsx(Header, {}), _jsx("div", { className: css.container, children: _jsx(ReceipePageHero, { recipe: recipe }) })] }), _jsx(RecipeInngredientsList, { ingredients: ingredients }), _jsx(RecipePreparation, { img: preview, instructions: instructions })] }))) }));
 };
 export default RecipePage;

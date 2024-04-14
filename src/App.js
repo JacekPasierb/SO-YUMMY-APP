@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { useEffect } from "react";
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import SigninPage from "./Pages/SigninPage/SigninPage";
@@ -17,6 +17,7 @@ import CategoriesByName from "./components/CategoriesByName/CategoriesByName";
 import RecipePage from "./Pages/RecipePage/RecipePage";
 import AddRecipePage from "./Pages/AddRecipePage/AddRecipePage";
 import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
+import { Route, Routes, useLocation } from "react-router-dom";
 const App = () => {
     const dispatch = useDispatch();
     const isRefreshing = useSelector(selectIsRefreshing);
@@ -29,20 +30,6 @@ const App = () => {
     useEffect(() => {
         document.body.className = theme === "light" ? "light" : "dark-theme";
     }, [theme]);
-    return isRefreshing ? (React.createElement(Loader, null)) : (React.createElement(React.Fragment, null,
-        React.createElement(Routes, null,
-            React.createElement(Route, { path: "/welcome", element: React.createElement(RestrictedRoute, { redirectTo: "/", component: React.createElement(WelcomePage, null) }) }),
-            React.createElement(Route, { path: "/register", element: React.createElement(RestrictedRoute, { redirectTo: "/", component: React.createElement(RegisterPage, null) }) }),
-            React.createElement(Route, { path: "/signin", element: React.createElement(RestrictedRoute, { redirectTo: "/", component: React.createElement(SigninPage, null) }) }),
-            React.createElement(Route, { path: "/", element: React.createElement(PrivateRoute, { component: React.createElement(SharedLayout, null) }) },
-                React.createElement(Route, { index: true, element: React.createElement(PrivateRoute, { component: React.createElement(MainPage, null) }) }),
-                React.createElement(Route, { path: "/categories", element: React.createElement(PrivateRoute, { component: React.createElement(CategoriesPage, null) }) },
-                    React.createElement(Route, { path: ":categoryName", element: React.createElement(CategoriesByName, null) })),
-                React.createElement(Route, { path: "/favorite", element: React.createElement(PrivateRoute, { component: React.createElement(FavoritesPage, null) }) }),
-                React.createElement(Route, { path: "/my", element: React.createElement(PrivateRoute, { component: "" }) }),
-                React.createElement(Route, { path: "/add", element: React.createElement(PrivateRoute, { component: React.createElement(AddRecipePage, null) }) }),
-                React.createElement(Route, { path: "/recipe/:recipeId", element: React.createElement(PrivateRoute, { component: React.createElement(RecipePage, null) }) }),
-                React.createElement(Route, { path: "/search", element: React.createElement(PrivateRoute, { component: "" }) }),
-                React.createElement(Route, { path: "/shopping-list", element: React.createElement(PrivateRoute, { component: "" }) })))));
+    return isRefreshing ? (_jsx(Loader, {})) : (_jsx(_Fragment, { children: _jsxs(Routes, { children: [_jsx(Route, { path: "/welcome", element: _jsx(RestrictedRoute, { redirectTo: "/", component: _jsx(WelcomePage, {}) }) }), _jsx(Route, { path: "/register", element: _jsx(RestrictedRoute, { redirectTo: "/", component: _jsx(RegisterPage, {}) }) }), _jsx(Route, { path: "/signin", element: _jsx(RestrictedRoute, { redirectTo: "/", component: _jsx(SigninPage, {}) }) }), _jsxs(Route, { path: "/", element: _jsx(PrivateRoute, { component: _jsx(SharedLayout, {}) }), children: [_jsx(Route, { index: true, element: _jsx(PrivateRoute, { component: _jsx(MainPage, {}) }) }), _jsx(Route, { path: "/categories", element: _jsx(PrivateRoute, { component: _jsx(CategoriesPage, {}) }), children: _jsx(Route, { path: ":categoryName", element: _jsx(CategoriesByName, {}) }) }), _jsx(Route, { path: "/favorite", element: _jsx(PrivateRoute, { component: _jsx(FavoritesPage, {}) }) }), _jsx(Route, { path: "/my", element: _jsx(PrivateRoute, { component: "" }) }), _jsx(Route, { path: "/add", element: _jsx(PrivateRoute, { component: _jsx(AddRecipePage, {}) }) }), _jsx(Route, { path: "/recipe/:recipeId", element: _jsx(PrivateRoute, { component: _jsx(RecipePage, {}) }) }), _jsx(Route, { path: "/search", element: _jsx(PrivateRoute, { component: "" }) }), _jsx(Route, { path: "/shopping-list", element: _jsx(PrivateRoute, { component: "" }) })] })] }) }));
 };
 export default App;

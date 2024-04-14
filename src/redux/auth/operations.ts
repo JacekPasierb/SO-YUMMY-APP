@@ -96,7 +96,13 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-export const updateUser = createAsyncThunk(
+
+interface UserData {
+  name: string;
+  avatar: string;
+}
+
+export const updateUser = createAsyncThunk<void, UserData>(
   "auth/updateUser",
   async (userData, thunkAPI) => {
     try {
@@ -107,7 +113,7 @@ export const updateUser = createAsyncThunk(
       // ponieważ token jest już przechowywany w nagłówku po zalogowaniu.
 
       return res.data.data;
-    } catch (error) {
+    } catch (error:any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }

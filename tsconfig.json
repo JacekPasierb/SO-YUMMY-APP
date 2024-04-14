@@ -12,5 +12,5 @@
     "types": ["react"],
    "allowUmdGlobalAccess":false
   },
-  "include": ["./", ".module.css"]
+  "include": ["./", ".module.css",  "src/assets/icons/sprite.d.ts"]
 }

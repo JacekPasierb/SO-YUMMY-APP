@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../../components/Header/Header.jsx";
+import Header from "../../components/Header/Header";
 import css from "./AddRecipePage.module.css";
-import MainTitle from "../../components/MainTitle/MainTitle.jsx";
-import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm.jsx";
-import FollowUs from "../../components/FollowUs/FollowUs.jsx";
-import PopularRecipe from "../../components/PopularRecipe/PopularRecipe.jsx";
+import MainTitle from "../../components/MainTitle/MainTitle";
+import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
+import FollowUs from "../../components/FollowUs/FollowUs";
+import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
 
 const AddRecipePage = () => {
   return (

@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
+import { useEffect } from "react";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import css from "./CategoriesByName.module.css";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategoryRecipes, selectIsLoading, selectTotalRecipes, } from "../../redux/recipes/selectors";
 import { getCategoryRecipes } from "../../redux/recipes/operations";
@@ -29,14 +29,11 @@ const CategoriesByName = () => {
         else {
             category = categoryName;
         }
-        dispatch(getCategoryRecipes({ category, currentPage }));
+        const request = { category, page: currentPage };
+        dispatch(getCategoryRecipes(request));
     }, [dispatch, categoryName, currentPage]);
-    return (React.createElement(React.Fragment, null,
-        isLoading ? (React.createElement("p", null, "Loading recipes...")) : (recipes && (React.createElement("ul", { className: css.recipesList }, recipes.map((recipe) => {
-            return (React.createElement("li", { key: `${recipe._id}`, className: css.recipesListItem },
-                React.createElement(NavLink, { to: `/recipe/${recipe._id}` },
-                    React.createElement(CardRecipe, { dish: recipe }))));
-        })))),
-        React.createElement(BasicPagination, { count: Math.ceil(totalRecipes / 8), page: currentPage, onPageChange: handlePageChange })));
+    return (_jsxs(_Fragment, { children: [isLoading ? (_jsx("p", { children: "Loading recipes..." })) : (recipes && (_jsx("ul", { className: css.recipesList, children: recipes.map((recipe) => {
+                    return (_jsx("li", { className: css.recipesListItem, children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardRecipe, { dish: recipe }) }) }, `${recipe._id}`));
+                }) }))), _jsx(BasicPagination, { count: Math.ceil(totalRecipes / 8), page: currentPage, onPageChange: handlePageChange })] }));
 };
 export default CategoriesByName;

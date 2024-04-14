@@ -1,16 +1,10 @@
-import React from "react";
-import Header from "../../components/Header/Header.jsx";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import Header from "../../components/Header/Header";
 import css from "./AddRecipePage.module.css";
-import MainTitle from "../../components/MainTitle/MainTitle.jsx";
-import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm.jsx";
-import PopularRecipe from "../../components/PopularRecipe/PopularRecipe.jsx";
+import MainTitle from "../../components/MainTitle/MainTitle";
+import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
+import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
 const AddRecipePage = () => {
-    return (React.createElement(React.Fragment, null,
-        React.createElement("main", { className: css.background },
-            React.createElement(Header, null),
-            React.createElement("div", { className: `${css.container} ${css.flex}` },
-                React.createElement(MainTitle, { title: "Add recipe" }),
-                React.createElement(AddRecipeForm, null),
-                React.createElement(PopularRecipe, null)))));
+    return (_jsx(_Fragment, { children: _jsxs("main", { className: css.background, children: [_jsx(Header, {}), _jsxs("div", { className: `${css.container} ${css.flex}`, children: [_jsx(MainTitle, { title: "Add recipe" }), _jsx(AddRecipeForm, {}), _jsx(PopularRecipe, {})] })] }) }));
 };
 export default AddRecipePage;

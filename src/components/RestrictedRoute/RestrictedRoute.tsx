@@ -8,7 +8,7 @@ interface RestrictedRouteProps {
 }
 
 const RestrictedRoute: FC<RestrictedRouteProps> = ({
-  component: Component,
+  component,
   redirectTo = "/",
 }) => {
   const { isLoggedIn } = useAuth();
@@ -20,7 +20,7 @@ const RestrictedRoute: FC<RestrictedRouteProps> = ({
     }
   }, [isLoggedIn, navigate, redirectTo]);
 
-  return !isLoggedIn ? <Route element={<Component />} /> : null;
+  return !isLoggedIn ? <Route element={component} /> : null;
 };
 
 export default RestrictedRoute;

@@ -1,4 +1,4 @@
-import React from "react";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import css from "./MainPage.module.css";
 import Search from "../../components/Search/Search";
 import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYourBreakfast";
@@ -9,47 +9,10 @@ import ButtonOtherCategories from "../../components/ButtonOtherCategories/Button
 import AppTitle from "../../components/AppTitle/AppTitle";
 import AppDescription from "../../components/AppDescription/AppDescription";
 const MainPage = () => {
-    return (React.createElement(Media, { queries: {
+    return (_jsx(Media, { queries: {
             small: "(max-width: 767px)",
             medium: "(min-width: 768px) and (max-width: 1199px)",
             large: "(min-width: 1200px)",
-        } }, (matches) => (React.createElement(React.Fragment, null,
-        matches.small && (React.createElement(React.Fragment, null,
-            React.createElement(Header, null),
-            React.createElement("main", { className: css.background },
-                React.createElement("div", { className: `${css.container} ${css.mainPageBox}` },
-                    React.createElement(AppTitle, null),
-                    React.createElement(AppDescription, null),
-                    React.createElement(ChooseYourBreakfast, null),
-                    React.createElement(Search, null))),
-            React.createElement("div", { className: `${css.container} ${css.sectionBox}` },
-                React.createElement(PreviewsCategories, null),
-                React.createElement(ButtonOtherCategories, { text: "Other categories" })))),
-        matches.medium && (React.createElement(React.Fragment, null,
-            React.createElement("main", { className: css.background },
-                React.createElement(Header, null),
-                React.createElement("div", { className: `${css.container} ${css.mainPageBox}` },
-                    React.createElement("div", { className: css.flexMed },
-                        React.createElement("div", null,
-                            React.createElement(AppTitle, null),
-                            React.createElement(AppDescription, null),
-                            React.createElement(Search, null)),
-                        React.createElement(ChooseYourBreakfast, null)))),
-            React.createElement("div", { className: `${css.container} ${css.sectionBox}` },
-                React.createElement(PreviewsCategories, null),
-                React.createElement(ButtonOtherCategories, { text: "Other categories" })))),
-        matches.large && (React.createElement(React.Fragment, null,
-            React.createElement("main", { className: css.background },
-                React.createElement(Header, null),
-                React.createElement("div", { className: `${css.container} ${css.mainPageBox}` },
-                    React.createElement("div", { className: css.flexMed },
-                        React.createElement("div", null,
-                            React.createElement(AppTitle, null),
-                            React.createElement(AppDescription, null),
-                            React.createElement(Search, null)),
-                        React.createElement(ChooseYourBreakfast, null)))),
-            React.createElement("div", { className: `${css.container} ${css.mainPageBox}` },
-                React.createElement(PreviewsCategories, null),
-                React.createElement(ButtonOtherCategories, { text: "Other categories" }))))))));
+        }, children: (matches) => (_jsxs(_Fragment, { children: [matches.small && (_jsxs(_Fragment, { children: [_jsx(Header, {}), _jsx("main", { className: css.background, children: _jsxs("div", { className: `${css.container} ${css.mainPageBox}`, children: [_jsx(AppTitle, {}), _jsx(AppDescription, {}), _jsx(ChooseYourBreakfast, {}), _jsx(Search, {})] }) }), _jsxs("div", { className: `${css.container} ${css.sectionBox}`, children: [_jsx(PreviewsCategories, {}), _jsx(ButtonOtherCategories, { text: "Other categories" })] })] })), matches.medium && (_jsxs(_Fragment, { children: [_jsxs("main", { className: css.background, children: [_jsx(Header, {}), _jsx("div", { className: `${css.container} ${css.mainPageBox}`, children: _jsxs("div", { className: css.flexMed, children: [_jsxs("div", { children: [_jsx(AppTitle, {}), _jsx(AppDescription, {}), _jsx(Search, {})] }), _jsx(ChooseYourBreakfast, {})] }) })] }), _jsxs("div", { className: `${css.container} ${css.sectionBox}`, children: [_jsx(PreviewsCategories, {}), _jsx(ButtonOtherCategories, { text: "Other categories" })] })] })), matches.large && (_jsxs(_Fragment, { children: [_jsxs("main", { className: css.background, children: [_jsx(Header, {}), _jsx("div", { className: `${css.container} ${css.mainPageBox}`, children: _jsxs("div", { className: css.flexMed, children: [_jsxs("div", { children: [_jsx(AppTitle, {}), _jsx(AppDescription, {}), _jsx(Search, {})] }), _jsx(ChooseYourBreakfast, {})] }) })] }), _jsxs("div", { className: `${css.container} ${css.mainPageBox}`, children: [_jsx(PreviewsCategories, {}), _jsx(ButtonOtherCategories, { text: "Other categories" })] })] }))] })) }));
 };
 export default MainPage;

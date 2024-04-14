@@ -1,3 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Suspense, useEffect } from "react";
 import css from "./CategoriesPage.module.css";
 import { Outlet } from "react-router";
@@ -8,12 +9,6 @@ const CategoriesPage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    return (React.createElement("main", { className: css.background },
-        React.createElement(Header, null),
-        React.createElement("div", { className: `${css.container} ${css.flex}` },
-            React.createElement(MainTitle, { title: "Categories" }),
-            React.createElement(CategoriesNav, null),
-            React.createElement(Suspense, null,
-                React.createElement(Outlet, null)))));
+    return (_jsxs("main", { className: css.background, children: [_jsx(Header, {}), _jsxs("div", { className: `${css.container} ${css.flex}`, children: [_jsx(MainTitle, { title: "Categories" }), _jsx(CategoriesNav, {}), _jsx(Suspense, { children: _jsx(Outlet, {}) })] })] }));
 };
 export default CategoriesPage;
