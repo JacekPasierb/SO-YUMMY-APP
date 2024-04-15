@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import css from "./AddRecipeForm.module.css";
 import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptionFields";
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
@@ -13,20 +13,24 @@ interface Ingredient {
   measure: string;
 }
 
+export interface Ing {
+  id: string;
+  selectedValue?: string;
+  selectedUnit:string;
+}
+
 interface IngredientData {
   _id: string;
   ttl: string;
 }
 
-const AddRecipeForm = () => {
+const AddRecipeForm:FC = () => {
   const [file, setFile] = useState("");
   const [titleRecipe, setTitleRecipe] = useState("");
   const [descriptionRecipe, setDescriptionRecipe] = useState("");
   const [categoryRecipe, setCategoryRecipe] = useState("");
   const [cookingTime, setCookingTime] = useState("");
-  const [ingredients, setIngredients] = useState<
-    {  selectedValue: string; selectedUnit: string }[]
-  >([]);
+  const [ingredients, setIngredients] = useState<Ing[]>([]);
   const [instructionsRecipe, setInstructionsRecipe] = useState("");
   const [ingredientsAll, setIngredientsAll] = useState<IngredientData[]>([]);
 

@@ -6,18 +6,23 @@ import { nanoid } from "@reduxjs/toolkit";
 import Select from "react-select";
 import { selectIngredient } from "./selectStyles";
 import UnitInput from "../UnitInput/UnitInput";
-
+import { Ing } from "../AddRecipeForm/AddRecipeForm";
 interface Ingredient {
   id: string;
   selectedValue?: string;
 }
 
-interface RecipeIngredientsProps {
+interface RecipeIngredientsFieldsProps {
   ingredients: Ingredient[];
-  setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>;
+  setIngredients: React.Dispatch<React.SetStateAction<Ing[]>>;
 }
 
-const RecipeIngredientsFields: FC<RecipeIngredientsProps> = ({
+interface Option {
+  label: string;
+  value: string;
+}
+
+const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   ingredients,
   setIngredients,
 }) => {
@@ -46,13 +51,13 @@ const RecipeIngredientsFields: FC<RecipeIngredientsProps> = ({
   }, []);
 
   const options = () => {
-    const options = [];
+    const options: Option[] = [];
     dataIngredients.map((ingredient) =>
       options.push({ label: ingredient.ttl, value: ingredient.ttl })
     );
     return options;
   };
-  const remove = async (fieldId) => {
+  const remove = async (fieldId: string) => {
     const newField = await ingredients.filter(
       (ingredient) => ingredient.id !== fieldId
     );
