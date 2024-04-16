@@ -2,16 +2,24 @@ import { Tab, Tabs } from "@mui/material";
 
 import React, { useEffect, useState } from "react";
 import css from "./CategoriesNav.module.css";
-import { useNavigate, useParams } from "react-router";
+
 import { fetchAllCategories } from "../../API/categoriesAPI";
+import { useNavigate, useParams } from "react-router-dom";
+
+interface Category {
+  _id: string;
+  title: string;
+  thumb: string;
+  description: string;
+}
 
 const CategoriesNav = () => {
   const navigate = useNavigate();
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
-  const [categoriesList, setCategoriesList] = useState([]);
+  const [categoriesList, setCategoriesList] = useState<Category[]>([]);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event:React.SyntheticEvent, newValue:number) => {
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
@@ -31,7 +39,7 @@ const CategoriesNav = () => {
   useEffect(() => {
     if (categoryName) {
       const idxActivCat = categoriesList.findIndex(
-        (cat) => cat.toLowerCase() === categoryName.toLowerCase()
+        (cat) => cat.title.toLowerCase() === categoryName.toLowerCase()
       );
 
       if (idxActivCat === -1) {
@@ -74,7 +82,7 @@ const CategoriesNav = () => {
         {categoriesList.map((cat, idx) => {
           return (
             <Tab
-              label={cat}
+              label={cat.title}
               key={idx}
               sx={{
                 padding: "0",

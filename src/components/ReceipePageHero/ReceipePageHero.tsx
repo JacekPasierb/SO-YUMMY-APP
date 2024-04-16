@@ -5,7 +5,14 @@ import sprite from "../../assets/icons/sprite.svg";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 
-const ReceipePageHero = ({ recipe }) => {
+interface Recipe {
+  title: string;
+  description: string;
+  time: string;
+
+}
+
+const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
   const { title, description, time } = recipe;
   const { id: userId } = useSelector(selectUser);
 

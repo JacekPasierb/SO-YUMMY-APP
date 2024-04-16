@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+
 import { fetchRecipeById } from "../../API/recipesAPI";
 import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import css from "./RecipePage.module.css";
@@ -12,10 +12,12 @@ import {
   selectRecipeById,
 } from "../../redux/recipes/selectors";
 import { getRecipeById } from "../../redux/recipes/operations";
+import { useParams } from "react-router-dom";
+import { AppDispatch } from "src/redux/store";
 const RecipePage = () => {
   const { recipeId } = useParams();
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const recipe = useSelector(selectRecipeById);
   const isLoading = useSelector(selectIsLoading);
 

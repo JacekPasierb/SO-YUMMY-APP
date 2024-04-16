@@ -1,9 +1,10 @@
 import { Suspense, useEffect } from "react";
 import css from "./CategoriesPage.module.css";
-import { Outlet } from "react-router";
+
 import CategoriesNav from "../../components/CategoriesNav/CategoriesNav";
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/MainTitle";
+import { Outlet } from "react-router-dom";
 
 const CategoriesPage = () => {
   useEffect(() => {

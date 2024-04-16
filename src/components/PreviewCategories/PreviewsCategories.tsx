@@ -11,12 +11,32 @@ import {
   selectPopularRecipes,
 } from "../../redux/recipes/selectors";
 import TitleCategories from "../TitleCategories/TitleCategories";
+import { AppDispatch } from "src/redux/store";
+
+interface Recipe {
+  _id: string;
+  title: string;
+  category: string;
+  area: string;
+  instructions: string;
+  description: string;
+  thumb: string;
+  preview: string;
+  time: string;
+  favorites: any[];
+  youtube: string;
+  tags: string[];
+  createdAt: Date;
+  updatedAt: Date;
+  ingredients: any[];
+}
 
 const PreviewsCategories = () => {
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesctop = useMediaQuery("(min-width:1200px)");
-  const dispatch = useDispatch();
-  const recipesByMainCategory = useSelector(selectPopularRecipes);
+  const dispatch: AppDispatch = useDispatch();
+  const recipesByMainCategory: { [key: string]: Recipe[] } =
+    useSelector(selectPopularRecipes);
   const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
@@ -46,15 +66,19 @@ const PreviewsCategories = () => {
               >
                 <TitleCategories categories={categories} />
                 <ul className={css.recipesList}>
-                  {recipes.map((recipe) => {
-                    return (
-                      <li key={`${recipe._id}`} className={css.recipesListItem}>
-                        <NavLink to={`/recipe/${recipe._id}`}>
-                          <CardRecipe dish={recipe} />
-                        </NavLink>
-                      </li>
-                    );
-                  })}
+                  {recipes &&
+                    recipes.map((recipe: any) => {
+                      return (
+                        <li
+                          key={`${recipe._id}`}
+                          className={css.recipesListItem}
+                        >
+                          <NavLink to={`/recipe/${recipe._id}`}>
+                            <CardRecipe dish={recipe} />
+                          </NavLink>
+                        </li>
+                      );
+                    })}
                 </ul>
                 <NavLink
                   to={`/categories/${

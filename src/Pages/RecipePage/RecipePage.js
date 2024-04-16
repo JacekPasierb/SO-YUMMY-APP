@@ -1,6 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { useEffect } from "react";
-import { useParams } from "react-router";
 import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import css from "./RecipePage.module.css";
 import Header from "../../components/Header/Header";
@@ -9,6 +8,7 @@ import RecipePreparation from "../../components/RecipePreparation/RecipePreparat
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoading, selectRecipeById, } from "../../redux/recipes/selectors";
 import { getRecipeById } from "../../redux/recipes/operations";
+import { useParams } from "react-router-dom";
 const RecipePage = () => {
     const { recipeId } = useParams();
     const dispatch = useDispatch();
