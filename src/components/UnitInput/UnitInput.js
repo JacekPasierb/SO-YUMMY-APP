@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import css from "./UnitInput.module.css";
 import Select from "react-select";
 import { selectUnit } from "../RecipeIngredientsFields/selectStyles";
-const UnitInput = ({ ingredients, setIngredients, index }) => {
+const UnitInput = ({ ingredients, setIngredients, index, }) => {
     const options = [
         { label: "tbs", value: "tbs" },
         { label: "tsp", value: "tsp" },

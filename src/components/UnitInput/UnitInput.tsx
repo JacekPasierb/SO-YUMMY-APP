@@ -1,9 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import css from "./UnitInput.module.css";
 import Select from "react-select";
 import { selectUnit } from "../RecipeIngredientsFields/selectStyles";
+import { Ing } from "../AddRecipeForm/AddRecipeForm";
 
-const UnitInput = ({ ingredients, setIngredients, index }) => {
+interface UnitInputProps {
+  ingredients: Ing[];
+  setIngredients: React.Dispatch<React.SetStateAction<Ing[]>>;
+  index: number;
+}
+
+const UnitInput: FC<UnitInputProps> = ({
+  ingredients,
+  setIngredients,
+  index,
+}) => {
   const options = [
     { label: "tbs", value: "tbs" },
     { label: "tsp", value: "tsp" },
@@ -42,8 +53,7 @@ const UnitInput = ({ ingredients, setIngredients, index }) => {
         options={options}
         styles={selectUnit}
         isSearchable={false}
-       defaultValue={options[0]}
-       
+        defaultValue={options[0]}
         onChange={(selectedOption) => handleUnit(selectedOption)}
       />
     </div>
