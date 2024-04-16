@@ -10,26 +10,31 @@ interface UnitInputProps {
   index: number;
 }
 
+interface Option {
+  label: string;
+  value: string;
+}
+
 const UnitInput: FC<UnitInputProps> = ({
   ingredients,
   setIngredients,
   index,
 }) => {
-  const options = [
+  const options: Option[] = [
     { label: "tbs", value: "tbs" },
     { label: "tsp", value: "tsp" },
     { label: "kg", value: "kg" },
     { label: "g", value: "g" },
   ];
-  const [unit, setUnit] = useState("tbs");
-  const [numUnit, setNumUnit] = useState(0);
+  const [unit, setUnit] = useState<string>(options[0].value);
+  const [numUnit, setNumUnit] = useState<number>(0);
 
-  const handleUnit = (selectedOption) => {
+  const handleUnit = (selectedOption: Option) => {
     setUnit(selectedOption.value);
   };
-  const handleNumUnit = ({ currentTarget }) => {
-    const num = currentTarget.value;
-    setNumUnit(num);
+  const handleNumUnit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const num = event.currentTarget.value;
+    setNumUnit(parseInt(num, 10));
   };
 
   useEffect(() => {
@@ -54,7 +59,11 @@ const UnitInput: FC<UnitInputProps> = ({
         styles={selectUnit}
         isSearchable={false}
         defaultValue={options[0]}
-        onChange={(selectedOption) => handleUnit(selectedOption)}
+        onChange={(selectedOption) => {
+          if (selectedOption !== null) {
+            handleUnit(selectedOption);
+          }
+        }}
       />
     </div>
   );

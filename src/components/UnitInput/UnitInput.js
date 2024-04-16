@@ -10,20 +10,24 @@ const UnitInput = ({ ingredients, setIngredients, index, }) => {
         { label: "kg", value: "kg" },
         { label: "g", value: "g" },
     ];
-    const [unit, setUnit] = useState("tbs");
+    const [unit, setUnit] = useState(options[0].value);
     const [numUnit, setNumUnit] = useState(0);
     const handleUnit = (selectedOption) => {
         setUnit(selectedOption.value);
     };
-    const handleNumUnit = ({ currentTarget }) => {
-        const num = currentTarget.value;
-        setNumUnit(num);
+    const handleNumUnit = (event) => {
+        const num = event.currentTarget.value;
+        setNumUnit(parseInt(num, 10));
     };
     useEffect(() => {
         const updateFields = [...ingredients];
         updateFields[index].selectedUnit = `${numUnit} ${unit}`;
         setIngredients(updateFields);
     }, [unit, numUnit]);
-    return (_jsxs("div", { className: css.unitBox, children: [_jsx("input", { type: "number", min: "0", max: "999", value: numUnit, className: `${css.inputNum} ${css.noSpinButtons}`, onChange: handleNumUnit }), _jsx(Select, { name: "unitOpt", options: options, styles: selectUnit, isSearchable: false, defaultValue: options[0], onChange: (selectedOption) => handleUnit(selectedOption) })] }));
+    return (_jsxs("div", { className: css.unitBox, children: [_jsx("input", { type: "number", min: "0", max: "999", value: numUnit, className: `${css.inputNum} ${css.noSpinButtons}`, onChange: handleNumUnit }), _jsx(Select, { name: "unitOpt", options: options, styles: selectUnit, isSearchable: false, defaultValue: options[0], onChange: (selectedOption) => {
+                    if (selectedOption !== null) {
+                        handleUnit(selectedOption);
+                    }
+                } })] }));
 };
 export default UnitInput;
