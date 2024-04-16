@@ -7,13 +7,11 @@ import Select from "react-select";
 import { selectIngredient } from "./selectStyles";
 import UnitInput from "../UnitInput/UnitInput";
 import { Ing } from "../AddRecipeForm/AddRecipeForm";
-interface Ingredient {
-  id: string;
-  selectedValue?: string;
-}
+
+
 
 interface RecipeIngredientsFieldsProps {
-  ingredients: Ingredient[];
+  ingredients: Ing[];
   setIngredients: React.Dispatch<React.SetStateAction<Ing[]>>;
 }
 
@@ -22,18 +20,26 @@ interface Option {
   value: string;
 }
 
+interface dataIngredient {
+  _id: { $oid: string };
+  ttl: string;
+  desc: string;
+  t: string;
+  thb: string;
+}
+
 const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   ingredients,
   setIngredients,
 }) => {
-  const [dataIngredients, setDataIngredients] = useState([]);
+  const [dataIngredients, setDataIngredients] = useState<dataIngredient[]>([]);
 
   const handleDecreament = () => {
     setIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
   };
 
   const handleIncreament = () => {
-    setIngredients((prev) => [...prev, { id: nanoid() }]);
+    setIngredients((prev) => [...prev, { id: nanoid(), selectedUnit:"" }]);
   };
 
   useEffect(() => {
@@ -64,7 +70,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     setIngredients(newField);
   };
 
-  const handleIngr = (index, selectedOption) => {
+  const handleIngr = (index:number, selectedOption:any) => {
     const updateFields = [...ingredients];
 
     updateFields[index].selectedValue = selectedOption.value;

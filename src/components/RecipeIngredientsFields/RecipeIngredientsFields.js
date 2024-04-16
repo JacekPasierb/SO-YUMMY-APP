@@ -13,7 +13,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, }) => {
         setIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
     };
     const handleIncreament = () => {
-        setIngredients((prev) => [...prev, { id: nanoid() }]);
+        setIngredients((prev) => [...prev, { id: nanoid(), selectedUnit: "" }]);
     };
     useEffect(() => {
         const getIngredients = async () => {

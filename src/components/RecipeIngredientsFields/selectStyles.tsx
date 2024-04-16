@@ -1,29 +1,29 @@
 export const selectIngredient = {
-  valueContainer: (baseStyles, state) => ({
+  valueContainer: (baseStyles:any, state:any) => ({
     ...baseStyles,
 
     ":hover": {
       cursor: "text",
     },
   }),
-  container: (baseStyles) => ({
+  container: (baseStyles:any) => ({
     ...baseStyles,
     flex: "1 1 0%",
     marginRight: "14px",
   }),
-  indicatorsContainer: (baseStyles, state) => ({
+  indicatorsContainer: (baseStyles:any, state:any) => ({
     ...baseStyles,
 
     ":hover": {
       cursor: "pointer",
     },
   }),
-  singleValue: (baseStyles) => ({
+  singleValue: (baseStyles:any) => ({
     ...baseStyles,
     color: "#23262A",
     fontWeight: "normal",
   }),
-  control: (baseStyles, state) => ({
+  control: (baseStyles:any, state:any) => ({
     ...baseStyles,
     backgroundColor: "#d9d9d94f",
     borderRadius: "6px",
@@ -46,7 +46,7 @@ export const selectIngredient = {
     },
   }),
 
-  menuList: (baseStyles, state) => ({
+  menuList: (baseStyles:any, state:any) => ({
     ...baseStyles,
     fontFamily: "inherit",
     fontStyle: "inherit",
@@ -68,12 +68,12 @@ export const selectIngredient = {
       maxHeight: "230px",
     },
   }),
-  placeholder: (baseStyles, state) => ({
+  placeholder: (baseStyles:any, state:any) => ({
     ...baseStyles,
     color: "#00000085",
     fontSize: "14px",
   }),
-  option: (baseStyles, state) => ({
+  option: (baseStyles:any, state:any) => ({
     ...baseStyles,
     color: state.isSelected
       ? state.isFocused
@@ -82,7 +82,7 @@ export const selectIngredient = {
       : "#000000",
     backgroundColor: state.isFocused ? "#8BAA36" : "transparent",
   }),
-  dropdownIndicator: (baseStyles) => ({
+  dropdownIndicator: (baseStyles:any) => ({
     ...baseStyles,
     color: "#8BAA36",
     opacity: 1,
@@ -90,18 +90,18 @@ export const selectIngredient = {
       color: "#8BAA36",
     },
   }),
-  indicatorSeparator: (baseStyles) => ({
+  indicatorSeparator: (baseStyles:any) => ({
     ...baseStyles,
     opacity: 0,
   }),
-  menu: (baseStyles) => ({
+  menu: (baseStyles:any) => ({
     ...baseStyles,
     margin: 0,
   }),
 };
 
 export const selectUnit = {
-  valueContainer: (baseStyles, state) => ({
+  valueContainer: (baseStyles:any, state:any) => ({
     ...baseStyles,
 
     ":hover": {
@@ -109,19 +109,19 @@ export const selectUnit = {
     },
   }),
 
-  indicatorsContainer: (baseStyles, state) => ({
+  indicatorsContainer: (baseStyles:any, state:any) => ({
     ...baseStyles,
 
     ":hover": {
       cursor: "pointer",
     },
   }),
-  singleValue: (baseStyles) => ({
+  singleValue: (baseStyles:any) => ({
     ...baseStyles,
     color: "#23262A",
     fontWeight: "normal",
   }),
-  control: (baseStyles, state) => ({
+  control: (baseStyles:any, state:any) => ({
     ...baseStyles,
     backgroundColor: "transparent",
     borderRadius: "6px",
@@ -144,7 +144,7 @@ export const selectUnit = {
     },
   }),
 
-  menuList: (baseStyles, state) => ({
+  menuList: (baseStyles:any, state:any) => ({
     ...baseStyles,
     fontFamily: "inherit",
     fontStyle: "inherit",
@@ -166,12 +166,12 @@ export const selectUnit = {
       maxHeight: "230px",
     },
   }),
-  placeholder: (baseStyles, state) => ({
+  placeholder: (baseStyles:any, state:any) => ({
     ...baseStyles,
     color: "#00000085",
     fontSize: "14px",
   }),
-  option: (baseStyles, state) => ({
+  option: (baseStyles:any, state:any) => ({
     ...baseStyles,
     color: state.isSelected
       ? state.isFocused
@@ -180,7 +180,7 @@ export const selectUnit = {
       : "#000000",
     backgroundColor: state.isFocused ? "#8BAA36" : "transparent",
   }),
-  dropdownIndicator: (baseStyles) => ({
+  dropdownIndicator: (baseStyles:any) => ({
     ...baseStyles,
     color: "#8BAA36",
     opacity: 1,
@@ -188,11 +188,11 @@ export const selectUnit = {
       color: "#8BAA36",
     },
   }),
-  indicatorSeparator: (baseStyles) => ({
+  indicatorSeparator: (baseStyles:any) => ({
     ...baseStyles,
     opacity: 0,
   }),
-  menu: (baseStyles) => ({
+  menu: (baseStyles:any) => ({
     ...baseStyles,
     margin: 0,
   }),

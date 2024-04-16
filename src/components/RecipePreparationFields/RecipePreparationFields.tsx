@@ -1,12 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import css from "./RecipePreparationFields.module.css";
 
-const RecipePreparationFields = ({
+interface RecipePreparationFieldsProps {
+  instructionsRecipe: string;
+  setInstructionsRecipe: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const RecipePreparationFields: FC<RecipePreparationFieldsProps> = ({
   instructionsRecipe,
   setInstructionsRecipe,
 }) => {
-  const handleArea = ({ currentTarget }) => {
-    const text = currentTarget.value;
+  const handleArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const text = event.currentTarget.value;
 
     setInstructionsRecipe(text.replace(/ +/, " ").trim());
   };
@@ -15,8 +20,8 @@ const RecipePreparationFields = ({
       <h2>Recipe Preparation</h2>
       <textarea
         placeholder="Enter recipe..."
-        rows="10"
-        cols="50"
+        rows={10}
+        cols={50}
         style={{
           resize: "none",
           width: "100%",
@@ -28,7 +33,9 @@ const RecipePreparationFields = ({
         }}
         onChange={handleArea}
       />
-      <button type="submit" className={css.btn}>Add</button>
+      <button type="submit" className={css.btn}>
+        Add
+      </button>
     </>
   );
 };
