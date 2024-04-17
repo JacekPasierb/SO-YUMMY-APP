@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import css from "./RecipeInngredientsList.module.css";
 import {
   fetchAllIngredients,
@@ -6,19 +6,33 @@ import {
 } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
 
-const RecipeInngredientsList = ({ ingredients }) => {
-  const [ingredientsList, setIngredientsList] = useState();
+interface RecipeIngredientsListProps {
+  ingredients: { id: string; measure: string }[];
+}
+
+export interface Ingredient {
+  _id: string;
+  ttl: string;
+  desc: string;
+  thb: string;
+  measure: string;
+}
+
+const RecipeInngredientsList: FC<RecipeIngredientsListProps> = ({
+  ingredients,
+}) => {
+  const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
 
   useEffect(() => {
     const fetchIngredientsData = async () => {
       if (ingredients !== undefined) {
-        const fetchedData = [];
+        const fetchedData: Ingredient[] = [];
         for (const ing of ingredients) {
           const { data } = await fetchIngredientsById(ing.id);
 
           if (data) {
             const ingredient = data.ingredient;
-            const ingredientWithMeasure = {
+            const ingredientWithMeasure:Ingredient = {
               ...ingredient,
               measure: ing.measure,
             };

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import css from "./RecipeInngredientsList.module.css";
 import { fetchIngredientsById, } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
-const RecipeInngredientsList = ({ ingredients }) => {
-    const [ingredientsList, setIngredientsList] = useState();
+const RecipeInngredientsList = ({ ingredients, }) => {
+    const [ingredientsList, setIngredientsList] = useState([]);
     useEffect(() => {
         const fetchIngredientsData = async () => {
             if (ingredients !== undefined) {

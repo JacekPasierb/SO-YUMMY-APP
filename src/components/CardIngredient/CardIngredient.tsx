@@ -1,8 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import css from "./CardIngredient.module.css";
 import { Checkbox } from "@mui/material";
+import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
 
-const CardIngredient = ({ ingredient }) => {
+interface CardIngredientProps {
+  ingredient: Ingredient;
+}
+
+const CardIngredient: FC<CardIngredientProps> = ({ ingredient }) => {
   return (
     <div className={css.ingredientCard}>
       <div className={css.flexHelp}>
@@ -21,11 +26,10 @@ const CardIngredient = ({ ingredient }) => {
         <Checkbox
           sx={{
             color: "#7E7E7E",
-            
-            '&.Mui-checked': {
-              color:"transparent",
-              stroke:"#7E7E7E",
-              
+
+            "&.Mui-checked": {
+              color: "transparent",
+              stroke: "#7E7E7E",
             },
             ".MuiSvgIcon-fontSizeMedium": {
               width: "18px",
