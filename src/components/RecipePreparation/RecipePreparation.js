@@ -1,9 +1,8 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import css from "./RecipePreparation.module.css";
-const RecipePreparation = ({ img, instructions }) => {
-    const [step, setStep] = useState();
+const RecipePreparation = ({ img, instructions, }) => {
+    const [step, setStep] = useState([]);
     useEffect(() => {
         if (instructions) {
             const steps = instructions.split(". ");
@@ -12,9 +11,5 @@ const RecipePreparation = ({ img, instructions }) => {
     }, [instructions]);
     return (_jsxs("div", { className: `${css.container} ${css.flex}`, children: [_jsxs("div", { children: [_jsx("h2", { className: css.titleInstruction, children: "Recipe Preparation" }), _jsx("ul", { className: css.instructionsList, children: step &&
                             step.map((step, index) => (_jsxs("li", { className: `${css.instructionsListItem} `, children: [_jsx("div", { className: css.numbStepBox, children: _jsx("p", { className: css.numbStepText, children: `${index + 1}` }) }), _jsx("p", { className: css.descStep, children: `${step}` })] }, index))) })] }), _jsx("img", { src: img, width: "100%", height: "100%", className: css.recipeImg })] }));
-};
-RecipePreparation.propTypes = {
-    img: PropTypes.string,
-    instructions: PropTypes.string,
 };
 export default RecipePreparation;

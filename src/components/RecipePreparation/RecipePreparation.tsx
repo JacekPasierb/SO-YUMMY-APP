@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React, { FC, useEffect, useState } from "react";
 import css from "./RecipePreparation.module.css";
 
-const RecipePreparation = ({ img, instructions }) => {
-  const [step, setStep] = useState();
+interface RecipePreparationProps {
+  img: string;
+  instructions: string;
+}
+
+const RecipePreparation: FC<RecipePreparationProps> = ({
+  img,
+  instructions,
+}) => {
+  const [step, setStep] = useState<string[]>([]);
 
   useEffect(() => {
     if (instructions) {
       const steps = instructions.split(". ");
-
       setStep(steps);
     }
   }, [instructions]);
@@ -32,11 +38,6 @@ const RecipePreparation = ({ img, instructions }) => {
       <img src={img} width="100%" height="100%" className={css.recipeImg} />
     </div>
   );
-};
-
-RecipePreparation.propTypes = {
-  img: PropTypes.string,
-  instructions: PropTypes.string,
 };
 
 export default RecipePreparation;
