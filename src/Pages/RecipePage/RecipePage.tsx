@@ -23,7 +23,9 @@ const RecipePage = () => {
   const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    dispatch(getRecipeById(recipeId));
+    if (recipeId !== undefined) {
+      dispatch(getRecipeById({ id: recipeId }));
+    }
   }, [dispatch, recipeId]);
 
   const { ingredients, thumb, instructions, preview } = recipe;

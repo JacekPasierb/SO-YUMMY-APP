@@ -15,7 +15,9 @@ const RecipePage = () => {
     const recipe = useSelector(selectRecipeById);
     const isLoading = useSelector(selectIsLoading);
     useEffect(() => {
-        dispatch(getRecipeById(recipeId));
+        if (recipeId !== undefined) {
+            dispatch(getRecipeById({ id: recipeId }));
+        }
     }, [dispatch, recipeId]);
     const { ingredients, thumb, instructions, preview } = recipe;
     return (_jsx(_Fragment, { children: isLoading ? (_jsx("p", { children: "Loading recipe..." })) : (recipe && (_jsxs("main", { children: [_jsxs("section", { className: css.receipePage, children: [_jsx(Header, {}), _jsx("div", { className: css.container, children: _jsx(ReceipePageHero, { recipe: recipe }) })] }), _jsx(RecipeInngredientsList, { ingredients: ingredients }), _jsx(RecipePreparation, { img: preview, instructions: instructions })] }))) }));
