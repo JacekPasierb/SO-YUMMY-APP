@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
 import React, { useState } from "react";
 import { validate } from "./SigninFormValidations";
 import css from "./SigninForm.module.css";
@@ -8,7 +8,7 @@ import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+
 import { logIn } from "../../redux/auth/operations";
 import { selectError } from "../../redux/auth/selectors";
 import { toast } from "react-toastify";
@@ -19,6 +19,8 @@ import logoTablet1x from "../../images/LogoTablet1x.png";
 import logoTablet2x from "../../images/LogoTablet2x.png";
 import logoDesktop1x from "../../images/LogoDesctop1x.png";
 import logoDesktop2x from "../../images/LogoDesctop2x.png";
+import { useNavigate } from "react-router-dom";
+import { AppDispatch } from "src/redux/store";
 
 const SigninForm = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
@@ -34,18 +36,27 @@ const SigninForm = () => {
     // Default image for smaller screens
     logoSrc = isRetina ? logo2x : logo1x;
   }
-  const dispatch = useDispatch();
-  const error = useSelector((state) => state.auth.error);
+  const dispatch: AppDispatch = useDispatch();
+  const error = useSelector(selectError);
   const navigate = useNavigate();
-  const handleSubmit = async (values, { resetForm }) => {
+
+  const handleSubmit = async (
+    values: FormikValues,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     try {
-      const result = await dispatch(logIn(values));
+      const result = await dispatch(
+        logIn({
+          email: values.email,
+          password: values.password,
+        })
+      );
 
       if (logIn.fulfilled.match(result)) {
         resetForm();
         navigate("/");
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err.message);
       dispatch(selectError("Login failed ⚠"));
       toast.error("Failed to log in");

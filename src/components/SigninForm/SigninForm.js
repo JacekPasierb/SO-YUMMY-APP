@@ -6,7 +6,6 @@ import icons from "../../assets/icons/sprite.svg";
 import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
 import { logIn } from "../../redux/auth/operations";
 import { selectError } from "../../redux/auth/selectors";
 import { toast } from "react-toastify";
@@ -17,6 +16,7 @@ import logoTablet1x from "../../images/LogoTablet1x.png";
 import logoTablet2x from "../../images/LogoTablet2x.png";
 import logoDesktop1x from "../../images/LogoDesctop1x.png";
 import logoDesktop2x from "../../images/LogoDesctop2x.png";
+import { useNavigate } from "react-router-dom";
 const SigninForm = () => {
     const isTablet = useMediaQuery("(min-width: 768px)");
     const isDesctop = useMediaQuery("(min-width: 1200px)");
@@ -33,11 +33,14 @@ const SigninForm = () => {
         logoSrc = isRetina ? logo2x : logo1x;
     }
     const dispatch = useDispatch();
-    const error = useSelector((state) => state.auth.error);
+    const error = useSelector(selectError);
     const navigate = useNavigate();
     const handleSubmit = async (values, { resetForm }) => {
         try {
-            const result = await dispatch(logIn(values));
+            const result = await dispatch(logIn({
+                email: values.email,
+                password: values.password,
+            }));
             if (logIn.fulfilled.match(result)) {
                 resetForm();
                 navigate("/");

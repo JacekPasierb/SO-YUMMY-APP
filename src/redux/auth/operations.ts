@@ -13,15 +13,26 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
+interface CredentialsRegister {
+  name: string;
+  email: string;
+  password: string;
+}
+
+interface CredentialsLogin {
+  email: string;
+  password: string;
+}
+
 export const register = createAsyncThunk(
   "auth/register",
-  async (credentials:any, thunkAPI) => {
+  async (credentials: CredentialsRegister, thunkAPI) => {
     try {
       const res = await axios.post("/api/users/register", credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data.data;
-    } catch (error) {
+    } catch (error:any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -32,7 +43,7 @@ export const register = createAsyncThunk(
  */
 export const logIn = createAsyncThunk(
   "auth/logIn",
-  async (credentials, thunkAPI) => {
+  async (credentials: CredentialsLogin, thunkAPI) => {
     try {
       const resp = await axios.post("/api/users/signin", credentials);
       const { token, user } = resp.data.data;
@@ -96,7 +107,6 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-
 interface UserData {
   name: string;
   avatar: string;
@@ -113,7 +123,7 @@ export const updateUser = createAsyncThunk<void, UserData>(
       // ponieważ token jest już przechowywany w nagłówku po zalogowaniu.
 
       return res.data.data;
-    } catch (error:any) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
