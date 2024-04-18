@@ -1,11 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { setAuthSuccess, setAuthError } from "./authSlice";
+import { setAuthSuccess, setAuthError, RootState } from "./authSlice";
+
+
 
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
 
 // Utility to add JWT
-const setAuthHeader = (token) => {
+const setAuthHeader = (token: string | null) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 //Utility to remove JWT
@@ -56,7 +58,7 @@ export const logIn = createAsyncThunk(
         thunkAPI.dispatch(setAuthError("Login failed ⚠"));
         return thunkAPI.rejectWithValue("Login failed ⚠");
       }
-    } catch (err) {
+    } catch (err:any) {
       console.error(err.message);
       thunkAPI.dispatch(setAuthError("Login failed ⚠"));
       return thunkAPI.rejectWithValue("Login failed ⚠");
@@ -73,7 +75,7 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     await axios.patch("/api/users/logout");
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
-  } catch (error) {
+  } catch (error:any) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -86,7 +88,7 @@ export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
     // Reading the token from the state via getState()
-    const state = thunkAPI.getState();
+    const state: any = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
@@ -101,14 +103,14 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.get("/api/users/current");
 
       return res.data.data;
-    } catch (error) {
+    } catch (error:any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 interface UserData {
-  name: string;
+  user: string;
   avatar: string;
 }
 

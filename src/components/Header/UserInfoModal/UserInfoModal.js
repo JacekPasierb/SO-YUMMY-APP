@@ -36,7 +36,7 @@ const UserInfoModal = ({ onClose }) => {
     }, [onClose]);
     const handleSubmit = async (values) => {
         const userData = {
-            name: values.name ? values.name : user.name,
+            user: values.name ? values.name : user.user,
             avatar: values.avatar || user.avatar,
         };
         dispatch(updateUser(userData));

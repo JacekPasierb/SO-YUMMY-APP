@@ -31,7 +31,12 @@ const authSlice = createSlice({
             state.error = null;
         });
         builder.addCase(register.rejected, (state, action) => {
-            state.error = action.payload;
+            if (typeof action.payload === "string") {
+                state.error = action.payload;
+            }
+            else {
+                state.error = "An error occurred during registration";
+            }
         });
         builder.addCase(logIn.fulfilled, (state, action) => {
             state.user = action.payload.user;
@@ -40,10 +45,15 @@ const authSlice = createSlice({
             state.error = null;
         });
         builder.addCase(logIn.rejected, (state, action) => {
-            state.error = action.payload;
+            if (typeof action.payload === "string") {
+                state.error = action.payload;
+            }
+            else {
+                state.error = "An error occurred during login";
+            }
         });
         builder.addCase(logOut.fulfilled, (state) => {
-            state.user = { name: null, email: null };
+            state.user = { user: null, email: null, password: null };
             state.token = null;
             state.isLoggedIn = false;
             state.error = null;
@@ -61,8 +71,14 @@ const authSlice = createSlice({
             state.isLoggedIn = false;
         });
         builder.addCase(updateUser.fulfilled, (state, action) => {
-            // Tutaj możesz zaktualizować stan dla użytkownika po pomyślnej aktualizacji
-            state.user = action.payload;
+            if (action.payload !== undefined && action.payload !== null) {
+                state.user = action.payload;
+                state.error = null;
+            }
+            else {
+                state.user = { user: null, email: null, password: null };
+                state.error = "Payload updateUser is null or undefined";
+            }
         });
         builder.addCase(updateUser.rejected, (state, action) => {
             // Tutaj możesz obsłużyć ewentualne błędy podczas aktualizacji

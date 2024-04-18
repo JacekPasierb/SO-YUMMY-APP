@@ -1,11 +1,13 @@
-export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+import { RootState } from "./authSlice";
 
-export const selectUser = (state) => state.auth.user;
+export const selectIsLoggedIn = (state:RootState) => state.auth.isLoggedIn;
 
-export const selectIsRefreshing = (state) => state.auth.isRefreshing;
+export const selectUser = (state:RootState) => state.auth.user;
 
-export const selectError = (state) => state.auth.error;
+export const selectIsRefreshing = (state:RootState) => state.auth.isRefreshing;
 
-export const selectToken = (state) => state.auth.token;
+export const selectError = (state:RootState) => state.auth.error;
 
-export const selectIsPending = (state) => state.auth.isPending;
+export const selectToken = (state:RootState) => state.auth.token;
+
+export const selectIsPending = (state:RootState) => state.auth.isPending;

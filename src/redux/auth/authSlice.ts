@@ -1,7 +1,20 @@
 import { register, logIn, logOut, refreshUser, updateUser } from "./operations";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+interface AuthState {
+  user: { user: null | any; email: null | string; password: null | string };
+  token: null | any;
+  isLoggedIn: boolean;
+  error: string | null;
+  isAuth: boolean;
+  isRefreshing: boolean;
+}
+export interface RootState {
+  auth: AuthState;
+}
+
+
+const initialState: AuthState = {
   user: { user: null, email: null, password: null },
   token: null,
   isLoggedIn: false,
@@ -14,14 +27,14 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAuthSuccess(state, action) {
+    setAuthSuccess(state, action: PayloadAction<{ user: any; token: any }>) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.error = null;
       state.isAuth = true;
     },
-    setAuthError(state, action) {
+    setAuthError(state, action: PayloadAction<string | null>) {
       state.error = action.payload;
     },
   },
@@ -34,7 +47,11 @@ const authSlice = createSlice({
     });
 
     builder.addCase(register.rejected, (state, action) => {
-      state.error = action.payload;
+      if (typeof action.payload === "string") {
+        state.error = action.payload;
+      } else {
+        state.error = "An error occurred during registration";
+      }
     });
 
     builder.addCase(logIn.fulfilled, (state, action) => {
@@ -45,11 +62,15 @@ const authSlice = createSlice({
     });
 
     builder.addCase(logIn.rejected, (state, action) => {
-      state.error = action.payload;
+      if (typeof action.payload === "string") {
+        state.error = action.payload;
+      } else {
+        state.error = "An error occurred during login";
+      }
     });
 
     builder.addCase(logOut.fulfilled, (state) => {
-      state.user = { name: null, email: null };
+      state.user = { user: null, email: null, password: null };
       state.token = null;
       state.isLoggedIn = false;
       state.error = null;
@@ -68,8 +89,13 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     });
     builder.addCase(updateUser.fulfilled, (state, action) => {
-      // Tutaj możesz zaktualizować stan dla użytkownika po pomyślnej aktualizacji
-      state.user = action.payload;
+      if (action.payload !== undefined && action.payload !== null) {
+        state.user = action.payload;
+        state.error = null;
+      } else {
+        state.user = { user: null, email: null, password: null };
+        state.error = "Payload updateUser is null or undefined";
+      }
     });
     builder.addCase(updateUser.rejected, (state, action) => {
       // Tutaj możesz obsłużyć ewentualne błędy podczas aktualizacji

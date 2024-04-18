@@ -17,15 +17,19 @@ export const DEFAULT_AVATAR =
 interface UserInfoModalRequest {
   onClose: () => void;
 }
-interface UserData {
-  name: string;
-  avatar: string;
+
+interface Data {
+  isLoggedIn: boolean;
+  isRefreshing: boolean;
+  user: any; 
+  token:any;
 }
+
 const UserInfoModal: FC<UserInfoModalRequest> = ({ onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const dispatch: AppDispatch = useDispatch();
-  const { user } = useAuth();
+  const { user }:Data = useAuth();
   const [imageDataUrl, setImageDataUrl] = useState(user.avatar);
 
   useEffect(() => {
@@ -52,10 +56,13 @@ const UserInfoModal: FC<UserInfoModalRequest> = ({ onClose }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [onClose]);
-
+  interface UserData {
+    user: string;
+    avatar: string;
+  }
   const handleSubmit = async (values: FormikValues) => {
     const userData: UserData = {
-      name: values.name ? values.name : user.name,
+      user: values.name ? values.name : user.user,
       avatar: values.avatar || user.avatar,
     };
     dispatch(updateUser(userData));
