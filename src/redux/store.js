@@ -10,9 +10,10 @@ const authPersistConfig = {
     storage,
     whitelist: ["token"],
 };
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 export const store = configureStore({
     reducer: {
-        auth: persistReducer(authPersistConfig, authReducer),
+        auth: persistedAuthReducer,
         recipes: recipesReducer,
         global: globalReducer,
     },

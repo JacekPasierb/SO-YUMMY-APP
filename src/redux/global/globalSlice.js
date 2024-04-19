@@ -27,5 +27,5 @@ export const globalSlice = createSlice({
         },
     },
 });
-export const { setIsModalLogoutOpen, setIsUserLogoModalOpen, setIsUserInfoModalOpen, setIsLogoutModalOpen, setIsMenuModalOpen, setTheme, } = globalSlice.actions;
+export const { setIsUserLogoModalOpen, setIsUserInfoModalOpen, setIsLogoutModalOpen, setIsMenuModalOpen, setTheme, } = globalSlice.actions;
 export const globalReducer = globalSlice.reducer;

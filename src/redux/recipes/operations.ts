@@ -81,20 +81,20 @@ interface IngredientByIdRequest {
 }
 
 interface IngredientByIdResponse {
-  recipeById: {};
+  ingredient: {};
 }
 
-export const getIngredientById = createAsyncThunk(
-  "recipes/getIngredientById",
-  async (id, thunkAPI) => {
-    try {
-      const { data } = await axios.get(`./api/ingredients/${id}`);
+export const getIngredientById = createAsyncThunk<
+  IngredientByIdResponse,
+  IngredientByIdRequest
+>("recipes/getIngredientById", async (id, thunkAPI) => {
+  try {
+    const { data } = await axios.get(`./api/ingredients/${id}`);
 
-      return {
-        recipeById: data.data.result,
-      };
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    return {
+      ingredient: data.data.result,
+    };
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});

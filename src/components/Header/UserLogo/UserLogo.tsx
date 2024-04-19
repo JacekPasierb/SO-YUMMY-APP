@@ -30,13 +30,13 @@ const UserLogo = () => {
   return (
     <div className={css.boxAvatar} onClick={handleLogoClick}>
       <img
-        src={user.avatar || DEFAULT_AVATAR}
+        src={user.avatar ? user.avatar : DEFAULT_AVATAR}
         alt="avatar"
         width="34"
         height="34"
         className={css.boxAvatar__avatar}
       />
-      <span className={css.boxAvatar__username}>{user.name}</span>
+      <span className={css.boxAvatar__username}>{user.user}</span>
       {isUserLogoModalOpen && <UserLogoModal />}
     </div>
   );

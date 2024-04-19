@@ -38,7 +38,7 @@ export const getIngredientById = createAsyncThunk("recipes/getIngredientById", a
     try {
         const { data } = await axios.get(`./api/ingredients/${id}`);
         return {
-            recipeById: data.data.result,
+            ingredient: data.data.result,
         };
     }
     catch (error) {

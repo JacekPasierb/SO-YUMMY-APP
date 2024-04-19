@@ -10,4 +10,4 @@ export const selectError = (state:RootState) => state.auth.error;
 
 export const selectToken = (state:RootState) => state.auth.token;
 
-export const selectIsPending = (state:RootState) => state.auth.isPending;
+

@@ -25,6 +25,6 @@ const ThemeToggler = () => {
         const saveTheme = localStorage.getItem("theme") || "light";
         dispatch(setTheme(saveTheme));
     }, []);
-    return (_jsx(Formik, { initialValues: theme, onSubmit: () => { }, children: _jsx(Form, { children: _jsxs("label", { className: css.switch, children: [_jsx(Field, { type: "checkbox", name: "theme", value: theme, checked: theme === "dark", onChange: handleChange, className: css.switchInput }), _jsx("span", { className: css.switchSlider })] }) }) }));
+    return (_jsx(Formik, { initialValues: { theme: theme }, onSubmit: () => { }, children: _jsx(Form, { children: _jsxs("label", { className: css.switch, children: [_jsx(Field, { type: "checkbox", name: "theme", value: theme, checked: theme === "dark", onChange: handleChange, className: css.switchInput }), _jsx("span", { className: css.switchSlider })] }) }) }));
 };
 export default ThemeToggler;

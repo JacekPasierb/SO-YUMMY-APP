@@ -1,15 +1,20 @@
-export const selectError = (state) => state.recipes.error;
+import { RootState } from "./recipesSlice";
 
-export const selectIsLoading = (state) => state.recipes.isLoading;
+export const selectError = (state: RootState) => state.recipes.error;
 
-export const selectPopularRecipes = (state) => state.recipes.popularRecipes;
+export const selectIsLoading = (state: RootState) => state.recipes.isLoading;
 
-export const selectCategoryRecipes = (state) => state.recipes.categoryRecipes;
+export const selectPopularRecipes = (state: RootState) =>
+  state.recipes.popularRecipes;
 
-export const selectRecipeById = (state) => state.recipes.recipeById;
+export const selectCategoryRecipes = (state: RootState) =>
+  state.recipes.categoryRecipes;
 
-export const selectIngredient = (state) => state.recipes.ingredient;
+export const selectRecipeById = (state: RootState) => state.recipes.recipeById;
 
-export const selectOwnRecipes = (state) => state.recipes.ownRecipes;
+export const selectIngredient = (state: RootState) => state.recipes.ingredient;
 
-export const selectTotalRecipes = (state) => state.recipes.totalRecipes;
+export const selectOwnRecipes = (state: RootState) => state.recipes.ownRecipes;
+
+export const selectTotalRecipes = (state: RootState) =>
+  state.recipes.totalRecipes;

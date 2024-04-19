@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById } from "./operations";
+import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById, } from "./operations";
 const initialState = {
     isLoading: false,
     popularRecipes: [],
@@ -26,8 +26,11 @@ const recipesSlice = createSlice({
     })
         .addCase(getPopularRecipes.rejected, (state, action) => {
         state.isLoading = false;
-        if (action.payload) {
+        if (typeof action.payload === "string") {
             state.error = action.payload;
+        }
+        else {
+            state.error = "An error occurred during getPopularRecipes";
         }
     })
         .addCase(getCategoryRecipes.fulfilled, (state, action) => {
@@ -42,8 +45,11 @@ const recipesSlice = createSlice({
     })
         .addCase(getCategoryRecipes.rejected, (state, action) => {
         state.isLoading = false;
-        if (action.payload) {
+        if (typeof action.payload === "string") {
             state.error = action.payload;
+        }
+        else {
+            state.error = "An error occurred during getCategoryRecipes";
         }
     })
         .addCase(getRecipeById.fulfilled, (state, action) => {
@@ -57,13 +63,16 @@ const recipesSlice = createSlice({
     })
         .addCase(getRecipeById.rejected, (state, action) => {
         state.isLoading = false;
-        if (action.payload) {
+        if (typeof action.payload === "string") {
             state.error = action.payload;
+        }
+        else {
+            state.error = "An error occurred during getRecipeById";
         }
     })
         .addCase(getIngredientById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.ingredient = action.payload.ingredientById;
+        state.ingredient = action.payload.ingredient;
         state.error = null;
     })
         .addCase(getIngredientById.pending, (state) => {
@@ -72,9 +81,12 @@ const recipesSlice = createSlice({
     })
         .addCase(getIngredientById.rejected, (state, action) => {
         state.isLoading = false;
-        if (action.payload) {
+        if (typeof action.payload === "string") {
             state.error = action.payload;
         }
-    })
+        else {
+            state.error = "An error occurred during getIngredientById";
+        }
+    }),
 });
 export const recipesReducer = recipesSlice.reducer;

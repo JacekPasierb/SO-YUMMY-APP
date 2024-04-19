@@ -1,11 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface GlobalState {
+  isUserLogoModalOpen: boolean;
+  isUserInfoModalOpen: boolean;
+  isLogoutModalOpen: boolean;
+  isMenuModalOpen: boolean;
+  theme: string;
+}
+
+export interface RootState {
+  global: GlobalState;
+}
+
+const initialState: GlobalState = {
   isUserLogoModalOpen: false,
   isUserInfoModalOpen: false,
   isLogoutModalOpen: false,
   isMenuModalOpen: false,
-  theme:"light",
+  theme: "light",
 };
 
 export const globalSlice = createSlice({
@@ -31,7 +43,6 @@ export const globalSlice = createSlice({
 });
 
 export const {
-  setIsModalLogoutOpen,
   setIsUserLogoModalOpen,
   setIsUserInfoModalOpen,
   setIsLogoutModalOpen,

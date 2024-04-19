@@ -27,7 +27,7 @@ const ThemeToggler = () => {
     dispatch(setTheme(saveTheme));
   }, []);
   return (
-    <Formik initialValues={theme} onSubmit={() => {}}>
+    <Formik initialValues={{ theme: theme }} onSubmit={() => {}}>
       <Form>
         <label className={css.switch}>
           <Field

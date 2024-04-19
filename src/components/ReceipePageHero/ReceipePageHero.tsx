@@ -14,10 +14,9 @@ interface Recipe {
 
 const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
   const { title, description, time } = recipe;
-  const { id: userId } = useSelector(selectUser);
 
-  console.log("id Uzytk", userId);
-  console.log("recipe", recipe);
+
+
   return (
     <div className={css.receipeHeroBox}>
       <MainPageTitle title={title} />

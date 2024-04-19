@@ -48,7 +48,7 @@ const SigninForm = () => {
         }
         catch (err) {
             console.error(err.message);
-            dispatch(selectError("Login failed ⚠"));
+            // dispatch(selectError("Login failed ⚠"));
             toast.error("Failed to log in");
         }
     };

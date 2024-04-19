@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { Reducer, configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -14,6 +14,8 @@ import { authReducer } from "./auth/authSlice";
 import { globalReducer } from "./global/globalSlice";
 import { recipesReducer } from "./recipes/recipesSlice";
 import { useDispatch } from "react-redux";
+import { AuthState } from "./auth/authSlice";
+import { PersistPartial } from "redux-persist/es/persistReducer";
 
 const authPersistConfig = {
   key: "auth",
@@ -21,9 +23,12 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
+const persistedAuthReducer: Reducer<AuthState & PersistPartial> =
+  persistReducer(authPersistConfig, authReducer);
+
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    auth: persistedAuthReducer,
     recipes: recipesReducer,
     global: globalReducer,
   },
@@ -35,6 +40,6 @@ export const store = configureStore({
     }),
 });
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export type RootState = ReturnType<typeof store.getState>;
 export const persistor = persistStore(store);

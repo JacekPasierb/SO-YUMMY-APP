@@ -35,8 +35,7 @@ const PreviewsCategories = () => {
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesctop = useMediaQuery("(min-width:1200px)");
   const dispatch: AppDispatch = useDispatch();
-  const recipesByMainCategory: { [key: string]: Recipe[] } =
-    useSelector(selectPopularRecipes);
+  const recipesByMainCategory = useSelector(selectPopularRecipes);
   const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
