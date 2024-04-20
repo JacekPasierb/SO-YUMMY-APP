@@ -25,9 +25,13 @@ const CategoriesNav = () => {
   };
 
   useEffect(() => {
+    console.log("RLO");
+    
     const getAllCategories = async () => {
       try {
         const { data } = await fetchAllCategories();
+        console.log("dat",data);
+        
         await setCategoriesList(data.catArr);
       } catch (error) {
         console.log(error);
