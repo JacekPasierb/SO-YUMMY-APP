@@ -17,7 +17,6 @@ export const getPopularRecipes = createAsyncThunk<
 >("recipes/getPopularRecipes", async ({ count }, thunkAPI) => {
   try {
     const { data } = await axios.get(`./api/recipes?count=${count}`);
-    console.log("ggg", data.data);
 
     return { popularRecipes: data.data };
   } catch (error: any) {
@@ -64,7 +63,7 @@ interface RecipeByIdResponse {
 export const getRecipeById = createAsyncThunk<
   RecipeByIdResponse,
   RecipeByIdRequest
->("recipes/getRecipeById", async (id, thunkAPI) => {
+>("recipes/getRecipeById", async ({ id }, thunkAPI) => {
   try {
     const { data } = await axios.get(`./api/recipes/${id}`);
 
@@ -87,8 +86,10 @@ interface IngredientByIdResponse {
 export const getIngredientById = createAsyncThunk<
   IngredientByIdResponse,
   IngredientByIdRequest
->("recipes/getIngredientById", async (id, thunkAPI) => {
+>("recipes/getIngredientById", async ({ id }, thunkAPI) => {
   try {
+    console.log("id", id);
+
     const { data } = await axios.get(`./api/ingredients/${id}`);
 
     return {

@@ -31,9 +31,8 @@ const App: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(pathname, { replace: true } ); 
+    navigate(pathname, { replace: true });
   }, [navigate, pathname]);
-
 
   useEffect(() => {
     dispatch(refreshUser());

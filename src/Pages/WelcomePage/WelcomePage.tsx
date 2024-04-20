@@ -5,7 +5,6 @@ import css from "./WelcomePage.module.css";
 import logo from "../../images/logo.png";
 
 const WelcomePage: FC = () => {
-  const screenWidth = window.innerWidth;
   return (
     <div className={css.background}>
       <div className={css.boxContainer}>

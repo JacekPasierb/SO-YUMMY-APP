@@ -4,7 +4,6 @@ axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
 export const getPopularRecipes = createAsyncThunk("recipes/getPopularRecipes", async ({ count }, thunkAPI) => {
     try {
         const { data } = await axios.get(`./api/recipes?count=${count}`);
-        console.log("ggg", data.data);
         return { popularRecipes: data.data };
     }
     catch (error) {
@@ -23,7 +22,7 @@ export const getCategoryRecipes = createAsyncThunk("recipes/getCategoryRecipes",
         return thunkAPI.rejectWithValue(error.message);
     }
 });
-export const getRecipeById = createAsyncThunk("recipes/getRecipeById", async (id, thunkAPI) => {
+export const getRecipeById = createAsyncThunk("recipes/getRecipeById", async ({ id }, thunkAPI) => {
     try {
         const { data } = await axios.get(`./api/recipes/${id}`);
         return {
@@ -34,8 +33,9 @@ export const getRecipeById = createAsyncThunk("recipes/getRecipeById", async (id
         return thunkAPI.rejectWithValue(error.message);
     }
 });
-export const getIngredientById = createAsyncThunk("recipes/getIngredientById", async (id, thunkAPI) => {
+export const getIngredientById = createAsyncThunk("recipes/getIngredientById", async ({ id }, thunkAPI) => {
     try {
+        console.log("id", id);
         const { data } = await axios.get(`./api/ingredients/${id}`);
         return {
             ingredient: data.data.result,
