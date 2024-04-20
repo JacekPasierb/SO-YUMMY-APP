@@ -42,6 +42,8 @@ const CategoriesNav = () => {
 
   useEffect(() => {
     if (categoryName) {
+      console.log("catName",categoryName);
+      
       const idxActivCat = categoriesList.findIndex(
         (cat) => cat.title.toLowerCase() === categoryName.toLowerCase()
       );
