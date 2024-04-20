@@ -41,7 +41,7 @@ const CategoriesNav = () => {
   useEffect(() => {
     if (categoryName && categoriesList) {
       console.log("catName", categoryName);
-      console.log("categortLis", categoriesList);
+      console.log("categortLis1", categoriesList);
 
       const idxActivCat = categoriesList.findIndex(
    

@@ -30,10 +30,8 @@ const CategoriesNav = () => {
     useEffect(() => {
         if (categoryName && categoriesList) {
             console.log("catName", categoryName);
-            console.log("categortLis", categoriesList);
-            const idxActivCat = categoriesList.findIndex((cat) => console.log("popo", cat)
-            // (cat) => cat.title.toLowerCase() === categoryName.toLowerCase()
-            );
+            console.log("categortLis1", categoriesList);
+            const idxActivCat = categoriesList.findIndex((cat) => console.log("ppp", cat.title));
             console.log("idx", idxActivCat);
             if (idxActivCat === -1) {
                 return setValue(0);
