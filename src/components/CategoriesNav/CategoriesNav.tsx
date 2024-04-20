@@ -30,6 +30,7 @@ const CategoriesNav = () => {
     const getAllCategories = async () => {
       try {
         const { data } = await fetchAllCategories();
+    console.log("data",data);
     
         
         await setCategoriesList(data.catArr);
