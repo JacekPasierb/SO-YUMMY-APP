@@ -31,7 +31,7 @@ const App: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(pathname, { replace: true } ); // Ustawiamy ścieżkę URL na bieżącą
+    navigate(pathname, { replace: true } ); 
   }, [navigate, pathname]);
 
 
