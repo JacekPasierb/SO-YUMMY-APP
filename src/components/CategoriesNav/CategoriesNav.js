@@ -19,16 +19,16 @@ const CategoriesNav = () => {
                 const { data } = await fetchAllCategories();
                 console.log("data", data);
                 await setCategoriesList(data.catArr);
-                console.log("S", categoriesList);
             }
             catch (error) {
                 console.log(error);
             }
         };
         getAllCategories();
+        console.log("S", categoriesList);
     }, [categoryName]);
     useEffect(() => {
-        if (categoryName) {
+        if (categoryName && categoriesList) {
             console.log("catName", categoryName);
             console.log("categortLis", categoriesList);
             const idxActivCat = categoriesList.findIndex((cat) => cat.title.toLowerCase() === categoryName.toLowerCase());
