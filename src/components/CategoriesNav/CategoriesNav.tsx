@@ -6,15 +6,11 @@ import css from "./CategoriesNav.module.css";
 import { fetchAllCategories } from "../../API/categoriesAPI";
 import { useNavigate, useParams } from "react-router-dom";
 
-interface Category {
-  title: string;
-}
-
 const CategoriesNav = () => {
   const navigate = useNavigate();
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
-  const [categoriesList, setCategoriesList] = useState<Category[]>([]);
+  const [categoriesList, setCategoriesList] = useState<string[]>([]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     navigate(`/categories/${categoriesList[newValue]}`);
@@ -43,11 +39,7 @@ const CategoriesNav = () => {
       console.log("catName", categoryName);
       console.log("categortLis1", categoriesList);
 
-      const idxActivCat = categoriesList.findIndex(
-   
-        (cat) =>     console.log("ppp",cat.title)
-     
-      );
+      const idxActivCat = categoriesList.indexOf(categoryName);
       console.log("idx", idxActivCat);
 
       if (idxActivCat === -1) {
@@ -91,7 +83,7 @@ const CategoriesNav = () => {
           categoriesList.map((cat, idx) => {
             return (
               <Tab
-                label={cat.title}
+                label={cat}
                 key={idx}
                 sx={{
                   padding: "0",

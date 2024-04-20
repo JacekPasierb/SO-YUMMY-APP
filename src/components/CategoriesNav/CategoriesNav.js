@@ -31,7 +31,7 @@ const CategoriesNav = () => {
         if (categoryName && categoriesList) {
             console.log("catName", categoryName);
             console.log("categortLis1", categoriesList);
-            const idxActivCat = categoriesList.findIndex((cat) => console.log("ppp", cat.title));
+            const idxActivCat = categoriesList.indexOf(categoryName);
             console.log("idx", idxActivCat);
             if (idxActivCat === -1) {
                 return setValue(0);
@@ -59,7 +59,7 @@ const CategoriesNav = () => {
                 },
             }, children: categoriesList &&
                 categoriesList.map((cat, idx) => {
-                    return (_jsx(Tab, { label: cat.title, sx: {
+                    return (_jsx(Tab, { label: cat, sx: {
                             padding: "0",
                             fontSize: "14px",
                             lineHeight: "14px",
