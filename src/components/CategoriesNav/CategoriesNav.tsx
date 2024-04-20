@@ -16,23 +16,21 @@ const CategoriesNav = () => {
   const [value, setValue] = useState(0);
   const [categoriesList, setCategoriesList] = useState<Category[]>([]);
 
-  const handleChange = (event:React.SyntheticEvent, newValue:number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
 
   useEffect(() => {
     console.log("RLO");
-    
+
     const getAllCategories = async () => {
       try {
         const { data } = await fetchAllCategories();
-    console.log("data",data);
-    
-        
+        console.log("data", data);
+
         await setCategoriesList(data.catArr);
-        console.log("S",categoriesList);
-        
+        console.log("S", categoriesList);
       } catch (error) {
         console.log(error);
       }
@@ -42,13 +40,13 @@ const CategoriesNav = () => {
 
   useEffect(() => {
     if (categoryName) {
-      console.log("catName",categoryName);
-      console.log("categortLis",categoriesList);
-      
+      console.log("catName", categoryName);
+      console.log("categortLis", categoriesList);
+
       const idxActivCat = categoriesList.findIndex(
         (cat) => cat.title.toLowerCase() === categoryName.toLowerCase()
       );
-console.log("idx",idxActivCat);
+      console.log("idx", idxActivCat);
 
       if (idxActivCat === -1) {
         return setValue(0);
@@ -87,7 +85,7 @@ console.log("idx",idxActivCat);
           },
         }}
       >
-        {categoriesList.map((cat, idx) => {
+        {categoriesList && categoriesList.map((cat, idx) => {
           return (
             <Tab
               label={cat.title}

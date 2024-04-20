@@ -57,7 +57,7 @@ const CategoriesNav = () => {
                 "& .MuiTabs-flexContainer": {
                     gap: "28px",
                 },
-            }, children: categoriesList.map((cat, idx) => {
+            }, children: categoriesList && categoriesList.map((cat, idx) => {
                 return (_jsx(Tab, { label: cat.title, sx: {
                         padding: "0",
                         fontSize: "14px",
