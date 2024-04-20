@@ -48,6 +48,7 @@ const CategoriesNav = () => {
       const idxActivCat = categoriesList.findIndex(
         (cat) => cat.title.toLowerCase() === categoryName.toLowerCase()
       );
+console.log("idx",idxActivCat);
 
       if (idxActivCat === -1) {
         return setValue(0);
