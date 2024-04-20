@@ -7,10 +7,7 @@ import { fetchAllCategories } from "../../API/categoriesAPI";
 import { useNavigate, useParams } from "react-router-dom";
 
 interface Category {
-  _id: string;
   title: string;
-  thumb: string;
-  description: string;
 }
 
 const CategoriesNav = () => {
