@@ -1,7 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import React, { FC, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-
-import React, { FC } from "react";
 
 interface PrivateRouteProps {
   component: React.ReactNode;
@@ -9,24 +8,15 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute: FC<PrivateRouteProps> = ({
-  component,
+  component:Component,
   redirectTo = "/welcome",
 }) => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const navigate = useNavigate();
 
-  if (isRefreshing) {
-    return <div>Loading...</div>;
-  }
+  const shouldRedirect = !isLoggedIn && !isRefreshing;
 
-  // const shouldRedirect = !isLoggedIn && !isRefreshing;
-  const shouldRedirect = !isLoggedIn;
-  if (shouldRedirect) {
-    navigate(redirectTo);
-    return null; // Możesz zwrócić pusty komponent lub null, ponieważ przekierowanie już się dokonało
-  } else {
-    return component;
-  }
+  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
 };
 
 export default PrivateRoute;

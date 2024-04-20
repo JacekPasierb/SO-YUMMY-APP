@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./RegisterPage.module.css";
-import AuthForm from "src/components/AuthForm/AuthForm";
+import AuthForm from "../../components/AuthForm/AuthForm";
 
 const RegisterPage: React.FC = () => {
   return (

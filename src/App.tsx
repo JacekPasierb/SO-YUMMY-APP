@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import WelcomePage from "./Pages/WelcomePage/WelcomePage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
@@ -20,7 +20,7 @@ import RecipePage from "./Pages/RecipePage/RecipePage";
 import AddRecipePage from "./Pages/AddRecipePage/AddRecipePage";
 import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
 import { AppDispatch } from "./redux/store";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 const App: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -28,9 +28,16 @@ const App: React.FC = () => {
   const location = useLocation();
   const { pathname } = location;
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(pathname, { replace: true } ); // Ustawiamy ścieżkę URL na bieżącą
+  }, [navigate, pathname]);
+
+
   useEffect(() => {
     dispatch(refreshUser());
-  }, []);
+  }, [dispatch]);
   const theme = useSelector(selectTheme);
 
   useEffect(() => {

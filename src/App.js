@@ -17,15 +17,19 @@ import CategoriesByName from "./components/CategoriesByName/CategoriesByName";
 import RecipePage from "./Pages/RecipePage/RecipePage";
 import AddRecipePage from "./Pages/AddRecipePage/AddRecipePage";
 import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 const App = () => {
     const dispatch = useDispatch();
     const isRefreshing = useSelector(selectIsRefreshing);
     const location = useLocation();
     const { pathname } = location;
+    const navigate = useNavigate();
+    useEffect(() => {
+        navigate(pathname, { replace: true }); // Ustawiamy ścieżkę URL na bieżącą
+    }, [navigate, pathname]);
     useEffect(() => {
         dispatch(refreshUser());
-    }, []);
+    }, [dispatch]);
     const theme = useSelector(selectTheme);
     useEffect(() => {
         document.body.className = theme === "light" ? "light" : "dark-theme";
