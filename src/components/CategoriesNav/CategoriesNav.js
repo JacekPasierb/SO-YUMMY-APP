@@ -13,13 +13,10 @@ const CategoriesNav = () => {
         setValue(newValue);
     };
     useEffect(() => {
-        console.log("RLO");
         const getAllCategories = async () => {
             try {
                 const { data } = await fetchAllCategories();
-                console.log("data", data);
                 await setCategoriesList(data.catArr);
-                console.log("S", categoriesList);
             }
             catch (error) {
                 console.log(error);
@@ -29,10 +26,7 @@ const CategoriesNav = () => {
     }, [categoryName]);
     useEffect(() => {
         if (categoryName && categoriesList) {
-            console.log("catName", categoryName);
-            console.log("categortLis1", categoriesList);
             const idxActivCat = categoriesList.indexOf(categoryName);
-            console.log("idx", idxActivCat);
             if (idxActivCat === -1) {
                 return setValue(0);
             }
