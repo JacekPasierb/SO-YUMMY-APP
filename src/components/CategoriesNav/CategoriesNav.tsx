@@ -30,13 +30,12 @@ const CategoriesNav = () => {
         console.log("data", data);
 
         await setCategoriesList(data.catArr);
-       
+        console.log("S", categoriesList);
       } catch (error) {
         console.log(error);
       }
     };
     getAllCategories();
-    console.log("S", categoriesList);
   }, [categoryName]);
 
   useEffect(() => {
@@ -45,7 +44,9 @@ const CategoriesNav = () => {
       console.log("categortLis", categoriesList);
 
       const idxActivCat = categoriesList.findIndex(
-        (cat) => cat.title.toLowerCase() === categoryName.toLowerCase()
+        (cat) => console.log("popo",cat)
+        
+        // (cat) => cat.title.toLowerCase() === categoryName.toLowerCase()
       );
       console.log("idx", idxActivCat);
 
@@ -86,23 +87,24 @@ const CategoriesNav = () => {
           },
         }}
       >
-        {categoriesList && categoriesList.map((cat, idx) => {
-          return (
-            <Tab
-              label={cat.title}
-              key={idx}
-              sx={{
-                padding: "0",
-                fontSize: "14px",
-                lineHeight: "14px",
-                color: "#E0E0E0",
-                "&.Mui-selected": {
-                  color: "#8BAA36",
-                },
-              }}
-            />
-          );
-        })}
+        {categoriesList &&
+          categoriesList.map((cat, idx) => {
+            return (
+              <Tab
+                label={cat.title}
+                key={idx}
+                sx={{
+                  padding: "0",
+                  fontSize: "14px",
+                  lineHeight: "14px",
+                  color: "#E0E0E0",
+                  "&.Mui-selected": {
+                    color: "#8BAA36",
+                  },
+                }}
+              />
+            );
+          })}
       </Tabs>
     </>
   );

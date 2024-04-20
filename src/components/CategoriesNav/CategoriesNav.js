@@ -19,19 +19,21 @@ const CategoriesNav = () => {
                 const { data } = await fetchAllCategories();
                 console.log("data", data);
                 await setCategoriesList(data.catArr);
+                console.log("S", categoriesList);
             }
             catch (error) {
                 console.log(error);
             }
         };
         getAllCategories();
-        console.log("S", categoriesList);
     }, [categoryName]);
     useEffect(() => {
         if (categoryName && categoriesList) {
             console.log("catName", categoryName);
             console.log("categortLis", categoriesList);
-            const idxActivCat = categoriesList.findIndex((cat) => cat.title.toLowerCase() === categoryName.toLowerCase());
+            const idxActivCat = categoriesList.findIndex((cat) => console.log("popo", cat)
+            // (cat) => cat.title.toLowerCase() === categoryName.toLowerCase()
+            );
             console.log("idx", idxActivCat);
             if (idxActivCat === -1) {
                 return setValue(0);
@@ -57,16 +59,17 @@ const CategoriesNav = () => {
                 "& .MuiTabs-flexContainer": {
                     gap: "28px",
                 },
-            }, children: categoriesList && categoriesList.map((cat, idx) => {
-                return (_jsx(Tab, { label: cat.title, sx: {
-                        padding: "0",
-                        fontSize: "14px",
-                        lineHeight: "14px",
-                        color: "#E0E0E0",
-                        "&.Mui-selected": {
-                            color: "#8BAA36",
-                        },
-                    } }, idx));
-            }) }) }));
+            }, children: categoriesList &&
+                categoriesList.map((cat, idx) => {
+                    return (_jsx(Tab, { label: cat.title, sx: {
+                            padding: "0",
+                            fontSize: "14px",
+                            lineHeight: "14px",
+                            color: "#E0E0E0",
+                            "&.Mui-selected": {
+                                color: "#8BAA36",
+                            },
+                        } }, idx));
+                }) }) }));
 };
 export default CategoriesNav;
