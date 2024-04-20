@@ -65,8 +65,12 @@ const PreviewsCategories = () => {
               >
                 <TitleCategories categories={categories} />
                 <ul className={css.recipesList}>
+                 
+                  
                   {recipes &&
                     recipes.map((recipe: any) => {
+                      console.log("re",recipe);
+                      
                       return (
                         <li
                           key={`${recipe._id}`}

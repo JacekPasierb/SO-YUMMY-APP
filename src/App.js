@@ -25,7 +25,7 @@ const App = () => {
     const { pathname } = location;
     const navigate = useNavigate();
     useEffect(() => {
-        navigate(pathname, { replace: true }); // Ustawiamy ścieżkę URL na bieżącą
+        navigate(pathname, { replace: true });
     }, [navigate, pathname]);
     useEffect(() => {
         dispatch(refreshUser());

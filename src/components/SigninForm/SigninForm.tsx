@@ -135,6 +135,7 @@ const SigninForm = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  autoComplete="current-password"
                   className={css.inputRegister}
                   onBlur={() => setFieldTouched("password", true)}
                 />
