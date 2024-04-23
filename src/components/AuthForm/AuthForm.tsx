@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-
-import SigninForm from "../SigninForm/SigninForm";
-import RegisterForm from "../RegisterForm/RegisterForm";
 import css from "./AuthForm.module.css";
+
+import React, { FC, Suspense, lazy } from "react";
 import { Link, useLocation } from "react-router-dom";
-import a from "../../images/backgroundRegister.png";
+
+const SigninForm = lazy(() => import("../SigninForm/SigninForm"));
+const RegisterForm = lazy(() => import("../RegisterForm/RegisterForm"));
 
 const AuthForm: FC = () => {
   const location = useLocation();
@@ -14,7 +14,9 @@ const AuthForm: FC = () => {
     <>
       {pathname === "/register" && (
         <>
-          <RegisterForm />{" "}
+          <Suspense fallback={<div>Loading...</div>}>
+            <RegisterForm />
+          </Suspense>
           <Link className={css.linkForm} to="/signin">
             Sign in
           </Link>
@@ -22,7 +24,9 @@ const AuthForm: FC = () => {
       )}
       {pathname === "/signin" && (
         <>
-          <SigninForm />
+          <Suspense fallback={<div>Loading...</div>}>
+            <SigninForm />
+          </Suspense>
           <Link className={css.linkForm} to="/register">
             Registration
           </Link>
