@@ -1,5 +1,6 @@
-import React, { FC } from "react";
 import css from "./TitleCategories.module.css";
+
+import React, { FC } from "react";
 
 interface TitleCategoriesProps {
   categories: string;

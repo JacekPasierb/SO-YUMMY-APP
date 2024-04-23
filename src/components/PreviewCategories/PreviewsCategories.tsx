@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
 import css from "./PreviewsCategories.module.css";
 
-import { useMediaQuery } from "@react-hook/media-query";
-import CardRecipe from "../CardRecipe/CardRecipe";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
 import { useDispatch, useSelector } from "react-redux";
 import { getPopularRecipes } from "../../redux/recipes/operations";
 import {
   selectIsLoading,
   selectPopularRecipes,
 } from "../../redux/recipes/selectors";
-import TitleCategories from "../TitleCategories/TitleCategories";
 import { AppDispatch } from "src/redux/store";
+
+import CardRecipe from "../CardRecipe/CardRecipe";
+import TitleCategories from "../TitleCategories/TitleCategories";
 
 interface Recipe {
   _id: string;
@@ -32,11 +33,13 @@ interface Recipe {
 }
 
 const PreviewsCategories = () => {
-  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
-  const isDesctop = useMediaQuery("(min-width:1200px)");
   const dispatch: AppDispatch = useDispatch();
+
   const recipesByMainCategory = useSelector(selectPopularRecipes);
   const isLoading = useSelector(selectIsLoading);
+
+  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
+  const isDesctop = useMediaQuery("(min-width:1200px)");
 
   useEffect(() => {
     let count;

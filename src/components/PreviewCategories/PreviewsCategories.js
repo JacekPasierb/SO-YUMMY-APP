@@ -1,19 +1,19 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useEffect } from "react";
 import css from "./PreviewsCategories.module.css";
-import { useMediaQuery } from "@react-hook/media-query";
-import CardRecipe from "../CardRecipe/CardRecipe";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
 import { useDispatch, useSelector } from "react-redux";
 import { getPopularRecipes } from "../../redux/recipes/operations";
 import { selectIsLoading, selectPopularRecipes, } from "../../redux/recipes/selectors";
+import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
 const PreviewsCategories = () => {
-    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
-    const isDesctop = useMediaQuery("(min-width:1200px)");
     const dispatch = useDispatch();
     const recipesByMainCategory = useSelector(selectPopularRecipes);
     const isLoading = useSelector(selectIsLoading);
+    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
+    const isDesctop = useMediaQuery("(min-width:1200px)");
     useEffect(() => {
         let count;
         if (isDesctop) {
