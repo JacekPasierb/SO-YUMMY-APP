@@ -1,34 +1,40 @@
-import React, { useEffect, useState } from "react";
-
-import WelcomePage from "./Pages/WelcomePage/WelcomePage";
-import RegisterPage from "./Pages/RegisterPage/RegisterPage";
-import SigninPage from "./Pages/SigninPage/SigninPage";
-import SharedLayout from "./components/SharedLayout/SharedLayout";
-import MainPage from "./Pages/MainPage/MainPage";
-import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import React, { FC, Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { refreshUser } from "./redux/auth/operations";
-import { useAuth } from "./hooks/useAuth";
-import { selectIsRefreshing } from "./redux/auth/selectors";
-import { Loader } from "./components/Loader/Loader";
-import { selectTheme } from "./redux/global/globalSelectors";
-import CategoriesPage from "./Pages/CategoriesPage/CategoriesPage";
-import CategoriesByName from "./components/CategoriesByName/CategoriesByName";
-import Layout from "./components/Layout/Layout";
-import RecipePage from "./Pages/RecipePage/RecipePage";
-import AddRecipePage from "./Pages/AddRecipePage/AddRecipePage";
-import FavoritesPage from "./Pages/FavoritesPage/FavoritesPage";
-import { AppDispatch } from "./redux/store";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
-const App: React.FC = () => {
+const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
+const RegisterPage = lazy(() => import("./Pages/RegisterPage/RegisterPage"));
+const SigninPage = lazy(() => import("./Pages/SigninPage/SigninPage"));
+const MainPage = lazy(() => import("./Pages/MainPage/MainPage"));
+const CategoriesPage = lazy(
+  () => import("./Pages/CategoriesPage/CategoriesPage")
+);
+const RecipePage = lazy(() => import("./Pages/RecipePage/RecipePage"));
+const AddRecipePage = lazy(() => import("./Pages/AddRecipePage/AddRecipePage"));
+const FavoritesPage = lazy(() => import("./Pages/FavoritesPage/FavoritesPage"));
+
+const SharedLayout = lazy(
+  () => import("./components/SharedLayout/SharedLayout")
+);
+const CategoriesByName = lazy(
+  () => import("./components/CategoriesByName/CategoriesByName")
+);
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { Loader } from "./components/Loader/Loader";
+
+import { AppDispatch } from "./redux/store";
+import { refreshUser } from "./redux/auth/operations";
+import { selectIsRefreshing } from "./redux/auth/selectors";
+import { selectTheme } from "./redux/global/globalSelectors";
+
+const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const isRefreshing = useSelector(selectIsRefreshing);
+  const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
-
-  const navigate = useNavigate();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     navigate(pathname, { replace: true });
@@ -37,7 +43,6 @@ const App: React.FC = () => {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     document.body.className = theme === "light" ? "light" : "dark-theme";
@@ -51,23 +56,55 @@ const App: React.FC = () => {
         <Route
           path="/welcome"
           element={
-            <RestrictedRoute redirectTo="/" component={<WelcomePage />} />
+            <RestrictedRoute
+              redirectTo="/"
+              component={
+                <Suspense fallback={<Loader />}>
+                  <WelcomePage />
+                </Suspense>
+              }
+            />
           }
         />
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+            <RestrictedRoute
+              redirectTo="/"
+              component={
+                <Suspense fallback={<Loader />}>
+                  <RegisterPage />
+                </Suspense>
+              }
+            />
           }
         />
         <Route
           path="/signin"
           element={
-            <RestrictedRoute redirectTo="/" component={<SigninPage />} />
+            <RestrictedRoute
+              redirectTo="/"
+              component={
+                <Suspense fallback={<Loader />}>
+                  <SigninPage />
+                </Suspense>
+              }
+            />
           }
         />
 
-        <Route path="/" element={<PrivateRoute component={<SharedLayout />} />}>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={<Loader />}>
+                  <SharedLayout />
+                </Suspense>
+              }
+            />
+          }
+        >
           <Route index element={<PrivateRoute component={<MainPage />} />} />
           <Route
             path="/categories"

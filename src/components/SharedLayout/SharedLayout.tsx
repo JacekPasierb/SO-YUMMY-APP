@@ -1,15 +1,17 @@
-import React from "react";
-import Header from "../Header/Header";
-
-import Footer from "../Footer/Footer";
 import css from "./SharedLayout.module.css";
-import Copyrights from "../Copyrights/Copyrights";
+
+import React, { FC, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
-const SharedLayout: React.FC = () => {
+import Footer from "../Footer/Footer";
+import Copyrights from "../Copyrights/Copyrights";
+
+const SharedLayout: FC = () => {
   return (
     <div className={css.bg}>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
       <Footer />
       <Copyrights />
     </div>
