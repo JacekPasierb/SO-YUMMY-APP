@@ -1,14 +1,14 @@
-import React from "react";
 import css from "./ChooseYourBreakfast.module.css";
 import recipesMobile from "../../images/recipesMobile1x.png";
 import recipesTablet from "../../images/recipesTablet1x.png";
 import recipesDesctop from "../../images/recipesDesctop1x.png";
 import sprite from "../../assets/icons/sprite.svg";
+
+import React from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 
 const ChooseYourBreakfast = () => {
-  
-  const isMobile = useMediaQuery('(max-width:767px)');
+  const isMobile = useMediaQuery("(max-width:767px)");
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesctop = useMediaQuery("(min-width:1200px)");
 
@@ -19,13 +19,12 @@ const ChooseYourBreakfast = () => {
       return recipesTablet;
     } else if (isDesctop) {
       return recipesDesctop;
-  }
-}
+    }
+  };
 
   return (
     <div className={css.box}>
-      <img src={recipes()} className={css.chooseBox} />
-      {/* <img src={recipes} alt="obrazek dania" className={css.imageRecipes} /> */}
+      <img src={recipes()} alt="picture dish" className={css.chooseBox} />
       <div className={css.boxRecipes}>
         <span className={css.fontRecipes}>
           <span className={css.fontRecipesInnerColor}>
@@ -40,7 +39,6 @@ const ChooseYourBreakfast = () => {
           </svg>
         </button>
       </div>
-      
     </div>
   );
 };
