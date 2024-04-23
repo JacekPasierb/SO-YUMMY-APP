@@ -1,6 +1,7 @@
+import css from "./AuthNav.module.css";
+
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import css from "./AuthNav.module.css";
 
 const AuthNav: FC = () => {
   return (

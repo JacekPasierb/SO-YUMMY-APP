@@ -1,8 +1,9 @@
-import React, { FC } from "react";
-import AuthNav from "../../components/AuthNav/AuthNav";
-import sprite from "../../assets/icons/sprite.svg";
 import css from "./WelcomePage.module.css";
 import logo from "../../images/logo.png";
+
+import React, { FC } from "react";
+
+import AuthNav from "../../components/AuthNav/AuthNav";
 
 const WelcomePage: FC = () => {
   return (
