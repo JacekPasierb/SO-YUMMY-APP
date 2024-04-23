@@ -1,15 +1,17 @@
-import React from "react";
 import css from "./MainPage.module.css";
+
+import React, { FC } from "react";
+import Media from "react-media";
+
+import Header from "../../components/Header/Header";
 import Search from "../../components/Search/Search";
 import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYourBreakfast";
-import Media from "react-media";
 import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
-import Header from "../../components/Header/Header";
 import ButtonOtherCategories from "../../components/ButtonOtherCategories/ButtonOtherCategories";
 import AppTitle from "../../components/AppTitle/AppTitle";
 import AppDescription from "../../components/AppDescription/AppDescription";
 
-const MainPage: React.FC = () => {
+const MainPage: FC = () => {
   return (
     <Media
       queries={{

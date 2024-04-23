@@ -1,12 +1,13 @@
-import React from "react";
 import css from "./Navigation.module.css";
-import { NavLink } from "react-router-dom";
 import sprite from "../../../assets/icons/sprite.svg";
+
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
     <nav className={css.navigation}>
-      <NavLink to="/categories/:categoryName" className={css.link} >
+      <NavLink to="/categories/:categoryName" className={css.link}>
         <span className={css.navText}>Categories</span>
       </NavLink>
       <NavLink to="/add" className={css.link}>

@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import menu from "../../../images/menuIkona.png";
 import css from "./HamburgerMenu.module.css";
-import MenuModal from "../MenuModal/MenuModal";
+import menu from "../../../images/menuIkona.png";
+
+import React, { Suspense, lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+const MenuModal = lazy(() => import("../MenuModal/MenuModal"));
+
 import { selectIsMenuModalOpen } from "../../../redux/global/globalSelectors";
 import { setIsMenuModalOpen } from "../../../redux/global/globalSlice";
 
 const HamburgerMenu = () => {
-  const isMenuModalOpen = useSelector(selectIsMenuModalOpen);
   const dispatch = useDispatch();
+  const isMenuModalOpen = useSelector(selectIsMenuModalOpen);
+
   const handleMenuModalClick = () => {
     isMenuModalOpen
       ? dispatch(setIsMenuModalOpen(false))
@@ -25,7 +29,11 @@ const HamburgerMenu = () => {
         onClick={handleMenuModalClick}
         className={css.menuIcon}
       />
-      {isMenuModalOpen && <MenuModal onClose={handleMenuModalClick} />}
+      {isMenuModalOpen && (
+        <Suspense fallback={<div>Loading...</div>}>
+          <MenuModal onClose={handleMenuModalClick} />
+        </Suspense>
+      )}
     </>
   );
 };

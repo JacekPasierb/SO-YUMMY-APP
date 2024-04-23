@@ -1,12 +1,12 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import css from "./Header.module.css";
+import "react-toastify/dist/ReactToastify.css";
 import UserLogo from "./UserLogo/UserLogo";
-import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
+import Logo from "./Logo/Logo";
 import Media from "react-media";
+import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Navigation from "./Navigation/Navigation";
 import ThemeToggler from "./ThemeToggler/ThemeToggler";
-import Logo from "./Logo/Logo";
-import "react-toastify/dist/ReactToastify.css";
 const Header = () => {
     return (_jsx("header", { children: _jsx(Media, { queries: {
                 small: "(max-width: 767px)",

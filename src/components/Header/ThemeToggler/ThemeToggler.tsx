@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Formik, Form, Field } from "formik";
 import css from "./ThemeToggler.module.css";
+
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/global/globalSelectors";
 import { setTheme } from "../../../redux/global/globalSlice";
+import { Formik, Form, Field } from "formik";
 
 const ThemeToggler = () => {
   const dispatch = useDispatch();
@@ -16,16 +17,16 @@ const ThemeToggler = () => {
   const handleChange = () => {
     if (theme === "light") {
       dispatch(setTheme("dark"));
-      // localStorage.setItem("theme", "dark");
     } else {
       dispatch(setTheme("light"));
-      // localStorage.setItem("theme", "light");
     }
   };
+
   useEffect(() => {
     const saveTheme = localStorage.getItem("theme") || "light";
     dispatch(setTheme(saveTheme));
   }, []);
+
   return (
     <Formik initialValues={{ theme: theme }} onSubmit={() => {}}>
       <Form>
