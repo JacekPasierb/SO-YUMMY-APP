@@ -1,12 +1,15 @@
-import React, { FC, useEffect, useState } from "react";
 import css from "./AddRecipeForm.module.css";
+
+import axios from "axios";
+import { toast } from "react-toastify";
+import { ClimbingBoxLoader } from "react-spinners";
+
+import React, { FC, FormEvent, useEffect, useState } from "react";
+
 import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptionFields";
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
-import axios from "axios";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
-import { toast } from "react-toastify";
-import { ClimbingBoxLoader } from "react-spinners";
 
 interface Ingredient {
   id: string;
@@ -16,15 +19,18 @@ interface Ingredient {
 export interface Ing {
   id: string;
   selectedValue?: string;
-  selectedUnit:string;
+  selectedUnit: string;
 }
 
 interface IngredientData {
   _id: string;
   ttl: string;
+  thb: string;
+  t: string;
+  desc: string;
 }
 
-const AddRecipeForm:FC = () => {
+const AddRecipeForm: FC = () => {
   const [file, setFile] = useState("");
   const [titleRecipe, setTitleRecipe] = useState("");
   const [descriptionRecipe, setDescriptionRecipe] = useState("");
@@ -39,12 +45,12 @@ const AddRecipeForm:FC = () => {
   useEffect(() => {
     const getIngredientsAll = async () => {
       const { data } = await fetchAllIngredients();
-
       setIngredientsAll(data.ingredients);
     };
 
     getIngredientsAll();
   }, []);
+
   const resetForm = () => {
     setFile("");
     setTitleRecipe("");
@@ -54,6 +60,7 @@ const AddRecipeForm:FC = () => {
     setIngredients([]);
     setInstructionsRecipe("");
   };
+
   const dataForm = {
     file,
     setFile,
@@ -71,9 +78,8 @@ const AddRecipeForm:FC = () => {
     setInstructionsRecipe,
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e:FormEvent) => {
     e.preventDefault();
-
     let ingredientConvert: Ingredient[] = [];
 
     ingredients.map((ingredient) => {

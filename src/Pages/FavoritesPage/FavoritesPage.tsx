@@ -1,5 +1,7 @@
-import React from "react";
 import css from "./FavoritesPage.module.css";
+
+import React from "react";
+
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/MainTitle";
 

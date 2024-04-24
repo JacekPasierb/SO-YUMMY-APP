@@ -1,9 +1,10 @@
-import React from "react";
-import Header from "../../components/Header/Header";
 import css from "./AddRecipePage.module.css";
+
+import React from "react";
+
+import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
-import FollowUs from "../../components/FollowUs/FollowUs";
 import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
 
 const AddRecipePage = () => {

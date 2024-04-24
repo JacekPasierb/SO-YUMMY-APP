@@ -1,13 +1,13 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-import { useEffect, useState } from "react";
 import css from "./AddRecipeForm.module.css";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { ClimbingBoxLoader } from "react-spinners";
+import { useEffect, useState } from "react";
 import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptionFields";
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
-import axios from "axios";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
-import { toast } from "react-toastify";
-import { ClimbingBoxLoader } from "react-spinners";
 const AddRecipeForm = () => {
     const [file, setFile] = useState("");
     const [titleRecipe, setTitleRecipe] = useState("");

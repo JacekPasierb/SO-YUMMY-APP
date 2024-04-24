@@ -1,8 +1,11 @@
-import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import css from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
-import { fetchAllCategories } from "../../API/categoriesAPI";
+
 import { toast } from "react-toastify";
+
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
+
+import { fetchAllCategories } from "../../API/categoriesAPI";
 
 interface DataForm {
   file: string;
@@ -19,7 +22,7 @@ interface DataForm {
 
 const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
   const [path, setPath] = useState("");
-  const [categoriesList, setCategoriesList] = useState([]);
+  const [categoriesList, setCategoriesList] = useState<string[]>([]);
 
   const timeOptionsList = () => {
     const time = [];
@@ -28,7 +31,8 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
     }
     return time;
   };
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleFile = (event: ChangeEvent<HTMLInputElement>) => {
     const { files } = event.currentTarget;
     if (!files) {
       return;

@@ -1,9 +1,9 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useEffect, useState } from "react";
 import css from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
-import { fetchAllCategories } from "../../API/categoriesAPI";
 import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import { fetchAllCategories } from "../../API/categoriesAPI";
 const RecipeDescriptionFields = ({ data }) => {
     const [path, setPath] = useState("");
     const [categoriesList, setCategoriesList] = useState([]);

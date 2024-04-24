@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-import Header from "../../components/Header/Header";
 import css from "./AddRecipePage.module.css";
+import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
