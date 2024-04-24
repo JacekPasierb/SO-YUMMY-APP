@@ -1,9 +1,6 @@
-import React, { FC, useEffect } from "react";
-
-import BasicPagination from "../Pagination/BasicPagination";
-import CardRecipe from "../CardRecipe/CardRecipe";
 import css from "./CategoriesByName.module.css";
-import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+
+import React, { FC, useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,8 +8,12 @@ import {
   selectIsLoading,
   selectTotalRecipes,
 } from "../../redux/recipes/selectors";
-import { getCategoryRecipes } from "../../redux/recipes/operations";
+import { Recipe, getCategoryRecipes } from "../../redux/recipes/operations";
 import { AppDispatch } from "src/redux/store";
+
+import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+import BasicPagination from "../Pagination/BasicPagination";
+import CardRecipe from "../CardRecipe/CardRecipe";
 
 interface CategoryRecipesRequest {
   category: string;
@@ -53,7 +54,7 @@ const CategoriesByName: FC = () => {
       ) : (
         recipes && (
           <ul className={css.recipesList}>
-            {recipes.map((recipe: any) => {
+            {recipes.map((recipe: Recipe) => {
               return (
                 <li key={`${recipe._id}`} className={css.recipesListItem}>
                   <NavLink to={`/recipe/${recipe._id}`}>

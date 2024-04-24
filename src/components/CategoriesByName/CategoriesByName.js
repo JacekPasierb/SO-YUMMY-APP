@@ -1,13 +1,13 @@
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { useEffect } from "react";
-import BasicPagination from "../Pagination/BasicPagination";
-import CardRecipe from "../CardRecipe/CardRecipe";
 import css from "./CategoriesByName.module.css";
-import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+import { useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategoryRecipes, selectIsLoading, selectTotalRecipes, } from "../../redux/recipes/selectors";
 import { getCategoryRecipes } from "../../redux/recipes/operations";
+import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+import BasicPagination from "../Pagination/BasicPagination";
+import CardRecipe from "../CardRecipe/CardRecipe";
 const CategoriesByName = () => {
     const { categoryName } = useParams();
     const currentPage = getPageFromQueryString();
