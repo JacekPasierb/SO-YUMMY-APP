@@ -32,7 +32,7 @@ const PreviewsCategories = () => {
             Object.entries(recipesByMainCategory).map(([categories, recipes], idx) => {
                 return (_jsxs("li", { className: css.categoriesListItem, children: [_jsx(TitleCategories, { categories: categories }), _jsx("ul", { className: css.recipesList, children: recipes &&
                                 recipes.map((recipe) => {
-                                    return (_jsx("li", { className: css.recipesListItem, children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardRecipe, { dish: recipe }) }) }, `${recipe._id}`));
+                                    return (_jsx("li", { className: css.recipesListItem, children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardRecipe, { title: recipe.title, preview: recipe.preview }) }) }, `${recipe._id}`));
                                 }) }), _jsx(NavLink, { to: `/categories/${categories.charAt(0).toUpperCase() + categories.slice(1)}`, className: css.btnCategories, children: "See all" })] }, `${categories}-${idx}`));
             })) }));
 };

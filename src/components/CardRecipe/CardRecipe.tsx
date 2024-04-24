@@ -2,18 +2,16 @@ import React, { FC } from "react";
 import css from "./CardRecipe.module.css";
 
 interface CardRecipeProps {
-  dish: {
-    preview: string;
-    title: string;
-  };
+  preview: string;
+  title: string;
 }
 
-const CardRecipe: FC<CardRecipeProps> = ({ dish }) => {
+const CardRecipe: FC<CardRecipeProps> = ({ title, preview }) => {
   return (
     <div className={css.cardRecipe}>
-      <img src={dish.preview} className={css.recipeIMG} />
+      <img src={preview} className={css.recipeIMG} />
       <div className={css.titleBox}>
-        <h3 className={css.title}>{dish.title}</h3>
+        <h3 className={css.title}>{title}</h3>
       </div>
     </div>
   );

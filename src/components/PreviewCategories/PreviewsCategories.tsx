@@ -59,7 +59,7 @@ const PreviewsCategories = () => {
                           className={css.recipesListItem}
                         >
                           <NavLink to={`/recipe/${recipe._id}`}>
-                            <CardRecipe dish={recipe} />
+                            <CardRecipe title={recipe.title} preview={recipe.preview}  />
                           </NavLink>
                         </li>
                       );

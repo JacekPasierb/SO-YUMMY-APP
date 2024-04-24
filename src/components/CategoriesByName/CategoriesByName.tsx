@@ -53,11 +53,11 @@ const CategoriesByName: FC = () => {
       ) : (
         recipes && (
           <ul className={css.recipesList}>
-            {recipes.map((recipe:any) => {
+            {recipes.map((recipe: any) => {
               return (
                 <li key={`${recipe._id}`} className={css.recipesListItem}>
                   <NavLink to={`/recipe/${recipe._id}`}>
-                    <CardRecipe dish={recipe} />
+                    <CardRecipe title={recipe.title} preview={recipe.preview} />
                   </NavLink>
                 </li>
               );
