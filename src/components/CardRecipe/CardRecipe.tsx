@@ -1,5 +1,6 @@
-import React, { FC } from "react";
 import css from "./CardRecipe.module.css";
+
+import React, { FC } from "react";
 
 interface CardRecipeProps {
   preview: string;
