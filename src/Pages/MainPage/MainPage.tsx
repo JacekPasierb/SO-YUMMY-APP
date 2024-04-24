@@ -48,7 +48,6 @@ const MainPage: FC = () => {
                     <div>
                       <AppTitle />
                       <AppDescription />
-
                       <Search />
                     </div>
                     <ChooseYourBreakfast />
@@ -70,7 +69,6 @@ const MainPage: FC = () => {
                     <div>
                       <AppTitle />
                       <AppDescription />
-
                       <Search />
                     </div>
                     <ChooseYourBreakfast />

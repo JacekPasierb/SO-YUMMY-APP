@@ -1,5 +1,6 @@
-import React from "react";
 import css from "./AppTitle.module.css";
+
+import React from "react";
 
 const AppTitle = () => {
   return (

@@ -1,12 +1,13 @@
-import React, { FC } from "react";
 import css from "./ButtonOtherCategories.module.css";
+
+import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 interface ButtonOtherCategoriesProps {
   text: string;
 }
 
-const ButtonOtherCategories:FC<ButtonOtherCategoriesProps> = ({ text }) => {
+const ButtonOtherCategories: FC<ButtonOtherCategoriesProps> = ({ text }) => {
   return (
     <NavLink to={`/categories/:categoryName`} className={css.btn}>
       {text}
