@@ -3,10 +3,11 @@ import css from "./Header.module.css";
 import "react-toastify/dist/ReactToastify.css";
 import UserLogo from "./UserLogo/UserLogo";
 import Logo from "./Logo/Logo";
+import { lazy } from "react";
 import Media from "react-media";
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Navigation from "./Navigation/Navigation";
-import ThemeToggler from "./ThemeToggler/ThemeToggler";
+const ThemeToggler = lazy(() => import("./ThemeToggler/ThemeToggler"));
 const Header = () => {
     return (_jsx("header", { children: _jsx(Media, { queries: {
                 small: "(max-width: 767px)",

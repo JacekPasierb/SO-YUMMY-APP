@@ -3,12 +3,12 @@ import "react-toastify/dist/ReactToastify.css";
 import UserLogo from "./UserLogo/UserLogo";
 import Logo from "./Logo/Logo";
 
-import React from "react";
+import React, { lazy } from "react";
 import Media from "react-media";
 
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Navigation from "./Navigation/Navigation";
-import ThemeToggler from "./ThemeToggler/ThemeToggler";
+const ThemeToggler = lazy(() => import("./ThemeToggler/ThemeToggler"));
 
 const Header = () => {
   return (

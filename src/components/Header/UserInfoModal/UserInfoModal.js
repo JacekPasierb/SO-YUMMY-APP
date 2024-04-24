@@ -1,14 +1,14 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useEffect, useRef, useState } from "react";
 import css from "./UserInfoModal.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
 import { Field, Formik, Form } from "formik";
-import { validate } from "./UserInfoModalValidatin";
+import { toast } from "react-toastify";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../redux/auth/operations";
+import { validate } from "./UserInfoModalValidatin";
 import { useAuth } from "../../../hooks/useAuth";
 import IconCloseModal from "../../IconCloseModal/IconCloseModal";
-import { toast } from "react-toastify";
 export const DEFAULT_AVATAR = "https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg";
 const UserInfoModal = ({ onClose }) => {
     const modalRef = useRef(null);
@@ -36,7 +36,7 @@ const UserInfoModal = ({ onClose }) => {
     }, [onClose]);
     const handleSubmit = async (values) => {
         const userData = {
-            user: values.name ? values.name : user.user,
+            name: values.name ? values.name : user.name,
             avatar: values.avatar || user.avatar,
         };
         dispatch(updateUser(userData));
@@ -53,7 +53,9 @@ const UserInfoModal = ({ onClose }) => {
                                     const reader = new FileReader();
                                     reader.onload = (event) => {
                                         if (event.target) {
-                                            setImageDataUrl(event.target.result);
+                                            if (typeof event.target.result === "string") {
+                                                setImageDataUrl(event.target.result);
+                                            }
                                             setFieldValue("avatar", event.target.result);
                                         }
                                     };

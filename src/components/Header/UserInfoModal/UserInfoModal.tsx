@@ -1,16 +1,18 @@
-import React, { FC, useEffect, useRef, useState } from "react";
 import css from "./UserInfoModal.module.css";
-import close from "../../../images/X.png";
 import sprite from "../../../assets/icons/sprite.svg";
-import { Field, Formik, Form } from "formik";
-import { validate } from "./UserInfoModalValidatin";
+
+import { Field, Formik, Form, FormikValues } from "formik";
+import { toast } from "react-toastify";
+
+import React, { FC, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../redux/auth/operations";
-import { FormikValues } from "formik";
+import { AppDispatch } from "src/redux/store";
+
+import { validate } from "./UserInfoModalValidatin";
 import { useAuth } from "../../../hooks/useAuth";
 import IconCloseModal from "../../IconCloseModal/IconCloseModal";
-import { toast } from "react-toastify";
-import { AppDispatch } from "src/redux/store";
+
 export const DEFAULT_AVATAR =
   "https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg";
 
@@ -18,18 +20,25 @@ interface UserInfoModalRequest {
   onClose: () => void;
 }
 
+interface User {
+  name: string;
+  email: string | null;
+  password: string | null;
+  avatar: string | null;
+}
+
 interface Data {
   isLoggedIn: boolean;
   isRefreshing: boolean;
-  user: any; 
-  token:any;
+  user: User;
+  token: string;
 }
 
 const UserInfoModal: FC<UserInfoModalRequest> = ({ onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const dispatch: AppDispatch = useDispatch();
-  const { user }:Data = useAuth();
+  const { user }: Data = useAuth();
   const [imageDataUrl, setImageDataUrl] = useState(user.avatar);
 
   useEffect(() => {
@@ -57,12 +66,12 @@ const UserInfoModal: FC<UserInfoModalRequest> = ({ onClose }) => {
     };
   }, [onClose]);
   interface UserData {
-    user: string;
+    name: string;
     avatar: string;
   }
   const handleSubmit = async (values: FormikValues) => {
     const userData: UserData = {
-      user: values.name ? values.name : user.user,
+      name: values.name ? values.name : user.name,
       avatar: values.avatar || user.avatar,
     };
     dispatch(updateUser(userData));
@@ -115,7 +124,9 @@ const UserInfoModal: FC<UserInfoModalRequest> = ({ onClose }) => {
 
                   reader.onload = (event) => {
                     if (event.target) {
-                      setImageDataUrl(event.target.result);
+                      if (typeof event.target.result === "string") {
+                        setImageDataUrl(event.target.result);
+                      }
                       setFieldValue("avatar", event.target.result);
                     }
                   };

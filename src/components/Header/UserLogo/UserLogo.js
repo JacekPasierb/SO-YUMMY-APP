@@ -20,6 +20,6 @@ const UserLogo = () => {
             dispatch(setIsUserLogoModalOpen(true));
         }
     };
-    return (_jsxs("div", { className: css.boxAvatar, onClick: handleLogoClick, children: [_jsx("img", { src: user.avatar ? user.avatar : DEFAULT_AVATAR, alt: "avatar", width: "34", height: "34", className: css.boxAvatar__avatar }), _jsx("span", { className: css.boxAvatar__username, children: user.user }), isUserLogoModalOpen && (_jsx(Suspense, { fallback: _jsx("div", { children: "Loading..." }), children: _jsx(UserLogoModal, {}) }))] }));
+    return (_jsxs("div", { className: css.boxAvatar, onClick: handleLogoClick, children: [_jsx("img", { src: user.avatar ? user.avatar : DEFAULT_AVATAR, alt: "avatar", width: "34", height: "34", className: css.boxAvatar__avatar }), _jsx("span", { className: css.boxAvatar__username, children: user.name }), isUserLogoModalOpen && (_jsx(Suspense, { fallback: _jsx("div", { children: "Loading..." }), children: _jsx(UserLogoModal, {}) }))] }));
 };
 export default UserLogo;

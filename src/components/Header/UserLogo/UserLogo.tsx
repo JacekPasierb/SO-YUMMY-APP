@@ -39,7 +39,7 @@ const UserLogo = () => {
         height="34"
         className={css.boxAvatar__avatar}
       />
-      <span className={css.boxAvatar__username}>{user.user}</span>
+      <span className={css.boxAvatar__username}>{user.name}</span>
       {isUserLogoModalOpen && (
         <Suspense fallback={<div>Loading...</div>}>
           <UserLogoModal />
