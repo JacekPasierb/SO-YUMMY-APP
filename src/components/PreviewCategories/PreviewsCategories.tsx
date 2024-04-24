@@ -52,7 +52,7 @@ const PreviewsCategories = () => {
                 <TitleCategories categories={categories} />
                 <ul className={css.recipesList}>
                   {recipes &&
-                    recipes.map((recipe: any) => {
+                    recipes.map((recipe: Recipe) => {
                       return (
                         <li
                           key={`${recipe._id}`}
