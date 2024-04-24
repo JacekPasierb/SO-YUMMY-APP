@@ -1,5 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
 import css from "./RecipePreparation.module.css";
+
+import React, { FC, useEffect, useState } from "react";
 
 interface RecipePreparationProps {
   img: string;

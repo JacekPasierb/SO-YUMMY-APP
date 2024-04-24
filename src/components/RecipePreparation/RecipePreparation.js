@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useEffect, useState } from "react";
 import css from "./RecipePreparation.module.css";
+import { useEffect, useState } from "react";
 const RecipePreparation = ({ img, instructions, }) => {
     const [step, setStep] = useState([]);
     useEffect(() => {

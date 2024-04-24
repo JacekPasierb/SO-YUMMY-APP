@@ -1,21 +1,18 @@
-import React from "react";
-import MainPageTitle from "../MainPageTitle/MainPageTitle";
 import css from "./ReceipePageHero.module.css";
 import sprite from "../../assets/icons/sprite.svg";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors";
+
+import React from "react";
+
+import MainPageTitle from "../MainPageTitle/MainPageTitle";
 
 interface Recipe {
   title: string;
   description: string;
   time: string;
-
 }
 
 const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
   const { title, description, time } = recipe;
-
-
 
   return (
     <div className={css.receipeHeroBox}>

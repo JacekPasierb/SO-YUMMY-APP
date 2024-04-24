@@ -1,9 +1,8 @@
-import React, { FC, useEffect, useState } from "react";
 import css from "./RecipeInngredientsList.module.css";
-import {
-  fetchAllIngredients,
-  fetchIngredientsById,
-} from "../../API/ingredientsAPI";
+
+import React, { FC, useEffect, useState } from "react";
+
+import { fetchIngredientsById } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
 
 interface RecipeIngredientsListProps {
@@ -32,7 +31,7 @@ const RecipeInngredientsList: FC<RecipeIngredientsListProps> = ({
 
           if (data) {
             const ingredient = data.ingredient;
-            const ingredientWithMeasure:Ingredient = {
+            const ingredientWithMeasure: Ingredient = {
               ...ingredient,
               measure: ing.measure,
             };

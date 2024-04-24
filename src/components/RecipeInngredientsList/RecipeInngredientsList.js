@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-import { useEffect, useState } from "react";
 import css from "./RecipeInngredientsList.module.css";
-import { fetchIngredientsById, } from "../../API/ingredientsAPI";
+import { useEffect, useState } from "react";
+import { fetchIngredientsById } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
 const RecipeInngredientsList = ({ ingredients, }) => {
     const [ingredientsList, setIngredientsList] = useState([]);

@@ -1,6 +1,9 @@
-import React, { FC } from "react";
 import css from "./CardIngredient.module.css";
+
 import { Checkbox } from "@mui/material";
+
+import React, { FC } from "react";
+
 import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
 
 interface CardIngredientProps {
