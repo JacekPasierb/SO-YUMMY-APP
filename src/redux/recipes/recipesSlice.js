@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById, } from "./operations";
 const initialState = {
     isLoading: false,
-    popularRecipes: [],
+    popularRecipes: {},
     categoryRecipes: [],
     recipeById: {},
     ingredient: {},

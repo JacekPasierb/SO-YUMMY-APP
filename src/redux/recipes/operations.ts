@@ -7,8 +7,22 @@ interface PopularRecipesRequest {
   count: number;
 }
 
+export interface Recipe {
+  _id: string;
+  title: string;
+  category: string;
+  preview: string;
+  thumb: string;
+}
+export interface PopularRecipes {
+  breakfast?: Recipe[];
+  miscellaneous?: Recipe[];
+  chicken?: Recipe[];
+  dessert?: Recipe[];
+}
+
 interface PopularRecipesResponse {
-  popularRecipes: any[];
+  popularRecipes: PopularRecipes;
 }
 
 export const getPopularRecipes = createAsyncThunk<

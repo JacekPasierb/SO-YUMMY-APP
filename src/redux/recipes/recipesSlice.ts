@@ -4,11 +4,12 @@ import {
   getCategoryRecipes,
   getRecipeById,
   getIngredientById,
+  PopularRecipes,
 } from "./operations";
 
 interface RecipeState {
   isLoading: boolean;
-  popularRecipes: any[];
+  popularRecipes: PopularRecipes;
   categoryRecipes: any[];
   recipeById: any;
   ingredient: any;
@@ -23,7 +24,7 @@ export interface RootState {
 
 const initialState: RecipeState = {
   isLoading: false,
-  popularRecipes: [],
+  popularRecipes: {},
   categoryRecipes: [],
   recipeById: {},
   ingredient: {},

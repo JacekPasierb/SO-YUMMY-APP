@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
 import { useDispatch, useSelector } from "react-redux";
-import { getPopularRecipes } from "../../redux/recipes/operations";
+import { Recipe, getPopularRecipes } from "../../redux/recipes/operations";
 import {
   selectIsLoading,
   selectPopularRecipes,
@@ -14,29 +14,12 @@ import { AppDispatch } from "src/redux/store";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
 
-interface Recipe {
-  _id: string;
-  title: string;
-  category: string;
-  area: string;
-  instructions: string;
-  description: string;
-  thumb: string;
-  preview: string;
-  time: string;
-  favorites: any[];
-  youtube: string;
-  tags: string[];
-  createdAt: Date;
-  updatedAt: Date;
-  ingredients: any[];
-}
-
 const PreviewsCategories = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const recipesByMainCategory = useSelector(selectPopularRecipes);
   const isLoading = useSelector(selectIsLoading);
+  console.log("recipesByMainCategory", recipesByMainCategory);
 
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesctop = useMediaQuery("(min-width:1200px)");
