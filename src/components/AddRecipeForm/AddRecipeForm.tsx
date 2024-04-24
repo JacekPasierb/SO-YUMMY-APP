@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { ClimbingBoxLoader } from "react-spinners";
 
-import React, { FC, FormEvent, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptionFields";
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
@@ -22,7 +22,7 @@ export interface Ing {
   selectedUnit: string;
 }
 
-interface IngredientData {
+export interface IngredientData {
   _id: string;
   ttl: string;
   thb: string;
@@ -78,7 +78,7 @@ const AddRecipeForm: FC = () => {
     setInstructionsRecipe,
   };
 
-  const handleSubmit = async (e:FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     let ingredientConvert: Ingredient[] = [];
 
@@ -137,7 +137,6 @@ const AddRecipeForm: FC = () => {
 
     try {
       const response = await axios.post("/api/ownRecipes/picture", formData);
-
       const imageUrl = response.data.secure_url;
 
       const body = {
@@ -146,7 +145,7 @@ const AddRecipeForm: FC = () => {
         thumb: imageUrl,
         preview: imageUrl,
       };
-      console.log("body", body);
+
       const addRecipe = await axios.post("./api/ownRecipes/add", body);
       if (addRecipe) {
         resetForm();
@@ -171,6 +170,7 @@ const AddRecipeForm: FC = () => {
           <RecipeIngredientsFields
             ingredients={ingredients}
             setIngredients={setIngredients}
+            ingredientsAll={ingredientsAll}
           />
           <RecipePreparationFields
             instructionsRecipe={instructionsRecipe}

@@ -8,8 +8,8 @@ import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import { fetchAllCategories } from "../../API/categoriesAPI";
 
 interface DataForm {
-  file: string;
-  setFile: (file: string) => void;
+  file: any;
+  setFile: (file: any) => void;
   titleRecipe: string;
   setTitleRecipe: (title: string) => void;
   descriptionRecipe: string;
@@ -32,7 +32,7 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
     return time;
   };
 
-  const handleFile = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.currentTarget;
     if (!files) {
       return;
@@ -56,7 +56,9 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
       data.setFile("");
       return;
     }
-    data.setFile(file.name);
+    data.setFile(file);
+    console.log("fr", file);
+
     setPath(URL.createObjectURL(file));
   };
 

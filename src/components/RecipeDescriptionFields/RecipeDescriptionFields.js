@@ -35,7 +35,8 @@ const RecipeDescriptionFields = ({ data }) => {
             data.setFile("");
             return;
         }
-        data.setFile(file.name);
+        data.setFile(file);
+        console.log("fr", file);
         setPath(URL.createObjectURL(file));
     };
     const handleTitle = (event) => {

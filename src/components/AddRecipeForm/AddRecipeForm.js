@@ -104,7 +104,6 @@ const AddRecipeForm = () => {
                 thumb: imageUrl,
                 preview: imageUrl,
             };
-            console.log("body", body);
             const addRecipe = await axios.post("./api/ownRecipes/add", body);
             if (addRecipe) {
                 resetForm();
@@ -118,6 +117,6 @@ const AddRecipeForm = () => {
             setIsLoading(false);
         }
     };
-    return (_jsx(_Fragment, { children: isLoading ? (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, { color: "#8BAA36" }) })) : (_jsxs("form", { onSubmit: handleSubmit, encType: "multipart/form-data", children: [_jsx(RecipeDescriptionFields, { data: dataForm }), _jsx(RecipeIngredientsFields, { ingredients: ingredients, setIngredients: setIngredients }), _jsx(RecipePreparationFields, { instructionsRecipe: instructionsRecipe, setInstructionsRecipe: setInstructionsRecipe })] })) }));
+    return (_jsx(_Fragment, { children: isLoading ? (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, { color: "#8BAA36" }) })) : (_jsxs("form", { onSubmit: handleSubmit, encType: "multipart/form-data", children: [_jsx(RecipeDescriptionFields, { data: dataForm }), _jsx(RecipeIngredientsFields, { ingredients: ingredients, setIngredients: setIngredients, ingredientsAll: ingredientsAll }), _jsx(RecipePreparationFields, { instructionsRecipe: instructionsRecipe, setInstructionsRecipe: setInstructionsRecipe })] })) }));
 };
 export default AddRecipeForm;

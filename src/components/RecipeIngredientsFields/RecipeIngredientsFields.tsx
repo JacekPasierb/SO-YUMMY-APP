@@ -1,18 +1,18 @@
-import React, { FC, useEffect, useState } from "react";
 import css from "./RecipeIngredientsFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
-import { fetchAllIngredients } from "../../API/ingredientsAPI";
-import { nanoid } from "@reduxjs/toolkit";
-import Select from "react-select";
 import { selectIngredient } from "./selectStyles";
+
+import React, { Dispatch, FC, SetStateAction } from "react";
+import { nanoid } from "@reduxjs/toolkit";
+import Select, { SingleValue } from "react-select";
+
 import UnitInput from "../UnitInput/UnitInput";
-import { Ing } from "../AddRecipeForm/AddRecipeForm";
-
-
+import { Ing, IngredientData } from "../AddRecipeForm/AddRecipeForm";
 
 interface RecipeIngredientsFieldsProps {
   ingredients: Ing[];
-  setIngredients: React.Dispatch<React.SetStateAction<Ing[]>>;
+  setIngredients: Dispatch<SetStateAction<Ing[]>>;
+  ingredientsAll: IngredientData[];
 }
 
 interface Option {
@@ -20,45 +20,22 @@ interface Option {
   value: string;
 }
 
-interface dataIngredient {
-  _id: { $oid: string };
-  ttl: string;
-  desc: string;
-  t: string;
-  thb: string;
-}
-
 const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   ingredients,
   setIngredients,
+  ingredientsAll,
 }) => {
-  const [dataIngredients, setDataIngredients] = useState<dataIngredient[]>([]);
-
   const handleDecreament = () => {
     setIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
   };
 
   const handleIncreament = () => {
-    setIngredients((prev) => [...prev, { id: nanoid(), selectedUnit:"" }]);
+    setIngredients((prev) => [...prev, { id: nanoid(), selectedUnit: "" }]);
   };
-
-  useEffect(() => {
-    const getIngredients = async () => {
-      try {
-        const { data } = await fetchAllIngredients();
-
-        setDataIngredients(data.ingredients);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getIngredients();
-  }, []);
 
   const options = () => {
     const options: Option[] = [];
-    dataIngredients.map((ingredient) =>
+    ingredientsAll.map((ingredient) =>
       options.push({ label: ingredient.ttl, value: ingredient.ttl })
     );
     return options;
@@ -70,11 +47,12 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     setIngredients(newField);
   };
 
-  const handleIngr = (index:number, selectedOption:any) => {
+  const handleIngr = (index: number, selectedOption: SingleValue<Option>) => {
     const updateFields = [...ingredients];
-
-    updateFields[index].selectedValue = selectedOption.value;
-    setIngredients(updateFields);
+    if (selectedOption) {
+      updateFields[index].selectedValue = selectedOption.value;
+      setIngredients(updateFields);
+    }
   };
   return (
     <>
@@ -95,7 +73,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         </div>
       </div>
       <ul className={css.ingredientsList}>
-        {dataIngredients
+        {ingredientsAll
           ? ingredients.map((ingredient, index) => (
               <li key={ingredient.id} className={css.rowItem}>
                 <Select
