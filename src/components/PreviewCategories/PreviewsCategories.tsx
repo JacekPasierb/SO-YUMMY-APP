@@ -19,7 +19,6 @@ const PreviewsCategories = () => {
 
   const recipesByMainCategory = useSelector(selectPopularRecipes);
   const isLoading = useSelector(selectIsLoading);
-  console.log("recipesByMainCategory", recipesByMainCategory);
 
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesctop = useMediaQuery("(min-width:1200px)");
