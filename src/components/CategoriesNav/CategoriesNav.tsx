@@ -1,10 +1,9 @@
 import { Tab, Tabs } from "@mui/material";
 
 import React, { useEffect, useState } from "react";
-import css from "./CategoriesNav.module.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { fetchAllCategories } from "../../API/categoriesAPI";
-import { useNavigate, useParams } from "react-router-dom";
 
 const CategoriesNav = () => {
   const navigate = useNavigate();

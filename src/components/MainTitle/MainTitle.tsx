@@ -1,5 +1,6 @@
-import React, { FC } from "react";
 import css from "./MainTitle.module.css";
+
+import React, { FC } from "react";
 
 interface MainTitleProps {
   title: string;

@@ -1,8 +1,8 @@
 import { jsx as _jsx, Fragment as _Fragment } from "react/jsx-runtime";
 import { Tab, Tabs } from "@mui/material";
 import { useEffect, useState } from "react";
-import { fetchAllCategories } from "../../API/categoriesAPI";
 import { useNavigate, useParams } from "react-router-dom";
+import { fetchAllCategories } from "../../API/categoriesAPI";
 const CategoriesNav = () => {
     const navigate = useNavigate();
     const { categoryName } = useParams();
