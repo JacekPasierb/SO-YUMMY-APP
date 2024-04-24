@@ -57,8 +57,6 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
       return;
     }
     data.setFile(file);
-    console.log("fr", file);
-
     setPath(URL.createObjectURL(file));
   };
 
