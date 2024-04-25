@@ -10,8 +10,8 @@ import Navigation from "./Navigation/Navigation";
 const ThemeToggler = lazy(() => import("./ThemeToggler/ThemeToggler"));
 const Header = () => {
     return (_jsx("header", { children: _jsx(Media, { queries: {
-                small: "(max-width: 767px)",
-                medium: "(min-width: 768px) and (max-width: 1199px)",
+                small: "(max-width: 768px)",
+                medium: "(min-width: 768px) and (max-width: 1200px)",
                 large: "(min-width: 1200px)",
             }, children: (matches) => (_jsxs(_Fragment, { children: [matches.small && (_jsx("div", { className: css.header, children: _jsxs("div", { className: `${css.container} ${css.headerBox}`, children: [_jsx(Logo, {}), _jsxs("div", { className: css.mobileBox, children: [_jsx(UserLogo, {}), _jsx(HamburgerMenu, {})] })] }) })), matches.medium && (_jsx("div", { className: css.header, children: _jsxs("div", { className: `${css.container} ${css.headerBox}`, children: [_jsx(Logo, {}), _jsxs("div", { className: css.mobileBox, children: [_jsx(UserLogo, {}), _jsx(HamburgerMenu, {})] })] }) })), matches.large && (_jsx("div", { className: css.header, children: _jsxs("div", { className: `${css.container} ${css.headerBox}`, children: [_jsx(Logo, {}), _jsx(Navigation, {}), _jsx(UserLogo, {}), _jsx(ThemeToggler, {})] }) }))] })) }) }));
 };

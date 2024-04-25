@@ -6,7 +6,7 @@ import recipesDesctop from "../../images/recipesDesctop1x.png";
 import sprite from "../../assets/icons/sprite.svg";
 import { useMediaQuery } from "@react-hook/media-query";
 const ChooseYourBreakfast = () => {
-    const isMobile = useMediaQuery("(max-width:767px)");
+    const isMobile = useMediaQuery("(max-width:768px)");
     const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
     const isDesctop = useMediaQuery("(min-width:1200px)");
     const recipes = () => {
