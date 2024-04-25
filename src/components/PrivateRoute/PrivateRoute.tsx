@@ -1,5 +1,6 @@
-import React, { FC, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { FC } from "react";
+import { Navigate } from "react-router-dom";
+
 import { useAuth } from "../../hooks/useAuth";
 
 interface PrivateRouteProps {
@@ -8,12 +9,10 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute: FC<PrivateRouteProps> = ({
-  component:Component,
+  component: Component,
   redirectTo = "/welcome",
 }) => {
   const { isLoggedIn, isRefreshing } = useAuth();
-  const navigate = useNavigate();
-
   const shouldRedirect = !isLoggedIn && !isRefreshing;
 
   return shouldRedirect ? <Navigate to={redirectTo} /> : Component;

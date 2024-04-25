@@ -1,6 +1,7 @@
-import { Navigate, useNavigate } from "react-router";
+import React, { FC } from "react";
+import { Navigate } from "react-router";
+
 import { useAuth } from "../../hooks/useAuth";
-import React, { FC, useEffect } from "react";
 
 interface RestrictedRouteProps {
   component: any;
@@ -12,8 +13,6 @@ const RestrictedRoute: FC<RestrictedRouteProps> = ({
   redirectTo = "/",
 }) => {
   const { isLoggedIn } = useAuth();
-  const navigate = useNavigate();
-
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };
 
