@@ -2,7 +2,7 @@ import { register, logIn, logOut, refreshUser, updateUser } from "./operations";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface AuthState {
-  user: { name: null | any; email: null | string; password: null | string; avatar: null | string };
+  user: { id: null | string ; name: null | any; email: null | string; password: null | string; avatar: null | string };
   token: null | any;
   isLoggedIn: boolean;
   error: string | null;
@@ -14,7 +14,7 @@ export interface RootState {
 }
 
 const initialState: AuthState = {
-  user: { name: null, email: null, password: null, avatar:null },
+  user: { id: null, name: null, email: null, password: null, avatar:null },
   token: null,
   isLoggedIn: false,
   error: null,
@@ -69,7 +69,7 @@ const authSlice = createSlice({
     });
 
     builder.addCase(logOut.fulfilled, (state) => {
-      state.user = { name: null, email: null, password: null, avatar:null };
+      state.user = { id: null, name: null, email: null, password: null, avatar:null };
       state.token = null;
       state.isLoggedIn = false;
       state.error = null;
@@ -92,7 +92,7 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.error = null;
       } else {
-        state.user = { name: null, email: null, password: null, avatar:null };
+        state.user = { id: null, name: null, email: null, password: null, avatar:null };
         state.error = "Payload updateUser is null or undefined";
       }
     });

@@ -1,7 +1,7 @@
 import { register, logIn, logOut, refreshUser, updateUser } from "./operations";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    user: { name: null, email: null, password: null, avatar: null },
+    user: { id: null, name: null, email: null, password: null, avatar: null },
     token: null,
     isLoggedIn: false,
     error: null,
@@ -53,7 +53,7 @@ const authSlice = createSlice({
             }
         });
         builder.addCase(logOut.fulfilled, (state) => {
-            state.user = { name: null, email: null, password: null, avatar: null };
+            state.user = { id: null, name: null, email: null, password: null, avatar: null };
             state.token = null;
             state.isLoggedIn = false;
             state.error = null;
@@ -76,7 +76,7 @@ const authSlice = createSlice({
                 state.error = null;
             }
             else {
-                state.user = { name: null, email: null, password: null, avatar: null };
+                state.user = { id: null, name: null, email: null, password: null, avatar: null };
                 state.error = "Payload updateUser is null or undefined";
             }
         });

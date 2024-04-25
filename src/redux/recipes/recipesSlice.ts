@@ -5,6 +5,7 @@ import {
   getRecipeById,
   getIngredientById,
   PopularRecipes,
+  getOwnRecipes,
 } from "./operations";
 
 interface RecipeState {
@@ -89,6 +90,21 @@ const recipesSlice = createSlice({
           state.error = action.payload;
         } else {
           state.error = "An error occurred during getRecipeById";
+        }
+      })  .addCase(getOwnRecipes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.ownRecipes = action.payload.ownRecipes;
+        state.error = null;
+      })
+      .addCase(getOwnRecipes.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      }).addCase(getOwnRecipes.rejected, (state, action) => {
+        state.isLoading = false;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred during getOwnRecipes";
         }
       })
       .addCase(getIngredientById.fulfilled, (state, action) => {

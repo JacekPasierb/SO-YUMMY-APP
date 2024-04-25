@@ -38,6 +38,22 @@ export const getPopularRecipes = createAsyncThunk<
   }
 });
 
+interface OwnRecipesResponse {
+  ownRecipes: any[];
+}
+export const getOwnRecipes = createAsyncThunk<OwnRecipesResponse, string>(
+  "ownRecipes/getOwnRecipes",
+  async (userId, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`./api/ownRecipes/${userId}`);
+      console.log("ownqqq", data);
+      return { ownRecipes: data };
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 interface CategoryRecipesRequest {
   category: string;
   page: number;

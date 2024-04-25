@@ -27,6 +27,7 @@ import { AppDispatch } from "./redux/store";
 import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { selectTheme } from "./redux/global/globalSelectors";
+import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
 
 const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -116,7 +117,10 @@ const App: FC = () => {
             path="/favorite"
             element={<PrivateRoute component={<FavoritesPage />} />}
           />
-          <Route path="/my" element={<PrivateRoute component="" />} />
+          <Route
+            path="/my"
+            element={<PrivateRoute component={<MyRecipesPage />} />}
+          />
           <Route
             path="/add"
             element={<PrivateRoute component={<AddRecipePage />} />}
