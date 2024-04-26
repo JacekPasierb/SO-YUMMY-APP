@@ -1,0 +1,9 @@
+.cardBox {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}

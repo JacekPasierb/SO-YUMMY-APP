@@ -14,15 +14,14 @@ import {
 import { AppDispatch } from "../../redux/store";
 import Header from "../../components/Header/Header";
 import { useAuth } from "../../hooks/useAuth";
-import MainPageTitle from "../../components/MainPageTitle/MainPageTitle";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import { useNavigate } from "react-router";
+import MainTitle from "../../components/MainTitle/MainTitle";
 
 const MyRecipesPage = () => {
   const dispatch: AppDispatch = useDispatch();
-  const ownRecipes = useSelector(selectOwnRecipes);
   const { user } = useAuth();
   const userId = user?.id;
   const currentPage = getPageFromQueryString();
@@ -45,7 +44,7 @@ const MyRecipesPage = () => {
     <main className={css.background}>
       <Header />
       <div className={`${css.container} ${css.flex}`}>
-        <MainPageTitle title={"My recipes"} />
+        <MainTitle title={"My recipes"} />
         <MyRecipesList />
         <BasicPagination
           count={Math.ceil(totalOwnRecipes / 4)}
