@@ -1,34 +1,57 @@
-import React, { useEffect } from "react";
 import css from "./MainRecipesPage.module.css";
-import Header from "../../components/Header/Header";
-import MainTitle from "../../components/MainTitle/MainTitle";
+
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  OwnRecipesRequest,
+  getOwnRecipes,
+} from "../../redux/recipes/operations";
+import {
+  selectOwnRecipes,
+  selectTotalOwnRecipes,
+} from "../../redux/recipes/selectors";
+
 import { AppDispatch } from "../../redux/store";
-import { getOwnRecipes } from "../../redux/recipes/operations";
-import { selectOwnRecipes } from "../../redux/recipes/selectors";
+import Header from "../../components/Header/Header";
 import { useAuth } from "../../hooks/useAuth";
+import MainPageTitle from "../../components/MainPageTitle/MainPageTitle";
+import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
+import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+import BasicPagination from "../../components/Pagination/BasicPagination";
+import { useNavigate } from "react-router";
 
 const MyRecipesPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const ownRecipes = useSelector(selectOwnRecipes);
   const { user } = useAuth();
   const userId = user?.id;
-  console.log("uu", userId);
+  const currentPage = getPageFromQueryString();
+  const totalOwnRecipes = useSelector(selectTotalOwnRecipes);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("stt");
     if (userId) {
-      dispatch(getOwnRecipes(userId));
+      const request: OwnRecipesRequest = { userId, page: currentPage };
+      dispatch(getOwnRecipes(request));
     }
-    console.log("ooowww", ownRecipes);
-  }, [dispatch, userId]);
-  console.log("ooo", ownRecipes);
+  }, [dispatch, userId, currentPage]);
 
+
+  const handlePageChange = (page: number) => {
+    navigate(`?page=${page}`);
+    window.scrollTo(0, 0);
+  };
   return (
     <main className={css.background}>
       <Header />
       <div className={`${css.container} ${css.flex}`}>
-        <MainTitle title={"My recipes"} />
+        <MainPageTitle title={"My recipes"} />
+        <MyRecipesList />
+        <BasicPagination
+          count={Math.ceil(totalOwnRecipes / 4)}
+          page={currentPage}
+          onPageChange={handlePageChange}
+        />
       </div>
     </main>
   );

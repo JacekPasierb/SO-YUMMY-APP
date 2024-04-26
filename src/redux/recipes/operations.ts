@@ -38,21 +38,44 @@ export const getPopularRecipes = createAsyncThunk<
   }
 });
 
-interface OwnRecipesResponse {
-  ownRecipes: any[];
+interface ownRecipe {
+  createdAt: string;
+  description: string;
+  favorites: any[];
+  ingredients: any[];
+  instructions: string;
+  owner: string;
+  preview: string;
+  tags: string[];
+  thumb: string;
+  time: string;
+  title: string;
+  updatedAt: string;
+  youtube: string;
+  _id: string;
 }
-export const getOwnRecipes = createAsyncThunk<OwnRecipesResponse, string>(
-  "ownRecipes/getOwnRecipes",
-  async (userId, thunkAPI) => {
-    try {
-      const { data } = await axios.get(`./api/ownRecipes/${userId}`);
-      console.log("ownqqq", data);
-      return { ownRecipes: data };
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+
+export interface OwnRecipesRequest {
+  userId: string;
+  page: number;
+}
+
+interface OwnRecipesResponse {
+  ownRecipes: ownRecipe[];
+  totalOwnRecipes: number;
+}
+export const getOwnRecipes = createAsyncThunk<
+  OwnRecipesResponse,
+  OwnRecipesRequest
+>("ownRecipes/getOwnRecipes", async ({ userId, page }, thunkAPI) => {
+  try {
+    const { data } = await axios.get(`./api/ownRecipes/${userId}?${page}`);
+   
+    return { ownRecipes: data.data.ownRecipes, totalOwnRecipes: data.data.totalOwnRecipes, };
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 interface CategoryRecipesRequest {
   category: string;

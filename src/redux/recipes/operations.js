@@ -10,11 +10,10 @@ export const getPopularRecipes = createAsyncThunk("recipes/getPopularRecipes", a
         return thunkAPI.rejectWithValue(error.message);
     }
 });
-export const getOwnRecipes = createAsyncThunk("ownRecipes/getOwnRecipes", async (userId, thunkAPI) => {
+export const getOwnRecipes = createAsyncThunk("ownRecipes/getOwnRecipes", async ({ userId, page }, thunkAPI) => {
     try {
-        const { data } = await axios.get(`./api/ownRecipes/${userId}`);
-        console.log("ownqqq", data);
-        return { ownRecipes: data };
+        const { data } = await axios.get(`./api/ownRecipes/${userId}?${page}`);
+        return { ownRecipes: data.data.ownRecipes, totalOwnRecipes: data.data.totalOwnRecipes, };
     }
     catch (error) {
         return thunkAPI.rejectWithValue(error.message);

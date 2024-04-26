@@ -47,6 +47,7 @@ const CategoriesByName: FC = () => {
     dispatch(getCategoryRecipes(request));
   }, [dispatch, categoryName, currentPage]);
 
+
   return (
     <>
       {isLoading ? (

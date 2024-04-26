@@ -15,6 +15,7 @@ interface RecipeState {
   recipeById: any;
   ingredient: any;
   ownRecipes: any[];
+  totalOwnRecipes:number;
   totalRecipes: number;
   error: null | string;
 }
@@ -31,6 +32,7 @@ const initialState: RecipeState = {
   ingredient: {},
   ownRecipes: [],
   totalRecipes: 0,
+  totalOwnRecipes:0,
   error: null,
 };
 
@@ -94,6 +96,7 @@ const recipesSlice = createSlice({
       })  .addCase(getOwnRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.ownRecipes = action.payload.ownRecipes;
+        state.totalOwnRecipes = action.payload.totalOwnRecipes;
         state.error = null;
       })
       .addCase(getOwnRecipes.pending, (state) => {

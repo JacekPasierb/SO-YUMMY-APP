@@ -1,26 +1,34 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useEffect } from "react";
 import css from "./MainRecipesPage.module.css";
-import Header from "../../components/Header/Header";
-import MainTitle from "../../components/MainTitle/MainTitle";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOwnRecipes } from "../../redux/recipes/operations";
-import { selectOwnRecipes } from "../../redux/recipes/selectors";
+import { getOwnRecipes, } from "../../redux/recipes/operations";
+import { selectOwnRecipes, selectTotalOwnRecipes, } from "../../redux/recipes/selectors";
+import Header from "../../components/Header/Header";
 import { useAuth } from "../../hooks/useAuth";
+import MainPageTitle from "../../components/MainPageTitle/MainPageTitle";
+import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
+import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+import BasicPagination from "../../components/Pagination/BasicPagination";
+import { useNavigate } from "react-router";
 const MyRecipesPage = () => {
     const dispatch = useDispatch();
     const ownRecipes = useSelector(selectOwnRecipes);
     const { user } = useAuth();
     const userId = user?.id;
-    console.log("uu", userId);
+    const currentPage = getPageFromQueryString();
+    const totalOwnRecipes = useSelector(selectTotalOwnRecipes);
+    const navigate = useNavigate();
     useEffect(() => {
-        console.log("stt");
         if (userId) {
-            dispatch(getOwnRecipes(userId));
+            const request = { userId, page: currentPage };
+            dispatch(getOwnRecipes(request));
         }
-        console.log("ooowww", ownRecipes);
-    }, [dispatch, userId]);
-    console.log("ooo", ownRecipes);
-    return (_jsxs("main", { className: css.background, children: [_jsx(Header, {}), _jsx("div", { className: `${css.container} ${css.flex}`, children: _jsx(MainTitle, { title: "My recipes" }) })] }));
+    }, [dispatch, userId, currentPage]);
+    const handlePageChange = (page) => {
+        navigate(`?page=${page}`);
+        window.scrollTo(0, 0);
+    };
+    return (_jsxs("main", { className: css.background, children: [_jsx(Header, {}), _jsxs("div", { className: `${css.container} ${css.flex}`, children: [_jsx(MainPageTitle, { title: "My recipes" }), _jsx(MyRecipesList, {}), _jsx(BasicPagination, { count: Math.ceil(totalOwnRecipes / 4), page: currentPage, onPageChange: handlePageChange })] })] }));
 };
 export default MyRecipesPage;

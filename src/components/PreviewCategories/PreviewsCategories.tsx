@@ -35,6 +35,7 @@ const PreviewsCategories = () => {
     dispatch(getPopularRecipes({ count }));
   }, [dispatch, isDesctop, isTablet]);
 
+
   return (
     <ul className={css.categoriesList}>
       {isLoading ? (
