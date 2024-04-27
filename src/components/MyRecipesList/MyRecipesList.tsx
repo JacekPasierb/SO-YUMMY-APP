@@ -1,4 +1,5 @@
 import React from "react";
+import css from "./MyRecipesList.module.css"
 import { useSelector } from "react-redux";
 import {
   selectIsLoading,
@@ -17,7 +18,7 @@ const MyRecipesList = () => {
         <p>Loading recipes...</p>
       ) : (
         ownRecipes && (
-          <ul>
+          <ul className={css.myRecipesList}>
             {ownRecipes.map((ownRecipe) => {
               return (
                 <li key={ownRecipe._id}>
