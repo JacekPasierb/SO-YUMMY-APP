@@ -5,27 +5,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOwnRecipes, } from "../../redux/recipes/operations";
 import { selectIsLoading, selectOwnRecipes, selectTotalOwnRecipes, } from "../../redux/recipes/selectors";
 import Header from "../../components/Header/Header";
-import { useAuth } from "../../hooks/useAuth";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import { useNavigate } from "react-router";
 import MainTitle from "../../components/MainTitle/MainTitle";
+import { selectUser } from "../../redux/auth/selectors";
 const MyRecipesPage = () => {
     const dispatch = useDispatch();
-    const { user } = useAuth();
-    const userId = user.userId;
+    const user = useSelector(selectUser);
     const currentPage = getPageFromQueryString();
     const ownRecipes = useSelector(selectOwnRecipes);
     const totalOwnRecipes = useSelector(selectTotalOwnRecipes);
     const isLoading = useSelector(selectIsLoading);
     const navigate = useNavigate();
     useEffect(() => {
-        if (userId) {
+        if (user && user.userId) {
+            const userId = user.userId;
             const request = { userId, page: currentPage };
             dispatch(getOwnRecipes(request));
         }
-    }, [userId, currentPage]);
+    }, [dispatch, currentPage]);
     const handlePageChange = (page) => {
         navigate(`?page=${page}`);
         window.scrollTo(0, 0);

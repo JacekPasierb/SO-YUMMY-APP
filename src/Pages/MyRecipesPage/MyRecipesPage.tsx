@@ -1,6 +1,6 @@
 import css from "./MainRecipesPage.module.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   OwnRecipesRequest,
@@ -14,17 +14,17 @@ import {
 
 import { AppDispatch } from "../../redux/store";
 import Header from "../../components/Header/Header";
-import { useAuth } from "../../hooks/useAuth";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import { useNavigate } from "react-router";
 import MainTitle from "../../components/MainTitle/MainTitle";
+import { selectUser } from "../../redux/auth/selectors";
 
 const MyRecipesPage = () => {
   const dispatch: AppDispatch = useDispatch();
-  const { user } = useAuth();
-  const userId = user.userId;
+  const user = useSelector(selectUser);
+
   const currentPage = getPageFromQueryString();
   const ownRecipes = useSelector(selectOwnRecipes);
   const totalOwnRecipes = useSelector(selectTotalOwnRecipes);
@@ -32,11 +32,12 @@ const MyRecipesPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userId) {
+    if (user && user.userId) {
+      const userId = user.userId;
       const request: OwnRecipesRequest = { userId, page: currentPage };
       dispatch(getOwnRecipes(request));
     }
-  }, [userId, currentPage]);
+  }, [dispatch, currentPage]);
 
   const handlePageChange = (page: number) => {
     navigate(`?page=${page}`);

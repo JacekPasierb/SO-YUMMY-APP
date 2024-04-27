@@ -47,6 +47,7 @@ export const logIn = createAsyncThunk(
       if (resp.status === 200) {
         thunkAPI.dispatch(setAuthSuccess({ token, user }));
         setAuthHeader(token);
+
         return await resp.data.data;
       } else {
         console.error("Logowanie nie powiodło się");
