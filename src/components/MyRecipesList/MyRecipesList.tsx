@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
 import css from "./MyRecipesList.module.css";
-import { useSelector } from "react-redux";
-import {
-  selectIsLoading,
-  selectOwnRecipes,
-} from "../../redux/recipes/selectors";
+
+import React from "react";
+
 import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
 
 interface ownRecipe {

@@ -1,6 +1,8 @@
 import css from "./CardOwnRecipe.module.css";
-import React from "react";
 import sprite from "../../assets/icons/sprite.svg";
+
+import React from "react";
+
 interface OwnRecipe {
   title: string;
   preview: string;
@@ -13,7 +15,7 @@ interface Props {
 }
 
 const CardOwnRecipe = ({ ownRecipe }: Props) => {
-  console.log("pp", ownRecipe);
+
 
   return (
     <div className={css.cardBox}>
