@@ -45,6 +45,9 @@ const SigninForm = () => {
                 resetForm();
                 navigate("/");
             }
+            else {
+                toast.error("Login failed");
+            }
         }
         catch (err) {
             console.error(err.message);

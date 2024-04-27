@@ -55,9 +55,12 @@ const SigninForm = () => {
       if (logIn.fulfilled.match(result)) {
         resetForm();
         navigate("/");
+      }else {
+        toast.error("Login failed")
       }
     } catch (err: any) {
       console.error(err.message);
+
       // dispatch(selectError("Login failed ⚠"));
       toast.error("Failed to log in");
     }
