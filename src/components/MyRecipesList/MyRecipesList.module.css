@@ -1,3 +1,6 @@
 .myRecipesList {
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
