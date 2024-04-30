@@ -6,6 +6,7 @@ import {
   getIngredientById,
   PopularRecipes,
   getOwnRecipes,
+  addOwnRecipes,
 } from "./operations";
 
 interface RecipeState {
@@ -15,7 +16,7 @@ interface RecipeState {
   recipeById: any;
   ingredient: any;
   ownRecipes: any[];
-  totalOwnRecipes:number;
+  totalOwnRecipes: number;
   totalRecipes: number;
   error: null | string;
 }
@@ -32,7 +33,7 @@ const initialState: RecipeState = {
   ingredient: {},
   ownRecipes: [],
   totalRecipes: 0,
-  totalOwnRecipes:0,
+  totalOwnRecipes: 0,
   error: null,
 };
 
@@ -93,7 +94,8 @@ const recipesSlice = createSlice({
         } else {
           state.error = "An error occurred during getRecipeById";
         }
-      })  .addCase(getOwnRecipes.fulfilled, (state, action) => {
+      })
+      .addCase(getOwnRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.ownRecipes = action.payload.ownRecipes;
         state.totalOwnRecipes = action.payload.totalOwnRecipes;
@@ -102,13 +104,19 @@ const recipesSlice = createSlice({
       .addCase(getOwnRecipes.pending, (state) => {
         state.isLoading = true;
         state.error = null;
-      }).addCase(getOwnRecipes.rejected, (state, action) => {
+      })
+      .addCase(getOwnRecipes.rejected, (state, action) => {
         state.isLoading = false;
         if (typeof action.payload === "string") {
           state.error = action.payload;
         } else {
           state.error = "An error occurred during getOwnRecipes";
         }
+      })
+      .addCase(addOwnRecipes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.ownRecipes = [...state.ownRecipes, action.payload];
+        state.error = null;
       })
       .addCase(getIngredientById.fulfilled, (state, action) => {
         state.isLoading = false;

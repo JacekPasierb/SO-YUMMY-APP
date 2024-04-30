@@ -15,8 +15,6 @@ interface Props {
 }
 
 const CardOwnRecipe = ({ ownRecipe }: Props) => {
-
-
   return (
     <div className={css.cardBox}>
       <img
@@ -29,17 +27,22 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
       <div className={css.recipeInfo}>
         <div className={css.rowFirst}>
           <h2 className={css.titleRecipe}>{ownRecipe.title}</h2>
-          <svg className={css.iconDelete}>
-            <use
-              href={sprite + `#icon-trash-01`}
-              width="14px"
-              height="14px"
-            ></use>
-          </svg>
+          <button type="button" >
+            <svg className={css.iconDelete}>
+              <use
+                href={sprite + `#icon-trash-01`}
+                width="14px"
+                height="14px"
+              ></use>
+            </svg>
+          </button>
         </div>
         <p className={css.recipeDescription}>{ownRecipe.description}</p>
         <div className={css.row}>
-          <p className={css.recipeTime}>{ownRecipe.time} min</p> <button className={`${css.recipeSeeBtn} ${css.txtBtn}`}>See recipes</button>
+          <p className={css.recipeTime}>{ownRecipe.time} min</p>{" "}
+          <button className={`${css.recipeSeeBtn} ${css.txtBtn}`}>
+            See recipes
+          </button>
         </div>
       </div>
     </div>

@@ -13,7 +13,20 @@ export const getPopularRecipes = createAsyncThunk("recipes/getPopularRecipes", a
 export const getOwnRecipes = createAsyncThunk("ownRecipes/getOwnRecipes", async ({ userId, page }, thunkAPI) => {
     try {
         const { data } = await axios.get(`./api/ownRecipes/${userId}?${page}`);
-        return { ownRecipes: data.data.ownRecipes, totalOwnRecipes: data.data.totalOwnRecipes, };
+        return {
+            ownRecipes: data.data.ownRecipes,
+            totalOwnRecipes: data.data.totalOwnRecipes,
+        };
+    }
+    catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
+export const addOwnRecipes = createAsyncThunk("ownRecipes/addRecipes", async (body, thunkAPI) => {
+    try {
+        const { data } = await axios.post(`/api/ownRecipes/add`, body);
+        console.log("Dd", data.data.newRecipe);
+        return data.data.newRecipe;
     }
     catch (error) {
         return thunkAPI.rejectWithValue(error.message);

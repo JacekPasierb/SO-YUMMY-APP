@@ -8,6 +8,8 @@ import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptio
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
+import { useDispatch } from "react-redux";
+import { addOwnRecipes } from "../../redux/recipes/operations";
 const AddRecipeForm = () => {
     const [file, setFile] = useState("");
     const [titleRecipe, setTitleRecipe] = useState("");
@@ -17,6 +19,7 @@ const AddRecipeForm = () => {
     const [ingredients, setIngredients] = useState([]);
     const [instructionsRecipe, setInstructionsRecipe] = useState("");
     const [ingredientsAll, setIngredientsAll] = useState([]);
+    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         const getIngredientsAll = async () => {
@@ -104,11 +107,10 @@ const AddRecipeForm = () => {
                 thumb: imageUrl,
                 preview: imageUrl,
             };
-            const addRecipe = await axios.post("./api/ownRecipes/add", body);
-            if (addRecipe) {
-                resetForm();
-                toast.success("Recipe added successfully");
-            }
+            // const addRecipe = await axios.post("./api/ownRecipes/add", body);
+            await dispatch(addOwnRecipes(body));
+            resetForm();
+            toast.success("Recipe added successfully");
         }
         catch (error) {
             console.error(error);

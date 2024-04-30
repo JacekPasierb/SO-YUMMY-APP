@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById, getOwnRecipes, } from "./operations";
+import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById, getOwnRecipes, addOwnRecipes, } from "./operations";
 const initialState = {
     isLoading: false,
     popularRecipes: {},
@@ -70,7 +70,8 @@ const recipesSlice = createSlice({
         else {
             state.error = "An error occurred during getRecipeById";
         }
-    }).addCase(getOwnRecipes.fulfilled, (state, action) => {
+    })
+        .addCase(getOwnRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.ownRecipes = action.payload.ownRecipes;
         state.totalOwnRecipes = action.payload.totalOwnRecipes;
@@ -79,7 +80,8 @@ const recipesSlice = createSlice({
         .addCase(getOwnRecipes.pending, (state) => {
         state.isLoading = true;
         state.error = null;
-    }).addCase(getOwnRecipes.rejected, (state, action) => {
+    })
+        .addCase(getOwnRecipes.rejected, (state, action) => {
         state.isLoading = false;
         if (typeof action.payload === "string") {
             state.error = action.payload;
@@ -87,6 +89,11 @@ const recipesSlice = createSlice({
         else {
             state.error = "An error occurred during getOwnRecipes";
         }
+    })
+        .addCase(addOwnRecipes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.ownRecipes = [...state.ownRecipes, action.payload];
+        state.error = null;
     })
         .addCase(getIngredientById.fulfilled, (state, action) => {
         state.isLoading = false;
