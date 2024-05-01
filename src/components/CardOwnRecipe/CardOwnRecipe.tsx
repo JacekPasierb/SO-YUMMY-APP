@@ -2,8 +2,12 @@ import css from "./CardOwnRecipe.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
 import React from "react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { deleteRecipe } from "../../redux/recipes/operations";
 
 interface OwnRecipe {
+  _id: string;
   title: string;
   preview: string;
   description: string;
@@ -15,10 +19,18 @@ interface Props {
 }
 
 const CardOwnRecipe = ({ ownRecipe }: Props) => {
+  const dispatch: AppDispatch = useDispatch();
+
+  const handleDelete = (id: string) => {
+    dispatch(deleteRecipe(id));
+  };
+
+  const { _id, preview, title, description, time } = ownRecipe;
+
   return (
     <div className={css.cardBox}>
       <img
-        src={ownRecipe.preview}
+        src={preview}
         width="124"
         height="124"
         className={css.recipeImg}
@@ -26,8 +38,8 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
       />
       <div className={css.recipeInfo}>
         <div className={css.rowFirst}>
-          <h2 className={css.titleRecipe}>{ownRecipe.title}</h2>
-          <button type="button" >
+          <h2 className={css.titleRecipe}>{title}</h2>
+          <button type="button" onClick={() => handleDelete(_id)}>
             <svg className={css.iconDelete}>
               <use
                 href={sprite + `#icon-trash-01`}
@@ -37,9 +49,9 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
             </svg>
           </button>
         </div>
-        <p className={css.recipeDescription}>{ownRecipe.description}</p>
+        <p className={css.recipeDescription}>{description}</p>
         <div className={css.row}>
-          <p className={css.recipeTime}>{ownRecipe.time} min</p>{" "}
+          <p className={css.recipeTime}>{time} min</p>{" "}
           <button className={`${css.recipeSeeBtn} ${css.txtBtn}`}>
             See recipes
           </button>
