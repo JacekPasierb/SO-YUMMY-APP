@@ -118,6 +118,17 @@ const recipesSlice = createSlice({
         state.ownRecipes = [...state.ownRecipes, action.payload];
         state.error = null;
       })
+      .addCase(addOwnRecipes.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addOwnRecipes.rejected, (state, action) => {
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred during addOwnRecipes";
+        }
+      })
       .addCase(getIngredientById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.ingredient = action.payload.ingredient;
