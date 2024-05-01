@@ -5,6 +5,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { deleteRecipe } from "../../redux/recipes/operations";
+import { NavLink } from "react-router-dom";
 
 interface OwnRecipe {
   _id: string;
@@ -51,10 +52,13 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
         </div>
         <p className={css.recipeDescription}>{description}</p>
         <div className={css.row}>
-          <p className={css.recipeTime}>{time} min</p>{" "}
-          <button className={`${css.recipeSeeBtn} ${css.txtBtn}`}>
+          <p className={css.recipeTime}>{time} min</p>
+          <NavLink
+            to={`/recipe/${_id}`}
+            className={`${css.recipeSeeBtn} ${css.txtBtn}`}
+          >
             See recipes
-          </button>
+          </NavLink>
         </div>
       </div>
     </div>
