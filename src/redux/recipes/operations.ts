@@ -106,6 +106,19 @@ export const addOwnRecipes = createAsyncThunk(
   }
 );
 
+export const deleteRecipe = createAsyncThunk(
+  "ownRecipes/deleteOwnRecipe",
+  async (recipeId, thunkAPI) => {
+    try {
+      await axios.delete(`api/ownRecipes/remove/${recipeId}`);
+
+      return recipeId;
+    } catch (error:any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 interface CategoryRecipesRequest {
   category: string;
   page: number;

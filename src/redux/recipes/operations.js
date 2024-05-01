@@ -31,6 +31,15 @@ export const addOwnRecipes = createAsyncThunk("ownRecipes/addRecipes", async (bo
         return thunkAPI.rejectWithValue(error.message);
     }
 });
+export const deleteRecipe = createAsyncThunk("ownRecipes/deleteOwnRecipe", async (recipeId, thunkAPI) => {
+    try {
+        await axios.delete(`api/ownRecipes/remove/${recipeId}`);
+        return recipeId;
+    }
+    catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
 export const getCategoryRecipes = createAsyncThunk("recipes/getCategoryRecipes", async ({ category, page }, thunkAPI) => {
     try {
         const { data } = await axios.get(`./api/recipes/categories/${category}?page=${page}&limit=8`);

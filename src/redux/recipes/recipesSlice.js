@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById, getOwnRecipes, addOwnRecipes, } from "./operations";
+import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById, getOwnRecipes, addOwnRecipes, deleteRecipe, } from "./operations";
 const initialState = {
     isLoading: false,
     popularRecipes: {},
@@ -105,6 +105,23 @@ const recipesSlice = createSlice({
         }
         else {
             state.error = "An error occurred during addOwnRecipes";
+        }
+    })
+        .addCase(deleteRecipe.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.ownRecipes = state.ownRecipes.filter((recipe) => recipe._id !== action.payload);
+        state.error = null;
+    })
+        .addCase(deleteRecipe.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+    })
+        .addCase(deleteRecipe.rejected, (state, action) => {
+        if (typeof action.payload === "string") {
+            state.error = action.payload;
+        }
+        else {
+            state.error = "An error occurred during deleteOwnRecipes";
         }
     })
         .addCase(getIngredientById.fulfilled, (state, action) => {
