@@ -71,3 +71,8 @@
   font-size: 10px;
   color: #fafafa;
 }
+.delBtn {
+  border: none;
+  padding: 0;
+  background-color: inherit;
+}
