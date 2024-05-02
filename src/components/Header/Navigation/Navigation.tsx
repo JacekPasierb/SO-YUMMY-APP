@@ -13,7 +13,7 @@ const Navigation = () => {
       <NavLink to="/add" className={css.link}>
         <span className={css.navText}>Add Recipes</span>
       </NavLink>
-      <NavLink to="/my" className={css.link}>
+      <NavLink to="/ownRecipes" className={css.link}>
         <span className={css.navText}>My Recipes</span>
       </NavLink>
       <NavLink to="/favorite" className={css.link}>

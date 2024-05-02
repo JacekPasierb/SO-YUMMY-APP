@@ -20,7 +20,7 @@ const NavigationMobile: FC<NavigationMobileProps> = ({ onClose }) => {
           Add Recipes
         </span>
       </NavLink>
-      <NavLink to="/my" className={css.link}>
+      <NavLink to="/ownRecipes" className={css.link}>
         <span className={css.navText} onClick={onClose}>
           My Recipes
         </span>

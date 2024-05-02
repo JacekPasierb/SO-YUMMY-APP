@@ -35,6 +35,7 @@ const MyRecipesPage = () => {
     if (user && user.userId) {
       const userId = user.userId;
       const request: OwnRecipesRequest = { userId, page: currentPage };
+
       dispatch(getOwnRecipes(request));
     }
   }, [dispatch, currentPage]);

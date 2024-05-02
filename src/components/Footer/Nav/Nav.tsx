@@ -17,7 +17,7 @@ const Nav = () => {
           </Link>
         </li>
         <li className={css.navigationListItem}>
-          <Link to="/my" className={css.link}>
+          <Link to="/ownRecipes" className={css.link}>
             MyRecipes
           </Link>
         </li>

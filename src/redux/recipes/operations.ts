@@ -69,7 +69,7 @@ export const getOwnRecipes = createAsyncThunk<
   OwnRecipesRequest
 >("ownRecipes/getOwnRecipes", async ({ userId, page }, thunkAPI) => {
   try {
-    const { data } = await axios.get(`./api/ownRecipes/${userId}?${page}`);
+    const { data } = await axios.get(`./api/ownRecipes/${userId}?page=${page}`);
 
     return {
       ownRecipes: data.data.ownRecipes,
@@ -108,12 +108,12 @@ export const addOwnRecipes = createAsyncThunk(
 
 export const deleteRecipe = createAsyncThunk(
   "ownRecipes/deleteOwnRecipe",
-  async (recipeId:string, thunkAPI) => {
+  async (recipeId: string, thunkAPI) => {
     try {
       await axios.delete(`api/ownRecipes/remove/${recipeId}`);
 
       return recipeId;
-    } catch (error:any) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }

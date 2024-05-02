@@ -33,13 +33,13 @@ const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { pathname } = location;
+  const { pathname, search } = location;
   const isRefreshing = useSelector(selectIsRefreshing);
   const theme = useSelector(selectTheme);
 
   useEffect(() => {
-    navigate(pathname, { replace: true });
-  }, [navigate, pathname]);
+    navigate(`${pathname}${search}`, { replace: true });
+  }, [navigate, pathname, search]);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -118,7 +118,7 @@ const App: FC = () => {
             element={<PrivateRoute component={<FavoritesPage />} />}
           />
           <Route
-            path="/my"
+            path="/ownRecipes"
             element={<PrivateRoute component={<MyRecipesPage />} />}
           />
           <Route

@@ -1,6 +1,6 @@
 import css from "./MyRecipesList.module.css";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
 
