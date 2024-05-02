@@ -38,6 +38,7 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
       return;
     }
     const [file] = files;
+    console.log("fil", file);
 
     let allowedImageTypes = ["image/jpeg", "image/jpg", "image/png"];
 
@@ -54,6 +55,12 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
       });
 
       data.setFile("");
+      return;
+    }
+    if (file && file.size > 4000000) {
+      toast.error("Picture is too large, choose other picture");
+      data.setFile("");
+
       return;
     }
     data.setFile(file);
@@ -88,7 +95,9 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
 
     getCategories();
   }, []);
-
+  useEffect(() => {
+    console.log("pap", path);
+  }, [path]);
   return (
     <div className={css.recipeDescriptionFieldsBox}>
       <div>

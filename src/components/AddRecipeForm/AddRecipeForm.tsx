@@ -153,8 +153,9 @@ const AddRecipeForm: FC = () => {
       await dispatch(addOwnRecipes(body));
       resetForm();
       toast.success("Recipe added successfully");
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error("er", error);
+      toast.error(`Add recipe failed, try again..`);
     } finally {
       setIsLoading(false);
     }

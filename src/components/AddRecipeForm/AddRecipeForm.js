@@ -99,7 +99,9 @@ const AddRecipeForm = () => {
         formData.append("file", file);
         formData.append("upload_preset", "alex_preset");
         try {
+            console.log("przed");
             const response = await axios.post("/api/ownRecipes/picture", formData);
+            console.log("yo");
             const imageUrl = response.data.secure_url;
             const body = {
                 ...inputs,
@@ -113,7 +115,8 @@ const AddRecipeForm = () => {
             toast.success("Recipe added successfully");
         }
         catch (error) {
-            console.error(error);
+            console.error("er", error);
+            toast.error(`Add recipe failed, try again..`);
         }
         finally {
             setIsLoading(false);
