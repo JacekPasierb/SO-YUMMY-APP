@@ -44,8 +44,7 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
             <svg className={css.iconBgDelete}>
               <use
                 href={sprite + `#icon-trash-01`}
-                width="14px"
-                height="14px"
+              
                 className={css.iconDel}
               ></use>
             </svg>
