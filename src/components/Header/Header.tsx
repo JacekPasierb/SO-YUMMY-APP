@@ -16,7 +16,7 @@ const Header = () => {
       <Media
         queries={{
           small: "(max-width: 768px)",
-          medium: "(min-width: 768px) and (max-width: 1200px)",
+          medium: "(min-width: 769px) and (max-width: 1200px)",
           large: "(min-width: 1200px)",
         }}
       >

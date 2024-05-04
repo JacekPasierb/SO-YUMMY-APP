@@ -99,9 +99,7 @@ const AddRecipeForm = () => {
         formData.append("file", file);
         formData.append("upload_preset", "alex_preset");
         try {
-            console.log("przed");
             const response = await axios.post("/api/ownRecipes/picture", formData);
-            console.log("yo");
             const imageUrl = response.data.secure_url;
             const body = {
                 ...inputs,

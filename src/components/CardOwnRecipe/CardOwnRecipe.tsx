@@ -41,11 +41,12 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
         <div className={css.rowFirst}>
           <h2 className={css.titleRecipe}>{title}</h2>
           <button type="button" onClick={() => handleDelete(_id)} className={css.delBtn}>
-            <svg className={css.iconDelete}>
+            <svg className={css.iconBgDelete}>
               <use
                 href={sprite + `#icon-trash-01`}
                 width="14px"
                 height="14px"
+                className={css.iconDel}
               ></use>
             </svg>
           </button>
