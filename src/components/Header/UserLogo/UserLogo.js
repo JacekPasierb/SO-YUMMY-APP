@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import css from "./UserLogo.module.css";
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
 const UserLogoModal = lazy(() => import("../UserLogoModal/UserLogoModal"));
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsUserLogoModalOpen } from "../../../redux/global/globalSelectors";
@@ -20,6 +20,6 @@ const UserLogo = () => {
             dispatch(setIsUserLogoModalOpen(true));
         }
     };
-    return (_jsxs("div", { className: css.boxAvatar, onClick: handleLogoClick, children: [_jsx("img", { src: user.avatar ? user.avatar : DEFAULT_AVATAR, alt: "avatar", width: "34", height: "34", className: css.boxAvatar__avatar }), _jsx("span", { className: css.boxAvatar__username, children: user.name }), isUserLogoModalOpen && (_jsx(Suspense, { fallback: _jsx("div", { children: "Loading..." }), children: _jsx(UserLogoModal, {}) }))] }));
+    return (_jsxs("div", { className: css.boxAvatar, onClick: handleLogoClick, children: [_jsx("img", { src: user.avatar ? user.avatar : DEFAULT_AVATAR, alt: "avatar", width: "34", height: "34", className: css.boxAvatar__avatar }), _jsx("span", { className: css.boxAvatar__username, children: user.name }), isUserLogoModalOpen && _jsx(UserLogoModal, {})] }));
 };
 export default UserLogo;
