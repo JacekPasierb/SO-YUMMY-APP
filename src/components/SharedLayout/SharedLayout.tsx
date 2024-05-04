@@ -9,9 +9,9 @@ import Copyrights from "../Copyrights/Copyrights";
 const SharedLayout: FC = () => {
   return (
     <div className={css.bg}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Outlet />
-      </Suspense>
+      {/* <Suspense fallback={<div>Loading...</div>}> */}
+      <Outlet />
+      {/* </Suspense> */}
       <Footer />
       <Copyrights />
     </div>

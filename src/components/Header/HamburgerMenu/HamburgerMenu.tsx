@@ -29,11 +29,7 @@ const HamburgerMenu = () => {
         onClick={handleMenuModalClick}
         className={css.menuIcon}
       />
-      {isMenuModalOpen && (
-        <Suspense fallback={<div>Loading...</div>}>
-          <MenuModal onClose={handleMenuModalClick} />
-        </Suspense>
-      )}
+      {isMenuModalOpen && <MenuModal onClose={handleMenuModalClick} />}
     </>
   );
 };
