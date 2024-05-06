@@ -1,9 +1,23 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import css from "./ReceipePageHero.module.css";
 import sprite from "../../assets/icons/sprite.svg";
+import { useEffect } from "react";
 import MainPageTitle from "../MainPageTitle/MainPageTitle";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
 const ReceipePageHero = ({ recipe }) => {
-    const { title, description, time } = recipe;
-    return (_jsxs("div", { className: css.receipeHeroBox, children: [_jsx(MainPageTitle, { title: title }), _jsx("p", { className: css.recipeDescription, children: description }), _jsx("button", { type: "button", className: css.btn, children: _jsx("span", { className: css.textBtn, children: "Add to favotite recipes" }) }), time && (_jsxs("div", { className: css.timeBox, children: [_jsx("svg", { className: css.iconClock, children: _jsx("use", { href: sprite + `#icon-clock` }) }), _jsxs("p", { className: css.timeText, children: [time, " min"] })] }))] }));
+    const { title, description, time, favorites } = recipe;
+    const user = useSelector(selectUser);
+    const userId = user.userId;
+    let isFav = false;
+    // czy ulubiony
+    useEffect(() => {
+        if (favorites !== undefined) {
+            isFav = favorites.includes(userId);
+            console.log("T", isFav);
+        }
+    }, [recipe]);
+    // const isFav = favorites.includes(`${userId}`);
+    return (_jsxs("div", { className: css.receipeHeroBox, children: [_jsx(MainPageTitle, { title: title }), _jsx("p", { className: css.recipeDescription, children: description }), _jsx("button", { type: "button", className: `${css.btn} ${css.textBtn}`, children: isFav ? "Add to favotite recipes" : "Remove from favorites" }), time && (_jsxs("div", { className: css.timeBox, children: [_jsx("svg", { className: css.iconClock, children: _jsx("use", { href: sprite + `#icon-clock` }) }), _jsxs("p", { className: css.timeText, children: [time, " min"] })] }))] }));
 };
 export default ReceipePageHero;
