@@ -26,9 +26,9 @@ const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
     }
   }, [recipe]);
 
-  const handleFavorite = () => {
-    isFav ? dispatch(updateRecipe())
-  };
+  // const handleFavorite = () => {
+  //   isFav ? dispatch(updateRecipe())
+  // }
   return (
     <div className={css.receipeHeroBox}>
       <MainPageTitle title={title} />
@@ -37,7 +37,7 @@ const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
       <button
         type="button"
         className={`${css.btn} ${css.textBtn}`}
-        onClick={handleFavorite}
+       
       >
         {!isFav ? "Add to favorite recipes" : "Remove from favorites"}
       </button>

@@ -10,14 +10,14 @@ const ReceipePageHero = ({ recipe }) => {
     const user = useSelector(selectUser);
     const userId = user.userId;
     let isFav = false;
-    // czy ulubiony
     useEffect(() => {
         if (favorites !== undefined) {
             isFav = favorites.includes(userId);
-            console.log("T", isFav);
         }
     }, [recipe]);
-    // const isFav = favorites.includes(`${userId}`);
-    return (_jsxs("div", { className: css.receipeHeroBox, children: [_jsx(MainPageTitle, { title: title }), _jsx("p", { className: css.recipeDescription, children: description }), _jsx("button", { type: "button", className: `${css.btn} ${css.textBtn}`, children: isFav ? "Add to favotite recipes" : "Remove from favorites" }), time && (_jsxs("div", { className: css.timeBox, children: [_jsx("svg", { className: css.iconClock, children: _jsx("use", { href: sprite + `#icon-clock` }) }), _jsxs("p", { className: css.timeText, children: [time, " min"] })] }))] }));
+    // const handleFavorite = () => {
+    //   isFav ? dispatch(updateRecipe())
+    // }
+    return (_jsxs("div", { className: css.receipeHeroBox, children: [_jsx(MainPageTitle, { title: title }), _jsx("p", { className: css.recipeDescription, children: description }), _jsx("button", { type: "button", className: `${css.btn} ${css.textBtn}`, children: !isFav ? "Add to favorite recipes" : "Remove from favorites" }), time && (_jsxs("div", { className: css.timeBox, children: [_jsx("svg", { className: css.iconClock, children: _jsx("use", { href: sprite + `#icon-clock` }) }), _jsxs("p", { className: css.timeText, children: [time, " min"] })] }))] }));
 };
 export default ReceipePageHero;

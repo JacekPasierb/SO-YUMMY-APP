@@ -6,6 +6,7 @@ import sprite from "../../assets/icons/sprite.svg";
 
 import React from "react";
 import { useMediaQuery } from "@react-hook/media-query";
+import { NavLink } from "react-router-dom";
 
 const ChooseYourBreakfast = () => {
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -32,12 +33,13 @@ const ChooseYourBreakfast = () => {
           </span>
           way to enjoy a variety of fresh ingredients in one satisfying meal
         </span>
-        <button type="button" className={css.btn}>
-          See recipes{" "}
+
+        <NavLink to={`/categories/Breakfast`} className={css.btn}>
+          See recipes
           <svg className={css.icon}>
             <use href={sprite + `#icon-arrow-narrow-right`}></use>
           </svg>
-        </button>
+        </NavLink>
       </div>
     </div>
   );
