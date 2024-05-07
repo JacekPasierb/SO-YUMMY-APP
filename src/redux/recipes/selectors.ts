@@ -4,8 +4,7 @@ export const selectError = (state: RootState) => state.recipes.error;
 
 export const selectIsLoading = (state: RootState) => state.recipes.isLoading;
 
-export const selectPopularRecipes = (state: RootState) =>
-  state.recipes.popularRecipes;
+
 
 export const selectCategoryRecipes = (state: RootState) =>
   state.recipes.categoryRecipes;

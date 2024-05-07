@@ -1,30 +1,30 @@
 import css from "./PreviewsCategories.module.css";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
-import { useDispatch, useSelector } from "react-redux";
-import { Recipe, getPopularRecipes } from "../../redux/recipes/operations";
-import {
-  selectIsLoading,
-  selectPopularRecipes,
-} from "../../redux/recipes/selectors";
-import { AppDispatch } from "src/redux/store";
+
+import { Recipe } from "../../redux/recipes/operations";
 
 import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
 
+import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
+
+interface RecipesByMainCategory {
+  [category: string]: Recipe[];
+}
+
 const PreviewsCategories = () => {
-  const dispatch: AppDispatch = useDispatch();
-
-  const recipesByMainCategory = useSelector(selectPopularRecipes);
-  const isLoading = useSelector(selectIsLoading);
-
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesctop = useMediaQuery("(min-width:1200px)");
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [recipesMainCategories, setRecipesMainCategories] =
+    useState<RecipesByMainCategory>();
   useEffect(() => {
-    let count;
+    let count: number;
     if (isDesctop) {
       count = 4;
     } else if (isTablet) {
@@ -32,18 +32,31 @@ const PreviewsCategories = () => {
     } else {
       count = 1;
     }
-    dispatch(getPopularRecipes({ count }));
-  }, [dispatch, isDesctop, isTablet]);
+    const getRecipesByFourCategories = async () => {
+      try {
+        setIsLoading(true);
+        const { data } = await fetchRecipesByFourCategories(count);
 
-
+        setRecipesMainCategories(data);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    getRecipesByFourCategories();
+  }, []);
+// dokonczyc ustawianie error i wyswietlanie error oraz wyswietlanie loading opracowac
   return (
     <ul className={css.categoriesList}>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        recipesByMainCategory &&
-        Object.entries(recipesByMainCategory).map(
+        recipesMainCategories &&
+        Object.entries(recipesMainCategories).map(
           ([categories, recipes], idx) => {
+            console.log("reccc", recipes);
+
             return (
               <li
                 key={`${categories}-${idx}`}

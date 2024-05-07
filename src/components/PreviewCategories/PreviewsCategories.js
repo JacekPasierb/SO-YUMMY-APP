@@ -1,19 +1,17 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import css from "./PreviewsCategories.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
-import { useDispatch, useSelector } from "react-redux";
-import { getPopularRecipes } from "../../redux/recipes/operations";
-import { selectIsLoading, selectPopularRecipes, } from "../../redux/recipes/selectors";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
+import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
 const PreviewsCategories = () => {
-    const dispatch = useDispatch();
-    const recipesByMainCategory = useSelector(selectPopularRecipes);
-    const isLoading = useSelector(selectIsLoading);
     const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
     const isDesctop = useMediaQuery("(min-width:1200px)");
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [recipesMainCategories, setRecipesMainCategories] = useState();
     useEffect(() => {
         let count;
         if (isDesctop) {
@@ -25,10 +23,25 @@ const PreviewsCategories = () => {
         else {
             count = 1;
         }
-        dispatch(getPopularRecipes({ count }));
-    }, [dispatch, isDesctop, isTablet]);
-    return (_jsx("ul", { className: css.categoriesList, children: isLoading ? (_jsx("p", { children: "Loading..." })) : (recipesByMainCategory &&
-            Object.entries(recipesByMainCategory).map(([categories, recipes], idx) => {
+        const getRecipesByFourCategories = async () => {
+            try {
+                setIsLoading(true);
+                const { data } = await fetchRecipesByFourCategories(count);
+                setRecipesMainCategories(data);
+            }
+            catch (error) {
+                setError(error.message);
+            }
+            finally {
+                setIsLoading(false);
+            }
+        };
+        getRecipesByFourCategories();
+    }, []);
+    // dokonczyc ustawianie error i wyswietlanie error oraz wyswietlanie loading opracowac
+    return (_jsx("ul", { className: css.categoriesList, children: isLoading ? (_jsx("p", { children: "Loading..." })) : (recipesMainCategories &&
+            Object.entries(recipesMainCategories).map(([categories, recipes], idx) => {
+                console.log("reccc", recipes);
                 return (_jsxs("li", { className: css.categoriesListItem, children: [_jsx(TitleCategories, { categories: categories }), _jsx("ul", { className: css.recipesList, children: recipes &&
                                 recipes.map((recipe) => {
                                     return (_jsx("li", { className: css.recipesListItem, children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardRecipe, { title: recipe.title, preview: recipe.preview }) }) }, `${recipe._id}`));

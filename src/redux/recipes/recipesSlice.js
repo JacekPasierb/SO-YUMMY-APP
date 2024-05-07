@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPopularRecipes, getCategoryRecipes, getRecipeById, getIngredientById, getOwnRecipes, addOwnRecipes, deleteRecipe, } from "./operations";
+import { getCategoryRecipes, getRecipeById, getIngredientById, getOwnRecipes, addOwnRecipes, deleteRecipe, } from "./operations";
 const initialState = {
     isLoading: false,
-    popularRecipes: {},
     categoryRecipes: [],
     recipeById: {},
     ingredient: {},
@@ -16,24 +15,6 @@ const recipesSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => builder
-        .addCase(getPopularRecipes.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.popularRecipes = action.payload.popularRecipes;
-        state.error = null;
-    })
-        .addCase(getPopularRecipes.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-    })
-        .addCase(getPopularRecipes.rejected, (state, action) => {
-        state.isLoading = false;
-        if (typeof action.payload === "string") {
-            state.error = action.payload;
-        }
-        else {
-            state.error = "An error occurred during getPopularRecipes";
-        }
-    })
         .addCase(getCategoryRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.categoryRecipes = action.payload.categoryRecipes;
