@@ -10,6 +10,8 @@ import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
 
 import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
+import { toast } from "react-toastify";
+import { Loader } from "../Loader/Loader";
 
 interface RecipesByMainCategory {
   [category: string]: Recipe[];
@@ -23,8 +25,10 @@ const PreviewsCategories = () => {
   const [error, setError] = useState(null);
   const [recipesMainCategories, setRecipesMainCategories] =
     useState<RecipesByMainCategory>();
+
   useEffect(() => {
     let count: number;
+
     if (isDesctop) {
       count = 4;
     } else if (isTablet) {
@@ -36,65 +40,65 @@ const PreviewsCategories = () => {
       try {
         setIsLoading(true);
         const { data } = await fetchRecipesByFourCategories(count);
-
         setRecipesMainCategories(data);
       } catch (error: any) {
         setError(error.message);
+        toast.error("Something went wrong. Plese try again...");
       } finally {
         setIsLoading(false);
       }
     };
-    getRecipesByFourCategories();
-  }, []);
-// dokonczyc ustawianie error i wyswietlanie error oraz wyswietlanie loading opracowac
-  return (
-    <ul className={css.categoriesList}>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        recipesMainCategories &&
-        Object.entries(recipesMainCategories).map(
-          ([categories, recipes], idx) => {
-            console.log("reccc", recipes);
 
-            return (
-              <li
-                key={`${categories}-${idx}`}
-                className={css.categoriesListItem}
-              >
-                <TitleCategories categories={categories} />
-                <ul className={css.recipesList}>
-                  {recipes &&
-                    recipes.map((recipe: Recipe) => {
-                      return (
-                        <li
-                          key={`${recipe._id}`}
-                          className={css.recipesListItem}
-                        >
-                          <NavLink to={`/recipe/${recipe._id}`}>
-                            <CardRecipe
-                              title={recipe.title}
-                              preview={recipe.preview}
-                            />
-                          </NavLink>
-                        </li>
-                      );
-                    })}
-                </ul>
-                <NavLink
-                  to={`/categories/${
-                    categories.charAt(0).toUpperCase() + categories.slice(1)
-                  }`}
-                  className={css.btnCategories}
+    getRecipesByFourCategories();
+  }, [isDesctop, isTablet]);
+
+  return (
+    <>
+      {error && <p>Something went wrong. Try again...</p>}
+      {isLoading && <Loader />}
+      <ul className={css.categoriesList}>
+        {recipesMainCategories &&
+          Object.entries(recipesMainCategories).map(
+            ([categories, recipes], idx) => {
+              console.log("reccc", recipes);
+              return (
+                <li
+                  key={`${categories}-${idx}`}
+                  className={css.categoriesListItem}
                 >
-                  See all
-                </NavLink>
-              </li>
-            );
-          }
-        )
-      )}
-    </ul>
+                  <TitleCategories categories={categories} />
+                  <ul className={css.recipesList}>
+                    {recipes &&
+                      recipes.map((recipe: Recipe) => {
+                        return (
+                          <li
+                            key={`${recipe._id}`}
+                            className={css.recipesListItem}
+                          >
+                            <NavLink to={`/recipe/${recipe._id}`}>
+                              <CardRecipe
+                                title={recipe.title}
+                                preview={recipe.preview}
+                              />
+                            </NavLink>
+                          </li>
+                        );
+                      })}
+                  </ul>
+                  <NavLink
+                    to={`/categories/${
+                      categories.charAt(0).toUpperCase() + categories.slice(1)
+                    }`}
+                    className={css.btnCategories}
+                  >
+                    See all
+                  </NavLink>
+                </li>
+              );
+            }
+          )}
+      </ul>
+    </>
   );
 };
 
