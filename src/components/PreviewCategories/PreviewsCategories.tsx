@@ -4,14 +4,13 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
 
-import { Recipe } from "../../redux/recipes/operations";
-
 import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
 
 import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
 import { toast } from "react-toastify";
 import { Loader } from "../Loader/Loader";
+import { Recipe } from "src/types/recipesTypes";
 
 interface RecipesByMainCategory {
   [category: string]: Recipe[];

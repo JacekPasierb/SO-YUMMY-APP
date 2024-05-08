@@ -3,13 +3,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
 
-export interface Recipe {
-  _id: string;
-  title: string;
-  category: string;
-  preview: string;
-  thumb: string;
-}
+
 
 interface ownRecipe {
   createdAt: string;

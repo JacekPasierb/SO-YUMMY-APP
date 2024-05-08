@@ -8,12 +8,13 @@ import {
   selectIsLoading,
   selectTotalRecipes,
 } from "../../redux/recipes/selectors";
-import { Recipe, getCategoryRecipes } from "../../redux/recipes/operations";
+import {  getCategoryRecipes } from "../../redux/recipes/operations";
 import { AppDispatch } from "src/redux/store";
 
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
+import { Recipe } from "../../types/recipesTypes";
 
 interface CategoryRecipesRequest {
   category: string;
