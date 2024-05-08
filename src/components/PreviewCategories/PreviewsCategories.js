@@ -43,7 +43,6 @@ const PreviewsCategories = () => {
     }, [isDesctop, isTablet]);
     return (_jsxs(_Fragment, { children: [error && _jsx("p", { children: "Something went wrong. Try again..." }), isLoading && _jsx(Loader, {}), _jsx("ul", { className: css.categoriesList, children: recipesMainCategories &&
                     Object.entries(recipesMainCategories).map(([categories, recipes], idx) => {
-                        console.log("reccc", recipes);
                         return (_jsxs("li", { className: css.categoriesListItem, children: [_jsx(TitleCategories, { categories: categories }), _jsx("ul", { className: css.recipesList, children: recipes &&
                                         recipes.map((recipe) => {
                                             return (_jsx("li", { className: css.recipesListItem, children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardRecipe, { title: recipe.title, preview: recipe.preview }) }) }, `${recipe._id}`));

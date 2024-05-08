@@ -60,7 +60,6 @@ const PreviewsCategories = () => {
         {recipesMainCategories &&
           Object.entries(recipesMainCategories).map(
             ([categories, recipes], idx) => {
-              console.log("reccc", recipes);
               return (
                 <li
                   key={`${categories}-${idx}`}
