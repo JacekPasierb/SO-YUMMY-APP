@@ -4,12 +4,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { fetchAllCategories } from "../../API/categoriesAPI";
+import { toast } from "react-toastify";
 
 const CategoriesNav = () => {
   const navigate = useNavigate();
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
   const [categoriesList, setCategoriesList] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     navigate(`/categories/${categoriesList[newValue]}`);
@@ -19,10 +22,16 @@ const CategoriesNav = () => {
   useEffect(() => {
     const getAllCategories = async () => {
       try {
+        setIsLoading(true);
         const { data } = await fetchAllCategories();
         await setCategoriesList(data.catArr);
       } catch (error) {
-        console.log(error);
+        if (error instanceof Error) {
+          setError(error.message);
+          toast.error("Something went wrong. Plese try again...");
+        }
+      } finally {
+        setIsLoading(false);
       }
     };
     getAllCategories();

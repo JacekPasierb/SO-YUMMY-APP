@@ -47,7 +47,7 @@ const CategoriesByName: FC = () => {
     const request: CategoryRecipesRequest = { category, page: currentPage };
     dispatch(getCategoryRecipes(request));
   }, [dispatch, categoryName, currentPage]);
-
+// I think that getCategoryRecipes and CategoryNav should be on one isLoading in ReduxStore
 
   return (
     <>
