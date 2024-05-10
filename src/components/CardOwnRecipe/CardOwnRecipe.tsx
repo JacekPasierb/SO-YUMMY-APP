@@ -4,8 +4,9 @@ import sprite from "../../assets/icons/sprite.svg";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { deleteRecipe } from "../../redux/recipes/operations";
+
 import { NavLink } from "react-router-dom";
+import { deleteRecipe } from "../../redux/ownRecipes/operations";
 
 interface OwnRecipe {
   _id: string;

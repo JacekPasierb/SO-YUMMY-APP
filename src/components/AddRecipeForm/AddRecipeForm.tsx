@@ -12,7 +12,8 @@ import RecipePreparationFields from "../RecipePreparationFields/RecipePreparatio
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { addOwnRecipes } from "../../redux/recipes/operations";
+import { addOwnRecipes } from "../../redux/ownRecipes/operations";
+
 
 interface Ingredient {
   id: string;

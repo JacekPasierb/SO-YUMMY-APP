@@ -4,11 +4,11 @@ import React, { FC, useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectCategoryRecipes,
   selectIsLoading,
+  selectRecipesByCategory,
   selectTotalRecipes,
 } from "../../redux/recipes/selectors";
-import {  getCategoryRecipes } from "../../redux/recipes/operations";
+import { getRecipesByCategory } from "../../redux/recipes/operations";
 import { AppDispatch } from "src/redux/store";
 
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
@@ -27,7 +27,7 @@ const CategoriesByName: FC = () => {
   const currentPage = getPageFromQueryString();
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const recipes = useSelector(selectCategoryRecipes);
+  const recipes = useSelector(selectRecipesByCategory);
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
 
@@ -45,9 +45,9 @@ const CategoriesByName: FC = () => {
       category = categoryName as string;
     }
     const request: CategoryRecipesRequest = { category, page: currentPage };
-    dispatch(getCategoryRecipes(request));
+    dispatch(getRecipesByCategory(request));
   }, [dispatch, categoryName, currentPage]);
-// I think that getCategoryRecipes and CategoryNav should be on one isLoading in ReduxStore
+  // I think that getCategoryRecipes and CategoryNav should be on one isLoading in ReduxStore
 
   return (
     <>

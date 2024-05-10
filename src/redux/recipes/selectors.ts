@@ -6,17 +6,14 @@ export const selectIsLoading = (state: RootState) => state.recipes.isLoading;
 
 
 
-export const selectCategoryRecipes = (state: RootState) =>
-  state.recipes.categoryRecipes;
+export const selectRecipesByCategory = (state: RootState) =>
+  state.recipes.recipesByCategory;
 
 export const selectRecipeById = (state: RootState) => state.recipes.recipeById;
 
 export const selectIngredient = (state: RootState) => state.recipes.ingredient;
 
-export const selectOwnRecipes = (state: RootState) => state.recipes.ownRecipes;
 
-export const selectTotalOwnRecipes = (state: RootState) =>
-  state.recipes.totalOwnRecipes;
 
 export const selectTotalRecipes = (state: RootState) =>
   state.recipes.totalRecipes;

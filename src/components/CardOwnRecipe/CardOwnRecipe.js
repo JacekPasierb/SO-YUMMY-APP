@@ -2,8 +2,8 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import css from "./CardOwnRecipe.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { useDispatch } from "react-redux";
-import { deleteRecipe } from "../../redux/recipes/operations";
 import { NavLink } from "react-router-dom";
+import { deleteRecipe } from "../../redux/ownRecipes/operations";
 const CardOwnRecipe = ({ ownRecipe }) => {
     const dispatch = useDispatch();
     const handleDelete = (id) => {

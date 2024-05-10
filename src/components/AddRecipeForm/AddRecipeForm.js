@@ -9,7 +9,7 @@ import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredient
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
 import { useDispatch } from "react-redux";
-import { addOwnRecipes } from "../../redux/recipes/operations";
+import { addOwnRecipes } from "../../redux/ownRecipes/operations";
 const AddRecipeForm = () => {
     const [file, setFile] = useState("");
     const [titleRecipe, setTitleRecipe] = useState("");

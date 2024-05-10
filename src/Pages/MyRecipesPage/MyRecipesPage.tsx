@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   OwnRecipesRequest,
   getOwnRecipes,
-} from "../../redux/recipes/operations";
+} from "../../redux/ownRecipes/operations";
 import {
   selectIsLoading,
   selectOwnRecipes,
   selectTotalOwnRecipes,
-} from "../../redux/recipes/selectors";
+} from "../../redux/ownRecipes/selectors";
 
 import { AppDispatch } from "../../redux/store";
 import Header from "../../components/Header/Header";
