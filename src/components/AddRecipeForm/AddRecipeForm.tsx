@@ -10,10 +10,10 @@ import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptio
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
 import { fetchAllIngredients } from "../../API/ingredientsAPI";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { addOwnRecipes } from "../../redux/ownRecipes/operations";
-
+import { selectIsLoading } from "../../redux/recipes/selectors";
 
 interface Ingredient {
   id: string;
@@ -150,7 +150,6 @@ const AddRecipeForm: FC = () => {
         preview: imageUrl,
       };
 
-      // const addRecipe = await axios.post("./api/ownRecipes/add", body);
       await dispatch(addOwnRecipes(body));
       resetForm();
       toast.success("Recipe added successfully");
@@ -161,7 +160,7 @@ const AddRecipeForm: FC = () => {
       setIsLoading(false);
     }
   };
-
+//pracuje nad loading dla kategori listy do formularza zeby formularz sie wczytal jak pobierze liste kategori
   return (
     <>
       {isLoading ? (

@@ -3,11 +3,13 @@ import {
   getRecipeById,
   getIngredientById,
   getRecipesByCategory,
+  getCategoriesList,
 } from "./operations";
 
 interface RecipeState {
   recipesByCategory: any[];
   isLoading: boolean;
+  categoriesList: string[];
   recipeById: any;
   ingredient: any;
 
@@ -22,6 +24,7 @@ export interface RootState {
 const initialState: RecipeState = {
   recipesByCategory: [],
   totalRecipes: 0,
+  categoriesList: [],
   isLoading: false,
   error: null,
   //zastanowic sie nad powiazaniem isLodaing i Error z innym reducerami
@@ -52,6 +55,24 @@ const recipesSlice = createSlice({
           state.error = action.payload;
         } else {
           state.error = "An error occurred during getCategoryRecipes";
+        }
+      })
+      .addCase(getCategoriesList.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.categoriesList = action.payload.data.catArr;
+
+        state.error = null;
+      })
+      .addCase(getCategoriesList.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getCategoriesList.rejected, (state, action) => {
+        state.isLoading = false;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred during getCategoriesList";
         }
       })
       .addCase(getRecipeById.fulfilled, (state, action) => {

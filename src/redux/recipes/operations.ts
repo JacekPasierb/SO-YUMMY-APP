@@ -31,6 +31,22 @@ export const getRecipesByCategory = createAsyncThunk<
   }
 });
 
+export const getCategoriesList = createAsyncThunk(
+  "recipes/getCategoriesList",
+  async (_, thunkAPI) => {
+    try {
+      console.log("cccc");
+
+      const { data } = await axios.get(`./api/recipes/category-list`);
+      console.log("dat", data);
+
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 interface RecipeByIdRequest {
   id: string;
 }

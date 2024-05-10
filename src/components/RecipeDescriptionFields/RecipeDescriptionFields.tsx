@@ -5,7 +5,10 @@ import { toast } from "react-toastify";
 
 import React, { ChangeEvent, FC, useEffect, useState } from "react";
 
-import { fetchAllCategories } from "../../API/categoriesAPI";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCategoriesList } from "../../redux/recipes/selectors";
+import { AppDispatch } from "../../redux/store";
+import { getCategoriesList } from "../../redux/recipes/operations";
 
 interface DataForm {
   file: any;
@@ -22,8 +25,8 @@ interface DataForm {
 
 const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
   const [path, setPath] = useState("");
-  const [categoriesList, setCategoriesList] = useState<string[]>([]);
-
+  const dispatch: AppDispatch = useDispatch();
+  const categoriesList = useSelector(selectCategoriesList);
   const timeOptionsList = () => {
     const time = [];
     for (let i = 5; i <= 120; i += 5) {
@@ -84,21 +87,12 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
     data.setCookingTime(cookingTime);
   };
   useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const { data } = await fetchAllCategories();
-        setCategoriesList(data.catArr);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getCategories();
+    dispatch(getCategoriesList());
   }, []);
-  useEffect(() => {
-    console.log("pap", path);
-  }, [path]);
+
   return (
+    <>
+    
     <div className={css.recipeDescriptionFieldsBox}>
       <div>
         <label htmlFor="file">
@@ -205,7 +199,7 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
           ))}
         </select>
       </div>
-    </div>
+    </div></>
   );
 };
 

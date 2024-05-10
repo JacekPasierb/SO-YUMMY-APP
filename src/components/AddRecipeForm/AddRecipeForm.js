@@ -107,7 +107,6 @@ const AddRecipeForm = () => {
                 thumb: imageUrl,
                 preview: imageUrl,
             };
-            // const addRecipe = await axios.post("./api/ownRecipes/add", body);
             await dispatch(addOwnRecipes(body));
             resetForm();
             toast.success("Recipe added successfully");
@@ -120,6 +119,7 @@ const AddRecipeForm = () => {
             setIsLoading(false);
         }
     };
+    //pracuje nad loading dla kategori listy do formularza zeby formularz sie wczytal jak pobierze liste kategori
     return (_jsx(_Fragment, { children: isLoading ? (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, { color: "#8BAA36" }) })) : (_jsxs("form", { onSubmit: handleSubmit, encType: "multipart/form-data", children: [_jsx(RecipeDescriptionFields, { data: dataForm }), _jsx(RecipeIngredientsFields, { ingredients: ingredients, setIngredients: setIngredients, ingredientsAll: ingredientsAll }), _jsx(RecipePreparationFields, { instructionsRecipe: instructionsRecipe, setInstructionsRecipe: setInstructionsRecipe })] })) }));
 };
 export default AddRecipeForm;

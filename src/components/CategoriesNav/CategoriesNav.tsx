@@ -3,16 +3,22 @@ import { Tab, Tabs } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { fetchAllCategories } from "../../API/categoriesAPI";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCategoriesList,
+  selectIsLoading,
+} from "../../redux/recipes/selectors";
+import { AppDispatch } from "../../redux/store";
+import { getCategoriesList } from "../../redux/recipes/operations";
 
 const CategoriesNav = () => {
   const navigate = useNavigate();
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
-  const [categoriesList, setCategoriesList] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const categoriesList = useSelector(selectCategoriesList);
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch: AppDispatch = useDispatch();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     navigate(`/categories/${categoriesList[newValue]}`);
@@ -20,22 +26,8 @@ const CategoriesNav = () => {
   };
 
   useEffect(() => {
-    const getAllCategories = async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await fetchAllCategories();
-        await setCategoriesList(data.catArr);
-      } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message);
-          toast.error("Something went wrong. Plese try again...");
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getAllCategories();
-  }, [categoryName]);
+    dispatch(getCategoriesList());
+  }, [dispatch]);
 
   useEffect(() => {
     if (categoryName && categoriesList) {
@@ -51,52 +43,54 @@ const CategoriesNav = () => {
 
   return (
     <>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons={false}
-        allowScrollButtonsMobile
-        aria-label="scrollable force tabs example"
-        sx={{
-          marginTop: `20px`,
-          borderBottom: "1px solid #E0E0E0",
+      {!isLoading && (
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="scrollable"
+          scrollButtons={false}
+          allowScrollButtonsMobile
+          aria-label="scrollable force tabs example"
+          sx={{
+            marginTop: `20px`,
+            borderBottom: "1px solid #E0E0E0",
 
-          "& .MuiTabs-indicator": {
-            backgroundColor: `#8BAA36`,
-            marginTop: `100`,
-          },
+            "& .MuiTabs-indicator": {
+              backgroundColor: `#8BAA36`,
+              marginTop: `100`,
+            },
 
-          "& .MuiTab-root": {
-            outline: `none`,
-          },
-          "& .MuiButtonBase-root": {
-            padding: "10px 10px 32px 10px",
-          },
-          "& .MuiTabs-flexContainer": {
-            gap: "28px",
-          },
-        }}
-      >
-        {categoriesList &&
-          categoriesList.map((cat, idx) => {
-            return (
-              <Tab
-                label={cat}
-                key={idx}
-                sx={{
-                  padding: "0",
-                  fontSize: "14px",
-                  lineHeight: "14px",
-                  color: "#E0E0E0",
-                  "&.Mui-selected": {
-                    color: "#8BAA36",
-                  },
-                }}
-              />
-            );
-          })}
-      </Tabs>
+            "& .MuiTab-root": {
+              outline: `none`,
+            },
+            "& .MuiButtonBase-root": {
+              padding: "10px 10px 32px 10px",
+            },
+            "& .MuiTabs-flexContainer": {
+              gap: "28px",
+            },
+          }}
+        >
+          {categoriesList &&
+            categoriesList.map((cat, idx) => {
+              return (
+                <Tab
+                  label={cat}
+                  key={idx}
+                  sx={{
+                    padding: "0",
+                    fontSize: "14px",
+                    lineHeight: "14px",
+                    color: "#E0E0E0",
+                    "&.Mui-selected": {
+                      color: "#8BAA36",
+                    },
+                  }}
+                />
+              );
+            })}
+        </Tabs>
+      )}
     </>
   );
 };

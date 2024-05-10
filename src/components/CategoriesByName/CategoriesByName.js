@@ -32,7 +32,6 @@ const CategoriesByName = () => {
         const request = { category, page: currentPage };
         dispatch(getRecipesByCategory(request));
     }, [dispatch, categoryName, currentPage]);
-    // I think that getCategoryRecipes and CategoryNav should be on one isLoading in ReduxStore
     return (_jsxs(_Fragment, { children: [isLoading ? (_jsx("p", { children: "Loading recipes..." })) : (recipes && (_jsx("ul", { className: css.recipesList, children: recipes.map((recipe) => {
                     return (_jsx("li", { className: css.recipesListItem, children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardRecipe, { title: recipe.title, preview: recipe.preview }) }) }, `${recipe._id}`));
                 }) }))), _jsx(BasicPagination, { count: Math.ceil(totalRecipes / 8), page: currentPage, onPageChange: handlePageChange })] }));
