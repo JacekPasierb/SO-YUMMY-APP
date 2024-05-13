@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectCategoriesList,
+  selectError,
   selectIsLoading,
 } from "../../redux/recipes/selectors";
 import { AppDispatch } from "../../redux/store";
@@ -18,6 +19,7 @@ const CategoriesNav = () => {
   const [value, setValue] = useState(0);
   const categoriesList = useSelector(selectCategoriesList);
   const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const dispatch: AppDispatch = useDispatch();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -43,6 +45,7 @@ const CategoriesNav = () => {
 
   return (
     <>
+      {error && <p>Something went wrong.. try again</p>}
       {!isLoading && (
         <Tabs
           value={value}

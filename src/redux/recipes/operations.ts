@@ -35,62 +35,10 @@ export const getCategoriesList = createAsyncThunk(
   "recipes/getCategoriesList",
   async (_, thunkAPI) => {
     try {
-      console.log("cccc");
-
       const { data } = await axios.get(`./api/recipes/category-list`);
-      console.log("dat", data);
-
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-interface RecipeByIdRequest {
-  id: string;
-}
-
-interface RecipeByIdResponse {
-  recipeById: {};
-}
-
-export const getRecipeById = createAsyncThunk<
-  RecipeByIdResponse,
-  RecipeByIdRequest
->("recipes/getRecipeById", async ({ id }, thunkAPI) => {
-  try {
-    const { data } = await axios.get(`./api/recipes/${id}`);
-
-    return {
-      recipeById: data.data.result,
-    };
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
-
-interface IngredientByIdRequest {
-  id: string;
-}
-
-interface IngredientByIdResponse {
-  ingredient: {};
-}
-
-export const getIngredientById = createAsyncThunk<
-  IngredientByIdResponse,
-  IngredientByIdRequest
->("recipes/getIngredientById", async ({ id }, thunkAPI) => {
-  try {
-    console.log("id", id);
-
-    const { data } = await axios.get(`./api/ingredients/${id}`);
-
-    return {
-      ingredient: data.data.result,
-    };
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});

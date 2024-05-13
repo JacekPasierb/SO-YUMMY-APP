@@ -23,7 +23,6 @@ const RecipeDescriptionFields = ({ data }) => {
             return;
         }
         const [file] = files;
-        console.log("fil", file);
         let allowedImageTypes = ["image/jpeg", "image/jpg", "image/png"];
         if (!file || !allowedImageTypes.includes(file.type)) {
             toast.error("Wrong file type. Please, choose different image type", {

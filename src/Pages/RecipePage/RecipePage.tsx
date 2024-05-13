@@ -1,17 +1,14 @@
 import css from "./RecipePage.module.css";
 
-import React, { lazy, useEffect } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectIsLoading,
-  selectRecipeById,
-} from "../../redux/recipes/selectors";
-import { getRecipeById } from "../../redux/recipes/operations";
-import { AppDispatch } from "src/redux/store";
+
 
 import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import Header from "../../components/Header/Header";
+import { fetchRecipeById } from "../../API/recipesAPI";
+import { toast } from "react-toastify";
+import { Recipe } from "../../types/recipesTypes";
 const RecipeInngredientsList = lazy(
   () => import("../../components/RecipeInngredientsList/RecipeInngredientsList")
 );
@@ -21,18 +18,30 @@ const RecipePreparation = lazy(
 
 const RecipePage = () => {
   const { recipeId } = useParams();
-
-  const dispatch: AppDispatch = useDispatch();
-  const recipe = useSelector(selectRecipeById);
-  const isLoading = useSelector(selectIsLoading);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [recipe, setRecipe] = useState<Recipe | null>(null);
 
   useEffect(() => {
-    if (recipeId !== undefined) {
-      dispatch(getRecipeById({ id: recipeId }));
-    }
-  }, [dispatch, recipeId]);
+    const getRecipeById = async (id: string) => {
+      try {
+        setIsLoading(true);
+        const { data } = await fetchRecipeById(id);
 
-  const { ingredients, instructions, preview } = recipe;
+        setRecipe(data.result);
+      } catch (error: any) {
+        setError(error.message);
+        toast.error("Something went wrong. Plese try again...");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (recipeId !== undefined) {
+      getRecipeById(recipeId);
+    }
+  }, [recipeId]);
+
   return (
     <>
       {isLoading ? (
@@ -46,11 +55,15 @@ const RecipePage = () => {
                 <ReceipePageHero recipe={recipe} />
               </div>
             </section>
-            <RecipeInngredientsList ingredients={ingredients} />
-            <RecipePreparation img={preview} instructions={instructions} />
+            <RecipeInngredientsList ingredients={recipe.ingredients} />
+            <RecipePreparation
+              img={recipe.preview}
+              instructions={recipe.instructions}
+            />
           </main>
         )
       )}
+      {error && <p>Something went wrong.. try again</p>}
     </>
   );
 };

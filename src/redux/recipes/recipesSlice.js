@@ -1,14 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getRecipeById, getIngredientById, getRecipesByCategory, getCategoriesList, } from "./operations";
+import { getRecipesByCategory, getCategoriesList } from "./operations";
 const initialState = {
     recipesByCategory: [],
     totalRecipes: 0,
     categoriesList: [],
     isLoading: false,
     error: null,
-    //zastanowic sie nad powiazaniem isLodaing i Error z innym reducerami
-    recipeById: {},
-    ingredient: {},
 };
 const recipesSlice = createSlice({
     name: "recipes",
@@ -50,42 +47,6 @@ const recipesSlice = createSlice({
         }
         else {
             state.error = "An error occurred during getCategoriesList";
-        }
-    })
-        .addCase(getRecipeById.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.recipeById = action.payload.recipeById;
-        state.error = null;
-    })
-        .addCase(getRecipeById.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-    })
-        .addCase(getRecipeById.rejected, (state, action) => {
-        state.isLoading = false;
-        if (typeof action.payload === "string") {
-            state.error = action.payload;
-        }
-        else {
-            state.error = "An error occurred during getRecipeById";
-        }
-    })
-        .addCase(getIngredientById.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.ingredient = action.payload.ingredient;
-        state.error = null;
-    })
-        .addCase(getIngredientById.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-    })
-        .addCase(getIngredientById.rejected, (state, action) => {
-        state.isLoading = false;
-        if (typeof action.payload === "string") {
-            state.error = action.payload;
-        }
-        else {
-            state.error = "An error occurred during getIngredientById";
         }
     }),
 });

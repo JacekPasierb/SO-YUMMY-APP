@@ -7,7 +7,7 @@ export const fetchRecipesByFourCategories = async (count = 1) => {
 //     const {data} = await axios.get(`./api/recipes/categories/${category}?page=${page}&limit=8`);
 //     return data;
 // }
-// export const fetchRecipeById = async (id)=>{
-//   const {data} = await axios.get(`./api/recipes/${id}`);
-//   return data;
-// }
+export const fetchRecipeById = async (id) => {
+    const { data } = await axios.get(`./api/recipes/${id}`);
+    return data;
+};
