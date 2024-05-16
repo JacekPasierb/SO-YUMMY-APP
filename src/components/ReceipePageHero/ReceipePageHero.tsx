@@ -6,16 +6,18 @@ import React, { useEffect } from "react";
 import MainPageTitle from "../MainPageTitle/MainPageTitle";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
+import { addToFavorite, removeFromFavorite } from "../../API/favoritesAPI";
 
 interface Recipe {
   title: string;
   description: string;
   time: string;
   favorites: any[];
+  _id: string;
 }
 
 const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
-  const { title, description, time, favorites } = recipe;
+  const { title, description, time, favorites, _id } = recipe;
   const user = useSelector(selectUser);
   const userId = user.userId;
   let isFav = false;
@@ -26,9 +28,11 @@ const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
     }
   }, [recipe]);
 
-  // const handleFavorite = () => {
-  //   isFav ? dispatch(updateRecipe())
-  // }
+  const handleFavorite = (id: string) => {
+    console.log("klik");
+
+    isFav ? removeFromFavorite : addToFavorite(id);
+  };
   return (
     <div className={css.receipeHeroBox}>
       <MainPageTitle title={title} />
@@ -37,7 +41,7 @@ const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
       <button
         type="button"
         className={`${css.btn} ${css.textBtn}`}
-       
+        onClick={() => handleFavorite(_id)}
       >
         {!isFav ? "Add to favorite recipes" : "Remove from favorites"}
       </button>

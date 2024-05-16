@@ -5,8 +5,9 @@ import { useEffect } from "react";
 import MainPageTitle from "../MainPageTitle/MainPageTitle";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
+import { addToFavorite, removeFromFavorite } from "../../API/favoritesAPI";
 const ReceipePageHero = ({ recipe }) => {
-    const { title, description, time, favorites } = recipe;
+    const { title, description, time, favorites, _id } = recipe;
     const user = useSelector(selectUser);
     const userId = user.userId;
     let isFav = false;
@@ -15,9 +16,10 @@ const ReceipePageHero = ({ recipe }) => {
             isFav = favorites.includes(userId);
         }
     }, [recipe]);
-    // const handleFavorite = () => {
-    //   isFav ? dispatch(updateRecipe())
-    // }
-    return (_jsxs("div", { className: css.receipeHeroBox, children: [_jsx(MainPageTitle, { title: title }), _jsx("p", { className: css.recipeDescription, children: description }), _jsx("button", { type: "button", className: `${css.btn} ${css.textBtn}`, children: !isFav ? "Add to favorite recipes" : "Remove from favorites" }), time && (_jsxs("div", { className: css.timeBox, children: [_jsx("svg", { className: css.iconClock, children: _jsx("use", { href: sprite + `#icon-clock` }) }), _jsxs("p", { className: css.timeText, children: [time, " min"] })] }))] }));
+    const handleFavorite = (id) => {
+        console.log("klik");
+        isFav ? removeFromFavorite : addToFavorite(id);
+    };
+    return (_jsxs("div", { className: css.receipeHeroBox, children: [_jsx(MainPageTitle, { title: title }), _jsx("p", { className: css.recipeDescription, children: description }), _jsx("button", { type: "button", className: `${css.btn} ${css.textBtn}`, onClick: () => handleFavorite(_id), children: !isFav ? "Add to favorite recipes" : "Remove from favorites" }), time && (_jsxs("div", { className: css.timeBox, children: [_jsx("svg", { className: css.iconClock, children: _jsx("use", { href: sprite + `#icon-clock` }) }), _jsxs("p", { className: css.timeText, children: [time, " min"] })] }))] }));
 };
 export default ReceipePageHero;
