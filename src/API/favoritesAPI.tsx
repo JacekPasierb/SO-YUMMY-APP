@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export const addToFavorite = async (recipeId:string) => {
+  console.log("recId",recipeId);
+  
   const data = await axios.patch(`/api/favorite/add/${recipeId}`);
   console.log("data",data);
   
