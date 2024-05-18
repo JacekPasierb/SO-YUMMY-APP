@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import css from "./LogoutModal.module.css";
-import close from "../../../images/X.png";
 import { useDispatch } from "react-redux";
-import { logOut, refreshUser } from "../../../redux/auth/operations";
+import { logOut } from "../../../redux/auth/operations";
 import {
   setIsLogoutModalOpen,
   setIsUserLogoModalOpen,
@@ -16,8 +15,7 @@ interface LogoutModalRequest {
   onClose: () => void;
 }
 
-
-const LogoutModal:FC<LogoutModalRequest> = ({ onClose }) => {
+const LogoutModal: FC<LogoutModalRequest> = ({ onClose }) => {
   const dispatch: AppDispatch = useDispatch();
 
   const handleLogout = async () => {
