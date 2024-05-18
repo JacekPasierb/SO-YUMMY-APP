@@ -52,8 +52,14 @@
 .btnLogout {
   background-color: #8baa36;
 }
+.btnLogout:hover {
+  background-color: #22252A;
+}
 .btnCancel {
   background-color: #d9d9d9;
+}
+.btnCancel:hover {
+  background-color: #FAFAFA;
 }
 .logoutText {
   font-size: 14px;
