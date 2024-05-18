@@ -29,9 +29,6 @@ const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
     }
   }, [recipe]);
 
-  useEffect(() => {
-    console.log("fav", isFav);
-  }, [isFav, setIsFav]);
 
   const handleFavorite = async (id: string) => {
     try {

@@ -17,9 +17,6 @@ const ReceipePageHero = ({ recipe }) => {
             setIsFav(favorites.includes(userId));
         }
     }, [recipe]);
-    useEffect(() => {
-        console.log("fav", isFav);
-    }, [isFav, setIsFav]);
     const handleFavorite = async (id) => {
         try {
             if (isFav) {
