@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 
 import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
 
-interface ownRecipe {
+interface recipe {
   _id: string;
   title: string;
   preview: string;
@@ -13,18 +13,19 @@ interface ownRecipe {
 }
 
 interface Props {
-  ownRecipes: ownRecipe[];
+  recipes: recipe[];
 }
 
-const MyRecipesList = ({ ownRecipes }: Props) => {
+const MyRecipesList = ({ recipes }: Props) => {
+  
   return (
     <>
-      {ownRecipes && (
+      {recipes && (
         <ul className={css.myRecipesList}>
-          {ownRecipes.map((ownRecipe) => {
+          {recipes.map((recipe) => {
             return (
-              <li key={ownRecipe._id}>
-                <CardOwnRecipe ownRecipe={ownRecipe} />
+              <li key={recipe._id}>
+                <CardOwnRecipe ownRecipe={recipe} />
               </li>
             );
           })}

@@ -30,6 +30,6 @@ const MyRecipesPage = () => {
         navigate(`?page=${page}`);
         window.scrollTo(0, 0);
     };
-    return (_jsxs("main", { className: css.background, children: [_jsx(Header, {}), _jsxs("div", { className: `${css.container} ${css.flex}`, children: [_jsx(MainTitle, { title: "My recipes" }), isLoading ? (_jsx("p", { children: " Loading.." })) : (_jsx(MyRecipesList, { ownRecipes: ownRecipes })), _jsx(BasicPagination, { count: Math.ceil(totalOwnRecipes / 4), page: currentPage, onPageChange: handlePageChange })] })] }));
+    return (_jsxs("main", { className: css.background, children: [_jsx(Header, {}), _jsxs("div", { className: `${css.container} ${css.flex}`, children: [_jsx(MainTitle, { title: "My recipes" }), isLoading ? (_jsx("p", { children: " Loading.." })) : (_jsx(MyRecipesList, { recipes: ownRecipes })), _jsx(BasicPagination, { count: Math.ceil(totalOwnRecipes / 4), page: currentPage, onPageChange: handlePageChange })] })] }));
 };
 export default MyRecipesPage;

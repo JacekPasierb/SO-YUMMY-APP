@@ -4,10 +4,15 @@ import sprite from "../../assets/icons/sprite.svg";
 import React, { useEffect, useState } from "react";
 
 import MainPageTitle from "../MainPageTitle/MainPageTitle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
-import { addToFavorite, removeFromFavorite } from "../../API/favoritesAPI";
+
 import { toast } from "react-toastify";
+import { AppDispatch } from "../../redux/store";
+import {
+  addToFavorite,
+  removeFromFavorite,
+} from "../../redux/favoriteRecipes/operations";
 
 interface Recipe {
   title: string;
@@ -22,6 +27,7 @@ const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
   const user = useSelector(selectUser);
   const userId = user.userId;
   const [isFav, setIsFav] = useState(false);
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     if (favorites !== undefined) {
@@ -29,14 +35,13 @@ const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
     }
   }, [recipe]);
 
-
   const handleFavorite = async (id: string) => {
     try {
       if (isFav) {
-        await removeFromFavorite(id);
+        await dispatch(removeFromFavorite(id));
         toast.success("Recipe removed from favorites");
       } else {
-        await addToFavorite(id);
+        await dispatch(addToFavorite(id));
         toast.success("Recipe add to favorites");
       }
 

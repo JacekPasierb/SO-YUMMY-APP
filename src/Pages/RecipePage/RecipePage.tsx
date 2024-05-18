@@ -3,7 +3,6 @@ import css from "./RecipePage.module.css";
 import React, { lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-
 import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import Header from "../../components/Header/Header";
 import { fetchRecipeById } from "../../API/recipesAPI";

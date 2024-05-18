@@ -3,15 +3,16 @@ import css from "./ReceipePageHero.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { useEffect, useState } from "react";
 import MainPageTitle from "../MainPageTitle/MainPageTitle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
-import { addToFavorite, removeFromFavorite } from "../../API/favoritesAPI";
 import { toast } from "react-toastify";
+import { addToFavorite, removeFromFavorite, } from "../../redux/favoriteRecipes/operations";
 const ReceipePageHero = ({ recipe }) => {
     const { title, description, time, favorites, _id } = recipe;
     const user = useSelector(selectUser);
     const userId = user.userId;
     const [isFav, setIsFav] = useState(false);
+    const dispatch = useDispatch();
     useEffect(() => {
         if (favorites !== undefined) {
             setIsFav(favorites.includes(userId));
@@ -20,11 +21,11 @@ const ReceipePageHero = ({ recipe }) => {
     const handleFavorite = async (id) => {
         try {
             if (isFav) {
-                await removeFromFavorite(id);
+                await dispatch(removeFromFavorite(id));
                 toast.success("Recipe removed from favorites");
             }
             else {
-                await addToFavorite(id);
+                await dispatch(addToFavorite(id));
                 toast.success("Recipe add to favorites");
             }
             setIsFav(!isFav);

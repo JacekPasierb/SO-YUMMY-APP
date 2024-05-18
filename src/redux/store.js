@@ -6,6 +6,7 @@ import { globalReducer } from "./global/globalSlice";
 import { recipesReducer } from "./recipes/recipesSlice";
 import { useDispatch } from "react-redux";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
+import { favoriteRecipesReducer } from "./favoriteRecipes/favoriteRecipesSlice";
 const authPersistConfig = {
     key: "auth",
     storage,
@@ -17,6 +18,7 @@ export const store = configureStore({
         auth: persistedAuthReducer,
         recipes: recipesReducer,
         ownRecipes: ownRecipesReducer,
+        favoriteRecipes: favoriteRecipesReducer,
         global: globalReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({

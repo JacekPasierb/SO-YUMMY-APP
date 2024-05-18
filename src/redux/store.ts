@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { AuthState } from "./auth/authSlice";
 import { PersistPartial } from "redux-persist/es/persistReducer";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
+import { favoriteRecipesReducer } from "./favoriteRecipes/favoriteRecipesSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -32,6 +33,7 @@ export const store = configureStore({
     auth: persistedAuthReducer,
     recipes: recipesReducer,
     ownRecipes: ownRecipesReducer,
+    favoriteRecipes: favoriteRecipesReducer,
     global: globalReducer,
   },
   middleware: (getDefaultMiddleware) =>

@@ -9,3 +9,8 @@ export const removeFromFavorite = async (recipeId: string) => {
   const data = await axios.delete(`/api/favorite/remove/${recipeId}`);
   return data;
 };
+
+export const getFavoriteRecipes = async () => {
+  const { data } = await axios.get(`api/favorite`);
+  return data;
+};

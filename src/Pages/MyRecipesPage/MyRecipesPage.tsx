@@ -52,7 +52,7 @@ const MyRecipesPage = () => {
         {isLoading ? (
           <p> Loading..</p>
         ) : (
-          <MyRecipesList ownRecipes={ownRecipes} />
+          <MyRecipesList recipes={ownRecipes} />
         )}
         <BasicPagination
           count={Math.ceil(totalOwnRecipes / 4)}
