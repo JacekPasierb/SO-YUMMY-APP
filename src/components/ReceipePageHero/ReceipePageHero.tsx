@@ -7,6 +7,7 @@ import MainPageTitle from "../MainPageTitle/MainPageTitle";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 import { addToFavorite, removeFromFavorite } from "../../API/favoritesAPI";
+import { toast } from "react-toastify";
 
 interface Recipe {
   title: string;
@@ -30,21 +31,22 @@ const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
 
   useEffect(() => {
     console.log("fav", isFav);
-  }, [isFav,setIsFav]);
+  }, [isFav, setIsFav]);
 
-  const handleFavorite = async(id: string) => {
-    console.log("klik");
-
+  const handleFavorite = async (id: string) => {
     try {
       if (isFav) {
         await removeFromFavorite(id);
+        toast.success("Recipe removed from favorites");
       } else {
         await addToFavorite(id);
+        toast.success("Recipe add to favorites");
       }
-      
-      setIsFav(!isFav); // Zmiana stanu po pomyślnym dodaniu/usunięciu z ulubionych
+
+      setIsFav(!isFav);
     } catch (error) {
       console.error("Error:", error);
+      toast.error("Something went wrong..");
     }
   };
   return (

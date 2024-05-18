@@ -5,7 +5,7 @@ export const addToFavorite = async (recipeId) => {
     console.log("data", data);
     return data;
 };
-export const removeFromFavorite = async () => {
-    const data = await axios.delete("/api/favorite/remove");
+export const removeFromFavorite = async (recipeId) => {
+    const data = await axios.delete(`/api/favorite/remove/${recipeId}`);
     return data;
 };
