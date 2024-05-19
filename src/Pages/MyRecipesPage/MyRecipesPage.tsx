@@ -20,6 +20,8 @@ import BasicPagination from "../../components/Pagination/BasicPagination";
 import { useNavigate } from "react-router";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import { selectUser } from "../../redux/auth/selectors";
+import { Loader } from "../../components/Loader/Loader";
+
 
 const MyRecipesPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -50,15 +52,18 @@ const MyRecipesPage = () => {
       <div className={`${css.container} ${css.flex}`}>
         <MainTitle title={"My recipes"} />
         {isLoading ? (
-          <p> Loading..</p>
+          <Loader/>
         ) : (
+          <>
           <MyRecipesList recipes={ownRecipes} />
-        )}
-        <BasicPagination
+          <BasicPagination
           count={Math.ceil(totalOwnRecipes / 4)}
           page={currentPage}
           onPageChange={handlePageChange}
-        />
+        /></>
+        )}
+        
+        
       </div>
     </main>
   );
