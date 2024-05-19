@@ -15,6 +15,7 @@ import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import { Recipe } from "../../types/recipesTypes";
+import { Loader } from "../Loader/Loader";
 
 interface CategoryRecipesRequest {
   category: string;
@@ -48,11 +49,10 @@ const CategoriesByName: FC = () => {
     dispatch(getRecipesByCategory(request));
   }, [dispatch, categoryName, currentPage]);
 
-
   return (
     <>
       {isLoading ? (
-        <p>Loading recipes...</p>
+        <Loader />
       ) : (
         recipes && (
           <ul className={css.recipesList}>
@@ -68,12 +68,13 @@ const CategoriesByName: FC = () => {
           </ul>
         )
       )}
-
-      <BasicPagination
-        count={Math.ceil(totalRecipes / 8)}
-        page={currentPage}
-        onPageChange={handlePageChange}
-      />
+      {!isLoading && (
+        <BasicPagination
+          count={Math.ceil(totalRecipes / 8)}
+          page={currentPage}
+          onPageChange={handlePageChange}
+        />
+      )}
     </>
   );
 };

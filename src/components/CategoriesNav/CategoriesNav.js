@@ -31,7 +31,7 @@ const CategoriesNav = () => {
             }
         }
     }, [categoryName, categoriesList]);
-    return (_jsxs(_Fragment, { children: [error && _jsx("p", { children: "Something went wrong.. try again" }), !isLoading && (_jsx(Tabs, { value: value, onChange: handleChange, variant: "scrollable", scrollButtons: false, allowScrollButtonsMobile: true, "aria-label": "scrollable force tabs example", sx: {
+    return (_jsxs(_Fragment, { children: [error && _jsx("p", { children: "Something went wrong with category nav.. try again" }), _jsx(Tabs, { value: value, onChange: handleChange, variant: "scrollable", scrollButtons: false, allowScrollButtonsMobile: true, "aria-label": "scrollable force tabs example", sx: {
                     marginTop: `20px`,
                     borderBottom: "1px solid #E0E0E0",
                     "& .MuiTabs-indicator": {
@@ -58,6 +58,6 @@ const CategoriesNav = () => {
                                     color: "#8BAA36",
                                 },
                             } }, idx));
-                    }) }))] }));
+                    }) })] }));
 };
 export default CategoriesNav;

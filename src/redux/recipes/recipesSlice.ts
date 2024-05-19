@@ -47,17 +47,17 @@ const recipesSlice = createSlice({
         }
       })
       .addCase(getCategoriesList.fulfilled, (state, action) => {
-        state.isLoading = false;
+        
         state.categoriesList = action.payload.data.catArr;
 
         state.error = null;
       })
       .addCase(getCategoriesList.pending, (state) => {
-        state.isLoading = true;
+       
         state.error = null;
       })
       .addCase(getCategoriesList.rejected, (state, action) => {
-        state.isLoading = false;
+        
         if (typeof action.payload === "string") {
           state.error = action.payload;
         } else {

@@ -45,55 +45,54 @@ const CategoriesNav = () => {
 
   return (
     <>
-      {error && <p>Something went wrong.. try again</p>}
-      {!isLoading && (
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons={false}
-          allowScrollButtonsMobile
-          aria-label="scrollable force tabs example"
-          sx={{
-            marginTop: `20px`,
-            borderBottom: "1px solid #E0E0E0",
+      {error && <p>Something went wrong with category nav.. try again</p>}
 
-            "& .MuiTabs-indicator": {
-              backgroundColor: `#8BAA36`,
-              marginTop: `100`,
-            },
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        variant="scrollable"
+        scrollButtons={false}
+        allowScrollButtonsMobile
+        aria-label="scrollable force tabs example"
+        sx={{
+          marginTop: `20px`,
+          borderBottom: "1px solid #E0E0E0",
 
-            "& .MuiTab-root": {
-              outline: `none`,
-            },
-            "& .MuiButtonBase-root": {
-              padding: "10px 10px 32px 10px",
-            },
-            "& .MuiTabs-flexContainer": {
-              gap: "28px",
-            },
-          }}
-        >
-          {categoriesList &&
-            categoriesList.map((cat, idx) => {
-              return (
-                <Tab
-                  label={cat}
-                  key={idx}
-                  sx={{
-                    padding: "0",
-                    fontSize: "14px",
-                    lineHeight: "14px",
-                    color: "#E0E0E0",
-                    "&.Mui-selected": {
-                      color: "#8BAA36",
-                    },
-                  }}
-                />
-              );
-            })}
-        </Tabs>
-      )}
+          "& .MuiTabs-indicator": {
+            backgroundColor: `#8BAA36`,
+            marginTop: `100`,
+          },
+
+          "& .MuiTab-root": {
+            outline: `none`,
+          },
+          "& .MuiButtonBase-root": {
+            padding: "10px 10px 32px 10px",
+          },
+          "& .MuiTabs-flexContainer": {
+            gap: "28px",
+          },
+        }}
+      >
+        {categoriesList &&
+          categoriesList.map((cat, idx) => {
+            return (
+              <Tab
+                label={cat}
+                key={idx}
+                sx={{
+                  padding: "0",
+                  fontSize: "14px",
+                  lineHeight: "14px",
+                  color: "#E0E0E0",
+                  "&.Mui-selected": {
+                    color: "#8BAA36",
+                  },
+                }}
+              />
+            );
+          })}
+      </Tabs>
     </>
   );
 };
