@@ -11,3 +11,7 @@ export const fetchRecipeById = async (id) => {
     const { data } = await axios.get(`./api/recipes/${id}`);
     return data;
 };
+export const fetchPopularRecipe = async (count = 4) => {
+    const { data } = await axios.get(`./api/popularRecipes?count=${count}`);
+    return data;
+};

@@ -1,0 +1,18 @@
+.title {
+  font-size: 24px;
+  line-height: 24px;
+  color: #3e4462;
+
+  margin-bottom: 32px;
+}
+.popularRecipesList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.boxLoader {
+  margin: 10vh auto;
+  display: flex;
+  justify-content: center;
+
+}

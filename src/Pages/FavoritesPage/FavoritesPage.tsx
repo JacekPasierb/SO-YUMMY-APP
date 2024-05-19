@@ -35,8 +35,9 @@ const FavoritesPage = () => {
           <MainTitle title={"Favorites"} />
 
           {isLoading ? (
-             <div className={css.boxLoader}>
-             <ClimbingBoxLoader/></div>
+            <div className={css.boxLoader}>
+              <ClimbingBoxLoader />
+            </div>
           ) : (
             favoriteRecipes && <MyRecipesList recipes={favoriteRecipes} />
           )}
