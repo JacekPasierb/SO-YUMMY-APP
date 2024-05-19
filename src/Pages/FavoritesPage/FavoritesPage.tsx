@@ -15,6 +15,7 @@ import {
 } from "../../redux/favoriteRecipes/selectors";
 import { AppDispatch, useAppDispatch } from "../../redux/store";
 import { getFavoriteRecipes } from "../../redux/favoriteRecipes/operations";
+import { ClimbingBoxLoader } from "react-spinners";
 
 const FavoritesPage = () => {
   const dispatch: AppDispatch = useAppDispatch();
@@ -34,7 +35,8 @@ const FavoritesPage = () => {
           <MainTitle title={"Favorites"} />
 
           {isLoading ? (
-            <p> Loading..</p>
+             <div className={css.boxLoader}>
+             <ClimbingBoxLoader/></div>
           ) : (
             favoriteRecipes && <MyRecipesList recipes={favoriteRecipes} />
           )}

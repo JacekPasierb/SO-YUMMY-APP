@@ -16,6 +16,7 @@ import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import { Recipe } from "../../types/recipesTypes";
 import { Loader } from "../Loader/Loader";
+import { ClimbingBoxLoader } from "react-spinners";
 
 interface CategoryRecipesRequest {
   category: string;
@@ -52,7 +53,8 @@ const CategoriesByName: FC = () => {
   return (
     <>
       {isLoading ? (
-        <Loader />
+        <div className={css.boxLoader}>
+        <ClimbingBoxLoader/></div>
       ) : (
         recipes && (
           <ul className={css.recipesList}>

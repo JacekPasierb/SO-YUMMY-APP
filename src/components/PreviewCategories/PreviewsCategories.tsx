@@ -11,6 +11,7 @@ import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
 import { toast } from "react-toastify";
 import { Loader } from "../Loader/Loader";
 import { Recipe } from "src/types/recipesTypes";
+import { ClimbingBoxLoader } from "react-spinners";
 
 interface RecipesByMainCategory {
   [category: string]: Recipe[];
@@ -54,7 +55,8 @@ const PreviewsCategories = () => {
   return (
     <>
       {error && <p>Something went wrong. Try again...</p>}
-      {isLoading && <Loader />}
+      {isLoading &&  <div className={css.boxLoader}>
+        <ClimbingBoxLoader/></div>}
       <ul className={css.categoriesList}>
         {recipesMainCategories &&
           Object.entries(recipesMainCategories).map(

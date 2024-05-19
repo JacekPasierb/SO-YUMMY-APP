@@ -21,6 +21,7 @@ import { useNavigate } from "react-router";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import { selectUser } from "../../redux/auth/selectors";
 import { Loader } from "../../components/Loader/Loader";
+import { ClimbingBoxLoader } from "react-spinners";
 
 
 const MyRecipesPage = () => {
@@ -52,7 +53,8 @@ const MyRecipesPage = () => {
       <div className={`${css.container} ${css.flex}`}>
         <MainTitle title={"My recipes"} />
         {isLoading ? (
-          <Loader/>
+          <div className={css.boxLoader}>
+          <ClimbingBoxLoader/></div>
         ) : (
           <>
           <MyRecipesList recipes={ownRecipes} />

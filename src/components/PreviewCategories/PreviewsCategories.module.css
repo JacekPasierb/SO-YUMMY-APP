@@ -66,3 +66,9 @@
     margin-top: 50px;
   }
 }
+.boxLoader {
+  margin: 10vh auto;
+  display: flex;
+  justify-content: center;
+
+}

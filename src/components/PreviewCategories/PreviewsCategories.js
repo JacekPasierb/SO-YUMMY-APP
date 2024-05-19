@@ -7,7 +7,7 @@ import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
 import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
 import { toast } from "react-toastify";
-import { Loader } from "../Loader/Loader";
+import { ClimbingBoxLoader } from "react-spinners";
 const PreviewsCategories = () => {
     const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
     const isDesctop = useMediaQuery("(min-width:1200px)");
@@ -41,7 +41,7 @@ const PreviewsCategories = () => {
         };
         getRecipesByFourCategories();
     }, [isDesctop, isTablet]);
-    return (_jsxs(_Fragment, { children: [error && _jsx("p", { children: "Something went wrong. Try again..." }), isLoading && _jsx(Loader, {}), _jsx("ul", { className: css.categoriesList, children: recipesMainCategories &&
+    return (_jsxs(_Fragment, { children: [error && _jsx("p", { children: "Something went wrong. Try again..." }), isLoading && _jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, {}) }), _jsx("ul", { className: css.categoriesList, children: recipesMainCategories &&
                     Object.entries(recipesMainCategories).map(([categories, recipes], idx) => {
                         return (_jsxs("li", { className: css.categoriesListItem, children: [_jsx(TitleCategories, { categories: categories }), _jsx("ul", { className: css.recipesList, children: recipes &&
                                         recipes.map((recipe) => {

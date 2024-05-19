@@ -8,7 +8,7 @@ import { getRecipesByCategory } from "../../redux/recipes/operations";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
-import { Loader } from "../Loader/Loader";
+import { ClimbingBoxLoader } from "react-spinners";
 const CategoriesByName = () => {
     const { categoryName } = useParams();
     const currentPage = getPageFromQueryString();
@@ -33,7 +33,7 @@ const CategoriesByName = () => {
         const request = { category, page: currentPage };
         dispatch(getRecipesByCategory(request));
     }, [dispatch, categoryName, currentPage]);
-    return (_jsxs(_Fragment, { children: [isLoading ? (_jsx(Loader, {})) : (recipes && (_jsx("ul", { className: css.recipesList, children: recipes.map((recipe) => {
+    return (_jsxs(_Fragment, { children: [isLoading ? (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, {}) })) : (recipes && (_jsx("ul", { className: css.recipesList, children: recipes.map((recipe) => {
                     return (_jsx("li", { className: css.recipesListItem, children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardRecipe, { title: recipe.title, preview: recipe.preview }) }) }, `${recipe._id}`));
                 }) }))), !isLoading && (_jsx(BasicPagination, { count: Math.ceil(totalRecipes / 8), page: currentPage, onPageChange: handlePageChange }))] }));
 };
