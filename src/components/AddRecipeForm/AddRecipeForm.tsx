@@ -168,7 +168,7 @@ const AddRecipeForm: FC = () => {
           <ClimbingBoxLoader color="#8BAA36" />
         </div>
       ) : (
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <form onSubmit={handleSubmit} encType="multipart/form-data" className={css.form}>
           <RecipeDescriptionFields data={dataForm} />
           <RecipeIngredientsFields
             ingredients={ingredients}

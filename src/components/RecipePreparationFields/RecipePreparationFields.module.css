@@ -5,4 +5,19 @@
   color: #fafafa;
   font-size: 16px;
   margin-top: 18px;
+
+  @media screen and (min-width: 768px) {
+    padding: 14px 64px;
+    margin-top: 32px;
+  }
+}
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #3e4462;
+  margin-top: 44px;
+  @media screen and (min-width: 768px) {
+    margin-top: 100px;
+  }
 }

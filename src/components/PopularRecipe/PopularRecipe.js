@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 import css from "./PopularRecipe.module.css";
 import { fetchPopularRecipe } from "../../API/recipesAPI";
@@ -39,6 +39,6 @@ const PopularRecipe = () => {
         };
         getPopularRecipe();
     }, [isDesctop, isTablet]);
-    return (_jsxs(_Fragment, { children: [_jsx("h2", { className: css.title, children: "Popular Recipes" }), isLoading && (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, {}) })), error && _jsxs("p", { children: ["Error: ", error] }), popularRecipes.length === 0 ? (_jsx("p", { children: "Brak popularnych przepis\u00F3w w danym momencie" })) : (_jsx("ul", { className: css.popularRecipesList, children: popularRecipes.map((recipe) => (_jsx("li", { children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardPopularRecipe, { recipe: recipe }) }) }, recipe._id))) }))] }));
+    return (_jsxs("div", { className: css.boxPopularRecipes, children: [_jsx("h2", { className: css.title, children: "Popular Recipes" }), isLoading && (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, {}) })), error && _jsxs("p", { children: ["Error: ", error] }), popularRecipes.length === 0 ? (_jsx("p", { children: "Brak popularnych przepis\u00F3w w danym momencie" })) : (_jsx("ul", { className: css.popularRecipesList, children: popularRecipes.map((recipe) => (_jsx("li", { children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardPopularRecipe, { recipe: recipe }) }) }, recipe._id))) }))] }));
 };
 export default PopularRecipe;

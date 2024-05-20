@@ -7,17 +7,17 @@ import MainTitle from "../../components/MainTitle/MainTitle";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
 
-
 const AddRecipePage = () => {
-
   return (
     <>
       <main className={css.background}>
         <Header />
         <div className={`${css.container} ${css.flex}`}>
           <MainTitle title={"Add recipe"} />
-          <AddRecipeForm />
-          <PopularRecipe />
+          <div className={css.flexPage}>
+            <AddRecipeForm />
+            <PopularRecipe />
+          </div>
         </div>
       </main>
     </>

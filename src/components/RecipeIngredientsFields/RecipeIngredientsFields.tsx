@@ -57,7 +57,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   return (
     <>
       <div className={css.row}>
-        <h2>Ingredients</h2>
+        <h2 className={css.title}>Ingredients</h2>
         <div className={css.counterBox}>
           <button type="button" className={css.btn} onClick={handleDecreament}>
             <svg className={css.iconMinus}>

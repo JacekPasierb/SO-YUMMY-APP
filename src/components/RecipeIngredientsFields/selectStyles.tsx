@@ -42,7 +42,7 @@ export const selectIngredient = {
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",
-      width: "400px",
+      
     },
   }),
 
@@ -140,7 +140,7 @@ export const selectUnit = {
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",
-      width: "400px",
+      
     },
   }),
 

@@ -90,114 +90,116 @@ const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
 
   return (
     <>
-    
-    <div className={css.recipeDescriptionFieldsBox}>
-      <div>
-        <label htmlFor="file">
-          {!data.file ? (
-            <div className={css.iconBox}>
-              <svg className={css.iconAdd}>
-                <use href={sprite + `#icon-add`}></use>
-              </svg>
-            </div>
-          ) : (
-            <div className={css.pictureBox}>
-              <img src={path} alt="preview" className={css.imgRecipe} />
-            </div>
-          )}
+      <div className={css.recipeDescriptionFieldsBox}>
+        <div className={css.img}>
+          <label htmlFor="file">
+            {!data.file ? (
+              <div className={css.iconBox}>
+                <svg className={css.iconAdd}>
+                  <use href={sprite + `#icon-add`}></use>
+                </svg>
+              </div>
+            ) : (
+              <div className={css.pictureBox}>
+                <img src={path} alt="preview" className={css.imgRecipe} />
+              </div>
+            )}
 
-          <input
-            type="file"
-            name="file"
-            id="file"
-            onChange={handleFile}
-            className={css.inputPicture}
-          />
-        </label>
-      </div>
-      <div className={css.inputBox}>
-        <label htmlFor="title" />
-        <input
-          type="text"
-          name="title"
-          id="title"
-          onChange={handleTitle}
-          value={data.titleRecipe}
-          placeholder="Enter Item Title"
-          className={css.input}
-        />
-      </div>
-      <div className={css.inputBox}>
-        <label htmlFor="about" />
-        <input
-          type="text"
-          name="about"
-          id="about"
-          onChange={handleChange}
-          value={data.descriptionRecipe}
-          placeholder="Enter about recipe"
-          className={css.input}
-        />
-      </div>
-      <div className={`${css.inputBox} ${css.inputBox__select}`}>
-        <div>
-          <label htmlFor="category" />
-          <input
-            type="text"
-            name="category"
-            placeholder="Category"
-            id="category"
-            readOnly
-            className={css.input}
-          />
+            <input
+              type="file"
+              name="file"
+              id="file"
+              onChange={handleFile}
+              className={css.inputPicture}
+            />
+          </label>
         </div>
-        <select
-          id="cat"
-          name="cat"
-          onChange={handleCategory}
-          value={data.categoryRecipe}
-          className={css.select}
-        >
-          <option value="" disabled>
-            Please choose category
-          </option>
-          {categoriesList.map((category) => (
-            <option value={category} key={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className={`${css.inputBox} ${css.inputBox__select}`}>
-        <div>
-          <label htmlFor="cookingTime" />
-          <input
-            type="text"
-            name="cookingTime"
-            id="cookingTime"
-            placeholder="Cooking time"
-            readOnly
-            className={css.input}
-          />
+        <div className={css.inputs}>
+          <div className={css.inputBox}>
+            <label htmlFor="title" />
+            <input
+              type="text"
+              name="title"
+              id="title"
+              onChange={handleTitle}
+              value={data.titleRecipe}
+              placeholder="Enter Item Title"
+              className={css.input}
+            />
+          </div>
+          <div className={css.inputBox}>
+            <label htmlFor="about" />
+            <input
+              type="text"
+              name="about"
+              id="about"
+              onChange={handleChange}
+              value={data.descriptionRecipe}
+              placeholder="Enter about recipe"
+              className={css.input}
+            />
+          </div>
+          <div className={`${css.inputBox} ${css.inputBox__select}`}>
+            <div>
+              <label htmlFor="category" />
+              <input
+                type="text"
+                name="category"
+                placeholder="Category"
+                id="category"
+                readOnly
+                className={css.input}
+              />
+            </div>
+            <select
+              id="cat"
+              name="cat"
+              onChange={handleCategory}
+              value={data.categoryRecipe}
+              className={css.select}
+            >
+              <option value="" disabled>
+                Please choose category
+              </option>
+              {categoriesList.map((category) => (
+                <option value={category} key={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={`${css.inputBox} ${css.inputBox__select}`}>
+            <div>
+              <label htmlFor="cookingTime" />
+              <input
+                type="text"
+                name="cookingTime"
+                id="cookingTime"
+                placeholder="Cooking time"
+                readOnly
+                className={css.input}
+              />
+            </div>
+            <select
+              id="time"
+              name="time"
+              value={data.cookingTime}
+              onChange={handleTime}
+              className={css.select}
+            >
+              <option value="" disabled>
+                Please choose time
+              </option>
+              {timeOptionsList().map((t) => (
+                <option value={t.value} key={t.label}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <select
-          id="time"
-          name="time"
-          value={data.cookingTime}
-          onChange={handleTime}
-          className={css.select}
-        >
-          <option value="" disabled>
-            Please choose time
-          </option>
-          {timeOptionsList().map((t) => (
-            <option value={t.value} key={t.label}>
-              {t.label}
-            </option>
-          ))}
-        </select>
       </div>
-    </div></>
+    </>
   );
 };
 

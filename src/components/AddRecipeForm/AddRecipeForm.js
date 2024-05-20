@@ -120,6 +120,6 @@ const AddRecipeForm = () => {
         }
     };
     //pracuje nad loading dla kategori listy do formularza zeby formularz sie wczytal jak pobierze liste kategori
-    return (_jsx(_Fragment, { children: isLoading ? (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, { color: "#8BAA36" }) })) : (_jsxs("form", { onSubmit: handleSubmit, encType: "multipart/form-data", children: [_jsx(RecipeDescriptionFields, { data: dataForm }), _jsx(RecipeIngredientsFields, { ingredients: ingredients, setIngredients: setIngredients, ingredientsAll: ingredientsAll }), _jsx(RecipePreparationFields, { instructionsRecipe: instructionsRecipe, setInstructionsRecipe: setInstructionsRecipe })] })) }));
+    return (_jsx(_Fragment, { children: isLoading ? (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, { color: "#8BAA36" }) })) : (_jsxs("form", { onSubmit: handleSubmit, encType: "multipart/form-data", className: css.form, children: [_jsx(RecipeDescriptionFields, { data: dataForm }), _jsx(RecipeIngredientsFields, { ingredients: ingredients, setIngredients: setIngredients, ingredientsAll: ingredientsAll }), _jsx(RecipePreparationFields, { instructionsRecipe: instructionsRecipe, setInstructionsRecipe: setInstructionsRecipe })] })) }));
 };
 export default AddRecipeForm;

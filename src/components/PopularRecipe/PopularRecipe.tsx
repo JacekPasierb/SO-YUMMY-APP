@@ -42,7 +42,7 @@ const PopularRecipe: React.FC = () => {
   }, [isDesctop, isTablet]);
 
   return (
-    <>
+    <div className={css.boxPopularRecipes}>
       <h2 className={css.title}>Popular Recipes</h2>
       {isLoading && (
         <div className={css.boxLoader}>
@@ -63,7 +63,7 @@ const PopularRecipe: React.FC = () => {
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 

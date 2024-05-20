@@ -5,7 +5,7 @@ const RecipePreparationFields = ({ instructionsRecipe, setInstructionsRecipe, })
         const text = event.currentTarget.value;
         setInstructionsRecipe(text.replace(/ +/, " ").trim());
     };
-    return (_jsxs(_Fragment, { children: [_jsx("h2", { children: "Recipe Preparation" }), _jsx("textarea", { placeholder: "Enter recipe...", rows: 10, cols: 50, style: {
+    return (_jsxs(_Fragment, { children: [_jsx("h2", { className: css.title, children: "Recipe Preparation" }), _jsx("textarea", { placeholder: "Enter recipe...", rows: 10, cols: 50, style: {
                     resize: "none",
                     width: "100%",
                     border: "none",

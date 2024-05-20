@@ -17,7 +17,7 @@ const RecipePreparationFields: FC<RecipePreparationFieldsProps> = ({
   };
   return (
     <>
-      <h2>Recipe Preparation</h2>
+      <h2 className={css.title}>Recipe Preparation</h2>
       <textarea
         placeholder="Enter recipe..."
         rows={10}

@@ -1,18 +1,38 @@
+.boxPopularRecipes {
+
+  margin-left: 121px;
+}
 .title {
   font-size: 24px;
   line-height: 24px;
   color: #3e4462;
 
   margin-bottom: 32px;
+  margin-top: 72px;
+
+  @media screen and (min-width: 768px) {
+   margin-top: 100px;
+  }
+  @media screen and (min-width: 1200px) {
+   
+  }
 }
 .popularRecipesList {
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+  @media screen and (min-width: 1200px) {
+    flex-direction: column;
+    gap: 24px;
+  }
 }
 .boxLoader {
   margin: 10vh auto;
   display: flex;
   justify-content: center;
-
 }

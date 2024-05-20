@@ -23,3 +23,12 @@
     display: flex;
     flex-direction: column;
   }
+  .flexPage {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 1200px) {
+      flex-direction: row;
+      gap: 121px;
+    }
+  }
