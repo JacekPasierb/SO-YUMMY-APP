@@ -6,8 +6,11 @@ import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
+import { useMediaQuery } from "@react-hook/media-query";
+import FollowUs from "../../components/FollowUs/FollowUs";
 
 const AddRecipePage = () => {
+  const isDesctop = useMediaQuery("(min-width:1200px)");
   return (
     <>
       <main className={css.background}>
@@ -15,8 +18,19 @@ const AddRecipePage = () => {
         <div className={`${css.container} ${css.flex}`}>
           <MainTitle title={"Add recipe"} />
           <div className={css.flexPage}>
-            <AddRecipeForm />
-            <PopularRecipe />
+            {isDesctop ? (
+              <>
+               
+                <AddRecipeForm />
+                <div className={css.margin}>
+                  <FollowUs /> <PopularRecipe />
+                </div>
+              </>
+            ) : (
+              <>
+                <AddRecipeForm /> <PopularRecipe />
+              </>
+            )}
           </div>
         </div>
       </main>
