@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import css from "./RecipePreparationFields.module.css";
+import SubTitle from "../SubTitle/SubTitle";
 
 interface RecipePreparationFieldsProps {
   instructionsRecipe: string;
@@ -16,8 +17,9 @@ const RecipePreparationFields: FC<RecipePreparationFieldsProps> = ({
     setInstructionsRecipe(text.replace(/ +/, " ").trim());
   };
   return (
-    <>
-      <h2 className={css.title}>Recipe Preparation</h2>
+    <div className={css.recipePreparationBox}>
+    <SubTitle title={"Recipe Preparation"}/>
+      
       <textarea
         placeholder="Enter recipe..."
         rows={10}
@@ -36,7 +38,7 @@ const RecipePreparationFields: FC<RecipePreparationFieldsProps> = ({
       <button type="submit" className={css.btn}>
         Add
       </button>
-    </>
+    </div>
   );
 };
 

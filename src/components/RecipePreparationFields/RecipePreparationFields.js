@@ -1,11 +1,12 @@
-import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import css from "./RecipePreparationFields.module.css";
+import SubTitle from "../SubTitle/SubTitle";
 const RecipePreparationFields = ({ instructionsRecipe, setInstructionsRecipe, }) => {
     const handleArea = (event) => {
         const text = event.currentTarget.value;
         setInstructionsRecipe(text.replace(/ +/, " ").trim());
     };
-    return (_jsxs(_Fragment, { children: [_jsx("h2", { className: css.title, children: "Recipe Preparation" }), _jsx("textarea", { placeholder: "Enter recipe...", rows: 10, cols: 50, style: {
+    return (_jsxs("div", { className: css.recipePreparationBox, children: [_jsx(SubTitle, { title: "Recipe Preparation" }), _jsx("textarea", { placeholder: "Enter recipe...", rows: 10, cols: 50, style: {
                     resize: "none",
                     width: "100%",
                     border: "none",

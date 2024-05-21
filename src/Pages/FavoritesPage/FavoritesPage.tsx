@@ -3,7 +3,7 @@ import css from "./FavoritesPage.module.css";
 import React, { useEffect, useState } from "react";
 
 import Header from "../../components/Header/Header";
-import MainTitle from "../../components/MainTitle/MainTitle";
+import MainTitle from "../../components/MainTitle/PageTitle";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 
 import { toast } from "react-toastify";

@@ -6,6 +6,7 @@ import CardPopularRecipe from "../CardPopularRecipe/CardPopularRecipe";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
 import { ClimbingBoxLoader } from "react-spinners";
+import SubTitle from "../SubTitle/SubTitle";
 
 const PopularRecipe: React.FC = () => {
   const [popularRecipes, setPopularRecipes] = useState<Recipe[]>([]);
@@ -43,7 +44,8 @@ const PopularRecipe: React.FC = () => {
 
   return (
     <div className={css.boxPopularRecipes}>
-      <h2 className={css.title}>Popular Recipes</h2>
+      <SubTitle title={"Popular Recipes"}/>
+      
       {isLoading && (
         <div className={css.boxLoader}>
           <ClimbingBoxLoader />

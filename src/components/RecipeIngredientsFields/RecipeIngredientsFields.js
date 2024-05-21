@@ -5,6 +5,7 @@ import { selectIngredient } from "./selectStyles";
 import { nanoid } from "@reduxjs/toolkit";
 import Select from "react-select";
 import UnitInput from "../UnitInput/UnitInput";
+import SubTitle from "../SubTitle/SubTitle";
 const RecipeIngredientsFields = ({ ingredients, setIngredients, ingredientsAll, }) => {
     const handleDecreament = () => {
         setIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
@@ -28,7 +29,7 @@ const RecipeIngredientsFields = ({ ingredients, setIngredients, ingredientsAll, 
             setIngredients(updateFields);
         }
     };
-    return (_jsxs(_Fragment, { children: [_jsxs("div", { className: css.row, children: [_jsx("h2", { className: css.title, children: "Ingredients" }), _jsxs("div", { className: css.counterBox, children: [_jsx("button", { type: "button", className: css.btn, onClick: handleDecreament, children: _jsx("svg", { className: css.iconMinus, children: _jsx("use", { href: sprite + `#icon-Minus` }) }) }), _jsx("span", { className: css.counterFont, children: ingredients.length }), _jsx("button", { type: "button", className: css.btn, onClick: handleIncreament, children: _jsx("svg", { className: css.icon, children: _jsx("use", { href: sprite + `#icon-Plus` }) }) })] })] }), _jsx("ul", { className: css.ingredientsList, children: ingredientsAll
+    return (_jsxs(_Fragment, { children: [_jsxs("div", { className: css.row, children: [_jsx(SubTitle, { title: "Ingredients" }), _jsxs("div", { className: css.counterBox, children: [_jsx("button", { type: "button", className: css.btn, onClick: handleDecreament, children: _jsx("svg", { className: css.iconMinus, children: _jsx("use", { href: sprite + `#icon-Minus` }) }) }), _jsx("span", { className: css.counterFont, children: ingredients.length }), _jsx("button", { type: "button", className: css.btn, onClick: handleIncreament, children: _jsx("svg", { className: css.icon, children: _jsx("use", { href: sprite + `#icon-Plus` }) }) })] })] }), _jsx("ul", { className: css.ingredientsList, children: ingredientsAll
                     ? ingredients.map((ingredient, index) => (_jsxs("li", { className: css.rowItem, children: [_jsx(Select, { options: options(), onChange: (selectedOption) => handleIngr(index, selectedOption), styles: selectIngredient }), _jsx(UnitInput, { ingredients: ingredients, setIngredients: setIngredients, index: index }), _jsx("button", { className: css.btnX, onClick: () => remove(ingredient.id), children: _jsx("svg", { className: css.iconX, children: _jsx("use", { href: sprite + `#icon-X` }) }) })] }, ingredient.id)))
                     : "" })] }));
 };

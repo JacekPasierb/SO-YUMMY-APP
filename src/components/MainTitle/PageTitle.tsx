@@ -1,4 +1,4 @@
-import css from "./MainTitle.module.css";
+import css from "./PageTitle.module.css";
 
 import React, { FC } from "react";
 

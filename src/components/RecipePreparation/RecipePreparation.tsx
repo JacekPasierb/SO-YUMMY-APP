@@ -1,3 +1,4 @@
+import SubTitle from "../SubTitle/SubTitle";
 import css from "./RecipePreparation.module.css";
 
 import React, { FC, useEffect, useState } from "react";
@@ -23,7 +24,7 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
   return (
     <div className={`${css.container} ${css.flex}`}>
       <div>
-        <h2 className={css.titleInstruction}>Recipe Preparation</h2>
+        <SubTitle title={"Recipe Preparation"}/>
         <ul className={css.instructionsList}>
           {step &&
             step.map((step, index) => (

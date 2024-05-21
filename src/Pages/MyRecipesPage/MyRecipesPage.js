@@ -9,7 +9,7 @@ import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import { useNavigate } from "react-router";
-import MainTitle from "../../components/MainTitle/MainTitle";
+import MainTitle from "../../components/MainTitle/PageTitle";
 import { selectUser } from "../../redux/auth/selectors";
 import { ClimbingBoxLoader } from "react-spinners";
 const MyRecipesPage = () => {

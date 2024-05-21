@@ -8,6 +8,7 @@ import Select, { SingleValue } from "react-select";
 
 import UnitInput from "../UnitInput/UnitInput";
 import { Ing, IngredientData } from "../AddRecipeForm/AddRecipeForm";
+import SubTitle from "../SubTitle/SubTitle";
 
 interface RecipeIngredientsFieldsProps {
   ingredients: Ing[];
@@ -57,7 +58,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   return (
     <>
       <div className={css.row}>
-        <h2 className={css.title}>Ingredients</h2>
+        <SubTitle title={"Ingredients"}/>
         <div className={css.counterBox}>
           <button type="button" className={css.btn} onClick={handleDecreament}>
             <svg className={css.iconMinus}>

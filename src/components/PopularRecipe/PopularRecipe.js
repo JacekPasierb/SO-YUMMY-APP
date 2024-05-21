@@ -6,6 +6,7 @@ import CardPopularRecipe from "../CardPopularRecipe/CardPopularRecipe";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
 import { ClimbingBoxLoader } from "react-spinners";
+import SubTitle from "../SubTitle/SubTitle";
 const PopularRecipe = () => {
     const [popularRecipes, setPopularRecipes] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -39,6 +40,6 @@ const PopularRecipe = () => {
         };
         getPopularRecipe();
     }, [isDesctop, isTablet]);
-    return (_jsxs("div", { className: css.boxPopularRecipes, children: [_jsx("h2", { className: css.title, children: "Popular Recipes" }), isLoading && (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, {}) })), error && _jsxs("p", { children: ["Error: ", error] }), popularRecipes.length === 0 ? (_jsx("p", { children: "Brak popularnych przepis\u00F3w w danym momencie" })) : (_jsx("ul", { className: css.popularRecipesList, children: popularRecipes.map((recipe) => (_jsx("li", { children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardPopularRecipe, { recipe: recipe }) }) }, recipe._id))) }))] }));
+    return (_jsxs("div", { className: css.boxPopularRecipes, children: [_jsx(SubTitle, { title: "Popular Recipes" }), isLoading && (_jsx("div", { className: css.boxLoader, children: _jsx(ClimbingBoxLoader, {}) })), error && _jsxs("p", { children: ["Error: ", error] }), popularRecipes.length === 0 ? (_jsx("p", { children: "Brak popularnych przepis\u00F3w w danym momencie" })) : (_jsx("ul", { className: css.popularRecipesList, children: popularRecipes.map((recipe) => (_jsx("li", { children: _jsx(NavLink, { to: `/recipe/${recipe._id}`, children: _jsx(CardPopularRecipe, { recipe: recipe }) }) }, recipe._id))) }))] }));
 };
 export default PopularRecipe;

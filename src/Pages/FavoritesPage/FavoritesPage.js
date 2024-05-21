@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-run
 import css from "./FavoritesPage.module.css";
 import { useEffect } from "react";
 import Header from "../../components/Header/Header";
-import MainTitle from "../../components/MainTitle/MainTitle";
+import MainTitle from "../../components/MainTitle/PageTitle";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import { useSelector } from "react-redux";
 import { selectFavoriteRecipes, selectIsError, selectIsLoading, } from "../../redux/favoriteRecipes/selectors";
