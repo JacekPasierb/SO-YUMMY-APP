@@ -8,3 +8,6 @@ export const selectIsLoading = (state: RootState) =>
 
 export const selectIsError = (state: RootState) =>
   state.favoriteRecipes.error;
+
+export const selectTotalFavoritesRecipes = (state: RootState) =>
+  state.favoriteRecipes.totalFavoriteRecipes;

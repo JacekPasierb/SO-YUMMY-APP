@@ -12,20 +12,33 @@ import {
   selectFavoriteRecipes,
   selectIsError,
   selectIsLoading,
+  selectTotalFavoritesRecipes,
 } from "../../redux/favoriteRecipes/selectors";
 import { AppDispatch, useAppDispatch } from "../../redux/store";
 import { getFavoriteRecipes } from "../../redux/favoriteRecipes/operations";
 import { ClimbingBoxLoader } from "react-spinners";
+import BasicPagination from "../../components/Pagination/BasicPagination";
+import { useNavigate } from "react-router";
+import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 
 const FavoritesPage = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const favoriteRecipes = useSelector(selectFavoriteRecipes);
+  const totalFavoriteRecipes = useSelector(selectTotalFavoritesRecipes);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
+  const currentPage = getPageFromQueryString();
+  const navigate = useNavigate();
 
+  const handlePageChange = (page: number) => {
+    navigate(`?page=${page}`);
+    window.scrollTo(0, 0);
+  };
   useEffect(() => {
-    dispatch(getFavoriteRecipes());
-  }, [dispatch]);
+    if (currentPage !== undefined) {
+      dispatch(getFavoriteRecipes({ page: currentPage }));
+    }
+  }, [dispatch, currentPage]);
 
   return (
     <>
@@ -39,7 +52,16 @@ const FavoritesPage = () => {
               <ClimbingBoxLoader />
             </div>
           ) : (
-            favoriteRecipes && <MyRecipesList recipes={favoriteRecipes} />
+            favoriteRecipes && (
+              <>
+                <MyRecipesList recipes={favoriteRecipes} />
+                <BasicPagination
+                  count={Math.ceil(totalFavoriteRecipes / 4)}
+                  page={currentPage}
+                  onPageChange={handlePageChange}
+                />
+              </>
+            )
           )}
         </div>
       </main>

@@ -13,7 +13,8 @@ const favoriteRecipesSlice = createSlice({
     extraReducers: (builder) => builder
         .addCase(getFavoriteRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.favoriteRecipes = action.payload;
+        state.favoriteRecipes = action.payload.favoriteRecipes;
+        state.totalFavoriteRecipes = action.payload.totalFavoritesRecipes;
         state.error = null;
     })
         .addCase(getFavoriteRecipes.pending, (state) => {

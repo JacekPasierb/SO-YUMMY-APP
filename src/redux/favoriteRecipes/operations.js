@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-export const getFavoriteRecipes = createAsyncThunk("favorite/getFavoriteRecipes", async (_, thunkAPI) => {
+export const getFavoriteRecipes = createAsyncThunk("favorite/getFavoriteRecipes", async ({ page }, thunkAPI) => {
     try {
-        const { data } = await axios.get(`api/favorite`);
-        return data.data;
+        const { data } = await axios.get(`api/favorite?page=${page}`);
+        console.log("dd", data);
+        return data;
     }
     catch (error) {
         return thunkAPI.rejectWithValue(error.message);
