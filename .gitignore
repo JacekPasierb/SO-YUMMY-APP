@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ignoring JavaScript files and source maps generated from TypeScript
+*.js
+*.js.map
+
+# Ignoring JavaScript files and source maps in the src directory
+src/**/*.js
+src/**/*.js.map

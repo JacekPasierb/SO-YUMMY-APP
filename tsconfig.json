@@ -10,7 +10,9 @@
     "baseUrl": ".",
     "jsx": "react-jsx",
     "types": ["react"],
-   "allowUmdGlobalAccess":false
+   "allowUmdGlobalAccess":false,
+   "outDir": "./dist",  
+   "rootDir": "./src"   
   },
   "include": ["./", ".module.css",  "src/assets/icons/sprite.d.ts"]
 }
