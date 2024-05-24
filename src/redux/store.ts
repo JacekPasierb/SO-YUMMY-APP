@@ -14,10 +14,11 @@ import { authReducer } from "./auth/authSlice";
 import { globalReducer } from "./global/globalSlice";
 import { recipesReducer } from "./recipes/recipesSlice";
 import { useDispatch } from "react-redux";
-import { AuthState } from "./auth/authSlice";
+
 import { PersistPartial } from "redux-persist/es/persistReducer";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 import { favoriteRecipesReducer } from "./favoriteRecipes/favoriteRecipesSlice";
+import { AuthState } from "../types/authTypes";
 
 const authPersistConfig = {
   key: "auth",

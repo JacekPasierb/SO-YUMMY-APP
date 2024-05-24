@@ -1,20 +1,7 @@
+import { AuthState } from "../../types/authTypes";
 import { register, logIn, logOut, refreshUser, updateUser } from "./operations";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface AuthState {
-  user: {
-    userId: null | string;
-    name: null | any;
-    email: null | string;
-    password: null | string;
-    avatar: null | string;
-  };
-  token: null | any;
-  isLoggedIn: boolean;
-  error: string | null;
-  isAuth: boolean;
-  isRefreshing: boolean;
-}
 export interface RootState {
   auth: AuthState;
 }
@@ -115,7 +102,6 @@ const authSlice = createSlice({
       }
     });
     builder.addCase(updateUser.rejected, (state, action) => {
-      // Tutaj możesz obsłużyć ewentualne błędy podczas aktualizacji
       console.error("Błąd podczas aktualizacji użytkownika:", action.payload);
     });
   },
