@@ -1,5 +1,12 @@
 import { AuthState } from "../../types/authTypes";
-import { register, logIn, logOut, refreshUser, updateUser } from "./operations";
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  updateUser,
+  resendVerificationEmail,
+} from "./operations";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface RootState {
@@ -103,6 +110,15 @@ const authSlice = createSlice({
     });
     builder.addCase(updateUser.rejected, (state, action) => {
       console.error("Błąd podczas aktualizacji użytkownika:", action.payload);
+    });
+    builder.addCase(resendVerificationEmail.pending, (state) => {
+      state.error = null;
+    });
+    builder.addCase(resendVerificationEmail.fulfilled, (state) => {
+      state.error = null;
+    });
+    builder.addCase(resendVerificationEmail.rejected, (state, action) => {
+      state.error = action.payload as string;
     });
   },
 });

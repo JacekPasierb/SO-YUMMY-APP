@@ -12,18 +12,19 @@ import logoDesktop2x from "../../images/LogoDesctop2x.png";
 import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
 import { toast } from "react-toastify";
 
-import React from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "src/redux/store";
-import { logIn } from "../../redux/auth/operations";
+import { logIn, resendVerificationEmail } from "../../redux/auth/operations";
 import { selectError } from "../../redux/auth/selectors";
 
 import { validate } from "./SigninFormValidations";
 
 const SigninForm = () => {
+  const [emailForResend, setEmailForResend] = useState<string | null>(null);
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesctop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
@@ -45,23 +46,40 @@ const SigninForm = () => {
     { resetForm }: { resetForm: () => void }
   ) => {
     try {
+      setEmailForResend(values.email);
       const result = await dispatch(
         logIn({
           email: values.email,
           password: values.password,
         })
       );
+      console.log("result", result);
 
       if (logIn.fulfilled.match(result)) {
+        console.log("udalo");
         resetForm();
         navigate("/");
-      } else {
-        toast.error("Login failed");
+      } else if (error) {
+        console.log("co to", error); // czemu nie ma error
+
+        toast.error(error);
       }
     } catch (err: any) {
       console.error(err.message);
     }
   };
+  const handleResendVerificationEmail = async () => {
+    if (emailForResend) {
+      try {
+        await dispatch(resendVerificationEmail(emailForResend));
+        toast.success("E-mail weryfikacyjny został wysłany ponownie.");
+      } catch (err: any) {
+        console.error(err.message);
+        toast.error("Wystąpił błąd podczas wysyłania e-maila weryfikacyjnego.");
+      }
+    }
+  };
+
   return (
     <div>
       <Formik
@@ -160,7 +178,18 @@ const SigninForm = () => {
                 />
               </div>
             </div>
-
+            {error === "Konto nie zweryfikowane" && (
+              <p className={css.txt}>
+                Email nie dotarł ?
+                <button
+                  type="button"
+                  className={css.resendButton}
+                  onClick={handleResendVerificationEmail}
+                >
+                  Wyślij ponownie
+                </button>
+              </p>
+            )}
             <button type="submit" className={css.btnRegister}>
               Sign up
             </button>
