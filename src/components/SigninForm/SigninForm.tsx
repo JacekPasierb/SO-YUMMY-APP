@@ -67,10 +67,10 @@ const SigninForm = () => {
     if (emailForResend) {
       try {
         await dispatch(resendVerificationEmail(emailForResend));
-        toast.success("E-mail weryfikacyjny został wysłany ponownie.");
+        toast.success("Verification email sent!");
       } catch (err: any) {
         console.error(err.message);
-        toast.error("Wystąpił błąd podczas wysyłania e-maila weryfikacyjnego.");
+        toast.error("Something went wrong while email sent, try again");
       }
     }
   };

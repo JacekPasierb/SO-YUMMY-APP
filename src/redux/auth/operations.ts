@@ -67,10 +67,9 @@ export const resendVerificationEmail = createAsyncThunk(
       const res = await axios.post("/api/users/resend-verification-email", {
         email,
       });
-      toast.success("Verification email sent!");
+
       return res.data;
     } catch (error: any) {
-      toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
