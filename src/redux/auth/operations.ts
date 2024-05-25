@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { setAuthSuccess, setAuthError, RootState } from "./authSlice";
+import { setAuthSuccess, setAuthError } from "./authSlice";
 import { toast } from "react-toastify";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
@@ -30,7 +30,6 @@ export const register = createAsyncThunk(
   async (credentials: CredentialsRegister, thunkAPI) => {
     try {
       const res = await axios.post("/api/users/register", credentials);
-
       setAuthHeader(res.data.token);
       return res.data.data;
     } catch (error: any) {
@@ -45,15 +44,10 @@ export const logIn = createAsyncThunk(
     try {
       const resp = await axios.post("/api/users/signin", credentials);
       const { token, user } = resp.data.data;
-
-      console.log("ff");
-
       thunkAPI.dispatch(setAuthSuccess({ token, user }));
       setAuthHeader(token);
-
       return await resp.data.data;
     } catch (err: any) {
-      console.log("tu", err.response);
       if (err.response.status === 403) {
         toast.info("Konto nie zweryfikowane");
         thunkAPI.dispatch(setAuthError("Konto nie zweryfikowane"));
@@ -70,7 +64,9 @@ export const resendVerificationEmail = createAsyncThunk(
   "auth/resendVerificationEmail",
   async (email: string, thunkAPI) => {
     try {
-      const res = await axios.post("/api/users/resend-verification-email", { email });
+      const res = await axios.post("/api/users/resend-verification-email", {
+        email,
+      });
       toast.success("Verification email sent!");
       return res.data;
     } catch (error: any) {
