@@ -111,15 +111,15 @@ const authSlice = createSlice({
     builder.addCase(updateUser.rejected, (state, action) => {
       console.error("Błąd podczas aktualizacji użytkownika:", action.payload);
     });
-    builder.addCase(resendVerificationEmail.pending, (state) => {
-      state.error = null;
-    });
-    builder.addCase(resendVerificationEmail.fulfilled, (state) => {
-      state.error = null;
-    });
-    builder.addCase(resendVerificationEmail.rejected, (state, action) => {
-      state.error = action.payload as string;
-    });
+    // builder.addCase(resendVerificationEmail.pending, (state) => {
+    //   state.error = null;
+    // });
+    // builder.addCase(resendVerificationEmail.fulfilled, (state) => {
+    //   state.error = null;
+    // });
+    // builder.addCase(resendVerificationEmail.rejected, (state, action) => {
+    //   state.error = action.payload as string;
+    // });
   },
 });
 
