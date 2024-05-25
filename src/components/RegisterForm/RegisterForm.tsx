@@ -19,12 +19,13 @@ import logoTablet2x from "../../images/LogoTablet2x.png";
 import logoDesktop1x from "../../images/LogoDesctop1x.png";
 import logoDesktop2x from "../../images/LogoDesctop2x.png";
 import { AppDispatch } from "src/redux/store";
+import { useNavigate } from "react-router";
 const RegisterForm = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesctop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
   let logoSrc;
-
+  const navigate = useNavigate();
   if (isDesctop) {
     logoSrc = isRetina ? logoDesktop2x : logoDesktop1x;
   } else if (isTablet) {
@@ -48,6 +49,7 @@ const RegisterForm = () => {
     );
     toast.info("Verification link sent to email. Check your mail.");
     resetForm();
+    
   };
   return (
     <Formik
