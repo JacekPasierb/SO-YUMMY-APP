@@ -71,7 +71,7 @@ const App: FC = () => {
           path="/register"
           element={
             <RestrictedRoute
-              redirectTo="/signin"
+              redirectTo="/"
               component={
                 <Suspense fallback={<Loader />}>
                   <RegisterPage />

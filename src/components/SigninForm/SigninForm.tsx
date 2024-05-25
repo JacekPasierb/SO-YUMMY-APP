@@ -12,7 +12,7 @@ import logoDesktop2x from "../../images/LogoDesctop2x.png";
 import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
 import { toast } from "react-toastify";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import { useNavigate } from "react-router-dom";
 
@@ -24,6 +24,10 @@ import { selectError } from "../../redux/auth/selectors";
 import { validate } from "./SigninFormValidations";
 
 const SigninForm = () => {
+  console.log("SigninForm component is rendering");
+  useEffect(() => {
+    console.log("SigninForm mounted");
+  }, []);
   const [emailForResend, setEmailForResend] = useState<string | null>(null);
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesctop = useMediaQuery("(min-width: 1200px)");

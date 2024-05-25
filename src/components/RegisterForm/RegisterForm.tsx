@@ -40,15 +40,24 @@ const RegisterForm = () => {
     values: FormikValues,
     { resetForm }: { resetForm: () => void }
   ) => {
-    dispatch(
-      register({
-        name: values.name,
-        email: values.email,
-        password: values.password,
-      })
-    );
-    toast.info("Verification link sent to email. Check your mail.");
-    resetForm();
+    try {
+      const result = await dispatch(
+        register({
+          name: values.name,
+          email: values.email,
+          password: values.password,
+        })
+      );
+      if (register.fulfilled.match(result)) {
+        toast.info("Verification link sent to email. Check your mail.");
+        resetForm();
+        await navigate("/signin"); // Redirect to login page
+      } else {
+        toast.error("Registration failed.");
+      }
+    } catch (err: any) {
+      toast.error("An error occurred. Please try again.");
+    }
     
   };
   return (

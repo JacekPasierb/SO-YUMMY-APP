@@ -10,7 +10,7 @@ interface RestrictedRouteProps {
 
 const RestrictedRoute: FC<RestrictedRouteProps> = ({
   component: Component,
-  redirectTo = "/signin",
+  redirectTo = "/",
 }) => {
   const { isLoggedIn } = useAuth();
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
