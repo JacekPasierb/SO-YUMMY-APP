@@ -1,8 +1,8 @@
 import css from "./CardPopularRecipe.module.css";
 import React, { FC } from "react";
-import { Recipe } from "../../types/recipesTypes";
+import { IRecipe } from "../../types/recipesTypes";
 interface CardPopularRecipeProps {
-  recipe: Recipe;
+  recipe: IRecipe;
 }
 const CardPopularRecipe: FC<CardPopularRecipeProps> = ({ recipe }) => {
   const { preview, title, description } = recipe;

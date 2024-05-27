@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import css from "./PopularRecipe.module.css";
 import { fetchPopularRecipe } from "../../API/recipesAPI";
-import { Recipe } from "../../types/recipesTypes";
+import { IRecipe } from "../../types/recipesTypes";
 import CardPopularRecipe from "../CardPopularRecipe/CardPopularRecipe";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
@@ -9,7 +9,7 @@ import { ClimbingBoxLoader } from "react-spinners";
 import SubTitle from "../SubTitle/SubTitle";
 
 const PopularRecipe: React.FC = () => {
-  const [popularRecipes, setPopularRecipes] = useState<Recipe[]>([]);
+  const [popularRecipes, setPopularRecipes] = useState<IRecipe[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
@@ -56,7 +56,7 @@ const PopularRecipe: React.FC = () => {
         <p>Brak popularnych przepisów w danym momencie</p>
       ) : (
         <ul className={css.popularRecipesList}>
-          {popularRecipes.map((recipe: Recipe) => (
+          {popularRecipes.map((recipe: IRecipe) => (
             <li key={recipe._id}>
               <NavLink to={`/recipe/${recipe._id}`}>
                 <CardPopularRecipe recipe={recipe} />

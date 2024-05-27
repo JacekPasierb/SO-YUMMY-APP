@@ -10,11 +10,11 @@ import TitleCategories from "../TitleCategories/TitleCategories";
 import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
 import { toast } from "react-toastify";
 import { Loader } from "../Loader/Loader";
-import { Recipe } from "src/types/recipesTypes";
+import { IRecipe } from "src/types/recipesTypes";
 import { ClimbingBoxLoader } from "react-spinners";
 
 interface RecipesByMainCategory {
-  [category: string]: Recipe[];
+  [category: string]: IRecipe[];
 }
 
 const PreviewsCategories = () => {
@@ -69,7 +69,7 @@ const PreviewsCategories = () => {
                   <TitleCategories categories={categories} />
                   <ul className={css.recipesList}>
                     {recipes &&
-                      recipes.map((recipe: Recipe) => {
+                      recipes.map((recipe: IRecipe) => {
                         return (
                           <li
                             key={`${recipe._id}`}

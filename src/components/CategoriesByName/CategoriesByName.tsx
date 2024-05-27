@@ -14,7 +14,7 @@ import { AppDispatch } from "src/redux/store";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
-import { Recipe } from "../../types/recipesTypes";
+import { IRecipe } from "../../types/recipesTypes";
 import { Loader } from "../Loader/Loader";
 import { ClimbingBoxLoader } from "react-spinners";
 
@@ -58,7 +58,7 @@ const CategoriesByName: FC = () => {
       ) : (
         recipes && (
           <ul className={css.recipesList}>
-            {recipes.map((recipe: Recipe) => {
+            {recipes.map((recipe: IRecipe) => {
               return (
                 <li key={`${recipe._id}`} className={css.recipesListItem}>
                   <NavLink to={`/recipe/${recipe._id}`}>

@@ -7,7 +7,7 @@ import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import Header from "../../components/Header/Header";
 import { fetchRecipeById } from "../../API/recipesAPI";
 import { toast } from "react-toastify";
-import { Recipe } from "../../types/recipesTypes";
+import { IRecipe } from "../../types/recipesTypes";
 const RecipeInngredientsList = lazy(
   () => import("../../components/RecipeInngredientsList/RecipeInngredientsList")
 );
@@ -19,7 +19,7 @@ const RecipePage = () => {
   const { recipeId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [recipe, setRecipe] = useState<Recipe | null>(null);
+  const [recipe, setRecipe] = useState<IRecipe | null>(null);
 
   useEffect(() => {
     const getRecipeById = async (id: string) => {

@@ -1,4 +1,4 @@
-export interface Recipe {
+export interface IRecipe {
   _id: string;
   title: string;
   category: string;
@@ -17,4 +17,9 @@ export interface Recipe {
   updatedAt: string;
   owner?: string;
   ingredients: [];
+}
+
+export interface IFavoriteRecipesResponse {
+  favoriteRecipes: IRecipe[];
+  totalFavoritesRecipes: number;
 }

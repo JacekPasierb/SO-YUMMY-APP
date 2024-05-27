@@ -1,18 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Recipe } from "../../types/recipesTypes";
-
-interface FavoriteRecipesRequest {
-  page: number;
-}
-interface FavoriteRecipesResponse {
-  favoriteRecipes: Recipe[];
-  totalFavoritesRecipes: number;
-}
+import { IFavoriteRecipesResponse, IRecipe } from "../../types/recipesTypes";
 
 export const getFavoriteRecipes = createAsyncThunk<
-  FavoriteRecipesResponse,
-  FavoriteRecipesRequest
+  IFavoriteRecipesResponse,
+  { page: number }
 >("favorite/getFavoriteRecipes", async ({ page }, thunkAPI) => {
   try {
     const { data } = await axios.get(`api/favorite?page=${page}`);
@@ -22,11 +14,11 @@ export const getFavoriteRecipes = createAsyncThunk<
   }
 });
 
-export const removeFromFavorite = createAsyncThunk(
+export const removeFromFavorite = createAsyncThunk<string, string>(
   "favorite/removeFromFavorite",
   async (recipeId: string, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`/api/favorite/remove/${recipeId}`);
+      await axios.delete(`/api/favorite/remove/${recipeId}`);
       return recipeId;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
@@ -34,14 +26,14 @@ export const removeFromFavorite = createAsyncThunk(
   }
 );
 
-export const addToFavorite = createAsyncThunk(
-  "favorite/addToFavorite",
-  async (recipeId: string, thunkAPI) => {
-    try {
-      const { data } = await axios.patch(`/api/favorite/add/${recipeId}`);
-      return data.data.recipe;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+export const addToFavorite = createAsyncThunk<
+  Pick<IRecipe, "_id" | "title" | "category" | "area" | "instructions">,
+  string
+>("favorite/addToFavorite", async (recipeId: string, thunkAPI) => {
+  try {
+    const { data } = await axios.patch(`/api/favorite/add/${recipeId}`);
+    return data.data.recipe;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});

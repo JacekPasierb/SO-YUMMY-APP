@@ -34,3 +34,4 @@ export type UpdateUserResponse = Pick<IAuthResponse, "status" | "code"> & {
     user: Pick<IUser, "name" | "avatar">;
   };
 };
+
