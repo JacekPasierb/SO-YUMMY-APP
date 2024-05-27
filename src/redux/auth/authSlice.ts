@@ -93,7 +93,8 @@ const authSlice = createSlice({
     });
     builder.addCase(updateUser.fulfilled, (state, action) => {
       if (action.payload !== undefined && action.payload !== null) {
-        state.user = action.payload;
+        state.user.name = action.payload.data.user.name;
+        state.user.avatar = action.payload.data.user.avatar;
         state.error = null;
       } else {
         state.user = {

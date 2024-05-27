@@ -28,3 +28,9 @@ export interface IAuthResponse {
     user: Omit<IUser, "password">;
   };
 }
+
+export type UpdateUserResponse = Pick<IAuthResponse, "status" | "code"> & {
+  data: {
+    user: Pick<IUser, "name" | "avatar">;
+  };
+};

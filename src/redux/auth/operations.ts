@@ -2,7 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { setAuthSuccess, setAuthError } from "./authSlice";
 import { toast } from "react-toastify";
-import { IAuthResponse, IUser } from "../../types/authTypes";
+import {
+  IAuthResponse,
+  IUser,
+  UpdateUserResponse,
+} from "../../types/authTypes";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
 
@@ -70,46 +74,48 @@ export const resendVerificationEmail = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
-  try {
-    await axios.patch("/api/users/logout");
-    // After a successful logout, remove the token from the HTTP header
-    clearAuthHeader();
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
-
-export const refreshUser = createAsyncThunk(
-  "auth/refresh",
+export const logOut = createAsyncThunk<void, undefined>(
+  "auth/logout",
   async (_, thunkAPI) => {
-    const state: any = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-
-    if (persistedToken === null) {
-      return thunkAPI.rejectWithValue("Unable to fetch user");
-    }
     try {
-      setAuthHeader(persistedToken);
-      const res = await axios.get("/api/users/current");
-      return res.data.data;
+      await axios.patch("/api/users/logout");
+      // After a successful logout, remove the token from the HTTP header
+      clearAuthHeader();
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-interface UserData {
-  name: string;
-  avatar: string;
-}
+export const refreshUser = createAsyncThunk<
+  Pick<IUser, "name" | "email" | "avatar" | "userId">,
+  undefined
+>("auth/refresh", async (_, thunkAPI) => {
+  const state: any = thunkAPI.getState();
+  const persistedToken = state.auth.token;
 
-export const updateUser = createAsyncThunk<void, UserData>(
+  if (persistedToken === null) {
+    return thunkAPI.rejectWithValue("Unable to fetch user");
+  }
+  try {
+    setAuthHeader(persistedToken);
+    const res = await axios.get("/api/users/current");
+
+    return res.data.data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+export const updateUser = createAsyncThunk<
+  UpdateUserResponse,
+  Pick<IUser, "name" | "avatar">
+>(
   "auth/updateUser",
-  async (userData, thunkAPI) => {
+  async (userData: Pick<IUser, "name" | "avatar">, thunkAPI) => {
     try {
       const res = await axios.patch("/api/users/update", userData);
-      return res.data.data;
+      return res.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
