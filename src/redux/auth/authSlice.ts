@@ -1,4 +1,4 @@
-import { AuthState } from "../../types/authTypes";
+import { IAuthState } from "../../types/authTypes";
 import {
   register,
   logIn,
@@ -10,11 +10,11 @@ import {
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface RootState {
-  auth: AuthState;
+  auth: IAuthState;
 }
 
-const initialState: AuthState = {
-  user: { userId: null, name: null, email: null, password: null, avatar: null },
+const initialState: IAuthState = {
+  user: { userId: null, name: null, email: null, avatar: null },
   token: null,
   isLoggedIn: false,
   error: null,
@@ -39,9 +39,8 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(register.fulfilled, (state, action) => {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-
+      state.user = action.payload.data.user;
+      state.token = action.payload.data.token;
       state.error = null;
     });
 
@@ -54,8 +53,8 @@ const authSlice = createSlice({
     });
 
     builder.addCase(logIn.fulfilled, (state, action) => {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.user = action.payload.data.user;
+      state.token = action.payload.data.token;
       state.isLoggedIn = true;
       state.error = null;
     });
@@ -73,7 +72,6 @@ const authSlice = createSlice({
         userId: null,
         name: null,
         email: null,
-        password: null,
         avatar: null,
       };
       state.token = null;
@@ -102,7 +100,6 @@ const authSlice = createSlice({
           userId: null,
           name: null,
           email: null,
-          password: null,
           avatar: null,
         };
         state.error = "Payload updateUser is null or undefined";

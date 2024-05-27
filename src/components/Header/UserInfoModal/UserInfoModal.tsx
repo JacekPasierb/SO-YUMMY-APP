@@ -20,25 +20,24 @@ interface UserInfoModalRequest {
   onClose: () => void;
 }
 
-interface User {
-  name: string;
-  email: string | null;
-  password: string | null;
-  avatar: string | null;
-}
+// interface User {
+//   name: string;
+//   email: string | null;
+//   avatar: string | null;
+// }
 
-interface Data {
-  isLoggedIn: boolean;
-  isRefreshing: boolean;
-  user: User;
-  token: string;
-}
+// interface Data {
+//   isLoggedIn: boolean;
+//   isRefreshing: boolean;
+//   user: User;
+//   token: string;
+// }
 
 const UserInfoModal: FC<UserInfoModalRequest> = ({ onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const dispatch: AppDispatch = useDispatch();
-  const { user }: Data = useAuth();
+  const { user } = useAuth();
   const [imageDataUrl, setImageDataUrl] = useState(user.avatar);
 
   useEffect(() => {

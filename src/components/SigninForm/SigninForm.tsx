@@ -12,7 +12,7 @@ import logoDesktop2x from "../../images/LogoDesctop2x.png";
 import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
 import { toast } from "react-toastify";
 
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import { useNavigate } from "react-router-dom";
 

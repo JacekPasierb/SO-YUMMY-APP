@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import { PersistPartial } from "redux-persist/es/persistReducer";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 import { favoriteRecipesReducer } from "./favoriteRecipes/favoriteRecipesSlice";
-import { AuthState } from "../types/authTypes";
+import { IAuthState } from "../types/authTypes";
 
 const authPersistConfig = {
   key: "auth",
@@ -26,7 +26,7 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
-const persistedAuthReducer: Reducer<AuthState & PersistPartial> =
+const persistedAuthReducer: Reducer<IAuthState & PersistPartial> =
   persistReducer(authPersistConfig, authReducer);
 
 export const store = configureStore({

@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { setAuthSuccess, setAuthError } from "./authSlice";
 import { toast } from "react-toastify";
+import { IAuthResponse, IUser } from "../../types/authTypes";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
 
@@ -14,39 +15,34 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
-interface CredentialsRegister {
-  name: string;
-  email: string;
-  password: string;
-}
-
-interface CredentialsLogin {
-  email: string;
-  password: string;
-}
-
-export const register = createAsyncThunk(
+export const register = createAsyncThunk<
+  IAuthResponse,
+  Pick<IUser, "email" | "password" | "name">
+>(
   "auth/register",
-  async (credentials: CredentialsRegister, thunkAPI) => {
+  async (credentials: Pick<IUser, "email" | "password" | "name">, thunkAPI) => {
     try {
       const res = await axios.post("/api/users/register", credentials);
-      setAuthHeader(res.data.token);
-      return res.data.data;
+      setAuthHeader(res.data.data.token);
+      return res.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logIn = createAsyncThunk(
+export const logIn = createAsyncThunk<
+  IAuthResponse,
+  Pick<IUser, "email" | "password">
+>(
   "auth/logIn",
-  async (credentials: CredentialsLogin, thunkAPI) => {
+  async (credentials: Pick<IUser, "email" | "password">, thunkAPI) => {
     try {
       const resp = await axios.post("/api/users/signin", credentials);
       const { token, user } = resp.data.data;
       thunkAPI.dispatch(setAuthSuccess({ token, user }));
       setAuthHeader(token);
-      return await resp.data.data;
+      return await resp.data;
     } catch (err: any) {
       if (err.response.status === 403) {
         toast.info("Konto nie zweryfikowane");
@@ -67,7 +63,6 @@ export const resendVerificationEmail = createAsyncThunk(
       const res = await axios.post("/api/users/resend-verification-email", {
         email,
       });
-
       return res.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
