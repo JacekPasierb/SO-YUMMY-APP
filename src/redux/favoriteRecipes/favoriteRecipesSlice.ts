@@ -1,16 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addToFavorite, getFavoriteRecipes, removeFromFavorite } from "./operations";
+import {
+  addToFavorite,
+  getFavoriteRecipes,
+  removeFromFavorite,
+} from "./operations";
+import { IRecipesState } from "../../types/recipesTypes";
 
-interface favoriteRecipesState {
-  favoriteRecipes: any[];
-  totalFavoriteRecipes: number;
-  isLoading: boolean;
-  error: null | string;
-}
-
-const initialState: favoriteRecipesState = {
-  favoriteRecipes: [],
-  totalFavoriteRecipes: 0,
+const initialState: IRecipesState = {
+  recipes: [],
+  totalRecipes: 0,
   isLoading: false,
   error: null,
 };
@@ -23,8 +21,8 @@ const favoriteRecipesSlice = createSlice({
     builder
       .addCase(getFavoriteRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.favoriteRecipes = action.payload.favoriteRecipes;
-        state.totalFavoriteRecipes = action.payload.totalFavoritesRecipes;
+        state.recipes = action.payload.recipes;
+        state.totalRecipes = action.payload.totalRecipes;
         state.error = null;
       })
       .addCase(getFavoriteRecipes.pending, (state) => {
@@ -41,9 +39,9 @@ const favoriteRecipesSlice = createSlice({
       })
       .addCase(removeFromFavorite.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.favoriteRecipes = state.favoriteRecipes.filter(
-            (recipe) => recipe._id !== action.payload
-          );
+        state.recipes = state.recipes.filter(
+          (recipe) => recipe._id !== action.payload
+        );
         state.error = null;
       })
       .addCase(removeFromFavorite.pending, (state) => {
@@ -57,9 +55,10 @@ const favoriteRecipesSlice = createSlice({
         } else {
           state.error = "An error occurred during removeFromFavorite";
         }
-      })   .addCase(addToFavorite.fulfilled, (state, action) => {
+      })
+      .addCase(addToFavorite.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.favoriteRecipes = [...state.favoriteRecipes, action.payload];
+        state.recipes = [...state.recipes, action.payload];
         state.error = null;
       })
       .addCase(addToFavorite.pending, (state) => {

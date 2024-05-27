@@ -13,26 +13,8 @@ import { fetchAllIngredients } from "../../API/ingredientsAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { addOwnRecipes } from "../../redux/ownRecipes/operations";
-import { selectIsLoading } from "../../redux/recipes/selectors";
 
-interface Ingredient {
-  id: string;
-  measure: string;
-}
-
-export interface Ing {
-  id: string;
-  selectedValue?: string;
-  selectedUnit: string;
-}
-
-export interface IngredientData {
-  _id: string;
-  ttl: string;
-  thb: string;
-  t: string;
-  desc: string;
-}
+import { Ing, Ingredient, IngredientData } from "../../types/ingredientsTypes";
 
 const AddRecipeForm: FC = () => {
   const [file, setFile] = useState("");
@@ -160,7 +142,7 @@ const AddRecipeForm: FC = () => {
       setIsLoading(false);
     }
   };
-//pracuje nad loading dla kategori listy do formularza zeby formularz sie wczytal jak pobierze liste kategori
+  //pracuje nad loading dla kategori listy do formularza zeby formularz sie wczytal jak pobierze liste kategori
   return (
     <>
       {isLoading ? (
@@ -168,7 +150,11 @@ const AddRecipeForm: FC = () => {
           <ClimbingBoxLoader color="#8BAA36" />
         </div>
       ) : (
-        <form onSubmit={handleSubmit} encType="multipart/form-data" className={css.form}>
+        <form
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          className={css.form}
+        >
           <RecipeDescriptionFields data={dataForm} />
           <RecipeIngredientsFields
             ingredients={ingredients}

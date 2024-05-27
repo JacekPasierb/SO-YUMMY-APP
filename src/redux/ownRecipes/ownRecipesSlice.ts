@@ -1,21 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addOwnRecipes, deleteRecipe, getOwnRecipes } from "./operations";
+import { IRecipesState } from "../../types/recipesTypes";
 
-interface ownRecipesState {
-  ownRecipes: any[];
-  totalOwnRecipes: number;
-  isLoading: boolean;
-  error: null | string;
-}
-//poprawic na zeby byl wspolny
-// recipes:any[];
-// total:number;
-// isLoading:boolean;
-// error:null | string;
 
-const initialState: ownRecipesState = {
-  ownRecipes: [],
-  totalOwnRecipes: 0,
+const initialState: IRecipesState = {
+  recipes: [],
+  totalRecipes: 0,
   isLoading: false,
   error: null,
 };
@@ -27,8 +17,8 @@ const ownRecipesSlice = createSlice({
     builder
       .addCase(getOwnRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.ownRecipes = action.payload.ownRecipes;
-        state.totalOwnRecipes = action.payload.totalOwnRecipes;
+        state.recipes = action.payload.recipes;
+        state.totalRecipes = action.payload.totalRecipes;
         state.error = null;
       })
       .addCase(getOwnRecipes.pending, (state) => {
@@ -45,7 +35,7 @@ const ownRecipesSlice = createSlice({
       })
       .addCase(addOwnRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.ownRecipes = [...state.ownRecipes, action.payload];
+        state.recipes = [...state.recipes, action.payload];
         state.error = null;
       })
       .addCase(addOwnRecipes.pending, (state) => {
@@ -61,7 +51,7 @@ const ownRecipesSlice = createSlice({
       })
       .addCase(deleteRecipe.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.ownRecipes = state.ownRecipes.filter(
+        state.recipes = state.recipes.filter(
           (recipe) => recipe._id !== action.payload
         );
         state.error = null;

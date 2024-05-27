@@ -3,6 +3,7 @@ import css from "./MyRecipesList.module.css";
 import React, { useEffect } from "react";
 
 import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
+import { IRecipe } from "../../types/recipesTypes";
 
 interface recipe {
   _id: string;
@@ -13,7 +14,7 @@ interface recipe {
 }
 
 interface Props {
-  recipes: recipe[];
+  recipes: IRecipe[];
 }
 
 const MyRecipesList = ({ recipes }: Props) => {
@@ -21,8 +22,12 @@ const MyRecipesList = ({ recipes }: Props) => {
   return (
     <>
       {recipes && (
-        <ul className={css.myRecipesList}>
+       
+        
+        <ul className={css.myRecipesList}> 
           {recipes.map((recipe) => {
+            
+            
             return (
               <li key={recipe._id}>
                 <CardOwnRecipe ownRecipe={recipe} />

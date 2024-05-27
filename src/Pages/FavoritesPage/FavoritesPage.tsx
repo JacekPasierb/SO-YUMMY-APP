@@ -35,9 +35,7 @@ const FavoritesPage = () => {
     window.scrollTo(0, 0);
   };
   useEffect(() => {
-    if (currentPage !== undefined) {
-      dispatch(getFavoriteRecipes({ page: currentPage }));
-    }
+    dispatch(getFavoriteRecipes({ page: currentPage }));
   }, [dispatch, currentPage]);
 
   return (

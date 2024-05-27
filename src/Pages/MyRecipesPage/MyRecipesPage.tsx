@@ -2,10 +2,7 @@ import css from "./MainRecipesPage.module.css";
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  OwnRecipesRequest,
-  getOwnRecipes,
-} from "../../redux/ownRecipes/operations";
+import { getOwnRecipes } from "../../redux/ownRecipes/operations";
 import {
   selectIsLoading,
   selectOwnRecipes,
@@ -36,7 +33,10 @@ const MyRecipesPage = () => {
   useEffect(() => {
     if (user && user.userId) {
       const userId = user.userId;
-      const request: OwnRecipesRequest = { userId, page: currentPage };
+      const request: { userId: string; page: number } = {
+        userId,
+        page: currentPage,
+      };
 
       dispatch(getOwnRecipes(request));
     }

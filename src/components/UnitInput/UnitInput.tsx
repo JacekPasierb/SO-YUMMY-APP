@@ -2,18 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import css from "./UnitInput.module.css";
 import Select from "react-select";
 import { selectUnit } from "../RecipeIngredientsFields/selectStyles";
-import { Ing } from "../AddRecipeForm/AddRecipeForm";
-
-interface UnitInputProps {
-  ingredients: Ing[];
-  setIngredients: React.Dispatch<React.SetStateAction<Ing[]>>;
-  index: number;
-}
-
-interface Option {
-  label: string;
-  value: string;
-}
+import { Option, UnitInputProps } from "../../types/ingredientsTypes";
 
 const UnitInput: FC<UnitInputProps> = ({
   ingredients,

@@ -7,8 +7,9 @@ import { nanoid } from "@reduxjs/toolkit";
 import Select, { SingleValue } from "react-select";
 
 import UnitInput from "../UnitInput/UnitInput";
-import { Ing, IngredientData } from "../AddRecipeForm/AddRecipeForm";
+
 import SubTitle from "../SubTitle/SubTitle";
+import { Ing, IngredientData, Option } from "../../types/ingredientsTypes";
 
 interface RecipeIngredientsFieldsProps {
   ingredients: Ing[];
@@ -16,10 +17,7 @@ interface RecipeIngredientsFieldsProps {
   ingredientsAll: IngredientData[];
 }
 
-interface Option {
-  label: string;
-  value: string;
-}
+
 
 const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   ingredients,

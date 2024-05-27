@@ -1,64 +1,30 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {
+  INewRecipe,
+  IRecipe,
+  IRecipesResponse,
+} from "../../types/recipesTypes";
 
-interface ownRecipe {
-  createdAt: string;
-  description: string;
-  favorites: any[];
-  ingredients: any[];
-  instructions: string;
-  owner: string;
-  preview: string;
-  tags: string[];
-  thumb: string;
-  time: string;
-  title: string;
-  updatedAt: string;
-  youtube: string;
-  _id: string;
-}
-
-export interface OwnRecipesRequest {
-  userId: string;
-  page: number;
-}
-
-interface OwnRecipesResponse {
-  ownRecipes: ownRecipe[];
-  totalOwnRecipes: number;
-}
 export const getOwnRecipes = createAsyncThunk<
-  OwnRecipesResponse,
-  OwnRecipesRequest
+  IRecipesResponse,
+  { userId: string; page: number }
 >("ownRecipes/getOwnRecipes", async ({ userId, page }, thunkAPI) => {
   try {
     const { data } = await axios.get(`./api/ownRecipes/${userId}?page=${page}`);
 
     return {
-      ownRecipes: data.data.ownRecipes,
-      totalOwnRecipes: data.data.totalOwnRecipes,
+      recipes: data.data.ownRecipes,
+      totalRecipes: data.data.totalOwnRecipes,
     };
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-interface BodyType {
-  file: string;
-  title: string;
-  description: string;
-  category: string;
-  time: string;
-  ingredients: any;
-  instructions: string;
-  imageUrl: string;
-  thumb: string;
-  preview: string;
-}
-
-export const addOwnRecipes = createAsyncThunk(
+export const addOwnRecipes = createAsyncThunk<IRecipe, INewRecipe>(
   "ownRecipes/addRecipes",
-  async (body: BodyType, thunkAPI) => {
+  async (body: INewRecipe, thunkAPI) => {
     try {
       const { data } = await axios.post(`/api/ownRecipes/add`, body);
 
@@ -69,7 +35,7 @@ export const addOwnRecipes = createAsyncThunk(
   }
 );
 
-export const deleteRecipe = createAsyncThunk(
+export const deleteRecipe = createAsyncThunk<string, string>(
   "ownRecipes/deleteOwnRecipe",
   async (recipeId: string, thunkAPI) => {
     try {

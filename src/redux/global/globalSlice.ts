@@ -1,18 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-interface GlobalState {
-  isUserLogoModalOpen: boolean;
-  isUserInfoModalOpen: boolean;
-  isLogoutModalOpen: boolean;
-  isMenuModalOpen: boolean;
-  theme: string;
-}
+import { IGlobalState } from "../../types/globalTypes";
 
 export interface RootState {
-  global: GlobalState;
+  global: IGlobalState;
 }
 
-const initialState: GlobalState = {
+const initialState: IGlobalState = {
   isUserLogoModalOpen: false,
   isUserInfoModalOpen: false,
   isLogoutModalOpen: false,

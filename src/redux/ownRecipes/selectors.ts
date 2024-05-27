@@ -1,9 +1,9 @@
 import { RootState } from "../store";
 
 export const selectOwnRecipes = (state: RootState) =>
-  state.ownRecipes.ownRecipes;
+  state.ownRecipes.recipes;
 
 export const selectTotalOwnRecipes = (state: RootState) =>
-  state.ownRecipes.totalOwnRecipes;
+  state.ownRecipes.totalRecipes;
 
 export const selectIsLoading = (state: RootState)=> state.ownRecipes.isLoading;

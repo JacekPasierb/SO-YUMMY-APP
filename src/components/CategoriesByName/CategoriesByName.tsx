@@ -18,11 +18,6 @@ import { IRecipe } from "../../types/recipesTypes";
 import { Loader } from "../Loader/Loader";
 import { ClimbingBoxLoader } from "react-spinners";
 
-interface CategoryRecipesRequest {
-  category: string;
-  page: number;
-}
-
 const CategoriesByName: FC = () => {
   const { categoryName } = useParams();
 
@@ -46,7 +41,10 @@ const CategoriesByName: FC = () => {
     } else {
       category = categoryName as string;
     }
-    const request: CategoryRecipesRequest = { category, page: currentPage };
+    const request: { category: string; page: number } = {
+      category,
+      page: currentPage,
+    };
     dispatch(getRecipesByCategory(request));
   }, [dispatch, categoryName, currentPage]);
 
@@ -54,7 +52,8 @@ const CategoriesByName: FC = () => {
     <>
       {isLoading ? (
         <div className={css.boxLoader}>
-        <ClimbingBoxLoader/></div>
+          <ClimbingBoxLoader />
+        </div>
       ) : (
         recipes && (
           <ul className={css.recipesList}>

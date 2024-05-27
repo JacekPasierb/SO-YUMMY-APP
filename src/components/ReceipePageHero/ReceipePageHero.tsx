@@ -13,27 +13,21 @@ import {
   addToFavorite,
   removeFromFavorite,
 } from "../../redux/favoriteRecipes/operations";
+import { IRecipe } from "../../types/recipesTypes";
 
-interface Recipe {
-  title: string;
-  description: string;
-  time: string;
-  favorites: any[];
-  _id: string;
-}
-
-const ReceipePageHero = ({ recipe }: { recipe: Recipe }) => {
+const ReceipePageHero = ({ recipe }: { recipe: IRecipe }) => {
   const { title, description, time, favorites, _id } = recipe;
   const user = useSelector(selectUser);
   const userId = user.userId;
+
   const [isFav, setIsFav] = useState(false);
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
-    if (favorites !== undefined) {
+    if (userId && Array.isArray(favorites)) {
       setIsFav(favorites.includes(userId));
     }
-  }, [recipe]);
+  }, [recipe, favorites, userId]);
 
   const handleFavorite = async (id: string) => {
     try {

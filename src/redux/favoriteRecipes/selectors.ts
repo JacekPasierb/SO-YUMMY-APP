@@ -1,13 +1,12 @@
 import { RootState } from "../store";
 
 export const selectFavoriteRecipes = (state: RootState) =>
-  state.favoriteRecipes.favoriteRecipes;
+  state.favoriteRecipes.recipes;
 
 export const selectIsLoading = (state: RootState) =>
   state.favoriteRecipes.isLoading;
 
-export const selectIsError = (state: RootState) =>
-  state.favoriteRecipes.error;
+export const selectIsError = (state: RootState) => state.favoriteRecipes.error;
 
 export const selectTotalFavoritesRecipes = (state: RootState) =>
-  state.favoriteRecipes.totalFavoriteRecipes;
+  state.favoriteRecipes.totalRecipes;

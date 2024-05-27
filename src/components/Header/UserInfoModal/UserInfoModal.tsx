@@ -20,18 +20,7 @@ interface UserInfoModalRequest {
   onClose: () => void;
 }
 
-// interface User {
-//   name: string;
-//   email: string | null;
-//   avatar: string | null;
-// }
 
-// interface Data {
-//   isLoggedIn: boolean;
-//   isRefreshing: boolean;
-//   user: User;
-//   token: string;
-// }
 
 const UserInfoModal: FC<UserInfoModalRequest> = ({ onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
