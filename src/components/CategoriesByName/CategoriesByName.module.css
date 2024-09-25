@@ -2,16 +2,18 @@
   @media screen and (min-width: 768px) {
     flex-basis: calc((100% - 32px) / 2);
   }
+
   @media screen and (min-width: 1200px) {
     flex-basis: calc((100% - 14 * 3px) / 4);
   }
 }
+
 .recipesList {
   display: flex;
   flex-direction: column;
   gap: 28px;
-
   margin-block: 32px;
+
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -19,14 +21,16 @@
     gap: 32px;
     margin-block: 50px;
   }
+
   @media screen and (min-width: 1200px) {
     gap: 14px;
     row-gap: 100px;
   }
 }
+
 .boxLoader {
-  margin: 10vh auto;
   display: flex;
   justify-content: center;
+  margin: 10vh auto;
 
 }

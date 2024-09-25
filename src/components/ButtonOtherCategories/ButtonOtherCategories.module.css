@@ -1,15 +1,16 @@
 .btn {
-  border: 1px solid #8baa36;
-  border-radius: 24px 44px;
-  background-color: transparent;
   padding: 14px 32px;
 
   font-size: 14px;
   color: #22252a;
 
+  background-color: transparent;
+  border: 1px solid #8baa36;
+  border-radius: 24px 44px;
+
   @media screen and (min-width: 768px) {
     padding: 20px 52px;
+
     font-size: 16px;
   }
- 
 }

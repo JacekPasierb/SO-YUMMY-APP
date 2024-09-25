@@ -1,17 +1,19 @@
 .appDescription {
+  margin-top: 14px;
+
   font-size: 14px;
   line-height: 18px;
-  margin-top: 14px;
+  color: #23262a;
   text-align: center;
 
-  color: #23262a;
-
   @media screen and (min-width: 768px) {
-    text-align: left;
     margin-top: 24px;
+
+    text-align: left;
   }
   @media screen and (min-width: 1200px) {
     margin-top: 14px;
+
     font-size: 18px;
     line-height: 24px;
   }

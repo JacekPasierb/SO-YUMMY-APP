@@ -1,27 +1,30 @@
 .cardBox {
-  background-color: #ffffff;
-  border-radius: 8px;
   display: flex;
   flex-direction: row;
   gap: 14px;
-
   padding: 14px 9px;
+
+  background-color: #ffffff;
+  border-radius: 8px;
 
   @media screen and (min-width: 768px) {
     gap: 8px;
     padding: 28px 24px;
   }
+
   @media screen and (min-width: 1200px) {
     gap: 14px;
     padding: 40px 0px 40px 40px;
   }
 }
+
 .recipeInfo {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
+
 .row {
   display: flex;
   flex-direction: row;
@@ -33,72 +36,79 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 10px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 14px;
   }
+
   @media screen and (min-width: 1200px) {
     margin-bottom: 20px;
   }
 }
+
 .titleRecipe {
+  margin: 0;
+
   font-size: 14px;
   line-height: 14px;
   letter-spacing: -0.24px;
   color: #3e4462;
-  margin: 0;
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 24px;
   }
 }
+
 .recipeDescription {
+  margin-bottom: 24px;
+
   font-size: 8px;
   line-height: 10px;
   letter-spacing: -2%;
-  text-align: left;
   color: #23262a;
-
-  margin-bottom: 24px;
+  text-align: left;
 
   @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+
     font-size: 14px;
     line-height: 18px;
-    margin-bottom: 28px;
   }
+
   @media screen and (min-width: 1200px) {
+    margin-bottom: 67px;
+
     font-size: 18px;
     line-height: 24px;
-    margin-bottom: 67px;
   }
 }
+
 .recipeTime {
+  margin: 0;
+
   font-size: 10px;
   line-height: 14px;
   letter-spacing: -0.24px;
   color: #3e4462;
-  margin: 0;
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 20px;
   }
-  @media screen and (min-width: 1200px) {
-  }
 }
 .recipeImg {
-  border-radius: 8px;
-
   width: 124px;
   height: 124px;
+
+  border-radius: 8px;
 
   @media screen and (min-width: 768px) {
     width: 228px;
     height: 232px;
   }
+
   @media screen and (min-width: 1200px) {
     width: 318px;
     height: 324px;
@@ -107,42 +117,47 @@
 .iconBgDelete {
   width: 24px;
   height: 24px;
+  padding: 5px;
+
   background-color: #8baa36;
   border-radius: 4px;
-
   stroke: #fafafa;
-  padding: 5px;
 
   @media screen and (min-width: 768px) {
     width: 38px;
     height: 38px;
     padding: 8px;
   }
+
   @media screen and (min-width: 1200px) {
     width: 44px;
     height: 44px;
     padding: 10px;
   }
 }
+
 .iconBgRemove {
   width: 24px;
   height: 24px;
+  padding: 5px;
+
   background-color: #ebf3d4;
   border-radius: 4px;
   stroke: #22252a;
-  padding: 5px;
 
   @media screen and (min-width: 768px) {
     width: 38px;
     height: 38px;
     padding: 8px;
   }
+
   @media screen and (min-width: 1200px) {
     width: 44px;
     height: 44px;
     padding: 10px;
   }
 }
+
 .iconDel {
   width: 14px;
   height: 14px;
@@ -151,24 +166,29 @@
     width: 22px;
     height: 22px;
   }
+
   @media screen and (min-width: 1200px) {
     width: 24px;
     height: 24px;
   }
 }
+
 .recipeSeeBtn {
+  padding: 6px 14px;
+
+  background-color: #8baa36;
   border-radius: 24px 44px;
   border: none;
-  background-color: #8baa36;
-  padding: 6px 14px;
 
   @media screen and (min-width: 768px) {
     padding: 12px 32px;
   }
+
   @media screen and (min-width: 1200px) {
     padding: 18px 44px;
   }
 }
+
 .txtBtn {
   font-size: 10px;
   color: #fafafa;
@@ -176,23 +196,28 @@
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
+
   @media screen and (min-width: 1200px) {
     font-size: 16px;
   }
 }
+
 .recipeFavSeeBtn {
+  padding: 6px 14px;
+
+  background-color: #22252a;
   border-radius: 24px 44px;
   border: none;
-  background-color: #22252a;
-  padding: 6px 14px;
 
   @media screen and (min-width: 768px) {
     padding: 12px 32px;
   }
+
   @media screen and (min-width: 1200px) {
     padding: 18px 44px;
   }
 }
+
 .txtFavBtn {
   font-size: 10px;
   color: #fafafa;
@@ -200,12 +225,15 @@
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
+
   @media screen and (min-width: 1200px) {
     font-size: 16px;
   }
 }
+
 .delBtn {
-  border: none;
   padding: 0;
+
   background-color: inherit;
+  border: none;
 }

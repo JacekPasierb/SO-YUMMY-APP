@@ -1,38 +1,37 @@
 .boxAuth {
-  height: 100vh;
-  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: auto;
+  height: 100vh;
 }
-.overWall {
-}
+
 .ss {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 70vh;
-  width: 100vw;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 70vh;
 }
-.container {
-  padding: 20px;
 
+.container {
   position: absolute;
   z-index: 1;
+
   display: flex;
   flex-direction: column;
   gap: 18px;
   align-items: center;
+  padding: 20px;
 }
 .linkForm {
-  font-family: Poppins;
   font-size: 14px;
- 
+  font-family: Poppins;
   color: #fafafa;
   text-decoration: underline;
   text-align: center;
@@ -40,6 +39,4 @@
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
-}
-.linkForm:hover {
 }
