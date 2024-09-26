@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: row;
   gap: 12px;
+  padding-bottom: 13px;
 
   border-bottom: 1px solid #707070;
-  padding-bottom: 13px;
 }
 .recipeInfo {
   display: flex;

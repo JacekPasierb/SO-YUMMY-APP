@@ -1,46 +1,53 @@
 .unitBox {
   display: flex;
   flex-direction: row;
+
   background-color: #d9d9d94f;
   border-radius: 6px;
 }
-.noSpinButtons::-webkit-outer-spin-button,
-.noSpinButtons::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+
 .noSpinButtons {
-  -moz-appearance: textfield;
+  -moz-appearance: textfield; /* Wygląd bez spin buttonów dla Firefox */
+  
+  /* Usunięcie spin buttonów w WebKit */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none; /* Usunięcie domyślnego stylu */
+  }
 }
+
 input {
   width: 100%;
 }
+
 .inputNum {
   width: 3rem;
-  text-align: center;
+  margin: 0;
+  padding: 2px;
+
   font-size: 14px;
   color: #23262a;
+  text-align: center;
+
+  background-color: transparent;
   border: none;
   outline: none;
-  /* background-color: #d9d9d94f; */
-  background-color: transparent;
-  padding: 2px;
-  margin: 0;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
-   
   }
 }
+
 .selectUnit {
+  padding-right: 20px;
+
+  background-color: transparent;
   border: none;
   outline: none;
-  background-color: transparent;
-
   appearance: none;
   background-image: url(../../images/Icon.svg);
   background-repeat: no-repeat;
   background-position: right;
-  padding-right: 20px;
   stroke: #8baa36;
 }

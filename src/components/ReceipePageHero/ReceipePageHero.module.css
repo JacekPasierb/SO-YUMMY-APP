@@ -2,32 +2,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   margin-top: 80px;
- 
 
   @media screen and (min-width: 768px) {
     margin-top: 72px;
   }
+
   @media screen and (min-width: 1200px) {
     margin-top: 100px;
   }
 }
+
 .recipeDescription {
-  font-size: 12px;
-  line-height: 16px;
-  color: #22252a;
-
-  text-align: center;
-
   margin-top: 18px;
   margin-bottom: 24px;
 
+  font-size: 12px;
+  line-height: 16px;
+  color: #22252a;
+  text-align: center;
+
   @media screen and (min-width: 768px) {
     margin-top: 24px;
+
     font-size: 18px;
     line-height: 24px;
   }
+
   @media screen and (min-width: 1200px) {
     margin-bottom: 30px;
   }
@@ -36,7 +37,6 @@
 .timeBox {
   display: flex;
   align-items: center;
-
   margin-bottom: 90px;
   margin-top: 42px;
 
@@ -44,15 +44,18 @@
     margin-bottom: 32px;
     margin-top: 60px;
   }
+
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
     margin-top: 48px;
   }
 }
+
 .iconClock {
   width: 14px;
   height: 14px;
   margin-right: 4px;
+
   fill: transparent;
   stroke: black;
 
@@ -62,6 +65,7 @@
     margin-right: 8px;
   }
 }
+
 .timeText {
   font-size: 10px;
   line-height: 14px;
@@ -72,19 +76,23 @@
     line-height: 20px;
   }
 }
+
 .btn {
+  padding: 10px 18px;
+
+  background-color: transparent;
   border: 1px solid #8baa36;
   border-radius: 24px 44px;
-  background-color: transparent;
-  padding: 10px 18px;
 
   @media screen and (min-width: 768px) {
     padding: 18px 44px;
   }
 }
+
 .textBtn {
   font-size: 10px;
   color: #22252a;
+
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }

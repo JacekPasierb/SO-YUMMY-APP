@@ -1,18 +1,18 @@
 .container {
-  padding: 0 16px;
-  margin: 0 auto;
   width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
 
-  @media screen and (min-width: 480px) {
-  }
   @media screen and (min-width: 768px) {
-    padding: 0 32px;
     max-width: 768px;
+    padding: 0 32px;
   }
+
   @media screen and (min-width: 1200px) {
     max-width: 1200px;
   }
 }
+
 .ingredientsList {
   display: flex;
   flex-direction: column;
@@ -22,30 +22,35 @@
     gap: 24px;
   }
 }
+
 .ingredientCard {
-  background-color: green;
   padding: 10px;
+
+  background-color: green;
   border-radius: 20px;
 }
-.headerListIngredients {
-  background-color: #8baa36;
-  padding: 12px 14px;
-  border-radius: 8px;
-  margin-bottom: 24px;
 
+.headerListIngredients {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 12px 14px;
+
+  background-color: #8baa36;
+  border-radius: 8px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 32px;
     padding: 21px 32px;
   }
+
   @media screen and (min-width: 1200px) {
     margin-bottom: 50px;
     padding: 21px 40px;
   }
 }
+
 .flexHelp {
   display: flex;
   flex-direction: row;
@@ -54,10 +59,12 @@
   @media screen and (min-width: 768px) {
     gap: 38px;
   }
+
   @media screen and (min-width: 1200px) {
     gap: 109px;
   }
 }
+
 .titleList {
   font-size: 10px;
   color: #fafafa;
@@ -66,11 +73,14 @@
     font-size: 18px;
   }
 }
+
 .ingredientsBox {
   margin-bottom: 50px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 96px;
   }
+
   @media screen and (min-width: 1200px) {
     margin-bottom: 100px;
   }

@@ -1,42 +1,52 @@
 .imggg {
   position: absolute;
-  top: -220px;
   left: center;
+  top: -220px;
   z-index: -1;
-  background-position: center;
 
   width: 285px;
   height: 250px;
+
+  background-position: center;
+
   @media screen and (min-width: 768px) {
+    top: -346px;
+    z-index: 0;
+
     width: 409px;
     height: 359px;
-    z-index: 0;
-    top: -346px;
   }
+
   @media screen and (min-width: 1200px) {
+    left: -647px;
+    top: 0px;
+    z-index: 0;
+
     width: 532px;
     height: 468px;
-    z-index: 0;
-    top: 0px;
-    left: -647px;
   }
 }
+
 .formRegister {
   position: relative;
-  background-color: #2a2c36;
-  border-radius: 30px;
+
   margin-bottom: 18px;
   padding: 32px 28px;
 
+  background-color: #2a2c36;
+  border-radius: 30px;
+
   @media screen and (min-width: 768px) {
-    padding: 44px 50px;
     margin-top: 280px;
-  }
-  @media screen and (min-width: 1200px) {
     padding: 44px 50px;
+  }
+
+  @media screen and (min-width: 1200px) {
     margin-top: 0;
+    padding: 44px 50px;
   }
 }
+
 .boxInput {
   display: flex;
   flex-direction: column;
@@ -48,6 +58,7 @@
     margin-bottom: 50px;
   }
 }
+
 .titleRegister {
   font-family: Poppins;
   font-size: 24px;
@@ -61,35 +72,36 @@
     line-height: 30px;
   }
 }
-.inputRegister {
-  background-color: transparent;
-  outline: none;
 
-  border: 0;
+.inputRegister {
   font-family: Poppins;
   font-size: 14px;
   color: #ffffff;
 
+  background-color: transparent;
+  outline: none;
+  border: 0;
+
   @media screen and (min-width: 768px) {
-    font-size: 18px;
     padding: 16px 18px;
+
+    font-size: 18px;
   }
 }
 
 .inputRegister::placeholder {
   font-family: Poppins;
   font-size: 14px;
-
   color: #fafafa;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
   }
 }
+
 .inputIcon {
   width: 18px;
   height: 18px;
-
   margin-right: 8px;
 
   @media screen and (min-width: 768px) {
@@ -97,21 +109,26 @@
     height: 24px;
   }
 }
+
 .errorInputIcon {
   stroke: red;
 }
+
 .inputWithIcon {
+  position: relative;
+
   display: flex;
   align-items: center;
-  border: 1px solid #8a8787;
-  border-radius: 6px;
   padding: 12px 14px;
 
-  position: relative;
+  border: 1px solid #8a8787;
+  border-radius: 6px;
+
   @media screen and (min-width: 768px) {
     padding: 16px 18px;
   }
 }
+
 .inputWithIcon:focus-within {
   border-color: #fafafa;
 }
@@ -119,12 +136,16 @@
 .inputWithIcon:hover {
   border-color: #fafafa;
 }
+
 .errorInputWithIcon {
   border: 1px solid red;
   fill: red;
 }
 
 .btnRegister {
+  min-width: 100%;
+  padding-block: 12px;
+
   font-family: Poppins;
   font-style: normal;
   line-height: 18px;
@@ -133,8 +154,6 @@
   color: #fafafa;
 
   background-color: #8baa36;
-  padding-block: 12px;
-  min-width: 100%;
 
   transition: all 0.3s;
 
@@ -142,24 +161,29 @@
     padding: 19px 170px;
   }
 }
+
 .btnRegister:hover {
-  border-color: #8baa36;
-  background-color: #fafafa;
   color: #8baa36;
+
+  background-color: #fafafa;
+  border-color: #8baa36;
 }
+
 .inputError {
-  color: red;
-  font-family: Poppins;
-  font-size: 7px;
+  position: absolute;
+  left: 0;
+  bottom: -11px;
+
   padding-right: 5px;
 
-  position: absolute;
-  bottom: -11px;
-  left: 0;
+  font-family: Poppins;
+  font-size: 7px;
+  color: red;
 
   @media screen and (min-width: 768px) {
-    font-size: 14px;
     bottom: -21px;
+
+    font-size: 14px;
   }
 }
 
@@ -167,18 +191,23 @@
   position: absolute;
   right: 10px;
 }
+
 .additionalSuccessIcon {
   position: absolute;
   right: 10px;
+
   fill: green;
   stroke: green;
 }
+
 .errorMessage {
   color: #ffffff;
 }
+
 .successMessage {
   color: #ffffff;
 }
+
 .txt {
   font-family: Poppins;
   font-style: normal;
@@ -187,7 +216,11 @@
   text-align: center;
   color: #fafafa;
 }
+
 .resendButton {
+  margin-left: 15px;
+  padding-block: 12px;
+
   font-family: Poppins;
   font-style: normal;
   line-height: 18px;
@@ -196,14 +229,15 @@
   color: #fafafa;
 
   background-color: #8baa36;
-  padding-block: 12px;
-margin-left: 15px;
-  transition: all 0.3s;
   border: none;
   border-radius: 8px;
+
+  transition: all 0.3s;
 }
+
 .resendButton:hover {
-  border-color: #8baa36;
-  background-color: #fafafa;
   color: #8baa36;
+
+  background-color: #fafafa;
+  border-color: #8baa36;
 }

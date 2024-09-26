@@ -12,8 +12,8 @@
 
 .titleBox {
   position: absolute;
-  bottom: 26px;
   left: 16px;
+  bottom: 26px;
 
   width: calc((100% - 36px));
   padding: 16px;

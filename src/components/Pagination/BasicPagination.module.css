@@ -2,10 +2,11 @@
   align-items: center;
 }
 .pagination {
+  padding-block: 10px;
+
   border-radius: 26px;
   box-shadow: -5px 13px 14px -8px #6565658a;
 
-  padding-block: 10px;
   @media screen and (min-width: 768px) {
     padding-block: 14px;
   }

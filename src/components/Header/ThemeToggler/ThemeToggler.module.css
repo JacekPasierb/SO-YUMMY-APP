@@ -1,42 +1,49 @@
 .switch {
   position: relative;
+
   display: inline-block;
   width: 61px;
   height: 27px;
 }
 
 .switchInput {
-  opacity: 0;
   width: 0;
   height: 0;
+
+  opacity: 0;
 }
 
 .switchSlider {
   position: absolute;
-  cursor: pointer;
-  top: 0;
   left: 0;
   right: 0;
+  top: 0;
   bottom: 0;
-  background-color: #EFEFEF;
+
+  background-color: #efefef;
   border-radius: 34px;
+
   transition: 0.4s;
+  cursor: pointer;
 }
 
 .switchSlider:before {
-  position: absolute;
   content: "";
-  height: 23px;
-  width: 23px;
+  position: absolute;
   left: 4px;
   bottom: 2px;
-  background-color: #FFFFFF;
+
+  width: 23px;
+  height: 23px;
+
+  background-color: #ffffff;
   border-radius: 50%;
+
   transition: 0.4s;
 }
 
 .switchInput:checked + .switchSlider {
-  background-color: #8BAA36;
+  background-color: #8baa36;
 }
 
 .switchInput:checked + .switchSlider:before {

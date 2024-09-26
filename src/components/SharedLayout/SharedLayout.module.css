@@ -2,11 +2,14 @@
   background-image: url("../../images/foot1x.png"),
     url("../../images/foot21x.png");
   background-repeat: no-repeat;
-  background-position: bottom 0px right 0px, bottom 300px left 0px;
+  background-position: bottom 0 right 0, bottom 300px left 0;
+
+  /* Media queries for responsive design */
   @media screen and (min-width: 768px) {
-    background-position: bottom 0px right 0px, bottom 330px left 0px;
+    background-position: bottom 0 right 0, bottom 330px left 0;
   }
+
   @media screen and (min-width: 1200px) {
-    background-position: bottom 0px right 0px, bottom 400px left 0px;
+    background-position: bottom 0 right 0, bottom 400px left 0;
   }
 }

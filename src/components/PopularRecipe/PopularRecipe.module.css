@@ -4,17 +4,20 @@
   flex-direction: column;
   gap: 24px;
   margin-top: 32px;
+
   @media screen and (min-width: 768px) {
     flex-direction: row;
     gap: 32px;
   }
+
   @media screen and (min-width: 1200px) {
     flex-direction: column;
     gap: 24px;
   }
 }
+
 .boxLoader {
-  margin: 10vh auto;
   display: flex;
   justify-content: center;
+  margin: 10vh auto;
 }

@@ -4,18 +4,20 @@
   justify-content: center;
   align-items: center;
   gap: 32px;
-
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     gap: 40px;
   }
 }
+
 .link {
-  text-decoration: none;
   display: flex;
   align-items: center;
+
+  text-decoration: none;
 }
+
 .link .navText {
   font-size: 18px;
   line-height: 18px;
@@ -26,6 +28,7 @@
     line-height: 24px;
   }
 }
+
 .link:hover .navText,
 .link:focus .navText,
 .link:active .navText {
@@ -35,16 +38,17 @@
 .iconSearch {
   width: 20px;
   height: 20px;
+  margin-right: 8px;
+
   fill: transparent;
   stroke: rgb(0, 0, 0);
-  
-  margin-right: 8px;
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 24px;
   }
 }
+
 .iconSearch:hover {
   stroke: #8baa36;
 }

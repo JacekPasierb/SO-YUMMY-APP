@@ -1,8 +1,8 @@
 .ingredientCard {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 29px 10px 10px;
 
   background-color: #ebf3d4;
@@ -43,8 +43,8 @@
   }
 }
 .measureIngredientBox {
-  padding: 4px 4px;
   margin-right: 28px;
+  padding: 4px 4px;
 
   background-color: #8baa36;
   border-radius: 4px;

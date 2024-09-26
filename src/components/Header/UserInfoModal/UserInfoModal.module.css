@@ -1,117 +1,131 @@
 .editProfileModal {
+  position: absolute;
+  right: -80px;
+  top: -1px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 32px 24px;
-  border-radius: 10px;
-  background-color: #fafafa;
 
-  position: absolute;
-  top: -1px;
-  right: -80px;
+  background-color: #fafafa;
+  border-radius: 10px;
 
   @media screen and (min-width: 768px) {
-    padding: 50px 40px;
-
     right: -60px;
+
+    padding: 50px 40px;
   }
+
   @media screen and (min-width: 1200px) {
     padding: 60px 50px;
   }
 }
+
 .iconClose {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+
   width: 20px;
   height: 20px;
 
-  position: absolute;
-  top: 18px;
-  right: 18px;
-
   @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-
     top: 24px;
     right: 24px;
+
+    width: 24px;
+    height: 24px;
   }
 }
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   cursor: context-menu;
 }
+
 .btnSave {
-  padding-block: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   margin-top: 24px;
+  padding-block: 14px;
+
+  font-size: 14px;
+  line-height: 18px;
+  color: #fafafa;
+
   background-color: #8baa36;
   border-radius: 6px;
   border-color: transparent;
-  width: 100%;
 
-  color: #fafafa;
-  font-size: 14px;
-  line-height: 18px;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   white-space: nowrap;
 
   @media screen and (min-width: 768px) {
-    padding-block: 18px;
     margin-top: 32px;
+    padding-block: 18px;
 
     font-size: 16px;
   }
 }
-.inputUsername {
-  border: 1px solid #23262a;
-  border-radius: 6px;
-  padding: 14px 14px;
-  margin-top: 54px;
-  width: 100%;
 
+.inputUsername {
   display: flex;
   flex-direction: row;
   align-items: center;
 
+  width: 100%;
+  margin-top: 54px;
+  padding: 14px 14px;
+
+  border: 1px solid #23262a;
+  border-radius: 6px;
+
   @media screen and (min-width: 768px) {
     margin-top: 50px;
   }
+
   @media screen and (min-width: 1200px) {
     margin-top: 52px;
   }
 }
+
 .iconUser {
   width: 18px;
   height: 18px;
+  margin-right: 8px;
+
   fill: #ffffff;
   stroke: #23262a;
-  margin-right: 8px;
 
   @media screen and (min-width: 768px) {
     width: 24px;
     height: 24px;
   }
 }
-.input {
-  outline: none;
-  border: none;
 
+.input {
   font-size: 14px;
   letter-spacing: -2%;
   color: #23262a;
+
+  outline: none;
+  border: none;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
   }
 }
+
 .iconEdit {
   width: 17px;
   height: 17px;
+
   fill: #ffffff;
   stroke: #23262a;
 
@@ -120,6 +134,7 @@
     height: 19px;
   }
 }
+
 .iconPicture {
   width: 40px;
   height: 40px;
@@ -129,48 +144,58 @@
     height: 47px;
   }
 }
+
 .logoBackground {
-  width: 88px;
-  height: 88px;
-  background-color: #d9d9d9;
-  border-radius: 50%;
+  position: relative;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 88px;
+  height: 88px;
 
-  position: relative;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+
   cursor: pointer;
+
   @media screen and (min-width: 768px) {
     width: 103px;
     height: 103px;
   }
 }
+
 .logoBackground::after {
+  content: url("../../../images/plus.svg");
   position: absolute;
   right: 0;
   bottom: -5%;
-  transform: translateX(-50%);
-  content: url("../../../images/plus.svg");
+
   width: 24px;
   height: 24px;
+
+  transform: translateX(-50%);
 }
+
 .btnAdd {
+  position: absolute;
+  right: 24px;
+  bottom: -2px;
+
   width: 24px;
   height: 24px;
   padding: 3px;
+
   background-color: #8baa36;
   border: none;
   border-radius: 50%;
-
-  position: absolute;
-  bottom: -2px;
-  right: 24px;
 }
+
 .iconPlus {
   width: 18px;
   height: 18px;
 }
+
 .inputFile {
   display: none;
 }

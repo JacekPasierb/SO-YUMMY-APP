@@ -1,15 +1,12 @@
 .mainPageTitle {
-    font-size: 24px;
-    line-height: 24px;
-    color: #8BAA36;
+  margin: 0;
 
-    margin: 0;
+  font-size: 24px;
+  line-height: 24px;
+  color: #8baa36;
 
-    @media screen and (min-width: 768px) {
-        font-size: 44px;
-        line-height: 44px;
-      }
-      @media screen and (min-width: 1200px) {
-        
-      }
+  @media screen and (min-width: 768px) {
+    font-size: 44px;
+    line-height: 44px;
+  }
 }

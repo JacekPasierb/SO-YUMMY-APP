@@ -6,19 +6,19 @@
   color: #22252a;
   text-align: center;
 
-
   @media screen and (min-width: 768px) {
     font-size: 72px;
     line-height: 72px;
     text-align: left;
   }
-  
+
   @media screen and (min-width: 1200px) {
     font-size: 100px;
     line-height: 100px;
     text-align: left;
   }
 }
+
 .titleInnerColor {
   color: #8baa36;
 }

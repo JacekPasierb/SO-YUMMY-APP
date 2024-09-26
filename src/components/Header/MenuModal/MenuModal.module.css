@@ -1,20 +1,19 @@
 .backgroundMenuModal {
   box-sizing: border-box;
   position: fixed;
-  top: 0;
   left: 0;
+  top: 0;
   z-index: 99999;
 
+  display: flex;
   width: 100%;
   height: 100%;
+
   background-color: #ebf3d4;
   background-image: url("../../../images/kisspng-pasta.png");
-
   background-repeat: no-repeat;
   background-position: bottom 0px right 0px;
   background-size: 100%, 100%;
-
-  display: flex;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -35,13 +34,14 @@
 }
 
 .container {
-  padding: 0 16px;
-  margin: 0 auto;
   max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
 
   @media screen and (min-width: 480px) {
     width: 480px;
   }
+
   @media screen and (min-width: 768px) {
     width: 768px;
   }
@@ -54,9 +54,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  padding: 18px 16px;
   width: 100%;
+  padding: 18px 16px;
 
   @media screen and (min-width: 768px) {
     padding: 18px 32px 32px 32px;
@@ -69,9 +68,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .iconClose {
   width: 32px;
   height: 32px;
+
   cursor: pointer;
 }
 

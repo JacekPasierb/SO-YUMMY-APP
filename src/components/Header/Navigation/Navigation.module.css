@@ -3,15 +3,17 @@
   flex-direction: row;
   gap: 30px;
 }
+
 .link {
   text-decoration: none;
 }
+
 .link .navText {
-    
   font-size: 14px;
   line-height: 22.4px;
   color: #23262a;
 }
+
 .link:hover .navText,
 .link:focus .navText,
 .link:active .navText {
@@ -21,9 +23,11 @@
 .iconSearch {
   width: 24px;
   height: 24px;
+
   fill: transparent;
   stroke: rgb(0, 0, 0);
 }
+
 .iconSearch:hover {
   stroke: #8baa36;
 }

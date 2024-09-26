@@ -1,16 +1,16 @@
 .boxAuth {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: auto;
   height: 100vh;
 }
 
 .ss {
   position: absolute;
-  bottom: 0;
   left: 0;
+  bottom: 0;
 
   display: flex;
   justify-content: center;
@@ -33,8 +33,8 @@
   font-size: 14px;
   font-family: Poppins;
   color: #fafafa;
-  text-decoration: underline;
   text-align: center;
+  text-decoration: underline;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

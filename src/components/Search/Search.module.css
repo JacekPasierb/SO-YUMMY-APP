@@ -2,55 +2,69 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  border: 1px solid #f0f0f0;
   width: 100%; /* test */
-  border-radius: 24px 44px;
-  background-color: #ffffff;
   margin-top: 24px;
   margin-bottom: 83px;
 
+  background-color: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 24px 44px;
+
   @media screen and (min-width: 768px) {
+    width: 100%;
     margin-top: 32px;
     margin-bottom: 0px;
-    width: 100%;
   }
+
   @media screen and (min-width: 768px) {
     margin-top: 50px;
   }
 }
+
 .input {
-  border: none;
-  outline: none;
-  width: 100%; /* test */
+  width: 100%;
+
   font-size: 12px;
-  background-color: transparent;
-  color: #bdbdbd;
-}
-.input::placeholder {
-  padding-left: 32px;
-  font-size: 12px;
-  background-color: transparent;
   color: #bdbdbd;
 
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.input::placeholder {
+  padding-left: 32px;
+
+  font-size: 12px;
+  color: #bdbdbd;
+
+  background-color: transparent;
+
   @media screen and (min-width: 768px) {
-    font-size: 16px;
     padding-left: 38px;
+
+    font-size: 16px;
   }
 }
+
 .input:focus {
   color: #000000;
 }
+
 .btn {
-  border: none;
-  border-radius: 24px 44px;
-  background-color: #22252a;
-  color: #fafafa;
-  font-size: 14px;
-  line-height: normal;
   padding: 16px 32px;
 
+  font-size: 14px;
+  line-height: normal;
+  color: #fafafa;
+
+  background-color: #22252a;
+  border: none;
+  border-radius: 24px 44px;
+
   @media screen and (min-width: 768px) {
-    font-size: 16px;
     padding: 18px 52px;
+
+    font-size: 16px;
   }
 }
