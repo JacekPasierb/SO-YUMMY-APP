@@ -2,29 +2,28 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  width: 100%; /* test */
-  margin-top: 24px;
-  margin-bottom: 83px;
+  width: 100%; 
+  margin-top: 1.5rem;
+  margin-bottom: 5.1875rem;
 
-  background-color: #ffffff;
-  border: 1px solid #f0f0f0;
-  border-radius: 24px 44px;
+  background-color: var(--color-background-four);
+  border: 1px solid var(--color-border-four);
+  border-radius: 1.5rem 2.75rem;
 
-  @media screen and (min-width: 768px) {
-    width: 100%;
-    margin-top: 32px;
-    margin-bottom: 0px;
+  @media screen and (min-width: var(--breakpoint-md)) {
+    margin-top: 2rem;
+    margin-bottom: 0;
   }
 
-  @media screen and (min-width: 768px) {
-    margin-top: 50px;
+  @media screen and (min-width: var(--breakpoint-lg)) {
+    margin-top: 3.125rem;
   }
 }
 
 .input {
   width: 100%;
 
-  font-size: 12px;
+  font-size: var(--font-size-asaid);
   color: #bdbdbd;
 
   background-color: transparent;

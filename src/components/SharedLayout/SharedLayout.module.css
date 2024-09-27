@@ -5,11 +5,11 @@
   background-position: bottom 0 right 0, bottom 300px left 0;
 
   /* Media queries for responsive design */
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: var(--breakpoint-md)) {
     background-position: bottom 0 right 0, bottom 330px left 0;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: var(--breakpoint-lg)) {
     background-position: bottom 0 right 0, bottom 400px left 0;
   }
 }

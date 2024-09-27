@@ -143,11 +143,11 @@
 
 /* Focus and hover styles for input with icons */
 .inputWithIcon:focus-within {
-  border-color: #fafafa;
+  border-color: var(--color-border-third);
 }
 
 .inputWithIcon:hover {
-  border-color: #fafafa;
+  border-color: var(--color-border-third);
 }
 
 /* Styles for error input with icons */
@@ -220,12 +220,12 @@
 
 /* Styles for error messages */
 .errorMessage {
-  color: #ffffff;
+  color: var(--color-text-secondary);
 }
 
 /* Styles for success messages */
 .successMessage {
-  color: #ffffff;
+  color: var(--color-text-secondary);
 }
 
 /* Styles for regular text */
@@ -234,7 +234,7 @@
   font-style: normal;
   line-height: 1.125rem;
   text-align: center;
-  color: #fafafa;
+  color: var(--color-text-third);
 }
 
 /* Styles for the resend button */
@@ -246,7 +246,7 @@
   line-height: 1.125rem;
   font-size: var(--font-size-base);
   text-align: center;
-  color: #fafafa;
+  color: var(--color-text-third);
 
   background-color: var(--color-bg-third);
   border: none;
@@ -257,7 +257,7 @@
 
 /* Hover styles for the resend button */
 .resendButton:hover {
-  color: #8baa36;
+  color: var(--color-text-primary);
 
   background-color: var(--color-bg-primary);
   border-color: var(--color-border-secondary);

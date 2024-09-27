@@ -6,12 +6,17 @@
   --color-bg-primary: #fafafa; /* Background color for the body */
   --color-bg-secondary: #2a2c36; /* Background color for form */
   --color-bg-third: #8baa36; /* Background color third */
+  --color-background-four: #ffffff; /* Background color */
+
   --color-text-primary: #8baa36; /* Primary text color */
   --color-text-secondary: #ffffff; /* Secondary text color */
   --color-text-third: #fafafa; /* Third text color */
 
   --color-border: #8a8787; /* Border color for input fields */
   --color-border-secondary: #8baa36; /* Second border color  */
+  --color-border-third: #fafafa; /* Third border color  */
+  --color-border-four: #f0f0f0;
+
   --color-error: red; /* Error color */
   --color-success: green; /* Success color */
 
@@ -20,6 +25,7 @@
     sans-serif; /* Font stack */
 
   --font-size-base: 1rem; /* Base font size */
+  --font-size-asaid: 0.75rem; /* Asaid font size */
   --font-size-small: 0.875rem; /* Small font size */
   --font-size-large: 1.5rem; /* Large font size */
 
