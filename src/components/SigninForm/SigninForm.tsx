@@ -1,42 +1,41 @@
-import css from "./SigninForm.module.css";
-import icons from "../../assets/icons/sprite.svg";
-import errorIcon from "../../images/Errorlogo.png";
-import successIcon from "../../images/Successlogo.png";
-import logo1x from "../../images/LogoMobile1x.png";
-import logo2x from "../../images/LogoMobile2x.png";
-import logoTablet1x from "../../images/LogoTablet1x.png";
-import logoTablet2x from "../../images/LogoTablet2x.png";
-import logoDesktop1x from "../../images/LogoDesctop1x.png";
-import logoDesktop2x from "../../images/LogoDesctop2x.png";
-
-import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
-import { toast } from "react-toastify";
-
 import React, { useState } from "react";
+import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "@react-hook/media-query";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "src/redux/store";
 import { logIn, resendVerificationEmail } from "../../redux/auth/operations";
 import { selectError } from "../../redux/auth/selectors";
-
 import { validate } from "./SigninFormValidations";
+
+// Importing images and icons
+import styles from "./SigninForm.module.css";
+import icons from "../../assets/icons/sprite.svg";
+import errorIcon from "../../images/Errorlogo.png";
+import successIcon from "../../images/Successlogo.png";
+import logo from "../../images/logos";
 
 const SigninForm = () => {
   const [emailForResend, setEmailForResend] = useState<string | null>(null);
   const isTablet = useMediaQuery("(min-width: 768px)");
-  const isDesctop = useMediaQuery("(min-width: 1200px)");
+  const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
-  let logoSrc: string;
 
-  if (isDesctop) {
-    logoSrc = isRetina ? logoDesktop2x : logoDesktop1x;
-  } else if (isTablet) {
-    logoSrc = isRetina ? logoTablet2x : logoTablet1x;
-  } else {
-    logoSrc = isRetina ? logo2x : logo1x;
-  }
+  // Ustalanie źródła logo na podstawie warunków
+  const logoSrc = isDesktop
+    ? isRetina
+      ? logo.desktop2x
+      : logo.desktop1x
+    : isTablet
+    ? isRetina
+      ? logo.tablet2x
+      : logo.tablet1x
+    : isRetina
+    ? logo.mobile2x
+    : logo.mobile1x;
+
   const dispatch: AppDispatch = useDispatch();
   const error = useSelector(selectError);
   const navigate = useNavigate();
@@ -60,17 +59,20 @@ const SigninForm = () => {
         toast.error(error);
       }
     } catch (err: any) {
-      console.error(err.message);
+      console.error("Error logging in:", err.message);
+      toast.error("Something went wrong during sign in, please try again.");
     }
   };
   const handleResendVerificationEmail = async () => {
     if (emailForResend) {
       try {
         await dispatch(resendVerificationEmail(emailForResend));
-        toast.success("Verification email sent!");
+        toast.success("Verification email has been sent!");
       } catch (err: any) {
-        console.error(err.message);
-        toast.error("Something went wrong while email sent, try again");
+        console.error("Error resending verification email:", err.message);
+        toast.error(
+          "Failed to resend the verification email, please try again."
+        );
       }
     }
   };
@@ -82,19 +84,19 @@ const SigninForm = () => {
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched, setFieldTouched, setFieldValue }) => (
-          <Form className={css.formRegister} autoComplete="off">
-            <img src={logoSrc} className={css.imggg} />
-            <h2 className={css.titleRegister}>Sign In</h2>
-            <div className={css.boxInput}>
+        {({ errors, touched, setFieldTouched }) => (
+          <Form className={styles.formRegister} autoComplete="off">
+            <img src={logoSrc} className={styles.logo} alt="Logo" />
+            <h2 className={styles.title}>Sign In</h2>
+            <div className={styles.inputGroup}>
               <div
-                className={`${css.inputWithIcon} ${
-                  touched.email && errors.email ? css.errorInputWithIcon : ""
+                className={`${styles.inputWrapper} ${
+                  touched.email && errors.email ? styles.inputError : ""
                 }`}
               >
                 <svg
-                  className={`${css.inputIcon} ${
-                    touched.email && errors.email ? css.errorInputIcon : ""
+                  className={`${styles.icon} ${
+                    touched.email && errors.email ? styles.iconError : ""
                   }`}
                 >
                   <use href={icons + `#icon-mail-01`}></use>
@@ -103,43 +105,39 @@ const SigninForm = () => {
                   type="email"
                   name="email"
                   placeholder="Email"
-                  className={css.inputRegister}
+                  className={styles.input}
                   onBlur={() => setFieldTouched("email", true)}
                   autoComplete="off"
                 />
                 {touched.email && errors.email && (
                   <img
                     src={errorIcon}
-                    alt="Error Icon"
-                    className={css.additionalErrorIcon}
+                    alt="Error"
+                    className={styles.additionalErrorIcon}
                   />
                 )}
                 {touched.email && !errors.email && (
                   <img
                     src={successIcon}
                     alt="Success Icon"
-                    className={css.additionalSuccessIcon}
+                    className={styles.additionalSuccessIcon}
                   />
                 )}
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className={css.inputError}
+                  className={styles.errorMessage}
                 />
               </div>
 
               <div
-                className={`${css.inputWithIcon} ${
-                  touched.password && errors.password
-                    ? css.errorInputWithIcon
-                    : ""
+                className={`${styles.inputWrapper} ${
+                  touched.password && errors.password ? styles.inputError : ""
                 }`}
               >
                 <svg
-                  className={`${css.inputIcon} ${
-                    touched.password && errors.password
-                      ? css.errorInputIcon
-                      : ""
+                  className={`${styles.icon} ${
+                    touched.password && errors.password ? styles.iconError : ""
                   }`}
                 >
                   <use href={icons + `#icon-lock-02`}></use>
@@ -149,43 +147,43 @@ const SigninForm = () => {
                   name="password"
                   placeholder="Password"
                   autoComplete="current-password"
-                  className={css.inputRegister}
+                  className={styles.input}
                   onBlur={() => setFieldTouched("password", true)}
                 />
                 {touched.password && errors.password && (
                   <img
                     src={errorIcon}
                     alt="Error Icon"
-                    className={css.additionalErrorIcon}
+                    className={styles.additionalErrorIcon}
                   />
                 )}
                 {touched.password && !errors.password && (
                   <img
                     src={successIcon}
                     alt="Success Icon"
-                    className={css.additionalSuccessIcon}
+                    className={styles.additionalSuccessIcon}
                   />
                 )}
                 <ErrorMessage
                   name="password"
                   component="div"
-                  className={css.inputError}
+                  className={styles.errorMessage}
                 />
               </div>
             </div>
             {error === "Konto nie zweryfikowane" && (
-              <p className={css.txt}>
+              <p className={styles.verificationText}>
                 Email nie dotarł ?
                 <button
                   type="button"
-                  className={css.resendButton}
+                  className={styles.resendButton}
                   onClick={handleResendVerificationEmail}
                 >
                   Wyślij ponownie
                 </button>
               </p>
             )}
-            <button type="submit" className={css.btnRegister}>
+            <button type="submit" className={styles.submitButton}>
               Sign up
             </button>
           </Form>
