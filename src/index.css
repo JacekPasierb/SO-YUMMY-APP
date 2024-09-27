@@ -11,6 +11,7 @@
   --color-text-primary: #8baa36; /* Primary text color */
   --color-text-secondary: #ffffff; /* Secondary text color */
   --color-text-third: #fafafa; /* Third text color */
+  --color-text-placeholder: #fafafa;
 
   --color-border: #8a8787; /* Border color for input fields */
   --color-border-secondary: #8baa36; /* Second border color  */

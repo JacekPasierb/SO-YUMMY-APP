@@ -173,13 +173,13 @@ const SigninForm = () => {
             </div>
             {error === "Konto nie zweryfikowane" && (
               <p className={styles.verificationText}>
-                Email nie dotarł ?
+                Didn't receive the email?
                 <button
                   type="button"
                   className={styles.resendButton}
                   onClick={handleResendVerificationEmail}
                 >
-                  Wyślij ponownie
+                  Resend
                 </button>
               </p>
             )}
