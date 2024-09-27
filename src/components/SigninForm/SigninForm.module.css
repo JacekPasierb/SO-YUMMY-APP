@@ -1,264 +1,209 @@
-/* Styles for the image */
 .imggg {
   position: absolute;
-  left: 50%;
   top: -220px;
+  left: center;
   z-index: -1;
-
-  width: 17.8125rem;
-  height: 15.625rem;
-
   background-position: center;
 
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
+  width: 285px;
+  height: 250px;
+  @media screen and (min-width: 768px) {
+    width: 409px;
+    height: 359px;
+    z-index: 0;
     top: -346px;
-    z-index: 0;
-
-    width: 25.5625rem;
-    height: 22.4375rem;
   }
-
-  @media screen and (min-width: var(--breakpoint-lg)) {
-    left: -40.4375rem;
-    top: 0;
+  @media screen and (min-width: 1200px) {
+    width: 532px;
+    height: 468px;
     z-index: 0;
-
-    width: 33.25rem;
-    height: 29.25rem;
+    top: 0px;
+    left: -647px;
   }
 }
-
-/* Styles for the registration form */
 .formRegister {
   position: relative;
+  background-color: #2a2c36;
+  border-radius: 30px;
+  margin-bottom: 18px;
+  padding: 32px 28px;
 
-  margin-bottom: 1.125rem;
-  padding: 2rem 1.75rem;
-
-  background-color: var(--color-bg-secondary);
-  border-radius: 1.875rem;
-
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    margin-top: 17.5rem;
-    padding: 2.75rem 3.125rem;
+  @media screen and (min-width: 768px) {
+    padding: 44px 50px;
+    margin-top: 280px;
   }
-
-  @media screen and (min-width: var(--breakpoint-lg)) {
+  @media screen and (min-width: 1200px) {
+    padding: 44px 50px;
     margin-top: 0;
   }
 }
-
-/* Styles for the input box container */
 .boxInput {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1.75rem;
+  gap: 12px;
+  margin-bottom: 28px;
 
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    gap: 1.5rem;
-    margin-bottom: 3.125rem;
+  @media screen and (min-width: 768px) {
+    gap: 24px;
+    margin-bottom: 50px;
   }
 }
-
-/* Styles for the registration title */
 .titleRegister {
-  font-size: 1.5rem;
-  line-height: 1.75rem;
+  font-family: Poppins;
+  font-size: 24px;
+  line-height: 28px;
 
   text-align: left;
-  color: var(--color-text-third);
+  color: #fafafa;
 
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    font-size: 1.75rem;
-    line-height: 1.875rem;
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+    line-height: 30px;
   }
 }
-
-/* Styles for the registration input fields */
 .inputRegister {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-
   background-color: transparent;
   outline: none;
+
   border: 0;
+  font-family: Poppins;
+  font-size: 14px;
+  color: #ffffff;
 
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    padding: 1rem 1.125rem;
-
-    font-size: 1.125rem;
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    padding: 16px 18px;
   }
 }
 
-/* Styles for the placeholder in the registration input fields */
 .inputRegister::placeholder {
-  font-size: var(--font-size-small);
-  color: var(--color-text-third);
+  font-family: Poppins;
+  font-size: 14px;
 
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    font-size: 1.125rem;
+  color: #fafafa;
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
   }
 }
-
-/* Styles for input icons */
 .inputIcon {
-  width: 1.125rem;
-  height: 1.125rem;
-  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
 
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    width: 1.5rem;
-    height: 1.5rem;
+  margin-right: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
   }
 }
-
 .errorInputIcon {
-  stroke: var(--color-error);
+  stroke: red;
 }
-
-/* Styles for input fields with icons */
 .inputWithIcon {
-  position: relative;
-
   display: flex;
   align-items: center;
-  padding: 0.75rem 0.875rem;
+  border: 1px solid #8a8787;
+  border-radius: 6px;
+  padding: 12px 14px;
 
-  border: 1px solid var(--color-border);
-  border-radius: 0.375rem;
-
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    padding: 1rem 1.125rem;
+  position: relative;
+  @media screen and (min-width: 768px) {
+    padding: 16px 18px;
   }
 }
-
-/* Focus and hover styles for input with icons */
 .inputWithIcon:focus-within {
-  border-color: var(--color-border-third);
+  border-color: #fafafa;
 }
 
 .inputWithIcon:hover {
-  border-color: var(--color-border-third);
+  border-color: #fafafa;
 }
-
-/* Styles for error input with icons */
 .errorInputWithIcon {
-  border: 1px solid var(--color-error);
-  fill: var(--color-error);
+  border: 1px solid red;
+  fill: red;
 }
 
-/* Styles for the registration button */
 .btnRegister {
+  font-family: Poppins;
+  font-style: normal;
+  line-height: 18px;
+  font-size: 16px;
+  text-align: center;
+  color: #fafafa;
+
+  background-color: #8baa36;
+  padding-block: 12px;
   min-width: 100%;
-  padding-block: 0.75rem;
-
-  font-style: normal;
-  line-height: 1.125rem;
-  font-size: var(--font-size-base);
-  text-align: center;
-  color: var(--color-text-third);
-
-  background-color: var(--color-bg-third);
-
-  transition: all var(--transition-speed);
-
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    padding: 1.1875rem 10.625rem;
-  }
-}
-
-/* Hover styles for the registration button */
-.btnRegister:hover {
-  color: var(--color-text-primary);
-
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-secondary);
-}
-
-/* Styles for error messages */
-.inputError {
-  position: absolute;
-  left: 0;
-  bottom: -0.6875rem;
-
-  padding-right: 0.3125rem;
-
-  font-size: 0.4375rem;
-  color: var(--color-error);
-
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
-    bottom: -1.3125rem;
-
-    font-size: var(--font-size-small);
-  }
-}
-
-/* Styles for additional icons */
-.additionalErrorIcon {
-  position: absolute;
-  right: 0.625rem;
-}
-
-.additionalSuccessIcon {
-  position: absolute;
-  right: 0.625rem;
-
-  fill: var(--color-success);
-  stroke: var(--color-success);
-}
-
-/* Styles for error messages */
-.errorMessage {
-  color: var(--color-text-secondary);
-}
-
-/* Styles for success messages */
-.successMessage {
-  color: var(--color-text-secondary);
-}
-
-/* Styles for regular text */
-.txt {
-  font-size: var(--font-size-base);
-  font-style: normal;
-  line-height: 1.125rem;
-  text-align: center;
-  color: var(--color-text-third);
-}
-
-/* Styles for the resend button */
-.resendButton {
-  margin-left: 0.9375rem;
-  padding-block: 0.75rem;
-
-  font-style: normal;
-  line-height: 1.125rem;
-  font-size: var(--font-size-base);
-  text-align: center;
-  color: var(--color-text-third);
-
-  background-color: var(--color-bg-third);
-  border: none;
-  border-radius: 0.5rem;
 
   transition: all 0.3s;
+
+  @media screen and (min-width: 768px) {
+    padding: 19px 170px;
+  }
+}
+.btnRegister:hover {
+  border-color: #8baa36;
+  background-color: #fafafa;
+  color: #8baa36;
+}
+.inputError {
+  color: red;
+  font-family: Poppins;
+  font-size: 7px;
+  padding-right: 5px;
+
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    bottom: -21px;
+  }
 }
 
-/* Hover styles for the resend button */
-.resendButton:hover {
-  color: var(--color-text-primary);
+.additionalErrorIcon {
+  position: absolute;
+  right: 10px;
+}
+.additionalSuccessIcon {
+  position: absolute;
+  right: 10px;
+  fill: green;
+  stroke: green;
+}
+.errorMessage {
+  color: #ffffff;
+}
+.successMessage {
+  color: #ffffff;
+}
+.txt {
+  font-family: Poppins;
+  font-style: normal;
+  line-height: 18px;
+  font-size: 16px;
+  text-align: center;
+  color: #fafafa;
+}
+.resendButton {
+  font-family: Poppins;
+  font-style: normal;
+  line-height: 18px;
+  font-size: 16px;
+  text-align: center;
+  color: #fafafa;
 
-  background-color: var(--color-bg-primary);
-  border-color: var(--color-border-secondary);
+  background-color: #8baa36;
+  padding-block: 12px;
+margin-left: 15px;
+  transition: all 0.3s;
+  border: none;
+  border-radius: 8px;
+}
+.resendButton:hover {
+  border-color: #8baa36;
+  background-color: #fafafa;
+  color: #8baa36;
 }
