@@ -1,19 +1,20 @@
 .imggg {
   position: absolute;
   top: -220px;
-  left: center;
+  left: -50%;
+  transform: translateX(-50%);
   z-index: -1;
   background-position: center;
 
   width: 285px;
   height: 250px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: var(--breakpoint-md)) {
     width: 409px;
     height: 359px;
     z-index: 0;
     top: -346px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: var(--breakpoint-lg)) {
     width: 532px;
     height: 468px;
     z-index: 0;
@@ -23,17 +24,16 @@
 }
 .formRegister {
   position: relative;
-  background-color: #2a2c36;
+  background-color: var(--color-bg-secondary);
   border-radius: 30px;
-  margin-bottom: 18px;
-  padding: 32px 28px;
+  margin-bottom: 1.125rem;
+  padding: 2rem 1.75rem;
 
-  @media screen and (min-width: 768px) {
-    padding: 44px 50px;
-    margin-top: 280px;
+  @media screen and (min-width: var(--breakpoint-md)) {
+    padding: 2.75rem 3.125rem;
+    margin-top: 17.5rem;
   }
-  @media screen and (min-width: 1200px) {
-    padding: 44px 50px;
+  @media screen and (min-width: var(--breakpoint-lg)) {
     margin-top: 0;
   }
 }
@@ -197,7 +197,7 @@
 
   background-color: #8baa36;
   padding-block: 12px;
-margin-left: 15px;
+  margin-left: 15px;
   transition: all 0.3s;
   border: none;
   border-radius: 8px;
