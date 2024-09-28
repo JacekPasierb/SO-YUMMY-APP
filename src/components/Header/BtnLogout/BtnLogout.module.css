@@ -5,7 +5,7 @@
   padding: 12px 24px;
 
   font-size: 14px;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 
   background-color: #8baa36;
   border-radius: 24px 44px;

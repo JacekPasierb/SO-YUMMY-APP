@@ -3,7 +3,7 @@
 
   font-size: 24px;
   line-height: 24px;
-  color: #8baa36;
+  color: var(--color-text-five); /*update*/
 
   @media screen and (min-width: 768px) {
     font-size: 44px;

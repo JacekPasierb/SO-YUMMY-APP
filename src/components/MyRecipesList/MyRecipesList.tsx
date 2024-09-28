@@ -18,16 +18,11 @@ interface Props {
 }
 
 const MyRecipesList = ({ recipes }: Props) => {
-  
   return (
     <>
       {recipes && (
-       
-        
-        <ul className={css.myRecipesList}> 
+        <ul className={css.myRecipesList}>
           {recipes.map((recipe) => {
-            
-            
             return (
               <li key={recipe._id}>
                 <CardOwnRecipe ownRecipe={recipe} />
