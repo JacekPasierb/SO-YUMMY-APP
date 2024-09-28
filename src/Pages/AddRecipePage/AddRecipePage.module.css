@@ -1,37 +1,41 @@
 .container {
-    padding: 0 16px;
-    margin: 0 auto;
-    width: 100%;
-  
-    @media screen and (min-width: 480px) {
-    }
-    @media screen and (min-width: 768px) {
-      padding: 0 32px;
-      max-width: 768px;
-    }
-    @media screen and (min-width: 1200px) {
-      max-width: 1200px;
-    }
-  }
-  .background {
-    padding-bottom: 100px;
-    @media screen and (min-width: 768px) {
-      padding-bottom: 200px;
-    }
-  }
-  .flex {
-    display: flex;
-    flex-direction: column;
-  }
-  .flexPage {
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
 
-    @media screen and (min-width: 1200px) {
-      flex-direction: row;
-      gap: 121px;
-    }
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding: 0 32px;
   }
-  .margin {
-    margin-left: 121px;
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
   }
+}
+
+.background {
+  padding-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 200px;
+  }
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexPage {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+    gap: 121px;
+  }
+}
+
+.margin {
+  margin-left: 121px;
+}

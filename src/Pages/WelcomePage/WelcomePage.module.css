@@ -1,62 +1,71 @@
 .background {
-  background-image: url("../../images/backgroundWelcome1x.png");
-  background-size: cover;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-
+  
   display: flex;
   justify-content: center; /* Wyśrodkuj w poziomie */
   align-items: center; /* Wyśrodkuj w pionie */
   min-height: 100vh; /* Zajmij co najmniej całą wysokość widoku */
   padding: 35px;
+  
+  background-image: url("../../images/backgroundWelcome1x.png");
+  background-size: cover;
+
   @media screen and (min-resolution: 192dpi) {
     background-image: url("../../images/backgroundWelcome2x.png");
   }
+
   @media screen and (min-width: 768px) {
     background-image: url("../../images/backgroundWelcomeTablet1x.png");
 
     @media screen and (min-resolution: 192dpi) {
       background-image: url("../../images/backgroundWelcomeTablet2x.png");
     }
+
     @media screen and (min-width: 1299px) {
       background-image: url("../../images/backgroundWelcomeDesktop1x.png");
+    
       @media screen and (min-resolution: 192dpi) {
         background-image: url("../../images/backgroundWelcomeDesktop2x.png");
       }
     }
   }
 }
+
 .title {
-  font-family: Poppins;
+  margin-bottom: 14px;
+
   font-style: normal;
   font-size: 24px;
   font-weight: 550;
   line-height: 24px;
   letter-spacing: -2%;
   color: #fafafa;
-  margin-bottom: 14px;
+  
   @media screen and (min-width: 768px) {
     font-size: 28px;
     line-height: 28px;
   }
 }
+
 .boxText {
   display: flex;
   flex-direction: column;
 
   text-align: center;
 }
+
 .description {
-  font-family: Poppins;
   font-style: normal;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -2%;
   color: #fafafa;
+
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 24px;
@@ -64,24 +73,30 @@
 }
 
 .boxContainer {
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
+  gap: 28px;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-  margin: 0 auto;
+
   @media screen and (min-width: 768px) {
     gap: 44px;
   }
 }
+
+
 .iconLogo {
   width: 54px;
   height: 54px;
+
   @media screen and (min-width: 768px) {
     width: 68px;
     height: 68px;
   }
 }
+
 .boxSection {
   display: flex;
   flex-direction: column;

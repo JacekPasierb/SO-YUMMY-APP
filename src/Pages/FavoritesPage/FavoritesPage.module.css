@@ -1,27 +1,28 @@
 .container {
-    padding: 0 16px;
-    margin: 0 auto;
-    width: 100%;
-  
-    @media screen and (min-width: 480px) {
-    }
-    @media screen and (min-width: 768px) {
-      padding: 0 32px;
-      max-width: 768px;
-    }
-    @media screen and (min-width: 1200px) {
-      max-width: 1200px;
-    }
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding: 0 32px;
   }
-  .background {
-    padding-bottom: 100px;
-    @media screen and (min-width: 768px) {
-      padding-bottom: 200px;
-    }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
   }
-  .boxLoader {
-    margin: 10vh auto;
-    display: flex;
-    justify-content: center;
-  
+}
+
+.background {
+  padding-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 200px;
   }
+}
+
+.boxLoader {
+  display: flex;
+  justify-content: center;
+  margin: 10vh auto;
+}
