@@ -28,6 +28,8 @@ import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { selectTheme } from "./redux/global/globalSelectors";
 import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./assets/themes/themes";
 
 const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -45,98 +47,101 @@ const App: FC = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  useEffect(() => {
-    document.body.className = theme === "light" ? "light" : "dark-theme";
-  }, [theme]);
+  // useEffect(() => {
+  //   document.body.className = theme === "light" ? "light" : "dark-theme";
+  // }, [theme]);
+  const selectedTheme = theme === "light" ? lightTheme : darkTheme;
 
   return isRefreshing ? (
     <Loader />
   ) : (
     <>
-      <Routes>
-        <Route
-          path="/welcome"
-          element={
-            <RestrictedRoute
-              redirectTo="/"
-              component={
-                <Suspense fallback={<Loader />}>
-                  <WelcomePage />
-                </Suspense>
-              }
-            />
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/"
-              component={
-                <Suspense fallback={<Loader />}>
-                  <RegisterPage />
-                </Suspense>
-              }
-            />
-          }
-        />
-        <Route
-          path="/signin"
-          element={
-            <RestrictedRoute
-              redirectTo="/"
-              component={
-                <Suspense fallback={<Loader />}>
-                  <SigninPage />
-                </Suspense>
-              }
-            />
-          }
-        />
+      <ThemeProvider theme={selectedTheme}>
+        <Routes>
+          <Route
+            path="/welcome"
+            element={
+              <RestrictedRoute
+                redirectTo="/"
+                component={
+                  <Suspense fallback={<Loader />}>
+                    <WelcomePage />
+                  </Suspense>
+                }
+              />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/"
+                component={
+                  <Suspense fallback={<Loader />}>
+                    <RegisterPage />
+                  </Suspense>
+                }
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute
+                redirectTo="/"
+                component={
+                  <Suspense fallback={<Loader />}>
+                    <SigninPage />
+                  </Suspense>
+                }
+              />
+            }
+          />
 
-        <Route
-          path="/"
-          element={
-            <PrivateRoute
-              component={
-                <Suspense fallback={<Loader />}>
-                  <SharedLayout />
-                </Suspense>
-              }
-            />
-          }
-        >
-          <Route index element={<PrivateRoute component={<MainPage />} />} />
           <Route
-            path="/categories"
-            element={<PrivateRoute component={<CategoriesPage />} />}
+            path="/"
+            element={
+              <PrivateRoute
+                component={
+                  <Suspense fallback={<Loader />}>
+                    <SharedLayout />
+                  </Suspense>
+                }
+              />
+            }
           >
-            <Route path=":categoryName" element={<CategoriesByName />} />
+            <Route index element={<PrivateRoute component={<MainPage />} />} />
+            <Route
+              path="/categories"
+              element={<PrivateRoute component={<CategoriesPage />} />}
+            >
+              <Route path=":categoryName" element={<CategoriesByName />} />
+            </Route>
+            <Route
+              path="/favorite"
+              element={<PrivateRoute component={<FavoritesPage />} />}
+            />
+            <Route
+              path="/ownRecipes"
+              element={<PrivateRoute component={<MyRecipesPage />} />}
+            />
+            <Route
+              path="/add"
+              element={<PrivateRoute component={<AddRecipePage />} />}
+            />
+            <Route
+              path="/recipe/:recipeId"
+              element={<PrivateRoute component={<RecipePage />} />}
+            />
+            <Route path="/search" element={<PrivateRoute component="" />} />
+            <Route
+              path="/shopping-list"
+              element={<PrivateRoute component="" />}
+            />
+            {/* <Route path="*"  element={<Navigate to="/err" />} /> */}
           </Route>
-          <Route
-            path="/favorite"
-            element={<PrivateRoute component={<FavoritesPage />} />}
-          />
-          <Route
-            path="/ownRecipes"
-            element={<PrivateRoute component={<MyRecipesPage />} />}
-          />
-          <Route
-            path="/add"
-            element={<PrivateRoute component={<AddRecipePage />} />}
-          />
-          <Route
-            path="/recipe/:recipeId"
-            element={<PrivateRoute component={<RecipePage />} />}
-          />
-          <Route path="/search" element={<PrivateRoute component="" />} />
-          <Route
-            path="/shopping-list"
-            element={<PrivateRoute component="" />}
-          />
-          {/* <Route path="*"  element={<Navigate to="/err" />} /> */}
-        </Route>
-      </Routes>
+        </Routes>
+      </ThemeProvider>
     </>
   );
 };

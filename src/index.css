@@ -12,17 +12,14 @@
 --color-text-six: rgba(189, 189, 189, 1); /*Color text placeholder input*/
 --color-text-seven:  rgba(0, 0, 0, 1); /*Color text placeholder input in addRecipe*/
 --color-text-eight: rgba(51, 51, 51, 1); /*Color text number used ingredients */
---color-text-nine: rgba(126, 126, 126, 1); /* Color text description Popular Recipe */
+--color-text-nine:  rgba(126, 126, 126, 1); /* Color text description Popular Recipe */
 
   --color-bg-primary: #fafafa; /* Background color for the body */
   --color-bg-secondary: #2a2c36; /* Background color for form */
   --color-bg-third: #8baa36; /* Background color third */
   --color-background-four: #ffffff; /* Background color */
 
-  --color-text-primary1: #8baa36; /* Primary text color */
-  --color-text-secondary1: #ffffff; /* Secondary text color */
-  --color-text-third1: #fafafa; /* Third text color */
-  --color-text-placeholder: #fafafa;
+
 
   --color-border: #8a8787; /* Border color for input fields */
   --color-border-secondary: #8baa36; /* Second border color  */
