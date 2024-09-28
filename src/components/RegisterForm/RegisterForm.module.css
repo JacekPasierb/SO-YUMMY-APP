@@ -64,7 +64,7 @@
   font-size: 24px;
   line-height: 28px;
   text-align: left;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
@@ -73,9 +73,8 @@
 }
 
 .inputRegister {
-  font-family: Poppins;
   font-size: 14px;
-  color: #ffffff;
+  color: var(--color-text-third);
 
   background-color: transparent;
   outline: none;
@@ -91,7 +90,7 @@
 .inputRegister::placeholder {
   font-family: Poppins;
   font-size: 14px;
-  color: #fafafa;
+  color: var(--color-text-third);
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -150,7 +149,7 @@
   font-style: normal;
   line-height: 18px;
   text-align: center;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 
   background-color: #8baa36;
 
@@ -162,7 +161,7 @@
 }
 
 .btnRegister:hover {
-  color: #8baa36;
+  color: var(--color-text-five);/*update*/
 
   background-color: #fafafa;
   border-color: #8baa36;

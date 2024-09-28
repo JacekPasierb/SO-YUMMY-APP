@@ -32,7 +32,7 @@
 .linkForm {
   font-size: 14px;
   font-family: Poppins;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
   text-align: center;
   text-decoration: underline;
 

@@ -53,5 +53,5 @@
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 }

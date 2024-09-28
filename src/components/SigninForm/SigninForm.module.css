@@ -59,7 +59,7 @@
   font-size: 1.5rem;
   line-height: 1.75rem;
   text-align: left;
-  color: var(--color-text-third);
+  color: var(--color-text-third); /*update*/
 
   @media screen and (min-width: 768px) {
     font-size: 1.75rem;
@@ -68,7 +68,7 @@
 }
 .input {
   font-size: var(--font-size-small);
-  color: var(--color-text-secondary);
+  color: var(--color-text-third); /*update*/
 
   background-color: transparent;
   outline: none;
@@ -83,7 +83,7 @@
 
 .input::placeholder {
   font-size: 0.875rem;
-  color: var(--color-text-placeholder);
+  color: var(--color-text-third); /*update*/
 
   @media screen and (min-width: 768px) {
     font-size: 1.125rem;
@@ -135,7 +135,7 @@
   line-height: 1.125rem;
   font-size: 1rem;
   text-align: center;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 
   background-color: #8baa36;
   padding-block: 0.75rem;
@@ -148,7 +148,7 @@
   }
 }
 .submitButton:hover {
-  color: #8baa36;
+  color: var(--color-text-five); /*update*/
 
   background-color: #fafafa;
   border-color: #8baa36;
