@@ -23,7 +23,7 @@ const AddRecipePage = () => {
               <>
                 <AddRecipeForm />
                 <div className={css.margin}>
-                  <h2 >Follow us</h2> <FollowUs /> <PopularRecipe />
+                   <FollowUs /> <PopularRecipe />
                 </div>
               </>
             ) : (
