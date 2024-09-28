@@ -20,7 +20,7 @@ export const selectIngredient = {
   }),
   singleValue: (baseStyles:any) => ({
     ...baseStyles,
-    color: "#23262A",
+    color: `"#23262A"`,
     fontWeight: "normal",
   }),
   control: (baseStyles:any, state:any) => ({
