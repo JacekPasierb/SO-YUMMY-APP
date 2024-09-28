@@ -24,7 +24,7 @@
   width: 100%;
 
   font-size: var(--font-size-asaid);
-  color: #bdbdbd;
+  color: var(--color-text-six); /*update*/
 
   background-color: transparent;
   border: none;
@@ -55,7 +55,7 @@
 
   font-size: 14px;
   line-height: normal;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 
   background-color: #22252a;
   border: none;

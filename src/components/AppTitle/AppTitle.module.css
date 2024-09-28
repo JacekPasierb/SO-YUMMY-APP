@@ -3,7 +3,7 @@
 
   font-size: 60px;
   line-height: 60px;
-  color: #22252a;
+  color: var(--color-text-four); /*update*/
   text-align: center;
 
   @media screen and (min-width: 768px) {
@@ -20,5 +20,5 @@
 }
 
 .titleInnerColor {
-  color: #8baa36;
+  color: var(--color-text-five); /*update*/
 }

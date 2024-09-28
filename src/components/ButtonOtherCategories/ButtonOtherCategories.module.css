@@ -2,7 +2,7 @@
   padding: 14px 32px;
 
   font-size: 14px;
-  color: #22252a;
+  color: var(--color-text-four); /*update*/
 
   background-color: transparent;
   border: 1px solid #8baa36;

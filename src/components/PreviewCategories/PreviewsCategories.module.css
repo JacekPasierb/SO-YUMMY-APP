@@ -54,7 +54,7 @@
   
   font-size: 14px;
   line-height: 18px;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 
   background-color: #8aa936;
   border-radius: 6px;

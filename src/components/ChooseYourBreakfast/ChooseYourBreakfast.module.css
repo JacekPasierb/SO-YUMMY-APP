@@ -66,7 +66,7 @@
 .fontRecipes {
   font-size: 12px;
   line-height: 18px;
-  color: #3e4462;
+  color: var(--color-text-secondary); /*update*/
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -74,7 +74,7 @@
 }
 
 .fontRecipesInnerColor {
-  color: #8baa36;
+  color: var(--color-text-five); /*update*/
 }
 
 .btn {

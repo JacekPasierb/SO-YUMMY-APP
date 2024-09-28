@@ -3,14 +3,22 @@
 
 /* Root Variables for Colors, Sizes, and Other Common Values */
 :root {
+  --color-text-main:rgba(35, 38, 42, 1); /*Color text nav*/
+  --color-text-primary: rgba(0, 24, 51, 1); /*Color text Title Section */
+  --color-text-secondary: rgba(62, 68, 98, 1); /*Color text title dish Card, ChoseYourBreakfastDesc*/
+  --color-text-third: rgba(250, 250, 250, 1); /*Color text button, all text in Footer*/
+  --color-text-four: rgba(34, 37, 42, 1); /*Color text button second, username in header, TitleApp*/
+  --color-text-five: rgba(139, 170, 54, 1); /*Color text nav hover, TitleApp, ChoseYourBreakfastDesc*/
+--color-text-six: rgba(189, 189, 189, 1); /*Color text placeholder input*/
+
   --color-bg-primary: #fafafa; /* Background color for the body */
   --color-bg-secondary: #2a2c36; /* Background color for form */
   --color-bg-third: #8baa36; /* Background color third */
   --color-background-four: #ffffff; /* Background color */
 
-  --color-text-primary: #8baa36; /* Primary text color */
-  --color-text-secondary: #ffffff; /* Secondary text color */
-  --color-text-third: #fafafa; /* Third text color */
+  --color-text-primary1: #8baa36; /* Primary text color */
+  --color-text-secondary1: #ffffff; /* Secondary text color */
+  --color-text-third1: #fafafa; /* Third text color */
   --color-text-placeholder: #fafafa;
 
   --color-border: #8a8787; /* Border color for input fields */

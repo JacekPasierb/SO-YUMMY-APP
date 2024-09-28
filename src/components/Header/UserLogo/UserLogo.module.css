@@ -24,7 +24,7 @@
   font-size: 12px;
   font-weight: 550;
   line-height: 170%;
-  color: #22252a;
+  color: var(--color-text-four); /*update*/
 
   @media screen and (min-width: 768px) {
     font-size: 14px;

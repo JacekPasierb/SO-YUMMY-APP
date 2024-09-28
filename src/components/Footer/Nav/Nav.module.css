@@ -27,5 +27,5 @@
 .link {
   font-size: 14px;
   line-height: 18px;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 }
