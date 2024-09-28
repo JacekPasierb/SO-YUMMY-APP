@@ -6,6 +6,7 @@
 
   border-bottom: 1px solid #707070;
 }
+
 .recipeInfo {
   display: flex;
   flex-direction: column;
@@ -25,11 +26,12 @@
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.24px;
-  color: #3e4462;
+  color: var(--color-text-secondary); /*update*/
 }
+
 .recipeDescription {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: -0.24px;
-  color: #7e7e7e;
+  color: var(--color-text-nine); /*update*/
 }

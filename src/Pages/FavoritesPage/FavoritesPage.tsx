@@ -34,6 +34,7 @@ const FavoritesPage = () => {
     navigate(`?page=${page}`);
     window.scrollTo(0, 0);
   };
+  
   useEffect(() => {
     dispatch(getFavoriteRecipes({ page: currentPage }));
   }, [dispatch, currentPage]);
