@@ -1,6 +1,6 @@
 import recipesMobile from "../../images/recipesMobile1x.png";
 import recipesTablet from "../../images/recipesTablet1x.png";
-import recipesDesktop from "../../images/recipesDesctop1x.png";
+import recipesDesktop from "../../src/images/recipesDesctop1x.png";
 
 export const getRecipeImage = (
   isMobile: boolean,
