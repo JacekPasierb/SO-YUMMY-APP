@@ -11,7 +11,11 @@
 .link .navText {
   font-size: 14px;
   line-height: 22.4px;
-  color: var(--color-text-nav); /*update*/
+  color: var(--color-text-main); /*update*/
+}
+
+.dark-theme .link .navText {
+  color: var(--color-text-third);
 }
 
 .link:hover .navText,
