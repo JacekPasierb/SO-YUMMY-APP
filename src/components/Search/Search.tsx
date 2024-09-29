@@ -4,10 +4,6 @@ import styles from "./Search.module.css";
 const Search = React.memo(() => {
   return (
     <div className={styles.search}>
-      {/* Dodanie label dla lepszej dostępności */}
-      <label htmlFor="search-input" className="visually-hidden">
-        Search for recipes
-      </label>
       <input
         type="text"
         id="search-input"
