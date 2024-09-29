@@ -51,18 +51,28 @@
   
   /* --color-text-third: #001833;
   --font-size-primary: 12px; */
-  
+
   /* NEW VARIABLES METHOD */
+
+   /* Text colors */
   --color-text-nav: rgba(35, 38, 42, 1);
   --color-text-highlight: rgba(139, 170, 54, 1);
   --color-text-title: rgba(34, 37, 42, 1);
   --color-text-description: rgba(35, 38, 42, 1); 
+  --color-text-placeholder: rgba(189, 189, 189, 1); /* #BDBDBD  placeholder search input */
+  --color-text-btn-primary:  rgba(250, 250, 250, 1); /* FAFAFA */
+ /* Background colors */
+  --color-bg-btn-search: rgba(34, 37, 42, 1); /* #22252A */
 }
 
 .dark-theme {
+    /* Text colors */
   --color-text-nav: rgba(250, 250, 250, 1);
   --color-text-title:  rgba(250, 250, 250, 1);
   --color-text-description: rgba(250, 250, 250, 1); 
+  --color-text-placeholder: rgba(250, 250, 250, 1); /* #FAFAFA placeholder search input */
+ /* Background colors */
+  --color-bg-btn-search:  rgba(139, 170, 54, 1); /* 8BAA36 */
 }
 
 /* Apply box-sizing globally to ensure padding/border are included in element width and height */
