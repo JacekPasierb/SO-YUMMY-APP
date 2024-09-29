@@ -9,8 +9,7 @@ import { persistor, store } from "./redux/store.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./assets/themes/themes";
+
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
@@ -19,10 +18,10 @@ if (rootElement) {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <BrowserRouter>
-          <ThemeProvider theme={lightTheme}>
+          
             <App />
             <ToastContainer />
-            </ThemeProvider>
+           
           </BrowserRouter>
         </PersistGate>
       </Provider>
