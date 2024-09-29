@@ -1,4 +1,4 @@
-.appTitle {
+.title {
   margin: 0;
 
   font-size: 60px;
@@ -19,6 +19,6 @@
   }
 }
 
-.titleInnerColor {
+.title__highlight {
   color: var(--color-text-five); /*update*/
 }
