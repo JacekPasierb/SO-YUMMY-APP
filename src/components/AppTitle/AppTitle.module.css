@@ -3,7 +3,7 @@
 
   font-size: 60px;
   line-height: 60px;
-  color: var(--color-text-four); /*update*/
+  color: var(--color-text-title); /* new update*/
   text-align: center;
 
   @media screen and (min-width: 768px) {
@@ -20,5 +20,5 @@
 }
 
 .title__highlight {
-  color: var(--color-text-five); /*update*/
+  color: var(--color-text-highlight); /*new update*/
 }
