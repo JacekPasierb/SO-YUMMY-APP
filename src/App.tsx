@@ -48,7 +48,7 @@ const App: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    document.body.className = theme === "light" ? "" : "dark-theme";
+    document.body.className = theme === "light" ? "" : "darkTheme";
   }, [theme]);
 
   return isRefreshing ? (
