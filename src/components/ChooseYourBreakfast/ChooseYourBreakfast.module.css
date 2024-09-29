@@ -1,15 +1,25 @@
-.imageRecipes {
-  position: relative;
-}
-
-.box {
+.container {
   position: relative;
 
   width: 100%;
   height: 100%;
   margin-top: 44px;
 }
-.boxRecipes {
+
+.image {
+  width: 100%;
+  height: 100%;
+
+  @media screen and (min-width: 1200px) {
+    padding-right: 184px;
+  }
+}
+
+.imageRecipes {
+  position: relative;
+}
+
+.recipeInfo {
   position: absolute;
   right: 10%;
   bottom: 40%;
@@ -20,7 +30,7 @@
   max-width: 75%;
   padding: 8px;
 
-  background-color: #fafafa;
+  background-color: var(--color-bg-body);
   border-radius: 8px;
 
   @media screen and (min-width: 768px) {
@@ -35,7 +45,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .boxRecipes::after {
+  .recipeInfo::after {
     content: "";
     position: absolute;
     left: 20px;
@@ -49,7 +59,7 @@
   }
 }
 @media screen and (min-width: 1200px) {
-  .boxRecipes::after {
+  .recipeInfo::after {
     content: "";
     position: absolute;
     left: 30%;
@@ -63,21 +73,21 @@
   }
 }
 
-.fontRecipes {
+.description {
   font-size: 12px;
   line-height: 18px;
-  color: var(--color-text-secondary); /*update*/
+  color: var(--color-text-description-secondary); /*new update*/
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
 }
 
-.fontRecipesInnerColor {
-  color: var(--color-text-five); /*update*/
+.highlight {
+  color: var(--color-text-highlight); /*new update*/
 }
 
-.btn {
+.button {
   display: flex;
   justify-content: right;
   align-items: center;
@@ -86,7 +96,7 @@
 
   font-size: 10px;
   line-height: 12px;
-  color: #3e4462;
+  color: var(--color-text-link);
 
   background-color: transparent;
   border: none;
@@ -96,13 +106,4 @@
   width: 18px;
   height: 18px;
   margin-left: 4px;
-}
-
-.chooseBox {
-  width: 100%;
-  height: 100%;
-
-  @media screen and (min-width: 1200px) {
-    padding-right: 184px;
-  }
 }

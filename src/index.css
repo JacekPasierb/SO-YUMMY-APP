@@ -61,8 +61,13 @@
   --color-text-description: rgba(35, 38, 42, 1); 
   --color-text-placeholder: rgba(189, 189, 189, 1); /* #BDBDBD  placeholder search input */
   --color-text-btn-primary:  rgba(250, 250, 250, 1); /* FAFAFA */
+  --color-text-description-secondary:rgba(42, 44, 54, 1);
+  --color-text-link:rgba(62, 68, 98, 1); /* #3E4462 */
+
+
  /* Background colors */
   --color-bg-btn-search: rgba(34, 37, 42, 1); /* #22252A */
+  --color-bg-body: rgba(250, 250, 250, 1);
 }
 
 .dark-theme {
@@ -71,8 +76,13 @@
   --color-text-title:  rgba(250, 250, 250, 1);
   --color-text-description: rgba(250, 250, 250, 1); 
   --color-text-placeholder: rgba(250, 250, 250, 1); /* #FAFAFA placeholder search input */
+  --color-text-description-secondary:rgba(250, 250, 250, 1);
+  --color-text-link:rgba(250, 250, 250, 1); 
+
  /* Background colors */
   --color-bg-btn-search:  rgba(139, 170, 54, 1); /* 8BAA36 */
+  --color-bg-body: rgba(42, 44, 54, 1);
+  ;
 }
 
 /* Apply box-sizing globally to ensure padding/border are included in element width and height */

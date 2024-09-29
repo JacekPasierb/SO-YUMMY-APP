@@ -1,42 +1,41 @@
-import css from "./ChooseYourBreakfast.module.css";
-import recipesMobile from "../../images/recipesMobile1x.png";
-import recipesTablet from "../../images/recipesTablet1x.png";
-import recipesDesctop from "../../images/recipesDesctop1x.png";
-import sprite from "../../assets/icons/sprite.svg";
-
-import React from "react";
-import { useMediaQuery } from "@react-hook/media-query";
+import React, { useMemo } from "react";
 import { NavLink } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
 
-const ChooseYourBreakfast = () => {
+import styles from "./ChooseYourBreakfast.module.css";
+import sprite from "../../assets/icons/sprite.svg";
+import { getRecipeImage } from "../../helpers/helpers";
+
+const ChooseYourBreakfast: React.FC = () => {
   const isMobile = useMediaQuery("(max-width:768px)");
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
-  const isDesctop = useMediaQuery("(min-width:1200px)");
+  const isDesktop = useMediaQuery("(min-width:1200px)");
 
-  const recipes = () => {
-    if (isMobile) {
-      return recipesMobile;
-    } else if (isTablet) {
-      return recipesTablet;
-    } else if (isDesctop) {
-      return recipesDesctop;
-    }
-  };
+  const recipeImage = useMemo(() => {
+    return getRecipeImage(isMobile, isTablet, isDesktop);
+  }, [isMobile, isTablet, isDesktop]);
 
   return (
-    <div className={css.box}>
-      <img src={recipes()} alt="picture dish" className={css.chooseBox} />
-      <div className={css.boxRecipes}>
-        <span className={css.fontRecipes}>
-          <span className={css.fontRecipesInnerColor}>
-            Delicious and healthy
-          </span>
+    <div className={styles.container}>
+      <img
+        src={recipeImage}
+        alt="Delicious dish"
+        className={styles.image}
+        loading="lazy"
+      />
+      <div className={styles.recipeInfo}>
+        <span className={styles.description}>
+          <span className={styles.highlight}>Delicious and healthy</span>
           way to enjoy a variety of fresh ingredients in one satisfying meal
         </span>
 
-        <NavLink to={`/categories/Breakfast`} className={css.btn}>
+        <NavLink
+          to={`/categories/Breakfast`}
+          className={styles.button}
+          aria-label="See breakfast recipes"
+        >
           See recipes
-          <svg className={css.icon}>
+          <svg className={styles.icon} aria-hidden="true">
             <use href={sprite + `#icon-arrow-narrow-right`}></use>
           </svg>
         </NavLink>
