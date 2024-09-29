@@ -68,6 +68,9 @@
  /* Background colors */
   --color-bg-btn-search: rgba(34, 37, 42, 1); /* #22252A */
   --color-bg-body: rgba(250, 250, 250, 1);
+
+  /* Border colors*/
+  --color-border-search: #f0f0f0;
 }
 
 .dark-theme {
@@ -82,7 +85,9 @@
  /* Background colors */
   --color-bg-btn-search:  rgba(139, 170, 54, 1); /* 8BAA36 */
   --color-bg-body: rgba(42, 44, 54, 1);
-  ;
+  
+    /* Border colors*/
+    --color-border-search: rgba(139, 170, 54, 1);
 }
 
 /* Apply box-sizing globally to ensure padding/border are included in element width and height */

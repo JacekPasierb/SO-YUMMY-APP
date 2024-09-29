@@ -7,7 +7,7 @@
   margin-bottom: 5.1875rem;
 
   background-color: transparent;
-  border: 1px solid var(--color-border-four);
+  border: 1px solid var(--color-border-search); /* new update*/
   border-radius: 1.5rem 2.75rem;
 
   @media screen and (min-width: var(--breakpoint-md)) {
