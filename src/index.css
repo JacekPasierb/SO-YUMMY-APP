@@ -3,53 +3,63 @@
 
 /* Root Variables for Colors, Sizes, and Other Common Values */
 :root {
+  
+  
+  
   --color-text-main:rgba(35, 38, 42, 1); /*Color text nav, Text Description Card Own Recipe*/
   --color-text-primary: rgba(0, 24, 51, 1); /*Color text Title Section and Page */
   --color-text-secondary: rgba(62, 68, 98, 1); /*Color text title dish Card, ChoseYourBreakfastDesc,Title Card Popular Recipe, Card Own Recipe Title */
   --color-text-third: rgba(250, 250, 250, 1); /*Color text button, all text in Footer, Text Button Subscribe*/
   --color-text-four: rgba(34, 37, 42, 1); /*Color text button second, username in header, TitleApp, Copyrights Text*/
   --color-text-five: rgba(139, 170, 54, 1); /*Color text nav hover, TitleApp, ChoseYourBreakfastDesc, */
---color-text-six: rgba(189, 189, 189, 1); /*Color text placeholder input*/
---color-text-seven:  rgba(0, 0, 0, 1); /*Color text placeholder input in addRecipe*/
---color-text-eight: rgba(51, 51, 51, 1); /*Color text number used ingredients */
---color-text-nine:  rgba(126, 126, 126, 1); /* Color text description Popular Recipe */
-
+  --color-text-six: rgba(189, 189, 189, 1); /*Color text placeholder input*/
+  --color-text-seven:  rgba(0, 0, 0, 1); /*Color text placeholder input in addRecipe*/
+  --color-text-eight: rgba(51, 51, 51, 1); /*Color text number used ingredients */
+  --color-text-nine:  rgba(126, 126, 126, 1); /* Color text description Popular Recipe */
+  
   --color-bg-primary: #fafafa; /* Background color for the body */
   --color-bg-secondary: #2a2c36; /* Background color for form */
   --color-bg-third: #8baa36; /* Background color third */
   --color-background-four: #ffffff; /* Background color */
-
-
-
+  
+  
+  
   --color-border: #8a8787; /* Border color for input fields */
   --color-border-secondary: #8baa36; /* Second border color  */
   --color-border-third: #fafafa; /* Third border color  */
   --color-border-four: #f0f0f0;
-
+  
   --color-error: red; /* Error color */
   --color-success: green; /* Success color */
-
+  
   --font-family-primary: "Poppins", "Circe", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif; /* Font stack */
-
+  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+  sans-serif; /* Font stack */
+  
   --font-size-base: 1rem; /* Base font size */
   --font-size-asaid: 0.75rem; /* Asaid font size */
   --font-size-small: 0.875rem; /* Small font size */
   --font-size-large: 1.5rem; /* Large font size */
-
+  
   --border-radius: 0.375rem; /* Border radius for inputs and buttons */
   --transition-speed: 0.3s; /* Transition speed for hover effects */
-
+  
   /* Breakpoints for Responsive Design */
   --breakpoint-xs: 480px; /* Extra small screens */
   --breakpoint-md: 768px; /* Medium screens */
   --breakpoint-lg: 1200px; /* Large screens */
-
+  
   /* --color-text-third: #001833;
   --font-size-primary: 12px; */
+  
+  --color-text-nav:rgba(35, 38, 42, 1);
 }
 
+.dark-theme {
+  --color-text-nav: rgba(250, 250, 250, 1);
+  --color-text-title:
+
+}
 
 /* Apply box-sizing globally to ensure padding/border are included in element width and height */
 *,
