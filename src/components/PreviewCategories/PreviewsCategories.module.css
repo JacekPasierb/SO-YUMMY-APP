@@ -51,12 +51,12 @@
   align-self: flex-end;
   margin-top: 24px;
   padding: 10px 24px;
-  
+
   font-size: 14px;
   line-height: 18px;
-  color: var(--color-text-third); /*update*/
+  color: var(--color-text-btn-primary); /* new update*/
 
-  background-color: #8aa936;
+  background-color: var(--color-bg-btn);
   border-radius: 6px;
   border: none;
 
@@ -69,7 +69,7 @@
   }
 }
 
-.boxLoader {
+.loaderBox {
   display: flex;
   justify-content: center;
   margin: 10vh auto;

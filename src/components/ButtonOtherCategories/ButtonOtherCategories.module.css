@@ -2,10 +2,10 @@
   padding: 14px 32px;
 
   font-size: 14px;
-  color: var(--color-text-four); /*update*/
+  color: var(--color-text-title); /*new update*/
 
   background-color: transparent;
-  border: 1px solid #8baa36;
+  border: 1px solid var(--color-border-btn);
   border-radius: 24px 44px;
 
   @media screen and (min-width: 768px) {

@@ -1,8 +1,5 @@
-import css from "./MainPage.module.css";
-
 import React, { FC } from "react";
 import Media from "react-media";
-
 import Header from "../../components/Header/Header";
 import Search from "../../components/Search/Search";
 import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYourBreakfast";
@@ -11,7 +8,48 @@ import ButtonOtherCategories from "../../components/ButtonOtherCategories/Button
 import AppTitle from "../../components/AppTitle/AppTitle";
 import AppDescription from "../../components/AppDescription/AppDescription";
 
+// Importing CSS module
+import styles from "./MainPage.module.css";
+
+// Typing for media queries results
+interface MediaQueries {
+  small: boolean;
+  medium: boolean;
+  large: boolean;
+}
+
 const MainPage: FC = () => {
+  const renderContent = (matches: MediaQueries) => (
+    <>
+      <Header />
+      <main className={styles.background}>
+        <div className={`${styles.container} ${styles.mainPageBox}`}>
+          {/* For medium and large screens, apply flex layout */}
+          <div className={matches.small ? "" : styles.flexLayout}>
+            <div>
+              <AppTitle />
+              <AppDescription />
+              <Search />
+            </div>
+            {/* On small screens, render ChooseYourBreakfast within this div */}
+            {matches.small && <ChooseYourBreakfast />}
+          </div>
+          {/* On larger screens, render ChooseYourBreakfast outside of the flex container */}
+          {!matches.small && <ChooseYourBreakfast />}
+        </div>
+      </main>
+      {/* Adjust container classes based on screen size */}
+      <div
+        className={`${styles.container} ${
+          matches.large ? styles.mainPageBox : styles.sectionBox
+        }`}
+      >
+        <PreviewsCategories />
+        <ButtonOtherCategories text="Other categories" />
+      </div>
+    </>
+  );
+
   return (
     <Media
       queries={{
@@ -20,69 +58,7 @@ const MainPage: FC = () => {
         large: "(min-width: 1200px)",
       }}
     >
-      {(matches) => (
-        <>
-          {matches.small && (
-            <>
-              <Header />
-              <main className={css.background}>
-                <div className={`${css.container} ${css.mainPageBox}`}>
-                  <AppTitle />
-                  <AppDescription />
-                  <ChooseYourBreakfast />
-                  <Search />
-                </div>
-              </main>
-              <div className={`${css.container} ${css.sectionBox}`}>
-                <PreviewsCategories />
-                <ButtonOtherCategories text={"Other categories"} />
-              </div>
-            </>
-          )}
-          {matches.medium && (
-            <>
-              <main className={css.background}>
-                <Header />
-                <div className={`${css.container} ${css.mainPageBox}`}>
-                  <div className={css.flexMed}>
-                    <div>
-                      <AppTitle />
-                      <AppDescription />
-                      <Search />
-                    </div>
-                    <ChooseYourBreakfast />
-                  </div>
-                </div>
-              </main>
-              <div className={`${css.container} ${css.sectionBox}`}>
-                <PreviewsCategories />
-                <ButtonOtherCategories text={"Other categories"} />
-              </div>
-            </>
-          )}
-          {matches.large && (
-            <>
-              <main className={css.background}>
-                <Header />
-                <div className={`${css.container} ${css.mainPageBox}`}>
-                  <div className={css.flexMed}>
-                    <div>
-                      <AppTitle />
-                      <AppDescription />
-                      <Search />
-                    </div>
-                    <ChooseYourBreakfast />
-                  </div>
-                </div>
-              </main>
-              <div className={`${css.container} ${css.mainPageBox}`}>
-                <PreviewsCategories />
-                <ButtonOtherCategories text={"Other categories"} />
-              </div>
-            </>
-          )}
-        </>
-      )}
+      {(matches) => renderContent(matches)}
     </Media>
   );
 };

@@ -1,7 +1,6 @@
-import css from "./ButtonOtherCategories.module.css";
-
 import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./ButtonOtherCategories.module.css";
 
 interface ButtonOtherCategoriesProps {
   text: string;
@@ -9,7 +8,11 @@ interface ButtonOtherCategoriesProps {
 
 const ButtonOtherCategories: FC<ButtonOtherCategoriesProps> = ({ text }) => {
   return (
-    <NavLink to={`/categories/:categoryName`} className={css.btn}>
+    <NavLink
+      to={`/categories/:categoryName`}
+      className={styles.btn}
+      aria-label={`See all recipes in category`}
+    >
       {text}
     </NavLink>
   );

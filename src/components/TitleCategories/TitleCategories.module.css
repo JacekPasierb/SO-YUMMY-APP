@@ -6,7 +6,7 @@
 
   font-size: 1.75rem;
   line-height: 1.75rem;
-  color: var(--color-text-primary); /* update
+  color: var(--color-text-subtitle); /* new update */
 
   /* Media queries for responsive design */
   @media screen and (min-width: 768px) {

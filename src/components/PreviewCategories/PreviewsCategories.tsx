@@ -1,103 +1,100 @@
-import css from "./PreviewsCategories.module.css";
-
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
+import { toast } from "react-toastify";
+import { ClimbingBoxLoader } from "react-spinners";
 
 import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
-
 import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
-import { toast } from "react-toastify";
-import { Loader } from "../Loader/Loader";
 import { IRecipe } from "src/types/recipesTypes";
-import { ClimbingBoxLoader } from "react-spinners";
+
+import styles from "./PreviewsCategories.module.css";
 
 interface RecipesByMainCategory {
   [category: string]: IRecipe[];
 }
 
-const PreviewsCategories = () => {
+const PreviewsCategories: React.FC = () => {
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
-  const isDesctop = useMediaQuery("(min-width:1200px)");
+  const isDesktop = useMediaQuery("(min-width:1200px)");
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [recipesMainCategories, setRecipesMainCategories] =
     useState<RecipesByMainCategory>();
 
-  useEffect(() => {
-    let count: number;
+  // Helper function to determine count of recipes
+  const getRecipeCount = (): number => {
+    if (isDesktop) return 4;
+    if (isTablet) return 2;
+    return 1;
+  };
 
-    if (isDesctop) {
-      count = 4;
-    } else if (isTablet) {
-      count = 2;
-    } else {
-      count = 1;
-    }
-    const getRecipesByFourCategories = async () => {
+  // Fetching data on component mount and when screen size changes
+  useEffect(() => {
+    const fetchRecipes = async () => {
       try {
         setIsLoading(true);
+        const count = getRecipeCount();
         const { data } = await fetchRecipesByFourCategories(count);
         setRecipesMainCategories(data);
       } catch (error: any) {
-        setError(error.message);
-        toast.error("Something went wrong. Plese try again...");
+        setError(error.message || "An error occurred.");
+        toast.error("Something went wrong. Please try again...");
       } finally {
         setIsLoading(false);
       }
     };
 
-    getRecipesByFourCategories();
-  }, [isDesctop, isTablet]);
+    fetchRecipes();
+  }, [isDesktop, isTablet]);
+
+  // Helper to render recipes list
+  const renderRecipes = (recipes: IRecipe[]) =>
+    recipes.map((recipe) => (
+      <li key={recipe._id} className={styles.recipesListItem}>
+        <NavLink to={`/recipe/${recipe._id}`}>
+          <CardRecipe title={recipe.title} preview={recipe.preview} />
+        </NavLink>
+      </li>
+    ));
 
   return (
     <>
-      {error && <p>Something went wrong. Try again...</p>}
-      {isLoading &&  <div className={css.boxLoader}>
-        <ClimbingBoxLoader/></div>}
-      <ul className={css.categoriesList}>
-        {recipesMainCategories &&
-          Object.entries(recipesMainCategories).map(
-            ([categories, recipes], idx) => {
-              return (
+      {error && (
+        <p className={styles.errorText}>Something went wrong. Try again...</p>
+      )}
+      {isLoading ? (
+        <div className={styles.loaderBox}>
+          <ClimbingBoxLoader />
+        </div>
+      ) : (
+        <ul className={styles.categoriesList}>
+          {recipesMainCategories &&
+            Object.entries(recipesMainCategories).map(
+              ([category, recipes], idx) => (
                 <li
-                  key={`${categories}-${idx}`}
-                  className={css.categoriesListItem}
+                  key={`${category}-${idx}`}
+                  className={styles.categoriesListItem}
                 >
-                  <TitleCategories categories={categories} />
-                  <ul className={css.recipesList}>
-                    {recipes &&
-                      recipes.map((recipe: IRecipe) => {
-                        return (
-                          <li
-                            key={`${recipe._id}`}
-                            className={css.recipesListItem}
-                          >
-                            <NavLink to={`/recipe/${recipe._id}`}>
-                              <CardRecipe
-                                title={recipe.title}
-                                preview={recipe.preview}
-                              />
-                            </NavLink>
-                          </li>
-                        );
-                      })}
+                  <TitleCategories categories={category} />
+                  <ul className={styles.recipesList}>
+                    {renderRecipes(recipes)}
                   </ul>
                   <NavLink
                     to={`/categories/${
-                      categories.charAt(0).toUpperCase() + categories.slice(1)
+                      category.charAt(0).toUpperCase() + category.slice(1)
                     }`}
-                    className={css.btnCategories}
+                    className={styles.btnCategories}
                   >
                     See all
                   </NavLink>
                 </li>
-              );
-            }
-          )}
-      </ul>
+              )
+            )}
+        </ul>
+      )}
     </>
   );
 };

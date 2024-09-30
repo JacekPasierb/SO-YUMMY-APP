@@ -18,7 +18,7 @@
   width: calc((100% - 36px));
   padding: 16px;
 
-  background-color: white;
+  background-color: var(--color-bg-body); /*new update */
   border-radius: 8px;
 
   @media screen and (min-width: 1200px) {
@@ -30,5 +30,5 @@
 
   font-size: 16px;
   line-height: 20px;
-  color: var(--color-text-secondary); /*update*/
+  color: var(--color-text-link); /*new update*/
 }
