@@ -1,13 +1,15 @@
 import React from "react";
-import css from "./Copyrights.module.css";
+import styles from "./Copyrights.module.css";
 
 const Copyrights = () => {
   return (
-    <div className={css.copyrightsBox}>
-      <div className={css.container}>
-        <div className={css.textBox}>
-                  <span className={`${css.text} ${css.textMedium}`}>© 2023 All Rights Reserved.</span>
-          <span className={css.text}>Terms of Service</span>
+    <div className={styles.copyrightsBox}>
+      <div className={styles.container}>
+        <div className={styles.textBox}>
+          <span className={`${styles.text} ${styles.textMedium}`}>
+            © 2023 All Rights Reserved.
+          </span>
+          <span className={styles.text}>Terms of Service</span>
         </div>
       </div>
     </div>

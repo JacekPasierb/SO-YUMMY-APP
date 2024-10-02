@@ -41,7 +41,7 @@
 .text {
   font-size: 10px;
   line-height: 10px;
-  color: var(--color-text-four); /*update*/
+  color: var(--color-text-title); /*new update*/
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
