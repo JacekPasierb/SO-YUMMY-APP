@@ -65,9 +65,9 @@ const Footer = () => {
                 {logoSection}
                 {matches.small ? null : featuresList}
               </div>
-              <nav className={styles.footerNav}>
-                <Nav />
-              </nav>
+
+              <Nav />
+
               {matches.small && <SubscribeForm />}
             </div>
             {matches.large ? subscribeSection : null}
