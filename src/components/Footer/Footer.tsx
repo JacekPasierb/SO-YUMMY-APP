@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./Footer.module.css";
+import styles from "./Footer.module.css";
 import logoFooter from "../../images/logoFooter.png";
 import Nav from "./Nav/Nav";
 import SubscribeForm from "./SubscribeForm/SubscribeForm";
@@ -7,6 +7,48 @@ import FollowUs from "./FollowUs/FollowUs";
 import Media from "react-media";
 
 const Footer = () => {
+  const logoSection = (
+    <div className={styles.logoBox}>
+      <img
+        src={logoFooter}
+        alt="So Yummy Logo"
+        width="30"
+        height="30"
+        className={styles.logo}
+        aria-label="So Yummy"
+      />
+      <p className={styles.titleBox}>So Yummy</p>
+    </div>
+  );
+
+  const featuresList = (
+    <ul className={styles.list}>
+      <li className={styles.listItem}>
+        Database of recipes that can be replenished
+      </li>
+      <li className={styles.listItem}>
+        Flexible search for desired and unwanted ingredients
+      </li>
+      <li className={styles.listItem}>
+        Ability to add your own recipes with photos
+      </li>
+      <li className={styles.listItem}>Convenient and easy to use</li>
+    </ul>
+  );
+
+  const subscribeSection = (
+    <div className={styles.subscribeBox}>
+      <div className={styles.box}>
+        <p className={styles.subscribeTitle}>Subscribe to our Newsletter</p>
+        <p className={styles.subscribeDesc}>
+          Subscribe to our newsletter. Stay updated with the latest news and
+          special offers.
+        </p>
+      </div>
+      <SubscribeForm />
+    </div>
+  );
+
   return (
     <Media
       queries={{
@@ -16,121 +58,22 @@ const Footer = () => {
       }}
     >
       {(matches) => (
-        <>
-          {matches.small && (
-            <footer className={css.footer}>
-              <div className={css.container}>
-                <div className={css.logoBox}>
-                  <img
-                    src={logoFooter}
-                    alt="logo"
-                    width="30"
-                    height="30"
-                    className={css.logo}
-                  />
-                  <p className={css.titleBox}>So Yummy</p>
-                </div>
-                <nav className={css.footerNav}>
-                  <Nav />
-                  <SubscribeForm />
-                  <FollowUs />
-                </nav>
+        <footer className={styles.footer}>
+          <div className={styles.container}>
+            <div className={matches.small ? "" : styles.footerBox}>
+              <div className={styles.footerBoxAssaid}>
+                {logoSection}
+                {matches.small ? null : featuresList}
               </div>
-            </footer>
-          )}
-          {matches.medium && (
-            <footer className={css.footer}>
-              <div className={css.container}>
-                <div className={css.footerBox}>
-                  <div className={css.footerBoxAssaid}>
-                    <div className={css.logoBox}>
-                      <img
-                        src={logoFooter}
-                        alt="logo"
-                        width="30"
-                        height="30"
-                        className={css.logo}
-                      />
-                      <p className={css.titleBox}>So Yummy</p>
-                    </div>
-                    <ul className={css.list}>
-                      <li className={css.listItem}>
-                        Database of recipes that can be replenished{" "}
-                      </li>
-                      <li className={css.listItem}>
-                        Flexible search for desired and unwanted ingredients
-                      </li>
-                      <li className={css.listItem}>
-                        Ability to add your own recipes with photos
-                      </li>
-
-                      <li className={css.listItem}>
-                        Convenient and easy to use
-                      </li>
-                    </ul>
-                  </div>
-                  <nav className={css.footerNav}>
-                    <Nav />
-                  </nav>
-                </div>
-                <SubscribeForm />
-                <FollowUs />
-              </div>
-            </footer>
-          )}
-          {matches.large && (
-            <footer className={css.footer}>
-              <div className={css.container}>
-                <div className={css.footerBox}>
-                  <div className={css.footerBoxAssaid}>
-                    <div className={css.logoBox}>
-                      <img
-                        src={logoFooter}
-                        alt="logo"
-                        width="30"
-                        height="30"
-                        className={css.logo}
-                      />
-                      <p className={css.titleBox}>So Yummy</p>
-                    </div>
-                    <ul className={css.list}>
-                      <li className={css.listItem}>
-                        Database of recipes that can be replenished{" "}
-                      </li>
-                      <li className={css.listItem}>
-                        Flexible search for desired and unwanted ingredients
-                      </li>
-                      <li className={css.listItem}>
-                        Ability to add your own recipes with photos
-                      </li>
-
-                      <li className={css.listItem}>
-                        Convenient and easy to use
-                      </li>
-                    </ul>
-                  </div>
-                  <nav className={css.footerNav}>
-                    <Nav />
-                  </nav>
-                  <div className={css.subscribeBox}>
-                  <div className={css.box}>
-                    <p className={css.subscribeTitle}>
-                      Subscribe to our Newsletter
-                    </p>
-                    <p className={css.subscribeDesc}>
-                      Subscribe up to our newsletter. Be in touch with latest
-                      news and special offers, etc.
-                    </p>
-                    </div>
-                    <SubscribeForm />
-                  </div>
-                </div>
-
-                <FollowUs />
-              </div>
-            </footer>
-          )}
-        </>
+              <nav className={styles.footerNav}>
+                <Nav />
+              </nav>
+              {matches.small && <SubscribeForm />}
+            </div>
+            {matches.large ? subscribeSection : null}
+            <FollowUs />
+          </div>
+        </footer>
       )}
     </Media>
   );
