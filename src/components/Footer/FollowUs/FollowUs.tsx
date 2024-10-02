@@ -7,7 +7,7 @@ import SubTitle from "../../SubTitle/SubTitle";
 const FollowUs = () => {
   return (
     <>
-      <SubTitle title={"Follow Us"} />
+   
       <ul className={css.listSocial}>
         <li>
           <Link to="#">

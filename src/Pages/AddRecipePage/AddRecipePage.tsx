@@ -8,6 +8,7 @@ import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
 import { useMediaQuery } from "@react-hook/media-query";
 import FollowUs from "../../components/Footer/FollowUs/FollowUs";
+import SubTitle from "../../components/SubTitle/SubTitle";
 // import FollowUs from "../../components/FollowUs/FollowUs";
 
 const AddRecipePage = () => {
@@ -23,7 +24,8 @@ const AddRecipePage = () => {
               <>
                 <AddRecipeForm />
                 <div className={css.margin}>
-                   <FollowUs /> <PopularRecipe />
+                  <SubTitle title={"Follow Us"} /> <FollowUs />{" "}
+                  <PopularRecipe />
                 </div>
               </>
             ) : (
