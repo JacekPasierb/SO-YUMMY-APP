@@ -23,7 +23,7 @@ const MainPage: FC = () => {
     <>
       <Header />
       <main className={styles.background}>
-        <div className={`${styles.container} ${styles.mainPageBox}`}>
+        <div className={`${styles.container} ${styles.mainPageBox} `}>
           {/* For medium and large screens, apply flex layout */}
           <div className={matches.small ? "" : styles.flexLayout}>
             <div>
@@ -32,7 +32,7 @@ const MainPage: FC = () => {
               <Search />
             </div>
             {/* On small screens, render ChooseYourBreakfast within this div */}
-            {matches.small && <ChooseYourBreakfast />}
+            {!matches.small && <ChooseYourBreakfast />}
           </div>
           {/* On larger screens, render ChooseYourBreakfast outside of the flex container */}
           {!matches.small && <ChooseYourBreakfast />}
