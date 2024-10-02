@@ -35,7 +35,7 @@ const MainPage: FC = () => {
             {!matches.small && <ChooseYourBreakfast />}
           </div>
           {/* On larger screens, render ChooseYourBreakfast outside of the flex container */}
-          {!matches.small && <ChooseYourBreakfast />}
+          {matches.small && <ChooseYourBreakfast />}
         </div>
       </main>
       {/* Adjust container classes based on screen size */}
