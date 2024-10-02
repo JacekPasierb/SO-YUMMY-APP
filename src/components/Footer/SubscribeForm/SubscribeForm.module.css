@@ -5,9 +5,9 @@
 
   font-size: 14px;
   line-height: 16px;
-  color: var(--color-text-third); /*update*/
+  color: var(--color-text-btn-primary); /*new update*/
 
-  background-color: #8baa36;
+  background-color: var(--color-bg-btn-secondary);
   border: none;
   border-radius: 6px;
 
