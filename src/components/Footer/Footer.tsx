@@ -60,17 +60,18 @@ const Footer = () => {
       {(matches) => (
         <footer className={styles.footer}>
           <div className={styles.container}>
-            <div className={matches.small ? styles.footerBoxS : styles.footerBox}>
+            <div
+              className={matches.small ? styles.footerBoxS : styles.footerBox}
+            >
               <div className={styles.footerBoxAssaid}>
                 {logoSection}
                 {matches.small ? null : featuresList}
               </div>
-
               <Nav />
-
               {matches.small && <SubscribeForm />}
+              {matches.large ? subscribeSection : null}
             </div>
-            {matches.large ? subscribeSection : null}
+           
             <FollowUs />
           </div>
         </footer>
