@@ -35,6 +35,10 @@
   }
 }
 
+.footerBoxPrimary {
+display: flex;
+flex-direction: column;
+}
 .footerBox {
   display: flex;
   flex-direction: row;
