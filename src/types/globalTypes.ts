@@ -3,5 +3,4 @@ export interface IGlobalState {
     isUserInfoModalOpen: boolean;
     isLogoutModalOpen: boolean;
     isMenuModalOpen: boolean;
-    theme: string;
   }

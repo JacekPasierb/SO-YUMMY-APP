@@ -30,6 +30,7 @@ import { selectTheme } from "./redux/global/globalSelectors";
 import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./assets/themes/themes";
+import { useAuth } from "./hooks/useAuth";
 
 const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -37,7 +38,8 @@ const App: FC = () => {
   const location = useLocation();
   const { pathname, search } = location;
   const isRefreshing = useSelector(selectIsRefreshing);
-  const theme = useSelector(selectTheme);
+  const { user } = useAuth();
+  const isDarktheme = user.isDarkTheme;
 
   useEffect(() => {
     navigate(`${pathname}${search}`, { replace: true });
@@ -48,8 +50,8 @@ const App: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    document.body.className = theme === "light" ? "" : "dark-theme";
-  }, [theme]);
+    document.body.className = isDarktheme ? "dark-theme" : "";
+  }, [isDarktheme]);
 
   return isRefreshing ? (
     <Loader />

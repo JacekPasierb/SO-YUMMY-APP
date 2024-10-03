@@ -10,7 +10,6 @@ const initialState: IGlobalState = {
   isUserInfoModalOpen: false,
   isLogoutModalOpen: false,
   isMenuModalOpen: false,
-  theme: "light",
 };
 
 export const globalSlice = createSlice({
@@ -29,9 +28,7 @@ export const globalSlice = createSlice({
     setIsMenuModalOpen: (state, action) => {
       state.isMenuModalOpen = action.payload;
     },
-    setTheme: (state, action) => {
-      state.theme = action.payload;
-    },
+  
   },
 });
 
@@ -40,7 +37,7 @@ export const {
   setIsUserInfoModalOpen,
   setIsLogoutModalOpen,
   setIsMenuModalOpen,
-  setTheme,
+  
 } = globalSlice.actions;
 
 export const globalReducer = globalSlice.reducer;
