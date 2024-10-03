@@ -13,9 +13,9 @@ const ThemeToggler = () => {
 
   const isDarkTheme = useSelector(selectTheme);
 
-  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
-    await dispatch(changeTheme(newTheme) as any);
+     dispatch(changeTheme(newTheme) );
   };
 
   
