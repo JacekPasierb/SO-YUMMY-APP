@@ -25,8 +25,7 @@ import { Loader } from "./components/Loader/Loader";
 
 import { AppDispatch } from "./redux/store";
 import { refreshUser } from "./redux/auth/operations";
-import { selectIsRefreshing } from "./redux/auth/selectors";
-import { selectTheme } from "./redux/global/globalSelectors";
+import { selectIsRefreshing, selectTheme } from "./redux/auth/selectors";
 import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
 import { ThemeProvider } from "styled-components";
 import { useAuth } from "./hooks/useAuth";

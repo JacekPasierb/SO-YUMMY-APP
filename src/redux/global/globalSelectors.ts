@@ -12,4 +12,4 @@ export const selectIsUserInfoModalOpen = (state: RootState) =>
 export const selectIsMenuModalOpen = (state: RootState) =>
   state.global.isMenuModalOpen;
 
-export const selectTheme = (state: RootState) => state.global.theme;
+
