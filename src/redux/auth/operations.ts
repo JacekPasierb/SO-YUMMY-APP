@@ -128,7 +128,7 @@ export const changeTheme =createAsyncThunk<boolean, boolean> (
     try {
       console.log("is",isDarkTheme);
       
-      const res = await axios.patch("/api/users/toogleTheme", isDarkTheme);
+      const res = await axios.patch("/api/users/toogleTheme", {isDarkTheme});
       console.log("eeee", res.data);
 
       return res.data;
