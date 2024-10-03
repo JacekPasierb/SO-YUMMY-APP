@@ -16,25 +16,22 @@ const ThemeToggler = () => {
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
     await dispatch(changeTheme(newTheme) as any);
-
   };
 
-
+  useEffect(() => {}, [isDarkTheme]);
   return (
-
-      <form>
-        <label className={css.switch}>
-          <input
-            type="checkbox"
-            name="theme"
-            checked={isDarkTheme}
-            onChange={handleChange}
-            className={css.switchInput}
-          />
-          <span className={css.switchSlider}></span>
-        </label>
-      </form>
-   
+    <form>
+      <label className={css.switch}>
+        <input
+          type="checkbox"
+          name="theme"
+          checked={isDarkTheme}
+          onChange={handleChange}
+          className={css.switchInput}
+        />
+        <span className={css.switchSlider}></span>
+      </label>
+    </form>
   );
 };
 
