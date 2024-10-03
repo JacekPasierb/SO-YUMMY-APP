@@ -9,19 +9,14 @@ import { AppDispatch } from "../../../redux/store";
 import { selectTheme } from "../../../redux/auth/selectors";
 
 const ThemeToggler = () => {
-  const dispatch:AppDispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
-  
   const isDarkTheme = useSelector(selectTheme);
-
 
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
     await dispatch(changeTheme(newTheme) as any);
-   
   };
-
- 
 
   return (
     <Formik initialValues={{ theme: isDarkTheme }} onSubmit={() => {}}>

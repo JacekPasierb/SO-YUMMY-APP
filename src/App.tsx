@@ -45,11 +45,9 @@ const App: FC = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch, isDarktheme]);
+  }, [dispatch]);
 
   useEffect(() => {
-    console.log("dark",isDarktheme);
-    
     document.body.className = isDarktheme ? "dark-theme" : "";
   }, [isDarktheme]);
 
