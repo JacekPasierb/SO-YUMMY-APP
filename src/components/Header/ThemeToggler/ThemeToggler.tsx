@@ -24,7 +24,7 @@ const ThemeToggler = () => {
 
       <form>
         <label className={css.switch}>
-          <Field
+          <input
             type="checkbox"
             name="theme"
             checked={isDarkTheme}
