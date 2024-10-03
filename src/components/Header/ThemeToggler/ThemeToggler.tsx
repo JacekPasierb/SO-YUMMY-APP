@@ -11,13 +11,13 @@ import { selectTheme } from "../../../redux/auth/selectors";
 const ThemeToggler = () => {
   const dispatch: AppDispatch = useDispatch();
 
-  const isDarkThemeFromStore = useSelector(selectTheme);
-  const [isDarkTheme, setIsDarkTheme] = useState(isDarkThemeFromStore);
+  const isDarkTheme = useSelector(selectTheme);
+  // const [isDarkTheme, setIsDarkTheme] = useState(isDarkThemeFromStore);
 
-  useEffect(() => {
-    setIsDarkTheme(isDarkThemeFromStore);
-  }, [isDarkThemeFromStore]);
-  
+  // useEffect(() => {
+  //   setIsDarkTheme(isDarkThemeFromStore);
+  // }, [isDarkThemeFromStore]);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
      dispatch(changeTheme(newTheme) );
