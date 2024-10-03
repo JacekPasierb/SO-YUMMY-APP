@@ -12,31 +12,23 @@ const ThemeToggler = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const isDarkTheme = useSelector(selectTheme);
-  // const [isDarkTheme, setIsDarkTheme] = useState(isDarkThemeFromStore);
-
-  // useEffect(() => {
-  //   setIsDarkTheme(isDarkThemeFromStore);
-  // }, [isDarkThemeFromStore]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
-     dispatch(changeTheme(newTheme) );
+    const newTheme = event.target.checked;
+    dispatch(changeTheme(newTheme));
   };
 
-  
   return (
-    
-      <label className={css.switch}>
-        <input
-          type="checkbox"
-          name="theme"
-          checked={isDarkTheme}
-          onChange={handleChange}
-          className={css.switchInput}
-        />
-        <span className={css.switchSlider}></span>
-      </label>
-    
+    <label className={css.switch}>
+      <input
+        type="checkbox"
+        name="theme"
+        checked={isDarkTheme}
+        onChange={handleChange}
+        className={css.switchInput}
+      />
+      <span className={css.switchSlider}></span>
+    </label>
   );
 };
 

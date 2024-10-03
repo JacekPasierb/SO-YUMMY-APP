@@ -48,8 +48,6 @@ const App: FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("ddd",isDarktheme);
-    
     document.body.className = isDarktheme ? "dark-theme" : "";
   }, [isDarktheme]);
 

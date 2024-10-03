@@ -126,18 +126,15 @@ export interface ChangeThemeResponse {
   status: string;
   code: number;
   data: {
-      isDarkTheme: boolean; // lub false
+    isDarkTheme: boolean;
   };
 }
 
-export const changeTheme =createAsyncThunk<ChangeThemeResponse, boolean> (
+export const changeTheme = createAsyncThunk<ChangeThemeResponse, boolean>(
   "auth/changeTheme",
   async (isDarkTheme, thunkAPI) => {
     try {
-      console.log("is",isDarkTheme);
-      
-      const res = await axios.patch("/api/users/toogleTheme", {isDarkTheme});
-      console.log("eeee", res.data.data);
+      const res = await axios.patch("/api/users/toogleTheme", { isDarkTheme });
 
       return res.data;
     } catch (error: any) {

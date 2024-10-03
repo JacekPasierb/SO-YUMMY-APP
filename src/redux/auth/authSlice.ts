@@ -91,13 +91,12 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(changeTheme.fulfilled, (state, action) => {
-        console.log("changeTheme fulfilled", action.payload); // Dodaj log
         if (action.payload && action.payload.data.isDarkTheme !== undefined) {
-          state.user.isDarkTheme = action.payload.data.isDarkTheme; // Sprawdź, czy ta linia jest wykonana
+          state.user.isDarkTheme = action.payload.data.isDarkTheme;
           state.error = null;
-      } else {
+        } else {
           console.error("Payload is not defined properly", action.payload);
-      }
+        }
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         if (action.payload !== undefined && action.payload !== null) {
