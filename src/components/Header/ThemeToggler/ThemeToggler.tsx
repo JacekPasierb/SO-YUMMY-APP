@@ -2,11 +2,11 @@ import css from "./ThemeToggler.module.css";
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTheme } from "../../../redux/global/globalSelectors";
 import { Formik, Form, Field } from "formik";
 import { useAuth } from "../../../hooks/useAuth";
 import { changeTheme, refreshUser } from "../../../redux/auth/operations";
 import { AppDispatch } from "../../../redux/store";
+import { selectTheme } from "../../../redux/auth/selectors";
 
 const ThemeToggler = () => {
   const dispatch:AppDispatch = useDispatch();
