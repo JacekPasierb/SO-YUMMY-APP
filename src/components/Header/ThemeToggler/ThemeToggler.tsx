@@ -3,13 +3,13 @@ import css from "./ThemeToggler.module.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/global/globalSelectors";
-import { setTheme } from "../../../redux/global/globalSlice";
 import { Formik, Form, Field } from "formik";
 import { useAuth } from "../../../hooks/useAuth";
-import { changeTheme } from "../../../redux/auth/operations";
+import { changeTheme, refreshUser } from "../../../redux/auth/operations";
+import { AppDispatch } from "../../../redux/store";
 
 const ThemeToggler = () => {
-  const dispatch = useDispatch();
+  const dispatch:AppDispatch = useDispatch();
 
   const { user } = useAuth();
   const isDarkTheme = user.isDarkTheme;
@@ -17,6 +17,7 @@ const ThemeToggler = () => {
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
     await dispatch(changeTheme(newTheme) as any);
+    dispatch(refreshUser());
   };
 
   return (
