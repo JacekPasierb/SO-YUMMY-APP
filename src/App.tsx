@@ -38,8 +38,8 @@ const App: FC = () => {
   const location = useLocation();
   const { pathname, search } = location;
   const isRefreshing = useSelector(selectIsRefreshing);
-  const { user } = useAuth();
-  const isDarktheme = user.isDarkTheme;
+  
+  const isDarktheme =useSelector(selectTheme)
 
   useEffect(() => {
     navigate(`${pathname}${search}`, { replace: true });

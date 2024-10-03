@@ -12,8 +12,8 @@ const ThemeToggler = () => {
   const dispatch:AppDispatch = useDispatch();
 
   
-  const { user } = useAuth();
-  const isDarktheme = user.isDarkTheme;
+  const isDarkTheme = useSelector(selectTheme);
+
 
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
@@ -22,13 +22,13 @@ const ThemeToggler = () => {
   };
 
   return (
-    <Formik initialValues={{ theme: isDarktheme }} onSubmit={() => {}}>
+    <Formik initialValues={{ theme: isDarkTheme }} onSubmit={() => {}}>
       <Form>
         <label className={css.switch}>
           <Field
             type="checkbox"
             name="theme"
-            checked={isDarktheme}
+            checked={isDarkTheme}
             onChange={handleChange}
             className={css.switchInput}
           />
