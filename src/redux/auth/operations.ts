@@ -88,7 +88,7 @@ export const logOut = createAsyncThunk<void, undefined>(
 );
 
 export const refreshUser = createAsyncThunk<
-  Pick<IUser, "name" | "email" | "avatar" | "userId">,
+  Pick<IUser, "name" | "email" | "avatar" | "userId" | "isDarkTheme">,
   undefined
 >("auth/refresh", async (_, thunkAPI) => {
   const state: any = thunkAPI.getState();
@@ -115,6 +115,20 @@ export const updateUser = createAsyncThunk<
   async (userData: Pick<IUser, "name" | "avatar">, thunkAPI) => {
     try {
       const res = await axios.patch("/api/users/update", userData);
+      return res.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changeTheme =createAsyncThunk<boolean, boolean> (
+  "auth/changeTheme",
+  async (isDarkTheme: boolean, thunkAPI) => {
+    try {
+      const res = await axios.patch("/api/users/toogleTheme", isDarkTheme);
+      console.log("eeee",res.data);
+      
       return res.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);

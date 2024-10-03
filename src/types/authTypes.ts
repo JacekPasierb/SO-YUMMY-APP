@@ -4,6 +4,7 @@ export interface IAuthState {
     name: null | any;
     email: null | string;
     avatar: null | string;
+    isDarkTheme: boolean;
   };
   token: null | any;
   isLoggedIn: boolean;
@@ -18,6 +19,7 @@ export interface IUser {
   password: string;
   avatar: string;
   userId: string;
+  isDarkTheme: boolean;
 }
 
 export interface IAuthResponse {

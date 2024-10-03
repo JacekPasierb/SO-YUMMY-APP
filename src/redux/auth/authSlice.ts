@@ -14,7 +14,7 @@ export interface RootState {
 }
 
 const initialState: IAuthState = {
-  user: { userId: null, name: null, email: null, avatar: null },
+  user: { userId: null, name: null, email: null, avatar: null, isDarkTheme: false },
   token: null,
   isLoggedIn: false,
   error: null,
@@ -73,6 +73,7 @@ const authSlice = createSlice({
         name: null,
         email: null,
         avatar: null,
+        isDarkTheme:false,
       };
       state.token = null;
       state.isLoggedIn = false;
@@ -102,6 +103,7 @@ const authSlice = createSlice({
           name: null,
           email: null,
           avatar: null,
+          isDarkTheme:false,
         };
         state.error = "Payload updateUser is null or undefined";
       }
