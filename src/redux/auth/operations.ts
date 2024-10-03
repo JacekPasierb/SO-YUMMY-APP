@@ -122,8 +122,12 @@ export const updateUser = createAsyncThunk<
   }
 );
 
-interface ChangeThemeResponse {
-  isDarkTheme: boolean;
+export interface ChangeThemeResponse {
+  status: string;
+  code: number;
+  data: {
+      isDarkTheme: boolean; // lub false
+  };
 }
 
 export const changeTheme =createAsyncThunk<ChangeThemeResponse, boolean> (
