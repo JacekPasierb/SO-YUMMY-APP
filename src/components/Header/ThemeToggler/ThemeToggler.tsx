@@ -21,6 +21,10 @@ const ThemeToggler = () => {
    
   };
 
+  useEffect(() => {
+    document.body.className = isDarkTheme ? 'dark-theme' : '';
+  }, [isDarkTheme]);
+
   return (
     <Formik initialValues={{ theme: isDarkTheme }} onSubmit={() => {}}>
       <Form>
