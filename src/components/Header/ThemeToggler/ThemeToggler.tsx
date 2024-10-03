@@ -11,13 +11,13 @@ import { AppDispatch } from "../../../redux/store";
 const ThemeToggler = () => {
   const dispatch:AppDispatch = useDispatch();
 
-  const { user } = useAuth();
-  const isDarkTheme = user.isDarkTheme;
+  
+  const isDarkTheme = useSelector(selectTheme);
 
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
     await dispatch(changeTheme(newTheme) as any);
-    dispatch(refreshUser());
+   
   };
 
   return (
