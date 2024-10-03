@@ -43,9 +43,9 @@ const App: FC = () => {
     navigate(`${pathname}${search}`, { replace: true });
   }, [navigate, pathname, search]);
 
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch,isDarktheme]);
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch,isDarktheme]);
 
   useEffect(() => {
     document.body.className = isDarktheme ? "dark-theme" : "";
