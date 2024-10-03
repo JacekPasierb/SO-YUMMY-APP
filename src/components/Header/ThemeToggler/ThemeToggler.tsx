@@ -5,37 +5,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "../../../redux/global/globalSelectors";
 import { setTheme } from "../../../redux/global/globalSlice";
 import { Formik, Form, Field } from "formik";
+import { useAuth } from "../../../hooks/useAuth";
+import { changeTheme } from "../../../redux/auth/operations";
 
 const ThemeToggler = () => {
   const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
 
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  const { user } = useAuth();
+  const isDarkTheme = user.isDarkTheme;
 
-  const handleChange = () => {
-    if (theme === "light") {
-      dispatch(setTheme("dark"));
-    } else {
-      dispatch(setTheme("light"));
-    }
+  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
+    await dispatch(changeTheme(newTheme) as any);
   };
 
-  useEffect(() => {
-    const saveTheme = localStorage.getItem("theme") || "light";
-    dispatch(setTheme(saveTheme));
-  }, []);
-
   return (
-    <Formik initialValues={{ theme: theme }} onSubmit={() => {}}>
+    <Formik initialValues={{ theme: isDarkTheme }} onSubmit={() => {}}>
       <Form>
         <label className={css.switch}>
           <Field
             type="checkbox"
             name="theme"
-            value={theme}
-            checked={theme === "dark"}
+            checked={isDarkTheme}
             onChange={handleChange}
             className={css.switchInput}
           />

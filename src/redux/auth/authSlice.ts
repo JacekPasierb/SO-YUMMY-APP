@@ -6,6 +6,7 @@ import {
   refreshUser,
   updateUser,
   resendVerificationEmail,
+  changeTheme,
 } from "./operations";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -92,6 +93,9 @@ const authSlice = createSlice({
       state.isRefreshing = false;
       state.isLoggedIn = false;
     });
+    builder.addCase(changeTheme.fulfilled,(state, action) =>{
+      state.user.isDarkTheme = action.payload;
+    })
     builder.addCase(updateUser.fulfilled, (state, action) => {
       if (action.payload !== undefined && action.payload !== null) {
         state.user.name = action.payload.data.user.name;

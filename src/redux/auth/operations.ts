@@ -124,11 +124,11 @@ export const updateUser = createAsyncThunk<
 
 export const changeTheme =createAsyncThunk<boolean, boolean> (
   "auth/changeTheme",
-  async (isDarkTheme: boolean, thunkAPI) => {
+  async (isDarkTheme, thunkAPI) => {
     try {
       const res = await axios.patch("/api/users/toogleTheme", isDarkTheme);
-      console.log("eeee",res.data);
-      
+      console.log("eeee", res.data);
+
       return res.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
