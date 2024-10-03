@@ -21,7 +21,7 @@ const ThemeToggler = () => {
 
 
   return (
-    <Formik initialValues={{ theme: isDarkTheme }} onSubmit={() => {}}>
+
       <Form>
         <label className={css.switch}>
           <Field
@@ -34,7 +34,7 @@ const ThemeToggler = () => {
           <span className={css.switchSlider}></span>
         </label>
       </Form>
-    </Formik>
+   
   );
 };
 
