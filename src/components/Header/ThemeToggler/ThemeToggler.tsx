@@ -22,7 +22,7 @@ const ThemeToggler = () => {
 
   return (
 
-      <Form>
+      <form>
         <label className={css.switch}>
           <Field
             type="checkbox"
@@ -33,7 +33,7 @@ const ThemeToggler = () => {
           />
           <span className={css.switchSlider}></span>
         </label>
-      </Form>
+      </form>
    
   );
 };
