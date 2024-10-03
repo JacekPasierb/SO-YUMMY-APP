@@ -18,9 +18,9 @@ const ThemeToggler = () => {
     await dispatch(changeTheme(newTheme) as any);
   };
 
-  useEffect(() => {}, [isDarkTheme]);
+  
   return (
-    <form>
+    
       <label className={css.switch}>
         <input
           type="checkbox"
@@ -31,7 +31,7 @@ const ThemeToggler = () => {
         />
         <span className={css.switchSlider}></span>
       </label>
-    </form>
+    
   );
 };
 
