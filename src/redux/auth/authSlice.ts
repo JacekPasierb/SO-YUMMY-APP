@@ -94,7 +94,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     });
     builder.addCase(changeTheme.fulfilled,(state, action) =>{
-      state.user.isDarkTheme = action.payload;
+      state.user.isDarkTheme = action.payload.isDarkTheme;
     })
     builder.addCase(updateUser.fulfilled, (state, action) => {
       if (action.payload !== undefined && action.payload !== null) {

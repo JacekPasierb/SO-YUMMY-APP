@@ -122,7 +122,11 @@ export const updateUser = createAsyncThunk<
   }
 );
 
-export const changeTheme =createAsyncThunk<boolean, boolean> (
+interface ChangeThemeResponse {
+  isDarkTheme: boolean;
+}
+
+export const changeTheme =createAsyncThunk<ChangeThemeResponse, boolean> (
   "auth/changeTheme",
   async (isDarkTheme, thunkAPI) => {
     try {
