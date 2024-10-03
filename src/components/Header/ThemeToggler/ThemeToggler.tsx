@@ -16,8 +16,12 @@ const ThemeToggler = () => {
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const newTheme = event.target.checked; // Ustaw nowy temat na podstawie checkboxa
     await dispatch(changeTheme(newTheme) as any);
+
   };
 
+  useEffect(() => {
+    document.body.className = isDarkTheme ? "dark-theme" : "";
+  }, [isDarkTheme]);
   return (
     <Formik initialValues={{ theme: isDarkTheme }} onSubmit={() => {}}>
       <Form>
