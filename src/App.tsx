@@ -51,11 +51,11 @@ useEffect(() => {
       const decoded: any = jwtDecode(token);
 
       // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
-      const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
+      // const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
 
       
 
-      console.log('Token wygasa:', expirationDate); // Możesz wyświetlić to w konsoli
+      console.log('Token wygasa:', decoded); // Możesz wyświetlić to w konsoli
     } catch (error) {
       console.error('Błąd dekodowania tokena:', error);
     }
