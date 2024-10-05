@@ -163,9 +163,4 @@ button:focus-visible {
   }
 }
 
-/* dark-theme.css */
-body.dark-theme {
-  color: white;
 
-  background-color: black;
-}

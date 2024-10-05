@@ -72,7 +72,7 @@
 .menuModal__iconClose {
   width: 32px;
   height: 32px;
-stroke: red;
+
   cursor: pointer;
 }
 .menuModal__iconClose:hover .icon {
