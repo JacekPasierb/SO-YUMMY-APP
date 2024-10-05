@@ -22,9 +22,10 @@
 
 .search__input {
   width: 100%;
+padding: 20px;
 
   font-size: var(--font-size-asaid);
-  color: var(--color-text-six); /*update*/
+  color: var(--color-text-nav); /*new update*/
 
   background-color: transparent;
   border: none;
