@@ -40,10 +40,10 @@ const App: FC = () => {
 
   const isDarktheme = useSelector(selectTheme);
 
-
+  const {token} =useAuth();
 useEffect(() => {
   // Pobieramy token z localStorage (lub innego źródła)
-  const {token} =useAuth();
+ 
 
   if (token) {
     try {
