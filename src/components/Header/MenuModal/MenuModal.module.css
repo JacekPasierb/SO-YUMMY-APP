@@ -72,10 +72,10 @@
 .menuModal__iconClose {
   width: 32px;
   height: 32px;
-
+stroke: var(--color-Hamburger);
   cursor: pointer;
 }
-.menuModal__iconClose .icon:hover {
+.menuModal__iconClose:hover {
 stroke: var(--color-text-highlight);
 }
 
