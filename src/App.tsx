@@ -55,7 +55,7 @@ useEffect(() => {
       const now = Date.now();
        
        // Porównujemy timestamp (czas w milisekundach)
-       if (now >= now) { // używamy getTime(), aby uzyskać timestamp z obiektu Date
+       if (now >= expirationDate.getTime()) { // używamy getTime(), aby uzyskać timestamp z obiektu Date
         navigate("/signin"); // Przekierowanie do strony logowania
       }
       console.log('Token wygasa:', expirationDate); // Możesz wyświetlić to w konsoli
