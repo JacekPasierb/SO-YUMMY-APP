@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import css from "./IconCloseModal.module.css";
 import close from "../../images/X.png";
+import sprite from "../../assets/icons/sprite.svg";
 
 interface IconCloseModalRequest {
   onClose: () => void;
@@ -8,12 +9,10 @@ interface IconCloseModalRequest {
 
 const IconCloseModal:FC<IconCloseModalRequest>= ({ onClose }) => {
   return (
-    <img
-      src={close}
-      alt="ikona zamykająca modal"
-      className={css.iconClose}
-      onClick={onClose}
-    />
+    <svg onClick={onClose} className={css.iconClose}>
+    <use href={`${sprite}#icon-CloseMenu`}  />
+  </svg>
+
   );
 };
 
