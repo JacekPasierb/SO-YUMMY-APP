@@ -38,6 +38,9 @@ const App: FC = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   const isDarktheme = useSelector(selectTheme);
+const {token} =useAuth();
+  console.log("t",token);
+  
 
   useEffect(() => {
     navigate(`${pathname}${search}`, { replace: true });

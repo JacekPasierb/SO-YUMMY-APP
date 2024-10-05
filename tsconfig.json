@@ -10,9 +10,14 @@
     "baseUrl": ".",
     "jsx": "react-jsx",
     "types": ["react"],
-   "allowUmdGlobalAccess":false,
-   "outDir": "./dist",  
-   "rootDir": "./src"   
+    "allowUmdGlobalAccess": false,
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
-  "include": ["./", ".module.css",  "src/assets/icons/sprite.d.ts", "src/typing.d.ts"]
+  "include": [
+    "./",
+    ".module.css",
+    "src/assets/icons/sprite.d.ts",
+    "src/typing.d.ts"
+  ]
 }
