@@ -14,5 +14,5 @@
    "outDir": "./dist",  
    "rootDir": "./src"   
   },
-  "include": ["./", ".module.css",  "src/assets/icons/sprite.d.ts"]
+  "include": ["./", ".module.css",  "src/assets/icons/sprite.d.ts", "src/typing.d.ts"]
 }

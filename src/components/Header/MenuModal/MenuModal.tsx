@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import css from "./MenuModal.module.css";
-import close from "../../../images/X.png";
+import styles from "./MenuModal.module.css";
+import closeIcon from "../../../images/X.png";
 import Logo from "../Logo/Logo";
 import NavigationMobile from "../NavigationMobile/NavigationMobile";
-
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
+
 
 interface MenuModalProps {
   onClose: () => void;
@@ -12,19 +12,19 @@ interface MenuModalProps {
 
 const MenuModal:FC<MenuModalProps>= ({ onClose }) => {
   return (
-    <div className={css.backgroundMenuModal}>
-      <div className={` ${css.container} ${css.menuModal}`}>
-        <div className={css.headModal}>
+    <div className={styles.menuModal__background}>
+      <div className={` ${styles.menuModal__container} ${styles.menuModal}`}>
+        <div className={styles.menuModal__header}>
           <Logo />
           <img
-            src={close}
-            alt="ikona zamykająca modal"
-            className={css.iconClose}
+            src={closeIcon}
+            alt="Close modal icon"
+            className={styles.menuModal__iconClose} 
             onClick={onClose}
           />
         </div>
         <NavigationMobile onClose={onClose} />
-        <div className={css.switcher}>
+        <div className={styles.menuModal__switcher}>
           <ThemeToggler />
         </div>
       </div>

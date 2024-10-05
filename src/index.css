@@ -73,6 +73,7 @@
   --color-bg-btn-secondary:rgba(139, 170, 54, 1) ;
   --color-bg-footer:  rgba(34, 37, 42, 1); 
   --color-bg-icons:rgba(139, 170, 54, 1);
+--color-bg-menuModal:rgba(235, 243, 212, 1); 
 
   /* Border colors*/
   --color-border-search: #f0f0f0;
@@ -97,6 +98,8 @@
   --color-bg-footer:  rgba(139, 170, 54, 1); 
   --color-bg-btn-secondary: rgba(30, 31, 40, 1); 
   --color-bg-icons:rgba(250, 250, 250, 1);
+  --color-bg-menuModal:rgba(30, 31, 40, 1); 
+
 
   
     /* Border colors*/
