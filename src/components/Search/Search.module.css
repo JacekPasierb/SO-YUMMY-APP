@@ -22,7 +22,7 @@
 
 .search__input {
   width: 100%;
-padding: 20px;
+  padding: 20px;
 
   font-size: var(--font-size-asaid);
   color: var(--color-text-nav); /*new update*/
@@ -47,9 +47,7 @@ padding: 20px;
   }
 }
 
-.search__input:focus {
-  color: #000000;
-}
+
 
 .search__btn {
   padding: 16px 32px;

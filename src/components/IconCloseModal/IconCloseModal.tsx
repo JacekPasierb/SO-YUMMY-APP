@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import css from "./IconCloseModal.module.css";
-import close from "../../images/X.png";
 import sprite from "../../assets/icons/sprite.svg";
 
 interface IconCloseModalRequest {
