@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
-import css from "./NavigationMobile.module.css";
+import styles from "./NavigationMobile.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
 
 interface NavigationMobileProps {
@@ -9,38 +9,41 @@ interface NavigationMobileProps {
 
 const NavigationMobile: FC<NavigationMobileProps> = ({ onClose }) => {
   return (
-    <nav className={css.navigation}>
-      <NavLink to="/categories/:categoryName" className={css.link}>
-        <span className={css.navText} onClick={onClose}>
+    <nav className={styles.navigation}>
+      <NavLink
+        to="/categories/:categoryName"
+        className={styles.navigation__link}
+      >
+        <span className={styles.navigation__text} onClick={onClose}>
           Categories
         </span>
       </NavLink>
-      <NavLink to="/add" className={css.link}>
-        <span className={css.navText} onClick={onClose}>
+      <NavLink to="/add" className={styles.navigation__link}>
+        <span className={styles.navigation__text} onClick={onClose}>
           Add Recipes
         </span>
       </NavLink>
-      <NavLink to="/ownRecipes" className={css.link}>
-        <span className={css.navText} onClick={onClose}>
+      <NavLink to="/ownRecipes" className={styles.navigation__link}>
+        <span className={styles.navigation__text} onClick={onClose}>
           My Recipes
         </span>
       </NavLink>
-      <NavLink to="/favorite" className={css.link}>
-        <span className={css.navText} onClick={onClose}>
+      <NavLink to="/favorite" className={styles.navigation__link}>
+        <span className={styles.navigation__text} onClick={onClose}>
           Favorites
         </span>
       </NavLink>
-      <NavLink to="/shopping-list" className={css.link}>
-        <span className={css.navText} onClick={onClose}>
+      <NavLink to="/shopping-list" className={styles.navigation__link}>
+        <span className={styles.navigation__text} onClick={onClose}>
           Shopping List
         </span>
       </NavLink>
-      <NavLink to="/search " className={css.link}>
-        <svg className={css.iconSearch}>
-          <use href={sprite + `#icon-search`}></use>
+      <NavLink to="/search " className={styles.navigation__link}>
+        <svg className={styles.navigation__icon}>
+          <use href={`${sprite}#icon-search`}></use>
         </svg>
-        <span className={css.navText} onClick={onClose}>
-          Shearch
+        <span className={styles.navigation__text} onClick={onClose}>
+          Search
         </span>
       </NavLink>
     </nav>
