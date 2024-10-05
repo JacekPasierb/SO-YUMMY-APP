@@ -17,7 +17,7 @@ const MenuModal: FC<MenuModalProps> = ({ onClose }) => {
         <div className={styles.menuModal__header}>
           <Logo />
           <svg onClick={onClose} className={styles.menuModal__iconClose}>
-            <use href={`${sprite}#icon-CloseMenu`} />
+            <use href={`${sprite}#icon-CloseMenu`} className={styles.icon}/>
           </svg>
         </div>
         <NavigationMobile onClose={onClose} />

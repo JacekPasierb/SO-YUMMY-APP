@@ -75,7 +75,7 @@
 
   cursor: pointer;
 }
-.menuModal__iconClose:hover {
+.menuModal__iconClose .icon:hover {
 stroke: var(--color-text-highlight);
 }
 
