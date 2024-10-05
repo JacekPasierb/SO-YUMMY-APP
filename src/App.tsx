@@ -39,7 +39,7 @@ const App: FC = () => {
 
   const isDarktheme = useSelector(selectTheme);
 const {token} =useAuth();
-  console.log("t",token);
+
   
 
   useEffect(() => {
