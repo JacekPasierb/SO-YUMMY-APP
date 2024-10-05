@@ -77,6 +77,8 @@
   /* Border colors*/
   --color-border-search: #f0f0f0;
   --color-border-btn: rgba(139, 170, 54, 1);
+
+  --color-Hamburger: rgba(34, 37, 42, 1);
 }
 
 .dark-theme {
@@ -99,6 +101,9 @@
   
     /* Border colors*/
     --color-border-search: rgba(139, 170, 54, 1);
+
+    --color-Hamburger: rgba(250, 250, 250, 1);
+
 }
 
 /* Apply box-sizing globally to ensure padding/border are included in element width and height */
