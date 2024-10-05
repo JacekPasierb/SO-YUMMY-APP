@@ -1,6 +1,7 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
 const RegisterPage = lazy(() => import("./Pages/RegisterPage/RegisterPage"));
@@ -38,9 +39,28 @@ const App: FC = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   const isDarktheme = useSelector(selectTheme);
-const {token} =useAuth();
 
-  
+
+useEffect(() => {
+  // Pobieramy token z localStorage (lub innego źródła)
+  const {token} =useAuth();
+
+  if (token) {
+    try {
+      // Dekodowanie tokena JWT
+      const decoded: any = jwtDecode(token);
+
+      // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
+      const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
+
+      
+
+      console.log('Token wygasa:', expirationDate); // Możesz wyświetlić to w konsoli
+    } catch (error) {
+      console.error('Błąd dekodowania tokena:', error);
+    }
+  }
+}, []);
 
   useEffect(() => {
     navigate(`${pathname}${search}`, { replace: true });
