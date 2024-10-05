@@ -19,6 +19,23 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
+// Interceptor for handling 401 errors
+axios.interceptors.response.use(
+  (response) => response, // Jeśli odpowiedź jest poprawna, zwracamy ją
+  async (error) => {
+    const { response } = error;
+
+    // Jeśli serwer zwróci błąd 401
+    if (response && response.status === 401) {
+    
+      window.location.href = "/signin";
+    }
+
+    // Odrzucamy inne błędy
+    return Promise.reject(error);
+  }
+);
+
 export const register = createAsyncThunk<
   IAuthResponse,
   Pick<IUser, "email" | "password" | "name">
