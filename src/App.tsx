@@ -52,12 +52,18 @@ useEffect(() => {
 
       // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
       const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
+      const now = Date.now();
+       
+       // Porównujemy timestamp (czas w milisekundach)
+       if (now >= expirationDate.getTime()) { // używamy getTime(), aby uzyskać timestamp z obiektu Date
+        navigate("/signin"); // Przekierowanie do strony logowania
+      }
       console.log('Token wygasa:', expirationDate); // Możesz wyświetlić to w konsoli
     } catch (error) {
       console.error('Błąd dekodowania tokena:', error);
     }
   }
-}, []);
+}, [token,navigate]);
 
   useEffect(() => {
     navigate(`${pathname}${search}`, { replace: true });
