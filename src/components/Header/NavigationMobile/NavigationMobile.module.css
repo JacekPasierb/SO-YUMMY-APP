@@ -50,5 +50,5 @@
 }
 
 .navigation__icon:hover {
-  stroke: var(--color-text-highlight);
+  stroke: var(--color-text-highlight) !important;
 }
