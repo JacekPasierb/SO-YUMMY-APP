@@ -86,7 +86,7 @@
 <path fill="none" stroke="#fafafa" style="stroke: var(--color-Hamburger, #fafafa)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4" d="M3 16h42M3 2h42M3 30h28"></path>
 </symbol>
 <symbol id="icon-CloseMenu" viewBox="0 0 32 32">
-<path  stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4"    d="M29.335 2.667l-26.667 26.667M2.668 2.667l26.667 26.667"></path>
+<path  stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4"  style="stroke: var(--color-Hamburger, #fafafa)"  d="M29.335 2.667l-26.667 26.667M2.668 2.667l26.667 26.667"></path>
 </symbol>
 </defs>
 </svg>
