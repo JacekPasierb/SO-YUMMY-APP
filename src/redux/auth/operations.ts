@@ -28,7 +28,7 @@ axios.interceptors.response.use(
     // Jeśli serwer zwróci błąd 401
     if (response && response.status === 401) {
     
-      window.location.href = "/signin";
+      return window.location.href = "/signin";
     }
 
     // Odrzucamy inne błędy

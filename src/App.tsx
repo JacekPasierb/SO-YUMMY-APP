@@ -52,9 +52,6 @@ useEffect(() => {
 
       // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
       const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
-
-      
-
       console.log('Token wygasa:', expirationDate); // Możesz wyświetlić to w konsoli
     } catch (error) {
       console.error('Błąd dekodowania tokena:', error);
