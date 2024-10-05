@@ -49,6 +49,6 @@
   }
 }
 
-.navigation__icon:hover {
-  stroke: var(--color-text-highlight) !important;
+.navigation__icon .icon:hover {
+  stroke: var(--color-text-highlight);
 }
