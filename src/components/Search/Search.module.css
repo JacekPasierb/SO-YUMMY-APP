@@ -22,7 +22,7 @@
 
 .search__input {
   width: 100%;
-  padding: 20px;
+  padding: 32px;
 
   font-size: var(--font-size-asaid);
   color: var(--color-text-nav); /*new update*/
@@ -30,6 +30,10 @@
   background-color: transparent;
   border: none;
   outline: none;
+
+  @media screen and (min-width: 768px) {
+    padding: 38px;
+  }
 }
 
 .search__input::placeholder {
