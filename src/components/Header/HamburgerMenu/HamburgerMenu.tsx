@@ -27,7 +27,7 @@ const HamburgerMenu = () => {
         width="40"
         height="40"
       >
-        <use href={`${sprite}#icon-menu`} />
+        <use href={`${sprite}#icon-Menu`} />
       </svg>
       {isMenuModalOpen && <MenuModal onClose={toggleMenuModal} />}
     </>
