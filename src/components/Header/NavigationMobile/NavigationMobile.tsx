@@ -40,7 +40,7 @@ const NavigationMobile: FC<NavigationMobileProps> = ({ onClose }) => {
       </NavLink>
       <NavLink to="/search " className={styles.navigation__link}>
         <svg className={styles.navigation__icon}>
-          <use href={`${sprite}#icon-search`} className={styles.icon}></use>
+          <use href={`${sprite}#icon-search`} ></use>
         </svg>
         <span className={styles.navigation__text} onClick={onClose}>
           Search

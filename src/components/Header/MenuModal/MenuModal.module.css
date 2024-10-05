@@ -75,6 +75,9 @@
 
   cursor: pointer;
 }
+.menuModal__iconClose:hover {
+stroke: var(--color-text-highlight);
+}
 
 .menuModal__switcher {
   align-items: start;

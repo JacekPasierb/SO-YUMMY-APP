@@ -49,6 +49,6 @@
   }
 }
 
-.navigation__icon .icon:hover {
+.navigation__icon:hover {
   stroke: var(--color-text-highlight);
 }
