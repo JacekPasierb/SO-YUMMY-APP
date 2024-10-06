@@ -42,40 +42,22 @@ const App: FC = () => {
 
   const { token } = useAuth();
   useEffect(() => {
-    console.log("hello", token);
-
     if (token) {
-      console.log("tok true");
-
       try {
         const decoded: any = jwtDecode(token);
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
+       
+          // Ustawiamy interwał sprawdzający co sekundę, czy token wygasł
+      const intervalId = setInterval(() => {
         const now = Date.now();
-        console.log("data wyg", expirationDate);
-        // Obliczamy, ile czasu zostało do wygaśnięcia tokena
-        const timeUntilExpiration = expirationDate.getTime() - now;
-        console.log("roznica", timeUntilExpiration);
-        if (timeUntilExpiration > 0) {
-          console.log("wieksze");
-
-          // Ustawiamy odliczanie do wygaśnięcia tokena
-          const timeoutId = setTimeout(() => {
-            console.log("powinno navigate");
-
-            navigate("/signin"); // Przekierowanie do strony logowania
-          }, timeUntilExpiration);
-          console.log("wylacz time");
-
-          // Sprzątanie po zakończeniu komponentu
-          return () => {
-            console.log("Komponent się demontuje, czyszczenie timeouta");
-            clearTimeout(timeoutId);
-          };
-        } else {
-          // Token już wygasł, przenieś użytkownika od razu
+        if (now >= expirationDate.getTime()) {
+          console.log("Token wygasł, przenosimy na /signin");
+          clearInterval(intervalId);
           navigate("/signin");
         }
-        console.log("Token wygasa:", expirationDate); // Możesz wyświetlić to w konsoli
+      }, 1000); // Sprawdzamy co sekundę
+      // Sprzątanie
+      return () => clearInterval(intervalId);
       } catch (error) {
         console.error("Błąd dekodowania tokena:", error);
       }
@@ -98,7 +80,6 @@ const App: FC = () => {
     <Loader />
   ) : (
     <>
-      <button onClick={() => navigate("/signin")}>Przekieruj na Signin</button>
       <Routes>
         <Route
           path="/welcome"
