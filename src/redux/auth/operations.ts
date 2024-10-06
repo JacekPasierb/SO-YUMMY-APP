@@ -108,17 +108,17 @@ export const refreshUser = createAsyncThunk<
 
     return res.data.data;
   } catch (error: any) {
-    // if (error.response && error.response.status === 401) {
-    //   // Sesja wygasła, więc można wywołać akcję wylogowania i przekierowania
-    //   console.log("kon");
+    if (error.response && error.response.status === 401) {
+      // Sesja wygasła, więc można wywołać akcję wylogowania i przekierowania
+      console.log("kon");
       
-    //   thunkAPI.dispatch(logOut()); // Wywołaj akcję wylogowania
-    //   console.log("coo");
+      thunkAPI.dispatch(logOut()); // Wywołaj akcję wylogowania
+      console.log("coo");
       
-    //   toast.error("Session expired. Please log in again."); // Można dodać powiadomienie
-    //   navigate("/signin"); // Opcjonalne przekierowanie
-    //   return thunkAPI.rejectWithValue("Session expired");
-    // }
+      toast.error("Session expired. Please log in again."); // Można dodać powiadomienie
+       // Opcjonalne przekierowanie
+      return thunkAPI.rejectWithValue("Session expired");
+    }
 
     return thunkAPI.rejectWithValue(error.message);
   }
