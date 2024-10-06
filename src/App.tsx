@@ -42,22 +42,29 @@ const App: FC = () => {
 
   const {token} =useAuth();
 useEffect(() => {
-  // Pobieramy token z localStorage (lub innego źródła)
- 
-
   if (token) {
     try {
       // Dekodowanie tokena JWT
       const decoded: any = jwtDecode(token);
-
       // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
       const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
       const now = Date.now();
-       
-       // Porównujemy timestamp (czas w milisekundach)
-       if (now >= expirationDate.getTime()) { // używamy getTime(), aby uzyskać timestamp z obiektu Date
-        navigate("/signin"); // Przekierowanie do strony logowania
-      }
+
+        // Obliczamy, ile czasu zostało do wygaśnięcia tokena
+        const timeUntilExpiration = expirationDate.getTime() - now;
+
+         if (timeUntilExpiration > 0) {
+          // Ustawiamy odliczanie do wygaśnięcia tokena
+          const timeoutId = setTimeout(() => {
+            navigate("/signin"); // Przekierowanie do strony logowania
+          }, timeUntilExpiration);
+
+          // Sprzątanie po zakończeniu komponentu
+          return () => clearTimeout(timeoutId);
+        } else {
+          // Token już wygasł, przenieś użytkownika od razu
+          navigate("/signin");
+        }
       console.log('Token wygasa:', expirationDate); // Możesz wyświetlić to w konsoli
     } catch (error) {
       console.error('Błąd dekodowania tokena:', error);
