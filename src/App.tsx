@@ -24,6 +24,8 @@ const RecipePage = lazy(() => import("./Pages/RecipePage/RecipePage"));
 const AddRecipePage = lazy(() => import("./Pages/AddRecipePage/AddRecipePage"));
 const FavoritesPage = lazy(() => import("./Pages/FavoritesPage/FavoritesPage"));
 import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
+import { jwtDecode } from "jwt-decode";
+import { useAuth } from "./hooks/useAuth";
 const SharedLayout = lazy(
   () => import("./components/SharedLayout/SharedLayout")
 );
@@ -43,9 +45,39 @@ const App: FC = () => {
   // }, [navigate, pathname, search]);
 
   // Odświeżanie użytkownika po każdym odświeżeniu aplikacji
+  const {token}=useAuth();
+   // Funkcja do dekodowania tokenu i ustawienia timeoutu na wylogowanie
+   const setupAutoLogout = (token: string) => {
+    if (!token) return;
+
+    try {
+      const decodedToken: any = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+      
+      // Sprawdzenie, czy token już wygasł
+      if (decodedToken.exp < currentTime) {
+        dispatch(logOut()); // Wyloguj natychmiast, jeśli token wygasł
+      } else {
+        // Oblicz czas do wygaśnięcia tokenu
+        const timeUntilExpiry = (decodedToken.exp - currentTime) * 1000;
+        // Ustaw timeout na automatyczne wylogowanie
+        setTimeout(() => {
+          dispatch(logOut());
+        }, timeUntilExpiry);
+      }
+    } catch (error) {
+      console.error("Błąd podczas dekodowania tokenu:", error);
+      dispatch(logOut()); // Wyloguj, jeśli dekodowanie się nie powiodło
+    }
+  };
+
+  // Ustawienie wylogowania po odświeżeniu aplikacji
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
+    if (token) {
+      setupAutoLogout(token); // Ustaw auto wylogowanie, jeśli token istnieje
+    }
+  }, [dispatch, token]);
 
   // Zmiana motywu (dark/light)
   useEffect(() => {
