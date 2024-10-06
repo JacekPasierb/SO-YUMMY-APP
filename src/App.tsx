@@ -48,19 +48,13 @@ const App: FC = () => {
       console.log("tok true");
 
       try {
-        // Dekodowanie tokena JWT
         const decoded: any = jwtDecode(token);
-        console.log("decode po");
-
-        // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
         const now = Date.now();
         console.log("data wyg", expirationDate);
-
         // Obliczamy, ile czasu zostało do wygaśnięcia tokena
-        const timeUntilExpiration = expirationDate.getTime() - now;
+        const timeUntilExpiration = 0;
         console.log("roznica", timeUntilExpiration);
-
         if (timeUntilExpiration > 0) {
           console.log("wieksze");
 
