@@ -48,7 +48,7 @@ const App: FC = () => {
 
         console.log("Czas do wygaśnięcia tokena:", timeUntilExpiration);
 
-        if (true) {
+        if (timeUntilExpiration > -1) {
           const timeoutId = setTimeout(() => {
             console.log("Token wygasł, przenosimy na /signin");
             navigate("/");
