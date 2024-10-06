@@ -46,6 +46,7 @@ const App: FC = () => {
       try {
         const decoded: any = jwtDecode(token);
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
+console.log("wygas",expirationDate);
 
         // Ustawiamy interwał sprawdzający co sekundę, czy token wygasł
         const intervalId = setInterval(() => {
