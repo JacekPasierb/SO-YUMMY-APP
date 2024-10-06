@@ -19,7 +19,7 @@ import { PersistPartial } from "redux-persist/es/persistReducer";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 import { favoriteRecipesReducer } from "./favoriteRecipes/favoriteRecipesSlice";
 import { IAuthState } from "../types/authTypes";
-import { useNavigate } from "react-router-dom";
+
 
 
 const authPersistConfig = {
@@ -41,9 +41,7 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      thunk: {
-        extraArgument: { navigate: useNavigate() },
-      },
+     
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
