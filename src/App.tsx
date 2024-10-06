@@ -45,6 +45,8 @@ const App: FC = () => {
     console.log("hello",token);
     
     if (token) {
+      console.log("tok true");
+      
       try {
         // Dekodowanie tokena JWT
         const decoded: any = jwtDecode(token);
