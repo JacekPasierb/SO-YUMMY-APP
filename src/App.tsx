@@ -53,7 +53,7 @@ const App: FC = () => {
         const now = Date.now();
         console.log("data wyg", expirationDate);
         // Obliczamy, ile czasu zostało do wygaśnięcia tokena
-        const timeUntilExpiration = 0;
+        const timeUntilExpiration = expirationDate.getTime() - now;
         console.log("roznica", timeUntilExpiration);
         if (timeUntilExpiration > 0) {
           console.log("wieksze");
@@ -98,6 +98,7 @@ const App: FC = () => {
     <Loader />
   ) : (
     <>
+      <button onClick={() => navigate("/signin")}>Przekieruj na Signin</button>
       <Routes>
         <Route
           path="/welcome"
