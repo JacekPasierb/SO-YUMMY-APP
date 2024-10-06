@@ -1,11 +1,9 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import { Route, Routes } from "react-router-dom";
 import { AppDispatch } from "./redux/store";
 import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing, selectTheme } from "./redux/auth/selectors";
-import { useAuth } from "./hooks/useAuth";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
@@ -31,8 +29,10 @@ const CategoriesByName = lazy(
 
 const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
+  
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
+  
 
   // useEffect(() => {
   //   navigate(`${pathname}${search}`, { replace: true });
@@ -52,6 +52,7 @@ const App: FC = () => {
     <Loader />
   ) : (
     <>
+  
       <Routes>
         {/* Trasy z restrykcjami */}
         <Route
