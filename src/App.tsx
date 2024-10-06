@@ -62,10 +62,15 @@ const App: FC = () => {
 console.log("roznica", timeUntilExpiration);
 
         if (timeUntilExpiration > 0) {
+          console.log("wieksze");
+          
           // Ustawiamy odliczanie do wygaśnięcia tokena
           const timeoutId = setTimeout(() => {
+            console.log("powinno navigate");
+            
             navigate("/signin"); // Przekierowanie do strony logowania
           }, timeUntilExpiration);
+console.log("wylacz time");
 
           // Sprzątanie po zakończeniu komponentu
           return () => clearTimeout(timeoutId);
