@@ -42,7 +42,7 @@ const App: FC = () => {
 
   const { token } = useAuth();
   useEffect(() => {
-    console.log("hello");
+    console.log("hello",token);
     
     if (token) {
       try {
