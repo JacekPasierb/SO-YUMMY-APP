@@ -47,11 +47,11 @@ const App: FC = () => {
         const decoded: any = jwtDecode(token);
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
 console.log("wygas",expirationDate);
-
-const now = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 17, 57);;
+const nowq = new Date();
+const now = new Date(nowq.getFullYear(), nowq.getMonth(), nowq.getDate(), 17, 57);
 
 // Obliczamy, ile czasu zostało do wygaśnięcia tokena
-const timeUntilExpiration = expirationDate.getTime() - now;
+const timeUntilExpiration = expirationDate.getTime() -  now.getTime();;
 
 console.log("Czas do wygaśnięcia tokena:", timeUntilExpiration);
 
