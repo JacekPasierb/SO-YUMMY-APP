@@ -49,7 +49,9 @@ const App: FC = () => {
        
           // Ustawiamy interwał sprawdzający co sekundę, czy token wygasł
       const intervalId = setInterval(() => {
+        
         const now = Date.now();
+        console.log("log",now);
         if (now >= expirationDate.getTime()) {
           console.log("Token wygasł, przenosimy na /signin");
           clearInterval(intervalId);
