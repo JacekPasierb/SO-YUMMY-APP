@@ -40,20 +40,22 @@ const App: FC = () => {
 
   const isDarktheme = useSelector(selectTheme);
 
-  const {token} =useAuth();
-useEffect(() => {
-  if (token) {
-    try {
-      // Dekodowanie tokena JWT
-      const decoded: any = jwtDecode(token);
-      // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
-      const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
-      const now = Date.now();
+  const { token } = useAuth();
+  useEffect(() => {
+    console.log("hello");
+    
+    if (token) {
+      try {
+        // Dekodowanie tokena JWT
+        const decoded: any = jwtDecode(token);
+        // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
+        const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
+        const now = Date.now();
 
         // Obliczamy, ile czasu zostało do wygaśnięcia tokena
         const timeUntilExpiration = expirationDate.getTime() - now;
 
-         if (timeUntilExpiration > 0) {
+        if (timeUntilExpiration > 0) {
           // Ustawiamy odliczanie do wygaśnięcia tokena
           const timeoutId = setTimeout(() => {
             navigate("/signin"); // Przekierowanie do strony logowania
@@ -65,12 +67,12 @@ useEffect(() => {
           // Token już wygasł, przenieś użytkownika od razu
           navigate("/signin");
         }
-      console.log('Token wygasa:', expirationDate); // Możesz wyświetlić to w konsoli
-    } catch (error) {
-      console.error('Błąd dekodowania tokena:', error);
+        console.log("Token wygasa:", expirationDate); // Możesz wyświetlić to w konsoli
+      } catch (error) {
+        console.error("Błąd dekodowania tokena:", error);
+      }
     }
-  }
-}, [token,navigate]);
+  }, [token, navigate]);
 
   useEffect(() => {
     navigate(`${pathname}${search}`, { replace: true });
