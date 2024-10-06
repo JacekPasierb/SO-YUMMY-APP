@@ -46,29 +46,28 @@ const App: FC = () => {
       try {
         const decoded: any = jwtDecode(token);
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
-console.log("wygas",expirationDate);
-const nowq = new Date();
-const now = new Date(nowq.getFullYear(), nowq.getMonth(), nowq.getDate(), 17, 57);
+        console.log("wygas", expirationDate);
 
-// Obliczamy, ile czasu zostało do wygaśnięcia tokena
-const timeUntilExpiration = expirationDate.getTime() -  now.getTime();;
+        const now = Date.now();
 
-console.log("Czas do wygaśnięcia tokena:", timeUntilExpiration);
+        // Obliczamy, ile czasu zostało do wygaśnięcia tokena
+        const timeUntilExpiration = expirationDate.getTime() - now;
 
-if (timeUntilExpiration > 0) {
-  // Ustawiamy jednorazowy timeout na moment wygaśnięcia tokena
-  const timeoutId = setTimeout(() => {
-    console.log("Token wygasł, przenosimy na /signin");
-    navigate("/signin", { replace: true });
-  }, timeUntilExpiration);
+        console.log("Czas do wygaśnięcia tokena:", timeUntilExpiration);
 
-  // Sprzątanie po zakończeniu komponentu
-  return () => clearTimeout(timeoutId);
-} else {
-  // Jeśli token już wygasł, przenosimy od razu
-  navigate("/signin", { replace: true });
-}
-  
+        if (timeUntilExpiration > -1) {
+          // Ustawiamy jednorazowy timeout na moment wygaśnięcia tokena
+          const timeoutId = setTimeout(() => {
+            console.log("Token wygasł, przenosimy na /signin");
+            navigate("/signin");
+          }, timeUntilExpiration);
+
+          // Sprzątanie po zakończeniu komponentu
+          return () => clearTimeout(timeoutId);
+        } else {
+          // Jeśli token już wygasł, przenosimy od razu
+          navigate("/signin", { replace: true });
+        }
       } catch (error) {
         console.error("Błąd dekodowania tokena:", error);
       }
