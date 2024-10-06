@@ -39,7 +39,7 @@ const App: FC = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
     if (isLoggedIn) {
-      dispatch(logOut);
+      dispatch(logOut());
     }
   }, [isLoggedIn]);
   // useEffect(() => {
