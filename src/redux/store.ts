@@ -20,8 +20,6 @@ import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 import { favoriteRecipesReducer } from "./favoriteRecipes/favoriteRecipesSlice";
 import { IAuthState } from "../types/authTypes";
 
-
-
 const authPersistConfig = {
   key: "auth",
   storage,
@@ -41,7 +39,6 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-     
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },

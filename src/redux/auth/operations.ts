@@ -20,12 +20,9 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
-
-
 export const register = createAsyncThunk<
   IAuthResponse,
   Pick<IUser, "email" | "password" | "name">
-
 >(
   "auth/register",
   async (credentials: Pick<IUser, "email" | "password" | "name">, thunkAPI) => {
@@ -95,7 +92,6 @@ export const refreshUser = createAsyncThunk<
   Pick<IUser, "name" | "email" | "avatar" | "userId" | "isDarkTheme">,
   undefined
 >("auth/refresh", async (_, thunkAPI) => {
- 
   const state: any = thunkAPI.getState();
   const persistedToken = state.auth.token;
 
@@ -108,18 +104,6 @@ export const refreshUser = createAsyncThunk<
 
     return res.data.data;
   } catch (error: any) {
-    if (error.response && error.response.status === 401) {
-      // Sesja wygasła, więc można wywołać akcję wylogowania i przekierowania
-      console.log("kon");
-      
-      thunkAPI.dispatch(logOut()); // Wywołaj akcję wylogowania
-      console.log("coo");
-      
-      toast.error("Session expired. Please log in again."); // Można dodać powiadomienie
-       // Opcjonalne przekierowanie
-      return thunkAPI.rejectWithValue("Session expired");
-    }
-
     return thunkAPI.rejectWithValue(error.message);
   }
 });
