@@ -48,19 +48,19 @@ const App: FC = () => {
 
         console.log("Czas do wygaśnięcia tokena:", timeUntilExpiration);
 
-        if (timeUntilExpiration > -1) {
+        if (true) {
           const timeoutId = setTimeout(() => {
             console.log("Token wygasł, przenosimy na /signin");
-            navigate("/signin");
+            navigate("/");
           }, timeUntilExpiration);
 
           return () => clearTimeout(timeoutId);
         } else {
-          navigate("/signin", { replace: true });
+          navigate("/", { replace: true });
         }
       } catch (error) {
         console.error("Błąd dekodowania tokena:", error);
-        navigate("/signin", { replace: true });
+        navigate("/", { replace: true });
       }
     }
   }, [token, navigate]);
