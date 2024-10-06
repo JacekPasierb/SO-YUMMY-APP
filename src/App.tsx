@@ -31,39 +31,8 @@ const CategoriesByName = lazy(
 
 const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate();
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
-  const { token } = useAuth();
-
-  // Obsługa tokena i przekierowanie w razie wygaśnięcia
-  useEffect(() => {
-    if (token) {
-      try {
-        const decoded: any = jwtDecode(token);
-        const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
-        console.log("wygas", expirationDate);
-        const now = Date.now();
-        const timeUntilExpiration = expirationDate.getTime() - now;
-
-        console.log("Czas do wygaśnięcia tokena:", timeUntilExpiration);
-
-        if (timeUntilExpiration > -1) {
-          const timeoutId = setTimeout(() => {
-            console.log("Token wygasł, przenosimy na /signin");
-            navigate("/");
-          }, timeUntilExpiration);
-
-          return () => clearTimeout(timeoutId);
-        } else {
-          navigate("/", { replace: true });
-        }
-      } catch (error) {
-        console.error("Błąd dekodowania tokena:", error);
-        navigate("/", { replace: true });
-      }
-    }
-  }, [token, navigate]);
 
   // useEffect(() => {
   //   navigate(`${pathname}${search}`, { replace: true });
@@ -83,7 +52,6 @@ const App: FC = () => {
     <Loader />
   ) : (
     <>
-  
       <Routes>
         {/* Trasy z restrykcjami */}
         <Route

@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { NavigateFunction } from "react-router-dom";
 import axios from "axios";
 import { setAuthSuccess, setAuthError } from "./authSlice";
 import { toast } from "react-toastify";
@@ -19,9 +20,14 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
+interface ThunkExtraArg {
+  navigate: NavigateFunction;
+}
+
 export const register = createAsyncThunk<
   IAuthResponse,
   Pick<IUser, "email" | "password" | "name">
+
 >(
   "auth/register",
   async (credentials: Pick<IUser, "email" | "password" | "name">, thunkAPI) => {
@@ -89,8 +95,10 @@ export const logOut = createAsyncThunk<void, undefined>(
 
 export const refreshUser = createAsyncThunk<
   Pick<IUser, "name" | "email" | "avatar" | "userId" | "isDarkTheme">,
-  undefined
+  undefined,
+  { extra: ThunkExtraArg }
 >("auth/refresh", async (_, thunkAPI) => {
+  const { navigate } = thunkAPI.extra;
   const state: any = thunkAPI.getState();
   const persistedToken = state.auth.token;
 
@@ -103,6 +111,14 @@ export const refreshUser = createAsyncThunk<
 
     return res.data.data;
   } catch (error: any) {
+    if (error.response && error.response.status === 401) {
+      // Sesja wygasła, więc można wywołać akcję wylogowania i przekierowania
+      thunkAPI.dispatch(logOut()); // Wywołaj akcję wylogowania
+      toast.error("Session expired. Please log in again."); // Można dodać powiadomienie
+      navigate("/signin"); // Opcjonalne przekierowanie
+      return thunkAPI.rejectWithValue("Session expired");
+    }
+
     return thunkAPI.rejectWithValue(error.message);
   }
 });
