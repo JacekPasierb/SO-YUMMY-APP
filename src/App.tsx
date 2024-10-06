@@ -51,7 +51,7 @@ const App: FC = () => {
         const intervalId = setInterval(() => {
           const now = Date.now();
           console.log("log", now);
-          if (true) {
+          if (now >= expirationDate.getTime()) {
             console.log("Token wygasł, przenosimy na /signin");
             clearInterval(intervalId);
             navigate("/signin");
