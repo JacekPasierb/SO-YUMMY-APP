@@ -46,20 +46,19 @@ const App: FC = () => {
       try {
         const decoded: any = jwtDecode(token);
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
-       
-          // Ustawiamy interwał sprawdzający co sekundę, czy token wygasł
-      const intervalId = setInterval(() => {
-        
-        const now = Date.now();
-        console.log("log",now);
-        if (now >= expirationDate.getTime()) {
-          console.log("Token wygasł, przenosimy na /signin");
-          clearInterval(intervalId);
-          navigate("/signin");
-        }
-      }, 1000); // Sprawdzamy co sekundę
-      // Sprzątanie
-      return () => clearInterval(intervalId);
+
+        // Ustawiamy interwał sprawdzający co sekundę, czy token wygasł
+        const intervalId = setInterval(() => {
+          const now = Date.now();
+          console.log("log", now);
+          if (true) {
+            console.log("Token wygasł, przenosimy na /signin");
+            clearInterval(intervalId);
+            navigate("/signin");
+          }
+        }, 1000); // Sprawdzamy co sekundę
+        // Sprzątanie
+        return () => clearInterval(intervalId);
       } catch (error) {
         console.error("Błąd dekodowania tokena:", error);
       }
