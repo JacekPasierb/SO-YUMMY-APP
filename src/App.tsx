@@ -38,7 +38,7 @@ const App: FC = () => {
   const isDarktheme = useSelector(selectTheme);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
-    if (isLoggedIn) {
+    if (!isLoggedIn) {
       dispatch(logOut());
     }
   }, [isLoggedIn]);
