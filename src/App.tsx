@@ -83,7 +83,7 @@ const App: FC = () => {
     <Loader />
   ) : (
     <>
-  <button onClick={() => navigate("/signin")}>Przekieruj na Signin</button>
+  
       <Routes>
         {/* Trasy z restrykcjami */}
         <Route
