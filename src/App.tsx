@@ -48,7 +48,7 @@ const App: FC = () => {
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
 console.log("wygas",expirationDate);
 
-const now = Date.now();
+const now = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 17, 57);;
 
 // Obliczamy, ile czasu zostało do wygaśnięcia tokena
 const timeUntilExpiration = expirationDate.getTime() - now;
