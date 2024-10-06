@@ -115,11 +115,11 @@ export const refreshUser = createAsyncThunk<
       // Sesja wygasła, więc można wywołać akcję wylogowania i przekierowania
       console.log("kon");
       
-      // thunkAPI.dispatch(logOut()); // Wywołaj akcję wylogowania
+      thunkAPI.dispatch(logOut()); // Wywołaj akcję wylogowania
       console.log("coo");
       
-      // toast.error("Session expired. Please log in again."); // Można dodać powiadomienie
-      // navigate("/signin"); // Opcjonalne przekierowanie
+      toast.error("Session expired. Please log in again."); // Można dodać powiadomienie
+      navigate("/signin"); // Opcjonalne przekierowanie
       return thunkAPI.rejectWithValue("Session expired");
     }
 

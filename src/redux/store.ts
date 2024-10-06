@@ -19,7 +19,8 @@ import { PersistPartial } from "redux-persist/es/persistReducer";
 import { ownRecipesReducer } from "./ownRecipes/ownRecipesSlice";
 import { favoriteRecipesReducer } from "./favoriteRecipes/favoriteRecipesSlice";
 import { IAuthState } from "../types/authTypes";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
+
 
 const authPersistConfig = {
   key: "auth",
