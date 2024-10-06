@@ -37,11 +37,7 @@ const App: FC = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  if (!isLoggedIn) {
-    dispatch(logOut());
-  }
-
+ 
   // useEffect(() => {
   //   navigate(`${pathname}${search}`, { replace: true });
   // }, [navigate, pathname, search]);
