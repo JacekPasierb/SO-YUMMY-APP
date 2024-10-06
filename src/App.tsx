@@ -52,10 +52,10 @@ console.log("wygas",expirationDate);
         const intervalId = setInterval(() => {
           const now = Date.now();
           console.log("log", now);
-          if (now >= expirationDate.getTime()) {
+          if (true) {
             console.log("Token wygasł, przenosimy na /signin");
             clearInterval(intervalId);
-            navigate("/signin");
+            navigate("/signin", { replace: true });
           }
         }, 1000); // Sprawdzamy co sekundę
         // Sprzątanie
