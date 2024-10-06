@@ -56,7 +56,7 @@ const App: FC = () => {
 
       
       // Sprawdzenie, czy token już wygasł
-      if (decodedToken.exp < currentTime) {
+      if (true) {
         console.log(decodedToken.exp);
         
         dispatch(logOut()); // Wyloguj natychmiast, jeśli token wygasł
