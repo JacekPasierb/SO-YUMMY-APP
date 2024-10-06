@@ -53,6 +53,7 @@ const App: FC = () => {
     try {
       const decodedToken: any = jwtDecode(token);
       const currentTime = Date.now() / 1000;
+      console.log(decodedToken);
       
       // Sprawdzenie, czy token już wygasł
       if (decodedToken.exp < currentTime) {
