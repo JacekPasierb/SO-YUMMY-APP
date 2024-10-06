@@ -2,7 +2,15 @@ import React, { FC, Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { AppDispatch } from "./redux/store";
+import { refreshUser } from "./redux/auth/operations";
+import { selectIsRefreshing, selectTheme } from "./redux/auth/selectors";
+import { useAuth } from "./hooks/useAuth";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { Loader } from "./components/Loader/Loader";
 
+// Lazy-loaded Pages
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
 const RegisterPage = lazy(() => import("./Pages/RegisterPage/RegisterPage"));
 const SigninPage = lazy(() => import("./Pages/SigninPage/SigninPage"));
@@ -13,75 +21,60 @@ const CategoriesPage = lazy(
 const RecipePage = lazy(() => import("./Pages/RecipePage/RecipePage"));
 const AddRecipePage = lazy(() => import("./Pages/AddRecipePage/AddRecipePage"));
 const FavoritesPage = lazy(() => import("./Pages/FavoritesPage/FavoritesPage"));
-
+import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
 const SharedLayout = lazy(
   () => import("./components/SharedLayout/SharedLayout")
 );
 const CategoriesByName = lazy(
   () => import("./components/CategoriesByName/CategoriesByName")
 );
-import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { Loader } from "./components/Loader/Loader";
-
-import { AppDispatch } from "./redux/store";
-import { refreshUser } from "./redux/auth/operations";
-import { selectIsRefreshing, selectTheme } from "./redux/auth/selectors";
-import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
-import { ThemeProvider } from "styled-components";
-import { useAuth } from "./hooks/useAuth";
 
 const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
-  const { pathname, search } = location;
   const isRefreshing = useSelector(selectIsRefreshing);
-
   const isDarktheme = useSelector(selectTheme);
-
   const { token } = useAuth();
+
+  // Obsługa tokena i przekierowanie w razie wygaśnięcia
   useEffect(() => {
     if (token) {
       try {
         const decoded: any = jwtDecode(token);
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
         console.log("wygas", expirationDate);
-
         const now = Date.now();
-
-        // Obliczamy, ile czasu zostało do wygaśnięcia tokena
         const timeUntilExpiration = expirationDate.getTime() - now;
 
         console.log("Czas do wygaśnięcia tokena:", timeUntilExpiration);
 
         if (timeUntilExpiration > -1) {
-          // Ustawiamy jednorazowy timeout na moment wygaśnięcia tokena
           const timeoutId = setTimeout(() => {
             console.log("Token wygasł, przenosimy na /signin");
             navigate("/signin");
           }, timeUntilExpiration);
 
-          // Sprzątanie po zakończeniu komponentu
           return () => clearTimeout(timeoutId);
         } else {
-          // Jeśli token już wygasł, przenosimy od razu
           navigate("/signin", { replace: true });
         }
       } catch (error) {
         console.error("Błąd dekodowania tokena:", error);
+        navigate("/signin", { replace: true });
       }
     }
   }, [token, navigate]);
 
-  useEffect(() => {
-    navigate(`${pathname}${search}`, { replace: true });
-  }, [navigate, pathname, search]);
+  // useEffect(() => {
+  //   navigate(`${pathname}${search}`, { replace: true });
+  // }, [navigate, pathname, search]);
 
+  // Odświeżanie użytkownika po każdym odświeżeniu aplikacji
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
+  // Zmiana motywu (dark/light)
   useEffect(() => {
     document.body.className = isDarktheme ? "dark-theme" : "";
   }, [isDarktheme]);
@@ -91,6 +84,7 @@ const App: FC = () => {
   ) : (
     <>
       <Routes>
+        {/* Trasy z restrykcjami */}
         <Route
           path="/welcome"
           element={
@@ -130,7 +124,7 @@ const App: FC = () => {
             />
           }
         />
-
+        {/* Główne trasy prywatne */}
         <Route
           path="/"
           element={
