@@ -52,8 +52,7 @@ console.log("wygas",expirationDate);
         const intervalId = setInterval(() => {
           const now = Date.now();
           console.log("log", now);
-          if (true) {
-            
+          if (now >= expirationDate.getTime()) {
             console.log("Token wygasł, przenosimy na /signin");
             clearInterval(intervalId);
             navigate("/signin");
@@ -116,7 +115,7 @@ console.log("wygas",expirationDate);
             <RestrictedRoute
               redirectTo="/"
               component={
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loader />}>
                   <SigninPage />
                 </Suspense>
               }
