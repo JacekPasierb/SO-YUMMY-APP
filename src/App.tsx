@@ -48,18 +48,27 @@ const App: FC = () => {
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
 console.log("wygas",expirationDate);
 
-        // Ustawiamy interwał sprawdzający co sekundę, czy token wygasł
-        const intervalId = setInterval(() => {
-          const now = Date.now();
-          console.log("log", now);
-          if (true) {
-            console.log("Token wygasł, przenosimy na /signin");
-            clearInterval(intervalId);
-            navigate("/signin", { replace: true });
-          }
-        }, 1000); // Sprawdzamy co sekundę
-        // Sprzątanie
-        return () => clearInterval(intervalId);
+const now = Date.now();
+
+// Obliczamy, ile czasu zostało do wygaśnięcia tokena
+const timeUntilExpiration = expirationDate.getTime() - now;
+
+console.log("Czas do wygaśnięcia tokena:", timeUntilExpiration);
+
+if (timeUntilExpiration > 0) {
+  // Ustawiamy jednorazowy timeout na moment wygaśnięcia tokena
+  const timeoutId = setTimeout(() => {
+    console.log("Token wygasł, przenosimy na /signin");
+    navigate("/signin", { replace: true });
+  }, timeUntilExpiration);
+
+  // Sprzątanie po zakończeniu komponentu
+  return () => clearTimeout(timeoutId);
+} else {
+  // Jeśli token już wygasł, przenosimy od razu
+  navigate("/signin", { replace: true });
+}
+  
       } catch (error) {
         console.error("Błąd dekodowania tokena:", error);
       }
