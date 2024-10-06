@@ -42,38 +42,41 @@ const App: FC = () => {
 
   const { token } = useAuth();
   useEffect(() => {
-    console.log("hello",token);
-    
+    console.log("hello", token);
+
     if (token) {
       console.log("tok true");
-      
+
       try {
         // Dekodowanie tokena JWT
         const decoded: any = jwtDecode(token);
         console.log("decode po");
-        
+
         // Wyciąganie czasu wygaśnięcia z tokena (exp jest w sekundach)
         const expirationDate = new Date(decoded.exp * 1000); // Konwersja na milisekundy
         const now = Date.now();
-    console.log("data wyg",expirationDate);
-    
+        console.log("data wyg", expirationDate);
+
         // Obliczamy, ile czasu zostało do wygaśnięcia tokena
         const timeUntilExpiration = expirationDate.getTime() - now;
-console.log("roznica", timeUntilExpiration);
+        console.log("roznica", timeUntilExpiration);
 
         if (timeUntilExpiration > 0) {
           console.log("wieksze");
-          
+
           // Ustawiamy odliczanie do wygaśnięcia tokena
           const timeoutId = setTimeout(() => {
             console.log("powinno navigate");
-            
+
             navigate("/signin"); // Przekierowanie do strony logowania
           }, timeUntilExpiration);
-console.log("wylacz time");
+          console.log("wylacz time");
 
           // Sprzątanie po zakończeniu komponentu
-          return () => clearTimeout(timeoutId);
+          return () => {
+            console.log("Komponent się demontuje, czyszczenie timeouta");
+            clearTimeout(timeoutId);
+          };
         } else {
           // Token już wygasł, przenieś użytkownika od razu
           navigate("/signin");
