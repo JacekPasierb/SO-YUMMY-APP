@@ -58,7 +58,6 @@ const RegisterForm = () => {
     } catch (err: any) {
       toast.error("An error occurred. Please try again.");
     }
-    
   };
   return (
     <Formik

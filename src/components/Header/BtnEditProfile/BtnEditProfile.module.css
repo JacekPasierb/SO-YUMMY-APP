@@ -7,7 +7,7 @@
 
   font-size: 14px;
   line-height: 22.4px;
-  color: var(--color-text-main); /*update*/
+  color: var(--color-text-description); /*new update*/
 
   background-color: transparent;
   border: none;
@@ -19,4 +19,6 @@
   width: 14px;
   height: 14px;
   margin-left: 37px;
+  stroke:var(--color-stoke-icon);
+  fill:transparent;
 }
