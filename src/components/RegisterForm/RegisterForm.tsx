@@ -171,6 +171,7 @@ const RegisterForm = () => {
                 placeholder="Password"
                 className={css.inputRegister}
                 onBlur={() => setFieldTouched("password", true)}
+                autocomplete="current-password"
               />
               {touched.password && errors.password && (
                 <img
