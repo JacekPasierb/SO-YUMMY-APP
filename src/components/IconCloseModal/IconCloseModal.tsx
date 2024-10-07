@@ -1,14 +1,21 @@
 import React, { FC } from "react";
-import css from "./IconCloseModal.module.css";
+import styles from "./IconCloseModal.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
-interface IconCloseModalRequest {
+interface IconCloseModalProps {
   onClose: () => void;
 }
 
-const IconCloseModal: FC<IconCloseModalRequest> = ({ onClose }) => {
+const IconCloseModal: FC<IconCloseModalProps> = ({ onClose }) => {
   return (
-    <svg onClick={onClose} className={css.iconClose}>
+    <svg
+      onClick={onClose}
+      className={styles.iconClose}
+      aria-label="Close modal"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === "Enter" && onClose()}
+    >
       <use href={`${sprite}#icon-CloseMenu`} />
     </svg>
   );
