@@ -129,6 +129,7 @@ const RegisterForm = () => {
                 placeholder="Email"
                 className={css.inputRegister}
                 onBlur={() => setFieldTouched("email", true)}
+                autocomplete="username"
               />{" "}
               {touched.email && errors.email && (
                 <img
