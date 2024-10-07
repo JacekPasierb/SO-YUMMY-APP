@@ -7,6 +7,12 @@ interface IconCloseModalProps {
 }
 
 const IconCloseModal: FC<IconCloseModalProps> = ({ onClose }) => {
+  const handleKeyDown = (e: React.KeyboardEvent<SVGSVGElement>) => {
+    if (e.key === "Enter" || e.key === " ") { // Obsługuje także spację
+      e.preventDefault(); // Zapobiega przewijaniu strony przy użyciu spacji
+      onClose();
+    }
+  };
   return (
     <svg
       onClick={onClose}
@@ -14,7 +20,7 @@ const IconCloseModal: FC<IconCloseModalProps> = ({ onClose }) => {
       aria-label="Close modal"
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && onClose()}
+      onKeyDown={handleKeyDown} 
     >
       <use href={`${sprite}#icon-CloseMenu`} />
     </svg>
