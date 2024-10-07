@@ -9,7 +9,7 @@
 
   background-position: center;
 
-  @media screen and (min-width: var(--breakpoint-md)) {
+  @media screen and (min-width: 768px) {
     top: -21.625rem;
     z-index: 0;
 
@@ -29,15 +29,15 @@
 .formRegister {
   position: relative;
 
-  margin-bottom: 1.125rem;
-  padding: 2rem 1.75rem;
+  margin-bottom: 18px;
+  padding: 32px 28px;
 
   background-color: var(--color-bg-secondary);
   border-radius: 1.875rem;
 
-  @media screen and (min-width: var(--breakpoint-md)) {
-    margin-top: 17.5rem;
-    padding: 2.75rem 3.125rem;
+  @media screen and (min-width: 768px) {
+    margin-top:280px;
+    padding: 44px 50px;
   }
 
   @media screen and (min-width: 1200px) {
