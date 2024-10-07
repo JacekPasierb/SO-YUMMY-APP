@@ -20,8 +20,6 @@ interface UserInfoModalRequest {
   onClose: () => void;
 }
 
-
-
 const UserInfoModal: FC<UserInfoModalRequest> = ({ onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
