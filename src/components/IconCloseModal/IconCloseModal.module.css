@@ -7,7 +7,7 @@
   height: 20px;
 
   stroke: var(--color-Hamburger);
-  
+
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
@@ -17,4 +17,8 @@
     width: 24px;
     height: 24px;
   }
+}
+
+.iconClose:hover {
+  stroke: var(--color-text-highlight);
 }
