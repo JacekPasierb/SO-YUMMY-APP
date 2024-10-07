@@ -8,7 +8,7 @@
   align-items: center;
   padding: 32px 24px;
 
-  background-color: var(--color-bg-menuModal);
+  background-color: var(--color-bg-body);
   border-radius: 10px;
 
   @media screen and (min-width: 768px) {
@@ -112,7 +112,7 @@
 .input {
   font-size: 14px;
   letter-spacing: -2%;
-  color: var(--color-text-main); /*update*/
+  color: var(--color-text-input); /*new update*/
 
   outline: none;
   border: none;
