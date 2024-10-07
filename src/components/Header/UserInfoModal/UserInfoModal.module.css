@@ -1,4 +1,4 @@
-.editProfileModal {
+.userInfoModal {
   position: absolute;
   right: -80px;
   top: -1px;
@@ -22,24 +22,7 @@
   }
 }
 
-.iconClose {
-  position: absolute;
-  right: 18px;
-  top: 18px;
-
-  width: 20px;
-  height: 20px;
-
-  @media screen and (min-width: 768px) {
-    top: 24px;
-    right: 24px;
-
-    width: 24px;
-    height: 24px;
-  }
-}
-
-.form {
+.userInfoModal__form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +30,7 @@
   cursor: context-menu;
 }
 
-.btnSave {
+.userInfoModal__btnSave {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -74,7 +57,7 @@
   }
 }
 
-.inputUsername {
+.userInfoModal__inputUsername {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -83,7 +66,7 @@
   margin-top: 54px;
   padding: 14px 14px;
 
-  border:  1px solid var(--color-border-input);
+  border: 1px solid var(--color-border-input);
   border-radius: 6px;
 
   @media screen and (min-width: 768px) {
@@ -95,13 +78,13 @@
   }
 }
 
-.iconUser {
+.userInfoModal__iconUser {
   width: 18px;
   height: 18px;
   margin-right: 8px;
 
   fill: transparent;
-  stroke:  var(--color-stroke-icon);
+  stroke: var(--color-stroke-icon);
 
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -109,22 +92,22 @@
   }
 }
 
-.input {
+.userInfoModal__input {
   font-size: 14px;
   letter-spacing: -2%;
   color: var(--color-text-input); /*new update*/
 
-background-color: transparent;
+  background-color: transparent;
 
   outline: none;
-  border:none;
+  border: none;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
   }
 }
 
-.iconEdit {
+.userInfoModal__iconEdit {
   width: 17px;
   height: 17px;
 
@@ -137,7 +120,7 @@ background-color: transparent;
   }
 }
 
-.iconPicture {
+.styles.userInfoModal__iconPicture {
   width: 40px;
   height: 40px;
 
@@ -147,7 +130,7 @@ background-color: transparent;
   }
 }
 
-.logoBackground {
+.userInfoModal__avatarPreview {
   position: relative;
 
   display: flex;
@@ -167,7 +150,7 @@ background-color: transparent;
   }
 }
 
-.logoBackground::after {
+.userInfoModal__avatarPreview::after {
   content: url("../../../images/plus.svg");
   position: absolute;
   right: 0;
@@ -179,25 +162,6 @@ background-color: transparent;
   transform: translateX(-50%);
 }
 
-.btnAdd {
-  position: absolute;
-  right: 24px;
-  bottom: -2px;
-
-  width: 24px;
-  height: 24px;
-  padding: 3px;
-
-  background-color: #8baa36;
-  border: none;
-  border-radius: 50%;
-}
-
-.iconPlus {
-  width: 18px;
-  height: 18px;
-}
-
-.inputFile {
+.userInfoModal__inputFile {
   display: none;
 }
