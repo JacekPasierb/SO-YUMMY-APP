@@ -100,8 +100,8 @@
   height: 18px;
   margin-right: 8px;
 
-  fill: #ffffff;
-  stroke: #23262a;
+  fill: transparent;
+  stroke:  var(--color-stroke-icon);
 
   @media screen and (min-width: 768px) {
     width: 24px;
