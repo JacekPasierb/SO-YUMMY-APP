@@ -114,6 +114,8 @@
   letter-spacing: -2%;
   color: var(--color-text-input); /*new update*/
 
+background-color: transparent;
+
   outline: none;
   border: none;
 
@@ -126,8 +128,8 @@
   width: 17px;
   height: 17px;
 
-  fill: #ffffff;
-  stroke: #23262a;
+  fill: transparent;
+  stroke: var(--color-stroke-icon);
 
   @media screen and (min-width: 768px) {
     width: 19px;
