@@ -38,32 +38,22 @@ const App: FC = () => {
 
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  // useEffect(() => {
-  //   navigate(`${pathname}${search}`, { replace: true });
-  // }, [navigate, pathname, search]);
-
-  // Odświeżanie użytkownika po każdym odświeżeniu aplikacji
   const { token } = useAuth();
   // Funkcja do dekodowania tokenu i ustawienia timeoutu na wylogowanie
   const setupAutoLogout = (token: string) => {
     if (!token) return;
-
     try {
       const decodedToken: any = jwtDecode(token);
       const currentTime = Date.now() / 1000;
-
       // Sprawdzenie, czy token już wygasł
       if (decodedToken.exp < currentTime) {
         console.log(decodedToken.exp);
-
         dispatch(logOut()); // Wyloguj natychmiast, jeśli token wygasł
       } else {
         // Oblicz czas do wygaśnięcia tokenu
         const timeUntilExpiry = (decodedToken.exp - currentTime) * 1000;
         console.log(timeUntilExpiry);
-
         // Ustaw timeout na automatyczne wylogowanie
         setTimeout(() => {
           dispatch(logOut());
