@@ -1,6 +1,6 @@
 KONTO TESTOWE:
-user@test.pl
-user1234
+LOGIN : user@test.pl
+HASŁO : user1234
 
 PROJEKT jest w fazie rozwojowej, kod wymaga stworzenia funkcji pomocniczych oraz komponentów wspólnych i dokonczenia Ap
 
