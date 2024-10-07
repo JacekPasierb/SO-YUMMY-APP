@@ -6,6 +6,8 @@
   width: 20px;
   height: 20px;
 
+  stroke: var(--color-Hamburger);
+  
   cursor: pointer;
 
   @media screen and (min-width: 768px) {

@@ -6,12 +6,11 @@ interface IconCloseModalRequest {
   onClose: () => void;
 }
 
-const IconCloseModal:FC<IconCloseModalRequest>= ({ onClose }) => {
+const IconCloseModal: FC<IconCloseModalRequest> = ({ onClose }) => {
   return (
     <svg onClick={onClose} className={css.iconClose}>
-    <use href={`${sprite}#icon-CloseMenu`}  />
-  </svg>
-
+      <use href={`${sprite}#icon-CloseMenu`} />
+    </svg>
   );
 };
 
