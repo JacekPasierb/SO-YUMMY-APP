@@ -1,20 +1,20 @@
-.logoutBtn {
+.btnLogout {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 12px 24px;
 
   font-size: 14px;
-  color: var(--color-text-third); /*update*/
+  color: var(--color-text-btn-primary); /*new update*/
 
-  background-color: #8baa36;
+  background-color: var(--color-bg-btn);
   border-radius: 24px 44px;
   border-color: transparent;
 
   white-space: nowrap;
 }
 
-.icon {
+.btnLogoutIcon {
   width: 18px;
   height: 18px;
   margin-left: 4px;
