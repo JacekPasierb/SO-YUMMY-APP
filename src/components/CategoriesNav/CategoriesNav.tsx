@@ -57,12 +57,25 @@ const CategoriesNav = () => {
         scrollButtons={false}
         allowScrollButtonsMobile
         aria-label="Category Navigation Tabs"
-        classes={{
-          root: styles.tabs,
-          indicator: styles.tabsIndicator,  
-          flexContainer: styles.tabsFlexContainer,  
+        sx={{
+          marginTop: `20px`,
+          borderBottom: "1px solid #E0E0E0",
+
+          "& .MuiTabs-indicator": {
+            backgroundColor: `#8BAA36`,
+            marginTop: `100`,
+          },
+
+          "& .MuiTab-root": {
+            outline: `none`,
+          },
+          "& .MuiButtonBase-root": {
+            padding: "10px 10px 32px 10px",
+          },
+          "& .MuiTabs-flexContainer": {
+            gap: "28px",
+          },
         }}
-        
       >
         {categoriesList &&
           categoriesList.map((category, index) => {
@@ -70,9 +83,15 @@ const CategoriesNav = () => {
               <Tab
                 label={category}
                 key={index}
-                className={styles.tab} 
-                classes={{ selected: styles.tabSelected }}
-                
+                sx={{
+                  padding: "0",
+                  fontSize: "14px",
+                  lineHeight: "14px",
+                  color: "#E0E0E0",
+                  "&.Mui-selected": {
+                    color: "#8BAA36",
+                  },
+                }}
               />
             );
           })}
