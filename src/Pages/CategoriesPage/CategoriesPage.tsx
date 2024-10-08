@@ -1,4 +1,4 @@
-import css from "./CategoriesPage.module.css";
+import styles from "./CategoriesPage.module.css";
 
 import { Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
@@ -11,10 +11,11 @@ const CategoriesPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
-    <main className={css.background}>
+    <main className={styles.categoriesPage}>
       <Header />
-      <div className={`${css.container} ${css.flex}`}>
+      <div className={`${styles.container} ${styles.flex}`}>
         <MainTitle title={"Categories"} />
         <CategoriesNav />
         <Suspense>

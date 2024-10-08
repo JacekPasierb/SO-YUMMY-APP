@@ -4,7 +4,7 @@
 
   font-size: 28px;
   line-height: 28px;
-  color: var(--color-text-primary); /*update*/
+  color: var(--color-text-subtitle); /*new update*/
 
   @media screen and (min-width: 768px) {
     padding-top: 72px;
