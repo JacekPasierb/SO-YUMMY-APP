@@ -50,11 +50,7 @@ const CategoriesByName: FC = () => {
 
   return (
     <>
-      {isLoading ? (
-        <div className={css.boxLoader}>
-          <ClimbingBoxLoader />
-        </div>
-      ) : (
+      (
         recipes && (
           <ul className={css.recipesList}>
             {recipes.map((recipe: IRecipe) => {
