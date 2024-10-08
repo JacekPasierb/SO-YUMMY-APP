@@ -1,6 +1,6 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { AppDispatch } from "./redux/store";
 import { logOut, refreshUser } from "./redux/auth/operations";
 import {
@@ -35,10 +35,14 @@ const CategoriesByName = lazy(
 
 const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { pathname, search } = location;
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
-
+  useEffect(() => {
+    navigate(`${pathname}${search}, { replace: true }`);
+  }, [navigate, pathname, search]);
   const { token } = useAuth();
   // Funkcja do dekodowania tokenu i ustawienia timeoutu na wylogowanie
   const setupAutoLogout = (token: string) => {
