@@ -40,9 +40,11 @@ const App: FC = () => {
   const { pathname, search } = location;
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
+
   useEffect(() => {
-    navigate(`${pathname}${search}`, { replace: true });
+    navigate(`${pathname}${search}`, { replace: true }); // Funkcja po odświeżeniu aplikacji użytkownik zostaje na aktualnej stronie
   }, [navigate, pathname, search]);
+
   const { token } = useAuth();
   // Funkcja do dekodowania tokenu i ustawienia timeoutu na wylogowanie
   const setupAutoLogout = (token: string) => {
