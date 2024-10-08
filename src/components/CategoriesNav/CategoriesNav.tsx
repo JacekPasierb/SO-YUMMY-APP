@@ -44,9 +44,9 @@ const CategoriesNav = () => {
     return <p>Failed to load categories</p>;
   }
 
-  if (isLoading) {
-    return <p>Loading categories...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>Loading categories...</p>;
+  // }
 
   return (
     <>
