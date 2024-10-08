@@ -50,7 +50,11 @@ const CategoriesByName: FC = () => {
 
   return (
     <>
-      (
+      {isLoading ? (
+        <div className={css.boxLoader}>
+          <ClimbingBoxLoader />
+        </div>
+      ) : (
         recipes && (
           <ul className={css.recipesList}>
             {recipes.map((recipe: IRecipe) => {
@@ -64,7 +68,7 @@ const CategoriesByName: FC = () => {
             })}
           </ul>
         )
-      )
+      )}
       {!isLoading && (
         <BasicPagination
           count={Math.ceil(totalRecipes / 8)}
