@@ -41,7 +41,7 @@ const App: FC = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
   useEffect(() => {
-    navigate(`${pathname}${search}, { replace: true }`);
+    navigate(`${pathname}${search}`, { replace: true });
   }, [navigate, pathname, search]);
   const { token } = useAuth();
   // Funkcja do dekodowania tokenu i ustawienia timeoutu na wylogowanie
