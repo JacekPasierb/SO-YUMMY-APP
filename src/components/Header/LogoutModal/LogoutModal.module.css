@@ -10,8 +10,8 @@
   gap: 24px;
   padding: 44px 24px;
 
-  background-color: #fafafa;
-  border: 1px solid #8baa36;
+  background-color: var(--color-bg-menuModal);
+  border: 1px solid var(--color-border-btn);
   border-radius: 10px;
 
   @media screen and (min-width: 768px) {
@@ -23,7 +23,7 @@
   }
 }
 
-.btnsBox {
+.logoutModal__buttons {
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -32,7 +32,7 @@
     gap: 16px;
   }
 }
-.btn {
+.logoutModal__btn {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -52,31 +52,31 @@
     font-size: 16px;
   }
 }
-.btnLogout {
-  color: var(--color-text-third);
+.logoutModal__btnLogout {
+  color: var(--color-text-btn-primary);
 
-  background-color: #8baa36;
+  background-color: var(--color-bg-btn);
 }
 
-.btnLogout:hover {
+.logoutModal__btnLogout:hover {
   background-color: #22252a;
 }
 
-.btnCancel {
-  color: var(--color-text-main); /*update*/
+.logoutModal__btnCancel {
+  color: rgba(30, 31, 40, 1); ; 
 
   background-color: #d9d9d9;
 }
 
-.btnCancel:hover {
+.logoutModal__btnCancel:hover {
   background-color: #fafafa;
   border: 1px solid #23262a;
 }
 
-.logoutText {
+.logoutModal__text {
   font-size: 14px;
   line-height: 18px;
-  color: var(--color-text-main); /*update*/
+  color: var(--color-text-description); /*new update*/
 
   white-space: nowrap;
 
