@@ -16,11 +16,13 @@ const CardRecipe: FC<CardRecipeProps> = ({ title, preview }) => {
       <img
         src={preview}
         alt={altText}
-        className={styles.recipeIMG}
+        className={styles.cardRecipe__image}
         loading="lazy"
       />
-      <div className={styles.titleBox}>
-        <h3 className={styles.title}>{title}</h3>
+      <div className={styles.cardRecipe__titleContainer}>
+        <h3 className={styles.cardRecipe__title}>
+          {title || "Untitled Recipe"}
+        </h3>
       </div>
     </article>
   );
