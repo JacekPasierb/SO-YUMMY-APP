@@ -10,14 +10,12 @@ import {
 } from "../../redux/recipes/selectors";
 import { AppDispatch } from "../../redux/store";
 import { getCategoriesList } from "../../redux/recipes/operations";
-import styles from "./CategoriesNav.module.css";
 
 const CategoriesNav = () => {
   const navigate = useNavigate();
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
   const categoriesList = useSelector(selectCategoriesList);
-  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch: AppDispatch = useDispatch();
 
@@ -43,10 +41,6 @@ const CategoriesNav = () => {
     toast.error("Something went wrong with categories. Please try again.");
     return <p>Failed to load categories</p>;
   }
-
-  // if (isLoading) {
-  //   return <p>Loading categories...</p>;
-  // }
 
   return (
     <>
