@@ -1,5 +1,4 @@
-import css from "./CardRecipe.module.css";
-
+import styles from "./CardRecipe.module.css";
 import React, { FC } from "react";
 
 interface CardRecipeProps {
@@ -8,13 +7,22 @@ interface CardRecipeProps {
 }
 
 const CardRecipe: FC<CardRecipeProps> = ({ title, preview }) => {
+  const altText = title ? `${title} preview` : "Recipe image";
   return (
-    <div className={css.cardRecipe}>
-      <img src={preview} className={css.recipeIMG} />
-      <div className={css.titleBox}>
-        <h3 className={css.title}>{title}</h3>
+    <article
+      className={styles.cardRecipe}
+      aria-label={`Recipe card for ${title}`}
+    >
+      <img
+        src={preview}
+        alt={altText}
+        className={styles.recipeIMG}
+        loading="lazy"
+      />
+      <div className={styles.titleBox}>
+        <h3 className={styles.title}>{title}</h3>
       </div>
-    </div>
+    </article>
   );
 };
 
