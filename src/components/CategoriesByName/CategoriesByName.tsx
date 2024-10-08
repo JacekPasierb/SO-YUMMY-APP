@@ -1,5 +1,4 @@
-
-import css from "./CategoriesByName.module.css";
+import styles from "./CategoriesByName.module.css";
 import React, { FC, useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,7 +31,7 @@ const CategoriesByName: FC = () => {
   };
 
   useEffect(() => {
-    let category = categoryName ?? "Beef"; 
+    let category = categoryName ?? "Beef";
     if (category === ":categoryName" || !category) {
       category = "Beef";
       navigate(`/categories/Beef`);
@@ -45,30 +44,28 @@ const CategoriesByName: FC = () => {
   return (
     <>
       {isLoading ? (
-        <div className={css.boxLoader}>
-          <ClimbingBoxLoader />
+        <div className={styles.loaderContainer}>
+          <ClimbingBoxLoader color="#8BAA36" />
         </div>
-      ) : (
-        recipes && (
-          <ul className={css.recipesList}>
-            {recipes.map((recipe: IRecipe) => {
-              return (
-                <li key={`${recipe._id}`} className={css.recipesListItem}>
-                  <NavLink to={`/recipe/${recipe._id}`}>
-                    <CardRecipe title={recipe.title} preview={recipe.preview} />
-                  </NavLink>
-                </li>
-              );
-            })}
+      ) : recipes && recipes.length > 0 ? (
+        <>
+          <ul className={styles.recipesList}>
+            {recipes.map((recipe: IRecipe) => (
+              <li key={recipe._id} className={styles.recipesListItem}>
+                <NavLink to={`/recipe/${recipe._id}`}>
+                  <CardRecipe title={recipe.title} preview={recipe.preview} />
+                </NavLink>
+              </li>
+            ))}
           </ul>
-        )
-      )}
-      {!isLoading && (
-        <BasicPagination
-          count={Math.ceil(totalRecipes / 8)}
-          page={currentPage}
-          onPageChange={handlePageChange}
-        />
+          <BasicPagination
+            count={Math.ceil(totalRecipes / 8)}
+            page={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </>
+      ) : (
+        <p className={styles.noResults}>No recipes found in this category.</p>
       )}
     </>
   );
