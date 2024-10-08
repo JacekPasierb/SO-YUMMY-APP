@@ -64,7 +64,7 @@ const CategoriesByName: FC = () => {
             })}
           </ul>
         )
-      )}
+      )
       {!isLoading && (
         <BasicPagination
           count={Math.ceil(totalRecipes / 8)}
