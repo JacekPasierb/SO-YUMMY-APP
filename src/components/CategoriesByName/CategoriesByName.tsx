@@ -1,5 +1,5 @@
-import css from "./CategoriesByName.module.css";
 
+import css from "./CategoriesByName.module.css";
 import React, { FC, useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,12 +10,10 @@ import {
 } from "../../redux/recipes/selectors";
 import { getRecipesByCategory } from "../../redux/recipes/operations";
 import { AppDispatch } from "src/redux/store";
-
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import { IRecipe } from "../../types/recipesTypes";
-import { Loader } from "../Loader/Loader";
 import { ClimbingBoxLoader } from "react-spinners";
 
 const CategoriesByName: FC = () => {
@@ -34,19 +32,15 @@ const CategoriesByName: FC = () => {
   };
 
   useEffect(() => {
-    let category: string;
-    if (categoryName === ":categoryName" || "") {
+    let category = categoryName ?? "Beef"; 
+    if (category === ":categoryName" || !category) {
       category = "Beef";
       navigate(`/categories/Beef`);
-    } else {
-      category = categoryName as string;
     }
-    const request: { category: string; page: number } = {
-      category,
-      page: currentPage,
-    };
+
+    const request = { category, page: currentPage };
     dispatch(getRecipesByCategory(request));
-  }, [dispatch, categoryName, currentPage]);
+  }, [dispatch, categoryName, currentPage, navigate]);
 
   return (
     <>
