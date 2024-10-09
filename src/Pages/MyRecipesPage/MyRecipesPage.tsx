@@ -58,10 +58,7 @@ const MyRecipesPage = () => {
         ) : (
           <>
             {ownRecipes.length === 0 ? (
-              <div className={css.noRecipes}>
-                <p>Brak przepisów na tej stronie.</p>
-                <p>Proszę wrócić do strony głównej lub wybrać inną stronę.</p>
-              </div>
+              navigate(`?page=1`)
             ) : (
               <>
                 <MyRecipesList recipes={ownRecipes} />
