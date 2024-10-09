@@ -57,7 +57,7 @@ const MyRecipesPage = () => {
           </div>
         ) : (
           <>
-            {ownRecipes.length === 0 ? (navigate(`?page=${currentPage - 1}`)) : (
+            {ownRecipes.length === 0 ? (navigate(`?page=${currentPage}`)) : (
               <>
                 <MyRecipesList recipes={ownRecipes} />
                 <BasicPagination
