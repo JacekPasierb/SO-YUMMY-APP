@@ -29,11 +29,11 @@ const Header: React.FC = () => {
                 <HamburgerMenu />
               </div>
             ) : (
-              <div className={styles.header__desktop}>
+              <>
                 <Navigation />
                 <UserLogo />
                 <ThemeToggler />
-              </div>
+                </>
             )}
           </div>
         )}
