@@ -1,10 +1,10 @@
-import css from "./AddRecipeForm.module.css";
+import styles from "./AddRecipeForm.module.css";
 
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ClimbingBoxLoader } from "react-spinners";
 
-import React, { FC, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptionFields";
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
@@ -16,7 +16,17 @@ import { addOwnRecipes } from "../../redux/ownRecipes/operations";
 
 import { Ing, Ingredient, IngredientData } from "../../types/ingredientsTypes";
 
-const AddRecipeForm: FC = () => {
+interface RecipeInputs {
+  file: string;
+  title: string;
+  description: string;
+  category: string;
+  time: string;
+  ingredients: Ingredient[];
+  instructions: string;
+}
+
+const AddRecipeForm: React.FC = () => {
   const [file, setFile] = useState("");
   const [titleRecipe, setTitleRecipe] = useState("");
   const [descriptionRecipe, setDescriptionRecipe] = useState("");
@@ -29,12 +39,17 @@ const AddRecipeForm: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const getIngredientsAll = async () => {
-      const { data } = await fetchAllIngredients();
-      setIngredientsAll(data.ingredients);
+    const fetchIngredients = async () => {
+      try {
+        const { data } = await fetchAllIngredients();
+        setIngredientsAll(data.ingredients);
+      } catch (error) {
+        console.error("Error fetching ingredients:", error);
+        toast.error("Failed to load ingredients.");
+      }
     };
 
-    getIngredientsAll();
+    fetchIngredients();
   }, []);
 
   const resetForm = () => {
@@ -66,94 +81,103 @@ const AddRecipeForm: FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    let ingredientConvert: Ingredient[] = [];
+    const inputs = buildInputs();
+    if (!validateInputs(inputs)) return;
 
-    ingredients.map((ingredient) => {
-      const ingre = ingredientsAll
-        .filter((ing) => ing.ttl === ingredient.selectedValue)
-        .map((ing) => ing._id);
+    setIsLoading(true);
+    try {
+      const imageUrl = await uploadImage();
+      if (imageUrl) {
+        const body = {
+          ...inputs,
+          imageUrl,
+          thumb: imageUrl,
+          preview: imageUrl,
+        };
+        await dispatch(addOwnRecipes(body));
+        resetForm();
+        toast.success("Recipe added successfully");
+      }
+    } catch (error) {
+      console.error("Error adding recipe:", error);
+      toast.error("Add recipe failed, try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-      const measure = ingredient.selectedUnit;
-      ingredientConvert.push({ id: ingre[0], measure: measure });
+  const buildInputs = (): RecipeInputs => {
+    const convertedIngredients: Ingredient[] = ingredients.map((ingredient) => {
+      const foundIngredient = ingredientsAll.find(
+        (ing) => ing.ttl === ingredient.selectedValue
+      );
+      const ingredientId = foundIngredient ? foundIngredient._id : "";
+      return { id: ingredientId, measure: ingredient.selectedUnit };
     });
 
-    const inputs = {
+    return {
       file,
       title: titleRecipe,
       description: descriptionRecipe,
       category: categoryRecipe,
       time: cookingTime,
-      ingredients: ingredientConvert,
+      ingredients: convertedIngredients,
       instructions: instructionsRecipe,
     };
+  };
 
+  const validateInputs = (inputs: RecipeInputs): boolean => {
     for (const [key, value] of Object.entries(inputs)) {
-      if (value.length === 0) {
+      if (!value || (Array.isArray(value) && value.length === 0)) {
         toast.error(`Please fill out the following field: ${key}`);
-
-        return;
+        return false;
       }
 
       if (key === "ingredients") {
-        for (const v of value) {
+        for (const ingredient of value) {
           if (
-            typeof v !== "string" &&
-            (!v.id || !v.measure || v.measure.trim().includes("undefined"))
+            !ingredient.id ||
+            !ingredient.measure ||
+            ingredient.measure.trim() === "undefined"
           ) {
-            toast.error(`Please fill out the following field for ingredient`);
-
-            return;
+            toast.error("Please fill out the following field for ingredient");
+            return false;
           }
         }
-      } else if (key === "instructions") {
-        if (
-          typeof value === "string" &&
-          value.replace(/ +/, " ").trim().length < 50
-        ) {
-          toast.error(`Instructions is too short..`);
-          return;
-        }
+      } else if (key === "instructions" && value.trim().length < 50) {
+        toast.error("Instructions are too short. Please provide more details.");
+        return false;
       }
     }
+    return true;
+  };
 
-    setIsLoading(true);
+  const uploadImage = async (): Promise<string> => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "alex_preset");
 
     try {
       const response = await axios.post("/api/ownRecipes/picture", formData);
-      const imageUrl = response.data.secure_url;
-
-      const body = {
-        ...inputs,
-        imageUrl,
-        thumb: imageUrl,
-        preview: imageUrl,
-      };
-
-      await dispatch(addOwnRecipes(body));
-      resetForm();
-      toast.success("Recipe added successfully");
-    } catch (error: any) {
-      console.error("er", error);
-      toast.error(`Add recipe failed, try again..`);
-    } finally {
-      setIsLoading(false);
+      return response.data.secure_url;
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      throw new Error("Image upload failed.");
     }
   };
+
   //pracuje nad loading dla kategori listy do formularza zeby formularz sie wczytal jak pobierze liste kategori
   return (
     <>
       {isLoading ? (
-        <div className={css.boxLoader}>
+        <div className={styles.boxLoader}>
           <ClimbingBoxLoader color="#8BAA36" />
         </div>
       ) : (
         <form
           onSubmit={handleSubmit}
           encType="multipart/form-data"
-          className={css.form}
+          className={styles.form}
         >
           <RecipeDescriptionFields data={dataForm} />
           <RecipeIngredientsFields

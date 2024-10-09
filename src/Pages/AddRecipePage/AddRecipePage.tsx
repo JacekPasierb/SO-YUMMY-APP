@@ -8,7 +8,7 @@ import { useMediaQuery } from "@react-hook/media-query";
 import FollowUs from "../../components/Footer/FollowUs/FollowUs";
 import SubTitle from "../../components/SubTitle/SubTitle";
 
-const AddRecipePage = () => {
+const AddRecipePage: React.FC = () => {
   const isDesktop = useMediaQuery("(min-width:1200px)");
   return (
     <>
