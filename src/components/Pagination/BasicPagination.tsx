@@ -34,8 +34,8 @@ const BasicPagination: FC<BasicPaginationProps> = ({
             ".MuiPaginationItem-root.Mui-selected": {
               backgroundColor: "var(--color-bg-pagination-select)",
             },
-            ".Mui-selected:hover ": {
-             
+            ".MuiPaginationItem-root.Mui-selected:hover ": {
+               backgroundColor: "var(--color-bg-pagination-select)"
               
             },
             ".MuiPaginationItem-root:hover": {
