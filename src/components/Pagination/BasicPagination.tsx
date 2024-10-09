@@ -45,7 +45,7 @@ const BasicPagination: FC<BasicPaginationProps> = ({
             },
             ".MuiPaginationItem-root": {
               fontSize: "12px",
-              color: "#22252A",
+              color: "var(--color-text-pagination)",
             },
             ".MuiSvgIcon-root": {
               color: "#A9A9A9",

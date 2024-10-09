@@ -66,6 +66,7 @@
   --color-text-link:rgba(62, 68, 98, 1); /* #3E4462 */
   --color-text-subtitle: rgba(0, 24, 51, 1);
 --color-text-input: rgba(35, 38, 42, 1);
+--color-text-pagination: rgba(35, 38, 42, 1);
 
  /* Background colors */
   --color-bg-btn-search: rgba(34, 37, 42, 1); /* #22252A */
@@ -96,6 +97,8 @@
   --color-text-link:rgba(250, 250, 250, 1); 
   --color-text-subtitle: rgba(250, 250, 250, 1);
   --color-text-input:  rgba(250, 250, 250, 1);
+  --color-text-pagination: rgba(250, 250, 250, 1);
+
 
  /* Background colors */
   --color-bg-btn-search:  rgba(139, 170, 54, 1); /* 8BAA36 */
