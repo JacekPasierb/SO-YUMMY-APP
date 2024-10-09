@@ -5,9 +5,9 @@ import styles from "./Header.module.css";
 import "react-toastify/dist/ReactToastify.css";
 import UserLogo from "./UserLogo/UserLogo";
 import Logo from "./Logo/Logo";
-import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Navigation from "./Navigation/Navigation";
 
+const HamburgerMenu = lazy(() => import("./HamburgerMenu/HamburgerMenu"));
 const ThemeToggler = lazy(() => import("./ThemeToggler/ThemeToggler"));
 
 const Header: React.FC = () => {
@@ -17,10 +17,9 @@ const Header: React.FC = () => {
         queries={{
           small: "(max-width: 768px)",
           medium: "(min-width: 769px) and (max-width: 1200px)",
-          large: "(min-width: 1200px)",
         }}
       >
-        {({ small, medium, large }) => (
+        {({ small, medium }) => (
           <div className={`${styles.header__container} ${styles.headerBox}`}>
             <Logo />
             {small || medium ? (
@@ -33,7 +32,7 @@ const Header: React.FC = () => {
                 <Navigation />
                 <UserLogo />
                 <ThemeToggler />
-                </>
+              </>
             )}
           </div>
         )}

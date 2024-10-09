@@ -1,6 +1,6 @@
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import css from "./BasicPagination.module.css";
+import styles from "./BasicPagination.module.css";
 import { FC } from "react";
 
 interface BasicPaginationProps {
@@ -24,12 +24,12 @@ const BasicPagination: FC<BasicPaginationProps> = ({
   };
   return (
     <>
-      <Stack spacing={1} className={css.center}>
+      <Stack spacing={1} className={styles.pagination__center}>
         <Pagination
           count={count}
-          onChange={handlePageChange}
-          className={css.pagination}
           page={page}
+          onChange={handlePageChange}
+          className={styles.pagination}
           sx={{
             ".MuiPaginationItem-root.Mui-selected": {
               backgroundColor: "#EBF3D4",

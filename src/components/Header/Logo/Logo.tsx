@@ -1,18 +1,18 @@
-import css from "./Logo.module.css";
-import logo from "../../../images/logo.png";
-
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./Logo.module.css";
+import logo from "../../../images/logo.png";
 
-const Logo = () => {
+
+const Logo: React.FC = () => {
   return (
-    <Link to="/" className={css.link}>
+    <Link to="/" className={styles.logo__link}>
       <img
         src={logo}
-        alt="logo"
+        alt="So Yummy Logo"
         width="40"
         height="40"
-        className={css.iconLogo}
+        className={styles.logo__icon}
       />
     </Link>
   );
