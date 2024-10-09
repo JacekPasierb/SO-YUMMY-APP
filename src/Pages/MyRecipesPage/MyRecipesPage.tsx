@@ -58,7 +58,7 @@ const MyRecipesPage = () => {
         ) : (
           <>
             {ownRecipes.length === 0 ? (
-              navigate(`?page=1`)
+              navigate(`?page=${currentPage}`)
             ) : (
               <>
                 <MyRecipesList recipes={ownRecipes} />
