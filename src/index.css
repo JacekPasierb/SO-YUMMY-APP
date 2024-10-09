@@ -87,6 +87,9 @@
   --color-Hamburger: rgba(34, 37, 42, 1);
 
   --color-stroke-icon: rgba(34, 37, 42, 1);
+
+  --box-shadow-pagination: rgba(135, 135, 135, 0.2)  ;
+
 }
 
 .dark-theme {
@@ -121,6 +124,9 @@
     --color-Hamburger: rgba(250, 250, 250, 1);
 
     --color-stroke-icon: rgba(250, 250, 250, 1);
+
+    --box-shadow-pagination: rgba(31, 30, 30, 0.2);
+
 
 }
 
