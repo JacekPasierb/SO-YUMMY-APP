@@ -4,25 +4,23 @@
   gap: 30px;
 }
 
-.link {
+.navigation__link {
   text-decoration: none;
 }
 
-.link .navText {
+.navigation__link .navigation__text {
   font-size: 14px;
   line-height: 22.4px;
   color: var(--color-text-nav); /* new update*/
 }
 
-
-
-.link:hover .navText,
-.link:focus .navText,
-.link:active .navText {
-  color: var(--color-text-five); /*update*/
+.navigation__link:hover .navigation__text,
+.navigation__link:focus .navigation__text,
+.navigation__link:active .navigation__text {
+  color: var(--color-text-highlight); /*new update*/
 }
 
-.iconSearch {
+.navigation__iconSearch {
   width: 24px;
   height: 24px;
 
@@ -30,6 +28,6 @@
   stroke: rgb(0, 0, 0);
 }
 
-.iconSearch:hover {
+.navigation__iconSearch:hover {
   stroke: #8baa36;
 }
