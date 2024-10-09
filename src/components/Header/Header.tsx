@@ -1,18 +1,18 @@
-import css from "./Header.module.css";
-import "react-toastify/dist/ReactToastify.css";
-import UserLogo from "./UserLogo/UserLogo";
-import Logo from "./Logo/Logo";
-
 import React, { lazy } from "react";
 import Media from "react-media";
 
+import styles from "./Header.module.css";
+import "react-toastify/dist/ReactToastify.css";
+import UserLogo from "./UserLogo/UserLogo";
+import Logo from "./Logo/Logo";
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Navigation from "./Navigation/Navigation";
+
 const ThemeToggler = lazy(() => import("./ThemeToggler/ThemeToggler"));
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
-    <header>
+    <header className={styles.header}>
       <Media
         queries={{
           small: "(max-width: 768px)",
@@ -20,41 +20,22 @@ const Header = () => {
           large: "(min-width: 1200px)",
         }}
       >
-        {(matches) => (
-          <>
-            {matches.small && (
-              <div className={css.header}>
-                <div className={`${css.container} ${css.headerBox}`}>
-                  <Logo />
-                  <div className={css.mobileBox}>
-                    <UserLogo />
-                    <HamburgerMenu />
-                  </div>
-                </div>
+        {({ small, medium, large }) => (
+          <div className={`${styles.header__container} ${styles.headerBox}`}>
+            <Logo />
+            {small || medium ? (
+              <div className={styles.header__mobile}>
+                <UserLogo />
+                <HamburgerMenu />
+              </div>
+            ) : (
+              <div className={styles.header__desktop}>
+                <Navigation />
+                <UserLogo />
+                <ThemeToggler />
               </div>
             )}
-            {matches.medium && (
-              <div className={css.header}>
-                <div className={`${css.container} ${css.headerBox}`}>
-                  <Logo />
-                  <div className={css.mobileBox}>
-                    <UserLogo />
-                    <HamburgerMenu />
-                  </div>
-                </div>
-              </div>
-            )}
-            {matches.large && (
-              <div className={css.header}>
-                <div className={`${css.container} ${css.headerBox}`}>
-                  <Logo />
-                  <Navigation />
-                  <UserLogo />
-                  <ThemeToggler />
-                </div>
-              </div>
-            )}
-          </>
+          </div>
         )}
       </Media>
     </header>

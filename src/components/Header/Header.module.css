@@ -1,4 +1,4 @@
-.container {
+.header__container {
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
@@ -21,7 +21,7 @@
   padding-top: 18px;
 }
 
-.mobileBox {
+.header__mobile {
   display: flex;
   flex-direction: row;
 }

@@ -1,7 +1,5 @@
-import css from "./AddRecipePage.module.css";
-
+import styles from "./AddRecipePage.module.css";
 import React from "react";
-
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
@@ -9,24 +7,23 @@ import PopularRecipe from "../../components/PopularRecipe/PopularRecipe";
 import { useMediaQuery } from "@react-hook/media-query";
 import FollowUs from "../../components/Footer/FollowUs/FollowUs";
 import SubTitle from "../../components/SubTitle/SubTitle";
-// import FollowUs from "../../components/FollowUs/FollowUs";
 
 const AddRecipePage = () => {
-  const isDesctop = useMediaQuery("(min-width:1200px)");
+  const isDesktop = useMediaQuery("(min-width:1200px)");
   return (
     <>
-      <main className={css.background}>
+      <main className={styles.addRecipePage}>
         <Header />
-        <div className={`${css.container} ${css.flex}`}>
+        <div className={`${styles.addRecipePage__container} ${styles.flex}`}>
           <MainTitle title={"Add recipe"} />
-          <div className={css.flexPage}>
-            {isDesctop ? (
+          <div className={styles.addRecipePage__content}>
+            {isDesktop ? (
               <>
                 <AddRecipeForm />
-                <div className={css.margin}>
-                  <SubTitle title={"Follow Us"} /> <FollowUs />{" "}
+                <aside className={styles.addRecipePage__sidebar}>
+                  <SubTitle title={"Follow Us"} /> <FollowUs />
                   <PopularRecipe />
-                </div>
+                </aside>
               </>
             ) : (
               <>

@@ -1,4 +1,12 @@
-.container {
+.addRecipePage {
+  padding-bottom: 100px;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 200px;
+  }
+}
+
+.addRecipePage__container {
   width: 100%;
   padding: 0 16px;
   margin: 0 auto;
@@ -13,20 +21,12 @@
   }
 }
 
-.background {
-  padding-bottom: 100px;
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 200px;
-  }
-}
-
 .flex {
   display: flex;
   flex-direction: column;
 }
 
-.flexPage {
+.addRecipePage__content {
   display: flex;
   flex-direction: column;
 
@@ -36,6 +36,6 @@
   }
 }
 
-.margin {
+.addRecipePage__sidebar {
   margin-left: 121px;
 }
