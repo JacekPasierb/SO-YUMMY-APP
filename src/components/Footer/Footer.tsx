@@ -69,10 +69,10 @@ const Footer = () => {
                   {matches.small ? null : featuresList}
                 </div>
                 <Nav />
-                {matches.large && (<> {subscribeSection} <SubscribeForm/></>)}
+                {matches.large && subscribeSection}
               </div>
               {!matches.large && <SubscribeForm />}
-            
+
               <FollowUs />
             </div>
           </div>
