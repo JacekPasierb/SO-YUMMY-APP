@@ -37,6 +37,7 @@ const BasicPagination: FC<BasicPaginationProps> = ({
             ".MuiPaginationItem-root.Mui-selected:hover ": {
                backgroundColor: "var(--color-bg-pagination-select)",
                cursor:"not-allowed",
+               ":disabled"
               
             },
             ".MuiPaginationItem-root:hover": {
