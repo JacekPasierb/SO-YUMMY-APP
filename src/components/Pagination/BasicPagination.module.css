@@ -4,6 +4,7 @@
 .pagination {
   padding-block: 10px;
 
+  background-color: red;
   border-radius: 26px;
   box-shadow: -5px 13px 14px -8px var(--box-shadow-pagination);
 
