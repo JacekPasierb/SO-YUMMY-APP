@@ -5,7 +5,7 @@
 
   color: var(--color-text-btn-primary); /*new update*/
 
-  background-color: var(--color-bg-footer); 
+  background-color: var(--color-bg-footer);
 
   @media screen and (min-width: 768px) {
     margin-top: 200px;
@@ -20,7 +20,7 @@
   }
 }
 
-.container {
+.footer__container {
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
@@ -35,15 +35,15 @@
   }
 }
 
-.footerBoxPrimary {
-display: flex;
-flex-direction: column;
+.footer__primaryContent {
+  display: flex;
+  flex-direction: column;
 
-@media screen and (max-width: 768px) {
-  align-items: center;
+  @media screen and (max-width: 768px) {
+    align-items: center;
+  }
 }
-}
-.footerBox {
+.footer__content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -58,7 +58,7 @@ flex-direction: column;
   }
 }
 
-.footerBoxS {
+.footer__contentSmall {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,7 +73,7 @@ flex-direction: column;
   }
 }
 
-.footerBoxAssaid {
+.footer__logoAndFeatures {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -85,13 +85,13 @@ flex-direction: column;
   }
 }
 
-.logoBox {
+.footer__logoBox {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.logo {
+.footer__logoImage {
   width: 30px;
   height: 30px;
   margin-right: 8px;
@@ -106,7 +106,7 @@ flex-direction: column;
   }
 }
 
-.titleBox {
+.footer__logoTitle {
   font-size: 18px;
   font-weight: bold;
   line-height: 18px;
@@ -126,7 +126,7 @@ flex-direction: column;
   align-items: center;
 } */
 
-.list {
+.footer__featuresList {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -139,7 +139,7 @@ flex-direction: column;
   }
 }
 
-.listItem {
+.footer__featureItem {
   font-size: 14px;
   line-height: 18px;
 
@@ -149,24 +149,25 @@ flex-direction: column;
   }
 }
 
-.subscribeBox {
+.footer__subscribeSection {
   display: inline-block;
 }
 
-.subscribeTitle {
+.footer__subscribeTextBox {
+  max-width: 331px;
+}
+
+.footer__subscribeTitle {
   margin: 0;
 
   font-size: 18px;
   font-weight: bold;
 }
 
-.subscribeDesc {
+.footer__subscribeDescription {
   margin-top: 14px;
 
   font-size: 14px;
   line-height: 18px;
 }
 
-.box {
-  max-width: 331px;
-}

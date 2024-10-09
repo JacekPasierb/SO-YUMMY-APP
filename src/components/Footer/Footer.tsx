@@ -8,39 +8,41 @@ import Media from "react-media";
 
 const Footer = () => {
   const logoSection = (
-    <div className={styles.logoBox}>
+    <div className={styles.footer__logoBox}>
       <img
         src={logoFooter}
         alt="So Yummy Logo"
         width="30"
         height="30"
-        className={styles.logo}
+        className={styles.footer__logoImage}
         aria-label="So Yummy"
       />
-      <p className={styles.titleBox}>So Yummy</p>
+      <p className={styles.footer__logoTitle}>So Yummy</p>
     </div>
   );
 
   const featuresList = (
-    <ul className={styles.list}>
-      <li className={styles.listItem}>
+    <ul className={styles.footer__featuresList}>
+      <li className={styles.footer__featureItem}>
         Database of recipes that can be replenished
       </li>
-      <li className={styles.listItem}>
+      <li className={styles.footer__featureItem}>
         Flexible search for desired and unwanted ingredients
       </li>
-      <li className={styles.listItem}>
+      <li className={styles.footer__featureItem}>
         Ability to add your own recipes with photos
       </li>
-      <li className={styles.listItem}>Convenient and easy to use</li>
+      <li className={styles.footer__featureItem}>Convenient and easy to use</li>
     </ul>
   );
 
   const subscribeSection = (
-    <div className={styles.subscribeBox}>
-      <div className={styles.box}>
-        <p className={styles.subscribeTitle}>Subscribe to our Newsletter</p>
-        <p className={styles.subscribeDesc}>
+    <div className={styles.footer__subscribeSection}>
+      <div className={styles.footer__subscribeTextBox}>
+        <p className={styles.footer__subscribeTitle}>
+          Subscribe to our Newsletter
+        </p>
+        <p className={styles.footer__subscribeDescription}>
           Subscribe to our newsletter. Stay updated with the latest news and
           special offers.
         </p>
@@ -59,12 +61,16 @@ const Footer = () => {
     >
       {(matches) => (
         <footer className={styles.footer}>
-          <div className={styles.container}>
-            <div className={styles.footerBoxPrimary}>
+          <div className={styles.footer__container}>
+            <div className={styles.footer__primaryContent}>
               <div
-                className={matches.small ? styles.footerBoxS : styles.footerBox}
+                className={
+                  matches.small
+                    ? styles.footer__contentSmall
+                    : styles.footer__content
+                }
               >
-                <div className={styles.footerBoxAssaid}>
+                <div className={styles.footer__logoAndFeatures}>
                   {logoSection}
                   {matches.small ? null : featuresList}
                 </div>
