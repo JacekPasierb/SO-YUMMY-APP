@@ -117,3 +117,7 @@
 .select::-ms-expand {
   display: none; /* Ukryj domyślną strzałkę w przeglądarce Internet Explorer */
 }
+
+.select option {
+  background-color: greenyellow;
+}
