@@ -154,9 +154,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               className={styles.select}
               name="cat"
             >
-              <option value="" disabled>
-                Please choose category
-              </option>
+          
               {categoriesList.map((category) => (
                 <option key={category} value={category}>
                   {category}
