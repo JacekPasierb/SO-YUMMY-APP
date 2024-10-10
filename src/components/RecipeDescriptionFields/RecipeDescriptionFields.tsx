@@ -1,4 +1,4 @@
-import styles from "./RecipeDescriptionFields.module.css";
+import css from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
 import { toast } from "react-toastify";
@@ -80,57 +80,54 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
 
   return (
     <>
-      <div className={styles.recipeContainer}>
-        <div className={styles.imageWrapper}>
+      <div className={css.recipeDescriptionFieldsBox}>
+        <div className={css.img}>
           <label htmlFor="file">
             {!data.file ? (
-              <div className={styles.iconContainer}>
-                <svg className={styles.icon}>
-                  <use href={`${sprite}#icon-add`}></use>
+              <div className={css.iconBox}>
+                <svg className={css.iconAdd}>
+                  <use href={sprite + `#icon-add`}></use>
                 </svg>
               </div>
             ) : (
-              <div className={styles.imagePreview}>
-                {preview && (
-                  <img
-                    src={preview}
-                    alt="Recipe Preview"
-                    className={styles.image}
-                  />
-                )}
+              <div className={css.pictureBox}>
+                 {preview && <img src={preview} alt="Recipe Preview" className={css.imgRecipe} />}
+                
               </div>
             )}
 
             <input
               type="file"
-              id="file"
               name="file"
+              id="file"
               onChange={handleFile}
-              className={styles.fileInput}
+              className={css.inputPicture}
             />
           </label>
         </div>
-        <div className={styles.formFields}>
-          <div className={styles.inputField}>
+        <div className={css.inputs}>
+          <div className={css.inputBox}>
+            <label htmlFor="title" />
             <input
               type="text"
-              id="title"
-              value={data.titleRecipe}
-              onChange={handleTitleChange}
-              placeholder="Enter recipe title"
-              className={styles.input}
               name="title"
+              id="title"
+              onChange={handleTitleChange}
+              value={data.titleRecipe}
+              placeholder="Enter Item Title"
+              className={css.input}
             />
           </div>
-          <div className={styles.inputField}>
+          <div className={css.inputBox}>
+            <label htmlFor="about" />
             <input
               type="text"
-              id="about"
-              value={data.descriptionRecipe}
-              onChange={handleDescriptionChange}
-              placeholder="Enter recipe description"
-              className={styles.input}
               name="about"
+              id="about"
+              onChange={handleDescriptionChange}
+              value={data.descriptionRecipe}
+              placeholder="Enter about recipe"
+              className={css.input}
             />
           </div>
           <div className={`${css.inputBox} ${css.inputBox__select}`}>
