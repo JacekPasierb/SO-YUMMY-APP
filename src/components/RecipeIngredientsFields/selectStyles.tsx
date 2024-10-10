@@ -71,7 +71,7 @@ export const selectIngredient = {
   }),
   placeholder: (baseStyles: any, state: any) => ({
     ...baseStyles,
-    color: "#00000085",
+    color: "red",
     fontSize: "14px",
   }),
   option: (baseStyles: any, state: any) => ({
