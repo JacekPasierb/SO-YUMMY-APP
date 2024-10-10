@@ -102,6 +102,7 @@
   padding-inline: 20px;
 max-height: 100px;
 overflow-y: auto;
+display: block; 
 
   font-size: 12px;
   line-height: 12px;
