@@ -100,6 +100,8 @@
 
 .select {
   padding-inline: 20px;
+max-height: 100px;
+overflow-y: auto;
 
   font-size: 12px;
   line-height: 12px;
