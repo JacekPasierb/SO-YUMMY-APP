@@ -22,11 +22,13 @@ export const selectIngredient = {
     ...baseStyles,
     color: `"#23262A"`,
     fontWeight: "normal",
+
+    border:"1px solid rgba(250, 250, 250, 0.2)",
   }),
   control: (baseStyles:any, state:any) => ({
     ...baseStyles,
     backgroundColor: "transparent",
-    border:"1px solid rgba(250, 250, 250, 0.2)",
+   
     borderRadius: "6px",
     
 
