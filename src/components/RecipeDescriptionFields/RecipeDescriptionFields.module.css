@@ -131,23 +131,17 @@ select::-webkit-scrollbar-thumb {
   border-radius: 10px;
 }
 
-select {
-  -webkit-appearance: button;
-  -webkit-border-radius: 2px;
-  /*-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);*/
-  -webkit-padding-end: 20px;
-  -webkit-padding-start: 2px;
-  -webkit-user-select: none;
-  background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-  background-position: center right;
-  background-repeat: no-repeat;
-  border: 1px solid #AAA;
-  color: #555;
-  font-size: inherit;
-  margin: 0;
-  overflow: hidden;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+select::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+select::-webkit-scrollbar-track {
+  border: rgb(180, 180, 180);
+  background-color: #ff6536;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: #3677ef;
+  border: 1px solid rgb(193, 193, 193);
 }
