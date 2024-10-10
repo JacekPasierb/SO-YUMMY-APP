@@ -196,10 +196,8 @@
   }
 }
 
-.a {
-  background-color: transparent; 
-}
 
-.css-atjn1t-control {
-  background-color: transparent;
+
+.recipeIngredients__item .recipeIngredients__select {
+  background-color: red;
 }
