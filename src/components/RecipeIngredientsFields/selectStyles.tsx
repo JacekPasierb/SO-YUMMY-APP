@@ -82,7 +82,7 @@ export const selectIngredient = {
       ? state.isFocused
         ? "black"
         : "#8BAA36"
-      : "red",
+      : "#000000",
     backgroundColor: state.isFocused ? "#8BAA36" : "transparent",
   }),
   dropdownIndicator: (baseStyles:any) => ({
@@ -106,7 +106,7 @@ export const selectIngredient = {
 export const selectUnit = {
   valueContainer: (baseStyles:any, state:any) => ({
     ...baseStyles,
-
+color:"red",
     ":hover": {
       cursor: "text",
     },
