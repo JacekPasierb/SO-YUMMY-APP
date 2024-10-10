@@ -124,3 +124,7 @@
 .select option::selection {
   background-color: red;
 }
+
+.select:hover {
+  background-color: red;
+}
