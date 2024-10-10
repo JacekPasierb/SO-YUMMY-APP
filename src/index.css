@@ -169,7 +169,7 @@
   --color-bg-pagination-select: rgba(139, 170, 54, 1);
   --color-bg-pagination: rgba(42, 44, 54, 1);
   --color-bg-selectMenu:rgba(139, 170, 54, 1);
-  --color-bg-select: transparent;
+  --color-bg-select: rgba(42, 44, 54, 1);
 
   /* Border colors*/
   --color-border-search: rgba(139, 170, 54, 1);
