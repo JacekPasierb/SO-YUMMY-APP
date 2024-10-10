@@ -180,7 +180,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               onChange={handleTimeChange}
               className={`${styles.select} ${styles.sc}`}
               name="time"
-              onFocus={(e) => { e.target.size = 5;}}
+              onBlur={(e) => { e.target.size = 5;}}
             >
               {timeOptionsList().map((option) => (
                 <option value={option.value} key={option.label}>
