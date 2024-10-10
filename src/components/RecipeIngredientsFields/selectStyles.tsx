@@ -20,7 +20,7 @@ export const selectIngredient = {
   }),
   singleValue: (baseStyles:any) => ({
     ...baseStyles,
-    color: `"#23262A"`,
+    color: `var(--color-text-select)`,
     fontWeight: "normal",
 
     border:"1px solid rgba(250, 250, 250, 0.2)",
