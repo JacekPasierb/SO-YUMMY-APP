@@ -140,4 +140,5 @@ select::-webkit-scrollbar-thumb {
 }
 .sc {
   max-height: 80px;
+  overflow-y: auto;
 }
