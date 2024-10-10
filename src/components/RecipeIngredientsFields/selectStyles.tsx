@@ -25,7 +25,7 @@ export const selectIngredient = {
   }),
   control: (baseStyles:any, state:any) => ({
     ...baseStyles,
-    backgroundColor: "#d9d9d94f",
+    backgroundColor: "transparent",
     borderRadius: "6px",
     border: "none",
 
