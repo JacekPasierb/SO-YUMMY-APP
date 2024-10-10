@@ -31,10 +31,6 @@
   outline: none;
 }
 
-
-
-
-
 .icon {
   width: 14px;
   height: 14px;
@@ -196,8 +192,7 @@
   }
 }
 
+.recipeIngredients__select {
 
-
-.recipeIngredients__item .recipeIngredients__select {
-  background-color: var(--color-bg-select);
+  color: red;
 }
