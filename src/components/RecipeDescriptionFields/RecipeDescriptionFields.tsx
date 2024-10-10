@@ -35,7 +35,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
     return time;
   };
 
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.currentTarget;
 
     if (!files || !files.length) return;
