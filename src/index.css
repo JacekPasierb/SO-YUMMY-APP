@@ -113,8 +113,7 @@
   --color-text-input: rgba(35, 38, 42, 1);
   --color-text-pagination: rgba(35, 38, 42, 1);
 --color-text-input-secondary:rgba(0, 0, 0, 1);
---color-text-select:rgba(1, 1, 1, .60)
-;
+--color-text-select:rgba(1, 1, 1, .60);
 
   /* Background colors */
   --color-bg-btn-search: rgba(34, 37, 42, 1); /* #22252A */
@@ -160,7 +159,7 @@
   --color-text-input: rgba(250, 250, 250, 1);
   --color-text-pagination: rgba(250, 250, 250, 1);
   --color-text-input-secondary:rgba(250, 250, 250, 1);
-
+  --color-text-select:rgba(250, 250, 250, 1);
   
   /* Background colors */
   --color-bg-btn-search: rgba(139, 170, 54, 1); /* 8BAA36 */
