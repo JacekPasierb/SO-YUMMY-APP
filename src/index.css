@@ -113,7 +113,7 @@
   --color-text-input: rgba(35, 38, 42, 1);
   --color-text-pagination: rgba(35, 38, 42, 1);
 --color-text-input-secondary:rgba(0, 0, 0, 1);
---color-text-select:rgba(30, 31, 40, 1);
+--color-text-select:red;
 
   /* Background colors */
   --color-bg-btn-search: rgba(34, 37, 42, 1); /* #22252A */
