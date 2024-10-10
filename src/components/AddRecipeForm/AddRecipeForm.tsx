@@ -17,7 +17,7 @@ import { addOwnRecipes } from "../../redux/ownRecipes/operations";
 import { Ing, Ingredient, IngredientData } from "../../types/ingredientsTypes";
 
 interface RecipeInputs {
-  file: string;
+  file: File | null;
   title: string;
   description: string;
   category: string;
@@ -27,7 +27,7 @@ interface RecipeInputs {
 }
 
 const AddRecipeForm: React.FC = () => {
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState<File | null>(null); 
   const [titleRecipe, setTitleRecipe] = useState("");
   const [descriptionRecipe, setDescriptionRecipe] = useState("");
   const [categoryRecipe, setCategoryRecipe] = useState("");
@@ -53,7 +53,7 @@ const AddRecipeForm: React.FC = () => {
   }, []);
 
   const resetForm = () => {
-    setFile("");
+    setFile(null);
     setTitleRecipe("");
     setDescriptionRecipe("");
     setCategoryRecipe("");
@@ -153,6 +153,7 @@ const AddRecipeForm: React.FC = () => {
   };
 
   const uploadImage = async (): Promise<string> => {
+    if (!file) throw new Error("No file selected");
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "alex_preset");
