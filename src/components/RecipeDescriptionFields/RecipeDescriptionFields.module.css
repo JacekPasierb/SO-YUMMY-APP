@@ -120,6 +120,7 @@
 
 .select option {
   background-color: var(--color-bg-selectMenu);
+  min-height: 100px;
 }
 
 select::-webkit-scrollbar {
