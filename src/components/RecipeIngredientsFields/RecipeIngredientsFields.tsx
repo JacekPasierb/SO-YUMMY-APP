@@ -94,7 +94,7 @@ const RecipeIngredientsFields: React.FC<RecipeIngredientsFieldsProps> = ({
               onChange={(selectedOption) =>
                 handleIngredientChange(index, selectedOption)
               }
-             
+              styles={selectIngredient}
               className={styles.recipeIngredients__select}
               
             />
