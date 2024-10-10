@@ -132,6 +132,22 @@ select::-webkit-scrollbar-thumb {
 }
 
 select {
-  scrollbar-width: thin; /* Może być też: auto, none */
-  scrollbar-color: #00ef1c #f1f1f1; /* Kolory: (thumb, track) */
+  -webkit-appearance: button;
+  -webkit-border-radius: 2px;
+  /*-webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);*/
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+  background-position: center right;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  color: #555;
+  font-size: inherit;
+  margin: 0;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
