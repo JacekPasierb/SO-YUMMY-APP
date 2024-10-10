@@ -100,10 +100,10 @@
 
 .select {
   padding-inline: 20px;
-  
+
   font-size: 12px;
   line-height: 12px;
-  color:var(--color-text-description);
+  color: var(--color-text-description);
 
   background-color: transparent;
   border: none;
@@ -122,10 +122,9 @@
   background-color: var(--color-bg-selectMenu);
 }
 
-
 select::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
+  width: 4px;
+  height: 93px;
 }
 
 select::-webkit-scrollbar-track {
@@ -136,4 +135,5 @@ select::-webkit-scrollbar-track {
 select::-webkit-scrollbar-thumb {
   border: none;
   background-color: var(--color-bg-scrollbar-thumb);
+  border-radius: 12px;
 }
