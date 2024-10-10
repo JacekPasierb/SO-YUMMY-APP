@@ -1,4 +1,4 @@
-import css from "./RecipeDescriptionFields.module.css";
+import styles from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
 import { toast } from "react-toastify";
@@ -35,7 +35,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
     return time;
   };
 
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.currentTarget;
 
     if (!files || !files.length) return;
@@ -80,110 +80,115 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
 
   return (
     <>
-      <div className={css.recipeDescriptionFieldsBox}>
-        <div className={css.img}>
+      <div className={styles.recipeContainer}>
+        <div className={styles.imageWrapper}>
           <label htmlFor="file">
             {!data.file ? (
-              <div className={css.iconBox}>
-                <svg className={css.iconAdd}>
-                  <use href={sprite + `#icon-add`}></use>
+              <div className={styles.iconContainer}>
+                <svg className={styles.icon}>
+                  <use href={`${sprite}#icon-add`}></use>
                 </svg>
               </div>
             ) : (
-              <div className={css.pictureBox}>
-                 {preview && <img src={preview} alt="Recipe Preview" className={css.imgRecipe} />}
-                
+              <div className={styles.imagePreview}>
+                {preview && (
+                  <img
+                    src={preview}
+                    alt="Recipe Preview"
+                    className={styles.image}
+                  />
+                )}
               </div>
             )}
 
             <input
               type="file"
-              name="file"
               id="file"
-              onChange={handleFile}
-              className={css.inputPicture}
+              onChange={handleFileChange}
+              className={styles.fileInput}
+              name="file"
             />
           </label>
         </div>
-        <div className={css.inputs}>
-          <div className={css.inputBox}>
+        <div className={styles.formFields}>
+          <div className={styles.inputField}>
             <label htmlFor="title" />
             <input
               type="text"
-              name="title"
               id="title"
-              onChange={handleTitleChange}
               value={data.titleRecipe}
-              placeholder="Enter Item Title"
-              className={css.input}
+              onChange={handleTitleChange}
+              placeholder="Enter recipe title"
+              className={styles.input}
+              name="title"
             />
           </div>
-          <div className={css.inputBox}>
+          <div className={styles.inputField}>
             <label htmlFor="about" />
             <input
               type="text"
-              name="about"
               id="about"
-              onChange={handleDescriptionChange}
               value={data.descriptionRecipe}
+              onChange={handleDescriptionChange}
               placeholder="Enter about recipe"
-              className={css.input}
+              className={styles.input}
+              name="about"
             />
           </div>
-          <div className={`${css.inputBox} ${css.inputBox__select}`}>
+          <div className={`${styles.inputField} ${styles.inputField__select}`}>
             <div>
               <label htmlFor="category" />
               <input
                 type="text"
-                name="category"
-                placeholder="Category"
                 id="category"
+                placeholder="Category"
+                className={styles.input}
                 readOnly
-                className={css.input}
+                name="category"
               />
             </div>
             <select
-              id="cat"
-              name="cat"
-              onChange={handleCategoryChange}
+              id="category"
               value={data.categoryRecipe}
-              className={css.select}
+              onChange={handleCategoryChange}
+              className={styles.select}
+              name="cat"
             >
               <option value="" disabled>
                 Please choose category
               </option>
               {categoriesList.map((category) => (
-                <option value={category} key={category}>
+                <option key={category} value={category}>
                   {category}
                 </option>
               ))}
             </select>
           </div>
-          <div className={`${css.inputBox} ${css.inputBox__select}`}>
+          <div className={`${styles.inputField} ${styles.inputField__select}`}>
             <div>
               <label htmlFor="cookingTime" />
               <input
                 type="text"
-                name="cookingTime"
                 id="cookingTime"
                 placeholder="Cooking time"
+                className={styles.input}
                 readOnly
-                className={css.input}
+                name="cookingTime"
               />
             </div>
             <select
-              id="time"
-              name="time"
+              id="cookingTime"
               value={data.cookingTime}
               onChange={handleTimeChange}
-              className={css.select}
+              className={styles.select}
+              name="time"
             >
               <option value="" disabled>
                 Please choose time
               </option>
-              {timeOptionsList().map((t) => (
-                <option value={t.value} key={t.label}>
-                  {t.label}
+              {timeOptionsList().map((option) => (
+                <option value={option.value} key={option.label}>
+                  {option.label}
                 </option>
               ))}
             </select>
