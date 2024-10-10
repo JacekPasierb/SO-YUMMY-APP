@@ -130,7 +130,7 @@ select::-webkit-scrollbar {
 
 select::-webkit-scrollbar-track {
   border: none;
-  background-color: transparent;
+  background-color: var(--color-bg-scrollbar-track);
 }
 
 select::-webkit-scrollbar-thumb {
