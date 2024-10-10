@@ -130,3 +130,8 @@ select::-webkit-scrollbar-thumb {
   background: #e62a2a;
   border-radius: 10px;
 }
+
+select {
+  scrollbar-width: thin; /* Może być też: auto, none */
+  scrollbar-color: #00ef1c #f1f1f1; /* Kolory: (thumb, track) */
+}
