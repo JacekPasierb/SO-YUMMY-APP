@@ -96,6 +96,7 @@ const RecipeIngredientsFields: React.FC<RecipeIngredientsFieldsProps> = ({
               }
               styles={selectIngredient}
               className={styles.recipeIngredients__select}
+              id="a"
             />
             <UnitInput
               ingredients={ingredients}
