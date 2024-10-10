@@ -1,18 +1,16 @@
-import css from "./RecipeDescriptionFields.module.css";
+import styles from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
 import { toast } from "react-toastify";
-
 import React, { ChangeEvent, FC, useEffect, useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategoriesList } from "../../redux/recipes/selectors";
 import { AppDispatch } from "../../redux/store";
 import { getCategoriesList } from "../../redux/recipes/operations";
 
 interface DataForm {
-  file: any;
-  setFile: (file: any) => void;
+  file: File | null;
+  setFile: (file: File | null) => void;
   titleRecipe: string;
   setTitleRecipe: (title: string) => void;
   descriptionRecipe: string;
@@ -24,182 +22,143 @@ interface DataForm {
 }
 
 const RecipeDescriptionFields: FC<{ data: DataForm }> = ({ data }) => {
-  const [path, setPath] = useState("");
+  const [preview, setPreview] = useState<string | null>(null);
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
-  const timeOptionsList = () => {
-    const time = [];
-    for (let i = 5; i <= 120; i += 5) {
-      time.push({ label: `${i} min`, value: i });
-    }
-    return time;
-  };
 
-  const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.currentTarget;
-    if (!files) {
+  const timeOptions = Array.from({ length: 24 }, (_, i) => ({
+    label: `${(i + 1) * 5} min`,
+    value: (i + 1) * 5,
+  }));
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { files } = event.target;
+    if (!files || !files.length) return;
+
+    const file = files[0];
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Invalid file type. Please use JPEG or PNG.");
+      data.setFile(null);
       return;
     }
-    const [file] = files;
-    let allowedImageTypes = ["image/jpeg", "image/jpg", "image/png"];
 
-    if (!file || !allowedImageTypes.includes(file.type)) {
-      toast.error("Wrong file type. Please, choose different image type", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-
-      data.setFile("");
+    if (file.size > 4000000) {
+      toast.error("File is too large. Maximum size is 4MB.");
+      data.setFile(null);
       return;
     }
-    if (file && file.size > 4000000) {
-      toast.error("Picture is too large, choose other picture");
-      data.setFile("");
 
-      return;
-    }
     data.setFile(file);
-    setPath(URL.createObjectURL(file));
+    setPreview(URL.createObjectURL(file));
   };
 
-  const handleTitle = (event: ChangeEvent<HTMLInputElement>) => {
-    const title = event.currentTarget.value;
-    data.setTitleRecipe(title);
+  const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    data.setTitleRecipe(event.target.value);
   };
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const about = event.currentTarget.value;
-    data.setDescriptionRecipe(about);
+
+  const handleDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    data.setDescriptionRecipe(event.target.value);
   };
-  const handleCategory = (event: ChangeEvent<HTMLSelectElement>) => {
-    const category = event.currentTarget.value;
-    data.setCategoryRecipe(category);
+
+  const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    data.setCategoryRecipe(event.target.value);
   };
-  const handleTime = (event: ChangeEvent<HTMLSelectElement>) => {
-    const cookingTime = event.currentTarget.value;
-    data.setCookingTime(cookingTime);
+
+  const handleTimeChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    data.setCookingTime(event.target.value);
   };
+
   useEffect(() => {
     dispatch(getCategoriesList());
-  }, []);
+  }, [dispatch]);
 
   return (
-    <>
-      <div className={css.recipeDescriptionFieldsBox}>
-        <div className={css.img}>
-          <label htmlFor="file">
-            {!data.file ? (
-              <div className={css.iconBox}>
-                <svg className={css.iconAdd}>
-                  <use href={sprite + `#icon-add`}></use>
-                </svg>
-              </div>
-            ) : (
-              <div className={css.pictureBox}>
-                <img src={path} alt="preview" className={css.imgRecipe} />
-              </div>
-            )}
+    <div className={styles.recipeContainer}>
+      <div className={styles.imageWrapper}>
+        <label htmlFor="file">
+          {!data.file ? (
+            <div className={styles.iconContainer}>
+              <svg className={styles.icon}>
+                <use href={`${sprite}#icon-add`}></use>
+              </svg>
+            </div>
+          ) : (
+            <div className={styles.imagePreview}>
+              {preview && <img src={preview} alt="Recipe Preview" className={styles.image} />}
+            </div>
+          )}
+          <input
+            type="file"
+            id="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className={styles.fileInput}
+          />
+        </label>
+      </div>
 
-            <input
-              type="file"
-              name="file"
-              id="file"
-              onChange={handleFile}
-              className={css.inputPicture}
-            />
-          </label>
+      <div className={styles.formFields}>
+        <div className={styles.inputField}>
+          <input
+            type="text"
+            id="title"
+            value={data.titleRecipe}
+            onChange={handleTitleChange}
+            placeholder="Enter recipe title"
+            className={styles.input}
+          />
         </div>
-        <div className={css.inputs}>
-          <div className={css.inputBox}>
-            <label htmlFor="title" />
-            <input
-              type="text"
-              name="title"
-              id="title"
-              onChange={handleTitle}
-              value={data.titleRecipe}
-              placeholder="Enter Item Title"
-              className={css.input}
-            />
-          </div>
-          <div className={css.inputBox}>
-            <label htmlFor="about" />
-            <input
-              type="text"
-              name="about"
-              id="about"
-              onChange={handleChange}
-              value={data.descriptionRecipe}
-              placeholder="Enter about recipe"
-              className={css.input}
-            />
-          </div>
-          <div className={`${css.inputBox} ${css.inputBox__select}`}>
-            <div>
-              <label htmlFor="category" />
-              <input
-                type="text"
-                name="category"
-                placeholder="Category"
-                id="category"
-                readOnly
-                className={css.input}
-              />
-            </div>
-            <select
-              id="cat"
-              name="cat"
-              onChange={handleCategory}
-              value={data.categoryRecipe}
-              className={css.select}
-            >
-              <option value="" disabled>
-                Please choose category
+
+        <div className={styles.inputField}>
+          <input
+            type="text"
+            id="description"
+            value={data.descriptionRecipe}
+            onChange={handleDescriptionChange}
+            placeholder="Enter recipe description"
+            className={styles.input}
+          />
+        </div>
+
+        <div className={styles.inputField}>
+          <select
+            id="category"
+            value={data.categoryRecipe}
+            onChange={handleCategoryChange}
+            className={styles.select}
+          >
+            <option value="" disabled>
+              Select a category
+            </option>
+            {categoriesList.map((category) => (
+              <option key={category} value={category}>
+                {category}
               </option>
-              {categoriesList.map((category) => (
-                <option value={category} key={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={`${css.inputBox} ${css.inputBox__select}`}>
-            <div>
-              <label htmlFor="cookingTime" />
-              <input
-                type="text"
-                name="cookingTime"
-                id="cookingTime"
-                placeholder="Cooking time"
-                readOnly
-                className={css.input}
-              />
-            </div>
-            <select
-              id="time"
-              name="time"
-              value={data.cookingTime}
-              onChange={handleTime}
-              className={css.select}
-            >
-              <option value="" disabled>
-                Please choose time
+            ))}
+          </select>
+        </div>
+
+        <div className={styles.inputField}>
+          <select
+            id="cookingTime"
+            value={data.cookingTime}
+            onChange={handleTimeChange}
+            className={styles.select}
+          >
+            <option value="" disabled>
+              Select cooking time
+            </option>
+            {timeOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
               </option>
-              {timeOptionsList().map((t) => (
-                <option value={t.value} key={t.label}>
-                  {t.label}
-                </option>
-              ))}
-            </select>
-          </div>
+            ))}
+          </select>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
