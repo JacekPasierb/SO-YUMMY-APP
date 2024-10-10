@@ -20,7 +20,7 @@ export const selectIngredient = {
   }),
   singleValue: (baseStyles:any) => ({
     ...baseStyles,
-    color: "red",
+    color: `"#23262A"`,
     fontWeight: "normal",
 
     border:"1px solid rgba(250, 250, 250, 0.2)",
@@ -61,7 +61,7 @@ export const selectIngredient = {
     maxHeight: "200px",
     borderRadius: "6px",
     backgroundColor: "white",
-    color: "rgba(255,255,255,0.5)",
+    color: "red",
     scrollbarWidth: "thin",
     scrollbarColor: "#E7E5E5 transparent",
 
