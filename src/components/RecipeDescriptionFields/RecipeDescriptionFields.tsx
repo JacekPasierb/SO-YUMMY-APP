@@ -174,6 +174,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
                 name="cookingTime"
               />
             </div>
+            <div className={styles.a}>
             <select
               id="cookingTime"
               value={data.cookingTime}
@@ -187,7 +188,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
                   {option.label}
                 </option>
               ))}
-            </select>
+            </select></div>
           </div>
         </div>
       </div>
