@@ -71,12 +71,12 @@
   max-width: 100%;
   padding-bottom: 18px;
 
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-border-line);
 }
 
 .input {
   font-size: 14px;
-  color: #000000;
+  color: var(--color-text-input-secondary);
 
   background-color: transparent;
   border: none;
@@ -91,7 +91,7 @@
   padding: 0;
 
   font-size: 14px;
-  color: var(--color-text-seven); /*update*/
+  color: var(--color-text-input-secondary);
 }
 
 .inputField__select {
@@ -111,7 +111,6 @@
   background-image: url(../../images/Icon.svg);
   background-repeat: no-repeat;
   background-position: right;
-  stroke: green;
 }
 
 .select::-ms-expand {
