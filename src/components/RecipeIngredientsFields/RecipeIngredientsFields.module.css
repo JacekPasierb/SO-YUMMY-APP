@@ -197,5 +197,5 @@
 }
 
 .recipeIngredients__select {
-  background-color: red;
+  background-color: var(--color-bg-select);
 }
