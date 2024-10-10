@@ -26,8 +26,9 @@ export const selectIngredient = {
   control: (baseStyles:any, state:any) => ({
     ...baseStyles,
     backgroundColor: "transparent",
+    border:"1px solid rgba(250, 250, 250, 0.2)",
     borderRadius: "6px",
-    border: "none",
+    
 
     boxShadow: state.isFocused && "0 0 0 1px transparent",
     fontFamily: "inherit",
