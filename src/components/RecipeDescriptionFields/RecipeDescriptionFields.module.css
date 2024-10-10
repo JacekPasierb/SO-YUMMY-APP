@@ -1,4 +1,4 @@
-.recipeContainer {
+.recipeDescriptionFieldsBox {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -8,7 +8,7 @@
   }
 }
 
-.iconContainer {
+.iconBox {
   display: flex;
   justify-content: center;
   padding: 102px 108px;
@@ -23,12 +23,7 @@
   }
 }
 
-.icon {
-  width: 64px;
-  height: 64px;
-}
-
-.imagePreview {
+.pictureBox {
   display: flex;
   justify-content: center;
   width: 279px;
@@ -41,32 +36,18 @@
   }
 }
 
-.fileInput {
+.inputPicture {
   display: none;
 }
 
-.formFields {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  @media screen and (min-width: 768px) {
-    gap: 32px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    gap: 40px;
-    min-width: 50%;
-  }
+.iconAdd {
+  width: 64px;
+  height: 64px;
 }
 
-.inputField {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
-  padding-bottom: 18px;
-
-  border-bottom: 1px solid #e0e0e0;
+.imgRecipe {
+  width: 100%;
+  height: 100%;
 }
 
 .input {
@@ -89,18 +70,29 @@
   color: var(--color-text-seven); /*update*/
 }
 
-.image {
-  width: 100%;
-  height: 100%;
+.inputBox {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #e0e0e0;
 }
 
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
 
-
-
-
-
-
+  @media screen and (min-width: 1200px) {
+    gap: 40px;
+    min-width: 50%;
+  }
+}
 
 .select {
   padding-right: 20px;
