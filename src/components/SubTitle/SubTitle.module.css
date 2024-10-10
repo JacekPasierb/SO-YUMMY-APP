@@ -1,7 +1,7 @@
 /* Styles for title elements */
-.title {
+.subTitle {
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.5;
-    color: var(--color-text-secondary); /*update*/
+    color: var(--color-text-subtitle);
   }
