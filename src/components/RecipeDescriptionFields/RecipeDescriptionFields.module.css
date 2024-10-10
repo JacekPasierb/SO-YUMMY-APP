@@ -1,119 +1,43 @@
-.recipeDescriptionFieldsBox {
+.recipeContainer {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
+  /* Inne style */
 }
 
-.iconBox {
+.imageWrapper {
   display: flex;
   justify-content: center;
-  padding: 102px 108px;
-
-  background-color: #8baa36;
-  border-radius: 8px;
-
-  cursor: pointer;
-
-  @media screen and (min-width: 1200px) {
-    padding: 140px 146px;
-  }
+  align-items: center;
+  /* Inne style */
 }
 
-.pictureBox {
+.iconContainer {
+  /* Stylizacja dla ikony dodawania */
+}
+
+.imagePreview {
+  /* Stylizacja dla podglądu obrazka */
+}
+
+.formFields {
   display: flex;
-  justify-content: center;
-  width: 279px;
-  height: 268px;
-  margin: 0 auto;
-
-  @media screen and (min-width: 1200px) {
-    width: 357px;
-    height: 344px;
-  }
+  flex-direction: column;
+  /* Inne style */
 }
 
-.inputPicture {
-  display: none;
-}
-
-.iconAdd {
-  width: 64px;
-  height: 64px;
-}
-
-.imgRecipe {
-  width: 100%;
-  height: 100%;
+.inputField {
+  margin-bottom: 20px;
+  /* Stylizacja dla każdego pola */
 }
 
 .input {
-  font-size: 14px;
-  color: #000000;
-
-  background-color: transparent;
-  border: none;
-  outline: none;
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
-}
-
-.input::placeholder {
-  padding: 0;
-
-  font-size: 14px;
-  color: var(--color-text-seven); /*update*/
-}
-
-.inputBox {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
-  padding-bottom: 18px;
-
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-
-  @media screen and (min-width: 768px) {
-    gap: 32px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    gap: 40px;
-    min-width: 50%;
-  }
+  padding: 10px;
+  border-radius: 4px;
+  /* Stylizacja dla pól input */
 }
 
 .select {
-  padding-right: 20px;
-
-  font-size: 12px;
-  line-height: 12px;
-
-  background-color: transparent;
-  border: none;
-  outline: none;
-  appearance: none;
-  background-image: url(../../images/Icon.svg);
-  background-repeat: no-repeat;
-  background-position: right;
-  stroke: green;
-}
-
-.select::-ms-expand {
-  display: none; /* Ukryj domyślną strzałkę w przeglądarce Internet Explorer */
-}
-
-.inputBox__select {
-  justify-content: space-between;
+  padding: 10px;
+  border-radius: 4px;
+  /* Stylizacja dla pól select */
 }

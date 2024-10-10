@@ -1,4 +1,4 @@
-import css from "./RecipeDescriptionFields.module.css";
+import styles from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
 import { toast } from "react-toastify";
@@ -27,7 +27,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
 
-  const timeOptionsList = () => {
+  const timeOptions = () => {
     const time = [];
     for (let i = 5; i <= 120; i += 5) {
       time.push({ label: `${i} min`, value: i });
@@ -79,118 +79,96 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
   }, [dispatch]);
 
   return (
-    <>
-      <div className={css.recipeDescriptionFieldsBox}>
-        <div className={css.img}>
-          <label htmlFor="file">
-            {!data.file ? (
-              <div className={css.iconBox}>
-                <svg className={css.iconAdd}>
-                  <use href={sprite + `#icon-add`}></use>
-                </svg>
-              </div>
-            ) : (
-              <div className={css.pictureBox}>
-                 {preview && <img src={preview} alt="Recipe Preview" className={css.imgRecipe} />}
-                
-              </div>
-            )}
+    <div className={styles.recipeContainer}>
+      <div className={styles.imageWrapper}>
+        <label htmlFor="file">
+          {!data.file ? (
+            <div className={styles.iconContainer}>
+              <svg className={styles.icon}>
+                <use href={`${sprite}#icon-add`}></use>
+              </svg>
+            </div>
+          ) : (
+            <div className={styles.imagePreview}>
+              {preview && (
+                <img
+                  src={preview}
+                  alt="Recipe Preview"
+                  className={styles.image}
+                />
+              )}
+            </div>
+          )}
+          <input
+            type="file"
+            id="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className={styles.fileInput}
+          />
+        </label>
+      </div>
 
-            <input
-              type="file"
-              name="file"
-              id="file"
-              onChange={handleFile}
-              className={css.inputPicture}
-            />
-          </label>
+      <div className={styles.formFields}>
+        <div className={styles.inputField}>
+          <input
+            type="text"
+            id="title"
+            value={data.titleRecipe}
+            onChange={handleTitleChange}
+            placeholder="Enter recipe title"
+            className={styles.input}
+          />
         </div>
-        <div className={css.inputs}>
-          <div className={css.inputBox}>
-            <label htmlFor="title" />
-            <input
-              type="text"
-              name="title"
-              id="title"
-              onChange={handleTitleChange}
-              value={data.titleRecipe}
-              placeholder="Enter Item Title"
-              className={css.input}
-            />
-          </div>
-          <div className={css.inputBox}>
-            <label htmlFor="about" />
-            <input
-              type="text"
-              name="about"
-              id="about"
-              onChange={handleDescriptionChange}
-              value={data.descriptionRecipe}
-              placeholder="Enter about recipe"
-              className={css.input}
-            />
-          </div>
-          <div className={`${css.inputBox} ${css.inputBox__select}`}>
-            <div>
-              <label htmlFor="category" />
-              <input
-                type="text"
-                name="category"
-                placeholder="Category"
-                id="category"
-                readOnly
-                className={css.input}
-              />
-            </div>
-            <select
-              id="cat"
-              name="cat"
-              onChange={handleCategoryChange}
-              value={data.categoryRecipe}
-              className={css.select}
-            >
-              <option value="" disabled>
-                Please choose category
+
+        <div className={styles.inputField}>
+          <input
+            type="text"
+            id="description"
+            value={data.descriptionRecipe}
+            onChange={handleDescriptionChange}
+            placeholder="Enter recipe description"
+            className={styles.input}
+          />
+        </div>
+
+        <div className={styles.inputField}>
+          <select
+            id="category"
+            value={data.categoryRecipe}
+            onChange={handleCategoryChange}
+            className={styles.select}
+          >
+            <option value="" disabled>
+              Select a category
+            </option>
+            {categoriesList.map((category) => (
+              <option key={category} value={category}>
+                {category}
               </option>
-              {categoriesList.map((category) => (
-                <option value={category} key={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className={`${css.inputBox} ${css.inputBox__select}`}>
-            <div>
-              <label htmlFor="cookingTime" />
-              <input
-                type="text"
-                name="cookingTime"
-                id="cookingTime"
-                placeholder="Cooking time"
-                readOnly
-                className={css.input}
-              />
-            </div>
-            <select
-              id="time"
-              name="time"
-              value={data.cookingTime}
-              onChange={handleTimeChange}
-              className={css.select}
-            >
-              <option value="" disabled>
-                Please choose time
+            ))}
+          </select>
+        </div>
+
+        <div className={styles.inputField}>
+          <select
+            id="cookingTime"
+            value={data.cookingTime}
+            onChange={handleTimeChange}
+            className={styles.select}
+          >
+            <option value="" disabled>
+              Select cooking time
+            </option>
+            {timeOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
               </option>
-              {timeOptionsList().map((t) => (
-                <option value={t.value} key={t.label}>
-                  {t.label}
-                </option>
-              ))}
-            </select>
-          </div>
+            ))}
+          </select>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
