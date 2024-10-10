@@ -181,7 +181,6 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               className={`${styles.select} ${styles.sc}`}
               name="time"
               
-              onFocus={(e) => { e.target.size = 4;}}
             >
               {timeOptionsList().map((option) => (
                 <option value={option.value} key={option.label}>
