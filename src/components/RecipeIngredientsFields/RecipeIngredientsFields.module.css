@@ -196,6 +196,6 @@
   }
 }
 
-.recipeIngredients__select {
+select.recipeIngredients__select {
   background-color: var(--color-bg-select);
 }
