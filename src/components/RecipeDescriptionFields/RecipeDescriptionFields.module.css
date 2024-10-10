@@ -133,9 +133,9 @@
   right: 0;
   max-height: 200px; /* Wysokość, przy której pojawi się scrollbar */
   overflow-y: auto; /* Włącza przewijanie w pionie */
-  border: 1px solid #ccc;
+  border: 1px solid #1be651;
   border-radius: 4px;
-  background-color: white;
+  background-color: rgb(3, 176, 66);
   z-index: 10;
 }
 
@@ -145,20 +145,20 @@
 }
 
 .optionsList::-webkit-scrollbar-track {
-  background-color: #f0f0f0;
+  background-color: #d71414;
 }
 
 .optionsList::-webkit-scrollbar-thumb {
-  background-color: #888;
+  background-color: #df1212;
   border-radius: 4px;
 }
 
 .optionsList::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
+  background-color: #c20606;
 }
 
 /* Stylowanie scrollbar w Firefox */
 .optionsList {
   scrollbar-width: thin;
-  scrollbar-color: #888 #f0f0f0;
+  scrollbar-color: #d84141 #ca1c1c;
 }
