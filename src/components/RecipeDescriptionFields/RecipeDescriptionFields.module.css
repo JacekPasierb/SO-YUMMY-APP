@@ -119,5 +119,5 @@
 }
 
 .select option {
-  background-color: greenyellow;
+  background-color: var(--color-bg-selectMenu);
 }
