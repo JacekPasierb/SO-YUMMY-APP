@@ -27,13 +27,10 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
 
-  const timeOptions = () => {
-    const time = [];
-    for (let i = 5; i <= 120; i += 5) {
-      time.push({ label: `${i} min`, value: i });
-    }
-    return time;
-  };
+  const timeOptions = Array.from({ length: 24 }, (_, i) => ({
+    label: `${(i + 1) * 5} min`,
+    value: (i + 1) * 5,
+  }));
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.currentTarget;
