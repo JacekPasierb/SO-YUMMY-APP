@@ -195,3 +195,7 @@
     margin-bottom: 100px;
   }
 }
+
+.recipeIngredients__select {
+  background-color: red;
+}

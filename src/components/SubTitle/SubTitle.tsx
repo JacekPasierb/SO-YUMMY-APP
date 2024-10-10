@@ -5,7 +5,7 @@ interface SubTitleProps {
   title: string;
 }
 
-const SubTitle: FC<SubTitleProps> = ({ title }) => {
+const SubTitle: React.FC<SubTitleProps> = ({ title }) => {
   return <h2 className={styles.subTitle}>{title}</h2>;
 };
 
