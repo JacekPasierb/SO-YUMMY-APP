@@ -1,8 +1,8 @@
-import css from "./RecipeIngredientsFields.module.css";
+import styles from "./RecipeIngredientsFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { selectIngredient } from "./selectStyles";
 
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import Select, { SingleValue } from "react-select";
 
@@ -17,15 +17,15 @@ interface RecipeIngredientsFieldsProps {
   ingredientsAll: IngredientData[];
 }
 
-
-
-const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
+const RecipeIngredientsFields: React.FC<RecipeIngredientsFieldsProps> = ({
   ingredients,
   setIngredients,
   ingredientsAll,
 }) => {
-  const handleDecreament = () => {
-    setIngredients((prev) => [...prev.slice(0, prev.length - 1)]);
+  const handleDecrement = () => {
+    if (ingredients.length > 0) {
+      setIngredients((prev) => prev.slice(0, prev.length - 1));
+    }
   };
 
   const handleIncreament = () => {
@@ -39,6 +39,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     );
     return options;
   };
+
   const remove = async (fieldId: string) => {
     const newField = await ingredients.filter(
       (ingredient) => ingredient.id !== fieldId
@@ -46,59 +47,72 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     setIngredients(newField);
   };
 
-  const handleIngr = (index: number, selectedOption: SingleValue<Option>) => {
+  const handleIngredientChange = (
+    index: number,
+    selectedOption: SingleValue<Option>
+  ) => {
     const updateFields = [...ingredients];
     if (selectedOption) {
       updateFields[index].selectedValue = selectedOption.value;
       setIngredients(updateFields);
     }
   };
+
   return (
     <>
-      <div className={css.row}>
-        <SubTitle title={"Ingredients"}/>
-        <div className={css.counterBox}>
-          <button type="button" className={css.btn} onClick={handleDecreament}>
-            <svg className={css.iconMinus}>
-              <use href={sprite + `#icon-Minus`}></use>
+      <div className={styles.recipeIngredients}>
+        <SubTitle title={"Ingredients"} />
+        <div className={styles.recipeIngredients__counterBox}>
+          <button
+            type="button"
+            className={styles.recipeIngredients__btn}
+            onClick={handleDecrement}
+          >
+            <svg className={styles.iconMinus}>
+              <use href={`${sprite}#icon-Minus`}></use>
             </svg>
           </button>
-          <span className={css.counterFont}>{ingredients.length}</span>
-          <button type="button" className={css.btn} onClick={handleIncreament}>
-            <svg className={css.icon}>
-              <use href={sprite + `#icon-Plus`}></use>
+          <span className={styles.recipeIngredients__counterFont}>
+            {ingredients.length}
+          </span>
+          <button
+            type="button"
+            className={styles.recipeIngredients__btn}
+            onClick={handleIncreament}
+          >
+            <svg className={styles.icon}>
+              <use href={`${sprite}#icon-Plus`}></use>
             </svg>
           </button>
         </div>
       </div>
-      <ul className={css.ingredientsList}>
-        {ingredientsAll
-          ? ingredients.map((ingredient, index) => (
-              <li key={ingredient.id} className={css.rowItem}>
-                <Select
-                  options={options()}
-                  onChange={(selectedOption) =>
-                    handleIngr(index, selectedOption)
-                  }
-                  styles={selectIngredient}
-                />
-                <UnitInput
-                  ingredients={ingredients}
-                  setIngredients={setIngredients}
-                  index={index}
-                />
+      <ul className={styles.recipeIngredients__list}>
+        {ingredients.map((ingredient, index) => (
+          <li key={ingredient.id} className={styles.recipeIngredients__item}>
+            <Select
+              options={options()}
+              onChange={(selectedOption) =>
+                handleIngredientChange(index, selectedOption)
+              }
+              styles={selectIngredient}
+              className={styles.recipeIngredients__select}
+            />
+            <UnitInput
+              ingredients={ingredients}
+              setIngredients={setIngredients}
+              index={index}
+            />
 
-                <button
-                  className={css.btnX}
-                  onClick={() => remove(ingredient.id)}
-                >
-                  <svg className={css.iconX}>
-                    <use href={sprite + `#icon-X`}></use>
-                  </svg>
-                </button>
-              </li>
-            ))
-          : ""}
+            <button
+              className={styles.recipeIngredients__btnX}
+              onClick={() => remove(ingredient.id)}
+            >
+              <svg className={styles.iconX}>
+                <use href={`${sprite}#icon-X`}></use>
+              </svg>
+            </button>
+          </li>
+        ))}
       </ul>
     </>
   );
