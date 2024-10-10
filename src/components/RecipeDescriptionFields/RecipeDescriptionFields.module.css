@@ -121,10 +121,6 @@
 .select option {
   background-color: var(--color-bg-selectMenu);
 }
-.select option::selection {
-  background-color: red;
-}
-
-.select:hover {
+.select option[selected]:hover {
   background-color: red;
 }
