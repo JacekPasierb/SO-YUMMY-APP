@@ -192,3 +192,6 @@
   }
 }
 
+.recipeIngredients::placeholder {
+color: red;
+}

@@ -1,36 +1,35 @@
 export const selectIngredient = {
-  valueContainer: (baseStyles:any, state:any) => ({
+  valueContainer: (baseStyles: any, state: any) => ({
     ...baseStyles,
 
     ":hover": {
       cursor: "text",
     },
   }),
-  container: (baseStyles:any) => ({
+  container: (baseStyles: any) => ({
     ...baseStyles,
     flex: "1 1 0%",
     marginRight: "14px",
   }),
-  indicatorsContainer: (baseStyles:any, state:any) => ({
+  indicatorsContainer: (baseStyles: any, state: any) => ({
     ...baseStyles,
 
     ":hover": {
       cursor: "pointer",
     },
   }),
-  singleValue: (baseStyles:any) => ({
+  singleValue: (baseStyles: any) => ({
     ...baseStyles,
     color: `"#23262A"`,
     fontWeight: "normal",
 
-    border:"1px solid rgba(250, 250, 250, 0.2)",
+    border: "1px solid rgba(250, 250, 250, 0.2)",
   }),
-  control: (baseStyles:any, state:any) => ({
+  control: (baseStyles: any, state: any) => ({
     ...baseStyles,
     backgroundColor: "transparent",
-   
+
     borderRadius: "6px",
-    
 
     boxShadow: state.isFocused && "0 0 0 1px transparent",
     fontFamily: "inherit",
@@ -45,11 +44,10 @@ export const selectIngredient = {
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",
-      
     },
   }),
 
-  menuList: (baseStyles:any, state:any) => ({
+  menuList: (baseStyles: any, state: any) => ({
     ...baseStyles,
     fontFamily: "inherit",
     fontStyle: "inherit",
@@ -71,12 +69,12 @@ export const selectIngredient = {
       maxHeight: "230px",
     },
   }),
-  placeholder: (baseStyles:any, state:any) => ({
+  placeholder: (baseStyles: any, state: any) => ({
     ...baseStyles,
     color: "#00000085",
     fontSize: "14px",
   }),
-  option: (baseStyles:any, state:any) => ({
+  option: (baseStyles: any, state: any) => ({
     ...baseStyles,
     color: state.isSelected
       ? state.isFocused
@@ -85,7 +83,7 @@ export const selectIngredient = {
       : "#000000",
     backgroundColor: state.isFocused ? "#8BAA36" : "transparent",
   }),
-  dropdownIndicator: (baseStyles:any) => ({
+  dropdownIndicator: (baseStyles: any) => ({
     ...baseStyles,
     color: "#8BAA36",
     opacity: 1,
@@ -93,38 +91,38 @@ export const selectIngredient = {
       color: "#8BAA36",
     },
   }),
-  indicatorSeparator: (baseStyles:any) => ({
+  indicatorSeparator: (baseStyles: any) => ({
     ...baseStyles,
     opacity: 0,
   }),
-  menu: (baseStyles:any) => ({
+  menu: (baseStyles: any) => ({
     ...baseStyles,
     margin: 0,
   }),
 };
 
 export const selectUnit = {
-  valueContainer: (baseStyles:any, state:any) => ({
+  valueContainer: (baseStyles: any, state: any) => ({
     ...baseStyles,
-color:"red",
+
     ":hover": {
       cursor: "text",
     },
   }),
 
-  indicatorsContainer: (baseStyles:any, state:any) => ({
+  indicatorsContainer: (baseStyles: any, state: any) => ({
     ...baseStyles,
 
     ":hover": {
       cursor: "pointer",
     },
   }),
-  singleValue: (baseStyles:any) => ({
+  singleValue: (baseStyles: any) => ({
     ...baseStyles,
     color: "#23262A",
     fontWeight: "normal",
   }),
-  control: (baseStyles:any, state:any) => ({
+  control: (baseStyles: any, state: any) => ({
     ...baseStyles,
     backgroundColor: "transparent",
     borderRadius: "6px",
@@ -143,11 +141,10 @@ color:"red",
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",
-      
     },
   }),
 
-  menuList: (baseStyles:any, state:any) => ({
+  menuList: (baseStyles: any, state: any) => ({
     ...baseStyles,
     fontFamily: "inherit",
     fontStyle: "inherit",
@@ -169,12 +166,12 @@ color:"red",
       maxHeight: "230px",
     },
   }),
-  placeholder: (baseStyles:any, state:any) => ({
+  placeholder: (baseStyles: any, state: any) => ({
     ...baseStyles,
     color: "#00000085",
     fontSize: "14px",
   }),
-  option: (baseStyles:any, state:any) => ({
+  option: (baseStyles: any, state: any) => ({
     ...baseStyles,
     color: state.isSelected
       ? state.isFocused
@@ -183,7 +180,7 @@ color:"red",
       : "#000000",
     backgroundColor: state.isFocused ? "#8BAA36" : "transparent",
   }),
-  dropdownIndicator: (baseStyles:any) => ({
+  dropdownIndicator: (baseStyles: any) => ({
     ...baseStyles,
     color: "#8BAA36",
     opacity: 1,
@@ -191,11 +188,11 @@ color:"red",
       color: "#8BAA36",
     },
   }),
-  indicatorSeparator: (baseStyles:any) => ({
+  indicatorSeparator: (baseStyles: any) => ({
     ...baseStyles,
     opacity: 0,
   }),
-  menu: (baseStyles:any) => ({
+  menu: (baseStyles: any) => ({
     ...baseStyles,
     margin: 0,
   }),
