@@ -100,6 +100,7 @@
 
 .select {
   padding-inline: 20px;
+max-height: 100px;
 
   font-size: 12px;
   line-height: 12px;
@@ -120,7 +121,7 @@
 
 .select option {
   background-color: var(--color-bg-selectMenu);
-  max-height: 100px;
+  
 }
 
 select::-webkit-scrollbar {
