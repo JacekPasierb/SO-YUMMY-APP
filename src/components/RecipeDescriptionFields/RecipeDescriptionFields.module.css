@@ -1,43 +1,119 @@
-.recipeContainer {
+.recipeDescriptionFieldsBox {
   display: flex;
   flex-direction: column;
-  /* Inne style */
+  gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
-.imageWrapper {
+.iconBox {
   display: flex;
   justify-content: center;
-  align-items: center;
-  /* Inne style */
+  padding: 102px 108px;
+
+  background-color: #8baa36;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  @media screen and (min-width: 1200px) {
+    padding: 140px 146px;
+  }
 }
 
-.iconContainer {
-  /* Stylizacja dla ikony dodawania */
-}
-
-.imagePreview {
-  /* Stylizacja dla podglądu obrazka */
-}
-
-.formFields {
+.pictureBox {
   display: flex;
-  flex-direction: column;
-  /* Inne style */
+  justify-content: center;
+  width: 279px;
+  height: 268px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 1200px) {
+    width: 357px;
+    height: 344px;
+  }
 }
 
-.inputField {
-  margin-bottom: 20px;
-  /* Stylizacja dla każdego pola */
+.inputPicture {
+  display: none;
+}
+
+.iconAdd {
+  width: 64px;
+  height: 64px;
+}
+
+.imgRecipe {
+  width: 100%;
+  height: 100%;
 }
 
 .input {
-  padding: 10px;
-  border-radius: 4px;
-  /* Stylizacja dla pól input */
+  font-size: 14px;
+  color: #000000;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.input::placeholder {
+  padding: 0;
+
+  font-size: 14px;
+  color: var(--color-text-seven); /*update*/
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 40px;
+    min-width: 50%;
+  }
 }
 
 .select {
-  padding: 10px;
-  border-radius: 4px;
-  /* Stylizacja dla pól select */
+  padding-right: 20px;
+
+  font-size: 12px;
+  line-height: 12px;
+
+  background-color: transparent;
+  border: none;
+  outline: none;
+  appearance: none;
+  background-image: url(../../images/Icon.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  stroke: green;
+}
+
+.select::-ms-expand {
+  display: none; /* Ukryj domyślną strzałkę w przeglądarce Internet Explorer */
+}
+
+.inputBox__select {
+  justify-content: space-between;
 }
