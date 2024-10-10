@@ -113,9 +113,7 @@
   background-repeat: no-repeat;
   background-position: right;
 }
-.a {
-  max-height: 80px;
-}
+
 .select::-ms-expand {
   display: none; /* Ukryj domyślną strzałkę w przeglądarce Internet Explorer */
 }
@@ -139,4 +137,7 @@ select::-webkit-scrollbar-thumb {
   border: none;
   background-color: var(--color-bg-scrollbar-thumb);
   border-radius: 12px;
+}
+.sc {
+  max-height: 80px;
 }
