@@ -122,14 +122,6 @@
   background-color: var(--color-bg-selectMenu);
 }
 
-select::-webkit-scrollbar-track {
-  background: red;
-}
-
-select::-webkit-scrollbar-thumb {
-  background: #e62a2a;
-  border-radius: 10px;
-}
 
 select::-webkit-scrollbar {
   width: 14px;
@@ -137,11 +129,11 @@ select::-webkit-scrollbar {
 }
 
 select::-webkit-scrollbar-track {
-  border: rgb(180, 180, 180);
-  background-color: #ff6536;
+  border: rgb(0, 255, 38);
+  background-color: #ff3c00;
 }
 
 select::-webkit-scrollbar-thumb {
   background-color: #3677ef;
-  border: 1px solid rgb(193, 193, 193);
+  border: 1px solid rgb(255, 55, 165);
 }
