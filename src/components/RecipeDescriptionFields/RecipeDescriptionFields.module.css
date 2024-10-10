@@ -129,11 +129,11 @@ select::-webkit-scrollbar {
 }
 
 select::-webkit-scrollbar-track {
-  border: rgb(0, 255, 38);
-  background-color: #ff3c00;
+  border: none;
+  background-color: transparent;
 }
 
 select::-webkit-scrollbar-thumb {
-  background-color: #3677ef;
-  border: 1px solid rgb(255, 55, 165);
+  border: none;
+  background-color: var(--color-bg-scrollbar-thumb);
 }

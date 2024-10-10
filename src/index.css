@@ -128,6 +128,9 @@
   --color-bg-pagination: rgba(250, 250, 250, 1);
 --color-bg-selectMenu:rgba(250, 250, 250, 1);
 --color-bg-select: rgba(217, 217, 217, 1);
+--color-bg-scrollbar-thumb:rgba(231, 229, 229, 1);
+--color-bg-scrollbar-track:rgba(231, 229, 229, 1);
+
 
   /* Border colors*/
   --color-border-search: #f0f0f0;
@@ -172,6 +175,8 @@
   --color-bg-pagination: rgba(42, 44, 54, 1);
   --color-bg-selectMenu:rgba(139, 170, 54, 1);
   --color-bg-select: rgba(42, 44, 54, 1);
+  --color-bg-scrollbar-thumb:rgba(30, 31, 40, 1);
+  --color-bg-scrollbar-track:rgba(30, 31, 40, 1);
 
   /* Border colors*/
   --color-border-search: rgba(139, 170, 54, 1);
