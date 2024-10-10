@@ -61,7 +61,7 @@ export const selectIngredient = {
     maxHeight: "200px",
     borderRadius: "6px",
     backgroundColor: "white",
-    color: "red",
+    color: "rgba(255,255,255,0.5)",
     scrollbarWidth: "thin",
     scrollbarColor: "#E7E5E5 transparent",
 
@@ -82,7 +82,7 @@ export const selectIngredient = {
       ? state.isFocused
         ? "black"
         : "#8BAA36"
-      : "#000000",
+      : "red",
     backgroundColor: state.isFocused ? "#8BAA36" : "transparent",
   }),
   dropdownIndicator: (baseStyles:any) => ({
