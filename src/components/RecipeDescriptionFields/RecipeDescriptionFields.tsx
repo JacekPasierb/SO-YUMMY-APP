@@ -177,7 +177,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
            
             <select
               id="cookingTime"
-              size={4}
+              
               value={data.cookingTime}
               onChange={handleTimeChange}
               className={`${styles.select} ${styles.sc}`}
