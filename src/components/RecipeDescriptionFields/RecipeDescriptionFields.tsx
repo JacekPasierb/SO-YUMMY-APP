@@ -181,9 +181,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               className={styles.select}
               name="time"
             >
-              <option value="" disabled>
-                Please choose time
-              </option>
+         
               {timeOptionsList().map((option) => (
                 <option value={option.value} key={option.label}>
                   {option.label}
