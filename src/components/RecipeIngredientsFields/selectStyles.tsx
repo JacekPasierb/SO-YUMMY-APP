@@ -78,9 +78,9 @@ export const selectIngredient = {
     ...baseStyles,
     color: state.isSelected
       ? state.isFocused
-        ? "var(--color-text-description)"
-        : "var(--color-text-description)"
-      : "var(--color-text-description)",
+        ? "rgba(35, 38, 42, 1)"
+        : "rgba(35, 38, 42, 1)"
+      : "rgba(35, 38, 42, 1)",
     backgroundColor: state.isSelected
       ? state.isFocused
         ? "blue"
