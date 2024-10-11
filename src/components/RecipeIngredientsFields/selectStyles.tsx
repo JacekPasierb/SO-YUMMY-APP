@@ -80,7 +80,7 @@ export const selectIngredient = {
       ? state.isFocused
         ? "red"
         : "yellow"
-      : "blue",
+      : "var(--color-text-description)",
     backgroundColor: state.isFocused ? "#8BAA36" : "transparent",
   }),
   dropdownIndicator: (baseStyles: any) => ({
