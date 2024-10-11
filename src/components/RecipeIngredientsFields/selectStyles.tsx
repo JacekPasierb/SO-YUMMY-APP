@@ -27,7 +27,7 @@ export const selectIngredient = {
   }),
   control: (baseStyles: any, state: any) => ({
     ...baseStyles,
-    backgroundColor: "red",
+    backgroundColor: "transparent",
 
     borderRadius: "6px",
 
@@ -86,6 +86,10 @@ export const selectIngredient = {
         ? "blue"
         : "var(--color-bg-selected)"
       : "var(--color-bg-selectMenu)" ,
+      ":hover": {
+        backgroundColor: "red", // Zmiana tła na hover
+        color: "white", // Zmiana koloru tekstu na hover
+      },
   }),
   dropdownIndicator: (baseStyles: any) => ({
     ...baseStyles,
