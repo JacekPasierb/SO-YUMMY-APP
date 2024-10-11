@@ -153,10 +153,10 @@
   overflow-y: scroll;
 }
 
-/* .selectField::-webkit-scrollbar {
+.selectField::-webkit-scrollbar {
   width: 6px;
 
-  background-color: transparent;
+  background-color: red;
   border-radius: 12px;
 }
 
@@ -164,9 +164,9 @@
   width: 6px;
   height: 93px;
 
-  background-color: #e7e5e5;
+  background-color: blue;
   border-radius: 12px;
-} */
+}
 
 .menuItem {
   gap: 6px;
