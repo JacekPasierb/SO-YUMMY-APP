@@ -83,7 +83,7 @@ export const selectIngredient = {
       : "var(--color-text-description)",
     backgroundColor: state.isSelected
       ? state.isFocused
-        ? "transparent"
+        ? "var(--color-bg-selectMenu)"
         : "var(--color-bg-selected)"
       : "var(--color-bg-selected)",
   }),
