@@ -49,6 +49,9 @@ export const selectIngredient = {
       fontSize: "16px",
       lineHeight: "1.3",
     },
+    "hover" : {
+      borderColor: "var(--color-border-line)"
+    }
   }),
 
   menuList: (baseStyles: any, state: any) => ({
