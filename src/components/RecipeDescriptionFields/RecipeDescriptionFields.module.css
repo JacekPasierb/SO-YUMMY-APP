@@ -1,42 +1,18 @@
-.inputField__select {
-  justify-content: space-between;
-  max-height: 50px;
-  overflow-y: auto;
-}
-
 .select {
-  padding-inline: 20px;
-  font-size: 12px;
-  line-height: 12px;
-  color: var(--color-text-description);
-  background-color: transparent;
-  border: none;
-  outline: none;
-  appearance: none;
-  background-image: url(../../images/Icon.svg);
-  background-repeat: no-repeat;
-  background-position: right;
+  max-height: 150px; /* Wysokość odpowiadająca około 6 opcji */
+  overflow-y: auto;  /* Włącza przewijanie */
 }
 
-/* Ograniczamy maksymalną wysokość listy do 6 elementów */
-.select option {
-  background-color: var(--color-bg-selectMenu);
-}
-
-select {
-  max-height: 150px; /* Wysokość na około 6 opcji */
-  overflow-y: auto;
-}
-
-select::-webkit-scrollbar {
+/* Stylizacja scrollbara dla select */
+.select::-webkit-scrollbar {
   width: 4px;
 }
 
-select::-webkit-scrollbar-track {
+.select::-webkit-scrollbar-track {
   background-color: var(--color-bg-scrollbar-track);
 }
 
-select::-webkit-scrollbar-thumb {
+.select::-webkit-scrollbar-thumb {
   background-color: var(--color-bg-scrollbar-thumb);
   border-radius: 12px;
 }
