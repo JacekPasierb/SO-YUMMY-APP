@@ -128,7 +128,7 @@ export const selectUnit = {
   }),
   control: (baseStyles: any, state: any) => ({
     ...baseStyles,
-    backgroundColor: "transparent",
+    backgroundColor: "red",
     borderRadius: "6px",
     border: "none",
 
