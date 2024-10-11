@@ -147,7 +147,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
                 name="category"
               />
             </div>
-            <div className={styles.a}>
+           
             <select
               id="category"
               value={data.categoryRecipe}
@@ -160,7 +160,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
                   {category}
                 </option>
               ))}
-            </select></div>
+            </select>
           </div>
           <div className={`${styles.inputField} ${styles.inputField__select}`}>
             <div>
