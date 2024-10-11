@@ -211,3 +211,7 @@ select::-webkit-scrollbar-thumb {
   background-color: var(--color-bg-scrollbar-thumb);
   border-radius: 12px;
 }
+select__menu-list::-webkit-scrollbar {
+  width: 4px;
+  height: 0px;
+}
