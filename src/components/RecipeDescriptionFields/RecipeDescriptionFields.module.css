@@ -100,7 +100,7 @@
 
 .select {
   padding-inline: 20px;
-
+max-height: 150px !important;
 
   font-size: 12px;
   line-height: 12px;
@@ -138,25 +138,4 @@ select::-webkit-scrollbar-thumb {
   border: none;
   background-color: var(--color-bg-scrollbar-thumb);
   border-radius: 12px;
-}
-.sc {
-  max-height: 150px; /* Zmień na 150px (około 6 opcji, każda opcja ma wysokość ~25px) */
-  overflow-y: auto; /* Przewijanie pionowe */
-}
-.sc {
-  max-height: 150px; /* Zmień na 150px, co odpowiada około 6 elementom */
-  overflow-y: auto; /* Dodaj przewijanie pionowe */
-  width: 100%; /* Opcjonalnie możesz dostosować szerokość */
-}
-
-select {
-  font-size: 14px; /* Możesz dostosować rozmiar czcionki */
-  padding: 8px; /* Ustaw padding dla lepszej widoczności */
-  border: 1px solid #ccc; /* Stylizuj obramowanie */
-  border-radius: 4px; /* Zaokrąglenie rogów */
-  background-color: white; /* Dostosuj tło */
-  appearance: none; /* Wyłącz domyślne strzałki */
-  -webkit-appearance: none; /* Dla przeglądarek opartych na WebKit */
-  -moz-appearance: none; /* Dla Firefox */
-  cursor: pointer;
 }
