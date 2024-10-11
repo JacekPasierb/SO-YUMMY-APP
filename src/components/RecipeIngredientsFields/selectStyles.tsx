@@ -58,7 +58,7 @@ export const selectIngredient = {
     letterSpacing: "-0.02em",
     maxHeight: "200px",
     borderRadius: "6px",
-    backgroundColor: "white",
+    backgroundColor: "var(--color-bg-selectMenu)",
     color: "rgba(255,255,255,0.5)",
     scrollbarWidth: "thin",
     scrollbarColor: "#E7E5E5 transparent",
