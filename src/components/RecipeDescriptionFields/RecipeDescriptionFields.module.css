@@ -96,6 +96,7 @@
 
 .inputField__select {
   justify-content: space-between;
+max-height: 150px;
 }
 
 .select {
