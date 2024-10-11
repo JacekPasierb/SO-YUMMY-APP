@@ -71,10 +71,7 @@ export const selectIngredient = {
     
     
     scrollbarColor: " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
-    "::-webkit-scrollbar": {
-      width: "38px",  // Szerokość pionowego scrollbara
-      height: "98px", // Wysokość poziomego scrollbara
-    },
+ 
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",
