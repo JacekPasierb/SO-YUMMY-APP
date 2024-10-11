@@ -35,6 +35,8 @@
   width: 14px;
   height: 14px;
 
+  stroke:red;
+
   @media screen and (min-width: 768px) {
     width: 16px;
     height: 16px;
@@ -45,7 +47,7 @@
   width: 14px;
   height: 14px;
 
-  stroke: #3333334b;
+  stroke: var(--color-stroke-icon);
 
   @media screen and (min-width: 768px) {
     width: 16px;
