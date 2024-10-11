@@ -91,7 +91,7 @@ export const selectIngredient = {
       : "rgba(35, 38, 42, 1)",
     backgroundColor: state.isSelected
       ? state.isFocused
-        ? "blue"
+        ? "yellow"
         : "var(--color-bg-selected)"
       : "var(--color-bg-selectMenu)",
     ":hover": {
