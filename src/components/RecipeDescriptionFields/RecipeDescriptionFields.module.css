@@ -99,7 +99,10 @@
 max-height: 50px;
 overflow-y: auto; 
 }
-
+.a {
+  max-height: 50px;
+  overflow-y: auto;
+}
 .select {
   padding-inline: 20px;
 max-height: 150px !important;
