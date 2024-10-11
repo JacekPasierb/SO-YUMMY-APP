@@ -28,9 +28,9 @@ export const selectIngredient = {
   control: (baseStyles: any, state: any) => ({
     ...baseStyles,
     backgroundColor: "transparent",
-color:"var(--color-text-select)",
+    color: "var(--color-text-select)",
     borderRadius: "6px",
-
+borderColor:"red",
     boxShadow: state.isFocused && "0 0 0 1px transparent",
     fontFamily: "inherit",
     fontStyle: "inherit",
@@ -45,6 +45,7 @@ color:"var(--color-text-select)",
       fontSize: "16px",
       lineHeight: "1.3",
     },
+    
   }),
 
   menuList: (baseStyles: any, state: any) => ({
@@ -85,11 +86,10 @@ color:"var(--color-text-select)",
       ? state.isFocused
         ? "blue"
         : "var(--color-bg-selected)"
-      : "var(--color-bg-selectMenu)" ,
-      ":hover": {
+      : "var(--color-bg-selectMenu)",
+    ":hover": {
       backgroundColor: "var(--color-bg-selected)",
     },
-      
   }),
   dropdownIndicator: (baseStyles: any) => ({
     ...baseStyles,
