@@ -68,8 +68,9 @@ export const selectIngredient = {
     borderRadius: "6px",
     backgroundColor: "var(--color-bg-selectMenu)",
     color: "rgba(255,255,255,0.5)",
-    scrollbarWidth: "thin",
-    scrollbarColor: "#E7E5E5 transparent",
+    scrollbarWidth: "4px",
+    scrollbarHeight:"93px",
+    scrollbarColor: "var(--color-bg-scrollbar-track) var(--color-bg-scrollbar-thumb)",
 
     "@media (min-width: 768px)": {
       fontSize: "16px",
@@ -114,6 +115,7 @@ export const selectIngredient = {
     ...baseStyles,
     margin: 0,
   }),
+
 };
 
 export const selectUnit = {
