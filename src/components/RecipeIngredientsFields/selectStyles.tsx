@@ -49,8 +49,9 @@ export const selectIngredient = {
       fontSize: "16px",
       lineHeight: "1.3",
     },
+    
     "hover" : {
-      borderColor: "var(--color-border-line)"
+      bacgroundColor: "red"
     }
   }),
 
@@ -113,6 +114,7 @@ export const selectIngredient = {
     ...baseStyles,
     margin: 0,
   }),
+
 };
 
 export const selectUnit = {
