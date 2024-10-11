@@ -69,9 +69,11 @@ export const selectIngredient = {
     backgroundColor: "var(--color-bg-selectMenu)",
     color: "rgba(255,255,255,0.5)",
     
-    
     scrollbarColor: " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
- 
+    "&::-webkit-scrollbar-thumb": {
+     
+      borderRadius: "4px",         // Zaokrąglone rogi uchwytu
+    },
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",

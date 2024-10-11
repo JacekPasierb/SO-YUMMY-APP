@@ -196,7 +196,3 @@
   color: red;
 }
 
-select::-webkit-scrollbar {
-  width: 40px;
-  height: 0px;
-}
