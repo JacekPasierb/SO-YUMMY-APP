@@ -51,7 +51,7 @@ export const selectIngredient = {
     },
     
     "hover" : {
-      backgroundColor: "red"
+      borderColor: "red"
     }
   }),
 
