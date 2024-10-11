@@ -153,7 +153,7 @@
   overflow-y: scroll;
 }
 
-.selectField::-webkit-scrollbar {
+/* .selectField::-webkit-scrollbar {
   width: 6px;
 
   background-color: transparent;
@@ -166,7 +166,7 @@
 
   background-color: #e7e5e5;
   border-radius: 12px;
-}
+} */
 
 .menuItem {
   gap: 6px;
