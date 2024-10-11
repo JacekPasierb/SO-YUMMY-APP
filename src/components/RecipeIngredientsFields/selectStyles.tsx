@@ -87,7 +87,7 @@ export const selectIngredient = {
         : "var(--color-bg-selected)"
       : "var(--color-bg-selectMenu)" ,
       ":hover": {
-      backgroundColor: "red",
+      backgroundColor: "var(--color-bg-selected)",
     },
       
   }),
