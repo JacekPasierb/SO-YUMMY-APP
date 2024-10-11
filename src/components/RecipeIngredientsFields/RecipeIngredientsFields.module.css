@@ -197,21 +197,6 @@
 }
 
 select::-webkit-scrollbar {
-  width: 4px;
-  height: 93px;
-}
-
-select::-webkit-scrollbar-track {
-  border: none;
-  background-color: var(--color-bg-scrollbar-track);
-}
-
-select::-webkit-scrollbar-thumb {
-  border: none;
-  background-color: var(--color-bg-scrollbar-thumb);
-  border-radius: 12px;
-}
-select__menu-list::-webkit-scrollbar {
-  width: 4px;
+  width: 40px;
   height: 0px;
 }
