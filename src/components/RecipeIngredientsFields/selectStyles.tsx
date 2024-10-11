@@ -30,7 +30,7 @@ export const selectIngredient = {
     backgroundColor: "transparent",
     color: "var(--color-text-select)",
     borderRadius: "6px",
-borderColor:"red",
+borderColor: state.isFocus ? "red" : "var(--color-border-line)",
     boxShadow: state.isFocused && "0 0 0 1px transparent",
     fontFamily: "inherit",
     fontStyle: "inherit",
