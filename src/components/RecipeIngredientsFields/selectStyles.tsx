@@ -59,7 +59,7 @@ export const selectIngredient = {
     maxHeight: "200px",
     borderRadius: "6px",
     backgroundColor: "var(--color-bg-selectMenu)",
-    color: "rgba(255,255,255,0.5)",
+    color: "red",
     scrollbarWidth: "thin",
     scrollbarColor: "#E7E5E5 transparent",
 
