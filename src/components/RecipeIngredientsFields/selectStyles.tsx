@@ -30,7 +30,11 @@ export const selectIngredient = {
     backgroundColor: "transparent",
     color: "var(--color-text-select)",
     borderRadius: "6px",
-borderColor: state.isFocus ? "red" : "var(--color-border-line)",
+    borderColor: state.isFocus
+      ? state.isSelected
+        ? "var(--color-border-line)"
+        : "var(--color-border-line)"
+      : "var(--color-border-line)",
     boxShadow: state.isFocused && "0 0 0 1px transparent",
     fontFamily: "inherit",
     fontStyle: "inherit",
@@ -45,7 +49,6 @@ borderColor: state.isFocus ? "red" : "var(--color-border-line)",
       fontSize: "16px",
       lineHeight: "1.3",
     },
-    
   }),
 
   menuList: (baseStyles: any, state: any) => ({
