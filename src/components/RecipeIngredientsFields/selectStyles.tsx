@@ -20,7 +20,7 @@ export const selectIngredient = {
   }),
   singleValue: (baseStyles: any) => ({
     ...baseStyles,
-    color: `"red"`,
+    color: `"#23262A"`,
     fontWeight: "normal",
 
     // border: "1px solid rgba(250, 250, 250, 0.2)",
@@ -28,7 +28,7 @@ export const selectIngredient = {
   control: (baseStyles: any, state: any) => ({
     ...baseStyles,
     backgroundColor: "transparent",
-
+color:"red",
     borderRadius: "6px",
 
     boxShadow: state.isFocused && "0 0 0 1px transparent",
