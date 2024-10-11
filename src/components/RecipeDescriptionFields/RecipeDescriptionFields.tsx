@@ -151,8 +151,11 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               id="category"
               value={data.categoryRecipe}
               onChange={handleCategoryChange}
-              className={styles.select}
+             
               name="cat"
+              className={styles.customSelect}
+      
+    
             >
               {categoriesList.map((category) => (
                 <option key={category} value={category}>

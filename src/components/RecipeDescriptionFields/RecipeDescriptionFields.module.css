@@ -149,7 +149,7 @@ select::-webkit-scrollbar-thumb {
   width: 100%; /* Opcjonalnie możesz dostosować szerokość */
 }
 
-.select {
+select {
   font-size: 14px; /* Możesz dostosować rozmiar czcionki */
   padding: 8px; /* Ustaw padding dla lepszej widoczności */
   border: 1px solid #ccc; /* Stylizuj obramowanie */
