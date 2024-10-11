@@ -35,8 +35,6 @@
   width: 14px;
   height: 14px;
 
-  stroke:red;
-
   @media screen and (min-width: 768px) {
     width: 16px;
     height: 16px;
@@ -60,7 +58,7 @@
 
   font-size: 14px;
   line-height: 18px;
-  color: var(--color-text-eight); /*update*/
+  color: var(--color-text-counter);
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -195,5 +193,5 @@
 }
 
 .recipeIngredients::placeholder {
-color: red;
+  color: red;
 }
