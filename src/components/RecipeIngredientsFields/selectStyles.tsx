@@ -20,10 +20,10 @@ export const selectIngredient = {
   }),
   singleValue: (baseStyles: any) => ({
     ...baseStyles,
-    color: `"#23262A"`,
+    color: `"red"`,
     fontWeight: "normal",
 
-    border: "1px solid rgba(250, 250, 250, 0.2)",
+    // border: "1px solid rgba(250, 250, 250, 0.2)",
   }),
   control: (baseStyles: any, state: any) => ({
     ...baseStyles,
