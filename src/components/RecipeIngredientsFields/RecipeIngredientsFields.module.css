@@ -14,7 +14,7 @@
 .recipeIngredients__counterBox {
   padding: 7px 14px;
 
-  border: 1px solid #33333355;
+  border: 1px solid red;
   border-radius: 18px;
 
   @media screen and (min-width: 768px) {
