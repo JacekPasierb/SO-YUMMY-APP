@@ -68,10 +68,13 @@ export const selectIngredient = {
     borderRadius: "6px",
     backgroundColor: "var(--color-bg-selectMenu)",
     color: "rgba(255,255,255,0.5)",
-    scrollbarWidth: "4px",
-    scrollbarHeight:`60%`,
+    
+    
     scrollbarColor: " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
-
+    "::-webkit-scrollbar": {
+      width: "4px",  // Szerokość pionowego scrollbara
+      height: "93px", // Wysokość poziomego scrollbara (jeśli potrzebny)
+    },
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",
