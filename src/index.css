@@ -141,6 +141,7 @@
   --color-Hamburger: rgba(34, 37, 42, 1);
 
   --color-stroke-icon: rgba(34, 37, 42, 1);
+  --color-stroke-iconPlus:rgba(139, 170, 54, 1);
 
   --box-shadow-pagination: rgba(135, 135, 135, 0.2);
 }

@@ -72,8 +72,8 @@
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M5 16h22"></path>
 </symbol>
 <symbol id="icon-Plus" viewBox="0 0 32 32">
-<path fill="none" stroke="#8baa36" style="stroke: var(--color1, #8baa36)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M5 16h22"></path>
-<path fill="none" stroke="#8baa36" style="stroke: var(--color1, #8baa36)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M16 5v22"></path>
+<path fill="none" stroke="#8baa36" style="stroke: var(--color-stroke-iconPlus, #8baa36)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M5 16h22"></path>
+<path fill="none" stroke="#8baa36" style="stroke: var(--color-stroke-iconPlus, #8baa36)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M16 5v22"></path>
 </symbol>
 <symbol id="icon-X" viewBox="0 0 30 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.5263" d="M23.684 7.474l-17.053 17.053"></path>
