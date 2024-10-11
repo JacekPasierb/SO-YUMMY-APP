@@ -87,9 +87,9 @@ export const selectIngredient = {
         : "var(--color-bg-selected)"
       : "var(--color-bg-selectMenu)" ,
       ":hover": {
-        backgroundColor: "red", // Zmiana tła na hover
-        color: "white", // Zmiana koloru tekstu na hover
-      },
+      backgroundColor: "red",
+    },
+      
   }),
   dropdownIndicator: (baseStyles: any) => ({
     ...baseStyles,
