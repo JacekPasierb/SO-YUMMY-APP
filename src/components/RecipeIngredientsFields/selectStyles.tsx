@@ -84,7 +84,7 @@ export const selectIngredient = {
     backgroundColor: state.isSelected
       ? state.isFocused
         ? "blue"
-        : "yellow"
+        : "var(--color-bg-selected)"
       : "var(--color-bg-selectMenu)",
   }),
   dropdownIndicator: (baseStyles: any) => ({
