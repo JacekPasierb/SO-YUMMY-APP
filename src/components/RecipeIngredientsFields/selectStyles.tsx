@@ -51,7 +51,7 @@ export const selectIngredient = {
     },
     
     "hover" : {
-      bacgroundColor: "red"
+      backgroundColor: "red"
     }
   }),
 
