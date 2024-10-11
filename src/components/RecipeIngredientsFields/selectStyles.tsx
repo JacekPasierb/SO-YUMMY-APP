@@ -70,7 +70,7 @@ export const selectIngredient = {
     color: "rgba(255,255,255,0.5)",
     
     scrollbarColor: " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
-    "::-webkit-scrollbar-thumb": {
+    "::-webkit-scrollbar-track": {
      
       borderRadius: "4px",         // Zaokrąglone rogi uchwytu
     },
