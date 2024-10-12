@@ -1,7 +1,7 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
-import css from "./MyRecipesList.module.css"; // Upewnij się, że ścieżka jest poprawna
+import css from "./CardOwnRecipe.module.css"; // Upewnij się, że ścieżka jest poprawna
 
 const MyRecipesListSkeleton = () => {
   return (
@@ -9,7 +9,7 @@ const MyRecipesListSkeleton = () => {
       {[...Array(4)].map((_, index) => (
         <li key={index}>
           <div className={css.cardBox}>
-            <Skeleton circle={true} height={124} width={124} />
+            <Skeleton height={124} width={124} />
             <div className={css.recipeInfo}>
               <div className={css.rowFirst}>
                 <Skeleton height={20} width={`60%`} />

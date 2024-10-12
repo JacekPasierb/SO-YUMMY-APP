@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 
 import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
 import { IRecipe } from "../../types/recipesTypes";
-import MyRecipesListSkeleton from "./MyRecipesListSkelton";
+import MyRecipesListSkeleton from "../CardOwnRecipe/MyRecipesListSkelton";
 
 interface recipe {
   _id: string;
