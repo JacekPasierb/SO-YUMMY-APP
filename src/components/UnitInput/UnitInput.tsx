@@ -40,13 +40,13 @@ const UnitInput: FC<UnitInputProps> = ({
   }, [unit, numUnit]);
 
   return (
-    <div className={css.unitBox}>
+    <div className={styles.unitBox}>
       <input
         type="number"
         min="0"
         max="999"
         value={numUnit}
-        className={`${css.inputNum} ${css.noSpinButtons}`}
+        className={`${styles.inputNum} ${styles.noSpinButtons}`}
         onChange={handleNumUnit}
       />
       <Select
