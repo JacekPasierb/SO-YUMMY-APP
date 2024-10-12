@@ -6,16 +6,6 @@
   }
 }
 
-.recipePreparationFields__textarea {
-  resize: "none";
-  width: "100%";
-  border: "none";
-  outline: "none";
-  border-radius: "6px";
-  background-color: "#d9d9d94f";
-  padding: "9px 16px";
-}
-
 .recipePreparationFields__button {
   margin-top: 18px;
   padding: 12px 48px;
@@ -31,5 +21,3 @@
     padding: 14px 64px;
   }
 }
-
-
