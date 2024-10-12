@@ -135,7 +135,7 @@ export const selectUnit = {
   }),
   singleValue: (baseStyles: any) => ({
     ...baseStyles,
-    color: "#23262A",
+    color: "var(--color-text-select)",
     fontWeight: "normal",
   }),
   control: (baseStyles: any, state: any) => ({
