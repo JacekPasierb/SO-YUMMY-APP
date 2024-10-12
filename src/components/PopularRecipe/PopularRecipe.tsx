@@ -46,11 +46,7 @@ const PopularRecipe: React.FC = () => {
     <div className={styles.popularRecipe__container}>
       <SubTitle title={"Popular Recipes"} />
 
-      {isLoading && (
-        <div className={styles.popularRecipe__loader}>
-          <ClimbingBoxLoader />
-        </div>
-      )}
+      
       {error && <p>Error: {error}</p>}
       {popularRecipes.length === 0 ? (
         <p>No popular recipes available at this time.</p>
