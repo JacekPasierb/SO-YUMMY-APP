@@ -61,7 +61,7 @@
 .myRecipesList__deleteBtn {
   padding: 0;
 
-  background-color: inherit;
+  background-color: red;
   border: none;
 }
 
@@ -130,7 +130,7 @@
   font-size: 8px;
   line-height: 10px;
   letter-spacing: -2%;
-  color: var(--color-text-main); /*update*/
+  color: var(--color-text-description-third); 
   text-align: left;
 
   @media screen and (min-width: 768px) {
@@ -177,7 +177,7 @@
   font-size: 10px;
   line-height: 14px;
   letter-spacing: -0.24px;
-  color: var(--color-text-secondary); /*update*/
+  color: var(--color-text-title); 
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -191,7 +191,7 @@
   font-size: 14px;
   line-height: 14px;
   letter-spacing: -0.24px;
-  color: var(--color-text-secondary); /*update*/
+  color: var(--color-text-title); 
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
