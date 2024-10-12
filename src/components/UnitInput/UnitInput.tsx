@@ -25,16 +25,18 @@ const UnitInput: FC<UnitInputProps> = ({
   };
 
   const handleNumUnit = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const num = parseInt(event.currentTarget.value, 10);
-
+    const num = parseFloat(event.currentTarget.value); // Zmieniamy na parseFloat, by obsługiwać liczby zmiennoprzecinkowe
+  
     if (!isNaN(num)) {
       if (num > 999) {
         setNumUnit(999);
+      } else if (num < 0) {
+        setNumUnit(0);
       } else {
         setNumUnit(num);
       }
     } else {
-      setNumUnit(0);
+      setNumUnit(0); 
     }
   };
 
