@@ -141,6 +141,8 @@ export const selectUnit = {
   control: (baseStyles: any, state: any) => ({
     ...baseStyles,
     backgroundColor: "transparent",
+    color: "var(--color-text-select)",
+
     borderRadius: "6px",
     border: "none",
 
@@ -157,6 +159,9 @@ export const selectUnit = {
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",
+    },
+    ":hover": {
+      border: "1px solid #8BAA36", // Kolor obramowania na hover
     },
   }),
 
@@ -175,7 +180,7 @@ export const selectUnit = {
 
     color: "rgba(255,255,255,0.5)",
     scrollbarWidth: "thin",
-    scrollbarColor: "#E7E5E5 transparent",
+    scrollbarColor: " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
 
     "@media (min-width: 768px)": {
       fontSize: "16px",
@@ -185,7 +190,7 @@ export const selectUnit = {
   }),
   placeholder: (baseStyles: any, state: any) => ({
     ...baseStyles,
-    color: "#00000085",
+    color: "var(--color-text-select)",
     fontSize: "14px",
   }),
   option: (baseStyles: any, state: any) => ({
