@@ -1,15 +1,14 @@
-import css from "./PageTitle.module.css";
-
-import React, { FC } from "react";
+import React from "react";
+import styles from "./PageTitle.module.css";
 
 interface MainTitleProps {
   title: string;
 }
 
-const MainTitle: FC<MainTitleProps> = ({ title }) => {
+const MainTitle: React.FC<MainTitleProps> = ({ title }) => {
   return (
-    <div className={css.bgTitle}>
-      <h2 className={css.mainTitle}>{title}</h2>
+    <div className={styles.pageTitle__container}>
+      <h2 className={styles.pageTitle__text}>{title}</h2>
     </div>
   );
 };
