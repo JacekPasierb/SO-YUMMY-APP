@@ -42,13 +42,7 @@ const MyRecipesPage = () => {
     }
   }, [dispatch, currentPage]);
 
-  if (ownRecipes.length === 0) {
-    return (
-      <div className={css.noRecipes}>
-        <p>Brak przepisów na tej stronie.</p>
-      </div>
-    );
-  }
+  
 
   const handlePageChange = (page: number) => {
     navigate(`?page=${page}`);
