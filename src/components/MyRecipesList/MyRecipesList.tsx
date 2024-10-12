@@ -15,7 +15,7 @@ const MyRecipesList = ({ recipes, isLoading }: Props) => {
       {isLoading ? (
         <MyRecipesListSkeleton /> // Zwracamy skeleton podczas ładowania
       ) : (
-        recipes && (
+        recipes && recipes.length !== 0 ? (
           <ul className={styles.myRecipesList}>
             {recipes.map((recipe) => {
               return (
@@ -25,7 +25,7 @@ const MyRecipesList = ({ recipes, isLoading }: Props) => {
               );
             })}
           </ul>
-        )
+        ) : ( <p>Add your first recipe...</p>)
       )}
     </>
   );
