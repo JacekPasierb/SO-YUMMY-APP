@@ -28,7 +28,7 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
         style={{
           resize: "none",
           width: "100%",
-          border: "none",
+          border: "1px solid var(--color-border-line)",
           outline: "none",
           borderRadius: "6px",
           backgroundColor: "transparent",
