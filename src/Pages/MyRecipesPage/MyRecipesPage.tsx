@@ -42,6 +42,14 @@ const MyRecipesPage = () => {
     }
   }, [dispatch, currentPage]);
 
+  if (ownRecipes.length === 0) {
+    return (
+      <div className={css.noRecipes}>
+        <p>Brak przepisów na tej stronie.</p>
+      </div>
+    );
+  }
+
   const handlePageChange = (page: number) => {
     navigate(`?page=${page}`);
     window.scrollTo(0, 0);
@@ -53,20 +61,12 @@ const MyRecipesPage = () => {
         <MainTitle title={"My recipes"} />
 
         <>
-          {ownRecipes.length === 0 ? (
-            <div className={css.noRecipes}>
-              <p>Brak przepisów na tej stronie.</p>
-            </div>
-          ) : (
-            <>
-              <MyRecipesList recipes={ownRecipes} isLoading={isLoading} />
-              <BasicPagination
-                count={Math.ceil(totalOwnRecipes / 4)}
-                page={currentPage}
-                onPageChange={handlePageChange}
-              />
-            </>
-          )}
+          <MyRecipesList recipes={ownRecipes} isLoading={isLoading} />
+          <BasicPagination
+            count={Math.ceil(totalOwnRecipes / 4)}
+            page={currentPage}
+            onPageChange={handlePageChange}
+          />
         </>
       </div>
     </main>
