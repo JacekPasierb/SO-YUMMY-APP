@@ -30,7 +30,7 @@ input {
   padding: 0.125rem;
 
   font-size: 0.875rem;
-  color: #23262a;
+  color: var(--color-text-select);
   text-align: center;
 
   background-color: transparent;
