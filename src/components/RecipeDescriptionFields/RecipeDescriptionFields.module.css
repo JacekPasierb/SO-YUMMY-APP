@@ -87,6 +87,10 @@
   }
 }
 
+.input:read-only {
+  cursor: default;
+}
+
 .input::placeholder {
   padding: 0;
 
