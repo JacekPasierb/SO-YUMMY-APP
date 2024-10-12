@@ -261,5 +261,6 @@ button:focus-visible {
 
 /* dark-theme.css */
 body.dark-theme {
-  background-color: black;
+  background-color: rgba(30, 31, 40, 1)
+  ;
 }
