@@ -29,6 +29,7 @@ const FavoritesSkeleton = () => (
     <Skeleton height={120} width={"100%"} count={4} style={{ marginBottom: '20px' }} />
   </div>
 );
+
 const FavoritesPage = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const favoriteRecipes = useSelector(selectFavoriteRecipes);
@@ -54,20 +55,15 @@ const FavoritesPage = () => {
         <div className={`${css.container} ${css.flex}`}>
           <MainTitle title={"Favorites"} />
 
-          {isLoading ? (
-            <FavoritesSkeleton />
-          ) : (
-            favoriteRecipes && (
-              <>
-                <MyRecipesList recipes={favoriteRecipes} />
+          
+                <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading}/>
                 <BasicPagination
                   count={Math.ceil(totalFavoriteRecipes / 4)}
                   page={currentPage}
                   onPageChange={handlePageChange}
                 />
-              </>
-            )
-          )}
+             
+          
         </div>
       </main>
     </>
