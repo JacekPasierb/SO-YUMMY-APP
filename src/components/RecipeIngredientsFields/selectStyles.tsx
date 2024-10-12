@@ -192,10 +192,17 @@ export const selectUnit = {
     ...baseStyles,
     color: state.isSelected
       ? state.isFocused
-        ? "black"
-        : "#8BAA36"
-      : "#000000",
-    backgroundColor: state.isFocused ? "#8BAA36" : "transparent",
+        ? "rgba(35, 38, 42, 1)"
+        : "rgba(35, 38, 42, 1)"
+      : "rgba(35, 38, 42, 1)",
+    backgroundColor: state.isSelected
+      ? state.isFocused
+        ? "var(--color-bg-selected)"
+        : "var(--color-bg-selected)"
+      : "var(--color-bg-selectMenu)",
+    ":hover": {
+      backgroundColor: "var(--color-bg-selected)",
+    },
   }),
   dropdownIndicator: (baseStyles: any) => ({
     ...baseStyles,
