@@ -1,24 +1,25 @@
-import css from "./CardPopularRecipe.module.css";
-import React, { FC } from "react";
+import React from "react";
+import styles from "./CardPopularRecipe.module.css";
 import { IRecipe } from "../../types/recipesTypes";
+
 interface CardPopularRecipeProps {
   recipe: IRecipe;
 }
-const CardPopularRecipe: FC<CardPopularRecipeProps> = ({ recipe }) => {
+const CardPopularRecipe: React.FC<CardPopularRecipeProps> = ({ recipe }) => {
   const { preview, title, description } = recipe;
+
   return (
-    <div className={css.cardBox}>
+    <div className={styles.cardPopularRecipe__container}>
       <img
         src={preview}
         width="104"
         height="85"
-        className={css.recipeImg}
+        className={styles.cardPopularRecipe__image}
         alt="recipe photo"
       />
-      <div className={css.recipeInfo}>
-        <h2 className={css.titleRecipe}>{title}</h2>
-
-        <p className={css.recipeDescription}>{description}</p>
+      <div className={styles.cardPopularRecipe__info}>
+        <h2 className={styles.cardPopularRecipe__title}>{title}</h2>
+        <p className={styles.cardPopularRecipe__description}>{description}</p>
       </div>
     </div>
   );
