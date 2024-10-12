@@ -177,7 +177,7 @@
 
   /* Background colors */
   --color-bg-btn-search: rgba(139, 170, 54, 1); /* 8BAA36 */
-  --color-bg-body: rgba(42, 44, 54, 1);
+  --color-bg-body: rgba(30, 31, 40, 1)  ;
   --color-bg-card: rgba(42, 44, 54, 1);
   --color-bg-footer: rgba(139, 170, 54, 1);
   --color-bg-btn-secondary: rgba(30, 31, 40, 1);
@@ -261,6 +261,5 @@ button:focus-visible {
 
 /* dark-theme.css */
 body.dark-theme {
-  background-color: rgba(30, 31, 40, 1)
-  ;
+  background-color:rgba(30, 31, 40, 1) ;
 }
