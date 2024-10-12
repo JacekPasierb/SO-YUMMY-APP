@@ -56,11 +56,12 @@ const MyRecipesPage = () => {
 
         <>
           <MyRecipesList recipes={ownRecipes} isLoading={isLoading} />
+          {ownRecipes.length !== 0 && 
           <BasicPagination
             count={Math.ceil(totalOwnRecipes / 4)}
             page={currentPage}
             onPageChange={handlePageChange}
-          />
+          />}
         </>
       </div>
     </main>
