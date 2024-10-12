@@ -92,7 +92,7 @@
   height: 24px;
   padding: 5px;
 
-  background-color: #8baa36;
+  background-color: var(--color-bg-btn-secondary);
   border-radius: 4px;
   stroke: #fafafa;
 
