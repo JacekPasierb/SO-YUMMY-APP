@@ -70,10 +70,7 @@ export const selectIngredient = {
     color: "rgba(255,255,255,0.5)",
     
     scrollbarColor: " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
-    "::-webkit-scrollbar": {
-     
-      borderRadius: "4px",         // Zaokrąglone rogi uchwytu
-    },
+
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",
@@ -174,7 +171,8 @@ export const selectUnit = {
     letterSpacing: "-0.02em",
     maxHeight: "200px",
     borderRadius: "6px",
-    backgroundColor: "white",
+    backgroundColor: "var(--color-bg-selectMenu)",
+
     color: "rgba(255,255,255,0.5)",
     scrollbarWidth: "thin",
     scrollbarColor: "#E7E5E5 transparent",
