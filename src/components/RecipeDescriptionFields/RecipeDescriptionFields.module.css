@@ -119,6 +119,8 @@ overflow-y: auto;
   background-image: url(../../images/Icon.svg);
   background-repeat: no-repeat;
   background-position: right;
+
+  cursor:pointer;
 }
 
 .select::-ms-expand {
