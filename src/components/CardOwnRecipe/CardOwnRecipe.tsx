@@ -28,7 +28,7 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
     dispatch(deleteRecipe(id));
   };
   const handleRemove = (id: string) => {
-    dispatch(removeFromFavorite(id))
+    dispatch(removeFromFavorite(id));
     toast.success("Recipe removed from favorites");
   };
 
@@ -55,7 +55,9 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
           >
             <svg
               className={
-                pathname === "/favorite" ? styles.myRecipesList__iconBgRemove : styles.myRecipesList__iconBgDelete
+                pathname === "/favorite"
+                  ? styles.myRecipesList__iconBgRemove
+                  : styles.myRecipesList__iconBgDelete
               }
             >
               <use
