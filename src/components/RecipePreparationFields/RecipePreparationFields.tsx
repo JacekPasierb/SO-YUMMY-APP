@@ -31,7 +31,7 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
           border: "none",
           outline: "none",
           borderRadius: "6px",
-          backgroundColor: "#d9d9d94f",
+          backgroundColor: "transparent",
           padding: "9px 16px",
         }}
         onChange={handleArea}
