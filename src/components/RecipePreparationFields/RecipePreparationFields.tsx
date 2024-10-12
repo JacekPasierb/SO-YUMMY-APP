@@ -31,6 +31,7 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
           border: "1px solid var(--color-border-line)",
           outline: "none",
           borderRadius: "6px",
+          color: "var(color-text-select)",
           backgroundColor: "transparent",
           padding: "9px 16px",
         }}
