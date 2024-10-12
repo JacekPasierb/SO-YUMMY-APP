@@ -23,5 +23,5 @@
 }
 
 .recipePreparationFields__textarea::placeholder {
-color: red;
+color: var(--color-text-placeholder);
 }
