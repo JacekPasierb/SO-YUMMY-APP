@@ -20,7 +20,15 @@ import { ClimbingBoxLoader } from "react-spinners";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import { useNavigate } from "react-router";
 import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css';
 
+// Komponent Skeleton dla ulubionych przepisów
+const FavoritesSkeleton = () => (
+  <div className={css.skeletonList}>
+    <Skeleton height={120} width={"100%"} count={4} style={{ marginBottom: '20px' }} />
+  </div>
+);
 const FavoritesPage = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const favoriteRecipes = useSelector(selectFavoriteRecipes);
@@ -47,9 +55,7 @@ const FavoritesPage = () => {
           <MainTitle title={"Favorites"} />
 
           {isLoading ? (
-            <div className={css.boxLoader}>
-              <ClimbingBoxLoader />
-            </div>
+            <FavoritesSkeleton />
           ) : (
             favoriteRecipes && (
               <>
