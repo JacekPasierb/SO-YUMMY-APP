@@ -130,6 +130,7 @@
   --color-bg-footer: rgba(34, 37, 42, 1);
   --color-bg-icons: rgba(139, 170, 54, 1);
   --color-bg-menuModal: rgba(235, 243, 212, 1);
+  --color-bg-iconRemove: rgba(235, 243, 212, 1);
   --color-bg-pagination-select: rgba(235, 243, 212, 1);
   --color-bg-pagination-hover: rgb(102, 102, 102);
   --color-bg-pagination: rgba(250, 250, 250, 1);
@@ -180,6 +181,7 @@
   --color-bg-btn-secondary: rgba(30, 31, 40, 1);
   --color-bg-icons: rgba(250, 250, 250, 1);
   --color-bg-menuModal: rgba(30, 31, 40, 1);
+  --color-bg-iconRemove: rgba(30, 31, 40, 1);
   --color-bg-pagination-select: rgba(139, 170, 54, 1);
   --color-bg-pagination: rgba(42, 44, 54, 1);
   --color-bg-selectMenu:rgba(139, 170, 54, 1);

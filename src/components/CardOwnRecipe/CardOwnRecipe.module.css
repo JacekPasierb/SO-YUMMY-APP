@@ -61,7 +61,7 @@
 .myRecipesList__deleteBtn {
   padding: 0;
 
-  background-color: red;
+  background-color: inherit;
   border: none;
 }
 
@@ -70,9 +70,9 @@
   height: 24px;
   padding: 5px;
 
-  background-color: #ebf3d4;
+  background-color: var(--color-bg-iconRemove);
   border-radius: 4px;
-  stroke: #22252a;
+  stroke: var(--color-stroke-icon);
 
   @media screen and (min-width: 768px) {
     width: 38px;
