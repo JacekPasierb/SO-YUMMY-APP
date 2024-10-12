@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import styles from "./RecipeInngredientsList.module.css";
 import { fetchIngredientsById } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
@@ -15,7 +15,7 @@ export interface Ingredient {
   measure: string;
 }
 
-const RecipeInngredientsList: FC<RecipeIngredientsListProps> = ({
+const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
   ingredients,
 }) => {
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);

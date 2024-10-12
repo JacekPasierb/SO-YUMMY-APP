@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import css from "./RecipePreparationFields.module.css";
+import React from "react";
+import styles from "./RecipePreparationFields.module.css";
 import SubTitle from "../SubTitle/SubTitle";
 
 interface RecipePreparationFieldsProps {
@@ -7,7 +7,7 @@ interface RecipePreparationFieldsProps {
   setInstructionsRecipe: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const RecipePreparationFields: FC<RecipePreparationFieldsProps> = ({
+const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
   instructionsRecipe,
   setInstructionsRecipe,
 }) => {
@@ -17,25 +17,18 @@ const RecipePreparationFields: FC<RecipePreparationFieldsProps> = ({
     setInstructionsRecipe(text.replace(/ +/, " ").trim());
   };
   return (
-    <div className={css.recipePreparationBox}>
-    <SubTitle title={"Recipe Preparation"}/>
-      
+    <div className={styles.recipePreparationFields__container}>
+      <SubTitle title={"Recipe Preparation"} />
+
       <textarea
         placeholder="Enter recipe..."
         rows={10}
         cols={50}
-        style={{
-          resize: "none",
-          width: "100%",
-          border: "none",
-          outline: "none",
-          borderRadius: "6px",
-          backgroundColor: "#d9d9d94f",
-          padding: "9px 16px",
-        }}
+        className={styles.recipePreparationFields__textarea}
         onChange={handleArea}
+        value={instructionsRecipe}
       />
-      <button type="submit" className={css.btn}>
+      <button type="submit" className={styles.recipePreparationFields__button}>
         Add
       </button>
     </div>
