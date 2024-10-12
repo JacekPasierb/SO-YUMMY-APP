@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import css from "./PopularRecipe.module.css";
+import styles from "./PopularRecipe.module.css";
 import { fetchPopularRecipe } from "../../API/recipesAPI";
 import { IRecipe } from "../../types/recipesTypes";
 import CardPopularRecipe from "../CardPopularRecipe/CardPopularRecipe";
@@ -43,21 +43,21 @@ const PopularRecipe: React.FC = () => {
   }, [isDesctop, isTablet]);
 
   return (
-    <div className={css.boxPopularRecipes}>
+    <div className={styles.popularRecipe__container}>
       <SubTitle title={"Popular Recipes"}/>
       
       {isLoading && (
-        <div className={css.boxLoader}>
+        <div className={styles.popularRecipe__loader}>
           <ClimbingBoxLoader />
         </div>
       )}
       {error && <p>Error: {error}</p>}
       {popularRecipes.length === 0 ? (
-        <p>Brak popularnych przepisów w danym momencie</p>
+        <p>No popular recipes available at this time.</p>
       ) : (
-        <ul className={css.popularRecipesList}>
+        <ul className={styles.popularRecipe__list}>
           {popularRecipes.map((recipe: IRecipe) => (
-            <li key={recipe._id}>
+            <li key={recipe._id} className={styles.popularRecipe__item}>
               <NavLink to={`/recipe/${recipe._id}`}>
                 <CardPopularRecipe recipe={recipe} />
               </NavLink>

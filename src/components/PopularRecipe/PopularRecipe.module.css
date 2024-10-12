@@ -1,5 +1,4 @@
-
-.popularRecipesList {
+.popularRecipe__list {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -16,7 +15,7 @@
   }
 }
 
-.boxLoader {
+.popularRecipe__loader {
   display: flex;
   justify-content: center;
   margin: 10vh auto;
