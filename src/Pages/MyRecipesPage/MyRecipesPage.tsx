@@ -51,7 +51,7 @@ const MyRecipesPage = () => {
         <MainTitle title={"My recipes"} />
 
         <MyRecipesList recipes={ownRecipes} isLoading={isLoading} />
-        {ownRecipes.length !== 0 && (
+        {ownRecipes.length > 0 && (
           <BasicPagination
             count={Math.ceil(totalOwnRecipes / 4)}
             page={currentPage}

@@ -1,21 +1,14 @@
 .myRecipesPage__container {
   width: 100%;
-    padding: 0 16px;
-    margin: 0 auto;
-  
-   
-    @media screen and (min-width: 768px) {
-      max-width: 768px;
-      padding: 0 32px;
-    }
-    
-    @media screen and (min-width: 1200px) {
-      max-width: 1200px;
-    }
+  padding: 0 16px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding: 0 32px;
   }
-  
-  .boxLoader {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
   }
+}
