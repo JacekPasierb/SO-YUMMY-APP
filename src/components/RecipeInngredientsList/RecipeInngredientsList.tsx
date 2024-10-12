@@ -1,7 +1,5 @@
-import css from "./RecipeInngredientsList.module.css";
-
 import React, { FC, useEffect, useState } from "react";
-
+import styles from "./RecipeInngredientsList.module.css";
 import { fetchIngredientsById } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
 
@@ -48,20 +46,24 @@ const RecipeInngredientsList: FC<RecipeIngredientsListProps> = ({
   return (
     <>
       {!ingredientsList && (
-        <div className={`${css.container} ${css.ingredientsBox}`}>
+        <div
+          className={`${styles.recipeIngredientsList__container} ${styles.recipeIngredientsList__box}`}
+        >
           <p>Loading ingredients..</p>
         </div>
       )}
       {ingredientsList && (
-        <div className={`${css.container} ${css.ingredientsBox}`}>
-          <div className={css.headerListIngredients}>
-            <p className={css.titleList}>Ingredients</p>
-            <div className={css.flexHelp}>
-              <p className={css.titleList}>Number</p>
-              <p className={css.titleList}>Add to list</p>
+        <div
+          className={`${styles.container} ${styles.recipeIngredientsList__box}`}
+        >
+          <div className={styles.recipeIngredientsList__header}>
+            <p className={styles.recipeIngredientsList__title}>Ingredients</p>
+            <div className={styles.recipeIngredientsList__flexWrapper}>
+              <p className={styles.recipeIngredientsList__title}>Number</p>
+              <p className={styles.recipeIngredientsList__title}>Add to list</p>
             </div>
           </div>
-          <ul className={css.ingredientsList}>
+          <ul className={styles.recipeIngredientsList__list}>
             {ingredientsList.map((ingredient) => (
               <li key={ingredient._id}>
                 <CardIngredient ingredient={ingredient} />
