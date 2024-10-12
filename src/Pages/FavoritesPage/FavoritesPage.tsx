@@ -42,11 +42,12 @@ const FavoritesPage = () => {
         <div className={`${styles.favoritesPage__container} `}>
           <MainTitle title={"Favorites"} />
           <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading} />
+          {favoriteRecipes.length !== 0 && 
           <BasicPagination
             count={Math.ceil(totalFavoriteRecipes / 4)}
             page={currentPage}
             onPageChange={handlePageChange}
-          />
+          />}
         </div>
       </main>
     </>
