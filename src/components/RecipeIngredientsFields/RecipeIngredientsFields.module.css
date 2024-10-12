@@ -91,7 +91,7 @@
   width: 18px;
   height: 18px;
 
-  stroke: #000000;
+  stroke: var(--color-stroke-icon);
 
   @media screen and (min-width: 768px) {
     width: 20px;
