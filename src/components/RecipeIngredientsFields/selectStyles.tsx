@@ -160,9 +160,7 @@ export const selectUnit = {
       fontSize: "16px",
       lineHeight: "1.3",
     },
-    ":hover": {
-      border: "1px solid #8BAA36", // Kolor obramowania na hover
-    },
+ 
   }),
 
   menuList: (baseStyles: any, state: any) => ({
