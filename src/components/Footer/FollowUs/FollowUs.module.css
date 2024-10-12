@@ -1,4 +1,4 @@
-.listSocial {
+.followUs__list {
   display: flex;
   flex-direction: row;
   gap: 14px;
@@ -15,7 +15,7 @@
   }
 }
 
-.iconSocial {
+.followUs__icon {
   width: 20px;
   height: 20px;
 }
