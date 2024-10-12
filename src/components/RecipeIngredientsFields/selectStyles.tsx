@@ -50,7 +50,9 @@ export const selectIngredient = {
       lineHeight: "1.3",
     },
 
-   
+    ":hover": {
+      border: "1px solid var(--color-border-line)", // Kolor obramowania na hover
+    },
   }),
 
   menuList: (baseStyles: any, state: any) => ({
