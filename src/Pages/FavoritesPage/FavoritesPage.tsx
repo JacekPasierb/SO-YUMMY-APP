@@ -39,7 +39,7 @@ const FavoritesPage = () => {
     <>
       <Header />
       <main className={styles.favoritesPage}>
-        <div className={`${styles.favoritesPage__container} `}>
+        <div className={styles.favoritesPage__container}>
           <MainTitle title={"Favorites"} />
           <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading} />
           {favoriteRecipes.length !== 0 && 
