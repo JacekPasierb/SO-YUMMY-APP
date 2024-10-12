@@ -10,7 +10,6 @@
 .cardPopularRecipe__image {
   width: 104px;
   height: 85px;
-
   border-radius: 8px;
 }
 
@@ -22,16 +21,15 @@
 
 .cardPopularRecipe__title {
   margin: 0;
-
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.24px;
-  color: var(--color-text-subtitle); 
+  color: var(--color-text-subtitle);
 }
 
 .cardPopularRecipe__description {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: -0.24px;
-  color: var(--color-text-description-third); 
+  color: var(--color-text-description-third);
 }

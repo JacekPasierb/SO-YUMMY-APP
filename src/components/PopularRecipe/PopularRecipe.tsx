@@ -44,8 +44,8 @@ const PopularRecipe: React.FC = () => {
 
   return (
     <div className={styles.popularRecipe__container}>
-      <SubTitle title={"Popular Recipes"}/>
-      
+      <SubTitle title={"Popular Recipes"} />
+
       {isLoading && (
         <div className={styles.popularRecipe__loader}>
           <ClimbingBoxLoader />
