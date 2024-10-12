@@ -1,4 +1,4 @@
-.cardBox {
+.myRecipesList__card {
   display: flex;
   flex-direction: row;
   gap: 14px;
@@ -18,87 +18,7 @@
   }
 }
 
-.recipeInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: end;
-}
-.rowFirst {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 14px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-bottom: 20px;
-  }
-}
-
-.titleRecipe {
-  margin: 0;
-
-  font-size: 14px;
-  line-height: 14px;
-  letter-spacing: -0.24px;
-  color: var(--color-text-secondary); /*update*/
-
-  @media screen and (min-width: 768px) {
-    font-size: 24px;
-    line-height: 24px;
-  }
-}
-
-.recipeDescription {
-  margin-bottom: 24px;
-
-  font-size: 8px;
-  line-height: 10px;
-  letter-spacing: -2%;
-  color: var(--color-text-main);/*update*/
-  text-align: left;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 28px;
-
-    font-size: 14px;
-    line-height: 18px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-bottom: 67px;
-
-    font-size: 18px;
-    line-height: 24px;
-  }
-}
-
-.recipeTime {
-  margin: 0;
-
-  font-size: 10px;
-  line-height: 14px;
-  letter-spacing: -0.24px;
-  color: var(--color-text-secondary); /*update*/
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-.recipeImg {
+.myRecipesList__image {
   width: 124px;
   height: 124px;
 
@@ -114,29 +34,38 @@
     height: 324px;
   }
 }
-.iconBgDelete {
-  width: 24px;
-  height: 24px;
-  padding: 5px;
 
-  background-color: #8baa36;
-  border-radius: 4px;
-  stroke: #fafafa;
+.myRecipesList__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.myRecipesList__rowFirst {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 
   @media screen and (min-width: 768px) {
-    width: 38px;
-    height: 38px;
-    padding: 8px;
+    margin-bottom: 14px;
   }
 
   @media screen and (min-width: 1200px) {
-    width: 44px;
-    height: 44px;
-    padding: 10px;
+    margin-bottom: 20px;
   }
 }
 
-.iconBgRemove {
+.myRecipesList__deleteBtn {
+  padding: 0;
+
+  background-color: inherit;
+  border: none;
+}
+
+.myRecipesList__iconBgRemove {
   width: 24px;
   height: 24px;
   padding: 5px;
@@ -158,7 +87,29 @@
   }
 }
 
-.iconDel {
+.myRecipesList__iconBgDelete {
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+
+  background-color: #8baa36;
+  border-radius: 4px;
+  stroke: #fafafa;
+
+  @media screen and (min-width: 768px) {
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+}
+
+.myRecipesList__iconDel {
   width: 14px;
   height: 14px;
 
@@ -173,36 +124,82 @@
   }
 }
 
-.recipeSeeBtn {
-  padding: 6px 14px;
+.myRecipesList__description {
+  margin-bottom: 24px;
 
-  background-color: #8baa36;
-  border-radius: 24px 44px;
-  border: none;
+  font-size: 8px;
+  line-height: 10px;
+  letter-spacing: -2%;
+  color: var(--color-text-main); /*update*/
+  text-align: left;
 
   @media screen and (min-width: 768px) {
-    padding: 12px 32px;
+    margin-bottom: 28px;
+
+    font-size: 14px;
+    line-height: 18px;
   }
 
   @media screen and (min-width: 1200px) {
-    padding: 18px 44px;
+    margin-bottom: 67px;
+
+    font-size: 18px;
+    line-height: 24px;
   }
 }
 
-.txtBtn {
+.myRecipesList__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.myRecipesList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 50px;
+  }
+}
+
+.myRecipesList__time {
+  margin: 0;
+
   font-size: 10px;
-  color: var(--color-text-third); /*update*/
+  line-height: 14px;
+  letter-spacing: -0.24px;
+  color: var(--color-text-secondary); /*update*/
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    font-size: 16px;
+    line-height: 20px;
   }
 }
 
-.recipeFavSeeBtn {
+.myRecipesList__title {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.24px;
+  color: var(--color-text-secondary); /*update*/
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+.myRecipesList__favSeeBtn {
   padding: 6px 14px;
 
   background-color: #22252a;
@@ -218,9 +215,25 @@
   }
 }
 
-.txtFavBtn {
+.myRecipesList__seeBtn {
+  padding: 6px 14px;
+
+  background-color: #8baa36;
+  border-radius: 24px 44px;
+  border: none;
+
+  @media screen and (min-width: 768px) {
+    padding: 12px 32px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 18px 44px;
+  }
+}
+
+.myRecipesList__txtBtn {
   font-size: 10px;
-  color: #fafafa;
+  color: var(--color-text-third); /*update*/
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -231,9 +244,15 @@
   }
 }
 
-.delBtn {
-  padding: 0;
+.myRecipesList__txtFavBtn {
+  font-size: 10px;
+  color: #fafafa;
 
-  background-color: inherit;
-  border: none;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 16px;
+  }
 }

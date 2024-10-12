@@ -1,18 +1,8 @@
-import css from "./MyRecipesList.module.css";
-
+import styles from "./MyRecipesList.module.css";
 import React, { useEffect } from "react";
-
 import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
-import { IRecipe } from "../../types/recipesTypes";
 import MyRecipesListSkeleton from "../CardOwnRecipe/MyRecipesListSkelton";
-
-interface recipe {
-  _id: string;
-  title: string;
-  preview: string;
-  description: string;
-  time: string;
-}
+import { IRecipe } from "../../types/recipesTypes";
 
 interface Props {
   recipes: IRecipe[];
@@ -26,10 +16,10 @@ const MyRecipesList = ({ recipes, isLoading }: Props) => {
         <MyRecipesListSkeleton /> // Zwracamy skeleton podczas ładowania
       ) : (
         recipes && (
-          <ul className={css.myRecipesList}>
+          <ul className={styles.myRecipesList}>
             {recipes.map((recipe) => {
               return (
-                <li key={recipe._id}>
+                <li key={recipe._id} className={styles.myRecipesList__item}>
                   <CardOwnRecipe ownRecipe={recipe} />
                 </li>
               );

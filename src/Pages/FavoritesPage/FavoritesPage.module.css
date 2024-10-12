@@ -1,4 +1,4 @@
-.container {
+.favoritesPage__container {
   width: 100%;
   padding: 0 16px;
   margin: 0 auto;
@@ -13,7 +13,7 @@
   }
 }
 
-.background {
+.favoritesPage {
   padding-bottom: 100px;
 
   @media screen and (min-width: 768px) {
@@ -21,8 +21,8 @@
   }
 }
 
-.boxLoader {
+/* .boxLoader {
   display: flex;
   justify-content: center;
   margin: 10vh auto;
-}
+} */

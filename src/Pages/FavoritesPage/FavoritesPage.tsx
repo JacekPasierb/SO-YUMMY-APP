@@ -1,41 +1,28 @@
-import css from "./FavoritesPage.module.css";
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import styles from "./FavoritesPage.module.css";
 
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
+import BasicPagination from "../../components/Pagination/BasicPagination";
 
-import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { AppDispatch, useAppDispatch } from "../../redux/store";
+import { getFavoriteRecipes } from "../../redux/favoriteRecipes/operations";
+import { useNavigate } from "react-router";
+import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import {
   selectFavoriteRecipes,
-  selectIsError,
   selectIsLoading,
   selectTotalFavoritesRecipes,
 } from "../../redux/favoriteRecipes/selectors";
-import { AppDispatch, useAppDispatch } from "../../redux/store";
-import { getFavoriteRecipes } from "../../redux/favoriteRecipes/operations";
-import { ClimbingBoxLoader } from "react-spinners";
-import BasicPagination from "../../components/Pagination/BasicPagination";
-import { useNavigate } from "react-router";
-import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
-import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css';
-
-// Komponent Skeleton dla ulubionych przepisów
-const FavoritesSkeleton = () => (
-  <div className={css.skeletonList}>
-    <Skeleton height={120} width={"100%"} count={4} style={{ marginBottom: '20px' }} />
-  </div>
-);
+import "react-loading-skeleton/dist/skeleton.css";
 
 const FavoritesPage = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const favoriteRecipes = useSelector(selectFavoriteRecipes);
   const totalFavoriteRecipes = useSelector(selectTotalFavoritesRecipes);
   const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectIsError);
   const currentPage = getPageFromQueryString();
   const navigate = useNavigate();
 
@@ -43,7 +30,7 @@ const FavoritesPage = () => {
     navigate(`?page=${page}`);
     window.scrollTo(0, 0);
   };
-  
+
   useEffect(() => {
     dispatch(getFavoriteRecipes({ page: currentPage }));
   }, [dispatch, currentPage]);
@@ -51,19 +38,15 @@ const FavoritesPage = () => {
   return (
     <>
       <Header />
-      <main className={css.background}>
-        <div className={`${css.container} ${css.flex}`}>
+      <main className={styles.favoritesPage}>
+        <div className={`${styles.favoritesPage__container} `}>
           <MainTitle title={"Favorites"} />
-
-          
-                <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading}/>
-                <BasicPagination
-                  count={Math.ceil(totalFavoriteRecipes / 4)}
-                  page={currentPage}
-                  onPageChange={handlePageChange}
-                />
-             
-          
+          <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading} />
+          <BasicPagination
+            count={Math.ceil(totalFavoriteRecipes / 4)}
+            page={currentPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </main>
     </>
