@@ -51,28 +51,23 @@ const MyRecipesPage = () => {
       <Header />
       <div className={`${css.container} ${css.flex}`}>
         <MainTitle title={"My recipes"} />
-        {isLoading ? (
-          <div className={css.boxLoader}>
-            <ClimbingBoxLoader />
-          </div>
-        ) : (
-          <>
-            {ownRecipes.length === 0 ? (
-              <div className={css.noRecipes}>
-                <p>Brak przepisów na tej stronie.</p>
-              </div>
-            ) : (
-              <>
-                <MyRecipesList recipes={ownRecipes} />
-                <BasicPagination
-                  count={Math.ceil(totalOwnRecipes / 4)}
-                  page={currentPage}
-                  onPageChange={handlePageChange}
-                />
-              </>
-            )}
-          </>
-        )}
+
+        <>
+          {ownRecipes.length === 0 ? (
+            <div className={css.noRecipes}>
+              <p>Brak przepisów na tej stronie.</p>
+            </div>
+          ) : (
+            <>
+              <MyRecipesList recipes={ownRecipes} isLoading={isLoading} />
+              <BasicPagination
+                count={Math.ceil(totalOwnRecipes / 4)}
+                page={currentPage}
+                onPageChange={handlePageChange}
+              />
+            </>
+          )}
+        </>
       </div>
     </main>
   );
