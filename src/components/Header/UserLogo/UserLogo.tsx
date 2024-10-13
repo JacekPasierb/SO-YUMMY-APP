@@ -41,7 +41,7 @@ const UserLogo = () => {
         height="34"
         className={css.boxAvatar__avatar}
       />
-      <span className={`${css.boxAvatar__username} ${pathname === "/recipe" && css["boxAvatar__username--inner"]}`}>{user.name}</span>
+      <span className={`${css.boxAvatar__username} ${pathname == "/recipe" && css["boxAvatar__username--inner"]}`}>{user.name}</span>
       {isUserLogoModalOpen && <UserLogoModal />}
     </div>
   );
