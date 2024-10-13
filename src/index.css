@@ -98,7 +98,7 @@
   --color-text-nav: rgba(35, 38, 42, 1);
   --color-text-highlight: rgba(139, 170, 54, 1);
   --color-text-title: rgba(34, 37, 42, 1);
-  --color-text-titleInner: rgba(250, 250, 250, 1);
+
   --color-text-description: rgba(35, 38, 42, 1);
   --color-text-placeholder: rgba(
     189,
@@ -162,7 +162,7 @@
   /* Text colors */
   --color-text-nav: rgba(250, 250, 250, 1);
   --color-text-title: rgba(250, 250, 250, 1);
-  --color-text-titleInner: rgba(34, 37, 42, 1);
+ 
   --color-text-description: rgba(250, 250, 250, 1);
   --color-text-placeholder: rgba(
     250,
