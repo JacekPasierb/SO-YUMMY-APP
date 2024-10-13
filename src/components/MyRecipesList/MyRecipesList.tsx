@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
 import MyRecipesListSkeleton from "../CardOwnRecipe/MyRecipesListSkelton";
 import { IRecipe } from "../../types/recipesTypes";
+import { useNavigate } from "react-router";
 
 interface Props {
   recipes: IRecipe[];
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const MyRecipesList = ({ recipes, isLoading }: Props) => {
+  const navigate = useNavigate();
   return (
     <>
       {isLoading ? (
@@ -25,7 +27,7 @@ const MyRecipesList = ({ recipes, isLoading }: Props) => {
               );
             })}
           </ul>
-        ) : ( <p>Add your first recipe...</p>)
+        ) :  (navigate("*"))
       )}
     </>
   );

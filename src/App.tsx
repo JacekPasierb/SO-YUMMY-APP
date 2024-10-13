@@ -170,7 +170,10 @@ const App: FC = () => {
             path="/shopping-list"
             element={<PrivateRoute component="" />}
           />
-          <Route path="*"  element={<NotFoundPage/>} />
+          <Route
+            path="*"
+            element={<PrivateRoute component={<NotFoundPage />} />}
+          />
         </Route>
       </Routes>
     </>
