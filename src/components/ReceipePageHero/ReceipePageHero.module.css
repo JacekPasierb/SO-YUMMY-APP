@@ -104,10 +104,11 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  justify-content: center;
 }
 
 .skeletonTitle {
-  width: 100%;
+  width: 60%;
   height: 24px;
   background-color: #e0e0e0; /* Szary kolor jako placeholder */
   border-radius: 4px;
