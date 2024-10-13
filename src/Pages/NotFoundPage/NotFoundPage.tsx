@@ -10,9 +10,11 @@ const NotFoundPage = () => {
       <Header />
       <div className={styles.container}>
         <MainTitle title="" />
-        <svg className={styles.icon}>
-          <use href={`${sprite}#icon-not-found`}></use>
-        </svg>
+        <div className={styles.iconWrapper}>
+          <svg className={styles.icon}>
+            <use href={`${sprite}#icon-not-found`}></use>
+          </svg>
+        </div>
       </div>
     </>
   );
