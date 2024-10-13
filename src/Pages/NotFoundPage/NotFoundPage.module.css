@@ -57,3 +57,7 @@
     height: 327px;
   }
 }
+
+.notFoundPage__messageWrapper {
+    text-align: center;
+}
