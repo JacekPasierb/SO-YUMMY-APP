@@ -46,7 +46,7 @@ const RecipePage: React.FC = () => {
   }, [recipeId]);
 
   if (!recipe) {
-    return navigate("/error");
+     navigate("/error");
   }
 
   return (
