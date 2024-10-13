@@ -1,4 +1,4 @@
-.container {
+.notFoundPage {
   width: 100%;
   padding: 0 16px;
   margin: 0 auto;
@@ -15,15 +15,40 @@
   }
 }
 
-.iconWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px; /* Możesz dostosować marginesy, jeśli chcesz */
+.notFoundPage__iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.notFoundPage__message {
+  font-size: 18px;
+  line-height: 20px;
+  color: var(--color-text-title);
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 24px;
   }
 
-.icon {
+
+}
+
+.notFoundPage__subMessage {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-text-description-third);
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+ 
+}
+
+.notFoundPage__icon {
   width: 259px;
   height: 170px;
 

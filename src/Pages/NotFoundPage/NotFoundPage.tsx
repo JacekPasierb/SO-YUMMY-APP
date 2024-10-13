@@ -8,12 +8,22 @@ const NotFoundPage = () => {
   return (
     <>
       <Header />
-      <div className={styles.container}>
+      <div className={styles.notFoundPage}>
         <MainTitle title="" />
-        <div className={styles.iconWrapper}>
-          <svg className={styles.icon}>
+        <div
+          className={styles.notFoundPage__iconWrapper}
+          role="img"
+          aria-label="Not found illustration"
+        >
+          <svg className={styles.notFoundPage__icon}>
             <use href={`${sprite}#icon-not-found`}></use>
           </svg>
+        </div>
+        <div className={styles.notFoundPage__messageWrapper}>
+          <p className={styles.notFoundPage__message}>We are sorry,</p>
+          <p className={styles.notFoundPage__subMessage}>
+            but the page you were looking for can’t be found.
+          </p>
         </div>
       </div>
     </>
