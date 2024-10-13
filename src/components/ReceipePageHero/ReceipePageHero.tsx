@@ -46,34 +46,34 @@ const ReceipePageHero = ({ recipe ,isLoading}: { recipe: IRecipe, isLoading: boo
     }
   };
 
-  if (true) {
+  if (isLoading) {
     return (
-      <div className={css.skeleton}>
-        <div className={css.skeletonTitle}></div>
-        <div className={css.skeletonDescription}></div>
-        <div className={css.btn}></div>
-        <div className={css.timeBox}></div>
+      <div className={css.recipeHero__skeleton}>
+        <div className={css.recipeHero__skeletonTitle}></div>
+        <div className={css.recipeHero__skeletonDescription}></div>
+        <div className={css.recipeHero__skeletonBtn}></div>
+        <div className={css.recipeHero__skeletonTime}></div>
       </div>
     );
   }
   return (
-    <div className={css.receipeHeroBox}>
+    <div className={css.recipeHero}>
       <MainPageTitle title={title} />
-      <p className={css.recipeDescription}>{description}</p>
+      <p className={css.recipeHero__description}>{description}</p>
 
       <button
         type="button"
-        className={`${css.btn} ${css.textBtn}`}
+        className={`${css.recipeHero__btn} ${css.recipeHero__btnText}`}
         onClick={() => handleFavorite(_id)}
       >
         {!isFav ? "Add to favorite recipes" : "Remove from favorites"}
       </button>
       {time && (
-        <div className={css.timeBox}>
-          <svg className={css.iconClock}>
-            <use href={sprite + `#icon-clock`}></use>
+        <div className={css.recipeHero__timeBox}>
+          <svg className={css.recipeHero__iconClock}>
+            <use href={`${sprite}#icon-clock`}></use>
           </svg>
-          <p className={css.timeText}>{time} min</p>
+          <p className={css.recipeHero__timeText}>{time} min</p>
         </div>
       )}
     </div>

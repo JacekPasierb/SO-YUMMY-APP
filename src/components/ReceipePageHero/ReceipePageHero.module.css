@@ -1,4 +1,4 @@
-.receipeHeroBox {
+.recipeHero {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@
   }
 }
 
-.recipeDescription {
+.recipeHero__description {
   margin-top: 18px;
   margin-bottom: 24px;
 
@@ -34,7 +34,33 @@
   }
 }
 
-.timeBox {
+
+.recipeHero__btn {
+  padding: 10px 18px;
+
+  background-color: transparent;
+  border: 1px solid #8baa36;
+  border-radius: 24px 44px;
+
+  @media screen and (min-width: 768px) {
+    padding: 18px 44px;
+  }
+}
+
+.recipeHero__btnText {
+  font-size: 10px;
+  color: var(--color-text-main); /*update*/
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+.recipeHero__timeBox {
   display: flex;
   align-items: center;
   margin-bottom: 90px;
@@ -51,7 +77,7 @@
   }
 }
 
-.iconClock {
+.recipeHero__iconClock {
   width: 14px;
   height: 14px;
   margin-right: 4px;
@@ -77,59 +103,42 @@
   }
 }
 
-.btn {
-  padding: 10px 18px;
-
-  background-color: transparent;
-  border: 1px solid #8baa36;
-  border-radius: 24px 44px;
-
-  @media screen and (min-width: 768px) {
-    padding: 18px 44px;
-  }
-}
-
-.textBtn {
-  font-size: 10px;
-  color: var(--color-text-main); /*update*/
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
-}
 
 
 
-.skeleton {
+
+/* Skeleton styles */
+.recipeHero__skeleton {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-align-items: center;
-}
-
-.skeletonTitle {
-  width: 60%;
-  height: 24px;
-  background-color: #e0e0e0; /* Szary kolor jako placeholder */
-  border-radius: 4px;
-}
-
-.skeletonDescription {
-  width: 100%;
-  height: 16px;
-  background-color: #e0e0e0; /* Szary kolor jako placeholder */
-  border-radius: 4px;
-}
-
-.skeletonButton {
-  width: 200px; /* Szerokość przycisku */
-  height: 40px;
-  background-color: #e0e0e0; /* Szary kolor jako placeholder */
-  border-radius: 4px;
-}
-
-.skeletonTime {
-  display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 16px;
+}
+
+.recipeHero__skeletonTitle,
+.recipeHero__skeletonDescription,
+.recipeHero__skeletonBtn,
+.recipeHero__skeletonTime {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.recipeHero__skeletonTitle {
+  width: 200px;
+  height: 24px;
+}
+
+.recipeHero__skeletonDescription {
+  width: 250px;
+  height: 18px;
+}
+
+.recipeHero__skeletonBtn {
+  width: 180px;
+  height: 40px;
+}
+
+.recipeHero__skeletonTime {
+  width: 100px;
+  height: 18px;
 }
