@@ -15,7 +15,13 @@ import {
 } from "../../redux/favoriteRecipes/operations";
 import { IRecipe } from "../../types/recipesTypes";
 
-const ReceipePageHero = ({ recipe ,isLoading}: { recipe: IRecipe, isLoading: boolean }) => {
+const ReceipePageHero = ({
+  recipe,
+  isLoading,
+}: {
+  recipe: IRecipe;
+  isLoading: boolean;
+}) => {
   const { title, description, time, favorites, _id } = recipe;
   const user = useSelector(selectUser);
   const userId = user.userId;
@@ -46,37 +52,39 @@ const ReceipePageHero = ({ recipe ,isLoading}: { recipe: IRecipe, isLoading: boo
     }
   };
 
-  if (true) {
-    return (
-      <div className={css.recipeHero__skeleton}>
-        <div className={css.recipeHero__skeletonTitle}></div>
-        <div className={css.recipeHero__skeletonDescription}></div>
-        <div className={css.recipeHero__skeletonBtn}></div>
-        <div className={css.recipeHero__skeletonTime}></div>
-      </div>
-    );
-  }
+ 
   return (
-    <div className={css.recipeHero}>
-      <MainPageTitle title={title} />
-      <p className={css.recipeHero__description}>{description}</p>
+    <>
+      {isLoading ? (
+        <div className={css.recipeHero__skeleton}>
+          <div className={css.recipeHero__skeletonTitle}></div>
+          <div className={css.recipeHero__skeletonDescription}></div>
+          <div className={css.recipeHero__skeletonBtn}></div>
+          <div className={css.recipeHero__skeletonTime}></div>
+        </div>
+      ) : (
+        <div className={css.recipeHero}>
+          <MainPageTitle title={title} />
+          <p className={css.recipeHero__description}>{description}</p>
 
-      <button
-        type="button"
-        className={`${css.recipeHero__btn} ${css.recipeHero__btnText}`}
-        onClick={() => handleFavorite(_id)}
-      >
-        {!isFav ? "Add to favorite recipes" : "Remove from favorites"}
-      </button>
-      {time && (
-        <div className={css.recipeHero__timeBox}>
-          <svg className={css.recipeHero__iconClock}>
-            <use href={`${sprite}#icon-clock`}></use>
-          </svg>
-          <p className={css.recipeHero__timeText}>{time} min</p>
+          <button
+            type="button"
+            className={`${css.recipeHero__btn} ${css.recipeHero__btnText}`}
+            onClick={() => handleFavorite(_id)}
+          >
+            {!isFav ? "Add to favorite recipes" : "Remove from favorites"}
+          </button>
+          {time && (
+            <div className={css.recipeHero__timeBox}>
+              <svg className={css.recipeHero__iconClock}>
+                <use href={`${sprite}#icon-clock`}></use>
+              </svg>
+              <p className={css.recipeHero__timeText}>{time} min</p>
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

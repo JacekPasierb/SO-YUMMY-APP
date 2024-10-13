@@ -34,7 +34,6 @@
   }
 }
 
-
 .recipeHero__btn {
   padding: 10px 18px;
 
@@ -55,10 +54,6 @@
     font-size: 16px;
   }
 }
-
-
-
-
 
 .recipeHero__timeBox {
   display: flex;
@@ -102,10 +97,6 @@
     line-height: 20px;
   }
 }
-
-
-
-
 
 /* Skeleton styles */
 .recipeHero__skeleton {
