@@ -43,15 +43,13 @@ const RecipePage = () => {
 
   return (
     <>
-      {isLoading ? (
-        <p>Loading recipe...</p>
-      ) : (
+       {
         recipe && (
           <main>
             <section className={css.receipePage}>
               <Header />
               <div className={css.container}>
-                <ReceipePageHero recipe={recipe} />
+                <ReceipePageHero recipe={recipe} isLoading={isLoading}/>
               </div>
             </section>
             <RecipeInngredientsList ingredients={recipe.ingredients} />
@@ -61,7 +59,7 @@ const RecipePage = () => {
             />
           </main>
         )
-      )}
+      }
       {error && <p>Something went wrong.. try again</p>}
     </>
   );

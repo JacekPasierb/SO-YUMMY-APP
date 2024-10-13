@@ -15,7 +15,7 @@ import {
 } from "../../redux/favoriteRecipes/operations";
 import { IRecipe } from "../../types/recipesTypes";
 
-const ReceipePageHero = ({ recipe }: { recipe: IRecipe }) => {
+const ReceipePageHero = ({ recipe ,isLoading}: { recipe: IRecipe, isLoading: boolean }) => {
   const { title, description, time, favorites, _id } = recipe;
   const user = useSelector(selectUser);
   const userId = user.userId;
@@ -45,6 +45,17 @@ const ReceipePageHero = ({ recipe }: { recipe: IRecipe }) => {
       toast.error("Something went wrong..");
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className={css.skeleton}>
+        <div className={css.skeletonTitle}></div>
+        <div className={css.skeletonDescription}></div>
+        <div className={css.skeletonButton}></div>
+        <div className={css.skeletonTime}></div>
+      </div>
+    );
+  }
   return (
     <div className={css.receipeHeroBox}>
       <MainPageTitle title={title} />
