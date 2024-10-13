@@ -1,14 +1,13 @@
-import SubTitle from "../SubTitle/SubTitle";
-import css from "./RecipePreparation.module.css";
-
 import React, { FC, useEffect, useState } from "react";
+import SubTitle from "../SubTitle/SubTitle";
+import styles from "./RecipePreparation.module.css";
 
 interface RecipePreparationProps {
   img: string;
   instructions: string;
 }
 
-const RecipePreparation: FC<RecipePreparationProps> = ({
+const RecipePreparation: React.FC<RecipePreparationProps> = ({
   img,
   instructions,
 }) => {
@@ -22,22 +21,37 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
   }, [instructions]);
 
   return (
-    <div className={`${css.container} ${css.flex}`}>
-      <div>
-        <SubTitle title={"Recipe Preparation"}/>
-        <ul className={css.instructionsList}>
+    <div
+      className={`${styles.recipePreparation__container} ${styles.recipePreparation}`}
+    >
+      <div className={styles.recipePreparation__content}>
+        <SubTitle title={"Recipe Preparation"} />
+        <ul className={styles.recipePreparation__instructionsList}>
           {step &&
             step.map((step, index) => (
-              <li key={index} className={`${css.instructionsListItem} `}>
-                <div className={css.numbStepBox}>
-                  <p className={css.numbStepText}>{`${index + 1}`}</p>
+              <li
+                key={index}
+                className={styles.recipePreparation__instructionsListItem}
+              >
+                <div className={styles.recipePreparation__numbStepBox}>
+                  <p className={styles.recipePreparation__numbStepText}>{`${
+                    index + 1
+                  }`}</p>
                 </div>
-                <p className={css.descStep}>{`${step}`}</p>
+                <p
+                  className={styles.recipePreparation__descStep}
+                >{`${step}`}</p>
               </li>
             ))}
         </ul>
       </div>
-      <img src={img} width="100%" height="100%" className={css.recipeImg} />
+      <img
+        src={img}
+        alt="Recipe Preparation"
+        width="100%"
+        height="100%"
+        className={styles.recipePreparation__image}
+      />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-.container {
+.recipePreparation__container {
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
@@ -13,7 +13,7 @@
   }
 }
 
-.instructionsList {
+.recipePreparation__instructionsList {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -31,13 +31,13 @@
   }
 }
 
-.instructionsListItem {
+.recipePreparation__instructionsListItem {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
 }
 
-.numbStepBox {
+.recipePreparation__numbStepBox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,27 +46,27 @@
   margin-right: 14px;
   padding: 2px 7px;
 
-  background-color: #8baa36;
+  background-color: rgba(139, 170, 54, 1);
   border-radius: 100px;
 }
 
-.numbStepText {
+.recipePreparation__numbStepText {
   margin: 0;
 
   font-size: 12px;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 1);
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
 }
 
-.descStep {
+.recipePreparation__descStep {
   margin-block: 0;
 
   font-size: 12px;
   line-height: 14px;
-  color: #000000c1;
+  color: var(--color-text-title);
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -74,11 +74,11 @@
   }
 }
 
-.recipeImg {
+.recipePreparation__image {
   border-radius: 8px;
 }
 
-.flex {
+.recipePreparation {
   display: flex;
   flex-direction: column;
 

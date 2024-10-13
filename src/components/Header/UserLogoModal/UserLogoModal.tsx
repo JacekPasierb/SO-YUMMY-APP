@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./UserLogoModal.module.css";
+import styles from "./UserLogoModal.module.css";
 
 import BtnLogout from "../BtnLogout/BtnLogout";
 import BtnEditProfile from "../BtnEditProfile/BtnEditProfile";
@@ -11,7 +11,7 @@ const UserLogoModal = () => {
   };
 
   return (
-    <div onClick={handleModalClick} className={css.userModal}>
+    <div onClick={handleModalClick} className={styles.userLogoModal}>
       <BtnEditProfile /> <BtnLogout />
     </div>
   );
