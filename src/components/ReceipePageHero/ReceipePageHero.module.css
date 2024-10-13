@@ -97,3 +97,38 @@
     font-size: 16px;
   }
 }
+
+
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeletonTitle {
+  width: 100%;
+  height: 24px;
+  background-color: #e0e0e0; /* Szary kolor jako placeholder */
+  border-radius: 4px;
+}
+
+.skeletonDescription {
+  width: 100%;
+  height: 16px;
+  background-color: #e0e0e0; /* Szary kolor jako placeholder */
+  border-radius: 4px;
+}
+
+.skeletonButton {
+  width: 200px; /* Szerokość przycisku */
+  height: 40px;
+  background-color: #e0e0e0; /* Szary kolor jako placeholder */
+  border-radius: 4px;
+}
+
+.skeletonTime {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
