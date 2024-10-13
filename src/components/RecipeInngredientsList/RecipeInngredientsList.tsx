@@ -25,14 +25,14 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
     const fetchIngredientsData = async () => {
       if (ingredients !== undefined) {
         const fetchedData: Ingredient[] = [];
-        for (const ing of ingredients) {
-          const { data } = await fetchIngredientsById(ing.id);
+        for (const ingredient of ingredients) {
+          const { data } = await fetchIngredientsById(ingredient.id);
 
           if (data) {
             const ingredient = data.ingredient;
             const ingredientWithMeasure: Ingredient = {
               ...ingredient,
-              measure: ing.measure,
+              measure: ingredient.measure,
             };
             fetchedData.push(ingredientWithMeasure);
           }
