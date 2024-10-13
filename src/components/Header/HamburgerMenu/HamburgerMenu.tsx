@@ -6,6 +6,7 @@ import sprite from "../../../assets/icons/sprite.svg";
 
 import { selectIsMenuModalOpen } from "../../../redux/global/globalSelectors";
 import { setIsMenuModalOpen } from "../../../redux/global/globalSlice";
+import { useLocation } from "react-router";
 
 // Lazy loading for the MenuModal component
 const MenuModal = lazy(() => import("../MenuModal/MenuModal"));
@@ -13,6 +14,9 @@ const MenuModal = lazy(() => import("../MenuModal/MenuModal"));
 const HamburgerMenu = () => {
   const dispatch = useDispatch();
   const isMenuModalOpen = useSelector(selectIsMenuModalOpen);
+  const location = useLocation();
+  const { pathname} = location;
+  const isRecipePage = pathname.startsWith("/recipe/");
 
   // Toggle function for opening/closing the menu modal
   const toggleMenuModal = (): void => {
@@ -26,6 +30,7 @@ const HamburgerMenu = () => {
         className={styles.menu__icon}
         width="40"
         height="40"
+        style={{stroke:"red !important" }}
       >
         <use href={`${sprite}#icon-Menu`} />
       </svg>

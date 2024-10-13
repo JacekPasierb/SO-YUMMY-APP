@@ -21,8 +21,8 @@ const UserLogo = () => {
   const { user } = useAuth();
   const location = useLocation();
   const { pathname} = location;
-  const isUserLogoModalOpen = useSelector(selectIsUserLogoModalOpen);
   const isRecipePage = pathname.startsWith("/recipe/");
+  const isUserLogoModalOpen = useSelector(selectIsUserLogoModalOpen);
 
   const handleLogoClick = () => {
     if (isUserLogoModalOpen) {
