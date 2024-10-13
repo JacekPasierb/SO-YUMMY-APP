@@ -1,11 +1,11 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./RecipeInngredientsList.module.css";
 import { fetchIngredientsById } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
 
 interface RecipeIngredientsListProps {
   ingredients: { id: string; measure: string }[];
-  isLoading:boolean
+  isLoading: boolean;
 }
 
 export interface Ingredient {
@@ -17,7 +17,8 @@ export interface Ingredient {
 }
 
 const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
-  ingredients, isLoading
+  ingredients,
+  isLoading,
 }) => {
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
 
@@ -44,28 +45,19 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
     fetchIngredientsData();
   }, [ingredients]);
 
-  if (true) {
-    return (
-      <div className={styles.skeleton}>
-        <div className={styles.skeleton__header}></div>
-        <ul className={styles.skeleton__list}>
-          <li className={styles.skeleton__item}></li>
-          <li className={styles.skeleton__item}></li>
-          <li className={styles.skeleton__item}></li>
-        </ul>
-      </div>
-    );
-  }
-
   return (
     <>
-      {!ingredientsList && (
-        <div
-          className={`${styles.recipeIngredientsList__container} ${styles.recipeIngredientsList__box}`}
-        >
-          <p>Loading ingredients..</p>
+      {isLoading && (
+        <div className={styles.skeleton}>
+          <div className={styles.skeleton__header}></div>
+          <ul className={styles.skeleton__list}>
+            <li className={styles.skeleton__item}></li>
+            <li className={styles.skeleton__item}></li>
+            <li className={styles.skeleton__item}></li>
+          </ul>
         </div>
       )}
+
       {ingredientsList && (
         <div
           className={`${styles.container} ${styles.recipeIngredientsList__box}`}
