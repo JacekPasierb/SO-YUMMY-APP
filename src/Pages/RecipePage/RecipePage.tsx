@@ -3,13 +3,13 @@ import styles from "./RecipePage.module.css";
 import React, { lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import RecipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
+import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import Header from "../../components/Header/Header";
 import { fetchRecipeById } from "../../API/recipesAPI";
 import { toast } from "react-toastify";
 import { IRecipe } from "../../types/recipesTypes";
 
-const RecipeIngredientsList = lazy(
+const RecipeInngredientsList = lazy(
   () => import("../../components/RecipeInngredientsList/RecipeInngredientsList")
 );
 const RecipePreparation = lazy(
@@ -45,25 +45,28 @@ const RecipePage: React.FC = () => {
   }, [recipeId]);
 
   return (
-    <main className={styles.recipePage}>
-      <Header />
+    <>
       {isLoading ? (
-        <p className={styles.loadingMessage}>Loading recipe...</p>
-      ) : error ? (
-        <p className={styles.errorMessage}>{error}</p>
-      ) : recipe ? (
-        <>
-          <div className={styles.container}>
-            <RecipePageHero recipe={recipe} />
-          </div>
-          <RecipeIngredientsList ingredients={recipe.ingredients} />
-          <RecipePreparation
-            img={recipe.preview}
-            instructions={recipe.instructions}
-          />
-        </>
-      ) : null}
-    </main>
+        <p>Loading recipe...</p>
+      ) : (
+        recipe && (
+          <main>
+            <section className={styles.recipePage}>
+              <Header />
+              <div className={styles.container}>
+                <ReceipePageHero recipe={recipe} />
+              </div>
+            </section>
+            <RecipeInngredientsList ingredients={recipe.ingredients} />
+            <RecipePreparation
+              img={recipe.preview}
+              instructions={recipe.instructions}
+            />
+          </main>
+        )
+      )}
+      {error && <p>Something went wrong.. try again</p>}
+    </>
   );
 };
 
