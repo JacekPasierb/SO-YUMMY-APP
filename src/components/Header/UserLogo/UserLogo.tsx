@@ -11,6 +11,7 @@ import {
   setIsUserLogoModalOpen,
 } from "../../../redux/global/globalSlice";
 import { useAuth } from "../../../hooks/useAuth";
+import { useLocation } from "react-router";
 
 export const DEFAULT_AVATAR =
   "https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg";
@@ -18,7 +19,8 @@ export const DEFAULT_AVATAR =
 const UserLogo = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-
+  const location = useLocation();
+  const { pathname} = location;
   const isUserLogoModalOpen = useSelector(selectIsUserLogoModalOpen);
 
   const handleLogoClick = () => {
@@ -39,7 +41,7 @@ const UserLogo = () => {
         height="34"
         className={css.boxAvatar__avatar}
       />
-      <span className={css.boxAvatar__username}>{user.name}</span>
+      <span className={`${css.boxAvatar__username} ${pathname === "/recipe" && css["boxAvatar__username--inner"]}`}>{user.name}</span>
       {isUserLogoModalOpen && <UserLogoModal />}
     </div>
   );
