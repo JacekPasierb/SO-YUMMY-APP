@@ -14,5 +14,5 @@
 }
 
 .menu__iconInner {
-  stroke:var(--color-text-titleInner);
+  stroke:rgba(34, 37, 42, 1);
 }
