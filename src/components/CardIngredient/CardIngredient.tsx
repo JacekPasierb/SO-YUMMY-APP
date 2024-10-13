@@ -1,30 +1,30 @@
-import css from "./CardIngredient.module.css";
-
 import { Checkbox } from "@mui/material";
-
 import React, { FC } from "react";
-
 import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
+import styles from "./CardIngredient.module.css";
 
 interface CardIngredientProps {
   ingredient: Ingredient;
 }
 
-const CardIngredient: FC<CardIngredientProps> = ({ ingredient }) => {
+const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }) => {
   return (
-    <div className={css.ingredientCard}>
-      <div className={css.flexHelp}>
+    <div className={styles.ingredientCard}>
+      <div className={styles.ingredientCard__details}>
         <img
           src={ingredient.thb}
-          width="65px"
-          height="65px"
-          className={css.imgIngredient}
+          width="65"
+          height="65"
+          alt={ingredient.ttl}
+          className={styles.ingredientCard__image}
         />
-        <p className={css.nameIngredient}>{ingredient.ttl}</p>
+        <p className={styles.ingredientCard__name}>{ingredient.ttl}</p>
       </div>
-      <div className={css.flexHelp}>
-        <div className={css.measureIngredientBox}>
-          <p className={css.measureIngredientText}>{ingredient.measure}</p>
+      <div className={styles.ingredientCard__details}>
+        <div className={styles.ingredientCard__measureBox}>
+          <p className={styles.ingredientCard__measureText}>
+            {ingredient.measure}
+          </p>
         </div>
         <Checkbox
           sx={{

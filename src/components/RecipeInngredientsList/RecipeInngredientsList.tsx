@@ -59,9 +59,9 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
               <p className={styles.recipeIngredientsList__title}>Add to list</p>
             </div>
           </div>
-          <ul className={styles.recipeIngredientsList__list}>
+          <ul className={styles.recipeIngredientsList}>
             {ingredientsList.map((ingredient) => (
-              <li key={ingredient._id}>
+              <li key={ingredient._id} className={styles.ingredientsList__item}>
                 <CardIngredient ingredient={ingredient} />
               </li>
             ))}
