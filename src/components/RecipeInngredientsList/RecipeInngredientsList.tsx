@@ -47,7 +47,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
 
   return (
     <>
-      {isLoading && (
+      {isLoading ? (
         <div className={styles.skeleton}>
           <div className={styles.skeleton__header}></div>
           <ul className={styles.skeleton__list}>
@@ -56,9 +56,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
             <li className={styles.skeleton__item}></li>
           </ul>
         </div>
-      )}
-
-      {ingredientsList && (
+      ) : (
         <div
           className={`${styles.container} ${styles.recipeIngredientsList__box}`}
         >
