@@ -4,7 +4,7 @@ import MainTitle from "../../components/MainTitle/PageTitle";
 import sprite from "../../assets/icons/sprite.svg";
 import styles from "./NotFoundPage.module.css";
 
-const NotFoundPage = () => {
+const NotFoundPage:React.FC = () => {
   return (
     <>
       <Header />

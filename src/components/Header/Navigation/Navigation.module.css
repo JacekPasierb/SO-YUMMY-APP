@@ -12,6 +12,8 @@
   font-size: 14px;
   line-height: 22.4px;
   color: var(--color-text-nav); /* new update*/
+
+
 }
 
 .navigation__link:hover .navigation__text,
