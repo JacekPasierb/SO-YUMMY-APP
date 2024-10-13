@@ -36,7 +36,7 @@
 
 .recipeIngredientsList__title {
   font-size: 10px;
-  color: var(--color-text-third); /*update*/
+  color: rgba(255, 255, 255, 1)  ; 
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
