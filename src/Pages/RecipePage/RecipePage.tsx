@@ -1,4 +1,4 @@
-import styles from "./RecipePage.module.css";
+import css from "./RecipePage.module.css";
 
 import React, { lazy, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -8,7 +8,6 @@ import Header from "../../components/Header/Header";
 import { fetchRecipeById } from "../../API/recipesAPI";
 import { toast } from "react-toastify";
 import { IRecipe } from "../../types/recipesTypes";
-
 const RecipeInngredientsList = lazy(
   () => import("../../components/RecipeInngredientsList/RecipeInngredientsList")
 );
@@ -16,32 +15,30 @@ const RecipePreparation = lazy(
   () => import("../../components/RecipePreparation/RecipePreparation")
 );
 
-const RecipePage: React.FC = () => {
+const RecipePage = () => {
   const { recipeId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
 
   useEffect(() => {
-    if (!recipeId) {
-      setError("Recipe ID is missing.");
-      return;
-    }
-
     const getRecipeById = async (id: string) => {
-      setIsLoading(true);
       try {
+        setIsLoading(true);
         const { data } = await fetchRecipeById(id);
+
         setRecipe(data.result);
       } catch (error: any) {
-        setError("Failed to fetch recipe. Please try again.");
-        toast.error("Something went wrong. Please try again...");
+        setError(error.message);
+        toast.error("Something went wrong. Plese try again...");
       } finally {
         setIsLoading(false);
       }
     };
 
-    getRecipeById(recipeId);
+    if (recipeId !== undefined) {
+      getRecipeById(recipeId);
+    }
   }, [recipeId]);
 
   return (
@@ -51,9 +48,9 @@ const RecipePage: React.FC = () => {
       ) : (
         recipe && (
           <main>
-            <section className={styles.recipePage}>
+            <section className={css.receipePage}>
               <Header />
-              <div className={styles.container}>
+              <div className={css.container}>
                 <ReceipePageHero recipe={recipe} />
               </div>
             </section>
