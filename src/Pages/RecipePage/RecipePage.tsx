@@ -1,7 +1,7 @@
 import css from "./RecipePage.module.css";
 
 import React, { lazy, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import Header from "../../components/Header/Header";
@@ -20,6 +20,7 @@ const RecipePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getRecipeById = async (id: string) => {
@@ -52,7 +53,7 @@ const RecipePage = () => {
                 <ReceipePageHero recipe={recipe} isLoading={isLoading}/>
               </div>
             </section>
-            <RecipeInngredientsList ingredients={recipe.ingredients} isLoading={isLoading} />
+            <RecipeInngredientsList ingredients={recipe.ingredients}  />
             <RecipePreparation
               img={recipe.preview}
               instructions={recipe.instructions}
@@ -60,7 +61,7 @@ const RecipePage = () => {
           </main>
         )
       }
-      {error && <p>Something went wrong.. try again</p>}
+      {error && navigate("/error")}
     </>
   );
 };

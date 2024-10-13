@@ -5,7 +5,7 @@ import CardIngredient from "../CardIngredient/CardIngredient";
 
 interface RecipeIngredientsListProps {
   ingredients: { id: string; measure: string }[];
-  isLoading: boolean;
+  
 }
 
 export interface Ingredient {
@@ -17,8 +17,7 @@ export interface Ingredient {
 }
 
 const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
-  ingredients,
-  isLoading,
+  ingredients
 }) => {
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
 
