@@ -22,6 +22,7 @@ const UserLogo = () => {
   const location = useLocation();
   const { pathname} = location;
   const isUserLogoModalOpen = useSelector(selectIsUserLogoModalOpen);
+console.log(pathname);
 
   const handleLogoClick = () => {
     if (isUserLogoModalOpen) {
