@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 
 interface Props {
   recipes: IRecipe[];
-  isLoading: boolean
+  isLoading: boolean;
 }
 
 const MyRecipesList = ({ recipes, isLoading }: Props) => {
@@ -16,22 +16,21 @@ const MyRecipesList = ({ recipes, isLoading }: Props) => {
     <>
       {isLoading ? (
         <MyRecipesListSkeleton /> // Zwracamy skeleton podczas ładowania
+      ) : recipes && recipes.length !== 0 ? (
+        <ul className={styles.myRecipesList}>
+          {recipes.map((recipe) => {
+            return (
+              <li key={recipe._id} className={styles.myRecipesList__item}>
+                <CardOwnRecipe ownRecipe={recipe} />
+              </li>
+            );
+          })}
+        </ul>
       ) : (
-        recipes && recipes.length !== 0 ? (
-          <ul className={styles.myRecipesList}>
-            {recipes.map((recipe) => {
-              return (
-                <li key={recipe._id} className={styles.myRecipesList__item}>
-                  <CardOwnRecipe ownRecipe={recipe} />
-                </li>
-              );
-            })}
-          </ul>
-        ) :  (navigate("*"))
+        navigate("*")
       )}
     </>
   );
 };
-
 
 export default MyRecipesList;
