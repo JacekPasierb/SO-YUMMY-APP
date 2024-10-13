@@ -22,7 +22,7 @@ const UserLogo = () => {
   const location = useLocation();
   const { pathname} = location;
   const isUserLogoModalOpen = useSelector(selectIsUserLogoModalOpen);
-console.log(pathname);
+  const isRecipePage = pathname.startsWith("/recipe/");
 
   const handleLogoClick = () => {
     if (isUserLogoModalOpen) {
@@ -42,7 +42,7 @@ console.log(pathname);
         height="34"
         className={css.boxAvatar__avatar}
       />
-      <span className={`${css.boxAvatar__username} ${pathname == "/recipe" && css["boxAvatar__username--inner"]}`}>{user.name}</span>
+      <span className={`${css.boxAvatar__username} ${isRecipePage && css["boxAvatar__username--inner"]}`}>{user.name}</span>
       {isUserLogoModalOpen && <UserLogoModal />}
     </div>
   );
