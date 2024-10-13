@@ -50,7 +50,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
         <RecipeIngredientsListSkelton />
       ) : (
         <div
-          className={`${styles.container} ${styles.recipeIngredientsList__box}`}
+          className={`${styles.recipeIngredientsList__container} ${styles.recipeIngredientsList__box}`}
         >
           <div className={styles.recipeIngredientsList__header}>
             <p className={styles.recipeIngredientsList__title}>Ingredients</p>
