@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./RecipeInngredientsList.module.css";
 import { fetchIngredientsById } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
+import RecipeIngredientsListSkelton from "./RecipeIngredientsListSkelton";
 
 interface RecipeIngredientsListProps {
   ingredients: { id: string; measure: string }[];
-  
 }
 
 export interface Ingredient {
@@ -17,7 +17,7 @@ export interface Ingredient {
 }
 
 const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
-  ingredients
+  ingredients,
 }) => {
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
 
@@ -46,15 +46,8 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
 
   return (
     <>
-      { ingredientsList.length === 0 ? (
-        <div className={styles.skeleton}>
-          <div className={styles.skeleton__header}></div>
-          <ul className={styles.skeleton__list}>
-            <li className={styles.skeleton__item}></li>
-            <li className={styles.skeleton__item}></li>
-            <li className={styles.skeleton__item}></li>
-          </ul>
-        </div>
+      {ingredientsList.length === 0 ? (
+        <RecipeIngredientsListSkelton />
       ) : (
         <div
           className={`${styles.container} ${styles.recipeIngredientsList__box}`}
