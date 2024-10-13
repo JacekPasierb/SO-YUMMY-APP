@@ -78,3 +78,65 @@
     margin-bottom: 100px;
   }
 }
+
+
+
+
+
+/* Skeleton styles */
+.skeleton {
+  width: 100%;
+  padding: 0 16px;
+  margin-bottom: 50px;
+}
+
+.skeleton__header {
+  background-color: #e0e0e0;
+  height: 50px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.skeleton__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeleton__item {
+  background-color: #e0e0e0;
+  height: 60px;
+  border-radius: 8px;
+}
+
+/* Adaptation for responsive design */
+@media screen and (min-width: 768px) {
+  .skeleton {
+    padding: 0 32px;
+    margin-bottom: 96px;
+  }
+
+  .skeleton__header {
+    height: 70px;
+    margin-bottom: 32px;
+  }
+
+  .skeleton__item {
+    height: 80px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .skeleton {
+    max-width: 1200px;
+  }
+
+  .skeleton__header {
+    height: 80px;
+    margin-bottom: 50px;
+  }
+
+  .skeleton__item {
+    height: 90px;
+  }
+}

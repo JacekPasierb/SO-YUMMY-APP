@@ -1,4 +1,4 @@
-import css from "./ReceipePageHero.module.css";
+import styles from "./ReceipePageHero.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
 import React, { useEffect, useState } from "react";
@@ -52,34 +52,33 @@ const ReceipePageHero = ({
     }
   };
 
- 
   return (
     <>
       {isLoading ? (
-        <div className={css.recipeHero__skeleton}>
-          <div className={css.recipeHero__skeletonTitle}></div>
-          <div className={css.recipeHero__skeletonDescription}></div>
-          <div className={css.recipeHero__skeletonBtn}></div>
-          <div className={css.recipeHero__skeletonTime}></div>
+        <div className={styles.recipeHero__skeleton}>
+          <div className={styles.recipeHero__skeletonTitle}></div>
+          <div className={styles.recipeHero__skeletonDescription}></div>
+          <div className={styles.recipeHero__skeletonBtn}></div>
+          <div className={styles.recipeHero__skeletonTime}></div>
         </div>
       ) : (
-        <div className={css.recipeHero}>
+        <div className={styles.recipeHero}>
           <MainPageTitle title={title} />
-          <p className={css.recipeHero__description}>{description}</p>
+          <p className={styles.recipeHero__description}>{description}</p>
 
           <button
             type="button"
-            className={`${css.recipeHero__btn} ${css.recipeHero__btnText}`}
+            className={`${styles.recipeHero__btn} ${styles.recipeHero__btnText}`}
             onClick={() => handleFavorite(_id)}
           >
             {!isFav ? "Add to favorite recipes" : "Remove from favorites"}
           </button>
           {time && (
-            <div className={css.recipeHero__timeBox}>
-              <svg className={css.recipeHero__iconClock}>
+            <div className={styles.recipeHero__timeBox}>
+              <svg className={styles.recipeHero__iconClock}>
                 <use href={`${sprite}#icon-clock`}></use>
               </svg>
-              <p className={css.recipeHero__timeText}>{time} min</p>
+              <p className={styles.recipeHero__timeText}>{time} min</p>
             </div>
           )}
         </div>

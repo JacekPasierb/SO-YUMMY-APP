@@ -52,7 +52,7 @@ const RecipePage = () => {
                 <ReceipePageHero recipe={recipe} isLoading={isLoading}/>
               </div>
             </section>
-            <RecipeInngredientsList ingredients={recipe.ingredients} />
+            <RecipeInngredientsList ingredients={recipe.ingredients} isLoading={isLoading} />
             <RecipePreparation
               img={recipe.preview}
               instructions={recipe.instructions}
