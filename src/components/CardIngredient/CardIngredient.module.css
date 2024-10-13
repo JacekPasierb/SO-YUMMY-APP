@@ -45,6 +45,9 @@
 .measureIngredientBox {
   margin-right: 28px;
   padding: 4px 4px;
+  width: 60px;
+
+  text-align: center;
 
   background-color: #8baa36;
   border-radius: 4px;
