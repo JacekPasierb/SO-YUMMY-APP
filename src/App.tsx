@@ -26,6 +26,7 @@ const FavoritesPage = lazy(() => import("./Pages/FavoritesPage/FavoritesPage"));
 import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "./hooks/useAuth";
+import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 const SharedLayout = lazy(
   () => import("./components/SharedLayout/SharedLayout")
 );
@@ -169,7 +170,7 @@ const App: FC = () => {
             path="/shopping-list"
             element={<PrivateRoute component="" />}
           />
-          {/* <Route path="*"  element={<Navigate to="/err" />} /> */}
+          <Route path="*"  element={<NotFoundPage/>} />
         </Route>
       </Routes>
     </>
