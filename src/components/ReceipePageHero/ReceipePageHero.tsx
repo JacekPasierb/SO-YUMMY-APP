@@ -51,8 +51,8 @@ const ReceipePageHero = ({ recipe ,isLoading}: { recipe: IRecipe, isLoading: boo
       <div className={css.skeleton}>
         <div className={css.skeletonTitle}></div>
         <div className={css.skeletonDescription}></div>
-        <div className={css.skeletonButton}></div>
-        <div className={css.skeletonTime}></div>
+        <div className={css.btn}></div>
+        <div className={css.timeBox}></div>
       </div>
     );
   }
