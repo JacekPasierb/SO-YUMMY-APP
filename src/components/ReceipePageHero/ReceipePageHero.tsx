@@ -46,7 +46,7 @@ const ReceipePageHero = ({ recipe ,isLoading}: { recipe: IRecipe, isLoading: boo
     }
   };
 
-  if (isLoading) {
+  if (true) {
     return (
       <div className={css.skeleton}>
         <div className={css.skeletonTitle}></div>
