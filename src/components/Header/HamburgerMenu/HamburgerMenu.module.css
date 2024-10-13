@@ -3,7 +3,7 @@
   height: 28px;
   margin-left: 24px;
  
-  stroke:green;
+  stroke:var(--color-Hamburger);
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
@@ -11,4 +11,8 @@
     height: 32px;
     margin-left: 50px;
   }
+}
+
+.menu__iconInner {
+  stroke:var(--color-text-titleInner);
 }

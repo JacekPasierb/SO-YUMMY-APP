@@ -27,10 +27,10 @@ const HamburgerMenu = () => {
     <>
      <svg
         onClick={toggleMenuModal}
-        className={styles.menu__icon}
+        className={`${styles.menu__icon} ${isRecipePage && styles.menu__iconInner}`}
         width="40"
         height="40"
-        style={{stroke:"red !important" }}
+        
       >
         <use href={`${sprite}#icon-Menu`} />
       </svg>
