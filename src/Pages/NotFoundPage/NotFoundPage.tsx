@@ -8,10 +8,11 @@ const NotFoundPage = () => {
   return (
     <>
       <Header />
+      <div className={styles.conatiner}>
       <MainTitle title="" />
       <svg className={styles.icon}>
         <use href={`${sprite}#icon-not-found`}></use>
-      </svg>
+      </svg></div>
     </>
   );
 };
