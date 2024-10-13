@@ -17,7 +17,7 @@ export interface Ingredient {
 }
 
 const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
-  ingredients,
+  ingredients, isLoading
 }) => {
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
 
@@ -44,7 +44,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
     fetchIngredientsData();
   }, [ingredients]);
 
-  if (isLoading) {
+  if (true) {
     return (
       <div className={styles.skeleton}>
         <div className={styles.skeleton__header}></div>
