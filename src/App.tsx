@@ -27,6 +27,7 @@ import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "./hooks/useAuth";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
+import SearchPage from "./Pages/SearchPage/SearchPage";
 const SharedLayout = lazy(
   () => import("./components/SharedLayout/SharedLayout")
 );
@@ -165,7 +166,7 @@ const App: FC = () => {
             path="/recipe/:recipeId"
             element={<PrivateRoute component={<RecipePage />} />}
           />
-          <Route path="/search" element={<PrivateRoute component="" />} />
+          <Route path="/search" element={<PrivateRoute component={<SearchPage/>} />} />
           <Route
             path="/shopping-list"
             element={<PrivateRoute component="" />}
