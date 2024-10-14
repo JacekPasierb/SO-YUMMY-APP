@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import Media from "react-media";
 import Header from "../../components/Header/Header";
-import Search from "../../components/Search/Search";
+
 import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYourBreakfast";
 import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
 import ButtonOtherCategories from "../../components/ButtonOtherCategories/ButtonOtherCategories";
 import AppTitle from "../../components/AppTitle/AppTitle";
 import AppDescription from "../../components/AppDescription/AppDescription";
+import SearchForm from "../../components/SearchForm/SearchForm";
 
 // Importing CSS module
 import styles from "./MainPage.module.css";
@@ -29,7 +30,7 @@ const MainPage: FC = () => {
             <div>
               <AppTitle />
               <AppDescription />
-              <Search />
+              <SearchForm />
             </div>
             {/* On small screens, render ChooseYourBreakfast within this div */}
             {!matches.small && <ChooseYourBreakfast />}

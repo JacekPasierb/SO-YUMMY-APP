@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Search.module.css";
 
-const Search = React.memo(() => {
+const SearchForm = React.memo(() => {
   return (
     <div className={styles.search}>
       <input
@@ -18,4 +18,4 @@ const Search = React.memo(() => {
   );
 });
 
-export default Search;
+export default SearchForm;
