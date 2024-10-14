@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Search.module.css";
+import styles from "./SearchForm.module.css";
 
 const SearchForm = React.memo(() => {
   return (
