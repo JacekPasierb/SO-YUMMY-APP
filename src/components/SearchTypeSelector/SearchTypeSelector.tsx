@@ -5,10 +5,10 @@ const SearchTypeSelector = () => {
   return (
     <div>
       <p>Search by:</p>
-      <Select>
-        <MenuItem value={10}>Title</MenuItem>
-        <MenuItem value={20}>Ingredients</MenuItem>
-      </Select>{" "}
+      <Select defaultValue={"Title"}>
+        <MenuItem value={"Title"}>Title</MenuItem>
+        <MenuItem value={"Ingredients"}>Ingredients</MenuItem>
+      </Select>
     </div>
   );
 };
