@@ -2,11 +2,22 @@ import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import SearchTypeSelector from "../SearchTypeSelector/SearchTypeSelector";
 
-const SearchBar = () => {
+interface SearchTypeSelectorProps {
+  onTypeChange: (type: string) => void;
+  selectedType: string;
+}
+
+const SearchBar: React.FC<SearchTypeSelectorProps> = ({
+  onTypeChange,
+  selectedType,
+}) => {
   return (
     <>
       <SearchForm />
-      <SearchTypeSelector />
+      <SearchTypeSelector
+        onTypeChange={onTypeChange}
+        selectedType={selectedType}
+      />
     </>
   );
 };
