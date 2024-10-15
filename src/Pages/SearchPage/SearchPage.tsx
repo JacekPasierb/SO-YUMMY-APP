@@ -13,13 +13,21 @@ import { useSearchParams } from "react-router-dom";
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchType, setSearchType] = useState(searchParams.get("query") || "title");
+  const [searchType, setSearchType] = useState(
+    searchParams.get("query") || "title"
+  );
+  const [searchValue, setSearchValue] = useState(searchParams.get(searchType) || "");
 
-   // Funkcja obsługująca aktualizację typu wyszukiwania
-   const handleSearchTypeChange = (type: string) => {
+  // Funkcja obsługująca aktualizację typu wyszukiwania
+  const handleSearchTypeChange = (type: string) => {
     setSearchType(type);
     const paramKey = type === "query" ? "query" : "ingredient";
-    setSearchParams({  [paramKey]: searchParams.get(paramKey) || "" });
+    setSearchParams({ [paramKey]: searchParams.get(paramKey) || "" });
+  };
+
+  const handleSearchSubmit = (value: string) => {
+    const paramKey = searchType === "query" ? "query" : "ingredient";
+    setSearchParams({ [paramKey]: value });
   };
 
   useEffect(() => {
@@ -30,7 +38,12 @@ const SearchPage = () => {
       <Header />
       <div className={styles.searchPage__container}>
         <MainTitle title="Search" />
-        <SearchBar onTypeChange={handleSearchTypeChange} selectedType={searchType} />
+        <SearchBar
+          onTypeChange={handleSearchTypeChange}
+          selectedType={searchType}
+          onSearchSubmit={handleSearchSubmit}
+          searchValue={searchValue}
+        />
       </div>
     </>
   );
