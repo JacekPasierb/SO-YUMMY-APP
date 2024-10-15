@@ -15,8 +15,8 @@ const SearchTypeSelector:React.FC <SearchTypeSelectorProps>= ({onTypeChange, sel
     <div style={{display:"flex", flexDirection:"row", gap:"15px"}}>
       <p>Search by:</p>
       <Select  id="search-type" value={selectedType} onChange={handleSelectChange}>
-        <MenuItem value={"Title"}>Title</MenuItem>
-        <MenuItem value={"Ingredients"}>Ingredients</MenuItem>
+        <MenuItem value={"query"}>Title</MenuItem>
+        <MenuItem value={"ingredient"}>Ingredients</MenuItem>
       </Select>
     </div>
   );

@@ -13,13 +13,13 @@ import { useSearchParams } from "react-router-dom";
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchType, setSearchType] = useState(searchParams.get("type") || "title");
+  const [searchType, setSearchType] = useState(searchParams.get("query") || "title");
 
    // Funkcja obsługująca aktualizację typu wyszukiwania
    const handleSearchTypeChange = (type: string) => {
     setSearchType(type);
-    const paramKey = type === "title" ? "query" : "ingredient";
-    setSearchParams({ type, [paramKey]: searchParams.get(paramKey) || "" });
+    const paramKey = type === "query" ? "query" : "ingredient";
+    setSearchParams({ paramKey, [paramKey]: searchParams.get(paramKey) || "" });
   };
 
   useEffect(() => {
