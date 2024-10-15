@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { IRecipesResponse } from "../../types/recipesTypes";
 
 // axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
 
@@ -12,6 +13,27 @@ interface CategoryRecipesResponse {
   categoryRecipes: any[];
   totalRecipes: number;
 }
+interface IGetRecipesArgs {
+  // Tutaj możesz zdefiniować typ dla argumentów, np. filtr, kategoria itp.
+}
+export const getRecipes = createAsyncThunk<IRecipesResponse>(
+  "recipes/getRecipes",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`./api/recipes `);
+      console.log("d", data);
+
+      return {
+        recipes: data.data.result,
+        totalRecipes: data.data.total,
+      };
+    } catch (error: any) {
+      const axiosError = error as AxiosError;
+      // Obsługa błędów, przekazanie wiadomości błędu dalej do `rejected` akcji
+      return thunkAPI.rejectWithValue(axiosError.message || "Unknown error occurred");
+    }
+  }
+);
 
 export const getRecipesByCategory = createAsyncThunk<
   CategoryRecipesResponse,

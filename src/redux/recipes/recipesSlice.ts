@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getRecipesByCategory, getCategoriesList } from "./operations";
+import {
+  getRecipesByCategory,
+  getCategoriesList,
+  getRecipes,
+} from "./operations";
 
 interface RecipeState {
   recipesByCategory: any[];
@@ -27,6 +31,26 @@ const recipesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
+      .addCase(getRecipes.fulfilled, (state, action) => {
+        state.isLoading = false;
+        if (action.payload) {
+          state.recipesByCategory = action.payload.categoryRecipes || [];
+          state.totalRecipes = action.payload.totalRecipes || 0;
+        }
+        state.error = null;
+      })
+      .addCase(getRecipes.pending, (state, action) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getRecipes.rejected, (state, action) => {
+        state.isLoading = false;
+        if (typeof action.payload === "string") {
+          state.error = action.payload;
+        } else {
+          state.error = "An error occurred during getCategoryRecipes";
+        }
+      })
 
       .addCase(getRecipesByCategory.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -47,17 +71,14 @@ const recipesSlice = createSlice({
         }
       })
       .addCase(getCategoriesList.fulfilled, (state, action) => {
-        
         state.categoriesList = action.payload.data.catArr;
 
         state.error = null;
       })
       .addCase(getCategoriesList.pending, (state) => {
-       
         state.error = null;
       })
       .addCase(getCategoriesList.rejected, (state, action) => {
-        
         if (typeof action.payload === "string") {
           state.error = action.payload;
         } else {
