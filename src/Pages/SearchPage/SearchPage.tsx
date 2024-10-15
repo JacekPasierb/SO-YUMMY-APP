@@ -19,7 +19,7 @@ const SearchPage = () => {
    const handleSearchTypeChange = (type: string) => {
     setSearchType(type);
     const paramKey = type === "query" ? "query" : "ingredient";
-    setSearchParams({ paramKey, [paramKey]: searchParams.get(paramKey) || "" });
+    setSearchParams({  [paramKey]: searchParams.get(paramKey) || "" });
   };
 
   useEffect(() => {
