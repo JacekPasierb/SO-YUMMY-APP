@@ -8,26 +8,35 @@ import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { getRecipes } from "../../redux/recipes/operations";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import {
   selectIsLoading,
   selectRecipesByCategory,
+  selectTotalRecipes,
 } from "../../redux/recipes/selectors";
+import BasicPagination from "../../components/Pagination/BasicPagination";
+import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-
   const initialSearchType = searchParams.get("ingredient")
-    ? "ingredient"
-    : "query";
+  ? "ingredient"
+  : "query";
   const initialSearchValue = searchParams.get(initialSearchType) || "";
-
+  
   const [searchType, setSearchType] = useState(initialSearchType);
   const [searchValue, setSearchValue] = useState(initialSearchValue);
-
+  
   const recipes = useSelector(selectRecipesByCategory);
+  const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
+  const currentPage = getPageFromQueryString();
+  const navigate = useNavigate();
+  const handlePageChange = (page: number) => {
+    navigate(`?page=${page}`);
+    window.scrollTo(0, 0);
+  };
   // Funkcja obsługująca aktualizację typu wyszukiwania
   const handleSearchTypeChange = (type: string) => {
     setSearchType(type);
@@ -62,7 +71,14 @@ const SearchPage = () => {
           searchValue={searchValue}
         />
         {searchParams.get(searchType) !== null && recipes.length !== 0 && (
-          <MyRecipesList recipes={recipes} isLoading={isLoading} />
+          <>
+            <MyRecipesList recipes={recipes} isLoading={isLoading} />
+            <BasicPagination
+              count={Math.ceil(totalRecipes / 6)}
+              page={currentPage}
+              onPageChange={handlePageChange}
+            />
+          </>
         )}
       </div>
     </>
