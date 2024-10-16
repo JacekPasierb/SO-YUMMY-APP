@@ -52,14 +52,13 @@
   }
 }
 
-.search__input:disabled {
- background-color: blue;
-}
+
 
 
 
 
 .search__btn {
+  position: relative;
   padding: 16px 32px;
 
   font-size: 14px;
@@ -75,4 +74,33 @@
 
     font-size: 16px;
   }
+}
+
+
+
+.search__btn:disabled::after {
+  content: "Pole jest puste!";
+  position: absolute;
+  top: 100%; /* poniżej input */
+  left: 0;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 5px 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 12px;
+  margin-top: 5px;
+  z-index: 1;
+  /* Opcjonalne: dodaj strzałkę (trójkąt) */
+}
+
+.search__btn:disabled::before {
+  content: "";
+  position: absolute;
+  top: 95%; /* pozycja strzałki */
+  left: 10px; /* dostosuj w zależności od pozycji chmurki */
+  border-width: 5px;
+  border-style: solid;
+  border-color: #f8d7da transparent transparent transparent;
 }
