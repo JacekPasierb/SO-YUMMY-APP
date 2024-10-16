@@ -44,7 +44,7 @@ const SearchPage = () => {
     const value = searchParams.get(paramKey) || "";
     console.log("val",value);
     
-    if (value || value == "") {
+    if (value ) {
       dispatch(getRecipes({ type: searchType, value }));
     }
   }, [searchParams, dispatch, searchType]); 
@@ -60,7 +60,7 @@ const SearchPage = () => {
           onSearchSubmit={handleSearchSubmit}
           searchValue={searchValue}
         />
-        {recipes.length !== 0 && <MyRecipesList recipes={recipes} isLoading={isLoading} />}
+        {searchValue !== "" && recipes.length !== 0 && <MyRecipesList recipes={recipes} isLoading={isLoading} />}
       </div>
     </>
   );
