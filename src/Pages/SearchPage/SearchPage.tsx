@@ -17,12 +17,13 @@ import {
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchType, setSearchType] = useState(
-    searchParams.get("query") || "query"
-  );
-  const [searchValue, setSearchValue] = useState(
-    searchParams.get(searchType) || ""
-  );
+
+  const initialSearchType = searchParams.get("query") ? "query" : "ingredient";
+  const initialSearchValue = searchParams.get(initialSearchType) || "";
+  
+  const [searchType, setSearchType] = useState(initialSearchType);
+  const [searchValue, setSearchValue] = useState(initialSearchValue);
+
   const recipes = useSelector(selectRecipesByCategory);
   const isLoading = useSelector(selectIsLoading);
   // Funkcja obsługująca aktualizację typu wyszukiwania
