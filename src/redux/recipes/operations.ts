@@ -12,6 +12,7 @@ interface CategoryRecipesRequest {
 interface IGetRecipesRequest {
   type: string;
   value: string;
+  page:number;
 }
 
 interface CategoryRecipesResponse {
@@ -23,10 +24,10 @@ interface IGetRecipesArgs {
 }
 export const getRecipes = createAsyncThunk<IRecipesResponse, IGetRecipesRequest>(
   "recipes/getRecipes",
-  async ({type, value}, thunkAPI) => {
+  async ({type, value, page}, thunkAPI) => {
     try {
     
-      const { data } = await axios.get(`./api/recipes?${type}=${value} `);
+      const { data } = await axios.get(`./api/recipes?${type}=${value}&page=${page}&limit=6 `);
       console.log("d", data);
 
       return {

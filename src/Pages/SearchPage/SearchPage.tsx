@@ -21,13 +21,13 @@ const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const initialSearchType = searchParams.get("ingredient")
-  ? "ingredient"
-  : "query";
+    ? "ingredient"
+    : "query";
   const initialSearchValue = searchParams.get(initialSearchType) || "";
-  
+
   const [searchType, setSearchType] = useState(initialSearchType);
   const [searchValue, setSearchValue] = useState(initialSearchValue);
-  
+
   const recipes = useSelector(selectRecipesByCategory);
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
@@ -55,7 +55,7 @@ const SearchPage = () => {
     const value = searchParams.get(paramKey) || "";
 
     if (value) {
-      dispatch(getRecipes({ type: searchType, value }));
+      dispatch(getRecipes({ type: searchType, value, page: currentPage }));
     }
   }, [searchParams, dispatch, searchType]);
 
