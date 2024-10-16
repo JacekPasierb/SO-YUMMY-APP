@@ -18,7 +18,7 @@ const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const initialSearchType = searchParams.get("query") ? "query" : "ingredient";
+  const initialSearchType = searchParams.get("ingredient") ? "ingredient" : "query";
   const initialSearchValue = searchParams.get(initialSearchType) || "";
   
   const [searchType, setSearchType] = useState(initialSearchType);
