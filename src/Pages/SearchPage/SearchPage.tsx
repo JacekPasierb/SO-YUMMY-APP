@@ -33,6 +33,9 @@ const isLoading = useSelector(selectIsLoading)
     dispatch(getRecipes({type:searchType, value:value}))
   };
 
+  useEffect(()=>{
+dispatch(getRecipes({type:"query", value: ""}))
+  },[dispatch])
 
   return (
     <>
