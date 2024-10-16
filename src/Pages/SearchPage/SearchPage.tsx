@@ -21,8 +21,8 @@ const SearchPage = () => {
   // Funkcja obsługująca aktualizację typu wyszukiwania
   const handleSearchTypeChange = (type: string) => {
     setSearchType(type);
-    const paramKey = type === "query" ? "query" : "ingredient";
-    setSearchParams({ [paramKey]: searchParams.get(paramKey) || "" });
+    // const paramKey = type === "query" ? "query" : "ingredient";
+    // setSearchParams({ [paramKey]: searchParams.get(paramKey) || "" });
   };
 
   const handleSearchSubmit = (value: string) => {
