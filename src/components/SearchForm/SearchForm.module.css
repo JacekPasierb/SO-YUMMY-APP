@@ -78,7 +78,7 @@
 
 
 
-.search__btn:disabled::after {
+.search__btn:disabled:hover::after {
   content: "Pole jest puste!";
   position: absolute;
   top: 100%; /* poniżej input */
@@ -95,7 +95,7 @@
   /* Opcjonalne: dodaj strzałkę (trójkąt) */
 }
 
-.search__btn:disabled::before {
+.search__btn:disabled:hover::before {
   content: "";
   position: absolute;
   top: 95%; /* pozycja strzałki */
