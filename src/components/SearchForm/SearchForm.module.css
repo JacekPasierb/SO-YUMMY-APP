@@ -83,10 +83,10 @@
   position: absolute;
   top: 100%; /* poniżej input */
   left: 0;
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: rgba(139, 170, 54, 1);
+  color: rgba(34, 37, 42, 1) ;
   padding: 5px 10px;
-  border: 1px solid #f5c6cb;
+  border: 1px solid rgba(139, 170, 54, 1);
   border-radius: 5px;
   white-space: nowrap;
   font-size: 12px;
@@ -102,5 +102,5 @@
   left: 10px; /* dostosuj w zależności od pozycji chmurki */
   border-width: 5px;
   border-style: solid;
-  border-color: #f8d7da transparent transparent transparent;
+  border-color: rgba(139, 170, 54, 1) transparent transparent transparent;
 }
