@@ -53,7 +53,7 @@
 }
 
 .search__input:disabled {
-  cursor: not-allowed !important;
+ background-color: blue;
 }
 
 
