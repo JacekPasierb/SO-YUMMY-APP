@@ -38,9 +38,9 @@ const SearchPage = () => {
     dispatch(getRecipes({ type: searchType, value: value }));
   };
 
-  useEffect(() => {
-    dispatch(getRecipes({ type: "query", value: "" }));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getRecipes({ type: "query", value: "" }));
+  // }, [dispatch]);
 
   return (
     <>
