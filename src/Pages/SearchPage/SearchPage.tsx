@@ -9,7 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { getRecipes } from "../../redux/recipes/operations";
 import { useSearchParams } from "react-router-dom";
-import { selectIsLoading, selectRecipesByCategory } from "../../redux/recipes/selectors";
+import {
+  selectIsLoading,
+  selectRecipesByCategory,
+} from "../../redux/recipes/selectors";
 
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -17,9 +20,11 @@ const SearchPage = () => {
   const [searchType, setSearchType] = useState(
     searchParams.get("query") || "query"
   );
-  const [searchValue, setSearchValue] = useState(searchParams.get(searchType) || "");
-const recipes = useSelector(selectRecipesByCategory);
-const isLoading = useSelector(selectIsLoading)
+  const [searchValue, setSearchValue] = useState(
+    searchParams.get(searchType) || ""
+  );
+  const recipes = useSelector(selectRecipesByCategory);
+  const isLoading = useSelector(selectIsLoading);
   // Funkcja obsługująca aktualizację typu wyszukiwania
   const handleSearchTypeChange = (type: string) => {
     setSearchType(type);
@@ -30,12 +35,12 @@ const isLoading = useSelector(selectIsLoading)
   const handleSearchSubmit = (value: string) => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
     setSearchParams({ [paramKey]: value });
-    dispatch(getRecipes({type:searchType, value:value}))
+    dispatch(getRecipes({ type: searchType, value: value }));
   };
 
-  useEffect(()=>{
-dispatch(getRecipes({type:"query", value: ""}))
-  },[dispatch])
+  useEffect(() => {
+    dispatch(getRecipes({ type: "query", value: "" }));
+  }, [dispatch]);
 
   return (
     <>
@@ -48,7 +53,7 @@ dispatch(getRecipes({type:"query", value: ""}))
           onSearchSubmit={handleSearchSubmit}
           searchValue={searchValue}
         />
-        <MyRecipesList recipes={recipes} isLoading={isLoading}/>
+        {recipes && <MyRecipesList recipes={recipes} isLoading={isLoading} />}
       </div>
     </>
   );
