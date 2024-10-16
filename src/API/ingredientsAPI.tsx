@@ -8,8 +8,8 @@ export const fetchAllIngredients = async () => {
 };
 
 export const fetchIngredientsById = async (id: string) => {
+  console.log("rrrrr",id);
   const { data } = await axios.get(`./api/ingredients/${id}`);
-  console.log("rrrrr");
   
   return data;
 };
