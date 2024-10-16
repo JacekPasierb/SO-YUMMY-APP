@@ -6,7 +6,7 @@ import {
 } from "./operations";
 
 interface RecipeState {
-  recipesByCategory: any[];
+  recipes: any[];
   isLoading: boolean;
   categoriesList: string[];
   totalRecipes: number;
@@ -18,7 +18,7 @@ export interface RootState {
 }
 
 const initialState: RecipeState = {
-  recipesByCategory: [],
+  recipes: [],
   totalRecipes: 0,
   categoriesList: [],
   isLoading: false,
@@ -34,7 +34,7 @@ const recipesSlice = createSlice({
       .addCase(getRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         if (action.payload) {
-          state.recipesByCategory = action.payload.categoryRecipes || [];
+          state.recipes = action.payload.recipes || [];
           state.totalRecipes = action.payload.totalRecipes || 0;
         }
         state.error = null;
@@ -54,7 +54,7 @@ const recipesSlice = createSlice({
 
       .addCase(getRecipesByCategory.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.recipesByCategory = action.payload.categoryRecipes;
+        state.recipes = action.payload.categoryRecipes;
         state.totalRecipes = action.payload.totalRecipes;
         state.error = null;
       })

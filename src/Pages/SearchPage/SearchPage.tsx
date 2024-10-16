@@ -5,10 +5,11 @@ import styles from "./SearchPage.module.css";
 import Search from "../../components/SearchForm/SearchForm";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { getRecipes } from "../../redux/recipes/operations";
 import { useSearchParams } from "react-router-dom";
+import { selectIsLoading, selectRecipesByCategory } from "../../redux/recipes/selectors";
 
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -17,7 +18,8 @@ const SearchPage = () => {
     searchParams.get("query") || "query"
   );
   const [searchValue, setSearchValue] = useState(searchParams.get(searchType) || "");
-
+const recipes = useSelector(selectRecipesByCategory);
+const isLoading = useSelector(selectIsLoading)
   // Funkcja obsługująca aktualizację typu wyszukiwania
   const handleSearchTypeChange = (type: string) => {
     setSearchType(type);
@@ -43,6 +45,7 @@ const SearchPage = () => {
           onSearchSubmit={handleSearchSubmit}
           searchValue={searchValue}
         />
+        <MyRecipesList recipes={recipes} isLoading={isLoading}/>
       </div>
     </>
   );

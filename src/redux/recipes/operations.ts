@@ -25,12 +25,13 @@ export const getRecipes = createAsyncThunk<IRecipesResponse, IGetRecipesRequest>
   "recipes/getRecipes",
   async ({type, value}, thunkAPI) => {
     try {
+    
       const { data } = await axios.get(`./api/recipes?${type}=${value} `);
       console.log("d", data);
 
       return {
         recipes: data.data.result,
-        totalRecipes: data.data.total,
+        totalRecipes: data.data.totalRecipes,
       };
     } catch (error: any) {
       const axiosError = error as AxiosError;
