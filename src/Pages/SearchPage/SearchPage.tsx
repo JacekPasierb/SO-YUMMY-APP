@@ -35,12 +35,16 @@ const SearchPage = () => {
   const handleSearchSubmit = (value: string) => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
     setSearchParams({ [paramKey]: value });
-    dispatch(getRecipes({ type: searchType, value: value }));
+    // dispatch(getRecipes({ type: searchType, value: value }));
   };
 
-  // useEffect(() => {
-  //   dispatch(getRecipes({ type: "query", value: "" }));
-  // }, [dispatch]);
+  useEffect(() => {
+    const paramKey = searchType === "query" ? "query" : "ingredient";
+    const value = searchParams.get(paramKey) || "";
+    if (value) {
+      dispatch(getRecipes({ type: searchType, value }));
+    }
+  }, [searchParams, dispatch, searchType]); 
 
   return (
     <>
