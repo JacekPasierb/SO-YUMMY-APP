@@ -25,9 +25,13 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
     console.log("ccc");
     
     const fetchIngredientsData = async () => {
+      console.log("ee");
+      
       if (ingredients !== undefined) {
         const fetchedData: Ingredient[] = [];
         for (const ing of ingredients) {
+          console.log("qq");
+          
           const { data } = await fetchIngredientsById(ing.id);
 
           if (data) {
