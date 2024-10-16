@@ -27,13 +27,11 @@ const SearchPage = () => {
 
   const handleSearchSubmit = (value: string) => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
-
     setSearchParams({ [paramKey]: value });
+    dispatch(getRecipes({type:searchType, value:value}))
   };
 
-  useEffect(() => {
-    dispatch(getRecipes());
-  }, [dispatch]);
+
   return (
     <>
       <Header />
