@@ -77,7 +77,8 @@
 }
 
 .search__btn:disabled {
-  cursor: not-allowed;
+  cursor: default;
+  background-color: rgb(215, 215, 215);
 }
 
 .search__btn:disabled:hover::after {
