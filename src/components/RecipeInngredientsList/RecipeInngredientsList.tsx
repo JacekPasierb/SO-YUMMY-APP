@@ -33,6 +33,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
           console.log("qq");
           
           const { data } = await fetchIngredientsById(ing.id);
+console.log("data",data);
 
           if (data) {
             const ingredient = data.ingredient;
