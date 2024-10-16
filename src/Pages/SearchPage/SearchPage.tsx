@@ -60,7 +60,7 @@ const SearchPage = () => {
           onSearchSubmit={handleSearchSubmit}
           searchValue={searchValue}
         />
-        { recipes.length !== 0 && <MyRecipesList recipes={recipes} isLoading={isLoading} />}
+        { searchParams.get(searchType) !== null && recipes.length !== 0 && <MyRecipesList recipes={recipes} isLoading={isLoading} />}
       </div>
     </>
   );
