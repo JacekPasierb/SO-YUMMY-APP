@@ -30,7 +30,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
       if (ingredients !== undefined) {
         const fetchedData: Ingredient[] = [];
         for (const ing of ingredients) {
-          console.log("qq");
+          console.log("qq",ing);
           
           const { data } = await fetchIngredientsById(ing.id);
 console.log("data",data);
