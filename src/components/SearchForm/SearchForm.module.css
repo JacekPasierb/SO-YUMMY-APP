@@ -76,7 +76,9 @@
   }
 }
 
-
+.search__btn:disabled {
+  cursor: not-allowed;
+}
 
 .search__btn:disabled:hover::after {
   content: "Pole jest puste!";
