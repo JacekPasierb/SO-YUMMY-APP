@@ -8,7 +8,7 @@ interface SearchFormProps {
 
 const SearchForm: React.FC<SearchFormProps> = React.memo(
   ({ onSearchSubmit, searchValue }) => {
-    const [inputValue, setInputValue] = useState(searchValue);
+    const [inputValue, setInputValue] = useState(searchValue || "");
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
@@ -32,7 +32,7 @@ const SearchForm: React.FC<SearchFormProps> = React.memo(
         <button
           type="submit"
           className={styles.search__btn}
-          disabled={!inputValue.trim()}
+          disabled={!inputValue?.trim()}
         >
           Search
         </button>
