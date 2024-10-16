@@ -44,7 +44,7 @@ const SearchPage = () => {
     const value = searchParams.get(paramKey) || "";
     console.log("val",value);
     
-    if (value) {
+    if (value && value!== "") {
       dispatch(getRecipes({ type: searchType, value }));
     }
   }, [searchParams, dispatch, searchType]); 
