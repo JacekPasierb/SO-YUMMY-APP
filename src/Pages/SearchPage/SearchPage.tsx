@@ -18,9 +18,11 @@ const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const initialSearchType = searchParams.get("ingredient") ? "ingredient" : "query";
+  const initialSearchType = searchParams.get("ingredient")
+    ? "ingredient"
+    : "query";
   const initialSearchValue = searchParams.get(initialSearchType) || "";
-  
+
   const [searchType, setSearchType] = useState(initialSearchType);
   const [searchValue, setSearchValue] = useState(initialSearchValue);
 
@@ -42,12 +44,11 @@ const SearchPage = () => {
   useEffect(() => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
     const value = searchParams.get(paramKey) || "";
-    console.log("val",value);
-    
+
     if (value) {
       dispatch(getRecipes({ type: searchType, value }));
     }
-  }, [searchParams, dispatch, searchType]); 
+  }, [searchParams, dispatch, searchType]);
 
   return (
     <>
@@ -60,7 +61,9 @@ const SearchPage = () => {
           onSearchSubmit={handleSearchSubmit}
           searchValue={searchValue}
         />
-        { searchParams.get(searchType) !== null && recipes.length !== 0 && <MyRecipesList recipes={recipes} isLoading={isLoading} />}
+        {searchParams.get(searchType) !== null && recipes.length !== 0 && (
+          <MyRecipesList recipes={recipes} isLoading={isLoading} />
+        )}
       </div>
     </>
   );

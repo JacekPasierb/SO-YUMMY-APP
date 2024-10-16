@@ -22,18 +22,11 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
 
   useEffect(() => {
-    console.log("ccc");
-    
     const fetchIngredientsData = async () => {
-      console.log("ee");
-      
       if (ingredients !== undefined) {
         const fetchedData: Ingredient[] = [];
         for (const ing of ingredients) {
-          console.log("qq",ing);
-          
           const { data } = await fetchIngredientsById(ing.id);
-console.log("data",data);
 
           if (data) {
             const ingredient = data.ingredient;
