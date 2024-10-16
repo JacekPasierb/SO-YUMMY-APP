@@ -22,6 +22,8 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
 
   useEffect(() => {
+    console.log("ccc");
+    
     const fetchIngredientsData = async () => {
       if (ingredients !== undefined) {
         const fetchedData: Ingredient[] = [];
