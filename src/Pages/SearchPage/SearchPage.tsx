@@ -41,6 +41,8 @@ const SearchPage = () => {
   useEffect(() => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
     const value = searchParams.get(paramKey) || "";
+    console.log("val",value);
+    
     if (value) {
       dispatch(getRecipes({ type: searchType, value }));
     }
