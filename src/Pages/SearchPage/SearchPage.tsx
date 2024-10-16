@@ -34,7 +34,8 @@ const SearchPage = () => {
   const currentPage = getPageFromQueryString();
   const navigate = useNavigate();
   const handlePageChange = (page: number) => {
-    navigate(`?page=${page}`);
+    const newParams = { ...Object.fromEntries(searchParams.entries()), page: page.toString() };
+    navigate(`?${new URLSearchParams(newParams)}`);
     window.scrollTo(0, 0);
   };
   // Funkcja obsługująca aktualizację typu wyszukiwania
