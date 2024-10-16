@@ -5,7 +5,7 @@ import CardIngredient from "../CardIngredient/CardIngredient";
 import RecipeIngredientsListSkelton from "./RecipeIngredientsListSkelton";
 
 interface RecipeIngredientsListProps {
-  ingredients: { _id: string; measure: string }[];
+  ingredients: { id: string; measure: string }[];
 }
 
 export interface Ingredient {
@@ -32,7 +32,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
         for (const ing of ingredients) {
           console.log("qq",ing);
           
-          const { data } = await fetchIngredientsById(ing._id);
+          const { data } = await fetchIngredientsById(ing.id);
 console.log("data",data);
 
           if (data) {
