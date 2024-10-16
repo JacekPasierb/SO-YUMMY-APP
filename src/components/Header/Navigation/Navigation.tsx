@@ -25,7 +25,7 @@ const Navigation: React.FC = () => {
         <span className={styles.navigation__text}>Shopping List</span>
       </NavLink>
       <NavLink
-        to="/search "
+        to="/search"
         className={styles.navigation__link}
         aria-label="Search"
       >

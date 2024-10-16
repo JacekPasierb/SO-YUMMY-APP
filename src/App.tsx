@@ -172,7 +172,7 @@ const App: FC = () => {
             element={<PrivateRoute component="" />}
           />
           <Route
-            path="*"
+            path="/notfound"
             element={<PrivateRoute component={<NotFoundPage />} />}
           />
         </Route>
