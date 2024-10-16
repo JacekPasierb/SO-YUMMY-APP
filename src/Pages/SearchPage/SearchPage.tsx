@@ -27,6 +27,7 @@ const SearchPage = () => {
 
   const handleSearchSubmit = (value: string) => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
+    
     setSearchParams({ [paramKey]: value });
   };
 
