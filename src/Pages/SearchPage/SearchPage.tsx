@@ -18,7 +18,7 @@ const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchType, setSearchType] = useState(
-    searchParams.get("query") || ""
+    searchParams.get("query") || "query"
   );
   const [searchValue, setSearchValue] = useState(
     searchParams.get(searchType) || ""
