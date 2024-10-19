@@ -64,6 +64,7 @@ const App: FC = () => {
         // Ustaw timeout na automatyczne wylogowanie
         setTimeout(() => {
           dispatch(logOut());
+          navigate("/*") //tesst
         }, timeUntilExpiry);
       }
     } catch (error) {
