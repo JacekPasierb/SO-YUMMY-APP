@@ -39,11 +39,22 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
           "& .css-igs3ac": {
             border: "none",
           },
-          "& .MuiSelect-select .css-r8u8y9":{
-            backgroundColor:"red" ,
-          },
+       
           "& .MuiSelect-icon": {
             color: "rgba(139, 170, 54, 1)", // Kolor ikony strzałki
+          },
+        }}
+        MenuProps={{
+          PaperProps: {
+            sx: {
+              backgroundColor: "red", // Tło rozwijanego menu
+              "& .MuiMenuItem-root": {
+                padding: "10px", // Padding dla opcji
+              },
+              "& .MuiMenuItem-root:hover": {
+                backgroundColor: "green", // Kolor tła na hover
+              },
+            },
           },
         }}
       >
