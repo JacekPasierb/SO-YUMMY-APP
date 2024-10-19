@@ -1,4 +1,4 @@
-.text {
+.searchTypeSelector__label {
   font-size: 12px;
   line-height: 16px;
   color: var(--color-text-title);
@@ -12,4 +12,11 @@
     font-size: 18px;
     line-height: 24px;
   }
+}
+
+.searchTypeSelector {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
 }
