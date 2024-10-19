@@ -39,8 +39,8 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
           "& .css-igs3ac": {
             border: "none",
           },
-          "& .Mui-selected.css-1km1ehz": {
-            backgroundColor: "red",
+          ".css-1km1ehz.Mui-selected":{
+            backgroundColor:"red",
           },
           "& .MuiSelect-icon": {
             color: "rgba(139, 170, 54, 1)", // Kolor ikony strzałki
