@@ -54,7 +54,7 @@
   }
 }
 
-.search__input::selection {
+input:-internal-autofill-selected {
   background-color: red !important;
 }
 
