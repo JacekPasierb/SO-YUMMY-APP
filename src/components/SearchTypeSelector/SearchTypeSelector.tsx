@@ -35,7 +35,7 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
           padding: "10px 10px 10px 10px", // Padding wewnętrzny
          
           "& .MuiSelect-icon": {
-            color: "red", // Kolor ikony strzałki
+            color: "rgba(139, 170, 54, 1)", // Kolor ikony strzałki
           },
         }}
       >
