@@ -33,7 +33,7 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
           backgroundColor: "rgba(217, 217, 217, 1)", // Tło Select
           borderRadius: "6px",
           padding: "10px 10px 10px 10px", // Padding wewnętrzny
-          "& . MuiSelect": {
+          "& . MuiSelect-select": {
             padding: "0",
           },
           "& .MuiSelect-icon": {
