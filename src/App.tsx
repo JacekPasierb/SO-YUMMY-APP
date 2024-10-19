@@ -69,6 +69,7 @@ const App: FC = () => {
     } catch (error) {
       console.error("Błąd podczas dekodowania tokenu:", error);
       dispatch(logOut()); // Wyloguj, jeśli dekodowanie się nie powiodło
+      navigate("/*")
     }
   };
 
