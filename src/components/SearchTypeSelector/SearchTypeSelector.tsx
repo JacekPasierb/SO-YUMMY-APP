@@ -31,6 +31,7 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
         onChange={handleSelectChange}
         sx={{
           backgroundColor: "rgba(217, 217, 217, 1)", // Tło Select
+          width: "200px",
           borderRadius: "6px",
           padding: "10px 10px 10px 10px", // Padding wewnętrzny
           ".css-qiwgdb.MuiSelect-select": {
@@ -48,6 +49,7 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
           PaperProps: {
             sx: {
               backgroundColor: "var(--color-bg-selectMenu)", // Tło rozwijanego menu
+              width: "200px",
               "& .MuiMenuItem-root": {
                 padding: "10px", // Padding dla opcji
               },
