@@ -54,7 +54,7 @@
   }
 }
 
-input:-internal-autofill-selected {
+input.search__input:active {
   background-color: red !important;
 }
 
