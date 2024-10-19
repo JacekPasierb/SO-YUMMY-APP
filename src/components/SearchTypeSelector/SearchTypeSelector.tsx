@@ -55,7 +55,7 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
                 backgroundColor: "var(--color-bg-selected)", // Kolor tła na hover
               },
               "& .MuiMenuItem-root.Mui-selected": {
-                backgroundColor: "red !important", // Tło wybranej opcji
+                backgroundColor: "yellow ", // Tło wybranej opcji
               },
               "& .MuiMenuItem-root.Mui-selected:hover": {
                 backgroundColor: "var(--color-bg-selected)", // Tło podczas hover na wybranej opcji
