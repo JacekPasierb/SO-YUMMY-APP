@@ -65,7 +65,7 @@ const CategoriesByName: FC = () => {
           />
         </>
       ) : (
-        <p className={styles.noResults}>No recipes found in this category.</p>
+        navigate("/*")
       )}
     </>
   );
