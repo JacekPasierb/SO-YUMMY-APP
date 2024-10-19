@@ -47,7 +47,7 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
         MenuProps={{
           PaperProps: {
             sx: {
-              backgroundColor: "red", // Tło rozwijanego menu
+              backgroundColor: "var(--color-bg-selectMenu)", // Tło rozwijanego menu
               "& .MuiMenuItem-root": {
                 padding: "10px", // Padding dla opcji
               },
