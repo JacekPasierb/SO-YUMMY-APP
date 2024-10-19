@@ -36,10 +36,10 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
           ".css-qiwgdb.MuiSelect-select": {
             padding: 0,
           },
-          "& .css-igs3ac ": {
+          "& .css-igs3ac": {
             border: "none",
           },
-          "& .css-r8u8y9 ": {
+          "& .Mui-selected.css-1km1ehz": {
             backgroundColor: "red",
           },
           "& .MuiSelect-icon": {
