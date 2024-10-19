@@ -54,7 +54,7 @@
   }
 }
 
-input.search__input:active {
+input.search__input:focus{
   background-color: red !important;
 }
 
