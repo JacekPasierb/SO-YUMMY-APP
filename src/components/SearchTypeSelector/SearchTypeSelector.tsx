@@ -31,7 +31,7 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
         onChange={handleSelectChange}
         sx={{
           backgroundColor: "rgba(217, 217, 217, 1)", // Tło Select
-         
+         borderRadius:"6px",
           padding: "10px 10px 10px 10px", // Padding wewnętrzny
          
           "& .MuiSelect-icon": {
