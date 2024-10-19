@@ -3,6 +3,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   width: 100%;
+  max-width: 510px;
   margin-top: 1.5rem;
   margin-bottom: 5.1875rem;
 
