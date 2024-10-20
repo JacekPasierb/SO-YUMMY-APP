@@ -28,6 +28,7 @@ const SearchForm: React.FC<SearchFormProps> = React.memo(
           aria-label="Search for recipes"
           value={inputValue}
           onChange={handleInputChange}
+          autoComplete="off"
         />
         <button
           type="submit"
