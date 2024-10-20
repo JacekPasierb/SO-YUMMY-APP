@@ -106,3 +106,8 @@ input:-webkit-autofill {
   box-shadow: 0 0 0 1000px transparent inset !important;         /* To samo dla box-shadow */
   -webkit-text-fill-color: transparent !important;               /* Kolor tekstu */
 }
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  background-color: lightblue !important;
+  color: black !important;
+}
