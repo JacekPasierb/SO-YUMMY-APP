@@ -102,7 +102,7 @@
 
 input:-webkit-autofill {
   appearance: none;
-  -webkit-box-shadow: 0 0 0 1000px white inset !important; /* Usuwa kolor tła autofill */
-  box-shadow: 0 0 0 1000px white inset !important;         /* To samo dla box-shadow */
-  -webkit-text-fill-color: black !important;               /* Kolor tekstu */
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important; /* Usuwa kolor tła autofill */
+  box-shadow: 0 0 0 1000px transparent inset !important;         /* To samo dla box-shadow */
+  -webkit-text-fill-color: transparent !important;               /* Kolor tekstu */
 }
