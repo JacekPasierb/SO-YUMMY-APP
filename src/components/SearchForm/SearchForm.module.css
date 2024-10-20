@@ -99,15 +99,10 @@
   border-style: solid;
   border-color: rgba(139, 170, 54, 1) transparent transparent transparent;
 }
-
+/* Nadpisanie dla pól wypełnionych autouzupełnieniem */
 input:-webkit-autofill {
   appearance: none;
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important; /* Usuwa kolor tła autofill */
-  box-shadow: 0 0 0 1000px transparent inset !important;         /* To samo dla box-shadow */
-  -webkit-text-fill-color: transparent !important;               /* Kolor tekstu */
-}
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  background-color:red!important;
-  color: red !important;
+  box-shadow: 0 0 0 1000px transparent inset !important; /* To samo dla box-shadow */
+  -webkit-text-fill-color: transparent !important; /* Kolor tekstu */
 }
