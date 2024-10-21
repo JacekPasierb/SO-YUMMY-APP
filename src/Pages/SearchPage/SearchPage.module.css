@@ -1,52 +1,67 @@
 .searchPage__container {
-    width: 100%;
-    padding: 0 16px;
-    margin: 0 auto;
-  
-    @media screen and (min-width: 768px) {
-      max-width: 768px;
-      padding: 0 32px;
-    }
-  
-    @media screen and (min-width: 1200px) {
-      max-width: 1200px;
-    }
-  }
-  
-  .recipesListItem {
-    @media screen and (min-width: 768px) {
-      flex-basis: calc((100% - 32px) / 2);
-    }
-  
-    @media screen and (min-width: 1200px) {
-      flex-basis: calc((100% - 14 * 3px) / 4);
-    }
-  }
-  
-  .recipesList {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    margin-block: 32px;
-  
-  
-    @media screen and (min-width: 768px) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 32px;
-      margin-block: 50px;
-    }
-  
-    @media screen and (min-width: 1200px) {
-      gap: 14px;
-      row-gap: 100px;
-    }
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding: 0 32px;
   }
 
-  .noResults {
-    display: flex;
+  @media screen and (min-width: 1200px) {
+    max-width: 1200px;
+  }
+}
+
+.recipesListItem {
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex-basis: calc((100% - 14 * 3px) / 4);
+  }
+}
+
+.recipesList {
+  display: flex;
   flex-direction: column;
+  gap: 28px;
+  margin-block: 32px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-block: 50px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 14px;
+    row-gap: 100px;
+  }
+}
+
+.noResults {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   align-items: center;
 
   margin-top: 50px;
+
+  @media screen and (min-width: 768px) {
+    gap: 32px;
   }
+}
+
+.noResultsText {
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--color-text-subtitle);
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
