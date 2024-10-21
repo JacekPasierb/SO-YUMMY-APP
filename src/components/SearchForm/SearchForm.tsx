@@ -9,13 +9,9 @@ interface SearchFormProps {
 
 const SearchForm: React.FC<SearchFormProps> = React.memo(
   ({ onSearchSubmit, searchValue }) => {
-    const location = useLocation();
-    const {pathname} = location;
-    const navigate = useNavigate();
+   
 
-    if(pathname !== "/search") {
-      navigate(`/search?query=${searchValue}`)
-    }
+   
     const [inputValue, setInputValue] = useState(searchValue || "");
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
