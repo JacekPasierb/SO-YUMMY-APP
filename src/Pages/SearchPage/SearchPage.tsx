@@ -105,7 +105,7 @@ const SearchPage = () => {
             />
           </>
         )}
-        {searchParams.get(searchType) !== null && recipes.length === 0 && <><p>pusto...</p><img src={logo} alt="logo"/></>}
+        {!isLoading && searchParams.get(searchType) !== null && recipes.length === 0 && <><p>pusto...</p><img src={logo} alt="logo"/></>}
       </div>
     </>
   );
