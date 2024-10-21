@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import styles from "./SearchPage.module.css";
@@ -24,15 +24,19 @@ import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import CardRecipe from "../../components/CardRecipe/CardRecipe";
 import { IRecipe } from "../../types/recipesTypes";
 import { useMediaQuery } from "@react-hook/media-query";
-import logo from "../../images/searchMobile1x.png";
+import emptySearchImage from "../../images/searchMobile1x.png";
 
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialSearchType = searchParams.get("ingredient")
-    ? "ingredient"
-    : "query";
-  const initialSearchValue = searchParams.get(initialSearchType) || "";
+  const initialSearchType = useMemo(
+    () => (searchParams.get("ingredient") ? "ingredient" : "query"),
+    [searchParams]
+  );
+  const initialSearchValue = useMemo(
+    () => searchParams.get(initialSearchType) || "",
+    [searchParams, initialSearchType]
+  );
 
   const [searchType, setSearchType] = useState(initialSearchType);
   const [searchValue, setSearchValue] = useState(initialSearchValue);
@@ -42,6 +46,9 @@ const SearchPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const currentPage = getPageFromQueryString();
   const navigate = useNavigate();
+  const isDesktop = useMediaQuery("(min-width:1200px)");
+  const limit = isDesktop ? 12 : 6;
+
   const handlePageChange = (page: number) => {
     const newParams = {
       ...Object.fromEntries(searchParams.entries()),
@@ -62,18 +69,17 @@ const SearchPage = () => {
     setSearchParams({ [paramKey]: value });
     // dispatch(getRecipes({ type: searchType, value: value }));
   };
-  const isDesktop = useMediaQuery("(min-width:1200px)");
-  const limit = isDesktop ? 12 : 6;
+
   useEffect(() => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
     const value = searchParams.get(paramKey) || "";
-    
+
     if (value) {
       dispatch(
         getRecipes({ type: searchType, value, page: currentPage, limit })
       );
     }
-  }, [searchParams, dispatch, searchType]);
+  }, [searchParams, dispatch, searchType, currentPage, limit]);
 
   return (
     <>
@@ -97,15 +103,22 @@ const SearchPage = () => {
                 </li>
               ))}
             </ul>
-          
+
             <BasicPagination
-              count={Math.ceil(totalRecipes /  limit)}
+              count={Math.ceil(totalRecipes / limit)}
               page={currentPage}
               onPageChange={handlePageChange}
             />
           </>
         )}
-        {!isLoading && searchParams.get(searchType) !== null && recipes.length === 0 && <><p>pusto...</p><img src={logo} alt="logo"/></>}
+        {!isLoading &&
+          searchParams.get(searchType) !== null &&
+          recipes.length === 0 && (
+            <div className={styles.noResults}>
+              <img src={emptySearchImage} alt="No results found" className={styles.noResultsImage}/>
+              <p className={styles.noResultsText}>Try looking for something else..</p>
+            </div>
+          )}
       </div>
     </>
   );
