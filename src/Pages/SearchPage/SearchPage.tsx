@@ -24,7 +24,9 @@ import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import CardRecipe from "../../components/CardRecipe/CardRecipe";
 import { IRecipe } from "../../types/recipesTypes";
 import { useMediaQuery } from "@react-hook/media-query";
-import emptySearchImage from "../../images/searchMobile1x.png";
+import { getEmptySearchImage } from "../../helpers/helpers";
+
+
 
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -46,8 +48,16 @@ const SearchPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const currentPage = getPageFromQueryString();
   const navigate = useNavigate();
+  
+  const isMobile = useMediaQuery("(max-width:768px)");
+  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesktop = useMediaQuery("(min-width:1200px)");
   const limit = isDesktop ? 12 : 6;
+
+  const emptySearchImage = useMemo(() => {
+    return getEmptySearchImage(isMobile, isTablet, isDesktop);
+  }, [isMobile, isTablet, isDesktop]);
+
 
   const handlePageChange = (page: number) => {
     const newParams = {
