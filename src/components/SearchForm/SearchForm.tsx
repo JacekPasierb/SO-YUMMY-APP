@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./SearchForm.module.css";
+import { useLocation, useNavigate } from "react-router";
 
 interface SearchFormProps {
   onSearchSubmit: (value: string) => void;
@@ -8,6 +9,13 @@ interface SearchFormProps {
 
 const SearchForm: React.FC<SearchFormProps> = React.memo(
   ({ onSearchSubmit, searchValue }) => {
+    const location = useLocation();
+    const {pathname} = location;
+    const navigate = useNavigate();
+
+    if(pathname !== "/search") {
+      navigate(`/search?query=${searchValue}`)
+    }
     const [inputValue, setInputValue] = useState(searchValue || "");
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

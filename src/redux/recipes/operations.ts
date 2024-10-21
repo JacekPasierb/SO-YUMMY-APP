@@ -12,36 +12,36 @@ interface CategoryRecipesRequest {
 interface IGetRecipesRequest {
   type: string;
   value: string;
-  page:number;
-  limit:number;
+  page: number;
+  limit: number;
 }
 
 interface CategoryRecipesResponse {
   categoryRecipes: any[];
   totalRecipes: number;
 }
-interface IGetRecipesArgs {
-  // Tutaj możesz zdefiniować typ dla argumentów, np. filtr, kategoria itp.
-}
-export const getRecipes = createAsyncThunk<IRecipesResponse, IGetRecipesRequest>(
-  "recipes/getRecipes",
-  async ({type, value, page, limit}, thunkAPI) => {
-    try {
-    
-      const { data } = await axios.get(`./api/recipes?${type}=${value}&page=${page}&limit=${limit} `);
-      console.log("d", data);
 
-      return {
-        recipes: data.data.result,
-        totalRecipes: data.data.totalRecipes,
-      };
-    } catch (error: any) {
-      const axiosError = error as AxiosError;
-      // Obsługa błędów, przekazanie wiadomości błędu dalej do `rejected` akcji
-      return thunkAPI.rejectWithValue(axiosError.message || "Unknown error occurred");
-    }
+export const getRecipes = createAsyncThunk<
+  IRecipesResponse,
+  IGetRecipesRequest
+>("recipes/getRecipes", async ({ type, value, page, limit }, thunkAPI) => {
+  try {
+    const { data } = await axios.get(
+      `./api/recipes?${type}=${value}&page=${page}&limit=${limit} `
+    );
+
+    return {
+      recipes: data.data.result,
+      totalRecipes: data.data.totalRecipes,
+    };
+  } catch (error: any) {
+    const axiosError = error as AxiosError;
+    // Obsługa błędów, przekazanie wiadomości błędu dalej do `rejected` akcji
+    return thunkAPI.rejectWithValue(
+      axiosError.message || "Unknown error occurred"
+    );
   }
-);
+});
 
 export const getRecipesByCategory = createAsyncThunk<
   CategoryRecipesResponse,
