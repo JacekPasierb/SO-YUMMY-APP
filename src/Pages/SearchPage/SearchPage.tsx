@@ -74,7 +74,7 @@ const SearchPage = () => {
     // setSearchParams({ [paramKey]: searchParams.get(paramKey) || "" });
   };
 
-  const handleSearchSubmit = (value: string) => {
+   const handleSearchSubmit = (value: string) => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
     setSearchParams({ [paramKey]: value });
     // dispatch(getRecipes({ type: searchType, value: value }));
