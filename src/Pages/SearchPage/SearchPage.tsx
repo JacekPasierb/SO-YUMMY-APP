@@ -97,7 +97,7 @@ const SearchPage = () => {
                 </li>
               ))}
             </ul>
-          {recipes.length === 0 && <><p>pusto...</p><img src={logo} alt="logo"/></>}
+          
             <BasicPagination
               count={Math.ceil(totalRecipes /  limit)}
               page={currentPage}
@@ -105,6 +105,7 @@ const SearchPage = () => {
             />
           </>
         )}
+        {recipes.length === 0 && <><p>pusto...</p><img src={logo} alt="logo"/></>}
       </div>
     </>
   );
