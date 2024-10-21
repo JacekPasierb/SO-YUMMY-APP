@@ -24,6 +24,7 @@ import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import CardRecipe from "../../components/CardRecipe/CardRecipe";
 import { IRecipe } from "../../types/recipesTypes";
 import { useMediaQuery } from "@react-hook/media-query";
+import logo from "../../images/searchMobile1x.png";
 
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -96,7 +97,7 @@ const SearchPage = () => {
                 </li>
               ))}
             </ul>
-            {/* <MyRecipesList recipes={recipes} isLoading={isLoading} /> */}
+          {recipes.length === 0 && <img src={logo} alt="logo"/>}
             <BasicPagination
               count={Math.ceil(totalRecipes /  limit)}
               page={currentPage}
