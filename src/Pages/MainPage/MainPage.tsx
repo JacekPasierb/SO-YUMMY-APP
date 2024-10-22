@@ -11,6 +11,7 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 
 // Importing CSS module
 import styles from "./MainPage.module.css";
+import { useNavigate } from "react-router";
 
 // Typing for media queries results
 interface MediaQueries {
@@ -20,6 +21,13 @@ interface MediaQueries {
 }
 
 const MainPage: FC = () => {
+  const navigate = useNavigate();
+    // Funkcja obsługująca przekierowanie na stronę wyszukiwania
+    const handleSearchSubmit = (searchValue: string) => {
+      if (searchValue?.trim()) {
+        navigate(`/search?query=${encodeURIComponent(searchValue)}`);  // Przekierowanie na SearchPage z query
+      }
+    };
   const renderContent = (matches: MediaQueries) => (
     <>
       <Header />
@@ -30,7 +38,7 @@ const MainPage: FC = () => {
             <div>
               <AppTitle />
               <AppDescription />
-              <SearchForm />
+              <SearchForm onSearchSubmit={handleSearchSubmit}/>
             </div>
             {/* On small screens, render ChooseYourBreakfast within this div */}
             {!matches.small && <ChooseYourBreakfast />}

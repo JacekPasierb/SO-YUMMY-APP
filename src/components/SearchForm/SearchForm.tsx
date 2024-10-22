@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router";
 
 interface SearchFormProps {
   onSearchSubmit: (value: string) => void;
-  searchValue: string;
+  searchValue?: string;
 }
 
 const SearchForm: React.FC<SearchFormProps> = React.memo(
