@@ -11,6 +11,7 @@ interface CardIngredientProps {
 
 const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }, recipeId) => {
   const [isChecked, setIsChecked] = useState(false);
+console.log("rrrr",recipeId);
 
   const handleCheckboxChange = async () => {
     if (isChecked) {
