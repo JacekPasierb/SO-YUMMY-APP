@@ -6,7 +6,7 @@ import axios from "axios";
 
 interface CardIngredientProps {
   ingredient: Ingredient;
-  recipeId:string;
+  recipeId?:string;
 }
 
 const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }, recipeId) => {
