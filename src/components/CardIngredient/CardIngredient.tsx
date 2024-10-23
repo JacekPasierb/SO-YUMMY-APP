@@ -14,6 +14,12 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
   recipeId,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // Funkcja do obsługi błędów
+  const handleApiError = (error: any, action: string) => {
+    console.error(`Błąd podczas ${action} składnika:`, error);
+  };
 
   const checkIfIngredientInList = async () => {
     try {
@@ -35,17 +41,17 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
   }, []);
 
   const handleCheckboxChange = async () => {
-    if (isChecked) {
-      try {
+    if (loading) return;
+    setLoading(true);
+
+    try {
+      if (isChecked) {
+        // Usuń składnik z listy zakupów
         await axios.delete("/api/shopping-list/remove", {
           data: { ingredientId: ingredient._id, recipeId },
         });
-        setIsChecked(false);
-      } catch (error) {
-        console.error("Błąd usuwania składnika:", error);
-      }
-    } else {
-      try {
+      } else {
+        // Dodaj składnik do listy zakupów
         await axios.post("/api/shopping-list/add", {
           ingredientId: ingredient._id,
           thb: ingredient.thb,
@@ -53,11 +59,12 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
           measure: ingredient.measure,
           recipeId,
         });
-
-        setIsChecked(true); // Zaktualizuj stan checkboxa na zaznaczony
-      } catch (error) {
-        console.error("Błąd dodawania składnika:", error);
       }
+      setIsChecked(!isChecked); // Odwrócenie stanu checkboxa po sukcesie
+    } catch (error) {
+      handleApiError(error, isChecked ? "usuwania" : "dodawania");
+    } finally {
+      setLoading(false); // Wyłączenie loadingu po zakończeniu zapytania
     }
   };
 
