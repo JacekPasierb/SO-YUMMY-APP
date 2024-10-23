@@ -17,7 +17,7 @@ console.log("rrrr",recipeId);
     if (isChecked) {
       // Jeśli checkbox był zaznaczony, usuń składnik z listy zakupów
       try {
-        await axios.delete(`/api/shopping-list/remove`, {
+        await axios.delete("/api/shopping-list/remove", {
           data: { ingredientId: ingredient._id, recipeId } // Przekazanie obu parametrów
         });
         setIsChecked(false); // Zaktualizuj stan checkboxa na odznaczony
