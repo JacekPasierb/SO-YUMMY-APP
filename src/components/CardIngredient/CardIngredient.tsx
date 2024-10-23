@@ -16,6 +16,7 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient , recipeId})
     try {
       const response = await axios.get(`/api/shopping-list/${recipeId}`);
       const { items } = response.data;
+console.log("dd",items);
 
       // Sprawdzamy, czy składnik jest już na liście zakupów
       const ingredientExists = items.some((item: any) => item.ingredientId === ingredient._id);
@@ -29,7 +30,7 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient , recipeId})
   useEffect(() => {
     checkIfIngredientInList();
   }, []);
-  
+
 console.log("rrrr",recipeId);
 
   const handleCheckboxChange = async () => {
