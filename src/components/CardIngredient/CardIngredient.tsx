@@ -1,13 +1,43 @@
 import { Checkbox } from "@mui/material";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
 import styles from "./CardIngredient.module.css";
+import axios from "axios";
 
 interface CardIngredientProps {
   ingredient: Ingredient;
+  recipeId:string;
 }
 
-const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }) => {
+const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }, recipeId) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = async () => {
+    if (isChecked) {
+      // Jeśli checkbox był zaznaczony, usuń składnik z listy zakupów
+      try {
+        // await axios.delete(`/shopping-list/remove/${ingredient.id}`);
+        setIsChecked(false); // Zaktualizuj stan checkboxa na odznaczony
+      } catch (error) {
+        console.error("Błąd usuwania składnika:", error);
+      }
+    } else {
+      // Jeśli checkbox był odznaczony, dodaj składnik do listy zakupów
+      try {
+        await axios.post("/shopping-list/add", {
+          ingredientId: ingredient._id,
+          thb:ingredient.thb,
+          name: ingredient.ttl,
+          measure: ingredient.measure,
+          recipeId
+        });
+        setIsChecked(true); // Zaktualizuj stan checkboxa na zaznaczony
+      } catch (error) {
+        console.error("Błąd dodawania składnika:", error);
+      }
+    }
+  };
+
   return (
     <div className={styles.ingredientCard}>
       <div className={styles.ingredientCard__details}>
@@ -27,13 +57,15 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }) => {
           </p>
         </div>
         <Checkbox
+        checked={isChecked} 
+        onChange={handleCheckboxChange}
           sx={{
             color: "#7E7E7E",
-
             "&.Mui-checked": {
               color: "transparent",
               stroke: "#7E7E7E",
             },
+
             ".MuiSvgIcon-fontSizeMedium": {
               width: "18px",
               height: "18px",

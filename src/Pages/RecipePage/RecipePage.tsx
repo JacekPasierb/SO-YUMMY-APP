@@ -1,4 +1,4 @@
-import css from "./RecipePage.module.css";
+import styles from "./RecipePage.module.css";
 
 import React, { lazy, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -26,7 +26,6 @@ const RecipePage = () => {
       try {
         setIsLoading(true);
         const { data } = await fetchRecipeById(id);
-
         setRecipe(data.result);
       } catch (error: any) {
         setError(error.message);
@@ -44,13 +43,13 @@ const RecipePage = () => {
     <>
       {recipe && (
         <main>
-          <section className={css.receipePage}>
+          <section className={styles.receipePage}>
             <Header />
-            <div className={css.container}>
+            <div className={styles.container}>
               <ReceipePageHero recipe={recipe} isLoading={isLoading} />
             </div>
           </section>
-          <RecipeInngredientsList ingredients={recipe.ingredients} />
+          <RecipeInngredientsList ingredients={recipe.ingredients} recipeId={recipeId}/>
           <RecipePreparation
             img={recipe.preview}
             instructions={recipe.instructions}

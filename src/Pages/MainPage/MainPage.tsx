@@ -28,6 +28,7 @@ const MainPage: FC = () => {
         navigate(`/search?query=${encodeURIComponent(searchValue)}`);  // Przekierowanie na SearchPage z query
       }
     };
+    
   const renderContent = (matches: MediaQueries) => (
     <>
       <Header />
