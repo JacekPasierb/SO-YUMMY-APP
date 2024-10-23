@@ -20,6 +20,7 @@ const RecipePage = () => {
   const [error, setError] = useState(null);
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
   const navigate = useNavigate();
+console.log("recip",recipeId);
 
   useEffect(() => {
     const getRecipeById = async (id: string) => {
