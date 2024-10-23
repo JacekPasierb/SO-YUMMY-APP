@@ -14,7 +14,9 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient , recipeId})
 
   const checkIfIngredientInList = async () => {
     try {
+      console.log("dd1");
       const response = await axios.get(`/api/shopping-list/${recipeId}`);
+      console.log("dd2");
       const { items } = response.data;
 console.log("dd",items);
 
