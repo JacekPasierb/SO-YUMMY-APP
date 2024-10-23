@@ -26,7 +26,7 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }, recipeId)
       try {
         console.log("1");
         
-        await axios.post("/shopping-list/add", {
+        await axios.post("/api/shopping-list/add", {
           ingredientId: ingredient._id,
           thb:ingredient.thb,
           name: ingredient.ttl,
