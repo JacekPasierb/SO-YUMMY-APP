@@ -1,5 +1,5 @@
 import { Checkbox } from "@mui/material";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
 import styles from "./CardIngredient.module.css";
 import axios from "axios";
@@ -11,6 +11,25 @@ interface CardIngredientProps {
 
 const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient , recipeId}) => {
   const [isChecked, setIsChecked] = useState(false);
+
+  const checkIfIngredientInList = async () => {
+    try {
+      const response = await axios.get(`/api/shopping-list/${recipeId}`);
+      const { items } = response.data;
+
+      // Sprawdzamy, czy składnik jest już na liście zakupów
+      const ingredientExists = items.some((item: any) => item.ingredientId === ingredient._id);
+      setIsChecked(ingredientExists);
+    } catch (error) {
+      console.error("Błąd sprawdzania listy zakupów:", error);
+    }
+  };
+
+  // Pobieramy dane po załadowaniu komponentu
+  useEffect(() => {
+    checkIfIngredientInList();
+  }, []);
+  
 console.log("rrrr",recipeId);
 
   const handleCheckboxChange = async () => {
