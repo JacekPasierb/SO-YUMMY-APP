@@ -21,6 +21,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
   ingredients, recipeId
 }) => {
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
+console.log("rep",recipeId);
 
   useEffect(() => {
     const fetchIngredientsData = async () => {
