@@ -6,61 +6,54 @@ import axios from "axios";
 
 interface CardIngredientProps {
   ingredient: Ingredient;
-  recipeId?:string;
+  recipeId?: string;
 }
 
-const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient , recipeId}) => {
+const CardIngredient: React.FC<CardIngredientProps> = ({
+  ingredient,
+  recipeId,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const checkIfIngredientInList = async () => {
     try {
-      console.log("dd1");
       const response = await axios.get(`/api/shopping-list`);
-      console.log("dd2");
       const { items } = response.data;
-console.log("dd",items);
 
-      // Sprawdzamy, czy składnik jest już na liście zakupów
-      const ingredientExists = items.some((item: any) => item.ingredientId === ingredient._id);
-     
+      const ingredientExists = items.some(
+        (item: any) => item.ingredientId === ingredient._id
+      );
+
       setIsChecked(ingredientExists);
     } catch (error) {
       console.error("Błąd sprawdzania listy zakupów:", error);
     }
   };
 
-  // Pobieramy dane po załadowaniu komponentu
   useEffect(() => {
     checkIfIngredientInList();
   }, []);
 
-console.log("rrrr",recipeId);
-
   const handleCheckboxChange = async () => {
     if (isChecked) {
-      // Jeśli checkbox był zaznaczony, usuń składnik z listy zakupów
       try {
         await axios.delete("/api/shopping-list/remove", {
-          data: { ingredientId: ingredient._id, recipeId } // Przekazanie obu parametrów
+          data: { ingredientId: ingredient._id, recipeId },
         });
-        setIsChecked(false); // Zaktualizuj stan checkboxa na odznaczony
+        setIsChecked(false);
       } catch (error) {
         console.error("Błąd usuwania składnika:", error);
       }
     } else {
-      // Jeśli checkbox był odznaczony, dodaj składnik do listy zakupów
       try {
-        console.log("1");
-        
         await axios.post("/api/shopping-list/add", {
           ingredientId: ingredient._id,
-          thb:ingredient.thb,
+          thb: ingredient.thb,
           name: ingredient.ttl,
           measure: ingredient.measure,
-          recipeId
+          recipeId,
         });
-        console.log("2");
-        
+
         setIsChecked(true); // Zaktualizuj stan checkboxa na zaznaczony
       } catch (error) {
         console.error("Błąd dodawania składnika:", error);
@@ -87,8 +80,8 @@ console.log("rrrr",recipeId);
           </p>
         </div>
         <Checkbox
-        checked={isChecked} 
-        onChange={handleCheckboxChange}
+          checked={isChecked}
+          onChange={handleCheckboxChange}
           sx={{
             color: "#7E7E7E",
             "&.Mui-checked": {
