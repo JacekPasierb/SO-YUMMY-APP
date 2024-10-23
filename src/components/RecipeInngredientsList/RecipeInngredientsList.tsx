@@ -6,7 +6,7 @@ import RecipeIngredientsListSkelton from "./RecipeIngredientsListSkelton";
 
 interface RecipeIngredientsListProps {
   ingredients: { id: string; measure: string }[];
-  recipeId:string;
+  recipeId?:string;
 }
 
 export interface Ingredient {
