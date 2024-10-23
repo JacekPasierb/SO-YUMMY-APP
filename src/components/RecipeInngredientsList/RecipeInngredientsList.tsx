@@ -6,7 +6,7 @@ import RecipeIngredientsListSkelton from "./RecipeIngredientsListSkelton";
 
 interface RecipeIngredientsListProps {
   ingredients: { id: string; measure: string }[];
-  recipeId?:string;
+  recipeId?: string;
 }
 
 export interface Ingredient {
@@ -18,10 +18,10 @@ export interface Ingredient {
 }
 
 const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
-  ingredients, recipeId
+  ingredients,
+  recipeId,
 }) => {
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
-console.log("rep",recipeId);
 
   useEffect(() => {
     const fetchIngredientsData = async () => {
@@ -64,7 +64,7 @@ console.log("rep",recipeId);
           <ul className={styles.recipeIngredientsList}>
             {ingredientsList.map((ingredient) => (
               <li key={ingredient._id} className={styles.ingredientsList__item}>
-                <CardIngredient ingredient={ingredient} recipeId={recipeId}/>
+                <CardIngredient ingredient={ingredient} recipeId={recipeId} />
               </li>
             ))}
           </ul>
