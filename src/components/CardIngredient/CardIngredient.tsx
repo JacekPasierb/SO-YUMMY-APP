@@ -9,7 +9,7 @@ interface CardIngredientProps {
   recipeId?:string;
 }
 
-const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }, recipeId) => {
+const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient , recipeId}) => {
   const [isChecked, setIsChecked] = useState(false);
 console.log("rrrr",recipeId);
 
