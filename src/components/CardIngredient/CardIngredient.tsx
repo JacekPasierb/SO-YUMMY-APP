@@ -24,6 +24,8 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }, recipeId)
     } else {
       // Jeśli checkbox był odznaczony, dodaj składnik do listy zakupów
       try {
+        console.log("1");
+        
         await axios.post("/shopping-list/add", {
           ingredientId: ingredient._id,
           thb:ingredient.thb,
@@ -31,6 +33,8 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient }, recipeId)
           measure: ingredient.measure,
           recipeId
         });
+        console.log("2");
+        
         setIsChecked(true); // Zaktualizuj stan checkboxa na zaznaczony
       } catch (error) {
         console.error("Błąd dodawania składnika:", error);
