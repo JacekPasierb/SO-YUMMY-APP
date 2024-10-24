@@ -1,27 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import styles from "./IngredientsShoppingList.module.css";
+import axios from "axios";
+import CardIngredient from "../CardIngredient/CardIngredient";
+import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
 
 const IngredientsShoppingList = () => {
-  return (
-    <div
-    className={` ${styles.shoppingList__box}`}
-  >
-    <div className={styles.shoppingList__header}>
-      <p className={styles.shoppingList__title}>Product</p>
-      <div className={styles.shoppingList__flexWrapper}>
-        <p className={styles.shoppingList__title}>Number</p>
-        <p className={styles.shoppingList__title}>Remove</p>
-      </div>
-    </div>
-    <ul className={styles.recipeIngredientsList}>
-      {/* {ingredientsList.map((ingredient) => (
-        <li key={ingredient._id} className={styles.ingredientsList__item}>
-          <CardIngredient ingredient={ingredient} recipeId={recipeId} />
-        </li>
-      ))} */}
-    </ul>
-  </div>
-  )
-}
+  const [shoppingList, setShoppingList] = useState<Ingredient[]>([]);
+  const [loading, setLoading] = useState(false);
 
-export default IngredientsShoppingList
+  useEffect(() => {
+    const fetchShoppingList = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get("/api/shopping-list");
+        const { items } = response.data;
+        setShoppingList(items);
+      } catch (error) {
+        console.error("Błąd pobierania listy zakupów:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchShoppingList();
+  }, []);
+
+  return (
+    <div className={` ${styles.shoppingList__box}`}>
+      <div className={styles.shoppingList__header}>
+        <p className={styles.shoppingList__title}>Product</p>
+        <div className={styles.shoppingList__flexWrapper}>
+          <p className={styles.shoppingList__title}>Number</p>
+          <p className={styles.shoppingList__title}>Remove</p>
+        </div>
+      </div>
+      <ul className={styles.recipeIngredientsList}>
+        {shoppingList.map((ingredient) => (
+        <li key={ingredient._id} className={styles.ingredientsList__item}>
+          <CardIngredient ingredient={ingredient}  />
+        </li>
+      ))}
+      </ul>
+    </div>
+  );
+};
+
+export default IngredientsShoppingList;
