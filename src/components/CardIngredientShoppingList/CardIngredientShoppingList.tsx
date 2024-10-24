@@ -8,6 +8,8 @@ interface CardIngredientShoppingProps {
   }
 
 const CardIngredientShoppingList : React.FC<CardIngredientShoppingProps>= ({ingredient}) => {
+    console.log("car",ingredient);
+    
   return (
     <div className={styles.ingredientCard}>
       <div className={styles.ingredientCard__details}>
