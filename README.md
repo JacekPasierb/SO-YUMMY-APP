@@ -2,6 +2,18 @@ KONTO TESTOWE:
 LOGIN : user@test.pl
 HASŁO : user1234
 
+Projekt napisany w Technologi React z wykorzystaniem biblioteki Redux Toolkit. Zastosowałem JavaScript ES 6+ i wykorzystałem TypeScript. 
+Do stylizacji wyglądu wykorzystałem module CSS, oraz komponenty Material UI. 
+Formularze tworzę przy pomocy Formika. 
+
+Do Backendu używam Node JS z express, korzystam z bazy danych MongoDB łącząc sie przy użyciu Mongoose. Tworzę kolekcje użytkowników, przepisów, składników oraz listy zakupów, 
+Listy są ze sobą powiązane za pomocą ref.  Do Tworzenia kont użytkowników zastosowałem JWT passport a do wysyłania email sendGrid. 
+Z bazą danych łącze się przy użyciu axios. 
+
+Tak po krótce, oczywiście w projekcie jest więcej wykorzystanych rozwiązań.
+
+
+
 PROJEKT jest w fazie rozwojowej, kod wymaga stworzenia funkcji pomocniczych oraz komponentów wspólnych i dokonczenia Ap
 
 // INFORMACJE DLA DEVELOPERA //
@@ -9,8 +21,7 @@ PROJEKT jest w fazie rozwojowej, kod wymaga stworzenia funkcji pomocniczych oraz
 - stowrzyć folder types z interaface
 - dodać obsługę języków z react-i18next
 - uprościć kod tworząc funkcje pomocnicze
-- zastosować style components
--
+
 
 ## Project CSS Guidelines
 
