@@ -58,9 +58,9 @@
   .shoppingList {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
   
     @media screen and (min-width: 768px) {
-      gap: 24px;
+      gap: 44px;
     }
   }
