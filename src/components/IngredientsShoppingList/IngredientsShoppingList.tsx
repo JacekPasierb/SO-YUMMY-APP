@@ -33,7 +33,7 @@ const IngredientsShoppingList = () => {
           <p className={styles.shoppingList__title}>Remove</p>
         </div>
       </div>
-      <ul className={styles.recipeIngredientsList}>
+      <ul className={styles.shoppingList}>
         {shoppingList.map((ingredient) => (
         <li key={ingredient._id} className={styles.ingredientsList__item}>
           <CardIngredient ingredient={ingredient}  />
