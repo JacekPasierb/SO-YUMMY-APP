@@ -6,7 +6,7 @@ Projekt napisany w Technologi React z wykorzystaniem biblioteki Redux Toolkit. Z
 Do stylizacji wyglądu wykorzystałem module CSS, oraz komponenty Material UI. 
 Formularze tworzę przy pomocy Formika. 
 
-Do Backendu używam Node JS z express, korzystam z bazy danych MongoDB. Tworzę kolekcje użytkowników, przepisów, składników oraz listy zakupów, 
+Do Backendu używam Node JS z express, korzystam z bazy danych MongoDB łącząc sie przy użyciu Mongoose. Tworzę kolekcje użytkowników, przepisów, składników oraz listy zakupów, 
 Listy są ze sobą powiązane za pomocą ref.  Do Tworzenia kont użytkowników zastosowałem JWT passport a do wysyłania email sendGrid. 
 Z bazą danych łącze się przy użyciu axios. 
 
