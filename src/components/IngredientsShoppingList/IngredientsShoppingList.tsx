@@ -2,8 +2,16 @@ import React, { useEffect, useState } from "react";
 import styles from "./IngredientsShoppingList.module.css";
 import axios from "axios";
 import CardIngredient from "../CardIngredient/CardIngredient";
-import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
+
 import CardIngredientShoppingList from "../CardIngredientShoppingList/CardIngredientShoppingList";
+
+export interface Ingredient {
+    _id: string;
+    name: string;
+    desc: string;
+    thb: string;
+    measure: string;
+  }
 
 const IngredientsShoppingList = () => {
   const [shoppingList, setShoppingList] = useState<Ingredient[]>([]);
