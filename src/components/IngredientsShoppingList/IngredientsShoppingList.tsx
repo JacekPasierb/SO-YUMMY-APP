@@ -7,10 +7,10 @@ const IngredientsShoppingList = () => {
     className={` ${styles.shoppingList__box}`}
   >
     <div className={styles.shoppingList__header}>
-      <p className={styles.shoppingList__title}>Ingredients</p>
+      <p className={styles.shoppingList__title}>Product</p>
       <div className={styles.shoppingList__flexWrapper}>
         <p className={styles.shoppingList__title}>Number</p>
-        <p className={styles.shoppingList__title}>Add to list</p>
+        <p className={styles.shoppingList__title}>Remove</p>
       </div>
     </div>
     <ul className={styles.recipeIngredientsList}>
