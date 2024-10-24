@@ -1,6 +1,7 @@
 import React from 'react'
 import  styles from "./CardIngredientShoppingList.module.css";
 import { Ingredient } from '../IngredientsShoppingList/IngredientsShoppingList';
+import sprite from "../../assets/icons/sprite.svg";
 
 interface CardIngredientShoppingProps {
     ingredient: Ingredient;
@@ -28,7 +29,14 @@ const CardIngredientShoppingList : React.FC<CardIngredientShoppingProps>= ({ingr
             {ingredient.measure}
           </p>
         </div>
-        
+        <button
+              className={styles.recipeIngredients__btnX}
+              
+            >
+              <svg className={styles.iconX}>
+                <use href={`${sprite}#icon-X`}></use>
+              </svg>
+            </button>
       </div>
     </div>
   )
