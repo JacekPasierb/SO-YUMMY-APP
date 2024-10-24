@@ -3,6 +3,7 @@ import styles from "./IngredientsShoppingList.module.css";
 import axios from "axios";
 import CardIngredient from "../CardIngredient/CardIngredient";
 import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
+import CardIngredientShoppingList from "../CardIngredientShoppingList/CardIngredientShoppingList";
 
 const IngredientsShoppingList = () => {
   const [shoppingList, setShoppingList] = useState<Ingredient[]>([]);
@@ -36,7 +37,7 @@ const IngredientsShoppingList = () => {
       <ul className={styles.shoppingList}>
         {shoppingList.map((ingredient) => (
         <li key={ingredient._id} className={styles.ingredientsList__item}>
-          <CardIngredient ingredient={ingredient}  />
+          <CardIngredientShoppingList ingredient={ingredient}  />
         </li>
       ))}
       </ul>
