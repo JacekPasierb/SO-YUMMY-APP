@@ -28,6 +28,7 @@ import { jwtDecode } from "jwt-decode";
 import { useAuth } from "./hooks/useAuth";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 import SearchPage from "./Pages/SearchPage/SearchPage";
+import ShoppingListPage from "./Pages/ShoppingListPage/ShoppingListPage";
 const SharedLayout = lazy(
   () => import("./components/SharedLayout/SharedLayout")
 );
@@ -171,7 +172,7 @@ const App: FC = () => {
           <Route path="/search" element={<PrivateRoute component={<SearchPage/>} />} />
           <Route
             path="/shopping-list"
-            element={<PrivateRoute component="" />}
+            element={<PrivateRoute component={<ShoppingListPage/>} />}
           />
           <Route
             path="*"
