@@ -13,12 +13,8 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
   ingredient,
   refreshList,
 }) => {
-  console.log("car", ingredient);
- 
   const handleRemove = async () => {
     try {
-      console.log("Removing ingredient:", ingredient);
-
       await axios.delete("/api/shopping-list/remove", {
         data: {
           ingredientId: ingredient.ingredientId,
@@ -26,7 +22,6 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
         },
       });
       refreshList();
-      console.log("Składnik usunięty");
     } catch (error) {
       console.error("Błąd usuwania składnika:", error);
     }
