@@ -43,7 +43,8 @@
 .ingredientCard__measureBox {
    margin-right: 46px;
     padding: 4px;
-    
+    width: 37px;
+    height: 23px;
   
     text-align: center;
   
@@ -53,6 +54,8 @@
    @media screen and (min-width: 768px) {
       margin-right: 110px;
       padding: 4px;
+      width: 68px;
+      height: 35px;
     }
   
     @media screen and (min-width: 1200px) {
