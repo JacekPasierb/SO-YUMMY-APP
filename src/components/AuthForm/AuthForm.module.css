@@ -29,7 +29,7 @@
   align-items: center;
   padding: 20px;
 }
-.linkForm {
+.authForm__link {
   font-size: 14px;
   font-family: Poppins;
   color: rgba(250, 250, 250, 1); /*update*/

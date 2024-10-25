@@ -1,4 +1,4 @@
-import css from "./AuthForm.module.css";
+import styles from "./AuthForm.module.css";
 
 import React, { FC, Suspense, lazy } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -17,7 +17,7 @@ const AuthForm: FC = () => {
           <Suspense fallback={<div>Loading...</div>}>
             <RegisterForm />
           </Suspense>
-          <Link className={css.linkForm} to="/signin">
+          <Link className={styles.authForm__link} to="/signin">
             Sign in
           </Link>
         </>
@@ -27,7 +27,7 @@ const AuthForm: FC = () => {
           <Suspense fallback={<div>Loading...</div>}>
             <SigninForm />
           </Suspense>
-          <Link className={css.linkForm} to="/register">
+          <Link className={styles.authForm__link} to="/register">
             Registration
           </Link>
         </>
