@@ -14,6 +14,8 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
   console.log("car", ingredient);
   const handleRemove = async () => {
     try {
+        console.log("dz");
+        
       await axios.delete("/api/shopping-list/remove", {
         data: { ingredientId: ingredient._id, recipeId: ingredient.recipeId },
       });
