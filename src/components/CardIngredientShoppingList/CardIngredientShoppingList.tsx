@@ -17,7 +17,7 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
         console.log("Removing ingredient:", ingredient);
   
         await axios.delete("/api/shopping-list/remove", {
-          data: { ingredientId: ingredient._id, recipeId: ingredient.recipeId },
+          data: { ingredientId: ingredient.ingredientId, recipeId: ingredient.recipeId },
         });
         console.log("Składnik usunięty");
         

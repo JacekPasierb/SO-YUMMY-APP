@@ -7,7 +7,7 @@ import CardIngredient from "../CardIngredient/CardIngredient";
 import CardIngredientShoppingList from "../CardIngredientShoppingList/CardIngredientShoppingList";
 
 export interface Ingredient {
-    _id: string;
+    ingredientId: string;
     name: string;
     desc: string;
     thb: string;
