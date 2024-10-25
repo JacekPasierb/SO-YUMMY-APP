@@ -1,18 +1,18 @@
 import styles from "./AuthForm.module.css";
-
-import React, { FC, Suspense, lazy } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
+import { Link } from "react-router-dom";
 
 const SigninForm = lazy(() => import("../SigninForm/SigninForm"));
 const RegisterForm = lazy(() => import("../RegisterForm/RegisterForm"));
 
-const AuthForm: FC = () => {
-  const location = useLocation();
-  const { pathname } = location;
+interface AuthFormProps {
+  formType: "register" | "signin";
+}
 
+const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
   return (
     <>
-      {pathname === "/register" && (
+      {formType === "register" && (
         <>
           <Suspense fallback={<div>Loading...</div>}>
             <RegisterForm />
@@ -22,7 +22,7 @@ const AuthForm: FC = () => {
           </Link>
         </>
       )}
-      {pathname === "/signin" && (
+      {formType === "signin" && (
         <>
           <Suspense fallback={<div>Loading...</div>}>
             <SigninForm />
