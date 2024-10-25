@@ -1,16 +1,16 @@
-.background {
+.welcomePage {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  
+
   display: flex;
-  justify-content: center; /* Wyśrodkuj w poziomie */
-  align-items: center; /* Wyśrodkuj w pionie */
-  min-height: 100vh; /* Zajmij co najmniej całą wysokość widoku */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   padding: 35px;
-  
+
   background-image: url("../../images/backgroundWelcome1x.png");
   background-size: cover;
 
@@ -27,7 +27,7 @@
 
     @media screen and (min-width: 1299px) {
       background-image: url("../../images/backgroundWelcomeDesktop1x.png");
-    
+
       @media screen and (min-resolution: 192dpi) {
         background-image: url("../../images/backgroundWelcomeDesktop2x.png");
       }
@@ -35,7 +35,7 @@
   }
 }
 
-.title {
+.welcomePage__title {
   margin-bottom: 14px;
 
   font-style: normal;
@@ -43,28 +43,28 @@
   font-weight: 550;
   line-height: 24px;
   letter-spacing: -2%;
-  color: var(--color-text-third); /*update*/
-  
+  color: rgba(250, 250, 250, 1);
+
   @media screen and (min-width: 768px) {
     font-size: 28px;
     line-height: 28px;
   }
 }
 
-.boxText {
+.welcomePage__text {
   display: flex;
   flex-direction: column;
 
   text-align: center;
 }
 
-.description {
+.welcomePage__description {
   font-style: normal;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
   letter-spacing: -2%;
-  color: var(--color-text-third); /*update*/
+  color: rgba(250, 250, 250, 1);
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -72,7 +72,7 @@
   }
 }
 
-.boxContainer {
+.welcomePage__container {
   margin: 0 auto;
 
   display: flex;
@@ -86,8 +86,7 @@
   }
 }
 
-
-.iconLogo {
+.welcomePage__logo {
   width: 54px;
   height: 54px;
 
@@ -97,7 +96,7 @@
   }
 }
 
-.boxSection {
+.welcomePage__section {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,4 +1,4 @@
-.navigation {
+.authNav {
   display: flex;
   flex-direction: row;
   gap: 12px;
@@ -11,7 +11,7 @@
   }
 }
 
-.link {
+.authNav__link {
   padding: 12px 24px 12px 24px;
 
   border-radius: 24px 44px;
@@ -21,37 +21,37 @@
   }
 }
 
-.linkRegister {
+.authNav__linkRegister {
   background-color: #8baa36;
 
   transition: all 0.3s;
 }
 
-.linkRegister:hover {
+.authNav__linkRegister:hover {
   color: #fafafa;
 
   background-color: transparent;
   border: 1px solid #fafafa;
 }
 
-.linkSignin {
+.authNav__linkSignin {
   background-color: transparent;
   border: 1px solid #fafafa;
 
   transition: all 0.3s;
 }
 
-.linkSignin:hover {
+.authNav__linkSignin:hover {
   background-color: #8baa36;
   border: 1px solid #8baa36;
 
   color: #fafafa;
 }
 
-.linkText {
+.authNav__linkText {
   font-family: Poppins;
   font-size: 14px;
   font-weight: 400;
   font-style: normal;
-  color: var(--color-text-third); /*update*/
+  color: #fafafa;
 }

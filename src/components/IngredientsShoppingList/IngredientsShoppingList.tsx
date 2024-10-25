@@ -7,13 +7,13 @@ import CardIngredient from "../CardIngredient/CardIngredient";
 import CardIngredientShoppingList from "../CardIngredientShoppingList/CardIngredientShoppingList";
 
 export interface Ingredient {
-    ingredientId: string;
-    name: string;
-    desc: string;
-    thb: string;
-    measure: string;
-    recipeId:string;
-  }
+  ingredientId: string;
+  name: string;
+  desc: string;
+  thb: string;
+  measure: string;
+  recipeId: string;
+}
 
 const IngredientsShoppingList = () => {
   const [shoppingList, setShoppingList] = useState<Ingredient[]>([]);
@@ -32,7 +32,6 @@ const IngredientsShoppingList = () => {
     }
   };
   useEffect(() => {
-    
     fetchShoppingList();
   }, []);
 
@@ -47,10 +46,16 @@ const IngredientsShoppingList = () => {
       </div>
       <ul className={styles.shoppingList}>
         {shoppingList.map((ingredient) => (
-        <li key={`${ingredient.ingredientId}-${nanoid()}`} className={styles.ingredientsList__item}>
-          <CardIngredientShoppingList ingredient={ingredient}   refreshList={fetchShoppingList}/>
-        </li>
-      ))}
+          <li
+            key={`${ingredient.ingredientId}-${nanoid()}`}
+            className={styles.ingredientsList__item}
+          >
+            <CardIngredientShoppingList
+              ingredient={ingredient}
+              refreshList={fetchShoppingList}
+            />
+          </li>
+        ))}
       </ul>
     </div>
   );

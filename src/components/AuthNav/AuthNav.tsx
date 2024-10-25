@@ -1,4 +1,4 @@
-import css from "./AuthNav.module.css";
+import styles from "./AuthNav.module.css";
 
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 const AuthNav: FC = () => {
   return (
     <>
-      <nav className={css.navigation}>
+      <nav className={styles.authNav}>
         <Link
-          className={`${css.link} ${css.linkRegister} ${css.linkText}`}
+          className={`${styles.authNav__link} ${styles.authNav__linkRegister} ${styles.authNav__linkText}`}
           to="/register"
         >
           Registration
         </Link>
         <Link
-          className={`${css.link}  ${css.linkSignin} ${css.linkText}`}
+          className={`${styles.authNav__link}  ${styles.authNav__linkSignin} ${styles.authNav__linkText}`}
           to="/signin"
         >
           Sign in
