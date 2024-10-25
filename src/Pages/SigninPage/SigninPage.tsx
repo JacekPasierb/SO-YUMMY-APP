@@ -1,14 +1,12 @@
 import styles from "./SigninPage.module.css";
-
-import React, { FC } from "react";
-
+import React from "react";
 import AuthForm from "../../components/AuthForm/AuthForm";
 
-const SigninPage: FC = () => {
+const SigninPage: React.FC = () => {
   return (
     <main className={styles.signinPage}>
       <div className={styles.signinPage__flex}>
-        <AuthForm />
+        <AuthForm formType="signin" />
       </div>
     </main>
   );

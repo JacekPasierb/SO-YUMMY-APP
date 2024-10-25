@@ -25,14 +25,15 @@
 
   display: flex;
   flex-direction: column;
-  gap: 18px;
   align-items: center;
+  gap: 18px;
   padding: 20px;
 }
+
 .authForm__link {
+  font-family: Poppins, sans-serif;
   font-size: 14px;
-  font-family: Poppins;
-  color: rgba(250, 250, 250, 1); /*update*/
+  color: rgba(250, 250, 250, 1);
   text-align: center;
   text-decoration: underline;
 

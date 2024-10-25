@@ -1,16 +1,13 @@
+import React from "react";
 import styles from "./WelcomePage.module.css";
 import logo from "../../images/logo.png";
-
-import React, { FC } from "react";
-
 import AuthNav from "../../components/AuthNav/AuthNav";
 
-const WelcomePage: FC = () => {
+const WelcomePage: React.FC = () => {
   return (
     <div className={styles.welcomePage}>
       <div className={styles.welcomePage__container}>
         <img src={logo} alt="logo" className={styles.welcomePage__logo} />
-
         <div className={styles.welcomePage__section}>
           <div className={styles.welcomePage__text}>
             <h1 className={styles.welcomePage__title}>Welcome to the app!</h1>
@@ -20,7 +17,6 @@ const WelcomePage: FC = () => {
               and retrieve your own recipes at any time.
             </p>
           </div>
-
           <AuthNav />
         </div>
       </div>
