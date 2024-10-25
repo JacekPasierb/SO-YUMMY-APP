@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
 import styles from "./IngredientsShoppingList.module.css";
 import axios from "axios";
 import CardIngredient from "../CardIngredient/CardIngredient";
@@ -11,6 +12,7 @@ export interface Ingredient {
     desc: string;
     thb: string;
     measure: string;
+    recipeId:string;
   }
 
 const IngredientsShoppingList = () => {
@@ -44,7 +46,7 @@ const IngredientsShoppingList = () => {
       </div>
       <ul className={styles.shoppingList}>
         {shoppingList.map((ingredient) => (
-        <li key={ingredient._id} className={styles.ingredientsList__item}>
+        <li key={`${ingredient._id}-${nanoid()}`} className={styles.ingredientsList__item}>
           <CardIngredientShoppingList ingredient={ingredient}  />
         </li>
       ))}

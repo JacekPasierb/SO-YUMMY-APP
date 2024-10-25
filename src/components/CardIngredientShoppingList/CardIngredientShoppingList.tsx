@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./CardIngredientShoppingList.module.css";
 import { Ingredient } from "../IngredientsShoppingList/IngredientsShoppingList";
 import sprite from "../../assets/icons/sprite.svg";
+import axios from "axios";
 
 interface CardIngredientShoppingProps {
   ingredient: Ingredient;
@@ -11,7 +12,15 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
   ingredient,
 }) => {
   console.log("car", ingredient);
-
+  const handleRemove = async () => {
+    try {
+      await axios.delete("/api/shopping-list/remove", {
+        data: { ingredientId: ingredient._id, recipeId: ingredient.recipeId },
+      });
+    } catch (error) {
+      console.error("Błąd usuwania składnika:", error);
+    }
+  };
   return (
     <div className={styles.ingredientCard}>
       <div className={styles.ingredientCard__details}>
@@ -30,7 +39,10 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
             {ingredient.measure}
           </p>
         </div>
-        <button className={styles.recipeIngredients__btnX}>
+        <button
+          className={styles.recipeIngredients__btnX}
+          onClick={handleRemove}
+        >
           <svg className={styles.iconX}>
             <use href={`${sprite}#icon-X`}></use>
           </svg>
