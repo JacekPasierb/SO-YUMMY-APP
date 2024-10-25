@@ -46,7 +46,7 @@ const IngredientsShoppingList = () => {
       </div>
       <ul className={styles.shoppingList}>
         {shoppingList.map((ingredient) => (
-        <li key={`${ingredient._id}-${nanoid()}`} className={styles.ingredientsList__item}>
+        <li key={`${ingredient.ingredientId}-${nanoid()}`} className={styles.ingredientsList__item}>
           <CardIngredientShoppingList ingredient={ingredient}  />
         </li>
       ))}

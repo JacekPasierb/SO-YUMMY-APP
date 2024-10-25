@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./CardIngredientShoppingList.module.css";
 import { Ingredient } from "../IngredientsShoppingList/IngredientsShoppingList";
 import sprite from "../../assets/icons/sprite.svg";
@@ -12,18 +12,21 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
   ingredient,
 }) => {
   console.log("car", ingredient);
+ 
   const handleRemove = async () => {
     try {
-        console.log("Removing ingredient:", ingredient);
-  
-        await axios.delete("/api/shopping-list/remove", {
-          data: { ingredientId: ingredient.ingredientId, recipeId: ingredient.recipeId },
-        });
-        console.log("Składnik usunięty");
-        
-      } catch (error) {
-        console.error("Błąd usuwania składnika:", error);
-      }
+      console.log("Removing ingredient:", ingredient);
+
+      await axios.delete("/api/shopping-list/remove", {
+        data: {
+          ingredientId: ingredient.ingredientId,
+          recipeId: ingredient.recipeId,
+        },
+      });
+      console.log("Składnik usunięty");
+    } catch (error) {
+      console.error("Błąd usuwania składnika:", error);
+    }
   };
   return (
     <div className={styles.ingredientCard}>
