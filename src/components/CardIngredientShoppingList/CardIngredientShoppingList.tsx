@@ -6,10 +6,12 @@ import axios from "axios";
 
 interface CardIngredientShoppingProps {
   ingredient: Ingredient;
+  refreshList: () => void;
 }
 
 const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
   ingredient,
+  refreshList,
 }) => {
   console.log("car", ingredient);
  
@@ -23,6 +25,7 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
           recipeId: ingredient.recipeId,
         },
       });
+      refreshList();
       console.log("Składnik usunięty");
     } catch (error) {
       console.error("Błąd usuwania składnika:", error);
