@@ -9,5 +9,6 @@ const AppDescription = React.memo(() => {
     </p>
   );
 });
+AppDescription.displayName = 'AppDescription';
 
 export default AppDescription;

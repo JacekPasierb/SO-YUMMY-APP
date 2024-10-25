@@ -1,21 +1,22 @@
 .description {
   margin-top: 14px;
-
   font-size: 14px;
-  line-height: 18px;
-  color: var(--color-text-description); /*new update*/
+  line-height: 1.29;
+  color: var(--color-text-description);
   text-align: center;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .description {
     margin-top: 24px;
-
     text-align: left;
   }
+}
 
-  @media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
+  .description {
     margin-top: 14px;
-
     font-size: 18px;
-    line-height: 24px;
+    line-height: 1.33;
   }
 }

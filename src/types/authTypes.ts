@@ -1,3 +1,5 @@
+import { Ingredient } from "./ingredientsTypes";
+
 export interface IAuthState {
   user: {
     userId: null | string;
@@ -37,3 +39,12 @@ export type UpdateUserResponse = Pick<IAuthResponse, "status" | "code"> & {
   };
 };
 
+export interface RecipeInputs {
+  file: File | null;
+  title: string;
+  description: string;
+  category: string;
+  time: string;
+  ingredients: Ingredient[];
+  instructions: string;
+}
