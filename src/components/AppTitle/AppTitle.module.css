@@ -1,24 +1,24 @@
 .title {
   margin: 0;
-
   font-size: 60px;
-  line-height: 60px;
-  color: var(--color-text-title); /* new update*/
+  line-height: 1;
+  color: var(--color-text-title);
   text-align: center;
+}
 
-  @media screen and (min-width: 768px) {
+.title__highlight {
+  color: var(--color-text-highlight);
+}
+
+@media screen and (min-width: 768px) {
+  .title {
     font-size: 72px;
-    line-height: 72px;
-    text-align: left;
-  }
-
-  @media screen and (min-width: 1200px) {
-    font-size: 100px;
-    line-height: 100px;
     text-align: left;
   }
 }
 
-.title__highlight {
-  color: var(--color-text-highlight); /*new update*/
+@media screen and (min-width: 1200px) {
+  .title {
+    font-size: 100px;
+  }
 }
