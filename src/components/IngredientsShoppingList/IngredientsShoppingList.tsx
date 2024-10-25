@@ -19,19 +19,20 @@ const IngredientsShoppingList = () => {
   const [shoppingList, setShoppingList] = useState<Ingredient[]>([]);
   const [loading, setLoading] = useState(false);
 
+  const fetchShoppingList = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("/api/shopping-list");
+      const { items } = response.data;
+      setShoppingList(items);
+    } catch (error) {
+      console.error("Błąd pobierania listy zakupów:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchShoppingList = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get("/api/shopping-list");
-        const { items } = response.data;
-        setShoppingList(items);
-      } catch (error) {
-        console.error("Błąd pobierania listy zakupów:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    
     fetchShoppingList();
   }, []);
 
