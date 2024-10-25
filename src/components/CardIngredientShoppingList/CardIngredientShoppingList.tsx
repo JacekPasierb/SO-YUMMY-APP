@@ -14,16 +14,16 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
   console.log("car", ingredient);
   const handleRemove = async () => {
     try {
-        console.log("dz",ingredient.recipeId);
+        console.log("Removing ingredient:", ingredient);
+  
+        await axios.delete("/api/shopping-list/remove", {
+          data: { ingredientId: ingredient._id, recipeId: ingredient.recipeId },
+        });
+        console.log("Składnik usunięty");
         
-      await axios.delete("/api/shopping-list/remove", {
-        data: { ingredientId: ingredient._id, recipeId: ingredient.recipeId },
-      });
-      console.log("ttt");
-      
-    } catch (error) {
-      console.error("Błąd usuwania składnika:", error);
-    }
+      } catch (error) {
+        console.error("Błąd usuwania składnika:", error);
+      }
   };
   return (
     <div className={styles.ingredientCard}>
