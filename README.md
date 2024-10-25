@@ -1,113 +1,106 @@
-KONTO TESTOWE:
-LOGIN : user@test.pl
-HASŁO : user1234
+# Projekt Aplikacji Kulinarnej
 
-Projekt napisany w Technologi React z wykorzystaniem biblioteki Redux Toolkit. Zastosowałem JavaScript ES 6+ i wykorzystałem TypeScript. 
-Do stylizacji wyglądu wykorzystałem module CSS, oraz komponenty Material UI. 
-Formularze tworzę przy pomocy Formika. 
+## Konto testowe
+- Login: user@test.pl
+- Hasło: user1234
 
-Do Backendu używam Node JS z express, korzystam z bazy danych MongoDB łącząc sie przy użyciu Mongoose. Tworzę kolekcje użytkowników, przepisów, składników oraz listy zakupów, 
-Listy są ze sobą powiązane za pomocą ref.  Do Tworzenia kont użytkowników zastosowałem JWT passport a do wysyłania email sendGrid. 
-Z bazą danych łącze się przy użyciu axios. 
+## Opis projektu
+Projekt został napisany w technologii React z wykorzystaniem biblioteki Redux Toolkit. Zastosowano JavaScript ES6+ oraz TypeScript. Do stylizacji wyglądu wykorzystano moduły CSS oraz komponenty Material UI. Formularze tworzone są przy pomocy Formika.
 
-Tak po krótce, oczywiście w projekcie jest więcej wykorzystanych rozwiązań.
+Backend oparty jest na Node.js z Express, korzystając z bazy danych MongoDB połączonej przy użyciu Mongoose. Utworzono kolekcje użytkowników, przepisów, składników oraz list zakupów, które są ze sobą powiązane za pomocą referencji. Do tworzenia kont użytkowników zastosowano JWT passport, a do wysyłania e-maili - SendGrid. Komunikacja z bazą danych odbywa się przy użyciu Axios.
 
+Projekt jest w fazie rozwojowej. Kod wymaga stworzenia funkcji pomocniczych, komponentów wspólnych oraz dokończenia aplikacji.
 
+## Informacje dla developera
+- Stworzyć folder `types` z interfejsami
+- Dodać obsługę języków z react-i18next
+- Uprościć kod, tworząc funkcje pomocnicze
 
-PROJEKT jest w fazie rozwojowej, kod wymaga stworzenia funkcji pomocniczych oraz komponentów wspólnych i dokonczenia Ap
+## Wytyczne CSS projektu
 
-// INFORMACJE DLA DEVELOPERA //
+### 1. Przegląd
+Ten dokument określa konwencje i wytyczne CSS dla projektu, aby zapewnić spójność, łatwość utrzymania i skalowalność w całej bazie kodu.
 
-- stowrzyć folder types z interaface
-- dodać obsługę języków z react-i18next
-- uprościć kod tworząc funkcje pomocnicze
+### 2. Konwencje stylów
 
+#### 2.1 Jednostki
 
-## Project CSS Guidelines
+- **Rozmiary czcionek**: Używaj `rem` dla wszystkich rozmiarów czcionek, aby zapewnić skalowalność i dostępność.
 
-## 1. Overview
+  Przykład:
+  ```css
+  body {
+    font-size: 1rem; /* 16px */
+  }
+  ```
 
-    This document outlines the CSS conventions and guidelines for the project to ensure consistency, maintainability, and scalability across the codebase.
+- **Odstępy (Padding & Margin)**: Używaj `rem` dla wszystkich właściwości odstępów.
 
-## 2. Style Conventions
+  Przykład:
+  ```css
+  .container {
+    margin: 1rem; /* 16px */
+    padding: 1.5rem; /* 24px */
+  }
+  ```
 
-         2.1 Units
+- **Wymiary**: Używaj `px` dla stałych wymiarów (jak obramowania lub konkretne elementy UI) i `rem` dla elementów responsywnych.
 
-        - Font Sizes: Use rem for all font sizes to ensure scalability and accessibility.
+  Przykład:
+  ```css
+  .box {
+    width: 300px; /* Stała szerokość */
+    height: 5rem; /* Responsywna wysokość */
+  }
+  ```
 
-        Example:
+#### 2.2 Kolory
 
-        body {
-        font-size: 1rem; /_ 16px _/
-        }
+- **Format kolorów**: Wszystkie kolory powinny być definiowane w formacie rgba dla lepszej kontroli nad przezroczystością i spójnością.
 
-        - Spacing (Padding & Margin): Use rem for all spacing properties.
+  Przykład:
+  ```css
+  .primary-bg {
+    background-color: rgba(42, 87, 141, 1); /* Pełny kolor */
+  }
 
-        Example:
+  .transparent-bg {
+    background-color: rgba(255, 255, 255, 0.8); /* Półprzezroczysty */
+  }
+  ```
 
-        .container {
-        margin: 1rem; /_ 16px _/
-        padding: 1.5rem; /_ 24px _/
-        }
+### 3. Responsywność
 
-        - Dimensions: Use px for fixed dimensions (like borders or specific UI elements) and rem for
-           responsive elements.
+Używaj zapytań `@media` do dostosowywania stylów dla różnych rozmiarów ekranów. Punkty graniczne powinny być zdefiniowane następująco:
 
-        Example:
+- Małe urządzenia (telefony): `@media screen and (max-width: 768px)`
+- Średnie urządzenia (tablety): `@media screen and (min-width: 768px) and (max-width: 1200px)`
+- Duże urządzenia (komputery stacjonarne): `@media screen and (min-width: 1200px)`
 
-        .box {
-        width: 300px; /_ Fixed width _/
-        height: 5rem; /_ Responsive height _/
-        }
+Przykład:
+```css
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Układaj elementy pionowo */
+  }
+}
+```
 
-        2.2 Colors
+### 4. Kolejność deklaracji CSS
 
-        - Color Format: All colors should be defined in rgba format for better control over transparency and consistency.
+Aby zapewnić spójność i łatwość utrzymania w całym projekcie, proszę przestrzegać następującej kolejności przy pisaniu stylów CSS:
 
-        Example:
-
-        .primary-bg {
-        background-color: rgba(42, 87, 141, 1); /_ Solid color _/
-        }
-
-        .transparent-bg {
-        background-color: rgba(255, 255, 255, 0.8); /_ Semi-transparent _/
-        }
-
-## 3. Responsiveness
-
-    - Use @media queries to adjust styles for different screen sizes. Breakpoints should be defined as follows:
-
-    - Small devices (phones): @media screen and (max-width: 768px)
-    - Medium devices (tablets): @media screen and (min-width: 768px) and (max-width: 1200px)
-    - Large devices (desktops): @media screen and (min-width: 1200px)
-      Example:
-
-    @media screen and (max-width: 768px) {
-    .container {
-    flex-direction: column; /_ Stack items vertically _/
-    }
-    }
-
-## 4. CSS Declaration Order
-
-To ensure consistency and maintainability across the project, please follow this order when writing CSS styles:
-
-1. **Positioning**
-
+1. **Pozycjonowanie**
    - `position`, `top`, `right`, `bottom`, `left`, `z-index`
 
-2. **Box Model**
-
+2. **Model pudełkowy**
    - `display`, `flex`, `flex-direction`, `width`, `height`, `margin`, `padding`, `border`, `border-radius`, `overflow`
 
-3. **Typography**
-
+3. **Typografia**
    - `font`, `font-size`, `font-family`, `font-weight`, `line-height`, `color`, `text-align`, `text-decoration`
 
-4. **Visual**
-
+4. **Wizualne**
    - `background-color`, `background-image`, `background-position`, `opacity`, `box-shadow`
 
-5. **Miscellaneous**
-   - Any other properties that don't fit into the above categories, such as `transition`, `cursor`,`animation`, etc.
+5. **Różne**
+   - Wszelkie inne właściwości, które nie pasują do powyższych kategorii, takie jak `transition`, `cursor`, `animation`, itp.
