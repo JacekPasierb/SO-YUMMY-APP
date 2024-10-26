@@ -1,44 +1,42 @@
+import React, { useEffect, useState, useCallback } from "react";
 import { Checkbox } from "@mui/material";
-import React, { FC, useEffect, useState } from "react";
-import { Ingredient } from "../RecipeInngredientsList/RecipeInngredientsList";
-import styles from "./CardIngredient.module.css";
 import axios from "axios";
+import styles from "./CardIngredient.module.css";
+
+interface Ingredient {
+  _id: string;
+  thb: string;
+  ttl: string;
+  measure: string;
+}
 
 interface CardIngredientProps {
   ingredient: Ingredient;
   recipeId?: string;
 }
 
-const CardIngredient: React.FC<CardIngredientProps> = ({
-  ingredient,
-  recipeId,
-}) => {
+const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient, recipeId }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // Funkcja do obsługi błędów
-  const handleApiError = (error: any, action: string) => {
+  const handleApiError = useCallback((error: unknown, action: string) => {
     console.error(`Błąd podczas ${action} składnika:`, error);
-  };
+  }, []);
 
-  const checkIfIngredientInList = async () => {
+  const checkIfIngredientInList = useCallback(async () => {
     try {
-      const response = await axios.get(`/api/shopping-list`);
+      const response = await axios.get("/api/shopping-list");
       const { items } = response.data;
-
-      const ingredientExists = items.some(
-        (item: any) => item.ingredientId === ingredient._id
-      );
-
+      const ingredientExists = items.some((item: { ingredientId: string }) => item.ingredientId === ingredient._id);
       setIsChecked(ingredientExists);
     } catch (error) {
-      console.error("Błąd sprawdzania listy zakupów:", error);
+      handleApiError(error, "sprawdzania listy zakupów");
     }
-  };
+  }, [ingredient._id, handleApiError]);
 
   useEffect(() => {
     checkIfIngredientInList();
-  }, []);
+  }, [checkIfIngredientInList]);
 
   const handleCheckboxChange = async () => {
     if (loading) return;
@@ -46,12 +44,10 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
 
     try {
       if (isChecked) {
-        // Usuń składnik z listy zakupów
         await axios.delete("/api/shopping-list/remove", {
           data: { ingredientId: ingredient._id, recipeId },
         });
       } else {
-        // Dodaj składnik do listy zakupów
         await axios.post("/api/shopping-list/add", {
           ingredientId: ingredient._id,
           thb: ingredient.thb,
@@ -60,11 +56,11 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
           recipeId,
         });
       }
-      setIsChecked(!isChecked); // Odwrócenie stanu checkboxa po sukcesie
+      setIsChecked(!isChecked);
     } catch (error) {
       handleApiError(error, isChecked ? "usuwania" : "dodawania");
     } finally {
-      setLoading(false); // Wyłączenie loadingu po zakończeniu zapytania
+      setLoading(false);
     }
   };
 
@@ -82,9 +78,7 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
       </div>
       <div className={styles.ingredientCard__details}>
         <div className={styles.ingredientCard__measureBox}>
-          <p className={styles.ingredientCard__measureText}>
-            {ingredient.measure}
-          </p>
+          <p className={styles.ingredientCard__measureText}>{ingredient.measure}</p>
         </div>
         <Checkbox
           checked={isChecked}
@@ -95,12 +89,10 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
               color: "transparent",
               stroke: "#7E7E7E",
             },
-
             ".MuiSvgIcon-fontSizeMedium": {
               width: "18px",
               height: "18px",
             },
-
             "@media (min-width: 768px)": {
               ".MuiSvgIcon-fontSizeMedium": {
                 width: "35px",
