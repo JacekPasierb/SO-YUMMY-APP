@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "@react-hook/media-query";
@@ -15,63 +15,67 @@ import styles from "./SigninForm.module.css";
 import icons from "../../assets/icons/sprite.svg";
 import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
-import { logoSrc } from "../../helpers/logoHelpers";
+import logo from "../../images/logos";
 
-interface SigninFormValues {
-  email: string;
-  password: string;
-}
-
-const SigninForm: React.FC = () => {
+const SigninForm = () => {
   const [emailForResend, setEmailForResend] = useState<string | null>(null);
+  const isTablet = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 1200px)");
+  const isRetina = window.devicePixelRatio > 1;
 
   // Ustalanie źródła logo na podstawie warunków
+  const logoSrc = isDesktop
+    ? isRetina
+      ? logo.desktop2x
+      : logo.desktop1x
+    : isTablet
+    ? isRetina
+      ? logo.tablet2x
+      : logo.tablet1x
+    : isRetina
+    ? logo.mobile2x
+    : logo.mobile1x;
 
   const dispatch: AppDispatch = useDispatch();
   const error = useSelector(selectError);
   const navigate = useNavigate();
 
-  const handleSubmit = useCallback(
-    async (
-      values: SigninFormValues,
-      { resetForm }: { resetForm: () => void }
-    ) => {
-      try {
-        setEmailForResend(values.email);
-        const result = await dispatch(logIn(values));
-        if (logIn.fulfilled.match(result)) {
-          resetForm();
-          navigate("/");
-        } else if (error) {
-          toast.error(error);
-        }
-      } catch (err: unknown) {
-        console.error(
-          "Error logging in:",
-          err instanceof Error ? err.message : "Unknown error"
-        );
-        toast.error("Something went wrong during sign in, please try again.");
+  const handleSubmit = async (
+    values: FormikValues,
+    { resetForm }: { resetForm: () => void }
+  ) => {
+    try {
+      setEmailForResend(values.email);
+      const result = await dispatch(
+        logIn({
+          email: values.email,
+          password: values.password,
+        })
+      );
+      if (logIn.fulfilled.match(result)) {
+        resetForm();
+        navigate("/");
+      } else if (error) {
+        toast.error(error);
       }
-    },
-    [dispatch, error, navigate]
-  );
-
-  const handleResendVerificationEmail = useCallback(async () => {
+    } catch (err: any) {
+      console.error("Error logging in:", err.message);
+      toast.error("Something went wrong during sign in, please try again.");
+    }
+  };
+  const handleResendVerificationEmail = async () => {
     if (emailForResend) {
       try {
         await dispatch(resendVerificationEmail(emailForResend));
         toast.success("Verification email has been sent!");
-      } catch (err: unknown) {
-        console.error(
-          "Error resending verification email:",
-          err instanceof Error ? err.message : "Unknown error"
-        );
+      } catch (err: any) {
+        console.error("Error resending verification email:", err.message);
         toast.error(
           "Failed to resend the verification email, please try again."
         );
       }
     }
-  }, [dispatch, emailForResend]);
+  };
 
   return (
     <div>
