@@ -1,17 +1,18 @@
-import React, { FC } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./ButtonOtherCategories.module.css";
 
 interface ButtonOtherCategoriesProps {
   text: string;
+  categoryName: string;
 }
 
-const ButtonOtherCategories: FC<ButtonOtherCategoriesProps> = ({ text }) => {
+const ButtonOtherCategories: React.FC<ButtonOtherCategoriesProps> = ({ text, categoryName }) => {
   return (
     <NavLink
-      to={`/categories/:categoryName`}
+      to={`/categories/${categoryName}`}
       className={styles.btn}
-      aria-label={`See all recipes in category`}
+      aria-label={`See all recipes in ${categoryName} category`}
     >
       {text}
     </NavLink>

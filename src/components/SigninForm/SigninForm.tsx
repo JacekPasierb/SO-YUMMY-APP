@@ -23,7 +23,7 @@ interface SigninFormValues {
   password: string;
 }
 
-const SigninForm: React.FC  = () => {
+const SigninForm: React.FC = () => {
   const [emailForResend, setEmailForResend] = useState<string | null>(null);
   const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(min-width: 768px)");
@@ -31,39 +31,53 @@ const SigninForm: React.FC  = () => {
   const isRetina = window.devicePixelRatio > 1;
 
   // Ustalanie źródła logo na podstawie warunków
-  const logoSrc = useMemo(() => getLogoSrc(isMobile, isTablet, isDesktop), [isMobile, isTablet, isDesktop]);
+  const logoSrc = useMemo(
+    () => getLogoSrc(isMobile, isTablet, isDesktop),
+    [isMobile, isTablet, isDesktop]
+  );
 
   const dispatch: AppDispatch = useDispatch();
   const error = useSelector(selectError);
   const navigate = useNavigate();
 
-  const handleSubmit = useCallback(async (
-    values: SigninFormValues,
-    { resetForm }: { resetForm: () => void }
-  ) => {
-    try {
-      setEmailForResend(values.email);
-      const result = await dispatch(logIn(values));
-      if (logIn.fulfilled.match(result)) {
-        resetForm();
-        navigate("/");
-      } else if (error) {
-        toast.error(error);
+  const handleSubmit = useCallback(
+    async (
+      values: SigninFormValues,
+      { resetForm }: { resetForm: () => void }
+    ) => {
+      try {
+        setEmailForResend(values.email);
+        const result = await dispatch(logIn(values));
+        if (logIn.fulfilled.match(result)) {
+          resetForm();
+          navigate("/");
+        } else if (error) {
+          toast.error(error);
+        }
+      } catch (err: unknown) {
+        console.error(
+          "Error logging in:",
+          err instanceof Error ? err.message : "Unknown error"
+        );
+        toast.error("Something went wrong during sign in, please try again.");
       }
-    } catch (err: unknown) {
-      console.error("Error logging in:", err instanceof Error ? err.message : "Unknown error");
-      toast.error("Something went wrong during sign in, please try again.");
-    }
-  }, [dispatch, error, navigate]);
+    },
+    [dispatch, error, navigate]
+  );
 
-   const handleResendVerificationEmail = useCallback(async () => {
+  const handleResendVerificationEmail = useCallback(async () => {
     if (emailForResend) {
       try {
         await dispatch(resendVerificationEmail(emailForResend));
         toast.success("Verification email has been sent!");
       } catch (err: unknown) {
-        console.error("Error resending verification email:", err instanceof Error ? err.message : "Unknown error");
-        toast.error("Failed to resend the verification email, please try again.");
+        console.error(
+          "Error resending verification email:",
+          err instanceof Error ? err.message : "Unknown error"
+        );
+        toast.error(
+          "Failed to resend the verification email, please try again."
+        );
       }
     }
   }, [dispatch, emailForResend]);
