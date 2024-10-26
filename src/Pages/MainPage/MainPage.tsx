@@ -55,7 +55,7 @@ const MainPage: FC = () => {
         }`}
       >
         <PreviewsCategories />
-        <ButtonOtherCategories text="Other categories" categoryName="beef"/>
+        <ButtonOtherCategories text="Other categories" categoryName="Beef"/>
       </div>
     </>
   );
