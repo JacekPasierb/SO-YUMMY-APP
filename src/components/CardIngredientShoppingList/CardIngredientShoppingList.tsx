@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
+import axios from "axios";
 import styles from "./CardIngredientShoppingList.module.css";
 import { Ingredient } from "../IngredientsShoppingList/IngredientsShoppingList";
 import sprite from "../../assets/icons/sprite.svg";
-import axios from "axios";
 
 interface CardIngredientShoppingProps {
   ingredient: Ingredient;
@@ -23,9 +23,10 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
       });
       refreshList();
     } catch (error) {
-      console.error("Błąd usuwania składnika:", error);
+      console.error("Error removing ingredient:", error);
     }
   };
+
   return (
     <div className={styles.ingredientCard}>
       <div className={styles.ingredientCard__details}>
@@ -47,6 +48,7 @@ const CardIngredientShoppingList: React.FC<CardIngredientShoppingProps> = ({
         <button
           className={styles.recipeIngredients__btnX}
           onClick={handleRemove}
+          aria-label="Remove ingredient"
         >
           <svg className={styles.iconX}>
             <use href={`${sprite}#icon-X`}></use>

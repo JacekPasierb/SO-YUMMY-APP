@@ -1,18 +1,18 @@
+:root {
+  --color-border: #e0e0e0;
+  --color-bg-measure: #8baa36;
+  --color-text-measure: #fafafa;
+}
+
 .ingredientCard {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   padding-bottom: 24px;
-  border-bottom: 1px solid #e0e0e0;
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 43px;
-  }
+  border-bottom: 1px solid var(--color-border);
 }
 
 .ingredientCard__details {
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
 }
 
@@ -20,24 +20,13 @@
   width: 60px;
   height: 60px;
   margin-right: 10px;
-
-  @media screen and (min-width: 768px) {
-    width: 93px;
-    height: 97px;
-    margin-right: 16px;
-  }
 }
 
 .ingredientCard__name {
   margin: 0;
   font-size: 10px;
-  line-height: 12px;
+  line-height: 1.2;
   color: var(--color-text-title);
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 24px;
-  }
 }
 
 .ingredientCard__measureBox {
@@ -48,48 +37,66 @@
   padding: 4px;
   width: 60px;
   height: 23px;
-
-  background-color: #8baa36;
+  background-color: var(--color-bg-measure);
   border-radius: 4px;
-
-  @media screen and (min-width: 768px) {
-    margin-right: 110px;
-    padding: 4px;
-    width: 110px;
-    height: 35px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-right: 174px;
-  }
 }
 
 .ingredientCard__measureText {
   margin: 0;
-
   font-size: 10px;
-  color: rgba(250, 250, 250, 1);
+  color: var(--color-text-measure);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-  }
 }
 
 .iconX {
   width: 14px;
   height: 14px;
-
   stroke: var(--color-stroke-icon);
-
-  @media screen and (min-width: 768px) {
-    width: 20px;
-    height: 20px;
-  }
 }
+
 .recipeIngredients__btnX {
   background-color: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: var(--breakpoint-tablet)) {
+  .ingredientCard {
+    padding-bottom: 43px;
+  }
+
+  .ingredientCard__image {
+    width: 93px;
+    height: 97px;
+    margin-right: 16px;
+  }
+
+  .ingredientCard__name {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .ingredientCard__measureBox {
+    margin-right: 110px;
+    width: 110px;
+    height: 35px;
+  }
+
+  .ingredientCard__measureText {
+    font-size: 18px;
+  }
+
+  .iconX {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: var(--breakpoint-desktop)) {
+  .ingredientCard__measureBox {
+    margin-right: 174px;
+  }
 }
