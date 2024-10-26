@@ -1,248 +1,212 @@
+:root {
+  --color-primary: #8baa36;
+  --color-background: #2a2c36;
+  --color-text: #fafafa;
+  --color-error: #ff0505;
+  --color-success: #3cbc81;
+  --color-border: #8a8787;
+}
+
 .logo {
   position: absolute;
   top: -13.75rem;
-  left: center;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: -1;
-
   width: 17.8125rem;
   height: 15.625rem;
-
   background-position: center;
-
-  @media screen and (min-width: 768px) {
-    top: -21.625rem;
-    z-index: 0;
-
-    width: 25.5625rem;
-    height: 22.4375rem;
-  }
-
-  @media screen and (min-width: 1200px) {
-    left: -40.4375rem;
-    top: 0;
-    z-index: 2;
-
-    width: 33.25rem;
-    height: 29.25rem;
-  }
 }
+
 .formRegister {
   position: relative;
-
-  margin-bottom: 18px;
-  padding: 32px 28px;
-
-  background-color:  #2a2c36;
+  margin-bottom: 1.125rem;
+  padding: 2rem 1.75rem;
+  background-color: var(--color-background);
   border-radius: 1.875rem;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 280px;
-    padding: 44px 50px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-top: 0;
-  }
 }
+
 .inputGroup {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   margin-bottom: 1.75rem;
-
-  @media screen and (min-width: 768px) {
-    gap: 1.5rem;
-    margin-bottom: 3.125rem;
-  }
 }
+
 .title {
   font-size: 1.5rem;
   line-height: 1.75rem;
   text-align: left;
-  color:  rgba(
-    250,
-    250,
-    250,
-    1
-  );
-
-  @media screen and (min-width: 768px) {
-    font-size: 1.75rem;
-    line-height: 1.875rem;
-  }
+  color: var(--color-text);
 }
-.input {
-  font-size:  0.875rem;
-  color: rgba(
-    250,
-    250,
-    250,
-    1
-  );
 
+.input {
+  font-size: 0.875rem;
+  color: var(--color-text);
   background-color: transparent;
   outline: none;
   border: 0;
-
-  @media screen and (min-width: 768px) {
-    padding: 1rem 1.125rem;
-
-    font-size: 1.125rem;
-  }
+  width: 100%;
 }
 
 .input::placeholder {
-  font-size: 0.875rem;
-  color: rgba(
-    250,
-    250,
-    250,
-    1
-  );
-
-  @media screen and (min-width: 768px) {
-    font-size: 1.125rem;
-  }
+  color: var(--color-text);
 }
 
 .icon {
   width: 1.125rem;
   height: 1.125rem;
   margin-right: 0.5rem;
-
-  @media screen and (min-width: 768px) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
 }
 
 .iconError {
-  stroke: red;
+  stroke: var(--color-error);
 }
 
 .inputWrapper {
   position: relative;
-
   display: flex;
   align-items: center;
   padding: 0.75rem 0.875rem;
-
-  border: 1px solid #8a8787;
+  border: 1px solid var(--color-border);
   border-radius: 0.375rem;
-
-  @media screen and (min-width: 768px) {
-    padding: 1rem 1.125rem;
-  }
 }
 
 .inputWrapper:focus-within,
 .inputWrapper:hover {
-  border-color: #fafafa;
+  border-color: var(--color-text);
 }
 
 .inputError {
-  border: 1px solid red;
-  fill: red;
+  border-color: var(--color-error);
 }
 
 .submitButton {
-  font-style: normal;
-  line-height: 1.125rem;
+  width: 100%;
+  padding: 0.75rem;
   font-size: 1rem;
+  line-height: 1.125rem;
   text-align: center;
-  color: rgba(
-    250,
-    250,
-    250,
-    1
-  );
-
-  background-color: #8baa36;
-  padding-block: 0.75rem;
-  min-width: 100%;
-
+  color: var(--color-text);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0.375rem;
   transition: all 0.3s;
-
-  @media screen and (min-width: 768px) {
-    padding: 1.1875rem 10.625rem;
-  }
 }
-.submitButton:hover {
-  color:  rgba(
-    139,
-    170,
-    54,
-    1
-  ); 
 
-  background-color: #fafafa;
-  border-color: #8baa36;
+.submitButton:hover {
+  color: var(--color-primary);
+  background-color: var(--color-text);
 }
 
 .errorMessage {
   position: absolute;
   bottom: -0.6875rem;
   left: 0;
-
-  padding-right: 0.3125rem;
-
   font-size: 0.4375rem;
-  color: red;
+  color: var(--color-error);
+}
 
-  @media screen and (min-width: 768px) {
+.statusIcon,
+.additionalSuccessIcon,
+.additionalErrorIcon {
+  position: absolute;
+  right: 0.625rem;
+}
+
+.additionalSuccessIcon {
+  fill: var(--color-success);
+  stroke: var(--color-success);
+}
+
+.additionalErrorIcon {
+  fill: var(--color-error);
+  stroke: var(--color-error);
+}
+
+.verificationText {
+  font-size: 1rem;
+  line-height: 1.125rem;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.resendButton {
+  padding: 0.75rem;
+  margin-left: 0.9375rem;
+  font-size: 1rem;
+  line-height: 1.125rem;
+  text-align: center;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+
+.resendButton:hover {
+  color: var(--color-primary);
+  background-color: var(--color-text);
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    top: -21.625rem;
+    z-index: 0;
+    width: 25.5625rem;
+    height: 22.4375rem;
+  }
+
+  .formRegister {
+    margin-top: 17.5rem;
+    padding: 2.75rem 3.125rem;
+  }
+
+  .inputGroup {
+    gap: 1.5rem;
+    margin-bottom: 3.125rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+    line-height: 1.875rem;
+  }
+
+  .input,
+  .input::placeholder {
+    font-size: 1.125rem;
+    padding: 1rem 1.125rem;
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .inputWrapper {
+    padding: 1rem 1.125rem;
+  }
+
+  .submitButton {
+    padding: 1.1875rem 10.625rem;
+  }
+
+  .errorMessage {
     font-size: 0.875rem;
     bottom: -1.3125rem;
   }
 }
 
-.statusIcon {
-  /*tu koniec*/
-  position: absolute;
-  right: 10px;
-}
-.additionalSuccessIcon {
-  position: absolute;
-  right: 10px;
-  fill: green;
-  stroke: green;
-}
-.additionalErrorIcon {
-  position: absolute;
-  right: 10px;
-  fill: rgb(255, 5, 5);
-  stroke: rgb(255, 7, 7);
-}
+@media screen and (min-width: 1200px) {
+  .logo {
+    left: -40.4375rem;
+    top: 0;
+    z-index: 2;
+    width: 33.25rem;
+    height: 29.25rem;
+  }
 
-.successMessage {
-  color: #ffffff;
-}
-.verificationText {
-  font-style: normal;
-  line-height: 18px;
-  font-size: 16px;
-  text-align: center;
-  color: #fafafa;
-}
-.resendButton {
-  padding-block: 12px;
-  margin-left: 15px;
-
-  font-style: normal;
-  line-height: 18px;
-  font-size: 16px;
-  text-align: center;
-  color: #fafafa;
-
-  background-color: #8baa36;
-  border: none;
-  border-radius: 8px;
-
-  transition: all 0.3s;
-}
-
-.resendButton:hover {
-  color: #8baa36;
-
-  background-color: #fafafa;
-  border-color: #8baa36;
+  .formRegister {
+    margin-top: 0;
+  }
 }
