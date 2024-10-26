@@ -1,13 +1,12 @@
-import styles from "./CardOwnRecipe.module.css";
-import sprite from "../../assets/icons/sprite.svg";
-
 import React from "react";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
 import { NavLink, useLocation } from "react-router-dom";
-import { deleteRecipe } from "../../redux/ownRecipes/operations";
 import { toast } from "react-toastify";
+import { AppDispatch } from "../../redux/store";
+import { deleteRecipe } from "../../redux/ownRecipes/operations";
 import { removeFromFavorite } from "../../redux/favoriteRecipes/operations";
+import styles from "./CardOwnRecipe.module.css";
+import sprite from "../../assets/icons/sprite.svg";
 
 interface OwnRecipe {
   _id: string;
@@ -17,22 +16,25 @@ interface OwnRecipe {
   time: string;
 }
 
-interface Props {
+interface CardOwnRecipeProps {
   ownRecipe: OwnRecipe;
 }
 
-const CardOwnRecipe = ({ ownRecipe }: Props) => {
+const CardOwnRecipe: React.FC<CardOwnRecipeProps> = ({ ownRecipe }) => {
   const dispatch: AppDispatch = useDispatch();
   const { pathname } = useLocation();
-  const handleDelete = (id: string) => {
-    dispatch(deleteRecipe(id));
+  const { _id, preview, title, description, time } = ownRecipe;
+
+  const handleDelete = () => {
+    dispatch(deleteRecipe(_id));
   };
-  const handleRemove = (id: string) => {
-    dispatch(removeFromFavorite(id));
+
+  const handleRemove = () => {
+    dispatch(removeFromFavorite(_id));
     toast.success("Recipe removed from favorites");
   };
 
-  const { _id, preview, title, description, time } = ownRecipe;
+  const isFavorite = pathname === "/favorite";
 
   return (
     <div className={styles.myRecipesList__card}>
@@ -41,29 +43,19 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
         width="124"
         height="124"
         className={styles.myRecipesList__image}
-        alt="recipe photo"
+        alt={`${title} recipe`}
       />
       <div className={styles.myRecipesList__info}>
         <div className={styles.myRecipesList__rowFirst}>
           <h2 className={styles.myRecipesList__title}>{title}</h2>
           <button
             type="button"
-            onClick={() =>
-              pathname === "/favorite" ? handleRemove(_id) : handleDelete(_id)
-            }
+            onClick={isFavorite ? handleRemove : handleDelete}
             className={styles.myRecipesList__deleteBtn}
+            aria-label={isFavorite ? "Remove from favorites" : "Delete recipe"}
           >
-            <svg
-              className={
-                pathname === "/favorite"
-                  ? styles.myRecipesList__iconBgRemove
-                  : styles.myRecipesList__iconBgDelete
-              }
-            >
-              <use
-                href={sprite + `#icon-trash-01`}
-                className={styles.myRecipesList__iconDel}
-              ></use>
+            <svg className={isFavorite ? styles.myRecipesList__iconBgRemove : styles.myRecipesList__iconBgDelete}>
+              <use href={`${sprite}#icon-trash-01`} className={styles.myRecipesList__iconDel} />
             </svg>
           </button>
         </div>
@@ -72,13 +64,9 @@ const CardOwnRecipe = ({ ownRecipe }: Props) => {
           <p className={styles.myRecipesList__time}>{time} min</p>
           <NavLink
             to={`/recipe/${_id}`}
-            className={
-              pathname === "/favorite"
-                ? `${styles.myRecipesList__favSeeBtn} ${styles.myRecipesList__txtFavBtn}`
-                : `${styles.myRecipesList__seeBtn} ${styles.myRecipesList__txtBtn}`
-            }
+            className={`${styles.myRecipesList__seeBtn} ${isFavorite ? styles.myRecipesList__txtFavBtn : styles.myRecipesList__txtBtn}`}
           >
-            See recipes
+            See recipe
           </NavLink>
         </div>
       </div>
