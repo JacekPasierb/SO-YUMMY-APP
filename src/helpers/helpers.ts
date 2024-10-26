@@ -7,6 +7,7 @@ import emptySearchImageTablet1x from "../images/searchMobile1x.png";
 import emptySearchImageTablet2x from "../images/searchTablet2x.png";
 import emptySearchImageDesktop1x from "../images/searchDesktop1x.png";
 import emptySearchImageDesktop2x from "../images/searchDesktop2x.png";
+import logo from "../images/logos";
 
 export const getRecipeImage = (
   isMobile: boolean,
@@ -30,4 +31,20 @@ export const getEmptySearchImage = (
   if (isTablet)
     return isRetina ? emptySearchImageTablet2x : emptySearchImageTablet1x;
   return isRetina ? emptySearchImageMobile2x : emptySearchImageMobile1x;
+};
+
+export const getLogoSrc = (
+  isMobile: boolean,
+  isTablet: boolean,
+  isDesktop: boolean
+) => {
+  const isRetina = window.devicePixelRatio > 1;
+
+  if (isDesktop) {
+    return isRetina ? logo.desktop2x : logo.desktop1x;
+  } else if (isTablet) {
+    return isRetina ? logo.tablet2x : logo.tablet1x;
+  } else {
+    return isRetina ? logo.mobile2x : logo.mobile1x;
+  }
 };

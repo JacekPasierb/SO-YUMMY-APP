@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "@react-hook/media-query";
@@ -16,6 +16,7 @@ import icons from "../../assets/icons/sprite.svg";
 import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
 import logo from "../../images/logos";
+import { getLogoSrc } from "../../helpers/helpers";
 
 interface SigninFormValues {
   email: string;
@@ -24,22 +25,13 @@ interface SigninFormValues {
 
 const SigninForm: React.FC  = () => {
   const [emailForResend, setEmailForResend] = useState<string | null>(null);
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
 
   // Ustalanie źródła logo na podstawie warunków
-  const logoSrc = isDesktop
-    ? isRetina
-      ? logo.desktop2x
-      : logo.desktop1x
-    : isTablet
-    ? isRetina
-      ? logo.tablet2x
-      : logo.tablet1x
-    : isRetina
-    ? logo.mobile2x
-    : logo.mobile1x;
+  const logoSrc = useMemo(() => getLogoSrc(isMobile, isTablet, isDesktop), [isMobile, isTablet, isDesktop]);
 
   const dispatch: AppDispatch = useDispatch();
   const error = useSelector(selectError);
