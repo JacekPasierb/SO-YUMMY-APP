@@ -22,13 +22,13 @@ interface MediaQueries {
 
 const MainPage: FC = () => {
   const navigate = useNavigate();
-    // Funkcja obsługująca przekierowanie na stronę wyszukiwania
-    const handleSearchSubmit = (searchValue: string) => {
-      if (searchValue?.trim()) {
-        navigate(`/search?query=${encodeURIComponent(searchValue)}`);  // Przekierowanie na SearchPage z query
-      }
-    };
-    
+  // Funkcja obsługująca przekierowanie na stronę wyszukiwania
+  const handleSearchSubmit = (searchValue: string) => {
+    if (searchValue?.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchValue)}`); // Przekierowanie na SearchPage z query
+    }
+  };
+
   const renderContent = (matches: MediaQueries) => (
     <>
       <Header />
@@ -39,7 +39,7 @@ const MainPage: FC = () => {
             <div>
               <AppTitle />
               <AppDescription />
-              <SearchForm onSearchSubmit={handleSearchSubmit}/>
+              <SearchForm onSearchSubmit={handleSearchSubmit} />
             </div>
             {/* On small screens, render ChooseYourBreakfast within this div */}
             {!matches.small && <ChooseYourBreakfast />}
@@ -55,7 +55,7 @@ const MainPage: FC = () => {
         }`}
       >
         <PreviewsCategories />
-        <ButtonOtherCategories text="Other categories" categoryName="Beef"/>
+        <ButtonOtherCategories text="Other categories" categoryName="Beef" />
       </div>
     </>
   );

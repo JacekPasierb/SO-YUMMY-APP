@@ -85,9 +85,9 @@
   --transition-speed: 0.3s; /* Transition speed for hover effects */
 
   /* Breakpoints for Responsive Design */
-  --breakpoint-xs: 480px; /* Extra small screens */
-  --breakpoint-md: 768px; /* Medium screens */
-  --breakpoint-lg: 1200px; /* Large screens */
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1200px;
 
   /* --color-text-third: #001833;
   --font-size-primary: 12px; */

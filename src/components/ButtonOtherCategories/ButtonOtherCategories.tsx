@@ -7,7 +7,10 @@ interface ButtonOtherCategoriesProps {
   categoryName: string;
 }
 
-const ButtonOtherCategories: React.FC<ButtonOtherCategoriesProps> = ({ text, categoryName }) => {
+const ButtonOtherCategories: React.FC<ButtonOtherCategoriesProps> = ({
+  text,
+  categoryName,
+}) => {
   return (
     <NavLink
       to={`/categories/${categoryName}`}
