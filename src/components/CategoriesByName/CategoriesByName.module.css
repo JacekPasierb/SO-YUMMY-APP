@@ -1,22 +1,25 @@
 .recipesListItem {
-  width: 100%;
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex-basis: calc((100% - 14 * 3px) / 4);
+  }
 }
 
 .recipesList {
   display: flex;
   flex-direction: column;
   gap: 28px;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  padding: 0;
-  list-style: none;
+  margin-block: 32px;
+
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 32px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-block: 50px;
   }
 
   @media screen and (min-width: 1200px) {
@@ -28,7 +31,6 @@
 .loaderContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-  margin: 0 auto;
+  margin: 10vh auto;
+
 }
