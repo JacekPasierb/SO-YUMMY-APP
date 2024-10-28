@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { NavLink, useNavigate, useParams, useLocation } from "react-router-dom";
+import React from "react";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsLoading,
@@ -20,7 +20,6 @@ const DEFAULT_CATEGORY = "Beef";
 
 const CategoriesByName: React.FC = () => {
   const { categoryName } = useParams();
-  const location = useLocation();
   const currentPage = getPageFromQueryString();
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,21 +33,19 @@ const CategoriesByName: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  useEffect(() => {
-    // Sprawdzamy czy jesteśmy na głównej ścieżce kategorii
-    if (location.pathname === "/categories") {
-      navigate(`/categories/${DEFAULT_CATEGORY}`, { replace: true });
+  React.useEffect(() => {
+    const category =
+      categoryName && categoryName !== ":categoryName"
+        ? categoryName
+        : DEFAULT_CATEGORY;
+
+    if (categoryName === ":categoryName" || !categoryName) {
+      navigate(`/categories/${DEFAULT_CATEGORY}`);
       return;
     }
 
-    // Sprawdzamy czy mamy prawidłową nazwę kategorii
-    if (!categoryName || categoryName === ":categoryName") {
-      navigate(`/categories/${DEFAULT_CATEGORY}`, { replace: true });
-      return;
-    }
-
-    dispatch(getRecipesByCategory({ category: categoryName, page: currentPage }));
-  }, [dispatch, categoryName, currentPage, navigate, location.pathname]);
+    dispatch(getRecipesByCategory({ category, page: currentPage }));
+  }, [dispatch, categoryName, currentPage, navigate]);
 
   if (isLoading) {
     return (
@@ -59,7 +56,7 @@ const CategoriesByName: React.FC = () => {
   }
 
   if (!recipes || recipes.length === 0) {
-    navigate("/*", { replace: true });
+    navigate("/*");
     return null;
   }
 
