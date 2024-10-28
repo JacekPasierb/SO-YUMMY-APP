@@ -1,10 +1,3 @@
-:root {
-  --color-bg-body: #FAFAFA;
-  --color-text-description-secondary: #3E4462;
-  --color-text-highlight: #8BAA36;
-  --color-text-link: #3E4462;
-}
-
 .container {
   position: relative;
   width: 100%;
@@ -75,7 +68,7 @@
   transform: translateX(4px);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: var(--breakpoint-tablet)) {
   .recipeInfo {
     right: 10%;
     bottom: 10%;
@@ -97,7 +90,7 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: var(--breakpoint-desktop)) {
   .image {
     padding-right: 184px;
   }
