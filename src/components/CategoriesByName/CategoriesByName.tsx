@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -33,18 +33,13 @@ const CategoriesByName: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  React.useEffect(() => {
-    const category = categoryName && categoryName !== ":categoryName" 
-      ? categoryName 
-      : DEFAULT_CATEGORY;
-console.log("cat",category);
-
-    if (categoryName === ":categoryName" || !categoryName) {
-      navigate(`/categories/${DEFAULT_CATEGORY}`);
+  useEffect(() => {
+    if (!categoryName || categoryName === ":categoryName") {
+      navigate(`/categories/${DEFAULT_CATEGORY}`, { replace: true });
       return;
     }
 
-    dispatch(getRecipesByCategory({ category, page: currentPage }));
+    dispatch(getRecipesByCategory({ category: categoryName, page: currentPage }));
   }, [dispatch, categoryName, currentPage, navigate]);
 
   if (isLoading) {
@@ -56,7 +51,7 @@ console.log("cat",category);
   }
 
   if (!recipes || recipes.length === 0) {
-    navigate("/*");
+    navigate("/*", { replace: true });
     return null;
   }
 
