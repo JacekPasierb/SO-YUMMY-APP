@@ -10,7 +10,7 @@
 .logo {
   position: absolute;
   top: -13.75rem;
-  left: 50%;
+  left: center;
   transform: translateX(-50%);
   z-index: -1;
   width: 17.8125rem;
