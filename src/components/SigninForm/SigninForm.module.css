@@ -1,20 +1,20 @@
 :root {
-  --color-primary: #8baa36;
-  --color-background: #2a2c36;
-  --color-text: #fafafa;
-  --color-error: #ff0505;
-  --color-success: #3cbc81;
-  --color-border: #8a8787;
+  --color-primary: #8BAA36;
+  --color-background: #2A2C36;
+  --color-text: #FAFAFA;
+  --color-error: #FF0505;
+  --color-success: #3CBC81;
+  --color-border: #8A8787;
 }
 
 .logo {
   position: absolute;
-  top: -13.75rem;
+  top: -220px;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
-  width: 17.8125rem;
-  height: 15.625rem;
+  width: 285px;
+  height: 250px;
   background-position: center;
 }
 
@@ -151,15 +151,15 @@
 
 @media screen and (min-width: 768px) {
   .logo {
-    top: -21.625rem;
+    top: -346px;
+    width: 409px;
+    height: 359px;
     z-index: 0;
-    width: 25.5625rem;
-    height: 22.4375rem;
   }
 
   .formRegister {
-    margin-top: 17.5rem;
-    padding: 2.75rem 3.125rem;
+    margin-top: 280px;
+    padding: 44px 50px;
   }
 
   .inputGroup {
@@ -199,11 +199,13 @@
 
 @media screen and (min-width: 1200px) {
   .logo {
-    left: -40.4375rem;
+    position: absolute;
     top: 0;
+    left: 0;
+    transform: translateX(-115%);
+    width: 532px;
+    height: 468px;
     z-index: 2;
-    width: 33.25rem;
-    height: 29.25rem;
   }
 
   .formRegister {
