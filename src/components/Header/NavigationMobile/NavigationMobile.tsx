@@ -11,7 +11,7 @@ const NavigationMobile: FC<NavigationMobileProps> = ({ onClose }) => {
   return (
     <nav className={styles.navigation}>
       <NavLink
-        to="/categories/:categoryName"
+        to="/categories/Beef"
         className={styles.navigation__link}
       >
         <span className={styles.navigation__text} onClick={onClose}>
