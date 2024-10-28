@@ -37,6 +37,7 @@ const CategoriesByName: React.FC = () => {
     const category = categoryName && categoryName !== ":categoryName" 
       ? categoryName 
       : DEFAULT_CATEGORY;
+console.log("cat",category);
 
     if (categoryName === ":categoryName" || !categoryName) {
       navigate(`/categories/${DEFAULT_CATEGORY}`);
