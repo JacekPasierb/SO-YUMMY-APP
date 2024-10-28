@@ -34,11 +34,11 @@ const CategoriesByName: React.FC = () => {
   };
 
   React.useEffect(() => {
-    const category = categoryName && categoryName !== ":categoryName" 
+    const category = categoryName && categoryName !== "Beef" 
       ? categoryName 
       : DEFAULT_CATEGORY;
 
-    if (categoryName === ":categoryName" || !categoryName) {
+    if (categoryName === "Beef" || !categoryName) {
       navigate(`/categories/${DEFAULT_CATEGORY}`);
       return;
     }
