@@ -4,7 +4,7 @@ import styles from "./Nav.module.css";
 
 const NAV_ITEMS = [
   {
-    path: "/search?ingredient=''",
+    path: "/search?ingredient",
     label: "Ingredients",
   },
   {
