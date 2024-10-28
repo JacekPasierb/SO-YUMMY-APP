@@ -3,19 +3,23 @@
   flex-direction: row;
   gap: 14px;
   margin-top: 44px;
-
-  @media screen and (min-width: 768px) {
-    gap: 18px;
-    justify-content: center;
-    margin-top: 38px;
-  }
-  
-  @media screen and (min-width: 1200px) {
-    margin-top: 41px;
-  }
 }
 
 .followUs__icon {
   width: 20px;
   height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .followUs__list {
+    gap: 18px;
+    justify-content: center;
+    margin-top: 38px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .followUs__list {
+    margin-top: 41px;
+  }
 }
