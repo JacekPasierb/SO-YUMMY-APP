@@ -151,7 +151,7 @@ const App: FC = () => {
             path="/categories"
             element={<PrivateRoute component={<CategoriesPage />} />}
           >
-            <Route path="/Beef" element={<CategoriesByName />} />
+            <Route path=":categoryName" element={<CategoriesByName />} />
           </Route>
           <Route
             path="/favorite"

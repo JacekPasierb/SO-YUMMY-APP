@@ -7,7 +7,7 @@ const Navigation: React.FC = () => {
   return (
     <nav className={styles.navigation}>
       <NavLink
-        to="/categories/Beef"
+        to="/categories/:categoryName"
         className={styles.navigation__link}
       >
         <span className={styles.navigation__text}>Categories</span>
