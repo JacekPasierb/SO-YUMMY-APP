@@ -1,36 +1,48 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import css from "./Nav.module.css";
+import { NavLink } from "react-router-dom";
+import styles from "./Nav.module.css";
 
-const Nav = () => {
+const NAV_ITEMS = [
+  {
+    path: "/search",
+    label: "Ingredients",
+  },
+  {
+    path: "/add",
+    label: "Add Recipes",
+  },
+  {
+    path: "/ownRecipes",
+    label: "My Recipes",
+  },
+  {
+    path: "/favorite",
+    label: "Favorites",
+  },
+  {
+    path: "/shopping-list",
+    label: "Shopping List",
+  },
+] as const;
+
+const Nav: React.FC = () => {
   return (
-    <nav className={css.navigationMain}>
-      <ul className={css.navigationList}>
-        <li className={css.navigationListItem}>
-          <Link to="/search" className={css.link}>
-            Ingredients
-          </Link>
-        </li>
-        <li className={css.navigationListItem}>
-          <Link to="/add" className={css.link}>
-            AddRecipes
-          </Link>
-        </li>
-        <li className={css.navigationListItem}>
-          <Link to="/ownRecipes" className={css.link}>
-            MyRecipes
-          </Link>
-        </li>
-        <li className={css.navigationListItem}>
-          <Link to="/favorite" className={css.link}>
-            Favorite
-          </Link>
-        </li>
-        <li className={css.navigationListItem}>
-          <Link to="/shopping-list" className={css.link}>
-            Shopping List
-          </Link>
-        </li>
+    <nav className={styles.navigation} aria-label="Footer navigation">
+      <ul className={styles.navigation__list}>
+        {NAV_ITEMS.map(({ path, label }) => (
+          <li key={path} className={styles.navigation__item}>
+            <NavLink
+              to={path}
+              className={({ isActive }) =>
+                `${styles.navigation__link} ${
+                  isActive ? styles.navigation__link_active : ""
+                }`
+              }
+            >
+              {label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
