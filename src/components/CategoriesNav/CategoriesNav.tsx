@@ -1,25 +1,61 @@
-import { Tab, Tabs } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+import { Tab, Tabs } from "@mui/material";
+import { toast } from "react-toastify";
+import { AppDispatch } from "../../redux/store";
 import {
   selectCategoriesList,
   selectError,
   selectIsLoading,
 } from "../../redux/recipes/selectors";
-import { AppDispatch } from "../../redux/store";
 import { getCategoriesList } from "../../redux/recipes/operations";
 
-const CategoriesNav = () => {
+const COLORS = {
+  primary: "#8BAA36",
+  border: "#E0E0E0",
+  tabInactive: "#E0E0E0",
+};
+
+const TAB_STYLES = {
+  tabs: {
+    marginTop: "20px",
+    borderBottom: `1px solid ${COLORS.border}`,
+    "& .MuiTabs-indicator": {
+      backgroundColor: COLORS.primary,
+    },
+    "& .MuiTab-root": {
+      outline: "none",
+    },
+    "& .MuiButtonBase-root": {
+      padding: "10px 10px 32px 10px",
+    },
+    "& .MuiTabs-flexContainer": {
+      gap: "28px",
+    },
+  },
+  tab: {
+    padding: "0",
+    fontSize: "14px",
+    lineHeight: "14px",
+    color: COLORS.tabInactive,
+    "&.Mui-selected": {
+      color: COLORS.primary,
+    },
+  },
+};
+
+const CategoriesNav: React.FC = () => {
   const navigate = useNavigate();
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
+  const dispatch: AppDispatch = useDispatch();
+  
   const categoriesList = useSelector(selectCategoriesList);
   const error = useSelector(selectError);
-  const dispatch: AppDispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
@@ -42,55 +78,28 @@ const CategoriesNav = () => {
     return <p>Failed to load categories</p>;
   }
 
+  if (isLoading || !categoriesList) {
+    return null;
+  }
+
   return (
-    <>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons={false}
-        allowScrollButtonsMobile
-        aria-label="Category Navigation Tabs"
-        sx={{
-          marginTop: `20px`,
-          borderBottom: "1px solid #E0E0E0",
-
-          "& .MuiTabs-indicator": {
-            backgroundColor: `#8BAA36`,
-            marginTop: `100`,
-          },
-
-          "& .MuiTab-root": {
-            outline: `none`,
-          },
-          "& .MuiButtonBase-root": {
-            padding: "10px 10px 32px 10px",
-          },
-          "& .MuiTabs-flexContainer": {
-            gap: "28px",
-          },
-        }}
-      >
-        {categoriesList &&
-          categoriesList.map((category, index) => {
-            return (
-              <Tab
-                label={category}
-                key={index}
-                sx={{
-                  padding: "0",
-                  fontSize: "14px",
-                  lineHeight: "14px",
-                  color: "#E0E0E0",
-                  "&.Mui-selected": {
-                    color: "#8BAA36",
-                  },
-                }}
-              />
-            );
-          })}
-      </Tabs>
-    </>
+    <Tabs
+      value={value}
+      onChange={handleChange}
+      variant="scrollable"
+      scrollButtons={false}
+      allowScrollButtonsMobile
+      aria-label="Category Navigation Tabs"
+      sx={TAB_STYLES.tabs}
+    >
+      {categoriesList.map((category, index) => (
+        <Tab
+          key={category}
+          label={category}
+          sx={TAB_STYLES.tab}
+        />
+      ))}
+    </Tabs>
   );
 };
 
