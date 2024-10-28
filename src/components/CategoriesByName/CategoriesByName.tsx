@@ -1,5 +1,4 @@
-import styles from "./CategoriesByName.module.css";
-import React, { FC, useEffect } from "react";
+import React from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,59 +13,68 @@ import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import { IRecipe } from "../../types/recipesTypes";
 import { ClimbingBoxLoader } from "react-spinners";
+import styles from "./CategoriesByName.module.css";
 
-const CategoriesByName: FC = () => {
+const ITEMS_PER_PAGE = 8;
+const DEFAULT_CATEGORY = "Beef";
+
+const CategoriesByName: React.FC = () => {
   const { categoryName } = useParams();
-
   const currentPage = getPageFromQueryString();
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
+
   const recipes = useSelector(selectRecipesByCategory);
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
 
   const handlePageChange = (page: number) => {
     navigate(`?page=${page}`);
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  useEffect(() => {
-    let category = categoryName ?? "Beef";
-    if (category === ":categoryName" || !category) {
-      category = "Beef";
-      navigate(`/categories/Beef`);
+  React.useEffect(() => {
+    const category = categoryName && categoryName !== ":categoryName" 
+      ? categoryName 
+      : DEFAULT_CATEGORY;
+
+    if (categoryName === ":categoryName" || !categoryName) {
+      navigate(`/categories/${DEFAULT_CATEGORY}`);
+      return;
     }
 
-    const request = { category, page: currentPage };
-    dispatch(getRecipesByCategory(request));
+    dispatch(getRecipesByCategory({ category, page: currentPage }));
   }, [dispatch, categoryName, currentPage, navigate]);
+
+  if (isLoading) {
+    return (
+      <div className={styles.loaderContainer}>
+        <ClimbingBoxLoader color="#8BAA36" />
+      </div>
+    );
+  }
+
+  if (!recipes || recipes.length === 0) {
+    navigate("/*");
+    return null;
+  }
 
   return (
     <>
-      {isLoading ? (
-        <div className={styles.loaderContainer}>
-          <ClimbingBoxLoader color="#8BAA36" />
-        </div>
-      ) : recipes && recipes.length > 0 ? (
-        <>
-          <ul className={styles.recipesList}>
-            {recipes.map((recipe: IRecipe) => (
-              <li key={recipe._id} className={styles.recipesListItem}>
-                <NavLink to={`/recipe/${recipe._id}`}>
-                  <CardRecipe title={recipe.title} preview={recipe.preview} />
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-          <BasicPagination
-            count={Math.ceil(totalRecipes / 8)}
-            page={currentPage}
-            onPageChange={handlePageChange}
-          />
-        </>
-      ) : (
-        navigate("/*")
-      )}
+      <ul className={styles.recipesList}>
+        {recipes.map((recipe: IRecipe) => (
+          <li key={recipe._id} className={styles.recipesListItem}>
+            <NavLink to={`/recipe/${recipe._id}`}>
+              <CardRecipe title={recipe.title} preview={recipe.preview} />
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+      <BasicPagination
+        count={Math.ceil(totalRecipes / ITEMS_PER_PAGE)}
+        page={currentPage}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };
