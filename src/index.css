@@ -1,163 +1,135 @@
 /* Importing Fonts */
 @import "./stylesheet/fonts.css";
 
-/* Root Variables for Colors, Sizes, and Other Common Values */
+/* Root Variables */
 :root {
- 
+  /* Typography */
   --font-family-primary: "Poppins", "Circe", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif; /* Font stack */
+    sans-serif;
+  --font-size-base: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-xs: 0.75rem;
+  --font-size-large: 1.5rem;
 
-  --font-size-base: 1rem; /* Base font size */
-  --font-size-asaid: 0.75rem; /* Asaid font size */
-  --font-size-small: 0.875rem; /* Small font size */
-  --font-size-large: 1.5rem; /* Large font size */
-
-  --border-radius: 0.375rem; /* Border radius for inputs and buttons */
-  --transition-speed: 0.3s; /* Transition speed for hover effects */
-
-  /* Breakpoints for Responsive Design */
+  /* Layout */
+  --border-radius: 0.375rem;
+  --transition-duration: 0.3s;
   --breakpoint-mobile: 480px;
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1200px;
 
-  /* --color-text-third: #001833;
-  --font-size-primary: 12px; */
-
-  /* NEW VARIABLES METHOD */
-
-  /* Text colors */
-  --color-text-nav: rgba(35, 38, 42, 1);
-  --color-text-highlight: rgba(139, 170, 54, 1);
-  --color-text-title: rgba(34, 37, 42, 1);
-
-  --color-text-description: rgba(35, 38, 42, 1);
-  --color-text-placeholder: rgba(
-    189,
-    189,
-    189,
-    1
-  ); /* #BDBDBD  placeholder search input */
+  /* Colors - Light Theme */
+  /* Text Colors */
+  --color-text-nav: #23262a;
+  --color-text-highlight: #8baa36;
+  --color-text-title: #22252a;
+  --color-text-description: #23262a;
+  --color-text-placeholder: #bdbdbd;
   --color-text-placeholders: rgba(141, 139, 139, 0.886);
-  --color-text-btn-primary: rgba(250, 250, 250, 1); /* FAFAFA */
-  --color-text-description-secondary: rgba(42, 44, 54, 1);
-  --color-text-description-third: rgba(
-    126,
-    126,
-    126,
-    1
-  );
-  --color-text-link: rgba(62, 68, 98, 1); /* #3E4462 */
-  --color-text-subtitle: rgba(0, 24, 51, 1);
-  --color-text-input: rgba(35, 38, 42, 1);
-  --color-text-pagination: rgba(35, 38, 42, 1);
---color-text-input-secondary:rgba(0, 0, 0, 1);
---color-text-select:rgba(1, 1, 1, .60);
---color-text-counter:rgba(51, 51, 51, 1);
+  --color-text-btn-primary: #fafafa;
+  --color-text-description-secondary: #2a2c36;
+  --color-text-description-third: #7e7e7e;
+  --color-text-link: #3e4462;
+  --color-text-subtitle: #001833;
+  --color-text-input: #23262a;
+  --color-text-pagination: #23262a;
+  --color-text-input-secondary: #000000;
+  --color-text-select: rgba(1, 1, 1, 0.6);
+  --color-text-counter: #333333;
 
-  /* Background colors */
-  --color-bg-btn-search: rgba(34, 37, 42, 1); /* #22252A */
-  --color-bg-body: rgba(250, 250, 250, 1);
-  --color-bg-card: rgba(255, 255, 255, 1)  ;
-  --color-bg-btn: rgba(139, 170, 54, 1);
-  --color-bg-btn-primary: rgba(34, 37, 42, 1)  ;
-  --color-bg-btn-secondary: rgba(139, 170, 54, 1);
-  --color-bg-footer: rgba(34, 37, 42, 1);
-  --color-bg-icons: rgba(139, 170, 54, 1);
-  --color-bg-menuModal: rgba(235, 243, 212, 1);
-  --color-bg-iconRemove: rgba(235, 243, 212, 1);
-  --color-bg-ingredient: rgba(235, 243, 212, 1);
-  --color-bg-pagination-select: rgba(235, 243, 212, 1);
-  --color-bg-pagination-hover: rgb(102, 102, 102);
-  --color-bg-pagination: rgba(250, 250, 250, 1);
---color-bg-selectMenu:rgba(250, 250, 250, 1);
---color-bg-select: rgba(217, 217, 217, 1);
---color-bg-scrollbar-thumb:rgba(231, 229, 229, 1);
---color-bg-scrollbar-track:rgba(250, 250, 250, 1);
---color-bg-selected:rgba(139, 170, 54, 1);
+  /* Background Colors */
+  --color-bg-btn-search: #22252a;
+  --color-bg-body: #fafafa;
+  --color-bg-card: #ffffff;
+  --color-bg-btn: #8baa36;
+  --color-bg-btn-primary: #22252a;
+  --color-bg-btn-secondary: #8baa36;
+  --color-bg-footer: #22252a;
+  --color-bg-icons: #8baa36;
+  --color-bg-menuModal: #ebf3d4;
+  --color-bg-iconRemove: #ebf3d4;
+  --color-bg-ingredient: #ebf3d4;
+  --color-bg-pagination-select: #ebf3d4;
+  --color-bg-pagination-hover: #666666;
+  --color-bg-pagination: #fafafa;
+  --color-bg-selectMenu: #fafafa;
+  --color-bg-select: #d9d9d9;
+  --color-bg-scrollbar-thumb: #e7e5e5;
+  --color-bg-scrollbar-track: #fafafa;
+  --color-bg-selected: #8baa36;
 
-  /* Border colors*/
+  /* Border Colors */
   --color-border-search: #f0f0f0;
-  --color-border-btn: rgba(139, 170, 54, 1);
-  --color-border-input: rgba(35, 38, 42, 1);
-  --color-border-line: rgba(224, 224, 224, 1);
+  --color-border-btn: #8baa36;
+  --color-border-input: #23262a;
+  --color-border-line: #e0e0e0;
 
-  --color-Hamburger: rgba(34, 37, 42, 1);
-
-  --color-stroke-icon: rgba(34, 37, 42, 1);
-  --color-stroke-iconPlus:rgba(139, 170, 54, 1);
-
+  /* Other Colors */
+  --color-hamburger: #22252a;
+  --color-stroke-icon: #22252a;
+  --color-stroke-icon-plus: #8baa36;
   --box-shadow-pagination: rgba(135, 135, 135, 0.2);
 }
 
+/* Dark Theme Colors */
 .dark-theme {
-  /* Text colors */
-  --color-text-nav: rgba(250, 250, 250, 1);
-  --color-text-title: rgba(250, 250, 250, 1);
- 
-  --color-text-description: rgba(250, 250, 250, 1);
-  --color-text-placeholder: rgba(
-    250,
-    250,
-    250,
-    1
-  ); /* #FAFAFA placeholder search input */
-  --color-text-description-secondary: rgba(250, 250, 250, 1);
-  --color-text-link: rgba(250, 250, 250, 1);
-  --color-text-subtitle: rgba(250, 250, 250, 1);
-  --color-text-input: rgba(250, 250, 250, 1);
-  --color-text-pagination: rgba(250, 250, 250, 1);
-  --color-text-input-secondary:rgba(250, 250, 250, 1);
-  --color-text-select:rgba(250, 250, 250, 1);
-  --color-text-counter:rgba(250, 250, 250, 1);
+  /* Text Colors */
+  --color-text-nav: #fafafa;
+  --color-text-title: #fafafa;
+  --color-text-description: #fafafa;
+  --color-text-placeholder: #fafafa;
+  --color-text-description-secondary: #fafafa;
+  --color-text-link: #fafafa;
+  --color-text-subtitle: #fafafa;
+  --color-text-input: #fafafa;
+  --color-text-pagination: #fafafa;
+  --color-text-input-secondary: #fafafa;
+  --color-text-select: #fafafa;
+  --color-text-counter: #fafafa;
 
-  /* Background colors */
-  --color-bg-btn-search: rgba(139, 170, 54, 1); /* 8BAA36 */
-  --color-bg-body: rgba(30, 31, 40, 1)  ;
-  --color-bg-card: rgba(42, 44, 54, 1);
-  --color-bg-footer: rgba(139, 170, 54, 1);
-  --color-bg-btn-primary: rgba(139, 170, 54, 1);
-  --color-bg-btn-secondary: rgba(30, 31, 40, 1);
-  --color-bg-icons: rgba(250, 250, 250, 1);
-  --color-bg-menuModal: rgba(30, 31, 40, 1);
-  --color-bg-iconRemove: rgba(30, 31, 40, 1);
-  --color-bg-ingredient: rgba(42, 44, 54, 1);
-  --color-bg-pagination-select: rgba(139, 170, 54, 1);
-  --color-bg-pagination: rgba(42, 44, 54, 1);
-  --color-bg-selectMenu:rgba(139, 170, 54, 1);
-  --color-bg-select: rgba(42, 44, 54, 1);
-  --color-bg-scrollbar-thumb:rgba(30, 31, 40, 1);
-  --color-bg-scrollbar-track:rgba(139, 170, 54, 1);
-  --color-bg-selected:rgba(250, 250, 250, 1);
+  /* Background Colors */
+  --color-bg-btn-search: #8baa36;
+  --color-bg-body: #1e1f28;
+  --color-bg-card: #2a2c36;
+  --color-bg-footer: #8baa36;
+  --color-bg-btn-primary: #8baa36;
+  --color-bg-btn-secondary: #1e1f28;
+  --color-bg-icons: #fafafa;
+  --color-bg-menuModal: #1e1f28;
+  --color-bg-iconRemove: #1e1f28;
+  --color-bg-ingredient: #2a2c36;
+  --color-bg-pagination-select: #8baa36;
+  --color-bg-pagination: #2a2c36;
+  --color-bg-selectMenu: #8baa36;
+  --color-bg-select: #2a2c36;
+  --color-bg-scrollbar-thumb: #1e1f28;
+  --color-bg-scrollbar-track: #8baa36;
+  --color-bg-selected: #fafafa;
 
-
-  /* Border colors*/
-  --color-border-search: rgba(139, 170, 54, 1);
-  --color-border-input: rgba(250, 250, 250, 1);
+  /* Border Colors */
+  --color-border-search: #8baa36;
+  --color-border-input: #fafafa;
   --color-border-line: rgba(250, 250, 250, 0.2);
 
-  --color-Hamburger: rgba(250, 250, 250, 1);
-
-  --color-stroke-icon: rgba(250, 250, 250, 1);
-
+  /* Other Colors */
+  --color-hamburger: #fafafa;
+  --color-stroke-icon: #fafafa;
   --box-shadow-pagination: rgba(31, 30, 30, 0.2);
 }
 
-/* Apply box-sizing globally to ensure padding/border are included in element width and height */
+/* Base Styles */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Global Styles */
 body {
-  min-width: 320px; /* Minimum width for responsiveness */
-  margin: 0; /* Remove default margin */
-
-  font-family: var(--font-family-primary); /* Applying primary font */
-
-  background-color: var(--color-bg-primary); /* Set background color */
+  min-width: 320px;
+  margin: 0;
+  font-family: var(--font-family-primary);
+  background-color: var(--color-bg-body);
 }
 
 h1 {
@@ -168,9 +140,7 @@ h1 {
 ul {
   margin: 0;
   padding: 0;
-
   list-style: none;
-  text-decoration: none;
 }
 
 a {
@@ -179,25 +149,10 @@ a {
 
 button {
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color var(--transition-duration);
 }
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  a:hover {
-    color: #fafafa;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-/* dark-theme.css */
-body.dark-theme {
-  background-color:rgba(30, 31, 40, 1) ;
 }
