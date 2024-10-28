@@ -3,8 +3,11 @@
   flex-direction: column;
   gap: 28px;
   margin-block: 32px;
+  padding: 0;
 }
-
+.recipesListItem {
+  width: 100%;
+}
 .loaderContainer {
   display: flex;
   justify-content: center;
