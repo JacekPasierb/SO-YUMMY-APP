@@ -1,6 +1,6 @@
 .copyrightsBox {
-  padding-block: 28px;
-
+  padding-top: 28px;
+  padding-bottom: 28px;
   background-color: transparent;
 }
 
@@ -8,43 +8,52 @@
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
-
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    padding: 0 32px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    max-width: 1200px;
-  }
 }
 
 .textBox {
   display: flex;
   flex-direction: row;
-  gap: 14px;
   justify-content: center;
-
-  @media screen and (min-width: 768px) {
-    gap: 28px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    gap: 40px;
-  }
-}
-
-.textMedium {
-  font-weight: medium;
+  gap: 14px;
 }
 
 .text {
   font-size: 10px;
-  line-height: 10px;
-  color: var(--color-text-title); /*new update*/
+  line-height: 1.2;
+  color: var(--color-text-title);
+  transition: color var(--transition-duration) ease;
+}
 
-  @media screen and (min-width: 768px) {
+.text:hover {
+  color: var(--color-text-highlight);
+}
+
+.textMedium {
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  .textBox {
+    gap: 28px;
+  }
+
+  .text {
     font-size: 14px;
-    line-height: 14px;
+    line-height: 1.2;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .textBox {
+    gap: 40px;
   }
 }
