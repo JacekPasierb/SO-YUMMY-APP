@@ -1,25 +1,9 @@
-.registerPage__flex {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-
-  @media screen and (max-width: 480px) {
-    max-width: 335px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-left: 50vw;
-  }
-}
-
 .registerPage {
   display: flex;
   align-items: center;
   height: 100%;
   min-height: 100vh;
-  padding-inline: 20px;
-  padding-top: 87px;
-
+  padding: 87px 20px 0;
   background-image: url("../../images/RectangleMobile1x.png");
   background-repeat: no-repeat;
   background-position: center top 230px;
@@ -33,7 +17,6 @@
 
   @media screen and (min-width: 768px) {
     padding-bottom: 50px;
-
     background-image: url("../../images/RectangleTablet1x.png");
     background-position: center top 280px;
 
@@ -45,8 +28,7 @@
   }
 
   @media screen and (min-width: 1200px) {
-    padding-bottom: 0px;
-
+    padding-bottom: 0;
     background-image: url("../../images/RectangleDesctop1x.png");
     background-position: center top 440px;
 
@@ -55,5 +37,19 @@
       (min-resolution: 2dppx) {
       background-image: url("../../images/RectangleDesctop2x.png");
     }
+  }
+}
+
+.registerPage__flex {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  @media screen and (max-width: 480px) {
+    max-width: 335px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-left: 50vw;
   }
 }
