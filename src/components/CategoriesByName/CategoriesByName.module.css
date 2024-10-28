@@ -36,6 +36,6 @@
     row-gap: 100px;
   }
   .recipesListItem {
-    flex-basis: calc((100% - 14 * 3px) / 4);
+    flex-basis: calc((100% - (14 * 3px)) / 4);
   }
 }
