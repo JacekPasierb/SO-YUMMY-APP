@@ -17,7 +17,9 @@
   align-items: center;
   height: 100%;
   min-height: 100vh;
-  padding: 87px 20px 0;
+  padding-inline: 20px;
+  padding-top: 87px;
+
   background-image: url("../../images/RectangleMobile1x.png");
   background-repeat: no-repeat;
   background-position: center top 230px;
@@ -42,7 +44,8 @@
   }
 
   @media screen and (min-width: 1200px) {
-    padding-bottom: 0;
+    padding-bottom: 0px;
+
     background-image: url("../../images/RectangleDesctop1x.png");
     background-position: center top 440px;
 
