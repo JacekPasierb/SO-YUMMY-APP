@@ -1,18 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Copyrights.module.css";
 
-const Copyrights = () => {
+const CURRENT_YEAR = new Date().getFullYear();
+
+const Copyrights: React.FC = () => {
   return (
-    <div className={styles.copyrightsBox}>
+    <footer className={styles.copyrightsBox}>
       <div className={styles.container}>
         <div className={styles.textBox}>
           <span className={`${styles.text} ${styles.textMedium}`}>
-            © 2023 All Rights Reserved.
+            © {CURRENT_YEAR} All Rights Reserved.
           </span>
-          <span className={styles.text}>Terms of Service</span>
+          <Link to="#" className={styles.text}>
+            Terms of Service
+          </Link>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
