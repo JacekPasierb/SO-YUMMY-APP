@@ -50,7 +50,7 @@ const CategoriesNav: React.FC = () => {
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
   const dispatch: AppDispatch = useDispatch();
-  
+
   const categoriesList = useSelector(selectCategoriesList);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
@@ -93,11 +93,7 @@ const CategoriesNav: React.FC = () => {
       sx={TAB_STYLES.tabs}
     >
       {categoriesList.map((category, index) => (
-        <Tab
-          key={category}
-          label={category}
-          sx={TAB_STYLES.tab}
-        />
+        <Tab key={category} label={category} sx={TAB_STYLES.tab} />
       ))}
     </Tabs>
   );

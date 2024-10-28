@@ -7,8 +7,8 @@ import sprite from "../../assets/icons/sprite.svg";
 import { getRecipeImage } from "../../helpers/helpers";
 
 const ChooseYourBreakfast: React.FC = () => {
-  const isMobile = useMediaQuery("(max-width:768px)");
-  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
+  const isMobile = useMediaQuery("(max-width:767px)");
+  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1199px)");
   const isDesktop = useMediaQuery("(min-width:1200px)");
 
   const recipeImage = useMemo(() => {
@@ -36,7 +36,7 @@ const ChooseYourBreakfast: React.FC = () => {
         >
           See recipes
           <svg className={styles.icon} aria-hidden="true">
-            <use href={sprite + `#icon-arrow-narrow-right`}></use>
+            <use href={`${sprite}#icon-arrow-narrow-right`}></use>
           </svg>
         </NavLink>
       </div>
