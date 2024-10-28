@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsLoading,
@@ -20,6 +20,7 @@ const DEFAULT_CATEGORY = "Beef";
 
 const CategoriesByName: React.FC = () => {
   const { categoryName } = useParams();
+  const location = useLocation();
   const currentPage = getPageFromQueryString();
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,13 +35,20 @@ const CategoriesByName: React.FC = () => {
   };
 
   useEffect(() => {
+    // Sprawdzamy czy jesteśmy na głównej ścieżce kategorii
+    if (location.pathname === "/categories") {
+      navigate(`/categories/${DEFAULT_CATEGORY}`, { replace: true });
+      return;
+    }
+
+    // Sprawdzamy czy mamy prawidłową nazwę kategorii
     if (!categoryName || categoryName === ":categoryName") {
       navigate(`/categories/${DEFAULT_CATEGORY}`, { replace: true });
       return;
     }
 
     dispatch(getRecipesByCategory({ category: categoryName, page: currentPage }));
-  }, [dispatch, categoryName, currentPage, navigate]);
+  }, [dispatch, categoryName, currentPage, navigate, location.pathname]);
 
   if (isLoading) {
     return (
