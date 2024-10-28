@@ -1,6 +1,12 @@
+:root {
+  --color-bg-body: #FAFAFA;
+  --color-text-description-secondary: #3E4462;
+  --color-text-highlight: #8BAA36;
+  --color-text-link: #3E4462;
+}
+
 .container {
   position: relative;
-
   width: 100%;
   height: 100%;
   margin-top: 44px;
@@ -9,10 +15,7 @@
 .image {
   width: 100%;
   height: 100%;
-
-  @media screen and (min-width: 1200px) {
-    padding-right: 184px;
-  }
+  object-fit: cover;
 }
 
 .imageRecipes {
@@ -23,89 +26,92 @@
   position: absolute;
   right: 10%;
   bottom: 40%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   max-width: 75%;
   padding: 8px;
-
   background-color: var(--color-bg-body);
   border-radius: 8px;
-
-  @media screen and (min-width: 768px) {
-    right: 10%;
-    bottom: 10%;
-  }
-
-  @media screen and (min-width: 1200px) {
-    right: -10px;
-    bottom: 20%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .recipeInfo::after {
-    content: "";
-    position: absolute;
-    left: 20px;
-    bottom: -100px;
-
-    width: 80%;
-    height: 100%;
-
-    background: url("../../images/Group53.png") no-repeat;
-    background-size: cover;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .recipeInfo::after {
-    content: "";
-    position: absolute;
-    left: 30%;
-    bottom: -100px;
-
-    max-width: 100%;
-    height: 100%;
-
-    background: url("../../images/Group53Desctop.png") no-repeat;
-    background-size: contain;
-  }
 }
 
 .description {
   font-size: 12px;
-  line-height: 18px;
-  color: var(--color-text-description-secondary); /*new update*/
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
+  line-height: 1.5;
+  color: var(--color-text-description-secondary);
 }
 
 .highlight {
-  color: var(--color-text-highlight); /*new update*/
+  color: var(--color-text-highlight);
 }
 
 .button {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 4px;
   padding: 0;
-
   font-size: 10px;
-  line-height: 12px;
+  line-height: 1.2;
   color: var(--color-text-link);
-
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.button:hover {
+  color: var(--color-text-highlight);
 }
 
 .icon {
   width: 18px;
   height: 18px;
   margin-left: 4px;
+  transition: transform 0.3s ease;
+}
 
-  
+.button:hover .icon {
+  transform: translateX(4px);
+}
+
+@media screen and (min-width: 768px) {
+  .recipeInfo {
+    right: 10%;
+    bottom: 10%;
+  }
+
+  .recipeInfo::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    bottom: -100px;
+    width: 80%;
+    height: 100%;
+    background: url("../../images/Group53.png") no-repeat;
+    background-size: cover;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .image {
+    padding-right: 184px;
+  }
+
+  .recipeInfo {
+    right: -10px;
+    bottom: 20%;
+  }
+
+  .recipeInfo::after {
+    left: 30%;
+    bottom: -100px;
+    max-width: 100%;
+    background: url("../../images/Group53Desctop.png") no-repeat;
+    background-size: contain;
+  }
 }
