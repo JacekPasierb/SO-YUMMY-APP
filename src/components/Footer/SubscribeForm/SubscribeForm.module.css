@@ -61,24 +61,16 @@
 
   font-size: 14px;
   line-height: 1.14;
-  color: var(--color-text-btn-primary); 
+  color: var(--color-text-btn-primary);
 
   background-color: var(--color-bg-btn-secondary);
   border: none;
-  border-radius:var(--border-radius);
-  transition: background-color var(--transition-duration)
+  border-radius: var(--border-radius);
 }
 
 .subscribeButton:disabled {
-  
   cursor: not-allowed;
 }
-
-.subscribeButton:hover:not(:disabled) {
-  background-color: var(--color-text-highlight);
-}
-
-
 
 @media screen and (min-width: 768px) {
   .form {
