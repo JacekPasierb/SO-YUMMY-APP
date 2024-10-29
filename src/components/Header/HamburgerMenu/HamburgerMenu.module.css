@@ -11,15 +11,13 @@
   transition: transform var(--transition-duration) ease;
 }
 
-
-
 .menu__button:focus {
   outline: 2px solid var(--color-text-highlight);
   outline-offset: 2px;
 }
 
 .menu__buttonInner {
-  color: var(--color-text-primary);
+  color: #22252a;
 }
 
 .menu__icon {
