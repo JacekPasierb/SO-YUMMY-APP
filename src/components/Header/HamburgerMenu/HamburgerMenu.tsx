@@ -1,40 +1,51 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { AppDispatch } from "../../../redux/store";
 import styles from "./HamburgerMenu.module.css";
-import menuIcon from "../../../images/menuIkona.png";
 import sprite from "../../../assets/icons/sprite.svg";
-
 import { selectIsMenuModalOpen } from "../../../redux/global/globalSelectors";
 import { setIsMenuModalOpen } from "../../../redux/global/globalSlice";
-import { useLocation } from "react-router";
 
-// Lazy loading for the MenuModal component
 const MenuModal = lazy(() => import("../MenuModal/MenuModal"));
 
-const HamburgerMenu = () => {
-  const dispatch = useDispatch();
+const HamburgerMenu: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const isMenuModalOpen = useSelector(selectIsMenuModalOpen);
-  const location = useLocation();
-  const { pathname} = location;
+  const { pathname } = useLocation();
   const isRecipePage = pathname.startsWith("/recipe/");
 
-  // Toggle function for opening/closing the menu modal
-  const toggleMenuModal = (): void => {
+  const handleToggleMenu = () => {
     dispatch(setIsMenuModalOpen(!isMenuModalOpen));
   };
 
   return (
     <>
-     <svg
-        onClick={toggleMenuModal}
-        className={`${styles.menu__icon} ${isRecipePage && styles.menu__iconInner}`}
-        width="40"
-        height="40"
-        
+      <button
+        type="button"
+        onClick={handleToggleMenu}
+        className={`${styles.menu__button} ${isRecipePage ? styles.menu__buttonInner : ''}`}
+        aria-label="Toggle menu"
+        aria-expanded={isMenuModalOpen}
+        aria-controls="menu-modal"
       >
-        <use href={`${sprite}#icon-Menu`} />
-      </svg>
-      {isMenuModalOpen && <MenuModal onClose={toggleMenuModal} />}
+        <svg 
+          className={styles.menu__icon} 
+          width="40" 
+          height="40"
+          aria-hidden="true"
+        >
+          <use href={`${sprite}#icon-Menu`} />
+        </svg>
+      </button>
+      {isMenuModalOpen && (
+        <Suspense fallback={<div>Loading...</div>}>
+          <MenuModal 
+            onClose={handleToggleMenu}
+            id="menu-modal"
+          />
+        </Suspense>
+      )}
     </>
   );
 };
