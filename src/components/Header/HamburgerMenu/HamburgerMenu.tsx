@@ -24,15 +24,15 @@ const HamburgerMenu: React.FC = () => {
       <button
         type="button"
         onClick={handleToggleMenu}
-        className={`${styles.menu__button} ${
-          isRecipePage ? styles.menu__buttonInner : ""
-        }`}
+        className={`${styles.menu__button} `}
         aria-label="Toggle menu"
         aria-expanded={isMenuModalOpen}
         aria-controls="menu-modal"
       >
         <svg
-          className={styles.menu__icon}
+          className={`${styles.menu__icon} ${
+            isRecipePage ? styles.menu__buttonInner : ""
+          }`}
           width="40"
           height="40"
           aria-hidden="true"
