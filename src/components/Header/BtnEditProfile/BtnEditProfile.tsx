@@ -33,7 +33,7 @@ const BtnEditProfile: React.FC = () => {
       {isUserInfoModalOpen && (
         <UserInfoModal 
           onClose={handleToggleModal}
-          id="user-info-modal"
+          
         />
       )}
     </>
