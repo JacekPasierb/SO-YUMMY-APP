@@ -24,7 +24,9 @@ const HamburgerMenu: React.FC = () => {
       <button
         type="button"
         onClick={handleToggleMenu}
-        className={`${styles.menu__button} `}
+        className={`${styles.menu__button} ${
+          isRecipePage ? styles.menu__button_recipe : ""
+        }`}
         aria-label="Toggle menu"
         aria-expanded={isMenuModalOpen}
         aria-controls="menu-modal"

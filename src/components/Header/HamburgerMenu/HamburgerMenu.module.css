@@ -16,8 +16,8 @@
   outline-offset: 2px;
 }
 
-.menu__buttonInner {
-  stroke: #22252a;
+.menu__button_recipe .menu__icon {
+  stroke: var(--color-text-primary);
 }
 
 .menu__icon {
