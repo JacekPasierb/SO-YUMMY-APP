@@ -70,7 +70,7 @@
 }
 
 .subscribeButton:disabled {
-  background-color: var(--color-bg-disabled);
+  
   cursor: not-allowed;
 }
 
