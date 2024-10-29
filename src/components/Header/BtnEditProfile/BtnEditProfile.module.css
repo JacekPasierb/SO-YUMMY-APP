@@ -1,4 +1,4 @@
-.btn-edit-profile {
+.btnEditProfile {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -15,7 +15,7 @@
   white-space: nowrap;
 }
 
-.btn-edit-profile__icon {
+.btnEditProfile__icon {
   width: 14px;
   height: 14px;
   margin-left: 37px;

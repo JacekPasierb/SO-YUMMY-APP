@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "../../../redux/store";
 import styles from "./BtnEditProfile.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
 import UserInfoModal from "../UserInfoModal/UserInfoModal";
 import { selectIsUserInfoModalOpen } from "../../../redux/global/globalSelectors";
 import { setIsUserInfoModalOpen } from "../../../redux/global/globalSlice";
 
-const BtnEditProfile:React.FC = () => {
+const BtnEditProfile: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const isUserInfoModalOpen = useSelector(selectIsUserInfoModalOpen);
-  const dispatch = useDispatch();
 
-
-  const handleModalClick = () => {
+  const handleToggleModal = () => {
     dispatch(setIsUserInfoModalOpen(!isUserInfoModalOpen));
   };
 
@@ -19,16 +19,23 @@ const BtnEditProfile:React.FC = () => {
     <>
       <button
         type="button"
-        onClick={handleModalClick}
-        className={styles["btn-edit-profile"]}
+        onClick={handleToggleModal}
+        className={styles.btnEditProfile}
+        aria-label="Edit user profile"
         aria-expanded={isUserInfoModalOpen}
+        aria-controls="user-info-modal"
       >
-        Edit profile
-        <svg className={styles["btn-edit-profile__icon"]} aria-hidden="true">
-          <use href={sprite + `#icon-edit-01`}></use>
+        <span className={styles.btnEditProfile__text}>Edit profile</span>
+        <svg className={styles.btnEditProfile__icon} aria-hidden="true">
+          <use href={`${sprite}#icon-edit-01`} />
         </svg>
       </button>
-      {isUserInfoModalOpen && <UserInfoModal onClose={handleModalClick} />}
+      {isUserInfoModalOpen && (
+        <UserInfoModal 
+          onClose={handleToggleModal}
+          id="user-info-modal"
+        />
+      )}
     </>
   );
 };
