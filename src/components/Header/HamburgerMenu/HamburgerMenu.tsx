@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { AppDispatch } from "../../../redux/store";
@@ -24,28 +24,23 @@ const HamburgerMenu: React.FC = () => {
       <button
         type="button"
         onClick={handleToggleMenu}
-        className={`${styles.menu__button} ${isRecipePage ? styles.menu__buttonInner : ''}`}
+        className={`${styles.menu__button} ${
+          isRecipePage ? styles.menu__buttonInner : ""
+        }`}
         aria-label="Toggle menu"
         aria-expanded={isMenuModalOpen}
         aria-controls="menu-modal"
       >
-        <svg 
-          className={styles.menu__icon} 
-          width="40" 
+        <svg
+          className={styles.menu__icon}
+          width="40"
           height="40"
           aria-hidden="true"
         >
           <use href={`${sprite}#icon-Menu`} />
         </svg>
       </button>
-      {isMenuModalOpen && (
-        <Suspense fallback={<div>Loading...</div>}>
-          <MenuModal 
-            onClose={handleToggleMenu}
-            id="menu-modal"
-          />
-        </Suspense>
-      )}
+      {isMenuModalOpen && <MenuModal onClose={handleToggleMenu} />}
     </>
   );
 };
