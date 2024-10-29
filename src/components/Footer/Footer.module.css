@@ -108,9 +108,7 @@
     max-width: 768px;
     padding: 0 32px;
   }
-  .footer__primaryContent {
-    align-items: center;
-  }
+ 
   .footer__content,
   .footer__contentSmall {
     margin-bottom: 72px;
