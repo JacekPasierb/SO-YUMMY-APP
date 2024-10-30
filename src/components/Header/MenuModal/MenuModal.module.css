@@ -1,17 +1,18 @@
 .menuModal__background {
   position: fixed;
-  left: 0;
-  top: 0;
+  inset: 0;
   z-index: 99999;
 
   display: flex;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: var(--color-bg-menuModal);
   background-image: url("../../../images/kisspng-pasta.png");
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: contain;
+  animation: fadeIn var(--transition-duration) ease;
+  justify-content: flex-start;
 }
 
 @media (min-device-pixel-ratio: 2),
@@ -23,7 +24,7 @@
 }
 
 .menuModal {
-  position: relative;
+ 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -31,6 +32,17 @@
   max-width: 480px;
   margin: 0 auto;
   padding: 18px 16px;
+
+  min-height: 100vh;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .menuModal__header {
