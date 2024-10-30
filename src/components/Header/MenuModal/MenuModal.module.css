@@ -24,7 +24,6 @@
 }
 
 .menuModal {
- position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,8 +33,6 @@
   padding: 18px 16px;
 
   min-height: 100vh;
-
-  overflow-x: hidden;
 }
 
 @keyframes fadeIn {
@@ -46,19 +43,11 @@
     opacity: 1;
   }
 }
-
 .menuModal__header {
-  position: relative;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 32px;
-
-  width: calc(100% + 32px); /* Dodane: kompensacja paddingu */
-  margin: -18px -16px 32px -16px; /* Dodane: wyrównanie z krawędziami */
-  padding: 18px 16px; /* Dodane: przywrócenie przestrzeni wewnętrznej */
-
 }
 
 .menuModal__switcher {
@@ -74,14 +63,6 @@
   .menuModal {
     max-width: 768px;
     padding: 18px 32px 32px;
-
-    overflow-x: visible;
-  }
-
-  .menuModal__header {
-    width: 100%; /* Przywracamy normalną szerokość */
-    margin: 0 0 32px 0; /* Przywracamy normalne marginesy */
-    padding: 0; /* Usuwamy padding */
   }
 
   @media (min-device-pixel-ratio: 2),
