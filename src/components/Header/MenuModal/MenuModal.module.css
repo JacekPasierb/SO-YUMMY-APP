@@ -40,11 +40,6 @@
   margin-bottom: 32px;
 }
 
-.menuModal__navigation {
-  flex-grow: 1;
-  margin-bottom: 32px;
-}
-
 .menuModal__switcher {
   display: flex;
   justify-content: flex-start;
