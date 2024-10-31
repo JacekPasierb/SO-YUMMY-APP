@@ -166,11 +166,23 @@ z-index: 999999;
     width: 103px;
     height: 103px;
   }
-  .userInfoModal__inputWrapper {
-    margin-top: 50px;
-  }
   .userInfoModal__input {
     font-size: 18px;
+  }
+
+  .userInfoModal__iconUser,
+  .userInfoModal__iconEdit {
+    width: 24px;
+    height: 24px;
+  }
+
+    .userInfoModal__btnSave {
+    margin-top: 32px;
+    padding: 18px;
+    font-size: 16px;
+  }
+  .userInfoModal__inputWrapper {
+    margin-top: 50px;
   }
   .userInfoModal__iconPicture {
 
