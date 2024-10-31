@@ -52,7 +52,3 @@
   transform: translateX(29px);
 }
 
-.themeToggler__input:focus + .themeToggler__slider {
-  outline: 2px solid var(--color-text-highlight);
-  outline-offset: 2px;
-}
