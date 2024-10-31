@@ -183,6 +183,7 @@ z-index: 999999;
   }
   .userInfoModal__inputWrapper {
     margin-top: 50px;
+    width: 280px;
   }
   .userInfoModal__iconPicture {
 
