@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../../../redux/auth/operations";
 import { AppDispatch } from "src/redux/store";
-import { validate } from "./UserInfoModalValidatin";
+import { validate } from "./UserInfoModalValidation";
 import { useAuth } from "../../../hooks/useAuth";
 import IconCloseModal from "../../IconCloseModal/IconCloseModal";
 import styles from "./UserInfoModal.module.css";
@@ -15,11 +15,20 @@ export const DEFAULT_AVATAR =
 
 interface UserInfoModalProps {
   onClose: () => void;
+  id?: string;
 }
 
-const UserInfoModal: FC<UserInfoModalProps> = ({ onClose }) => {
+interface UserData {
+  name: string;
+  avatar: string;
+}
+
+const UserInfoModal: FC<UserInfoModalProps> = ({
+  onClose,
+  id = "user-info-modal",
+}) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const { user } = useAuth();
   const [imageDataUrl, setImageDataUrl] = useState(user.avatar);
@@ -49,32 +58,36 @@ const UserInfoModal: FC<UserInfoModalProps> = ({ onClose }) => {
     };
   }, [onClose]);
 
-  interface UserData {
-    name: string;
-    avatar: string;
-  }
-
   const handleSubmit = async (values: FormikValues) => {
     const userData: UserData = {
       name: values.name ? values.name : user.name,
       avatar: values.avatar || user.avatar,
     };
-
-    dispatch(updateUser(userData));
-
-    toast.success("Succes, Update profile !");
-    onClose();
+    try {
+      await dispatch(updateUser(userData)).unwrap();
+      toast.success("Profile updated successfully!");
+      onClose();
+    } catch (error) {
+      toast.error("Failed to update profile. Please try again.");
+    }
   };
   return (
-    <div ref={modalRef} className={styles.userInfoModal}>
+    <div
+      ref={modalRef}
+      className={styles.userInfoModal}
+      id={id}
+      role="dialog"
+      aria-labelledby="user-info-title"
+      aria-modal="true"
+    >
       <IconCloseModal onClose={onClose} />
 
       <Formik
-        initialValues={{ avatar: "", name: user.name || "" }}
+        initialValues={{ avatar: user.avatar || "", name: user.name || "" }}
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({ setFieldValue }) => (
+        {({ setFieldValue, values }) => (
           <Form className={styles.userInfoModal__form}>
             <label
               htmlFor="avatar"
@@ -126,7 +139,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({ onClose }) => {
               aria-label="Upload avatar"
             />
 
-            <div className={styles.userInfoModal__inputUsername}>
+            <div className={styles.userInfoModal__inputWrapper}>
               <svg className={styles.userInfoModal__iconUser}>
                 <use href={sprite + `#icon-Icon`}></use>
               </svg>
@@ -134,13 +147,16 @@ const UserInfoModal: FC<UserInfoModalProps> = ({ onClose }) => {
               <Field
                 name="name"
                 type="text"
-                placeholder={user.name}
+                placeholder="Enter your name"
                 className={styles.userInfoModal__input}
                 aria-label="Username"
               />
 
-              <svg className={styles.userInfoModal__iconEdit}>
-                <use href={sprite + `#icon-edit-01`}></use>
+              <svg
+                className={styles.userInfoModal__iconEdit}
+                aria-hidden="true"
+              >
+                <use href={`${sprite}#icon-edit-01`}></use>
               </svg>
             </div>
             <button type="submit" className={styles.userInfoModal__btnSave}>
