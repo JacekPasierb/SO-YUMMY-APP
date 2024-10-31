@@ -2,166 +2,158 @@
   position: absolute;
   right: -80px;
   top: -1px;
-
+  z-index: var(--z-index-modal);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   padding: 32px 24px;
-
   background-color: var(--color-bg-body);
   border-radius: 10px;
-
-  @media screen and (min-width: 768px) {
-    right: -60px;
-
-    padding: 50px 40px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    padding: 60px 50px;
-  }
+  box-shadow: var(--shadow-modal);
 }
 
 .userInfoModal__form {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  cursor: context-menu;
-}
-
-.userInfoModal__btnSave {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  margin-top: 24px;
-  padding-block: 14px;
-
-  font-size: 14px;
-  line-height: 18px;
-  color: var(--color-text-third); /*update*/
-
-  background-color: #8baa36;
-  border-radius: 6px;
-  border-color: transparent;
-
-  white-space: nowrap;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 32px;
-    padding-block: 18px;
-
-    font-size: 16px;
-  }
-}
-
-.userInfoModal__inputWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  width: 100%;
-  margin-top: 54px;
-  padding: 14px 14px;
-
-  border: 1px solid var(--color-border-input);
-  border-radius: 6px;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 50px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-top: 52px;
-  }
-}
-
-.userInfoModal__iconUser {
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
-
-  fill: transparent;
-  stroke: var(--color-stroke-icon);
-
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-.userInfoModal__input {
-  font-size: 14px;
-  letter-spacing: -2%;
-  color: var(--color-text-input); /*new update*/
-
-  background-color: transparent;
-
-  outline: none;
-  border: none;
-
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-  }
-}
-
-.userInfoModal__iconEdit {
-  width: 17px;
-  height: 17px;
-
-  fill: transparent;
-  stroke: var(--color-stroke-icon);
-
-  @media screen and (min-width: 768px) {
-    width: 19px;
-    height: 19px;
-  }
-}
-
-.styles.userInfoModal__iconPicture {
-  width: 40px;
-  height: 40px;
-
-  @media screen and (min-width: 768px) {
-    width: 47px;
-    height: 47px;
-  }
 }
 
 .userInfoModal__avatarPreview {
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
   width: 88px;
   height: 88px;
-
-  background-color: #d9d9d9;
+  background-color: var(--color-bg-avatar);
   border-radius: 50%;
-
   cursor: pointer;
-
-  @media screen and (min-width: 768px) {
-    width: 103px;
-    height: 103px;
-  }
+  overflow: hidden;
 }
 
 .userInfoModal__avatarPreview::after {
-  content: url("../../../images/plus.svg");
+  content: "";
   position: absolute;
   right: 0;
   bottom: -5%;
-
   width: 24px;
   height: 24px;
-
+  background-image: url("../../../images/plus.svg");
+  background-size: contain;
   transform: translateX(-50%);
 }
 
+.userInfoModal__avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .userInfoModal__inputFile {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.userInfoModal__inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 54px;
+  padding: 14px;
+  border: 1px solid var(--color-border-input);
+  border-radius: 6px;
+  background-color: var(--color-bg-input);
+}
+
+.userInfoModal__input {
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--color-text-input);
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.userInfoModal__input:focus {
+  outline: none;
+}
+
+.userInfoModal__iconUser,
+.userInfoModal__iconEdit {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--color-stroke-icon);
+}
+
+.userInfoModal__iconUser {
+  margin-right: 8px;
+}
+
+.userInfoModal__iconEdit {
+  margin-left: 8px;
+}
+
+.userInfoModal__btnSave {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  font-size: 14px;
+  line-height: 1.29;
+  color: var(--color-text-button);
+  background-color: var(--color-bg-button);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) ease;
+}
+
+.userInfoModal__btnSave:hover,
+.userInfoModal__btnSave:focus {
+  background-color: var(--color-bg-button-hover);
+}
+
+@media screen and (min-width: 768px) {
+  .userInfoModal {
+    right: -60px;
+    padding: 50px 40px;
+  }
+
+  .userInfoModal__avatarPreview {
+    width: 103px;
+    height: 103px;
+  }
+
+  .userInfoModal__input {
+    font-size: 18px;
+  }
+
+  .userInfoModal__iconUser,
+  .userInfoModal__iconEdit {
+    width: 24px;
+    height: 24px;
+  }
+
+  .userInfoModal__btnSave {
+    margin-top: 32px;
+    padding: 18px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .userInfoModal {
+    padding: 60px 50px;
+  }
 }
