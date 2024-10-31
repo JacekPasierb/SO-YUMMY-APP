@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import Media from "react-media";
+
 import styles from "./Header.module.css";
 import "react-toastify/dist/ReactToastify.css";
 import UserLogo from "./UserLogo/UserLogo";
@@ -26,12 +27,14 @@ const Header: React.FC = () => {
       {small || medium ? (
         <div className={styles.header__mobile}>
           <UserLogo />
+
           <HamburgerMenu />
         </div>
       ) : (
         <>
           <Navigation />
           <UserLogo />
+
           <ThemeToggler />
         </>
       )}

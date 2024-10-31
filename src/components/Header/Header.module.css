@@ -2,20 +2,11 @@
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
-
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    padding: 0 32px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    max-width: 1200px;
-  }
 }
 
 .headerBox {
   display: flex;
-  flex-direction: row;
+
   justify-content: space-between;
   align-items: center;
   padding-top: 18px;
@@ -23,5 +14,23 @@
 
 .header__mobile {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .header__container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  .header__mobile {
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .header__container {
+    max-width: 1200px;
+  }
 }
