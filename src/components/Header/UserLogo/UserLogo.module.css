@@ -4,13 +4,10 @@
   align-items: center;
   gap: 14px;
   cursor: pointer;
-  transition: opacity var(--transition-duration) ease;
+  
 }
 
-.boxAvatar:hover,
-.boxAvatar:focus {
-  opacity: 0.9;
-}
+
 
 .boxAvatar:focus-visible {
   outline: 2px solid var(--color-text-highlight);
