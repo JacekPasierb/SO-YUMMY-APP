@@ -2,26 +2,45 @@
   position: absolute;
   right: 18px;
   top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-duration) ease;
 }
-.iconClose {
- 
 
+.iconCloseButton:focus-visible {
+  outline: 2px solid var(--color-text-highlight);
+  outline-offset: 2px;
+}
+
+.iconClose {
   width: 20px;
   height: 20px;
-
   stroke: var(--color-hamburger);
 
   cursor: pointer;
+  transition: stroke var(--transition-duration) ease;
+}
 
-  @media screen and (min-width: 768px) {
-    top: 24px;
+.iconCloseButton:hover .iconClose,
+.iconCloseButton:focus .iconClose {
+  stroke: var(--color-text-highlight);
+}
+
+@media screen and (min-width: 768px) {
+  .iconCloseButton {
     right: 24px;
+    top: 24px;
+    padding: 6px;
+  }
 
+  .iconClose {
     width: 24px;
     height: 24px;
   }
-}
-
-.iconClose:hover {
-  stroke: var(--color-text-highlight);
 }
