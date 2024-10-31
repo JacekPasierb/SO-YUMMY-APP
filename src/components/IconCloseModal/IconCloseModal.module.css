@@ -1,7 +1,10 @@
-.iconClose {
+.iconCloseButton {
   position: absolute;
   right: 18px;
   top: 18px;
+}
+.iconClose {
+ 
 
   width: 20px;
   height: 20px;
