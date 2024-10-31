@@ -55,6 +55,60 @@
   object-fit: cover;
 }
 
+
+
+.userInfoModal__inputWrapper {
+  position: relative;
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+  margin-top: 54px;
+  padding: 14px 14px;
+
+  border: 1px solid var(--color-border-input);
+  border-radius: 6px;
+}
+
+.userInfoModal__input {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: var(--color-text-input);
+  width: 100%;
+  background-color: transparent;
+
+  outline: none;
+  border: none;
+}
+
+.userInfoModal__input:focus {
+  outline: none;
+}
+
+.userInfoModal__iconUser,
+.userInfoModal__iconEdit {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--color-stroke-icon);
+}
+
+
+
+.userInfoModal__iconUser {
+  margin-right: 8px;
+
+}
+
+.userInfoModal__iconEdit {
+  margin-left: 8px;
+
+
+}
+
 .userInfoModal__btnSave {
   display: flex;
   flex-direction: row;
@@ -65,8 +119,8 @@
   padding-block: 14px;
 
   font-size: 14px;
-  line-height: 18px;
-  color: var(--color-text-third); /*update*/
+  line-height: 1.29;
+  color: var(--color-text-button); 
 
   background-color: #8baa36;
   border-radius: 6px;
@@ -74,88 +128,22 @@
 
   white-space: nowrap;
 
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     margin-top: 32px;
     padding-block: 18px;
 
     font-size: 16px;
-  }
+  } */
 }
 
-.userInfoModal__inputWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 
-  width: 100%;
-  margin-top: 54px;
-  padding: 14px 14px;
 
-  border: 1px solid var(--color-border-input);
-  border-radius: 6px;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 50px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-top: 52px;
-  }
-}
-
-.userInfoModal__iconUser {
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
-
-  fill: transparent;
-  stroke: var(--color-stroke-icon);
-
-  @media screen and (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-.userInfoModal__input {
-  font-size: 14px;
-  letter-spacing: -2%;
-  color: var(--color-text-input); /*new update*/
-
-  background-color: transparent;
-
-  outline: none;
-  border: none;
-
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-  }
-}
-
-.userInfoModal__iconEdit {
-  width: 17px;
-  height: 17px;
-
-  fill: transparent;
-  stroke: var(--color-stroke-icon);
-
-  @media screen and (min-width: 768px) {
-    width: 19px;
-    height: 19px;
-  }
-}
-
-.styles.userInfoModal__iconPicture {
+.userInfoModal__iconPicture {
   width: 40px;
   height: 40px;
 
-  @media screen and (min-width: 768px) {
-    width: 47px;
-    height: 47px;
-  }
+ 
 }
-
-
 
 .userInfoModal__inputFile {
   position: absolute;
@@ -178,10 +166,24 @@
     width: 103px;
     height: 103px;
   }
+  .userInfoModal__inputWrapper {
+    margin-top: 50px;
+  }
+  .userInfoModal__input {
+    font-size: 18px;
+  }
+  .userInfoModal__iconPicture {
+
+    width: 47px;
+    height: 47px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
   .userInfoModal {
     padding: 60px 50px;
+  }
+  .userInfoModal__inputWrapper {
+    margin-top: 52px;
   }
 }
