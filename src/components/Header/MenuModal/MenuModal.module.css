@@ -13,8 +13,6 @@
   background-size: contain;
   animation: fadeIn var(--transition-duration) ease;
   justify-content: flex-start;
-
-
 }
 
 @media (min-device-pixel-ratio: 2),

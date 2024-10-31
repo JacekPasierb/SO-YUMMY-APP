@@ -22,7 +22,7 @@
   color: var(--color-text-highlight); /*new update*/
 }
 
-.navigation__iconSearch {
+.navigation__icon {
   width: 24px;
   height: 24px;
 
@@ -30,6 +30,6 @@
   stroke: rgb(0, 0, 0);
 }
 
-.navigation__iconSearch:hover {
+.navigation__icon:hover {
   stroke: #8baa36;
 }
