@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-import styles from "./IngredientsShoppingList.module.css";
 import axios from "axios";
-import CardIngredient from "../CardIngredient/CardIngredient";
-
+import styles from "./IngredientsShoppingList.module.css";
 import CardIngredientShoppingList from "../CardIngredientShoppingList/CardIngredientShoppingList";
+import { toast } from "react-toastify";
 
 export interface Ingredient {
   ingredientId: string;
@@ -15,48 +14,65 @@ export interface Ingredient {
   recipeId: string;
 }
 
-const IngredientsShoppingList = () => {
+const IngredientsShoppingList: React.FC = () => {
   const [shoppingList, setShoppingList] = useState<Ingredient[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchShoppingList = async () => {
     try {
-      setLoading(true);
-      const response = await axios.get("/api/shopping-list");
-      const { items } = response.data;
-      setShoppingList(items);
+      setIsLoading(true);
+      setError(null);
+      const response = await axios.get<{ items: Ingredient[] }>("/api/shopping-list");
+      setShoppingList(response.data.items);
     } catch (error) {
-      console.error("Błąd pobierania listy zakupów:", error);
+      const errorMessage = error instanceof Error ? error.message : "Failed to fetch shopping list";
+      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
+
   useEffect(() => {
     fetchShoppingList();
   }, []);
 
+  if (isLoading) {
+    return <div className={styles.shoppingList__loading}>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.shoppingList__error}>{error}</div>;
+  }
+
   return (
-    <div className={` ${styles.shoppingList__box}`}>
+    <div className={styles.shoppingList__box}>
       <div className={styles.shoppingList__header}>
-        <p className={styles.shoppingList__title}>Product</p>
+        <h2 className={styles.shoppingList__title}>Product</h2>
         <div className={styles.shoppingList__flexWrapper}>
-          <p className={styles.shoppingList__title}>Number</p>
-          <p className={styles.shoppingList__title}>Remove</p>
+          <h3 className={styles.shoppingList__title}>Number</h3>
+          <h3 className={styles.shoppingList__title}>Remove</h3>
         </div>
       </div>
-      <ul className={styles.shoppingList}>
-        {shoppingList.map((ingredient) => (
-          <li
-            key={`${ingredient.ingredientId}-${nanoid()}`}
-            className={styles.ingredientsList__item}
-          >
-            <CardIngredientShoppingList
-              ingredient={ingredient}
-              refreshList={fetchShoppingList}
-            />
-          </li>
-        ))}
-      </ul>
+
+      {shoppingList.length === 0 ? (
+        <p className={styles.shoppingList__empty}>Your shopping list is empty</p>
+      ) : (
+        <ul className={styles.shoppingList}>
+          {shoppingList.map((ingredient) => (
+            <li
+              key={`${ingredient.ingredientId}-${nanoid()}`}
+              className={styles.ingredientsList__item}
+            >
+              <CardIngredientShoppingList
+                ingredient={ingredient}
+                refreshList={fetchShoppingList}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
