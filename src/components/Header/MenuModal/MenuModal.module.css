@@ -13,6 +13,8 @@
   background-size: contain;
   animation: fadeIn var(--transition-duration) ease;
   justify-content: flex-start;
+
+
 }
 
 @media (min-device-pixel-ratio: 2),
@@ -31,9 +33,12 @@
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  padding: 18px 16px;
+  /* padding: 18px 16px; */
 
   min-height: 100vh;
+
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 @keyframes fadeIn {
@@ -63,8 +68,10 @@
   }
 
   .menuModal {
+    /* max-width: 768px;
+    padding: 18px 32px 32px; */
     max-width: 768px;
-    padding: 18px 32px 32px;
+    padding: 0 32px;
   }
 
   @media (min-device-pixel-ratio: 2),
