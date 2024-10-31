@@ -33,7 +33,7 @@ z-index: 999999;
   border-radius: 50%;
 
   cursor: pointer;
-  overflow: hidden; /*?*/
+  /* overflow: hidden;  */
 }
 
 .userInfoModal__avatarPreview::after {
