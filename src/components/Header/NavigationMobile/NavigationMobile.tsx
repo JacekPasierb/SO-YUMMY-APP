@@ -3,49 +3,55 @@ import { NavLink } from "react-router-dom";
 import styles from "./NavigationMobile.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
 
+interface NavigationLink {
+  to: string;
+  text: string;
+  icon?: string;
+}
+
 interface NavigationMobileProps {
   onClose: () => void;
 }
 
+const navigationLinks: NavigationLink[] = [
+  { to: "/categories/Beef", text: "Categories" },
+  { to: "/add", text: "Add Recipes" },
+  { to: "/ownRecipes", text: "My Recipes" },
+  { to: "/favorite", text: "Favorites" },
+  { to: "/shopping-list", text: "Shopping List" },
+  { to: "/search", text: "Search", icon: "icon-search" }
+];
+
 const NavigationMobile: FC<NavigationMobileProps> = ({ onClose }) => {
   return (
-    <nav className={styles.navigation}>
-      <NavLink
-        to="/categories/Beef"
-        className={styles.navigation__link}
-      >
-        <span className={styles.navigation__text} onClick={onClose}>
-          Categories
-        </span>
-      </NavLink>
-      <NavLink to="/add" className={styles.navigation__link}>
-        <span className={styles.navigation__text} onClick={onClose}>
-          Add Recipes
-        </span>
-      </NavLink>
-      <NavLink to="/ownRecipes" className={styles.navigation__link}>
-        <span className={styles.navigation__text} onClick={onClose}>
-          My Recipes
-        </span>
-      </NavLink>
-      <NavLink to="/favorite" className={styles.navigation__link}>
-        <span className={styles.navigation__text} onClick={onClose}>
-          Favorites
-        </span>
-      </NavLink>
-      <NavLink to="/shopping-list" className={styles.navigation__link}>
-        <span className={styles.navigation__text} onClick={onClose}>
-          Shopping List
-        </span>
-      </NavLink>
-      <NavLink to="/search " className={styles.navigation__link}>
-        <svg className={styles.navigation__icon}>
-          <use href={`${sprite}#icon-search`} ></use>
-        </svg>
-        <span className={styles.navigation__text} onClick={onClose}>
-          Search
-        </span>
-      </NavLink>
+    <nav 
+      className={styles.navigation}
+      aria-label="Mobile navigation"
+    >
+      {navigationLinks.map(({ to, text, icon }) => (
+        <NavLink
+          key={to}
+          to={to}
+          className={({ isActive }) => 
+            `${styles.navigation__link} ${isActive ? styles.navigation__link_active : ''}`
+          }
+          onClick={onClose}
+        >
+          {icon && (
+            <svg 
+              className={styles.navigation__icon}
+              width="24"
+              height="24"
+              aria-hidden="true"
+            >
+              <use href={`${sprite}#${icon}`} />
+            </svg>
+          )}
+          <span className={styles.navigation__text}>
+            {text}
+          </span>
+        </NavLink>
+      ))}
     </nav>
   );
 };
