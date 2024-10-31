@@ -15,13 +15,7 @@ const ThemeToggler: React.FC = () => {
 
   return (
     <div className={styles.themeToggler}>
-      <label 
-        htmlFor="theme-toggle"
-        className={styles.themeToggler__label}
-      >
-        <span className={styles.themeToggler__text}>
-          {isDarkTheme ? 'Dark' : 'Light'} theme
-        </span>
+      <label htmlFor="theme-toggle" className={styles.themeToggler__label}>
         <input
           id="theme-toggle"
           type="checkbox"
@@ -29,12 +23,9 @@ const ThemeToggler: React.FC = () => {
           checked={isDarkTheme}
           onChange={handleChange}
           className={styles.themeToggler__input}
-          aria-label={`Switch to ${isDarkTheme ? 'light' : 'dark'} theme`}
+          aria-label={`Switch to ${isDarkTheme ? "light" : "dark"} theme`}
         />
-        <span 
-          className={styles.themeToggler__slider}
-          aria-hidden="true"
-        ></span>
+        <span className={styles.themeToggler__slider} aria-hidden="true"></span>
       </label>
     </div>
   );
