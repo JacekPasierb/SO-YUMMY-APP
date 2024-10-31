@@ -82,7 +82,7 @@
   }
 }
 
-.userInfoModal__inputUsername {
+.userInfoModal__inputWrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
