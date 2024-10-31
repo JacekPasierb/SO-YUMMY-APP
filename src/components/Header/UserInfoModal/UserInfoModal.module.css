@@ -2,7 +2,7 @@
   position: absolute;
   right: -80px;
   top: -1px;
-z-index: 999999;
+  z-index: 999999;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,6 @@ z-index: 999999;
   border-radius: 50%;
 
   cursor: pointer;
-  /* overflow: hidden;  */
 }
 
 .userInfoModal__avatarPreview::after {
@@ -54,8 +53,6 @@ z-index: 999999;
   height: 100%;
   object-fit: cover;
 }
-
-
 
 .userInfoModal__inputWrapper {
   position: relative;
@@ -96,17 +93,12 @@ z-index: 999999;
   stroke: var(--color-stroke-icon);
 }
 
-
-
 .userInfoModal__iconUser {
   margin-right: 8px;
-
 }
 
 .userInfoModal__iconEdit {
   margin-left: 8px;
-
-
 }
 
 .userInfoModal__btnSave {
@@ -120,29 +112,18 @@ z-index: 999999;
 
   font-size: 14px;
   line-height: 1.29;
-  color: var(--color-text-button); 
+  color: var(--color-text-button);
 
   background-color: #8baa36;
   border-radius: 6px;
   border-color: transparent;
 
   white-space: nowrap;
-
-  /* @media screen and (min-width: 768px) {
-    margin-top: 32px;
-    padding-block: 18px;
-
-    font-size: 16px;
-  } */
 }
-
-
 
 .userInfoModal__iconPicture {
   width: 40px;
   height: 40px;
-
- 
 }
 
 .userInfoModal__inputFile {
@@ -176,7 +157,7 @@ z-index: 999999;
     height: 24px;
   }
 
-    .userInfoModal__btnSave {
+  .userInfoModal__btnSave {
     margin-top: 32px;
     padding: 18px;
     font-size: 16px;
@@ -186,7 +167,6 @@ z-index: 999999;
     width: 280px;
   }
   .userInfoModal__iconPicture {
-
     width: 47px;
     height: 47px;
   }
