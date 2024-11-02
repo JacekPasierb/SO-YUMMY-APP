@@ -24,7 +24,7 @@ const LOADER_COLORS: [string, string, string, string, string] = [
 
 export const Loader: FC<LoaderProps> = ({
   className = "",
-  size = "medium",
+  size = "large",
 }) => {
   const loaderSize = LOADER_SIZES[size];
 
