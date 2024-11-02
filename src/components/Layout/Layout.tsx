@@ -1,13 +1,12 @@
-import { Suspense } from 'react';
+import { FC, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Loader } from '../Loader/Loader';
 
 
 
-const Layout = () => {
+const Layout:FC = () => {
   return (
     <Suspense fallback={<Loader />}>
-      
       <Outlet />
     </Suspense>
   );
