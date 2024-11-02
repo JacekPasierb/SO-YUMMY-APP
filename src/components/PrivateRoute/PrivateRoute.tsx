@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 import { useAuth } from "../../hooks/useAuth";
 
@@ -14,8 +14,13 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
 }) => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const shouldRedirect = !isLoggedIn && !isRefreshing;
+  const location = useLocation();
 
-  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  return shouldRedirect ? (
+    <Navigate to={redirectTo} state={{ from: location }} replace />
+  ) : (
+    Component
+  );
 };
 
 export default PrivateRoute;
