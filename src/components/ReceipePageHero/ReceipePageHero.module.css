@@ -3,14 +3,6 @@
   flex-direction: column;
   align-items: center;
   margin-top: 80px;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 72px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-top: 100px;
-  }
 }
 
 .recipeHero__description {
@@ -18,20 +10,9 @@
   margin-bottom: 24px;
 
   font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-main); /*update*/
+  line-height: 1.33;
+  color: #23262a;
   text-align: center;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 24px;
-
-    font-size: 18px;
-    line-height: 24px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-bottom: 30px;
-  }
 }
 
 .recipeHero__btn {
@@ -40,19 +21,12 @@
   background-color: transparent;
   border: 1px solid #8baa36;
   border-radius: 24px 44px;
-
-  @media screen and (min-width: 768px) {
-    padding: 18px 44px;
-  }
+  cursor: pointer;
 }
 
 .recipeHero__btnText {
   font-size: 10px;
-  color: var(--color-text-main); /*update*/
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
+  color: #23262a;
 }
 
 .recipeHero__timeBox {
@@ -60,16 +34,6 @@
   align-items: center;
   margin-bottom: 90px;
   margin-top: 42px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 32px;
-    margin-top: 60px;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 32px;
-    margin-top: 48px;
-  }
 }
 
 .recipeHero__iconClock {
@@ -79,23 +43,12 @@
 
   fill: transparent;
   stroke: black;
-
-  @media screen and (min-width: 768px) {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-  }
 }
 
 .timeText {
   font-size: 10px;
-  line-height: 14px;
-  color: var(--color-text-main); /*update*/
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-    line-height: 20px;
-  }
+  line-height: 1.4;
+  color: #23262a;
 }
 
 /* Skeleton styles */
@@ -133,4 +86,50 @@
 .recipeHero__skeletonTime {
   width: 100px;
   height: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .recipeHero {
+    margin-top: 72px;
+  }
+  .recipeHero__description {
+    margin-top: 24px;
+
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .recipeHero__btn {
+    padding: 18px 44px;
+  }
+  .recipeHero__btnText {
+    font-size: 16px;
+  }
+
+  .recipeHero__timeBox {
+    margin-bottom: 32px;
+    margin-top: 60px;
+  }
+
+  .recipeHero__iconClock {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  .timeText {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .recipeHero {
+    margin-top: 100px;
+  }
+  .recipeHero__description {
+    margin-bottom: 30px;
+  }
+  .recipeHero__timeBox {
+    margin-top: 48px;
+  }
 }
