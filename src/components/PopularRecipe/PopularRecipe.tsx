@@ -1,38 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
+import { ClimbingBoxLoader } from "react-spinners";
 import styles from "./PopularRecipe.module.css";
 import { fetchPopularRecipe } from "../../API/recipesAPI";
 import { IRecipe } from "../../types/recipesTypes";
 import CardPopularRecipe from "../CardPopularRecipe/CardPopularRecipe";
-import { NavLink } from "react-router-dom";
-import { useMediaQuery } from "@react-hook/media-query";
-import { ClimbingBoxLoader } from "react-spinners";
 import SubTitle from "../SubTitle/SubTitle";
 
-const PopularRecipe: React.FC = () => {
+const RECIPES_COUNT = {
+  MOBILE: 4,
+  TABLET: 2,
+  DESKTOP: 4,
+} as const;
+
+const PopularRecipe: FC = () => {
   const [popularRecipes, setPopularRecipes] = useState<IRecipe[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
-  const isDesctop = useMediaQuery("(min-width:1200px)");
+  const isDesktop = useMediaQuery("(min-width:1200px)");
 
   useEffect(() => {
-    let count: number;
+    const count = isDesktop
+      ? RECIPES_COUNT.DESKTOP
+      : isTablet
+      ? RECIPES_COUNT.TABLET
+      : RECIPES_COUNT.MOBILE;
 
-    if (isDesctop) {
-      count = 4;
-    } else if (isTablet) {
-      count = 2;
-    } else {
-      count = 4;
-    }
     const getPopularRecipe = async () => {
       try {
         setIsLoading(true);
+        setError(null);
         const data = await fetchPopularRecipe(count);
-
         setPopularRecipes(data.popularRecipes);
       } catch (error: any) {
-        console.error(`Error: ${error.message}`);
+        const errorMessage =
+          error instanceof Error
+            ? error.message
+            : "Failed to fetch popular recipes";
         setError(error.message);
       } finally {
         setIsLoading(false);
@@ -40,25 +47,37 @@ const PopularRecipe: React.FC = () => {
     };
 
     getPopularRecipe();
-  }, [isDesctop, isTablet]);
+  }, [isDesktop, isTablet]);
+
+  if (isLoading) {
+    return (
+      <div className={styles.popularRecipe__loader}>
+        <ClimbingBoxLoader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p className={styles.popularRecipe__error}>Error: {error}</p>;
+  }
 
   return (
     <div className={styles.popularRecipe__container}>
       <SubTitle title={"Popular Recipes"} />
 
-      {isLoading && (
-        <div className={styles.popularRecipe__loader}>
-          <ClimbingBoxLoader />
-        </div>
-      )}
-      {error && <p>Error: {error}</p>}
       {popularRecipes.length === 0 ? (
-        <p>No popular recipes available at this time.</p>
+        <p className={styles.popularRecipe__empty}>
+          No popular recipes available at this time.
+        </p>
       ) : (
         <ul className={styles.popularRecipe__list}>
-          {popularRecipes.map((recipe: IRecipe) => (
+          {popularRecipes.map((recipe) => (
             <li key={recipe._id} className={styles.popularRecipe__item}>
-              <NavLink to={`/recipe/${recipe._id}`}>
+              <NavLink
+                to={`/recipe/${recipe._id}`}
+                className={styles.popularRecipe__link}
+                aria-label={`View recipe: ${recipe.title}`}
+              >
                 <CardPopularRecipe recipe={recipe} />
               </NavLink>
             </li>
