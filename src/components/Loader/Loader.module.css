@@ -10,7 +10,7 @@
   height: 100vh;
 }
 
-.loader-icon {
+.loader__icon{
   position: absolute;
 
   display: flex;

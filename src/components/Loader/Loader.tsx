@@ -1,22 +1,53 @@
+import React, { FC } from "react";
 import { ColorRing } from "react-loader-spinner";
-import css from "./Loader.module.css";
-import icon from "../../assets/icons/sprite.svg";
-import { FC } from "react";
+import styles from "./Loader.module.css";
+import sprite from "../../assets/icons/sprite.svg";
 
-export const Loader: FC = () => {
+interface LoaderProps {
+  className?: string;
+  size?: "small" | "medium" | "large";
+}
+
+const LOADER_SIZES = {
+  small: 80,
+  medium: 120,
+  large: 160,
+} as const;
+
+// Define colors as a mutable tuple type
+const LOADER_COLORS: [string, string, string, string, string] = [
+  "#24CCA7",
+  "#4a56e2",
+  "#24CCA7",
+  "#4a56e2",
+  "#24CCA7",
+];
+
+export const Loader: FC<LoaderProps> = ({
+  className = "",
+  size = "large",
+}) => {
+  const loaderSize = LOADER_SIZES[size];
+
   return (
-    <div className={css["loader"]}>
-      <svg className={css["loader-icon"]} width="18" height="18">
-        <use href={icon + `#icon-logoTablet`} />
+    <div className={`${styles.loader} ${className}`}>
+      <svg
+        className={styles.loader__icon}
+        width="18"
+        height="18"
+        aria-hidden="true"
+      >
+        <use href={`${sprite}#icon-logoTablet`} />
       </svg>
+
       <ColorRing
         visible={true}
-        height="160"
-        width="160"
-        ariaLabel="blocks-loading"
+        height={loaderSize}
+        width={loaderSize}
+        ariaLabel="Loading content"
         wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
-        colors={["#24CCA7", "#4a56e2", "#24CCA7", "#4a56e2", "#24CCA7"]}
+        wrapperClass={styles.loader__wrapper}
+        colors={LOADER_COLORS}
       />
     </div>
   );
