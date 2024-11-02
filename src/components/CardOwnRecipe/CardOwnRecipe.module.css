@@ -92,10 +92,17 @@
 
 .myRecipesList__seeBtn {
   padding: 6px 14px;
-  background-color: var(--color-bg-btn-primary);
+ 
   border-radius: 24px 44px;
   border: none;
   text-decoration: none;
+}
+.myRecipesList__txtBtn {
+  background-color: var(--color-bg-btn-secondary);
+}
+
+.myRecipesList__txtFavBtn {
+  background-color: var(--color-bg-btn-primary);
 }
 
 .myRecipesList__txtBtn,

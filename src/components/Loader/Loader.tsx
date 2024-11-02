@@ -23,10 +23,7 @@ const LOADER_COLORS: [string, string, string, string, string] = [
   "#24CCA7",
 ];
 
-export const Loader: FC<LoaderProps> = ({
-  className = "",
-  size = "large",
-}) => {
+export const Loader: FC<LoaderProps> = ({ className = "", size = "large" }) => {
   const loaderSize = LOADER_SIZES[size];
 
   return (
