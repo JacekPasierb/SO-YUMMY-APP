@@ -1,47 +1,57 @@
 .pageTitle__container {
-  background-image: url("../../images/Rectangle11.png"),
-    url("../../images/Rectangle8.png"), url("../../images/Rectangle9.png");
+  background-image: 
+  url("../../images/Rectangle11.png"),
+  url("../../images/Rectangle8.png"), 
+  url("../../images/Rectangle9.png");
   background-repeat: no-repeat;
-  background-position: top 13px left 110px, bottom 41px right 94px,
-    top 45px right 0px;
-
-  @media screen and (min-width: 768px) {
-    background-image: url("../../images/Rectangle11Tab.png"),
-      url("../../images/Rectangle8Tab.png"),
-      url("../../images/Rectangle9Tab.png");
-    background-position: top 21px left 187px, bottom 47px left 405px,
-      top 34px right 0px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    background-image: url("../../images/Rectangle11Lap.png"),
-      url("../../images/Rectangle8Lap.png"),
-      url("../../images/Rectangle9Lap.png");
-    background-position: top 52px left 228px, bottom 91px left 668px,
-      top 65px right 71px;
-  }
+  background-position: 
+  top 13px left 110px, 
+  bottom 41px right 94px,
+  top 45px right 0;
 }
 
 .pageTitle__text {
   margin: 0;
   padding-block: 50px;
-
   font-size: 28px;
   line-height: 28px;
-  color: var(--color-text-subtitle); 
-
+  color: var(--color-text-subtitle);
   cursor: default;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .pageTitle__container {
+    background-image: 
+    url("../../images/Rectangle11Tab.png"),
+    url("../../images/Rectangle8Tab.png"),
+    url("../../images/Rectangle9Tab.png");
+    background-position: 
+    top 21px left 187px, 
+    bottom 47px left 405px,
+    top 34px right 0;
+  }
+
+  .pageTitle__text {
     padding-top: 72px;
-
     font-size: 32px;
     line-height: 32px;
   }
+}
 
-  @media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
+  .pageTitle__container {
+    background-image: 
+    url("../../images/Rectangle11Lap.png"),
+    url("../../images/Rectangle8Lap.png"),
+    url("../../images/Rectangle9Lap.png");
+    background-position: 
+    top 52px left 228px, 
+    bottom 91px left 668px,
+    top 65px right 71px;
+  }
+
+  .pageTitle__text {
     padding-block: 100px;
-
     font-size: 44px;
     line-height: 44px;
   }
