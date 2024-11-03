@@ -1,3 +1,7 @@
+.recipeIngredientsContainer {
+  width: 100%;
+}
+
 .recipeIngredients {
   display: flex;
   justify-content: space-between;
