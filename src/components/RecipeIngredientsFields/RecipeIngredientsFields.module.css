@@ -84,6 +84,28 @@
   flex-grow: 1;
 }
 
+.recipeIngredients__btnX {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: opacity var(--transition-duration) ease;
+}
+
+.recipeIngredients__btnX:hover {
+  opacity: 0.8;
+}
+
+.recipeIngredients__btnX:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 .inputIngredient {
   appearance: none;
   background-image: url(../../images/Icon.svg);
@@ -106,13 +128,7 @@
   stroke: var(--color-stroke-icon);
 }
 
-.recipeIngredients__btnX {
-  margin-left: 33px;
 
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
 
 .box {
   display: flex;
