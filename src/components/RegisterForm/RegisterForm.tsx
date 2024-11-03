@@ -111,9 +111,9 @@ const RegisterForm: React.FC = () => {
       validate={validate}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched, setFieldTouched, setFieldValue }) => (
+      {({ errors, touched }) => (
         <Form className={styles.formRegister} autoComplete="off">
-          <img src={logoSrc} className={styles.imggg} />
+          <img src={logoSrc} alt="Logo" className={styles.logo} />
           <h2 className={styles.titleRegister}>Registration</h2>
           <div className={styles.boxInput}>
             {renderInputField(
@@ -142,7 +142,11 @@ const RegisterForm: React.FC = () => {
             )}
           </div>
 
-          <button type="submit" className={styles.btnRegister}>
+          <button
+            type="submit"
+            className={styles.btnRegister}
+            aria-label="Sign up"
+          >
             Sign up
           </button>
         </Form>
