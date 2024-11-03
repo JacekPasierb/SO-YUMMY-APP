@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./RecipeInngredientsList.module.css";
 
-const RecipeIngredientsListSkelton = () => {
+const RecipeIngredientsListSkeleton = () => {
   return (
     <div className={styles.skeleton}>
       <div className={styles.skeleton__header}></div>
@@ -14,4 +14,4 @@ const RecipeIngredientsListSkelton = () => {
   );
 };
 
-export default RecipeIngredientsListSkelton;
+export default RecipeIngredientsListSkeleton;
