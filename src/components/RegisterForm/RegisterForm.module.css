@@ -1,7 +1,7 @@
 .logo {
   position: absolute;
   top: -220px;
-  left: 50%;
+  left: center;
   z-index: -1;
 
   width: 285px;
