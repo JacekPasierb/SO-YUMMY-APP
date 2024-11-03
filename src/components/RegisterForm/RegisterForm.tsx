@@ -20,20 +20,14 @@ import logoDesktop1x from "../../images/LogoDesctop1x.png";
 import logoDesktop2x from "../../images/LogoDesctop2x.png";
 import { AppDispatch } from "src/redux/store";
 import { useNavigate } from "react-router";
+import { getResponsiveLogo } from "../../helpers/helpers";
 const RegisterForm = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesctop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
-  let logoSrc;
+  const logoSrc = getResponsiveLogo(isDesctop,isTablet,isRetina);
   const navigate = useNavigate();
-  if (isDesctop) {
-    logoSrc = isRetina ? logoDesktop2x : logoDesktop1x;
-  } else if (isTablet) {
-    logoSrc = isRetina ? logoTablet2x : logoTablet1x;
-  } else {
-    // Default image for smaller screens
-    logoSrc = isRetina ? logo2x : logo1x;
-  }
+  
   const dispatch: AppDispatch = useDispatch();
 
   const handleSubmit = async (
