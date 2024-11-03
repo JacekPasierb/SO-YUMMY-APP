@@ -8,6 +8,12 @@ import emptySearchImageTablet2x from "../images/searchTablet2x.png";
 import emptySearchImageDesktop1x from "../images/searchDesktop1x.png";
 import emptySearchImageDesktop2x from "../images/searchDesktop2x.png";
 import logo from "../images/logos";
+import logo1x from "../images/LogoMobile1x.png";
+import logo2x from "../images/LogoMobile2x.png";
+import logoTablet1x from "../images/LogoTablet1x.png";
+import logoTablet2x from "../images/LogoTablet2x.png";
+import logoDesktop1x from "../images/LogoDesctop1x.png";
+import logoDesktop2x from "../images/LogoDesctop2x.png";
 
 export const getRecipeImage = (
   isMobile: boolean,
@@ -47,4 +53,18 @@ export const getLogoSrc = (
   } else {
     return isRetina ? logo.mobile2x : logo.mobile1x;
   }
+};
+
+export const getResponsiveLogo = (
+  isDesktop: boolean,
+  isTablet: boolean,
+  isRetina: boolean
+): string => {
+  if (isDesktop) {
+    return isRetina ? logoDesktop2x : logoDesktop1x;
+  }
+  if (isTablet) {
+    return isRetina ? logoTablet2x : logoTablet1x;
+  }
+  return isRetina ? logo2x : logo1x;
 };

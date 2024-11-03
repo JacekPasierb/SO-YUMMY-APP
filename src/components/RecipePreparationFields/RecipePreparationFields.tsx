@@ -31,9 +31,9 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
           aria-label="Recipe preparation instructions"
           required
         />
-        
-        <button 
-          type="submit" 
+
+        <button
+          type="submit"
           className={styles.recipePreparationFields__button}
           aria-label="Add recipe instructions"
         >
