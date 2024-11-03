@@ -105,8 +105,9 @@
   cursor: pointer;
 }
 
-.btnRegister:hover {
-  color: var(--color-text-five); /*update*/
+.btnRegister:hover,
+.btnRegister:focus {
+  color: #1e1f28; 
 
   background-color: #fafafa;
   border-color: #8baa36;
