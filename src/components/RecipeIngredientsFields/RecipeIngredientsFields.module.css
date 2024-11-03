@@ -1,14 +1,9 @@
 .recipeIngredients {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-top: 44px;
   margin-bottom: 24px;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 100px;
-  }
 }
 
 .recipeIngredients__counterBox {
@@ -16,10 +11,6 @@
 
   border: 1px solid var(--color-border-line);
   border-radius: 18px;
-
-  @media screen and (min-width: 768px) {
-    padding: 8px 15px;
-  }
 }
 
 .recipeIngredients__btn {
@@ -34,11 +25,6 @@
 .icon {
   width: 14px;
   height: 14px;
-
-  @media screen and (min-width: 768px) {
-    width: 16px;
-    height: 16px;
-  }
 }
 
 .iconMinus {
@@ -46,11 +32,6 @@
   height: 14px;
 
   stroke: var(--color-stroke-icon);
-
-  @media screen and (min-width: 768px) {
-    width: 16px;
-    height: 16px;
-  }
 }
 
 .recipeIngredients__counterFont {
@@ -59,11 +40,6 @@
   font-size: 14px;
   line-height: 18px;
   color: var(--color-text-counter);
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 24px;
-  }
 }
 
 .recipeIngredients__item {
@@ -92,11 +68,6 @@
   height: 18px;
 
   stroke: var(--color-stroke-icon);
-
-  @media screen and (min-width: 768px) {
-    width: 20px;
-    height: 20px;
-  }
 }
 
 .recipeIngredients__btnX {
@@ -185,14 +156,37 @@
   flex-direction: column;
   gap: 18px;
   margin-bottom: 44px;
-
-  @media screen and (min-width: 768px) {
-    gap: 24px;
-    margin-bottom: 100px;
-  }
 }
 
 .recipeIngredients::placeholder {
   color: red;
 }
 
+@media screen and (min-width: 768px) {
+  .recipeIngredients {
+    margin-top: 100px;
+  }
+  .recipeIngredients__counterFont {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .iconMinus {
+    width: 16px;
+    height: 16px;
+  }
+  .recipeIngredients__counterBox {
+    padding: 8px 15px;
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+  .recipeIngredients__list {
+    gap: 24px;
+    margin-bottom: 100px;
+  }
+  .iconX {
+    width: 20px;
+    height: 20px;
+  }
+}
