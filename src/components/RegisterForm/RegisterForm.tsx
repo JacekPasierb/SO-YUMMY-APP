@@ -46,7 +46,7 @@ const RegisterForm: React.FC = () => {
       if (register.fulfilled.match(result)) {
         toast.info("Verification link sent to email. Check your mail.");
         resetForm();
-        navigate("/signin"); 
+        navigate("/signin");
       } else {
         toast.error("Registration failed.");
       }
@@ -54,9 +54,60 @@ const RegisterForm: React.FC = () => {
       toast.error("An error occurred. Please try again.");
     }
   };
+
+  const renderInputField = (
+    name: keyof FormValues,
+    type: string,
+    placeholder: string,
+    iconId: string,
+    touched: any,
+    errors: any
+  ) => (
+    <div
+      className={`${styles.inputWithIcon} ${
+        touched[name] && errors[name] ? styles.errorInputWithIcon : ""
+      }`}
+    >
+      <svg
+        className={`${styles.inputIcon} ${
+          touched[name] && errors[name] ? styles.errorInputIcon : ""
+        }`}
+      >
+        <use href={`${icons}#icon-${iconId}`} />
+      </svg>
+
+      <Field
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        className={styles.inputRegister}
+        autoComplete={
+          name === "password"
+            ? "current-password"
+            : name === "email"
+            ? "username"
+            : "off"
+        }
+      />
+
+      {touched[name] && (
+        <img
+          src={errors[name] ? errorIcon : successIcon}
+          alt={`${errors[name] ? "Error" : "Success"} Icon`}
+          className={
+            errors[name]
+              ? styles.additionalErrorIcon
+              : styles.additionalSuccessIcon
+          }
+        />
+      )}
+
+      <ErrorMessage name={name} component="div" className={styles.inputError} />
+    </div>
+  );
   return (
     <Formik
-      initialValues={{ name: "", email: "", password: "" }}
+      initialValues={initialValues}
       validate={validate}
       onSubmit={handleSubmit}
     >
@@ -65,131 +116,30 @@ const RegisterForm: React.FC = () => {
           <img src={logoSrc} className={styles.imggg} />
           <h2 className={styles.titleRegister}>Registration</h2>
           <div className={styles.boxInput}>
-            <div
-              className={`${styles.inputWithIcon} ${
-                touched.name && errors.name ? styles.errorInputWithIcon : ""
-              }`}
-            >
-              <svg
-                className={`${styles.inputIcon} ${
-                  touched.name && errors.name ? styles.errorInputIcon : ""
-                }`}
-              >
-                <use href={icons + `#icon-user-01`}></use>
-              </svg>
-              <Field
-                type="name"
-                name="name"
-                placeholder="Name"
-                className={styles.inputRegister}
-                onBlur={() => setFieldTouched("name", true)}
-              />
-              {touched.name && errors.name && (
-                <img
-                  src={errorIcon}
-                  alt="Error Icon"
-                  className={styles.additionalErrorIcon}
-                />
-              )}
-              {touched.name && !errors.name && (
-                <img
-                  src={successIcon}
-                  alt="Success Icon"
-                  className={styles.additionalSuccessIcon}
-                />
-              )}
-              <ErrorMessage
-                name="name"
-                component="div"
-                className={styles.inputError}
-              />
-            </div>
-
-            <div
-              className={`${styles.inputWithIcon} ${
-                touched.email && errors.email ? styles.errorInputWithIcon : ""
-              }`}
-            >
-              <svg
-                className={`${styles.inputIcon} ${
-                  touched.email && errors.email ? styles.errorInputIcon : ""
-                }`}
-              >
-                <use href={icons + `#icon-mail-01`}></use>
-              </svg>
-              <Field
-                type="email"
-                name="email"
-                placeholder="Email"
-                className={styles.inputRegister}
-                onBlur={() => setFieldTouched("email", true)}
-                autocomplete="username"
-              />{" "}
-              {touched.email && errors.email && (
-                <img
-                  src={errorIcon}
-                  alt="Error Icon"
-                  className={styles.additionalErrorIcon}
-                />
-              )}
-              {touched.email && !errors.email && (
-                <img
-                  src={successIcon}
-                  alt="Success Icon"
-                  className={styles.additionalSuccessIcon}
-                />
-              )}
-              <ErrorMessage
-                name="email"
-                component="div"
-                className={styles.inputError}
-              />
-            </div>
-
-            <div
-              className={`${styles.inputWithIcon} ${
-                touched.password && errors.password
-                  ? styles.errorInputWithIcon
-                  : ""
-              }`}
-            >
-              <svg
-                className={`${styles.inputIcon} ${
-                  touched.password && errors.password
-                    ? styles.errorInputIcon
-                    : ""
-                }`}
-              >
-                <use href={icons + `#icon-lock-02`}></use>
-              </svg>
-              <Field
-                type="password"
-                name="password"
-                placeholder="Password"
-                className={styles.inputRegister}
-                onBlur={() => setFieldTouched("password", true)}
-                autocomplete="current-password"
-              />
-              {touched.password && errors.password && (
-                <img
-                  src={errorIcon}
-                  alt="Error Icon"
-                  className={styles.additionalErrorIcon}
-                />
-              )}
-              {touched.password && !errors.password && (
-                <img
-                  src={successIcon}
-                  alt="Success Icon"
-                  className={styles.additionalSuccessIcon}
-                />
-              )}
-              <ErrorMessage
-                name="password"
-                component="div"
-                className={styles.inputError}
-              />
-            </div>
+            {renderInputField(
+              "name",
+              "text",
+              "Name",
+              "user-01",
+              touched,
+              errors
+            )}
+            {renderInputField(
+              "email",
+              "email",
+              "Email",
+              "mail-01",
+              touched,
+              errors
+            )}
+            {renderInputField(
+              "password",
+              "password",
+              "Password",
+              "lock-02",
+              touched,
+              errors
+            )}
           </div>
 
           <button type="submit" className={styles.btnRegister}>
