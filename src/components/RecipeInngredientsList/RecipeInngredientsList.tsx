@@ -80,12 +80,20 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
     >
       <div className={styles.recipeIngredientsList__header}>
         <h2 className={styles.recipeIngredientsList__title}>Ingredients</h2>
-        <div className={styles.recipeIngredientsList__flexWrapper}  aria-hidden="true">
+        <div
+          className={styles.recipeIngredientsList__flexWrapper}
+          aria-hidden="true"
+        >
           <span className={styles.recipeIngredientsList__title}>Number</span>
-          <span className={styles.recipeIngredientsList__title}>Add to list</span>
+          <span className={styles.recipeIngredientsList__title}>
+            Add to list
+          </span>
         </div>
       </div>
-      <ul className={styles.recipeIngredientsList} aria-label="Recipe ingredients">
+      <ul
+        className={styles.recipeIngredientsList}
+        aria-label="Recipe ingredients"
+      >
         {ingredientsList.map((ingredient) => (
           <li key={ingredient._id} className={styles.ingredientsList__item}>
             <CardIngredient ingredient={ingredient} recipeId={recipeId} />
