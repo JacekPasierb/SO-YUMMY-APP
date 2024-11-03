@@ -16,7 +16,7 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
   useEffect(() => {
     if (instructions) {
       const formattedSteps = instructions
-        .split(". ")
+        .split(/(?<=\.) /)
         .map(step => step.trim())
         .filter(step => step.length > 0);
       setSteps(formattedSteps);
