@@ -15,22 +15,28 @@ interface CardIngredientProps {
   recipeId?: string;
 }
 
-const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient, recipeId }) => {
+const CardIngredient: React.FC<CardIngredientProps> = ({ 
+  ingredient, 
+  recipeId 
+}) => {
   const [isChecked, setIsChecked] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleApiError = useCallback((error: unknown, action: string) => {
-    console.error(`Błąd podczas ${action} składnika:`, error);
+    console.error(`Error while ${action} ingredient:`, error);
   }, []);
 
   const checkIfIngredientInList = useCallback(async () => {
     try {
       const response = await axios.get("/api/shopping-list");
       const { items } = response.data;
-      const ingredientExists = items.some((item: { ingredientId: string }) => item.ingredientId === ingredient._id);
+      const ingredientExists = items.some(
+        (item: { ingredientId: string }) => 
+          item.ingredientId === ingredient._id
+      );
       setIsChecked(ingredientExists);
     } catch (error) {
-      handleApiError(error, "sprawdzania listy zakupów");
+      handleApiError(error, "checking shopping list");
     }
   }, [ingredient._id, handleApiError]);
 
@@ -58,7 +64,7 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient, recipeId })
       }
       setIsChecked(!isChecked);
     } catch (error) {
-      handleApiError(error, isChecked ? "usuwania" : "dodawania");
+      handleApiError(error, isChecked ? "removing" : "adding");
     } finally {
       setLoading(false);
     }
@@ -73,31 +79,31 @@ const CardIngredient: React.FC<CardIngredientProps> = ({ ingredient, recipeId })
           height="65"
           alt={ingredient.ttl}
           className={styles.ingredientCard__image}
+          loading="lazy"
         />
         <p className={styles.ingredientCard__name}>{ingredient.ttl}</p>
       </div>
-      <div className={styles.ingredientCard__details}>
+      <div className={styles.ingredientCard__actions}>
         <div className={styles.ingredientCard__measureBox}>
-          <p className={styles.ingredientCard__measureText}>{ingredient.measure}</p>
+          <p className={styles.ingredientCard__measureText}>
+            {ingredient.measure}
+          </p>
         </div>
         <Checkbox
           checked={isChecked}
           onChange={handleCheckboxChange}
+          disabled={loading}
+          aria-label={`Add ${ingredient.ttl} to shopping list`}
           sx={{
             color: "#7E7E7E",
+            padding: { xs: "4px", md: "8px" },
             "&.Mui-checked": {
               color: "transparent",
               stroke: "#7E7E7E",
             },
-            ".MuiSvgIcon-fontSizeMedium": {
-              width: "18px",
-              height: "18px",
-            },
-            "@media (min-width: 768px)": {
-              ".MuiSvgIcon-fontSizeMedium": {
-                width: "35px",
-                height: "35px",
-              },
+            "& .MuiSvgIcon-root": {
+              width: { xs: "18px", md: "35px" },
+              height: { xs: "18px", md: "35px" },
             },
           }}
         />
