@@ -15,37 +15,42 @@ import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
 import styles from "./RegisterForm.module.css";
 
+interface FormValues {
+  name: string;
+  email: string;
+  password: string;
+}
 
+const RegisterForm: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
 
-const RegisterForm = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesctop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
-  const logoSrc = getResponsiveLogo(isDesctop,isTablet,isRetina);
-  const navigate = useNavigate();
-  
-  const dispatch: AppDispatch = useDispatch();
+  const logoSrc = getResponsiveLogo(isDesctop, isTablet, isRetina);
+
+  const initialValues: FormValues = {
+    name: "",
+    email: "",
+    password: "",
+  };
 
   const handleSubmit = async (
-    values: FormikValues,
+    values: FormValues,
     { resetForm }: { resetForm: () => void }
   ) => {
     try {
-      const result = await dispatch(
-        register({
-          name: values.name,
-          email: values.email,
-          password: values.password,
-        })
-      );
+      const result = await dispatch(register(values));
+
       if (register.fulfilled.match(result)) {
         toast.info("Verification link sent to email. Check your mail.");
         resetForm();
-        await navigate("/signin"); // Redirect to login page
+        navigate("/signin"); 
       } else {
         toast.error("Registration failed.");
       }
-    } catch (err: any) {
+    } catch (error) {
       toast.error("An error occurred. Please try again.");
     }
   };
@@ -150,7 +155,9 @@ const RegisterForm = () => {
             >
               <svg
                 className={`${styles.inputIcon} ${
-                  touched.password && errors.password ? styles.errorInputIcon : ""
+                  touched.password && errors.password
+                    ? styles.errorInputIcon
+                    : ""
                 }`}
               >
                 <use href={icons + `#icon-lock-02`}></use>
