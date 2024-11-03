@@ -1,4 +1,4 @@
-import React, { FC, Dispatch, SetStateAction } from "react";
+import React, { FC, Dispatch, SetStateAction, useCallback, useMemo } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import Select, { SingleValue } from "react-select";
 import SubTitle from "../SubTitle/SubTitle";
@@ -19,26 +19,30 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
-  const handleCounterChange = (action: 'increment' | 'decrement') => {
-    if (action === 'decrement' && ingredients.length > 0) {
-      setIngredients(prev => prev.slice(0, prev.length - 1));
-    } else if (action === 'increment') {
-      setIngredients(prev => [...prev, { id: nanoid(), selectedUnit: "" }]);
-    }
-  };
+  const handleCounterChange = useCallback((action: 'increment' | 'decrement') => {
+    setIngredients(prev => {
+      if (action === 'decrement' && prev.length > 0) {
+        return prev.slice(0, prev.length - 1);
+      }
+      if (action === 'increment') {
+        return [...prev, { id: nanoid(), selectedUnit: "" }];
+      }
+      return prev;
+    });
+  }, []);
 
-  const getIngredientOptions = (): Option[] => {
+  const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map(ingredient => ({
       label: ingredient.ttl,
       value: ingredient.ttl
     }));
-  };
+  }, [ingredientsAll]);
 
-  const removeIngredient = (fieldId: string) => {
+  const removeIngredient = useCallback((fieldId: string) => {
     setIngredients(prev => prev.filter(ingredient => ingredient.id !== fieldId));
-  };
+  }, []);
 
-  const handleIngredientChange = (
+  const handleIngredientChange = useCallback((
     index: number,
     selectedOption: SingleValue<Option>
   ) => {
@@ -52,13 +56,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
       };
       return updated;
     });
-  };
+  }, []);
 
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
         <SubTitle title="Ingredients" />
-        <div className={styles.recipeIngredients__counterBox}>
+        <div className={styles.recipeIngredients__counterBox} role="group"
+          aria-label="Ingredient counter">
           <button
             type="button"
             className={styles.recipeIngredients__btn}
@@ -71,7 +76,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
             </svg>
           </button>
 
-          <span className={styles.recipeIngredients__counterFont}>
+          <span className={styles.recipeIngredients__counterFont}   aria-live="polite">
             {ingredients.length}
           </span>
 
@@ -88,14 +93,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         </div>
       </div>
 
-      <ul className={styles.recipeIngredients__list}>
+      <ul className={styles.recipeIngredients__list}  aria-label="Ingredients list">
         {ingredients.map((ingredient, index) => (
           <li 
             key={ingredient.id} 
             className={styles.recipeIngredients__item}
           >
             <Select
-              options={getIngredientOptions()}
+              options={ingredientOptions}
               onChange={(selectedOption) => 
                 handleIngredientChange(index, selectedOption)
               }
@@ -105,6 +110,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
               aria-label="Select ingredient"
               isSearchable
               required
+              menuPlacement="auto"
+              menuPosition="fixed"
             />
 
             <UnitInput
@@ -117,7 +124,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
               type="button"
               className={styles.recipeIngredients__btnX}
               onClick={() => removeIngredient(ingredient.id)}
-              aria-label="Remove this ingredient"
+              aria-label={`Remove ingredient ${index + 1}`}
             >
               <svg className={styles.iconX} aria-hidden="true">
                 <use href={`${sprite}#icon-X`} />
