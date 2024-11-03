@@ -120,20 +120,20 @@
 
   padding-right: 5px;
 
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
   font-size: 7px;
   color: red;
 }
 
-.additionalErrorIcon {
-  position: absolute;
-  right: 10px;
-}
-
+.additionalErrorIcon,
 .additionalSuccessIcon {
   position: absolute;
   right: 10px;
+  width: 18px;
+  height: 18px;
+}
 
+.additionalSuccessIcon {
   fill: green;
   stroke: green;
 }
