@@ -14,7 +14,7 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
   const handleArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = event.currentTarget.value;
 
-    setInstructionsRecipe(text.replace(/ +/, " ").trim());
+    setInstructionsRecipe(text);
   };
   return (
     <div className={styles.recipePreparationFields__container}>
