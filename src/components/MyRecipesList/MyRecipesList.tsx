@@ -17,9 +17,18 @@ const MyRecipesList: FC<MyRecipesListProps> = ({ recipes, isLoading }) => {
     return <MyRecipesListSkeleton />;
   }
 
-  if (!recipes || recipes.length === 0) {
+  if (!recipes ) {
     navigate("/404");
     return null;
+  }
+  if ( recipes.length === 0) {
+   return (
+      <div className={styles.emptyState} role="status">
+        <p className={styles.emptyStateText}>
+          You haven't added any recipes yet
+        </p>
+      </div>
+    );
   }
 
   return (
