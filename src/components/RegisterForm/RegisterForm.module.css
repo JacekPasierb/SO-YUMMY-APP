@@ -1,3 +1,9 @@
+:root {
+
+  --color-text: #FAFAFA;
+
+}
+
 .logo {
   position: absolute;
   top: -220px;
