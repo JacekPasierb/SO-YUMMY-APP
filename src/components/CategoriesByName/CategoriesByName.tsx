@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectIsLoading,
@@ -8,19 +8,20 @@ import {
 } from "../../redux/recipes/selectors";
 import { getRecipesByCategory } from "../../redux/recipes/operations";
 import { AppDispatch } from "src/redux/store";
-import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../Pagination/BasicPagination";
 import CardRecipe from "../CardRecipe/CardRecipe";
 import { IRecipe } from "../../types/recipesTypes";
 import { ClimbingBoxLoader } from "react-spinners";
 import styles from "./CategoriesByName.module.css";
+import { getPageFromQueryString } from "../../helpers/helpers";
 
 const ITEMS_PER_PAGE = 8;
 const DEFAULT_CATEGORY = "Beef";
 
 const CategoriesByName: React.FC = () => {
   const { categoryName } = useParams();
-  const currentPage = getPageFromQueryString();
+  const { search } = useLocation();
+  const currentPage = getPageFromQueryString(search);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
