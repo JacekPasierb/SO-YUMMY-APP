@@ -28,6 +28,9 @@
 
 .formRegister {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
   margin-bottom: 1.125rem;
   padding: var(--form-padding-mobile);
   background-color: var(--color-background);
@@ -118,6 +121,7 @@
   .formRegister {
     margin-top: 280px;
     padding: var(--form-padding-tablet);
+    min-height: 400px;
   }
 
   .logo {
@@ -174,5 +178,6 @@
 
   .formRegister {
     margin-top: 0;
+    min-height: 450px;
   }
 }
