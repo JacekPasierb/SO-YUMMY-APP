@@ -14,7 +14,6 @@ import { getLogoSrc } from "../../helpers/helpers";
 import styles from "./SigninForm.module.css";
 import icons from "../../assets/icons/sprite.svg";
 
-
 interface SigninFormValues {
   email: string;
   password: string;
@@ -25,8 +24,8 @@ const SigninForm: React.FC = () => {
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
 
-  const logoSrc = useMemo(() => 
-    getLogoSrc(isDesktop, isTablet, isRetina), 
+  const logoSrc = useMemo(
+    () => getLogoSrc(isDesktop, isTablet, isRetina),
     [isDesktop, isTablet, isRetina]
   );
 
@@ -34,33 +33,43 @@ const SigninForm: React.FC = () => {
   const error = useSelector(selectError);
   const navigate = useNavigate();
 
-  const handleSubmit = useCallback(async (
-    values: SigninFormValues,
-    { resetForm }: { resetForm: () => void }
-  ) => {
-    try {
-      const result = await dispatch(logIn(values));
-      
-      
-      if (logIn.fulfilled.match(result)) {
-        resetForm();
-        navigate("/");
+  const handleSubmit = useCallback(
+    async (
+      values: SigninFormValues,
+      { resetForm }: { resetForm: () => void }
+    ) => {
+      try {
+        const result = await dispatch(logIn(values));
+
+        if (logIn.fulfilled.match(result)) {
+          resetForm();
+          navigate("/");
+        }
+      } catch (error) {
+        toast.error("Sign in failed. Please try again.");
       }
-    } catch (error) {
-      toast.error("Sign in failed. Please try again.");
-    }
-  }, [dispatch, navigate]);
+    },
+    [dispatch, navigate]
+  );
 
-  const handleResendVerification = useCallback(async (email: string | undefined) => {
-    try {
-      await dispatch(resendVerificationEmail(email as string));
-      toast.success("Verification email sent successfully!");
-    } catch (error) {
-      toast.error("Failed to send verification email.");
-    }
-  }, [dispatch]);
+  const handleResendVerification = useCallback(
+    async (email: string | undefined) => {
+      try {
+        await dispatch(resendVerificationEmail(email as string));
+        toast.success("Verification email sent successfully!");
+      } catch (error) {
+        toast.error("Failed to send verification email.");
+      }
+    },
+    [dispatch]
+  );
 
-  const renderField = (name: string, type: string, placeholder: string, iconId: string) => (
+  const renderField = (
+    name: string,
+    type: string,
+    placeholder: string,
+    iconId: string
+  ) => (
     <div className={`${styles.inputWrapper}`}>
       <svg className={styles.icon}>
         <use href={`${icons}#icon-${iconId}`} />
@@ -72,7 +81,11 @@ const SigninForm: React.FC = () => {
         className={styles.input}
         autoComplete={type === "password" ? "current-password" : "off"}
       />
-      <ErrorMessage name={name} component="div" className={styles.errorMessage} />
+      <ErrorMessage
+        name={name}
+        component="div"
+        className={styles.errorMessage}
+      />
     </div>
   );
 
@@ -86,13 +99,13 @@ const SigninForm: React.FC = () => {
         <Form className={styles.formRegister} autoComplete="off">
           <img src={logoSrc} className={styles.logo} alt="Logo" />
           <h2 className={styles.title}>Sign In</h2>
-          
+
           <div className={styles.inputGroup}>
             {renderField("email", "email", "Email", "mail-01")}
             {renderField("password", "password", "Password", "lock-02")}
           </div>
-          {error && <p>{error}</p>}
-          {error === "Email not verified" &&  (
+
+          {error === "Email not verified" && (
             <button
               type="button"
               className={styles.resendButton}
@@ -102,8 +115,8 @@ const SigninForm: React.FC = () => {
             </button>
           )}
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className={styles.submitButton}
             aria-label="Sign in"
           >
