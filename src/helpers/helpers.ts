@@ -1,70 +1,97 @@
-import recipesMobile from "../../src/images/recipesMobile1x.png";
-import recipesTablet from "../../src/images/recipesTablet1x.png";
-import recipesDesktop from "../../src/images/recipesDesctop1x.png";
-import emptySearchImageMobile1x from "../images/searchMobile1x.png";
-import emptySearchImageMobile2x from "../images/searchMobile2x.png";
-import emptySearchImageTablet1x from "../images/searchMobile1x.png";
-import emptySearchImageTablet2x from "../images/searchTablet2x.png";
-import emptySearchImageDesktop1x from "../images/searchDesktop1x.png";
-import emptySearchImageDesktop2x from "../images/searchDesktop2x.png";
-import logo from "../images/logos";
-import logo1x from "../images/LogoMobile1x.png";
-import logo2x from "../images/LogoMobile2x.png";
-import logoTablet1x from "../images/LogoTablet1x.png";
-import logoTablet2x from "../images/LogoTablet2x.png";
-import logoDesktop1x from "../images/LogoDesctop1x.png";
-import logoDesktop2x from "../images/LogoDesctop2x.png";
+// Recipe images
+import recipeMobile from '../images/recipesMobile1x.png';
+import recipeTablet from '../images/recipesTablet1x.png';
+import recipeDesktop from '../images/recipesDesctop1x.png';
 
-export const getRecipeImage = (
-  isMobile: boolean,
-  isTablet: boolean,
-  isDesktop: boolean
-) => {
-  if (isTablet) return recipesTablet;
-  if (isDesktop) return recipesDesktop;
-  return recipesMobile;
+// Search images
+import searchMobile1x from '../images/searchMobile1x.png';
+import searchMobile2x from '../images/searchMobile2x.png';
+import searchTablet1x from '../images/searchTablet1x.png';
+import searchTablet2x from '../images/searchTablet2x.png';
+import searchDesktop1x from '../images/searchDesktop1x.png';
+import searchDesktop2x from '../images/searchDesktop2x.png';
+
+// Logo images
+import logoMobile1x from '../images/LogoMobile1x.png';
+import logoMobile2x from '../images/LogoMobile2x.png';
+import logoTablet1x from '../images/LogoTablet1x.png';
+import logoTablet2x from '../images/LogoTablet2x.png';
+import logoDesktop1x from '../images/LogoDesctop1x.png';
+import logoDesktop2x from '../images/LogoDesctop2x.png';
+
+const images = {
+  recipes: {
+    mobile: recipeMobile,
+    tablet: recipeTablet,
+    desktop: recipeDesktop,
+  },
+  emptySearch: {
+    mobile: {
+      '1x': searchMobile1x,
+      '2x': searchMobile2x,
+    },
+    tablet: {
+      '1x': searchTablet1x,
+      '2x': searchTablet2x,
+    },
+    desktop: {
+      '1x': searchDesktop1x,
+      '2x': searchDesktop2x,
+    },
+  },
+  logo: {
+    mobile: {
+      '1x': logoMobile1x,
+      '2x': logoMobile2x,
+    },
+    tablet: {
+      '1x': logoTablet1x,
+      '2x': logoTablet2x,
+    },
+    desktop: {
+      '1x': logoDesktop1x,
+      '2x': logoDesktop2x,
+    },
+  },
+} as const;
+
+interface DeviceConfig {
+  isDesktop: boolean;
+  isTablet: boolean;
+  isMobile: boolean;
+  isRetina: boolean;
+}
+
+export const getRecipeImage = ({ isDesktop, isTablet }: Partial<DeviceConfig>): string => {
+  if (isDesktop) return images.recipes.desktop;
+  if (isTablet) return images.recipes.tablet;
+  return images.recipes.mobile;
 };
 
-export const getEmptySearchImage = (
-  isMobile: boolean,
-  isTablet: boolean,
-  isDesktop: boolean
-) => {
-  const isRetina = window.devicePixelRatio > 1;
-
-  if (isDesktop)
-    return isRetina ? emptySearchImageDesktop2x : emptySearchImageDesktop1x;
-  if (isTablet)
-    return isRetina ? emptySearchImageTablet2x : emptySearchImageTablet1x;
-  return isRetina ? emptySearchImageMobile2x : emptySearchImageMobile1x;
-};
-
-export const getLogoSrc = (
-  isMobile: boolean,
-  isTablet: boolean,
-  isDesktop: boolean
-) => {
-  const isRetina = window.devicePixelRatio > 1;
-
+export const getEmptySearchImage = ({ 
+  isDesktop, 
+  isTablet, 
+  isRetina 
+}: Partial<DeviceConfig>): string => {
   if (isDesktop) {
-    return isRetina ? logo.desktop2x : logo.desktop1x;
-  } else if (isTablet) {
-    return isRetina ? logo.tablet2x : logo.tablet1x;
-  } else {
-    return isRetina ? logo.mobile2x : logo.mobile1x;
-  }
-};
-
-export const getResponsiveLogo = (
-  isDesktop: boolean,
-  isTablet: boolean,
-  isRetina: boolean
-): string => {
-  if (isDesktop) {
-    return isRetina ? logoDesktop2x : logoDesktop1x;
+    return isRetina ? images.emptySearch.desktop['2x'] : images.emptySearch.desktop['1x'];
   }
   if (isTablet) {
-    return isRetina ? logoTablet2x : logoTablet1x;
+    return isRetina ? images.emptySearch.tablet['2x'] : images.emptySearch.tablet['1x'];
   }
-  return isRetina ? logo2x : logo1x;
+  return isRetina ? images.emptySearch.mobile['2x'] : images.emptySearch.mobile['1x'];
+};
+
+export const getLogoSrc = ({ 
+  isDesktop, 
+  isTablet, 
+  isRetina 
+}: Partial<DeviceConfig>): string => {
+  if (isDesktop) {
+    return isRetina ? images.logo.desktop['2x'] : images.logo.desktop['1x'];
+  }
+  if (isTablet) {
+    return isRetina ? images.logo.tablet['2x'] : images.logo.tablet['1x'];
+  }
+  return isRetina ? images.logo.mobile['2x'] : images.logo.mobile['1x'];
 };
