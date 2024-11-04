@@ -1,7 +1,5 @@
-/* Styles for unit box container */
 .unitInput__container {
   display: flex;
-  flex-direction: row;
   border: 1px solid var(--color-border-line);
   border-radius: 0.375rem;
 }
@@ -10,43 +8,30 @@
   width: 3rem;
   margin: 0;
   padding: 0.125rem;
-
   font-size: 0.875rem;
   color: var(--color-text-select);
   text-align: center;
-
   background-color: transparent;
   border: none;
   outline: none;
-
-  @media screen and (min-width: 768px) {
-    font-size: 1.125rem;
-  }
 }
 
-/* Styles for input fields without spin buttons */
 .unitInput__noSpin {
-  -moz-appearance: textfield; /* Remove spin buttons in Firefox */
-
-  /* Remove spin buttons in WebKit */
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    margin: 0; /* Remove default margin */
-    -webkit-appearance: none; /* Remove default styling */
-  }
+  -moz-appearance: textfield; 
 }
 
-/* General input styling */
+.unitInput__noSpin::-webkit-outer-spin-button,
+.unitInput__noSpin::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
 input {
   width: 100%;
 }
 
-/* Styles for numeric input fields */
-
-/* Styles for unit select dropdown */
 .selectUnit {
   padding-right: 1.25rem;
-
   background-color: transparent;
   border: none;
   outline: none;
@@ -55,4 +40,10 @@ input {
   background-repeat: no-repeat;
   background-position: right;
   stroke: #8baa36;
+}
+
+@media screen and (min-width: 768px) {
+  .unitInput__number {
+    font-size: 1.125rem;
+  }
 }
