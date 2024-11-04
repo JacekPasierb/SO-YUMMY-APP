@@ -40,11 +40,11 @@ const SigninForm: React.FC = () => {
   ) => {
     try {
       const result = await dispatch(logIn(values));
-      console.log("ee",error);
+      
       
       if (logIn.fulfilled.match(result)) {
         resetForm();
-        navigate("/main");
+        navigate("/");
       }
     } catch (error) {
       toast.error("Sign in failed. Please try again.");

@@ -50,9 +50,9 @@ export const logIn = createAsyncThunk<
       return await resp.data;
     } catch (err: any) {
       if (err.response.status === 403) {
-        toast.info("Konto nie zweryfikowane");
-        thunkAPI.dispatch(setAuthError("Konto nie zweryfikowane"));
-        return thunkAPI.rejectWithValue("Konto nie zweryfikowane");
+        toast.info("Email not verified");
+        thunkAPI.dispatch(setAuthError("Email not verified"));
+        return thunkAPI.rejectWithValue("Email not verified");
       }
       console.error(err.message);
       thunkAPI.dispatch(setAuthError("Login failed ⚠"));
