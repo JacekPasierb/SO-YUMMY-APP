@@ -1,28 +1,38 @@
-.searchTypeSelector__label {
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--color-text-title);
-
-  @media screen and (min-width: 768px) {
-    margin-top: 28px;
-
-    font-size: 14px;
-    line-height: 18px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    font-size: 18px;
-    line-height: 24px;
-  }
-}
-
 .searchTypeSelector {
   display: flex;
   flex-direction: row;
   gap: 15px;
   justify-content: center;
+}
 
-  @media screen and (min-width: 768px) {
+.searchTypeSelector__label {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--color-text-title);
+}
+
+@media screen and (min-width: 768px) {
+  .searchTypeSelector {
     margin-top: 28px;
+  }
+
+  .searchTypeSelector__label {
+    margin-top: 28px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .searchTypeSelector__label {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .searchTypeSelector {
+    transition: none;
   }
 }

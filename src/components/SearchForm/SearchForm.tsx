@@ -6,29 +6,31 @@ interface SearchFormProps {
   searchValue?: string;
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ 
-  onSearchSubmit, 
-  searchValue = "" 
+const SearchForm: React.FC<SearchFormProps> = ({
+  onSearchSubmit,
+  searchValue = "",
 }) => {
   const [inputValue, setInputValue] = useState(searchValue);
 
-  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  }, []);
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
+    },
+    []
+  );
 
-  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (inputValue.trim()) {
-      onSearchSubmit(inputValue.trim());
-    }
-  }, [inputValue, onSearchSubmit]);
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (inputValue.trim()) {
+        onSearchSubmit(inputValue.trim());
+      }
+    },
+    [inputValue, onSearchSubmit]
+  );
 
   return (
-    <form 
-      className={styles.search} 
-      onSubmit={handleSubmit}
-      role="search"
-    >
+    <form className={styles.search} onSubmit={handleSubmit} role="search">
       <input
         type="search"
         id="recipe-search"
