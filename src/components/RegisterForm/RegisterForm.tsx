@@ -8,12 +8,12 @@ import { toast } from "react-toastify";
 import { validate } from "./RegisterFormValidations";
 import { register } from "../../redux/auth/operations";
 import { AppDispatch } from "src/redux/store";
-import { getResponsiveLogo } from "../../helpers/helpers";
 
 import icons from "../../assets/icons/sprite.svg";
 import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
 import styles from "./RegisterForm.module.css";
+import { getLogoSrc } from "../../helpers/helpers";
 
 interface FormValues {
   name: string;
@@ -26,9 +26,9 @@ const RegisterForm: React.FC = () => {
   const navigate = useNavigate();
 
   const isTablet = useMediaQuery("(min-width: 768px)");
-  const isDesctop = useMediaQuery("(min-width: 1200px)");
+  const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
-  const logoSrc = getResponsiveLogo(isDesctop, isTablet, isRetina);
+  const logoSrc = getLogoSrc({isDesktop, isTablet, isRetina})
 
   const initialValues: FormValues = {
     name: "",
