@@ -9,21 +9,22 @@ import BasicPagination from "../../components/Pagination/BasicPagination";
 import { useSelector } from "react-redux";
 import { AppDispatch, useAppDispatch } from "../../redux/store";
 import { getFavoriteRecipes } from "../../redux/favoriteRecipes/operations";
-import { useNavigate } from "react-router";
-import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
+import { useLocation, useNavigate } from "react-router";
 import {
   selectFavoriteRecipes,
   selectIsLoading,
   selectTotalFavoritesRecipes,
 } from "../../redux/favoriteRecipes/selectors";
 import "react-loading-skeleton/dist/skeleton.css";
+import { getPageFromQueryString } from "../../helpers/helpers";
 
 const FavoritesPage = () => {
   const dispatch: AppDispatch = useAppDispatch();
+  const { search } = useLocation();
   const favoriteRecipes = useSelector(selectFavoriteRecipes);
   const totalFavoriteRecipes = useSelector(selectTotalFavoritesRecipes);
   const isLoading = useSelector(selectIsLoading);
-  const currentPage = getPageFromQueryString();
+  const currentPage = getPageFromQueryString(search);
   const navigate = useNavigate();
 
   const handlePageChange = (page: number) => {
