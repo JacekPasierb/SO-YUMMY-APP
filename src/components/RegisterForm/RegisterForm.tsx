@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { useMediaQuery } from "@react-hook/media-query";
@@ -28,7 +28,10 @@ const RegisterForm: React.FC = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
-  const logoSrc = getLogoSrc({isDesktop, isTablet, isRetina})
+  const logoSrc = useMemo(() => 
+    getLogoSrc({ isDesktop, isTablet, isRetina }), 
+    [isDesktop, isTablet, isRetina]
+  );
 
   const initialValues: FormValues = {
     name: "",
