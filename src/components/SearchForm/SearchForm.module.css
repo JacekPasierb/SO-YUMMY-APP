@@ -7,46 +7,25 @@
   margin-top: 1.5rem;
   margin-bottom: 5.1875rem;
   margin-inline: auto;
-
   background-color: transparent;
-  border: 1px solid var(--color-border-search); /* new update*/
+  border: 1px solid var(--color-border-search);
   border-radius: 1.5rem 2.75rem;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 2rem;
-    margin-bottom: 0;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-top: 3.125rem;
-  }
 }
 
 .search__input {
   width: 100%;
   padding-left: 32px;
-
   font-size: var(--font-size-asaid);
-  color: var(--color-text-nav); /*new update*/
-
+  color: var(--color-text-nav);
   background-color: transparent;
   border: none;
   outline: none;
-
-  @media screen and (min-width: 768px) {
-    padding-left: 38px;
-  }
 }
 
 .search__input::placeholder {
   font-size: 12px;
-  color: var(--color-text-placeholders); /*new update*/
-
+  color: var(--color-text-placeholders);
   background-color: transparent;
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
 }
 
 .search__btn {
@@ -54,55 +33,86 @@
   padding: 16px 32px;
 
   font-size: 14px;
-  line-height: normal;
-  color: var(--color-text-btn-primary); /*new update*/
+  line-height: 1.5;
+  color: var(--color-text-btn-primary);
 
-  background-color: var(--color-bg-btn-search); /*new update*/
+  background-color: var(--color-bg-btn-search);
   border: none;
   border-radius: 24px 44px;
-
-  @media screen and (min-width: 768px) {
-    padding: 18px 52px;
-
-    font-size: 16px;
-  }
+  transition: background-color 0.3s ease;
 }
 
 .search__btn:disabled {
-  cursor: auto;
+  cursor: not-allowed;
   background-color: rgb(215, 215, 215);
 }
 
 .search__btn:disabled:hover::after {
-  content: "Pole jest puste!";
+  content: "Field is empty!";
   position: absolute;
-  top: 100%; /* poniżej input */
+  top: 100%;
   left: 0;
+  padding: 5px 10px;
+  margin-top: 5px;
   background-color: rgba(139, 170, 54, 1);
   color: rgba(34, 37, 42, 1);
-  padding: 5px 10px;
   border: 1px solid rgba(139, 170, 54, 1);
   border-radius: 5px;
   white-space: nowrap;
   font-size: 12px;
-  margin-top: 5px;
   z-index: 1;
-  /* Opcjonalne: dodaj strzałkę (trójkąt) */
 }
 
 .search__btn:disabled:hover::before {
   content: "";
   position: absolute;
-  top: 95%; /* pozycja strzałki */
-  left: 10px; /* dostosuj w zależności od pozycji chmurki */
+  top: 95%;
+  left: 10px;
   border-width: 5px;
   border-style: solid;
   border-color: rgba(139, 170, 54, 1) transparent transparent transparent;
 }
-/* Nadpisanie dla pól wypełnionych autouzupełnieniem */
+
 input:-webkit-autofill {
   appearance: none;
-  -webkit-box-shadow: 0 0 0 1000px transparent inset !important; /* Usuwa kolor tła autofill */
-  box-shadow: 0 0 0 1000px transparent inset !important; /* To samo dla box-shadow */
-  -webkit-text-fill-color: transparent !important; /* Kolor tekstu */
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.search__input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: var(--color-text-nav) !important;
+}
+
+@media screen and (min-width: 768px) {
+  .search {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+
+  .search__input {
+    padding-left: 38px;
+  }
+
+  .search__input::placeholder {
+    font-size: 16px;
+  }
+
+  .search__btn {
+    padding: 18px 52px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .search {
+    margin-top: 3.125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search__btn {
+    transition: none;
+  }
 }
