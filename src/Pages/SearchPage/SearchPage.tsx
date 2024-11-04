@@ -11,6 +11,7 @@ import { getRecipes } from "../../redux/recipes/operations";
 import {
   Navigate,
   NavLink,
+  useLocation,
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
@@ -20,16 +21,16 @@ import {
   selectTotalRecipes,
 } from "../../redux/recipes/selectors";
 import BasicPagination from "../../components/Pagination/BasicPagination";
-import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import CardRecipe from "../../components/CardRecipe/CardRecipe";
 import { IRecipe } from "../../types/recipesTypes";
 import { useMediaQuery } from "@react-hook/media-query";
-import { getEmptySearchImage } from "../../helpers/helpers";
+import { getEmptySearchImage, getPageFromQueryString } from "../../helpers/helpers";
 
 
 
 const SearchPage = () => {
   const dispatch: AppDispatch = useDispatch();
+  const { search } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const initialSearchType = useMemo(
     () => (searchParams.get("ingredient") ? "ingredient" : "query"),
@@ -46,7 +47,7 @@ const SearchPage = () => {
   const recipes = useSelector(selectRecipesByCategory);
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
-  const currentPage = getPageFromQueryString();
+  const currentPage = getPageFromQueryString(search);
   const navigate = useNavigate();
   
   const isMobile = useMediaQuery("(max-width:768px)");
