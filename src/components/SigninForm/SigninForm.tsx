@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
+import React, { useCallback, useMemo } from "react";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "@react-hook/media-query";
 import { useNavigate } from "react-router-dom";
@@ -9,187 +9,109 @@ import { AppDispatch } from "src/redux/store";
 import { logIn, resendVerificationEmail } from "../../redux/auth/operations";
 import { selectError } from "../../redux/auth/selectors";
 import { validate } from "./SigninFormValidations";
+import { getLogoSrc } from "../../helpers/helpers";
 
-// Importing images and icons
 import styles from "./SigninForm.module.css";
 import icons from "../../assets/icons/sprite.svg";
-import errorIcon from "../../images/Errorlogo.png";
-import successIcon from "../../images/Successlogo.png";
-import logo from "../../images/logos";
 
-const SigninForm = () => {
-  const [emailForResend, setEmailForResend] = useState<string | null>(null);
+
+interface SigninFormValues {
+  email: string;
+  password: string;
+}
+
+const SigninForm: React.FC = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
 
-  // Ustalanie źródła logo na podstawie warunków
-  const logoSrc = isDesktop
-    ? isRetina
-      ? logo.desktop2x
-      : logo.desktop1x
-    : isTablet
-    ? isRetina
-      ? logo.tablet2x
-      : logo.tablet1x
-    : isRetina
-    ? logo.mobile2x
-    : logo.mobile1x;
+  const logoSrc = useMemo(() => 
+    getLogoSrc(isDesktop, isTablet, isRetina), 
+    [isDesktop, isTablet, isRetina]
+  );
 
   const dispatch: AppDispatch = useDispatch();
   const error = useSelector(selectError);
   const navigate = useNavigate();
 
-  const handleSubmit = async (
-    values: FormikValues,
+  const handleSubmit = useCallback(async (
+    values: SigninFormValues,
     { resetForm }: { resetForm: () => void }
   ) => {
     try {
-      setEmailForResend(values.email);
-      const result = await dispatch(
-        logIn({
-          email: values.email,
-          password: values.password,
-        })
-      );
+      const result = await dispatch(logIn(values));
+      console.log("ee",error);
+      
       if (logIn.fulfilled.match(result)) {
         resetForm();
-        navigate("/");
-      } else if (error) {
-        toast.error(error);
+        navigate("/main");
       }
-    } catch (err: any) {
-      console.error("Error logging in:", err.message);
-      toast.error("Something went wrong during sign in, please try again.");
+    } catch (error) {
+      toast.error("Sign in failed. Please try again.");
     }
-  };
-  const handleResendVerificationEmail = async () => {
-    if (emailForResend) {
-      try {
-        await dispatch(resendVerificationEmail(emailForResend));
-        toast.success("Verification email has been sent!");
-      } catch (err: any) {
-        console.error("Error resending verification email:", err.message);
-        toast.error(
-          "Failed to resend the verification email, please try again."
-        );
-      }
+  }, [dispatch, navigate]);
+
+  const handleResendVerification = useCallback(async (email: string | undefined) => {
+    try {
+      await dispatch(resendVerificationEmail(email as string));
+      toast.success("Verification email sent successfully!");
+    } catch (error) {
+      toast.error("Failed to send verification email.");
     }
-  };
+  }, [dispatch]);
+
+  const renderField = (name: string, type: string, placeholder: string, iconId: string) => (
+    <div className={`${styles.inputWrapper}`}>
+      <svg className={styles.icon}>
+        <use href={`${icons}#icon-${iconId}`} />
+      </svg>
+      <Field
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        className={styles.input}
+        autoComplete={type === "password" ? "current-password" : "off"}
+      />
+      <ErrorMessage name={name} component="div" className={styles.errorMessage} />
+    </div>
+  );
 
   return (
-    <div>
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validate={validate}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched, setFieldTouched }) => (
-          <Form className={styles.formRegister} autoComplete="off">
-            <img src={logoSrc} className={styles.logo} alt="Logo" />
-            <h2 className={styles.title}>Sign In</h2>
-            <div className={styles.inputGroup}>
-              <div
-                className={`${styles.inputWrapper} ${
-                  touched.email && errors.email ? styles.inputError : ""
-                }`}
-              >
-                <svg
-                  className={`${styles.icon} ${
-                    touched.email && errors.email ? styles.iconError : ""
-                  }`}
-                >
-                  <use href={icons + `#icon-mail-01`}></use>
-                </svg>
-                <Field
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className={styles.input}
-                  onBlur={() => setFieldTouched("email", true)}
-                  autoComplete="off"
-                />
-                {touched.email && errors.email && (
-                  <img
-                    src={errorIcon}
-                    alt="Error"
-                    className={styles.additionalErrorIcon}
-                  />
-                )}
-                {touched.email && !errors.email && (
-                  <img
-                    src={successIcon}
-                    alt="Success Icon"
-                    className={styles.additionalSuccessIcon}
-                  />
-                )}
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className={styles.errorMessage}
-                />
-              </div>
+    <Formik
+      initialValues={{ email: "", password: "" }}
+      validate={validate}
+      onSubmit={handleSubmit}
+    >
+      {({ values, errors, touched }) => (
+        <Form className={styles.formRegister} autoComplete="off">
+          <img src={logoSrc} className={styles.logo} alt="Logo" />
+          <h2 className={styles.title}>Sign In</h2>
+          
+          <div className={styles.inputGroup}>
+            {renderField("email", "email", "Email", "mail-01")}
+            {renderField("password", "password", "Password", "lock-02")}
+          </div>
 
-              <div
-                className={`${styles.inputWrapper} ${
-                  touched.password && errors.password ? styles.inputError : ""
-                }`}
-              >
-                <svg
-                  className={`${styles.icon} ${
-                    touched.password && errors.password ? styles.iconError : ""
-                  }`}
-                >
-                  <use href={icons + `#icon-lock-02`}></use>
-                </svg>
-                <Field
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  autoComplete="current-password"
-                  className={styles.input}
-                  onBlur={() => setFieldTouched("password", true)}
-                />
-                {touched.password && errors.password && (
-                  <img
-                    src={errorIcon}
-                    alt="Error Icon"
-                    className={styles.additionalErrorIcon}
-                  />
-                )}
-                {touched.password && !errors.password && (
-                  <img
-                    src={successIcon}
-                    alt="Success Icon"
-                    className={styles.additionalSuccessIcon}
-                  />
-                )}
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className={styles.errorMessage}
-                />
-              </div>
-            </div>
-            {error === "Konto nie zweryfikowane" && (
-              <p className={styles.verificationText}>
-                Didn't receive the email?
-                <button
-                  type="button"
-                  className={styles.resendButton}
-                  onClick={handleResendVerificationEmail}
-                >
-                  Resend
-                </button>
-              </p>
-            )}
-            <button type="submit" className={styles.submitButton}>
-              Sign up
+          {error === "Email not verified" &&  (
+            <button
+              type="button"
+              className={styles.resendButton}
+              onClick={() => handleResendVerification(errors.email)}
+            >
+              Resend verification email
             </button>
-          </Form>
-        )}
-      </Formik>
-    </div>
+          )}
+
+          <button 
+            type="submit" 
+            className={styles.submitButton}
+            aria-label="Sign in"
+          >
+            Sign in
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
