@@ -12,7 +12,11 @@ const RestrictedRoute: FC<RestrictedRouteProps> = ({
   redirectTo = "/",
 }) => {
   const { isLoggedIn } = useAuth();
-  return isLoggedIn ? <Navigate to={redirectTo} /> : component;
+  if (isLoggedIn) {
+    return <Navigate to={redirectTo} replace />;
+  }
+
+  return component;
 };
 
 export default RestrictedRoute;
