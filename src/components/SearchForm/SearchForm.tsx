@@ -1,49 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styles from "./SearchForm.module.css";
-import { useLocation, useNavigate } from "react-router";
 
 interface SearchFormProps {
   onSearchSubmit: (value: string) => void;
   searchValue?: string;
 }
 
-const SearchForm: React.FC<SearchFormProps> = React.memo(
-  ({ onSearchSubmit, searchValue }) => {
-   
+const SearchForm: React.FC<SearchFormProps> = ({ 
+  onSearchSubmit, 
+  searchValue = "" 
+}) => {
+  const [inputValue, setInputValue] = useState(searchValue);
 
-   
-    const [inputValue, setInputValue] = useState(searchValue || "");
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  }, []);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInputValue(e.target.value);
-    };
+  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (inputValue.trim()) {
+      onSearchSubmit(inputValue.trim());
+    }
+  }, [inputValue, onSearchSubmit]);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      onSearchSubmit(inputValue);
-    };
-    return (
-      <form className={styles.search} onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Beef"
-          className={styles.search__input}
-          aria-label="Search for recipes"
-          value={inputValue}
-          onChange={handleInputChange}
-          autoComplete="off"
-        />
-        <button
-          type="submit"
-          className={styles.search__btn}
-          disabled={!inputValue?.trim()}
-        >
-          Search
-        </button>
-      </form>
-    );
-  }
-);
+  return (
+    <form 
+      className={styles.search} 
+      onSubmit={handleSubmit}
+      role="search"
+    >
+      <input
+        type="search"
+        id="recipe-search"
+        name="recipe-search"
+        placeholder="Enter recipe name..."
+        className={styles.search__input}
+        aria-label="Search for recipes"
+        value={inputValue}
+        onChange={handleInputChange}
+        autoComplete="off"
+      />
+      <button
+        type="submit"
+        className={styles.search__btn}
+        disabled={!inputValue.trim()}
+        aria-label="Search"
+      >
+        Search
+      </button>
+    </form>
+  );
+};
 
-export default SearchForm;
+export default React.memo(SearchForm);
