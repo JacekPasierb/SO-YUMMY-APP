@@ -91,7 +91,7 @@ const SigninForm: React.FC = () => {
             {renderField("email", "email", "Email", "mail-01")}
             {renderField("password", "password", "Password", "lock-02")}
           </div>
-
+          {error && <p>{error}</p>}
           {error === "Email not verified" &&  (
             <button
               type="button"
