@@ -1,21 +1,25 @@
 import React, { FC, useEffect, useState } from "react";
-import styles from "./UnitInput.module.css";
 import Select, { SingleValue } from "react-select";
 import { selectUnit } from "../RecipeIngredientsFields/selectStyles";
 import { Option, UnitInputProps } from "../../types/ingredientsTypes";
+import styles from "./UnitInput.module.css";
+
+const UNIT_OPTIONS: Option[] = [
+  { label: "tbs", value: "tbs" },
+  { label: "tsp", value: "tsp" },
+  { label: "kg", value: "kg" },
+  { label: "g", value: "g" },
+];
+
+const MAX_VALUE = 999;
+const MIN_VALUE = 0;
 
 const UnitInput: FC<UnitInputProps> = ({
   ingredients,
   setIngredients,
   index,
 }) => {
-  const options: Option[] = [
-    { label: "tbs", value: "tbs" },
-    { label: "tsp", value: "tsp" },
-    { label: "kg", value: "kg" },
-    { label: "g", value: "g" },
-  ];
-  const [unit, setUnit] = useState<string>(options[0].value);
+  const [unit, setUnit] = useState<string>(UNIT_OPTIONS[0].value);
   const [numUnit, setNumUnit] = useState<number>(0);
 
   const handleUnit = (selectedOption: SingleValue<Option>) => {
@@ -25,18 +29,18 @@ const UnitInput: FC<UnitInputProps> = ({
   };
 
   const handleNumUnit = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const num = parseFloat(event.currentTarget.value); // Zmieniamy na parseFloat, by obsługiwać liczby zmiennoprzecinkowe
+    const num = parseFloat(event.currentTarget.value);
 
     if (!isNaN(num)) {
-      if (num > 999) {
-        setNumUnit(999);
-      } else if (num < 0) {
-        setNumUnit(0);
+      if (num > MAX_VALUE) {
+        setNumUnit(MAX_VALUE);
+      } else if (num < MIN_VALUE) {
+        setNumUnit(MIN_VALUE);
       } else {
         setNumUnit(num);
       }
     } else {
-      setNumUnit(0);
+      setNumUnit(MIN_VALUE);
     }
   };
 
@@ -44,8 +48,8 @@ const UnitInput: FC<UnitInputProps> = ({
     setIngredients((prevIngredients) => {
       const updatedIngredients = [...prevIngredients];
       updatedIngredients[index] = {
-        ...updatedIngredients[index], // Kopiujemy inne właściwości
-        selectedUnit: `${numUnit} ${unit}`, // Aktualizacja wybranej jednostki
+        ...updatedIngredients[index],
+        selectedUnit: `${numUnit} ${unit}`,
       };
       return updatedIngredients;
     });
@@ -55,18 +59,18 @@ const UnitInput: FC<UnitInputProps> = ({
     <div className={styles.unitInput__container}>
       <input
         type="number"
-        min="0"
-        max="999"
+        min={MIN_VALUE}
+        max={MAX_VALUE}
         value={numUnit}
         className={`${styles.unitInput__number} ${styles.unitInput__noSpin}`}
         onChange={handleNumUnit}
       />
       <Select
         name="unitOpt"
-        options={options}
+        options={UNIT_OPTIONS}
         styles={selectUnit}
         isSearchable={false}
-        defaultValue={options[0]}
+        defaultValue={UNIT_OPTIONS[0]}
         onChange={(selectedOption) =>
           handleUnit(selectedOption as SingleValue<Option>)
         }
