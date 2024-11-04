@@ -3,13 +3,26 @@
     url("../../images/foot21x.png");
   background-repeat: no-repeat;
   background-position: bottom 0 right 0, bottom 300px left 0;
+  background-size: contain;
+}
 
-  /* Media queries for responsive design */
-  @media screen and (min-width: var(--breakpoint-md)) {
+@media screen and (min-width: 768px) {
+  .container {
     background-position: bottom 0 right 0, bottom 330px left 0;
   }
+}
 
-  @media screen and (min-width: var(--breakpoint-lg)) {
+@media screen and (min-width: 1200px) {
+  .container {
     background-position: bottom 0 right 0, bottom 400px left 0;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .container {
+    background-image: url("../../images/foot2x.png"),
+      url("../../images/foot22x.png");
   }
 }
