@@ -96,8 +96,9 @@ export const getLogoSrc = ({
   return isRetina ? images.logo.mobile['2x'] : images.logo.mobile['1x'];
 };
 
-export const getPageFromQueryString = () => {
-  const searchParams = new URLSearchParams(location.search);
+export const getPageFromQueryString = (search: string) => {
+  const searchParams = new URLSearchParams(search);
   const pageString = searchParams.get("page");
-  return parseInt(pageString || "1", 10);
+  const page = parseInt(pageString || "1", 10);
+  return isNaN(page) || page < 1 ? 1 : page;
 };

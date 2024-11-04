@@ -12,17 +12,18 @@ import {
 import { AppDispatch } from "../../redux/store";
 import Header from "../../components/Header/Header";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
-import { getPageFromQueryString } from "../../helpers/getPageFromQueryString";
 import BasicPagination from "../../components/Pagination/BasicPagination";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import { selectUser } from "../../redux/auth/selectors";
+import { getPageFromQueryString } from "../../helpers/helpers";
 
 const MyRecipesPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const user = useSelector(selectUser);
+  const { search } = useLocation();
 
-  const currentPage = getPageFromQueryString();
+  const currentPage = getPageFromQueryString(search);
   const ownRecipes = useSelector(selectOwnRecipes);
   const totalOwnRecipes = useSelector(selectTotalOwnRecipes);
   const isLoading = useSelector(selectIsLoading);
