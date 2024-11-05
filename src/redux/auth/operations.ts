@@ -8,8 +8,21 @@ import {
   IUser,
   UpdateUserResponse,
 } from "../../types/authTypes";
+import { store } from "../store";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
+
+// Dodajemy interceptor do obsługi błędów
+axios.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401) {
+      await store.dispatch(logOut());
+      clearAuthHeader();
+    }
+    return Promise.reject(error);
+  }
+);
 
 // Utility to add JWT
 const setAuthHeader = (token: string | null) => {

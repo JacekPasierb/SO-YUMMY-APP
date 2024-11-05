@@ -49,41 +49,11 @@ const App: FC = () => {
   }, [navigate, pathname, search]);
 
   const { token } = useAuth();
-  // Funkcja do dekodowania tokenu i ustawienia timeoutu na wylogowanie
-  // const setupAutoLogout = (token: string) => {
-  //   if (!token) return;
-  //   try {
-  //     const decodedToken: any = jwtDecode(token);
-  //     const currentTime = Date.now() / 1000;
-  //     // Sprawdzenie, czy token już wygasł
-  //     if (decodedToken.exp < currentTime) {
-  //       dispatch(logOut()); // Wyloguj natychmiast, jeśli token wygasł
-  //     } else {
-  //       // Oblicz czas do wygaśnięcia tokenu
-  //       const timeUntilExpiry = (decodedToken.exp - currentTime) * 1000;
 
-  //       // Ustaw timeout na automatyczne wylogowanie
-  //       setTimeout(() => {
-  //         dispatch(logOut());
-  //         navigate("/signin") //tesst
-  //       }, timeUntilExpiry);
-  //     }
-  //   } catch (error) {
-  //     console.error("Błąd podczas dekodowania tokenu:", error);
-  //     dispatch(logOut()); // Wyloguj, jeśli dekodowanie się nie powiodło
-  //     navigate("/signin")
-  //   }
-  // };
-
-  // Ustawienie wylogowania po odświeżeniu aplikacji
   useEffect(() => {
     dispatch(refreshUser());
-    // if (token) {
-    //   setupAutoLogout(token); // Ustaw auto wylogowanie, jeśli token istnieje
-    // }
   }, [dispatch, token]);
 
-  // Zmiana motywu (dark/light)
   useEffect(() => {
     document.body.className = isDarktheme ? "dark-theme" : "";
   }, [isDarktheme]);
@@ -93,7 +63,6 @@ const App: FC = () => {
   ) : (
     <>
       <Routes>
-        {/* Trasy z restrykcjami */}
         <Route
           path="/welcome"
           element={
@@ -169,10 +138,13 @@ const App: FC = () => {
             path="/recipe/:recipeId"
             element={<PrivateRoute component={<RecipePage />} />}
           />
-          <Route path="/search" element={<PrivateRoute component={<SearchPage/>} />} />
+          <Route
+            path="/search"
+            element={<PrivateRoute component={<SearchPage />} />}
+          />
           <Route
             path="/shopping-list"
-            element={<PrivateRoute component={<ShoppingListPage/>} />}
+            element={<PrivateRoute component={<ShoppingListPage />} />}
           />
           <Route
             path="*"
