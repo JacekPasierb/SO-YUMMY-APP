@@ -16,9 +16,9 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
   useEffect(() => {
     if (instructions) {
       const formattedSteps = instructions
-        .split(".")
-        .map((step) => step.trim())
-        .filter((step) => step.length > 0);
+        .split('.')
+        .map(step => step.trim())
+        .filter(step => step.length > 0);
       setSteps(formattedSteps);
     }
   }, [instructions]);
@@ -29,7 +29,7 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
         key={`step-${index}`}
         className={styles.recipePreparation__instructionsListItem}
       >
-        <div
+        <div 
           className={styles.recipePreparation__numbStepBox}
           aria-hidden="true"
         >
@@ -37,7 +37,9 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
             {index + 1}
           </span>
         </div>
-        <p className={styles.recipePreparation__descStep}>{step}</p>
+        <p className={styles.recipePreparation__descStep}>
+          {step}
+        </p>
       </li>
     ));
   }, [steps]);
@@ -51,7 +53,7 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
       <div className={styles.recipePreparation__wrapper}>
         <div className={styles.recipePreparation__content}>
           <SubTitle title="Recipe Preparation" />
-          <ol
+          <ol 
             className={styles.recipePreparation__instructionsList}
             aria-label="Recipe preparation steps"
           >
@@ -62,11 +64,11 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
           <img
             src={img}
             alt="Final dish presentation"
-            width="433"
-            height="332"
             className={styles.recipePreparation__image}
             loading="lazy"
-          />{" "}
+            width="433"
+            height="332"
+          />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 .recipePreparation__container {
-  width: 100%;
+  padding: 20px;
   margin: 0 auto;
-  padding: 0 16px;
+  max-width: 1240px;
 }
 
 .recipePreparation__wrapper {
@@ -10,84 +10,93 @@
   gap: 40px;
 }
 
+.recipePreparation__content {
+  flex: 1;
+}
+
 .recipePreparation__instructionsList {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 40px;
-  margin-top: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
 }
 
 .recipePreparation__instructionsListItem {
   display: flex;
-
-  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
 .recipePreparation__numbStepBox {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 21px;
-  height: 21px;
-  margin-right: 14px;
-  padding: 2px 7px;
-
-  background-color: rgba(139, 170, 54, 1);
-  border-radius: 100px;
+  justify-content: center;
+  min-width: 25px;
+  height: 25px;
+  background-color: #8BAA36;
+  border-radius: 50%;
+  padding: 5px;
 }
 
 .recipePreparation__numbStepText {
-  margin: 0;
-
-  font-size: 12px;
-  color: rgba(255, 255, 255, 1);
+  color: #FFFFFF;
+  font-size: 14px;
 }
 
 .recipePreparation__descStep {
-  margin-block: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
 
-  font-size: 12px;
-  line-height: 14px;
-  color: var(--color-text-title);
+.recipePreparation__imageWrapper {
+  width: 100%;
 }
 
 .recipePreparation__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: 8px;
 }
 
-.recipePreparation {
-  display: flex;
-  flex-direction: column;
-}
-
-@media screen and (min-width: 768px) {
-  .recipePreparation__container {
-    max-width: 768px;
-    padding: 0 32px;
+@media (min-width: 768px) {
+  .recipePreparation__wrapper {
+    gap: 50px;
   }
 
-  .recipePreparation__instructionsList {
-    gap: 18px;
-    margin-top: 32px;
-    margin-bottom: 50px;
+  .recipePreparation__numbStepBox {
+    min-width: 30px;
+    height: 30px;
   }
 
   .recipePreparation__numbStepText {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .recipePreparation__descStep {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 16px;
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .recipePreparation__container {
-    max-width: 1200px;
+@media (min-width: 1280px) {
+  .recipePreparation__wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
   }
-  .recipePreparation__instructionsList {
-    margin-bottom: 50px;
+
+  .recipePreparation__content {
+    flex: 1;
+    max-width: 757px;
+  }
+
+  .recipePreparation__imageWrapper {
+    flex: 0 0 433px;
+    margin-top: 58px; /* wyrównanie z tytułem */
+  }
+
+  .recipePreparation__image {
+    width: 433px;
+    height: 332px;
   }
 }
