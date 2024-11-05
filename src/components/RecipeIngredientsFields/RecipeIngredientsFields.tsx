@@ -3,14 +3,14 @@ import { nanoid } from "@reduxjs/toolkit";
 import Select, { SingleValue } from "react-select";
 import SubTitle from "../SubTitle/SubTitle";
 import UnitInput from "../UnitInput/UnitInput";
-import { Ing, IngredientData, Option } from "../../types/ingredientsTypes";
+import { FormIngredient, Ing, IngredientData, Option } from "../../types/ingredientsTypes";
 import { selectIngredient } from "./selectStyles";
 import sprite from "../../assets/icons/sprite.svg";
 import styles from "./RecipeIngredientsFields.module.css";
 
 interface RecipeIngredientsFieldsProps {
-  ingredients: Ing[];
-  setIngredients: Dispatch<SetStateAction<Ing[]>>;
+  ingredients: FormIngredient[];
+  setIngredients: React.Dispatch<React.SetStateAction<FormIngredient[]>>;
   ingredientsAll: IngredientData[];
 }
 
@@ -20,16 +20,18 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   ingredientsAll,
 }) => {
   const handleCounterChange = useCallback((action: 'increment' | 'decrement') => {
-    setIngredients(prev => {
-      if (action === 'decrement' && prev.length > 0) {
-        return prev.slice(0, prev.length - 1);
-      }
-      if (action === 'increment') {
-        return [...prev, { id: nanoid(), selectedUnit: "" }];
-      }
-      return prev;
-    });
-  }, []);
+    if (action === 'decrement' && ingredients.length > 0) {
+      setIngredients(ingredients.slice(0, ingredients.length - 1));
+    }
+    if (action === 'increment') {
+      const newIngredient: FormIngredient = {
+        id: nanoid(),
+        selectedValue: '',
+        selectedUnit: ''
+      };
+      setIngredients([...ingredients, newIngredient]);
+    }
+  }, [ingredients, setIngredients]);
 
   const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map(ingredient => ({

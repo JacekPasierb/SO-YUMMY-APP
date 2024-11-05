@@ -4,7 +4,7 @@ import SubTitle from "../SubTitle/SubTitle";
 
 interface RecipePreparationFieldsProps {
   instructionsRecipe: string;
-  setInstructionsRecipe: React.Dispatch<React.SetStateAction<string>>;
+  setInstructionsRecipe:  (value: string | ((prevState: string) => string)) => void;
 }
 
 const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({

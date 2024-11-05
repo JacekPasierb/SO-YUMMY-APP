@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { fetchAllIngredients } from '../API/ingredientsAPI';
 import { addOwnRecipes } from '../redux/ownRecipes/operations';
 import { AppDispatch } from '../redux/store';
-import { Ing, IngredientData, Ingredient } from '../types/ingredientsTypes';
+import { Ing, IngredientData, Ingredient, FormIngredient } from '../types/ingredientsTypes';
 import { validateInputs } from '../helpers/recipeValidation';
 import { uploadImage } from '../helpers/imageUpload';
 import { RecipeInputs, RecipeFormState } from '../types/authTypes';
@@ -115,8 +115,10 @@ export const useRecipeForm = () => {
     setDescriptionRecipe: (desc: string) => updateFormField('descriptionRecipe', desc),
     setCategoryRecipe: (category: string) => updateFormField('categoryRecipe', category),
     setCookingTime: (time: string) => updateFormField('cookingTime', time),
-    setIngredients: (ingredients: Ing[]) => updateFormField('ingredients', ingredients),
-    setInstructionsRecipe: (instructions: string) => updateFormField('instructionsRecipe', instructions),
+    setIngredients:(value: React.SetStateAction<FormIngredient[]>) => 
+      updateFormField('ingredients', typeof value === 'function' ? value(formState.ingredients) : value),
+    setInstructionsRecipe:(value: string | ((prevState: string) => string)) => 
+      updateFormField('instructionsRecipe', typeof value === 'function' ? value(formState.instructionsRecipe) : value),
     ingredientsAll,
     isLoading,
     handleSubmit,
