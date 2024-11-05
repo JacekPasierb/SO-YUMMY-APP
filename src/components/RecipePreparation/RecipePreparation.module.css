@@ -2,15 +2,12 @@
   width: 100%;
   margin: 0 auto;
   padding: 0 16px;
+}
 
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    padding: 0 32px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    max-width: 1200px;
-  }
+.recipePreparation__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .recipePreparation__instructionsList {
@@ -19,21 +16,11 @@
   gap: 14px;
   margin-bottom: 40px;
   margin-top: 28px;
-
-  @media screen and (min-width: 768px) {
-    gap: 18px;
-    margin-top: 32px;
-    margin-bottom: 50px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    margin-bottom: 50px;
-  }
 }
 
 .recipePreparation__instructionsListItem {
   display: flex;
-  flex-direction: row;
+
   align-items: flex-start;
 }
 
@@ -55,10 +42,6 @@
 
   font-size: 12px;
   color: rgba(255, 255, 255, 1);
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
 }
 
 .recipePreparation__descStep {
@@ -67,11 +50,6 @@
   font-size: 12px;
   line-height: 14px;
   color: var(--color-text-title);
-
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-    line-height: 18px;
-  }
 }
 
 .recipePreparation__image {
@@ -81,13 +59,35 @@
 .recipePreparation {
   display: flex;
   flex-direction: column;
+}
 
-  @media screen and (min-width: 1200px) {
-    align-items: flex-start;
+@media screen and (min-width: 768px) {
+  .recipePreparation__container {
+    max-width: 768px;
+    padding: 0 32px;
   }
 
-  @media screen and (min-width: 1200px) {
-    flex-direction: row;
-    gap: 50px;
+  .recipePreparation__instructionsList {
+    gap: 18px;
+    margin-top: 32px;
+    margin-bottom: 50px;
+  }
+
+  .recipePreparation__numbStepText {
+    font-size: 14px;
+  }
+
+  .recipePreparation__descStep {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .recipePreparation__container {
+    max-width: 1200px;
+  }
+  .recipePreparation__instructionsList {
+    margin-bottom: 50px;
   }
 }
