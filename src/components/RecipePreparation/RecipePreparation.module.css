@@ -32,13 +32,13 @@
   justify-content: center;
   min-width: 25px;
   height: 25px;
-  background-color: #8BAA36;
+  background-color: rgba(139, 170, 54, 1);
   border-radius: 50%;
   padding: 5px;
 }
 
 .recipePreparation__numbStepText {
-  color: #FFFFFF;
+  color: rgba(255, 255, 255, 1);
   font-size: 14px;
 }
 
@@ -46,6 +46,7 @@
   margin: 0;
   font-size: 14px;
   line-height: 1.4;
+  color: var(--color-text-title);
 }
 
 .recipePreparation__imageWrapper {
