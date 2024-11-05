@@ -39,12 +39,28 @@ export type UpdateUserResponse = Pick<IAuthResponse, "status" | "code"> & {
   };
 };
 
+export interface RecipeFormState {
+  file: File | null;
+  titleRecipe: string;
+  descriptionRecipe: string;
+  categoryRecipe: string;
+  cookingTime: string;
+  ingredients: Array<{
+    selectedValue: string;
+    selectedUnit: string;
+  }>;
+  instructionsRecipe: string;
+}
+
 export interface RecipeInputs {
   file: File | null;
   title: string;
   description: string;
   category: string;
   time: string;
-  ingredients: Ingredient[];
+  ingredients: Array<{
+    id: string;
+    measure: string;
+  }>;
   instructions: string;
 }

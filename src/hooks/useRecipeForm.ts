@@ -7,16 +7,20 @@ import { AppDispatch } from '../redux/store';
 import { Ing, IngredientData, Ingredient } from '../types/ingredientsTypes';
 import { validateInputs } from '../helpers/recipeValidation';
 import { uploadImage } from '../helpers/imageUpload';
-import { RecipeInputs } from '../types/authTypes';
+import { RecipeInputs, RecipeFormState } from '../types/authTypes';
+
+const initialState: RecipeFormState = {
+  file: null,
+  titleRecipe: '',
+  descriptionRecipe: '',
+  categoryRecipe: '',
+  cookingTime: '',
+  ingredients: [],
+  instructionsRecipe: '',
+};
 
 export const useRecipeForm = () => {
-  const [file, setFile] = useState<File | null>(null);
-  const [titleRecipe, setTitleRecipe] = useState("");
-  const [descriptionRecipe, setDescriptionRecipe] = useState("");
-  const [categoryRecipe, setCategoryRecipe] = useState("");
-  const [cookingTime, setCookingTime] = useState("");
-  const [ingredients, setIngredients] = useState<Ing[]>([]);
-  const [instructionsRecipe, setInstructionsRecipe] = useState("");
+  const [formState, setFormState] = useState<RecipeFormState>(initialState);
   const [ingredientsAll, setIngredientsAll] = useState<IngredientData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,8 +31,8 @@ export const useRecipeForm = () => {
       const { data } = await fetchAllIngredients();
       setIngredientsAll(data.ingredients);
     } catch (error) {
-      console.error("Error fetching ingredients:", error);
-      toast.error("Failed to load ingredients.");
+      console.error('Error fetching ingredients:', error);
+      toast.error('Failed to load ingredients');
     }
   }, []);
 
@@ -36,23 +40,28 @@ export const useRecipeForm = () => {
     fetchIngredients();
   }, [fetchIngredients]);
 
+  const updateFormField = useCallback(<K extends keyof RecipeFormState>(
+    field: K,
+    value: RecipeFormState[K]
+  ) => {
+    setFormState(prev => ({ ...prev, [field]: value }));
+  }, []);
+
   const resetForm = useCallback(() => {
-    setFile(null);
-    setTitleRecipe("");
-    setDescriptionRecipe("");
-    setCategoryRecipe("");
-    setCookingTime("");
-    setIngredients([]);
-    setInstructionsRecipe("");
+    setFormState(initialState);
   }, []);
 
   const buildInputs = useCallback((): RecipeInputs => {
+    const { file, titleRecipe, descriptionRecipe, categoryRecipe, cookingTime, ingredients, instructionsRecipe } = formState;
+
     const convertedIngredients: Ingredient[] = ingredients.map((ingredient) => {
       const foundIngredient = ingredientsAll.find(
         (ing) => ing.ttl === ingredient.selectedValue
       );
-      const ingredientId = foundIngredient ? foundIngredient._id : "";
-      return { id: ingredientId, measure: ingredient.selectedUnit };
+      return { 
+        id: foundIngredient?._id || '',
+        measure: ingredient.selectedUnit 
+      };
     });
 
     return {
@@ -64,50 +73,50 @@ export const useRecipeForm = () => {
       ingredients: convertedIngredients,
       instructions: instructionsRecipe,
     };
-  }, [file, titleRecipe, descriptionRecipe, categoryRecipe, cookingTime, ingredients, instructionsRecipe, ingredientsAll]);
+  }, [formState, ingredientsAll]);
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+    
     const inputs = buildInputs();
     if (!validateInputs(inputs)) return;
 
     setIsLoading(true);
     try {
-      const imageUrl = await uploadImage(file);
-      if (imageUrl) {
-        const body = {
-          ...inputs,
-          imageUrl,
-          thumb: imageUrl,
-          preview: imageUrl,
-        };
-        await dispatch(addOwnRecipes(body));
+      const imageUrl = await uploadImage(formState.file);
+      if (!imageUrl) {
+        throw new Error('Failed to upload image');
+      }
+
+      const recipeData = {
+        ...inputs,
+        imageUrl,
+        thumb: imageUrl,
+        preview: imageUrl,
+      };
+
+      const result = await dispatch(addOwnRecipes(recipeData));
+      if (addOwnRecipes.fulfilled.match(result)) {
         resetForm();
-        toast.success("Recipe added successfully");
+        toast.success('Recipe added successfully');
       }
     } catch (error) {
-      console.error("Error adding recipe:", error);
-      toast.error("Add recipe failed, try again.");
+      console.error('Error adding recipe:', error);
+      toast.error('Failed to add recipe. Please try again');
     } finally {
       setIsLoading(false);
     }
-  }, [buildInputs, dispatch, file, resetForm]);
+  }, [buildInputs, dispatch, formState.file, resetForm]);
 
   return {
-    file,
-    setFile,
-    titleRecipe,
-    setTitleRecipe,
-    descriptionRecipe,
-    setDescriptionRecipe,
-    categoryRecipe,
-    setCategoryRecipe,
-    cookingTime,
-    setCookingTime,
-    ingredients,
-    setIngredients,
-    instructionsRecipe,
-    setInstructionsRecipe,
+    ...formState,
+    setFile: (file: File | null) => updateFormField('file', file),
+    setTitleRecipe: (title: string) => updateFormField('titleRecipe', title),
+    setDescriptionRecipe: (desc: string) => updateFormField('descriptionRecipe', desc),
+    setCategoryRecipe: (category: string) => updateFormField('categoryRecipe', category),
+    setCookingTime: (time: string) => updateFormField('cookingTime', time),
+    setIngredients: (ingredients: Ing[]) => updateFormField('ingredients', ingredients),
+    setInstructionsRecipe: (instructions: string) => updateFormField('instructionsRecipe', instructions),
     ingredientsAll,
     isLoading,
     handleSubmit,
