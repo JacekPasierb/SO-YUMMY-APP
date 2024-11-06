@@ -27,14 +27,12 @@ const Header: React.FC = () => {
       {small || medium ? (
         <div className={styles.header__mobile}>
           <UserLogo />
-
           <HamburgerMenu />
         </div>
       ) : (
         <>
           <Navigation />
           <UserLogo />
-
           <ThemeToggler />
         </>
       )}

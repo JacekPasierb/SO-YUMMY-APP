@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./Navigation.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
 
@@ -16,27 +16,37 @@ const navigationLinks: NavigationLink[] = [
   { to: "/ownRecipes", text: "My Recipes" },
   { to: "/favorite", text: "Favorites" },
   { to: "/shopping-list", text: "Shopping List" },
-  { to: "/search", icon: "icon-search", ariaLabel: "Search" }
+  { to: "/search", icon: "icon-search", ariaLabel: "Search" },
 ];
 
 const Navigation: React.FC = () => {
+  const { pathname } = useLocation();
+  const isRecipePage = pathname.includes("/recipe/");
   return (
     <nav className={styles.navigation} aria-label="Main navigation">
       {navigationLinks.map(({ to, text, icon, ariaLabel }) => (
         <NavLink
           key={to}
           to={to}
-          className={({ isActive }) => 
-            `${styles.navigation__link} ${isActive ? styles.navigation__link_active : ''}`
+          className={({ isActive }) =>
+            `${styles.navigation__link} ${
+              isActive ? styles.navigation__link_active : ""
+            }`
           }
           aria-label={ariaLabel}
         >
           {text && (
-            <span className={styles.navigation__text}>{text}</span>
+            <span
+              className={`${styles.navigation__text} ${
+                isRecipePage ? styles.navigation__text_recipePage : ""
+              }`}
+            >
+              {text}
+            </span>
           )}
           {icon && (
-            <svg 
-              className={styles.navigation__icon} 
+            <svg
+              className={styles.navigation__icon}
               aria-hidden="true"
               width="24"
               height="24"

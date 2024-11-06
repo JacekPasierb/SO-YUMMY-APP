@@ -18,6 +18,10 @@
   transition: color var(--transition-duration) ease;
 }
 
+.navigation__text_recipePage {
+  color: #23262a;
+}
+
 .navigation__link:hover .navigation__text,
 .navigation__link:focus .navigation__text,
 .navigation__link_active .navigation__text {
