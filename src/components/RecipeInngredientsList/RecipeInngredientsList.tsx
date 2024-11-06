@@ -76,7 +76,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
 
   return (
     <div
-      className={`${styles.recipeIngredientsList__container} ${styles.recipeIngredientsList__box}`}
+      className={styles.recipeIngredientsList__box}
     >
       <div className={styles.recipeIngredientsList__header}>
         <h2 className={styles.recipeIngredientsList__title}>Ingredients</h2>

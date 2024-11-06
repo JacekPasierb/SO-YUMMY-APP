@@ -1,9 +1,3 @@
-.recipePreparation__container {
-  padding: 20px;
-  margin: 0 auto;
-  max-width: 1240px;
-}
-
 .recipePreparation__wrapper {
   display: flex;
   flex-direction: column;

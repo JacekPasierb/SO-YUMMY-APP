@@ -1,62 +1,79 @@
-import styles from "./RecipePage.module.css";
-
 import React, { lazy, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
-import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import Header from "../../components/Header/Header";
+import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
 import { fetchRecipeById } from "../../API/recipesAPI";
 import { IRecipe } from "../../types/recipesTypes";
+import styles from "./RecipePage.module.css";
+
 const RecipeInngredientsList = lazy(
   () => import("../../components/RecipeInngredientsList/RecipeInngredientsList")
 );
+
 const RecipePreparation = lazy(
   () => import("../../components/RecipePreparation/RecipePreparation")
 );
 
-const RecipePage = () => {
-  const { recipeId } = useParams();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [recipe, setRecipe] = useState<IRecipe | null>(null);
+const RecipePage: React.FC = () => {
+  const { recipeId } = useParams<{ recipeId: string }>();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const getRecipeById = async (id: string) => {
-      try {
-        setIsLoading(true);
-        const { data } = await fetchRecipeById(id);
-        setRecipe(data.result);
-      } catch (error: any) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const [recipe, setRecipe] = useState<IRecipe | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
+  const fetchRecipe = async (id: string) => {
+    try {
+      setIsLoading(true);
+      const { data } = await fetchRecipeById(id);
+      setRecipe(data.result);
+    } catch (error) {
+      setError(
+        error instanceof Error ? error.message : "Failed to fetch recipe"
+      );
+      navigate("/error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
     if (recipeId !== undefined) {
-      getRecipeById(recipeId);
+      fetchRecipe(recipeId);
     }
   }, [recipeId]);
 
+  useEffect(() => {
+    if (error) {
+      navigate("/error");
+    }
+  }, [error, navigate]);
+
+  if (!recipe) return null;
+
   return (
     <>
-      {recipe && (
-        <main>
-          <section className={styles.receipePage}>
-            <Header />
-            <div className={styles.container}>
-              <ReceipePageHero recipe={recipe} isLoading={isLoading} />
-            </div>
-          </section>
-          <RecipeInngredientsList ingredients={recipe.ingredients} recipeId={recipeId}/>
+      <main>
+        <section className={styles.receipePage}>
+          <Header />
+
+          <div className={styles.recipePage__container}>
+            <ReceipePageHero recipe={recipe} isLoading={isLoading} />
+          </div>
+        </section>
+        <div className={styles.recipePage__container}>
+          <RecipeInngredientsList
+            ingredients={recipe.ingredients}
+            recipeId={recipeId}
+          />
+        </div>
+        <div className={styles.recipePage__container}>
           <RecipePreparation
             img={recipe.preview}
             instructions={recipe.instructions}
           />
-        </main>
-      )}
-      {error && navigate("/error")}
+        </div>
+      </main>
     </>
   );
 };
