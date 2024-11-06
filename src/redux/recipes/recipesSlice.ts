@@ -31,6 +31,7 @@ const recipesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
+      // Get All Recipes
       .addCase(getRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         if (action.payload) {
@@ -43,15 +44,13 @@ const recipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getRecipes.rejected, (state, action) => {
+      .addCase(getRecipes.rejected, (state, { payload }) => {
         state.isLoading = false;
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during getCategoryRecipes";
-        }
+        state.error =
+          typeof payload === "string" ? payload : "Failed to fetch recipes";
       })
 
+      // Get Recipes by Category
       .addCase(getRecipesByCategory.fulfilled, (state, action) => {
         state.isLoading = false;
         state.recipes = action.payload.categoryRecipes;
@@ -62,14 +61,15 @@ const recipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getRecipesByCategory.rejected, (state, action) => {
+      .addCase(getRecipesByCategory.rejected, (state, { payload }) => {
         state.isLoading = false;
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during getCategoryRecipes";
-        }
+        state.error =
+          typeof payload === "string"
+            ? payload
+            : "Failed to fetch category recipes";
       })
+
+      // Get Categories List
       .addCase(getCategoriesList.fulfilled, (state, action) => {
         state.categoriesList = action.payload.data.catArr;
 
@@ -78,12 +78,9 @@ const recipesSlice = createSlice({
       .addCase(getCategoriesList.pending, (state) => {
         state.error = null;
       })
-      .addCase(getCategoriesList.rejected, (state, action) => {
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during getCategoriesList";
-        }
+      .addCase(getCategoriesList.rejected, (state, { payload }) => {
+        state.error =
+          typeof payload === "string" ? payload : "Failed to fetch categories";
       }),
 });
 
