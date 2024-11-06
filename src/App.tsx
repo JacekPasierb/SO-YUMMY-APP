@@ -2,15 +2,12 @@ import React, { FC, Suspense, lazy, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { AppDispatch } from "./redux/store";
-import { logOut, refreshUser } from "./redux/auth/operations";
-import {
-  selectIsLoggedIn,
-  selectIsRefreshing,
-  selectTheme,
-} from "./redux/auth/selectors";
+import { refreshUser } from "./redux/auth/operations";
+import { selectIsRefreshing, selectTheme } from "./redux/auth/selectors";
+import { useAuth } from "./hooks/useAuth";
+import { Loader } from "./components/Loader/Loader";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { Loader } from "./components/Loader/Loader";
 
 // Lazy-loaded Pages
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
@@ -23,12 +20,12 @@ const CategoriesPage = lazy(
 const RecipePage = lazy(() => import("./Pages/RecipePage/RecipePage"));
 const AddRecipePage = lazy(() => import("./Pages/AddRecipePage/AddRecipePage"));
 const FavoritesPage = lazy(() => import("./Pages/FavoritesPage/FavoritesPage"));
-import MyRecipesPage from "./Pages/MyRecipesPage/MyRecipesPage";
-import { jwtDecode } from "jwt-decode";
-import { useAuth } from "./hooks/useAuth";
-import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
-import SearchPage from "./Pages/SearchPage/SearchPage";
-import ShoppingListPage from "./Pages/ShoppingListPage/ShoppingListPage";
+const MyRecipesPage = lazy(() => import("./Pages/MyRecipesPage/MyRecipesPage"));
+const NotFoundPage = lazy(() => import("./Pages/NotFoundPage/NotFoundPage"));
+const SearchPage = lazy(() => import("./Pages/SearchPage/SearchPage"));
+const ShoppingListPage = lazy(
+  () => import("./Pages/ShoppingListPage/ShoppingListPage")
+);
 const SharedLayout = lazy(
   () => import("./components/SharedLayout/SharedLayout")
 );
@@ -41,118 +38,122 @@ const App: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname, search } = location;
+
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
+  const { token } = useAuth();
 
+  // Preserve current location after refresh
   useEffect(() => {
     navigate(`${pathname}${search}`, { replace: true }); // Funkcja po odświeżeniu aplikacji użytkownik zostaje na aktualnej stronie
   }, [navigate, pathname, search]);
 
-  const { token } = useAuth();
-
+  // Refresh user session
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch, token]);
 
+  // Handle theme changes
   useEffect(() => {
     document.body.className = isDarktheme ? "dark-theme" : "";
   }, [isDarktheme]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-    <>
-      <Routes>
+  if (isRefreshing) {
+    return <Loader />;
+  }
+
+  return (
+    <Routes>
+      {/* Public routes */}
+      <Route
+        path="/welcome"
+        element={
+          <RestrictedRoute
+            redirectTo="/"
+            component={
+              <Suspense fallback={<Loader />}>
+                <WelcomePage />
+              </Suspense>
+            }
+          />
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <RestrictedRoute
+            redirectTo="/"
+            component={
+              <Suspense fallback={<Loader />}>
+                <RegisterPage />
+              </Suspense>
+            }
+          />
+        }
+      />
+      <Route
+        path="/signin"
+        element={
+          <RestrictedRoute
+            redirectTo="/"
+            component={
+              <Suspense fallback={<Loader />}>
+                <SigninPage />
+              </Suspense>
+            }
+          />
+        }
+      />
+      {/* Private routes */}
+      <Route
+        path="/"
+        element={
+          <PrivateRoute
+            component={
+              <Suspense fallback={<Loader />}>
+                <SharedLayout />
+              </Suspense>
+            }
+          />
+        }
+      >
+        <Route index element={<PrivateRoute component={<MainPage />} />} />
         <Route
-          path="/welcome"
-          element={
-            <RestrictedRoute
-              redirectTo="/"
-              component={
-                <Suspense fallback={<Loader />}>
-                  <WelcomePage />
-                </Suspense>
-              }
-            />
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/"
-              component={
-                <Suspense fallback={<Loader />}>
-                  <RegisterPage />
-                </Suspense>
-              }
-            />
-          }
-        />
-        <Route
-          path="/signin"
-          element={
-            <RestrictedRoute
-              redirectTo="/"
-              component={
-                <Suspense fallback={<Loader />}>
-                  <SigninPage />
-                </Suspense>
-              }
-            />
-          }
-        />
-        {/* Główne trasy prywatne */}
-        <Route
-          path="/"
-          element={
-            <PrivateRoute
-              component={
-                <Suspense fallback={<Loader />}>
-                  <SharedLayout />
-                </Suspense>
-              }
-            />
-          }
+          path="/categories"
+          element={<PrivateRoute component={<CategoriesPage />} />}
         >
-          <Route index element={<PrivateRoute component={<MainPage />} />} />
-          <Route
-            path="/categories"
-            element={<PrivateRoute component={<CategoriesPage />} />}
-          >
-            <Route path=":categoryName" element={<CategoriesByName />} />
-          </Route>
-          <Route
-            path="/favorite"
-            element={<PrivateRoute component={<FavoritesPage />} />}
-          />
-          <Route
-            path="/ownRecipes"
-            element={<PrivateRoute component={<MyRecipesPage />} />}
-          />
-          <Route
-            path="/add"
-            element={<PrivateRoute component={<AddRecipePage />} />}
-          />
-          <Route
-            path="/recipe/:recipeId"
-            element={<PrivateRoute component={<RecipePage />} />}
-          />
-          <Route
-            path="/search"
-            element={<PrivateRoute component={<SearchPage />} />}
-          />
-          <Route
-            path="/shopping-list"
-            element={<PrivateRoute component={<ShoppingListPage />} />}
-          />
-          <Route
-            path="*"
-            element={<PrivateRoute component={<NotFoundPage />} />}
-          />
+          <Route path=":categoryName" element={<CategoriesByName />} />
         </Route>
-      </Routes>
-    </>
+        <Route
+          path="/favorite"
+          element={<PrivateRoute component={<FavoritesPage />} />}
+        />
+        <Route
+          path="/ownRecipes"
+          element={<PrivateRoute component={<MyRecipesPage />} />}
+        />
+        <Route
+          path="/add"
+          element={<PrivateRoute component={<AddRecipePage />} />}
+        />
+        <Route
+          path="/recipe/:recipeId"
+          element={<PrivateRoute component={<RecipePage />} />}
+        />
+        <Route
+          path="/search"
+          element={<PrivateRoute component={<SearchPage />} />}
+        />
+        <Route
+          path="/shopping-list"
+          element={<PrivateRoute component={<ShoppingListPage />} />}
+        />
+        <Route
+          path="*"
+          element={<PrivateRoute component={<NotFoundPage />} />}
+        />
+      </Route>
+    </Routes>
   );
 };
 
