@@ -8,48 +8,64 @@
   background-repeat: no-repeat;
   background-position: center top 230px;
   background-size: cover;
-
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: url("../../images/RectangleMobile2x.png");
-  }
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 50px;
-    background-image: url("../../images/RectangleTablet1x.png");
-    background-position: center top 280px;
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url("../../images/RectangleTablet2x.png");
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    padding-bottom: 0;
-    background-image: url("../../images/RectangleDesctop1x.png");
-    background-position: center top 440px;
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url("../../images/RectangleDesctop2x.png");
-    }
-  }
 }
 
 .registerPage__container {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  max-width: 335px;
+  width: 100%;
+}
 
-  @media screen and (max-width: 480px) {
-    max-width: 335px;
+/* Retina display - Mobile */
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .registerPage {
+    background-image: url("../../images/RectangleMobile2x.png");
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .registerPage {
+    padding-bottom: 50px;
+    background-image: url("../../images/RectangleTablet1x.png");
+    background-position: center top 280px;
   }
 
-  @media screen and (min-width: 1200px) {
+  .registerPage__container {
+    max-width: none;
+  }
+}
+
+/* Retina display - Tablet */
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .registerPage {
+    background-image: url("../../images/RectangleTablet2x.png");
+  }
+}
+/* Desktop */
+@media screen and (min-width: 1200px) {
+  .registerPage {
+    padding-bottom: 0;
+    background-image: url("../../images/RectangleDesctop1x.png");
+    background-position: center top 440px;
+  }
+
+  .registerPage__container {
     margin-left: 50vw;
+  }
+}
+
+/* Retina display - Desktop */
+@media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1200px) and (min-resolution: 192dpi),
+  screen and (min-width: 1200px) and (min-resolution: 2dppx) {
+  .registerPage {
+    background-image: url("../../images/RectangleDesctop2x.png");
   }
 }
