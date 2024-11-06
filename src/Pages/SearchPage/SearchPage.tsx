@@ -1,45 +1,41 @@
 import React, { useEffect, useMemo, useState } from "react";
-import Header from "../../components/Header/Header";
-import MainTitle from "../../components/MainTitle/PageTitle";
-import styles from "./SearchPage.module.css";
-import Search from "../../components/SearchForm/SearchForm";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../../redux/store";
-import { getRecipes } from "../../redux/recipes/operations";
 import {
-  Navigate,
   NavLink,
   useLocation,
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
+import { AppDispatch } from "../../redux/store";
+import { getRecipes } from "../../redux/recipes/operations";
 import {
   selectIsLoading,
   selectRecipesByCategory,
   selectTotalRecipes,
 } from "../../redux/recipes/selectors";
-import BasicPagination from "../../components/Pagination/BasicPagination";
-import CardRecipe from "../../components/CardRecipe/CardRecipe";
+import {
+  getEmptySearchImage,
+  getPageFromQueryString,
+} from "../../helpers/helpers";
 import { IRecipe } from "../../types/recipesTypes";
-import { useMediaQuery } from "@react-hook/media-query";
-import { getEmptySearchImage, getPageFromQueryString } from "../../helpers/helpers";
+import Header from "../../components/Header/Header";
+import MainTitle from "../../components/MainTitle/PageTitle";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import CardRecipe from "../../components/CardRecipe/CardRecipe";
+import BasicPagination from "../../components/Pagination/BasicPagination";
+import styles from "./SearchPage.module.css";
 
-
-
-const SearchPage = () => {
+const SearchPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
   const { search } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialSearchType = useMemo(
-    () => (searchParams.get("ingredient") ? "ingredient" : "query"),
-    [searchParams]
-  );
-  const initialSearchValue = useMemo(
-    () => searchParams.get(initialSearchType) || "",
-    [searchParams, initialSearchType]
-  );
+
+  const initialSearchType = searchParams.get("ingredient")
+    ? "ingredient"
+    : "query";
+  const initialSearchValue = searchParams.get(initialSearchType) || "";
 
   const [searchType, setSearchType] = useState(initialSearchType);
   const [searchValue, setSearchValue] = useState(initialSearchValue);
@@ -48,17 +44,16 @@ const SearchPage = () => {
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
   const currentPage = getPageFromQueryString(search);
-  const navigate = useNavigate();
-  
+
   const isMobile = useMediaQuery("(max-width:768px)");
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesktop = useMediaQuery("(min-width:1200px)");
+  const isRetina = window.devicePixelRatio > 1;
   const limit = isDesktop ? 12 : 6;
 
   const emptySearchImage = useMemo(() => {
-    return getEmptySearchImage(isMobile, isTablet, isDesktop);
-  }, [isMobile, isTablet, isDesktop]);
-
+    return getEmptySearchImage({ isDesktop, isTablet, isMobile, isRetina });
+  }, [isDesktop, isTablet, isMobile, isRetina]);
 
   const handlePageChange = (page: number) => {
     const newParams = {
@@ -66,28 +61,25 @@ const SearchPage = () => {
       page: page.toString(),
     };
     navigate(`?${new URLSearchParams(newParams)}`);
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  // Funkcja obsługująca aktualizację typu wyszukiwania
+
   const handleSearchTypeChange = (type: string) => {
     setSearchType(type);
-    // const paramKey = type === "query" ? "query" : "ingredient";
-    // setSearchParams({ [paramKey]: searchParams.get(paramKey) || "" });
   };
 
-   const handleSearchSubmit = (value: string) => {
-
-    
+  const handleSearchSubmit = (value: string) => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
     setSearchParams({ [paramKey]: value });
-    // dispatch(getRecipes({ type: searchType, value: value }));
   };
+
   useEffect(() => {
     const typeFromUrl = searchParams.get("type");
     if (typeFromUrl === "ingredient") {
       setSearchType("ingredient");
     }
   }, [searchParams]);
+
   useEffect(() => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
     const value = searchParams.get(paramKey) || "";
@@ -98,6 +90,9 @@ const SearchPage = () => {
       );
     }
   }, [searchParams, dispatch, searchType, currentPage, limit]);
+
+  const hasSearchResults = searchParams.get(searchType) !== null;
+  const hasRecipes = recipes.length > 0;
 
   return (
     <>
@@ -110,7 +105,7 @@ const SearchPage = () => {
           onSearchSubmit={handleSearchSubmit}
           searchValue={searchValue}
         />
-        {searchParams.get(searchType) !== null && recipes.length !== 0 && (
+        {hasSearchResults && hasRecipes && (
           <>
             <ul className={styles.recipesList}>
               {recipes.map((recipe: IRecipe) => (
@@ -129,14 +124,18 @@ const SearchPage = () => {
             />
           </>
         )}
-        {!isLoading &&
-          searchParams.get(searchType) !== null &&
-          recipes.length === 0 && (
-            <div className={styles.noResults}>
-              <img src={emptySearchImage} alt="No results found" className={styles.noResultsImage}/>
-              <p className={styles.noResultsText}>Try looking for something else..</p>
-            </div>
-          )}
+        {!isLoading && hasSearchResults && !hasRecipes && (
+          <div className={styles.noResults}>
+            <img
+              src={emptySearchImage}
+              alt="No results found"
+              className={styles.noResults__image}
+            />
+            <p className={styles.noResults__text}>
+              Try looking for something else..
+            </p>
+          </div>
+        )}
       </div>
     </>
   );

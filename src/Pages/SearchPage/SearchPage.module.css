@@ -55,7 +55,7 @@
   }
 }
 
-.noResultsText {
+.noResults__text {
   font-size: 14px;
   line-height: 14px;
   color: var(--color-text-subtitle);

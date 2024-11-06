@@ -73,13 +73,11 @@ export const getEmptySearchImage = ({
   isTablet, 
   isRetina 
 }: Partial<DeviceConfig>): string => {
-  if (isDesktop) {
-    return isRetina ? images.emptySearch.desktop['2x'] : images.emptySearch.desktop['1x'];
-  }
-  if (isTablet) {
-    return isRetina ? images.emptySearch.tablet['2x'] : images.emptySearch.tablet['1x'];
-  }
-  return isRetina ? images.emptySearch.mobile['2x'] : images.emptySearch.mobile['1x'];
+  const resolution = isRetina ? '2x' : '1x';
+  
+  if (isDesktop) return images.emptySearch.desktop[resolution];
+  if (isTablet) return images.emptySearch.tablet[resolution];
+  return images.emptySearch.mobile[resolution];
 };
 
 export const getLogoSrc = ({ 
