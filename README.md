@@ -43,7 +43,6 @@ So Yummy to nowoczesna aplikacja kulinarna, która pomaga użytkownikom odkrywa�
 - ESLint
 - Prettier
 - Jest
-- React Testing Library
 
 ## 📸 Screenshots
 
