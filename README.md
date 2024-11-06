@@ -119,12 +119,15 @@ npm run dev
 
 ## 🔧 Dostępne Skrypty
 
+### Frontend
 - `npm run dev` - uruchamia aplikację w trybie deweloperskim
 - `npm run build` - buduje aplikację do produkcji
+- `npm run lint` - sprawdza kod pod kątem błędów (js,jsx)
 - `npm run preview` - podgląd zbudowanej aplikacji
-- `npm run lint` - sprawdza kod pod kątem błędów
-- `npm test` - uruchamia testy
-- `npm run test:coverage` - generuje raport pokrycia testami
+
+### Backend
+- `npm start` - uruchamia serwer w trybie produkcyjnym
+- `npm run start:dev` - uruchamia serwer w trybie deweloperskim z nodemon
 
 ## 🌟 Funkcjonalności
 
@@ -153,6 +156,7 @@ npm run dev
 ## 🔄 Planowane rozszerzenia
 
 - ✅ Testy jednostkowe (Jest)
+    - Dodanie skryptów: `npm test` i `npm run test:coverage`
 - ⏳ Testy integracyjne (React Testing Library)
 - ⏳ Testy E2E (Cypress)
 - ⏳ Wielojęzyczność (i18next)
