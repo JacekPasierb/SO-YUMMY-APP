@@ -1,3 +1,4 @@
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IAuthState } from "../../types/authTypes";
 import {
   register,
@@ -8,7 +9,6 @@ import {
   resendVerificationEmail,
   changeTheme,
 } from "./operations";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface RootState {
   auth: IAuthState;
@@ -40,8 +40,8 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-      state.error = null;
       state.isAuth = true;
+      state.error = null;
     },
     setAuthError(state, action: PayloadAction<string | null>) {
       state.error = action.payload;
@@ -49,40 +49,47 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.data.user;
-        state.token = action.payload.data.token;
+      // Register
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state.user = payload.data.user;
+        state.token = payload.data.token;
         state.error = null;
       })
-      .addCase(register.rejected, (state, action) => {
+      .addCase(register.rejected, (state, { payload }) => {
         state.error =
-          typeof action.payload === "string"
-            ? action.payload
+          typeof payload === "string"
+            ? payload
             : "An error occurred during registration";
       })
-      .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.data.user;
-        state.token = action.payload.data.token;
+
+      // Login
+      .addCase(logIn.fulfilled, (state, { payload }) => {
+        state.user = payload.data.user;
+        state.token = payload.data.token;
         state.isLoggedIn = true;
         state.error = null;
       })
-      .addCase(logIn.rejected, (state, action) => {
+      .addCase(logIn.rejected, (state, { payload }) => {
         state.error =
-          typeof action.payload === "string"
-            ? action.payload
+          typeof payload === "string"
+            ? payload
             : "An error occurred during login";
       })
+
+      // Logout
       .addCase(logOut.fulfilled, (state) => {
         state.user = initialState.user;
         state.token = null;
         state.isLoggedIn = false;
         state.error = null;
       })
+
+      // Refresh User
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
-      .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
@@ -90,18 +97,22 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoggedIn = false;
       })
-      .addCase(changeTheme.fulfilled, (state, action) => {
-        if (action.payload && action.payload.data.isDarkTheme !== undefined) {
-          state.user.isDarkTheme = action.payload.data.isDarkTheme;
+
+      // Theme
+      .addCase(changeTheme.fulfilled, (state, { payload }) => {
+        if (payload && payload.data.isDarkTheme !== undefined) {
+          state.user.isDarkTheme = payload.data.isDarkTheme;
           state.error = null;
         } else {
-          console.error("Payload is not defined properly", action.payload);
+          console.error("Payload is not defined properly", payload);
         }
       })
-      .addCase(updateUser.fulfilled, (state, action) => {
-        if (action.payload !== undefined && action.payload !== null) {
-          state.user.name = action.payload.data.user.name;
-          state.user.avatar = action.payload.data.user.avatar;
+
+      // Update User
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        if (payload !== undefined && payload !== null) {
+          state.user.name = payload.data.user.name;
+          state.user.avatar = payload.data.user.avatar;
           state.error = null;
         } else {
           state.user = {
@@ -114,17 +125,20 @@ const authSlice = createSlice({
           state.error = "Payload updateUser is null or undefined";
         }
       })
-      .addCase(updateUser.rejected, (state, action) => {
-        console.error("Error during user update:", action.payload);
+      .addCase(updateUser.rejected, (state, { payload }) => {
+        console.error("Error during user update:", payload);
       })
+
+      // Resend Verification
       .addCase(resendVerificationEmail.pending, (state) => {
         state.error = null;
       })
       .addCase(resendVerificationEmail.fulfilled, (state) => {
         state.error = null;
       })
-      .addCase(resendVerificationEmail.rejected, (state, action) => {
-        state.error = action.payload as string;
+      .addCase(resendVerificationEmail.rejected, (state, { payload }) => {
+        state.error =
+          typeof payload === "string" ? payload : "Verification email failed";
       });
   },
 });

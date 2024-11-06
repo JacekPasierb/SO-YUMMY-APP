@@ -1,28 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
-import { setAuthSuccess, setAuthError } from "./authSlice";
 import { toast } from "react-toastify";
+import { setAuthSuccess, setAuthError } from "./authSlice";
 import {
   IAuthResponse,
   IUser,
   UpdateUserResponse,
 } from "../../types/authTypes";
-import { store } from "../store";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
-
-// Dodajemy interceptor do obsługi błędów
-// axios.interceptors.response.use(
-//   (response) => response,
-//   async (error) => {
-//     if (error.response?.status === 401) {
-//       await store.dispatch(logOut());
-//       clearAuthHeader();
-//     }
-//     return Promise.reject(error);
-//   }
-// );
 
 // Utility to add JWT
 const setAuthHeader = (token: string | null) => {
@@ -33,6 +20,7 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
+// Auth operations
 export const register = createAsyncThunk<
   IAuthResponse,
   Pick<IUser, "email" | "password" | "name">
@@ -56,20 +44,18 @@ export const logIn = createAsyncThunk<
   "auth/logIn",
   async (credentials: Pick<IUser, "email" | "password">, thunkAPI) => {
     try {
-      const resp = await axios.post("/api/users/signin", credentials);
-      const { token, user } = resp.data.data;
+      const response = await axios.post("/api/users/signin", credentials);
+      const { token, user } = response.data.data;
       thunkAPI.dispatch(setAuthSuccess({ token, user }));
       setAuthHeader(token);
-      return await resp.data;
-    } catch (err: any) {
-      if (err.response.status === 403) {
-        toast.info("Email not verified");
-        thunkAPI.dispatch(setAuthError("Email not verified"));
-        return thunkAPI.rejectWithValue("Email not verified");
-      }
-      console.error(err.message);
-      thunkAPI.dispatch(setAuthError("Login failed ⚠"));
-      return thunkAPI.rejectWithValue("Login failed ⚠");
+      return response.data;
+    } catch (error: any) {
+      const message =
+        error.response?.status === 403 ? "Email not verified" : "Login failed";
+
+      toast.error(message);
+      thunkAPI.dispatch(setAuthError(message));
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -78,10 +64,13 @@ export const resendVerificationEmail = createAsyncThunk(
   "auth/resendVerificationEmail",
   async (email: string, thunkAPI) => {
     try {
-      const res = await axios.post("/api/users/resend-verification-email", {
-        email,
-      });
-      return res.data;
+      const response = await axios.post(
+        "/api/users/resend-verification-email",
+        {
+          email,
+        }
+      );
+      return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -93,7 +82,6 @@ export const logOut = createAsyncThunk<void, undefined>(
   async (_, thunkAPI) => {
     try {
       await axios.patch("/api/users/logout");
-      // After a successful logout, remove the token from the HTTP header
       clearAuthHeader();
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
@@ -113,9 +101,9 @@ export const refreshUser = createAsyncThunk<
   }
   try {
     setAuthHeader(persistedToken);
-    const res = await axios.get("/api/users/current");
+    const response = await axios.get("/api/users/current");
 
-    return res.data.data;
+    return response.data.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -128,8 +116,8 @@ export const updateUser = createAsyncThunk<
   "auth/updateUser",
   async (userData: Pick<IUser, "name" | "avatar">, thunkAPI) => {
     try {
-      const res = await axios.patch("/api/users/update", userData);
-      return res.data;
+      const response = await axios.patch("/api/users/update", userData);
+      return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -148,9 +136,11 @@ export const changeTheme = createAsyncThunk<ChangeThemeResponse, boolean>(
   "auth/changeTheme",
   async (isDarkTheme, thunkAPI) => {
     try {
-      const res = await axios.patch("/api/users/toogleTheme", { isDarkTheme });
+      const response = await axios.patch("/api/users/toogleTheme", {
+        isDarkTheme,
+      });
 
-      return res.data;
+      return response.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
