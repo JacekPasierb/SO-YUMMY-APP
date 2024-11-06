@@ -1,106 +1,142 @@
-# Projekt Aplikacji Kulinarnej
+# 🥗 So Yummy - Aplikacja Kulinarna
 
-## Konto testowe
-- Login: user@test.pl
-- Hasło: user1234
+![So Yummy Banner](./public/banner.png)
 
-## Opis projektu
-Projekt został napisany w technologii React z wykorzystaniem biblioteki Redux Toolkit. Zastosowano JavaScript ES6+ oraz TypeScript. Do stylizacji wyglądu wykorzystano moduły CSS oraz komponenty Material UI. Formularze tworzone są przy pomocy Formika.
+## 📝 Opis Projektu
 
-Backend oparty jest na Node.js z Express, korzystając z bazy danych MongoDB połączonej przy użyciu Mongoose. Utworzono kolekcje użytkowników, przepisów, składników oraz list zakupów, które są ze sobą powiązane za pomocą referencji. Do tworzenia kont użytkowników zastosowano JWT passport, a do wysyłania e-maili - SendGrid. Komunikacja z bazą danych odbywa się przy użyciu Axios.
+So Yummy to nowoczesna aplikacja kulinarna, która pomaga użytkownikom odkrywać, zapisywać i dzielić się przepisami kulinarnymi. Aplikacja oferuje intuicyjny interfejs użytkownika i szereg funkcji ułatwiających zarządzanie przepisami.
 
-Projekt jest w fazie rozwojowej. Kod wymaga stworzenia funkcji pomocniczych, komponentów wspólnych oraz dokończenia aplikacji.
+### ✨ Główne Funkcje
 
-## Informacje dla developera
-- Stworzyć folder `types` z interfejsami
-- Dodać obsługę języków z react-i18next
-- Uprościć kod, tworząc funkcje pomocnicze
+- 🔍 Wyszukiwanie przepisów po nazwie lub składnikach
+- 📱 Responsywny design (Mobile First)
+- 👤 System autoryzacji użytkowników
+- ❤️ Zapisywanie ulubionych przepisów
+- 📝 Tworzenie własnych przepisów
+- 🛒 Lista zakupów
+- 🌙 Tryb ciemny/jasny
 
-## Wytyczne CSS projektu
+## 🛠️ Technologie
 
-### 1. Przegląd
-Ten dokument określa konwencje i wytyczne CSS dla projektu, aby zapewnić spójność, łatwość utrzymania i skalowalność w całej bazie kodu.
+### Frontend
+- React 18
+- TypeScript
+- Redux Toolkit & Redux Persist
+- React Router 6
+- Axios
+- React Hook Form
+- React Select
+- React Toastify
+- SASS/SCSS Modules
 
-### 2. Konwencje stylów
+### Backend
+- Node.js
+- Express
+- MongoDB
+- JWT Authentication
+- Cloudinary
 
-#### 2.1 Jednostki
+### Narzędzia
+- Vite
+- ESLint
+- Prettier
+- Jest
+- React Testing Library
 
-- **Rozmiary czcionek**: Używaj `rem` dla wszystkich rozmiarów czcionek, aby zapewnić skalowalność i dostępność.
+## 📸 Screenshots
 
-  Przykład:
-  ```css
-  body {
-    font-size: 1rem; /* 16px */
-  }
-  ```
+### Strona Główna
+![Home Page](./public/screenshots/home.png)
 
-- **Odstępy (Padding & Margin)**: Używaj `rem` dla wszystkich właściwości odstępów.
+### Przepisy
+![Recipes Page](./public/screenshots/recipes.png)
 
-  Przykład:
-  ```css
-  .container {
-    margin: 1rem; /* 16px */
-    padding: 1.5rem; /* 24px */
-  }
-  ```
+### Panel Użytkownika
+![User Dashboard](./public/screenshots/dashboard.png)
 
-- **Wymiary**: Używaj `px` dla stałych wymiarów (jak obramowania lub konkretne elementy UI) i `rem` dla elementów responsywnych.
+## 🚀 Demo
 
-  Przykład:
-  ```css
-  .box {
-    width: 300px; /* Stała szerokość */
-    height: 5rem; /* Responsywna wysokość */
-  }
-  ```
+[Live Demo](https://so-yummy-app.vercel.app/)
 
-#### 2.2 Kolory
+## 🔑 Konto testowe
 
-- **Format kolorów**: Wszystkie kolory powinny być definiowane w formacie rgba dla lepszej kontroli nad przezroczystością i spójnością.
+Aby szybko przetestować funkcjonalności aplikacji, możesz skorzystać z przygotowanego konta testowego:
 
-  Przykład:
-  ```css
-  .primary-bg {
-    background-color: rgba(42, 87, 141, 1); /* Pełny kolor */
-  }
+### Dane dostępowe
+- **Email**: user@test.pl
+- **Hasło**: user1234
 
-  .transparent-bg {
-    background-color: rgba(255, 255, 255, 0.8); /* Półprzezroczysty */
-  }
-  ```
+### Zawartość konta testowego
+- Przykładowe przepisy
+- Zapisane ulubione przepisy
+- Przygotowana lista zakupów
+- Przykładowe kategorie
 
-### 3. Responsywność
+> **Uwaga**: To konto jest przeznaczone wyłącznie do celów demonstracyjnych. Prosimy o niemodyfikowanie istniejących danych.
 
-Używaj zapytań `@media` do dostosowywania stylów dla różnych rozmiarów ekranów. Punkty graniczne powinny być zdefiniowane następująco:
+## 💻 Instalacja
 
-- Małe urządzenia (telefony): `@media screen and (max-width: 768px)`
-- Średnie urządzenia (tablety): `@media screen and (min-width: 768px) and (max-width: 1200px)`
-- Duże urządzenia (komputery stacjonarne): `@media screen and (min-width: 1200px)`
-
-Przykład:
-```css
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Układaj elementy pionowo */
-  }
-}
+1. Sklonuj repozytorium:
+```bash
+git clone https://github.com/your-username/so-yummy.git
 ```
 
-### 4. Kolejność deklaracji CSS
+2. Przejdź do katalogu projektu:
+```bash
+cd so-yummy
+```
 
-Aby zapewnić spójność i łatwość utrzymania w całym projekcie, proszę przestrzegać następującej kolejności przy pisaniu stylów CSS:
+3. Zainstaluj zależności:
+```bash
+npm install
+```
 
-1. **Pozycjonowanie**
-   - `position`, `top`, `right`, `bottom`, `left`, `z-index`
+4. Utwórz plik .env w głównym katalogu i dodaj wymagane zmienne środowiskowe:
+```env
+VITE_APP_API_URL=your_api_url
+```
 
-2. **Model pudełkowy**
-   - `display`, `flex`, `flex-direction`, `width`, `height`, `margin`, `padding`, `border`, `border-radius`, `overflow`
+5. Uruchom aplikację w trybie deweloperskim:
+```bash
+npm run dev
+```
 
-3. **Typografia**
-   - `font`, `font-size`, `font-family`, `font-weight`, `line-height`, `color`, `text-align`, `text-decoration`
+## 🔧 Dostępne Skrypty
 
-4. **Wizualne**
-   - `background-color`, `background-image`, `background-position`, `opacity`, `box-shadow`
+- `npm run dev` - uruchamia aplikację w trybie deweloperskim
+- `npm run build` - buduje aplikację do produkcji
+- `npm run preview` - podgląd zbudowanej aplikacji
+- `npm run lint` - sprawdza kod pod kątem błędów
+- `npm test` - uruchamia testy
+- `npm run test:coverage` - generuje raport pokrycia testami
 
-5. **Różne**
-   - Wszelkie inne właściwości, które nie pasują do powyższych kategorii, takie jak `transition`, `cursor`, `animation`, itp.
+## 🌟 Funkcjonalności
+
+### Autoryzacja
+- Rejestracja użytkownika
+- Logowanie
+- Przypomnienie hasła
+- Weryfikacja email
+
+### Przepisy
+- Przeglądanie przepisów
+- Wyszukiwanie po nazwie
+- Filtrowanie po kategorii
+- Dodawanie własnych przepisów
+- Zarządzanie ulubionymi przepisami
+
+### Lista Zakupów
+- Dodawanie składników do listy
+- Usuwanie składników
+- Oznaczanie jako kupione
+
+### Profil Użytkownika
+- Edycja danych profilu
+- Zmiana avatara
+- Przełączanie motywu (ciemny/jasny)
+
+## 📞 Kontakt
+
+Jeśli masz pytania lub sugestie, skontaktuj się z nami:
+- Email: contact@example.com
+- [GitHub Issues](https://github.com/your-username/so-yummy/issues)
