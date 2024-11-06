@@ -1,15 +1,17 @@
-import styles from "./CategoriesPage.module.css";
-
-import { Suspense, useEffect } from "react";
+import { FC, Suspense, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-
-import CategoriesNav from "../../components/CategoriesNav/CategoriesNav";
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
+import CategoriesNav from "../../components/CategoriesNav/CategoriesNav";
+import styles from "./CategoriesPage.module.css";
 
-const CategoriesPage = () => {
+const CategoriesPage:FC = () => {
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+   window.scrollTo({ 
+      top: 0, 
+      behavior: 'smooth' 
+    });
   }, []);
 
   return (
