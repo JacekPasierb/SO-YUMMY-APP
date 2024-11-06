@@ -1,7 +1,7 @@
 # 🥗 So Yummy - Aplikacja Kulinarna
 
 <div align="center">
-  <img src="./public/banner.png" alt="So Yummy Banner" width="800" height="auto" />
+  <img src="./public/screenshots/banner.png" alt="So Yummy Banner" width="800" height="auto" />
 </div>
 
 ## 📝 Opis Projektu
@@ -48,14 +48,14 @@ So Yummy to nowoczesna aplikacja kulinarna, która pomaga użytkownikom odkrywa�
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="./public/screenshots/home.png" alt="Home Page" width="250" />
-  <img src="./public/screenshots/login.png" alt="Login Page" width="250" />
-  <img src="./public/screenshots/recipe.png" alt="Recipes Page" width="250" />
+  <img src="./public/screenshots/home.png" alt="Home Page" width="250" height="440"/>
+  <img src="./public/screenshots/login.png" alt="Login Page" width="250" height="440"/>
+  <img src="./public/screenshots/recipe.png" alt="Recipes Page" width="250" height="440"/>
 </div>
 
 ## 🚀 Demo
 
-[Live Demo](https://so-yummy-app.vercel.app/)
+[Live Demo](https://so-yummy-jack.netlify.app/)
 
 ## 🔑 Konto testowe
 
