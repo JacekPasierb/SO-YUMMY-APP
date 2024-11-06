@@ -5,10 +5,13 @@
 }
 
 .background {
-  background-image: url("../../images//bckg2Mobile1x.png"),
-    url("../../images/bg3Mobile1x.png"), url("../../images/spinachMobile1x.png");
+  background-image: 
+  url("../../images//bckg2Mobile1x.png"),
+    url("../../images/bg3Mobile1x.png"), 
+    url("../../images/spinachMobile1x.png");
   background-repeat: no-repeat;
-  background-position: top -80px right 0, 
+  background-position: 
+  top -80px right 0, 
   top -10px right 0, 
   top -30px left 0;
 }
