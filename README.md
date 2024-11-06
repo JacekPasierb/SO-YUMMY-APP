@@ -1,6 +1,8 @@
 # 🥗 So Yummy - Aplikacja Kulinarna
 
-![So Yummy Banner](./public/banner.png)
+<div align="center">
+  <img src="./public/banner.png" alt="So Yummy Banner" width="800" height="auto" />
+</div>
 
 ## 📝 Opis Projektu
 
