@@ -19,6 +19,7 @@ const favoriteRecipesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
+      // Get Favorite Recipes
       .addCase(getFavoriteRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.recipes = action.payload.recipes;
@@ -29,14 +30,15 @@ const favoriteRecipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getFavoriteRecipes.rejected, (state, action) => {
+      .addCase(getFavoriteRecipes.rejected, (state, { payload }) => {
         state.isLoading = false;
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during getFavoriteRecipes";
-        }
+        state.error =
+          typeof payload === "string"
+            ? payload
+            : "Failed to fetch favorite recipes";
       })
+
+      // Remove from Favorites
       .addCase(removeFromFavorite.fulfilled, (state, action) => {
         state.isLoading = false;
         state.recipes = state.recipes.filter(
@@ -48,14 +50,14 @@ const favoriteRecipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(removeFromFavorite.rejected, (state, action) => {
+      .addCase(removeFromFavorite.rejected, (state, { payload }) => {
         state.isLoading = false;
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during removeFromFavorite";
-        }
+        state.error =
+          typeof payload === "string"
+            ? payload
+            : "Failed to remove recipe from favorites";
       })
+      // Add to Favorites
       .addCase(addToFavorite.fulfilled, (state, action) => {
         state.isLoading = false;
         state.recipes = [...state.recipes, action.payload];
@@ -65,13 +67,12 @@ const favoriteRecipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(addToFavorite.rejected, (state, action) => {
+      .addCase(addToFavorite.rejected, (state, { payload }) => {
         state.isLoading = false;
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during addToFavorite";
-        }
+        state.error =
+          typeof payload === "string"
+            ? payload
+            : "Failed to add recipe to favorites";
       }),
 });
 

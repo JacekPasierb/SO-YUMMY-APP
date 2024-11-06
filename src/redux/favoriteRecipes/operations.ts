@@ -2,8 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IRecipe, IRecipesResponse } from "../../types/recipesTypes";
 
-
-
 export const getFavoriteRecipes = createAsyncThunk<
   IRecipesResponse,
   { page: number }

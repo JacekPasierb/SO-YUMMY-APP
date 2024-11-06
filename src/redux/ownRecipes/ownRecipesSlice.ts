@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { addOwnRecipes, deleteRecipe, getOwnRecipes } from "./operations";
 import { IRecipesState } from "../../types/recipesTypes";
 
-
 const initialState: IRecipesState = {
   recipes: [],
   totalRecipes: 0,
@@ -15,6 +14,7 @@ const ownRecipesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
+      // Get Own Recipes
       .addCase(getOwnRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.recipes = action.payload.recipes;
@@ -25,14 +25,12 @@ const ownRecipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getOwnRecipes.rejected, (state, action) => {
+      .addCase(getOwnRecipes.rejected, (state, { payload }) => {
         state.isLoading = false;
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during getOwnRecipes";
-        }
+        state.error =
+          typeof payload === "string" ? payload : "Failed to fetch own recipes";
       })
+      // Add Own Recipe
       .addCase(addOwnRecipes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.recipes = [...state.recipes, action.payload];
@@ -42,13 +40,11 @@ const ownRecipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(addOwnRecipes.rejected, (state, action) => {
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during addOwnRecipes";
-        }
+      .addCase(addOwnRecipes.rejected, (state, { payload }) => {
+        state.error =
+          typeof payload === "string" ? payload : "Failed to add recipe";
       })
+      // Delete Recipe
       .addCase(deleteRecipe.fulfilled, (state, action) => {
         state.isLoading = false;
         state.recipes = state.recipes.filter(
@@ -60,12 +56,9 @@ const ownRecipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(deleteRecipe.rejected, (state, action) => {
-        if (typeof action.payload === "string") {
-          state.error = action.payload;
-        } else {
-          state.error = "An error occurred during deleteOwnRecipes";
-        }
+      .addCase(deleteRecipe.rejected, (state, { payload }) => {
+        state.error =
+          typeof payload === "string" ? payload : "Failed to delete recipe";
       }),
 });
 

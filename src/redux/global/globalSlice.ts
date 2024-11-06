@@ -28,7 +28,6 @@ export const globalSlice = createSlice({
     setIsMenuModalOpen: (state, action) => {
       state.isMenuModalOpen = action.payload;
     },
-  
   },
 });
 
@@ -37,7 +36,6 @@ export const {
   setIsUserInfoModalOpen,
   setIsLogoutModalOpen,
   setIsMenuModalOpen,
-  
 } = globalSlice.actions;
 
 export const globalReducer = globalSlice.reducer;

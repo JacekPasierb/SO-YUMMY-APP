@@ -6,6 +6,7 @@ import {
   IRecipesResponse,
 } from "../../types/recipesTypes";
 
+// Get own recipes
 export const getOwnRecipes = createAsyncThunk<
   IRecipesResponse,
   { userId: string; page: number }
@@ -22,6 +23,7 @@ export const getOwnRecipes = createAsyncThunk<
   }
 });
 
+// Add new recipe
 export const addOwnRecipes = createAsyncThunk<IRecipe, INewRecipe>(
   "ownRecipes/addRecipes",
   async (body: INewRecipe, thunkAPI) => {
@@ -35,6 +37,7 @@ export const addOwnRecipes = createAsyncThunk<IRecipe, INewRecipe>(
   }
 );
 
+// Delete recipe
 export const deleteRecipe = createAsyncThunk<string, string>(
   "ownRecipes/deleteOwnRecipe",
   async (recipeId: string, thunkAPI) => {
