@@ -47,14 +47,11 @@ So Yummy to nowoczesna aplikacja kulinarna, która pomaga użytkownikom odkrywa�
 
 ## 📸 Screenshots
 
-### Strona Główna
-![Home Page](./public/screenshots/home.png)
-
-### Przepisy
-![Recipes Page](./public/screenshots/recipes.png)
-
-### Panel Użytkownika
-![User Dashboard](./public/screenshots/dashboard.png)
+<div align="center">
+  <img src="./public/screenshots/home.png" alt="Home Page" width="250" />
+  <img src="./public/screenshots/login.png" alt="Login Page" width="250" />
+  <img src="./public/screenshots/recipe.png" alt="Recipes Page" width="250" />
+</div>
 
 ## 🚀 Demo
 
