@@ -27,9 +27,13 @@ So Yummy to nowoczesna aplikacja kulinarna, która pomaga użytkownikom odkrywa�
 - Redux Toolkit & Redux Persist
 - React Router 6
 - Axios
+- Formik & Yup
 - React Hook Form
 - React Select
 - React Toastify
+- Material-UI (MUI)
+- React Loading Skeleton
+- React Media
 - SASS/SCSS Modules
 
 ### Backend
@@ -38,13 +42,25 @@ So Yummy to nowoczesna aplikacja kulinarna, która pomaga użytkownikom odkrywa�
 - MongoDB
 - Mongoose (ODM)
 - JWT Authentication
+- Passport & Passport JWT
 - Cloudinary
+- SendGrid
+- Joi
+- Morgan
+- Multer
+- Swagger UI Express
+- Bcrypt
+- CORS
+- EJS
 
 ### Narzędzia
 - Vite
 - ESLint
+- TypeScript
 - Prettier
 - Jest
+- Nodemon (dev)
+- Vercel (deployment)
 
 ## 📸 Screenshots
 
