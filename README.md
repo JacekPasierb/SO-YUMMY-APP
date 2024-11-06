@@ -77,12 +77,12 @@ Aby szybko przetestować funkcjonalności aplikacji, możesz skorzystać z przyg
 
 1. Sklonuj repozytorium:
 ```bash
-git clone https://github.com/your-username/so-yummy.git
+git clone https://github.com/JacekPasierb/SO-YUMMY-APP.git
 ```
 
 2. Przejdź do katalogu projektu:
 ```bash
-cd so-yummy
+cd SO-YUMMY-APP
 ```
 
 3. Zainstaluj zależności:
@@ -114,12 +114,12 @@ npm run dev
 ### Autoryzacja
 - Rejestracja użytkownika
 - Logowanie
-- Przypomnienie hasła
 - Weryfikacja email
 
 ### Przepisy
 - Przeglądanie przepisów
 - Wyszukiwanie po nazwie
+- Wyszukiwanie po składnikach
 - Filtrowanie po kategorii
 - Dodawanie własnych przepisów
 - Zarządzanie ulubionymi przepisami
@@ -127,15 +127,18 @@ npm run dev
 ### Lista Zakupów
 - Dodawanie składników do listy
 - Usuwanie składników
-- Oznaczanie jako kupione
 
 ### Profil Użytkownika
 - Edycja danych profilu
 - Zmiana avatara
 - Przełączanie motywu (ciemny/jasny)
 
+## 👨‍💻 Autor
+
+- [Jacek Pasierb](https://github.com/JacekPasierb)
+
 ## 📞 Kontakt
 
 Jeśli masz pytania lub sugestie, skontaktuj się z nami:
-- Email: contact@example.com
-- [GitHub Issues](https://github.com/your-username/so-yummy/issues)
+- Email: jpasierb@proton.me
+- [GitHub Issues](https://github.com/JacekPasierb/SO-YUMMY-APP/issues)
