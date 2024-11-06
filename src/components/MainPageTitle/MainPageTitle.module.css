@@ -6,6 +6,10 @@
   color: var(--color-text-title);
 }
 
+.reipePageTitle {
+  color: #8baa36;
+}
+
 @media screen and (min-width: 768px) {
   .mainPageTitle {
     font-size: 44px;
