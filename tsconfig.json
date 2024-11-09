@@ -9,7 +9,7 @@
     "typeRoots": ["./node_modules/@types"],
     "baseUrl": ".",
     "jsx": "react-jsx",
-    "types": ["react"],
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "allowUmdGlobalAccess": false,
     "outDir": "./dist",
     "rootDir": "./src"

@@ -1,0 +1,1 @@
+export const getLogoSrc = () => "test-logo-stub";

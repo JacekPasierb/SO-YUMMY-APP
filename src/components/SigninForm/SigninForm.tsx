@@ -25,7 +25,7 @@ const SigninForm: React.FC = () => {
   const isRetina = window.devicePixelRatio > 1;
 
   const logoSrc = useMemo(
-    () => getLogoSrc(isDesktop, isTablet, isRetina),
+    () => getLogoSrc({isDesktop, isTablet, isRetina}),
     [isDesktop, isTablet, isRetina]
   );
 
