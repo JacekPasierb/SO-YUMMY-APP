@@ -162,6 +162,20 @@ npm run dev
 - ⏳ Wielojęzyczność (i18next)
   - 🇵🇱 Polski
   - 🇬🇧 Angielski
+
+## 🛠️ Problemy i Rozwiązania
+
+### 1. Problem z Nawigacją w Testach
+- **Opis**: Test nawigacji po udanym logowaniu nie działał,   
+            ponieważ `mockNavigate` nie był wywoływany.
+            
+- **Rozwiązanie**: Upewniłem się, że mockowanie `useNavigate`  
+                   jest poprawnie skonfigurowane oraz dodałem mock dla `dispatch`, aby symulować udane logowanie:
+  ```typescript
+  const mockDispatch = jest.fn().mockResolvedValueOnce({ type: "auth/logIn/fulfilled" });
+  (mockStore.dispatch as jest.Mock) = mockDispatch;
+  ```
+
 ## 👨‍💻 Autor
 
 - [Jacek Pasierb](https://github.com/JacekPasierb)
