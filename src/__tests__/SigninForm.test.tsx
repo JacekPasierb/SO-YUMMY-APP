@@ -94,6 +94,15 @@ describe("SigninForm", () => {
   });
 
   describe("form validation", () => {
+    it("should show error for empty email", async () => {
+      renderSigninForm();
+      const emailInput = screen.getByPlaceholderText("Email");
+      fireEvent.blur(emailInput); // Symulacja opuszczenia pola e-mail
+      await waitFor(() => {
+        expect(screen.getByText(/email is required/i)).toBeInTheDocument();
+      });
+    });
+
     it("should show error for invalid email", async () => {
       renderSigninForm();
       const emailInput = screen.getByPlaceholderText("Email");
@@ -108,12 +117,34 @@ describe("SigninForm", () => {
 
     it("should show error for empty password", async () => {
       renderSigninForm();
-
       const passwordInput = screen.getByPlaceholderText("Password");
       fireEvent.blur(passwordInput);
-
       await waitFor(() => {
         expect(screen.getByText(/password is required/i)).toBeInTheDocument();
+      });
+    });
+
+    it("should show error for password shorter than 6 characters", async () => {
+      renderSigninForm();
+      const passwordInput = screen.getByPlaceholderText("Password");
+      await userEvent.type(passwordInput, "short"); // Assuming the password must be longer than 6 characters
+      fireEvent.blur(passwordInput);
+      await waitFor(() => {
+        expect(
+          screen.getByText(/password must be at least 6 characters/i)
+        ).toBeInTheDocument();
+      });
+    });
+
+    it("should show error for password longer than 16 characters", async () => {
+      renderSigninForm();
+      const passwordInput = screen.getByPlaceholderText("Password");
+      await userEvent.type(passwordInput, "thisIsAVeryLongPassword123"); // 27 znaków
+      fireEvent.blur(passwordInput);
+      await waitFor(() => {
+        expect(
+          screen.getByText(/Password must be less than 16 characters/i)
+        ).toBeInTheDocument();
       });
     });
   });
@@ -134,6 +165,7 @@ describe("SigninForm", () => {
       await waitFor(() => {
         expect(screen.getByPlaceholderText("Email")).toHaveValue(""); // Sprawdzenie, czy pole Email jest puste
         expect(screen.getByPlaceholderText("Password")).toHaveValue("");
+        expect(mockNavigate).toHaveBeenCalledWith("/");
       });
     });
 
