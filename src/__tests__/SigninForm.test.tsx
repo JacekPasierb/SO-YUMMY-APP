@@ -1,60 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 import SigninForm from "../components/SigninForm/SigninForm";
 import userEvent from "@testing-library/user-event";
 import { toast } from "react-toastify";
-
-// Mockujemy @react-hook/media-query
-jest.mock("@react-hook/media-query", () => ({
-  useMediaQuery: () => false,
-}));
-
-// Mock toast
-jest.mock("react-toastify", () => ({
-  toast: {
-    error: jest.fn(),
-    success: jest.fn(),
-  },
-}));
-
-const mockNavigate = jest.fn();
-// Mockowanie useNavigate
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockNavigate,
-}));
-
-// Mockowanie useDispatch
-jest.mock("react-redux", () => {
-  const originalModule = jest.requireActual("react-redux");
-  return {
-    ...originalModule,
-    useDispatch: jest.fn(),
-  };
-});
-
-const mockDispatch = jest.fn();
-
-// Mock Redux store
-const mockStore = configureStore({
-  reducer: {
-    auth: (state = { error: null }, action) => state,
-  },
-});
+import { mockDispatch, mockNavigate, renderWithStore } from "../jest.setup";
 
 describe("SigninForm", () => {
-  const renderSigninForm = () => {
-    return render(
-      <Provider store={mockStore}>
-        <BrowserRouter>
-          <SigninForm />
-        </BrowserRouter>
-      </Provider>
-    );
-  };
-
   beforeEach(() => {
     jest.clearAllMocks();
     (require("react-redux").useDispatch as jest.Mock).mockReturnValue(
@@ -64,7 +14,7 @@ describe("SigninForm", () => {
 
   describe("rendering", () => {
     it("should render all form elements", () => {
-      renderSigninForm();
+      renderWithStore(<SigninForm />);
       expect(screen.getByAltText("Logo")).toBeInTheDocument();
       expect(screen.getByText("Sign In")).toBeInTheDocument();
       expect(screen.getByPlaceholderText("Email")).toBeInTheDocument();
@@ -75,27 +25,17 @@ describe("SigninForm", () => {
     });
 
     it("should show resend button when email not verified", () => {
-      const storeWithError = configureStore({
-        reducer: {
-          auth: (state = { error: "Email not verified" }, action) => state,
-        },
-      });
+      renderWithStore(<SigninForm />, { error: "Email not verified" });
 
-      render(
-        <Provider store={storeWithError}>
-          <BrowserRouter>
-            <SigninForm />
-          </BrowserRouter>
-        </Provider>
-      );
-
-      expect(screen.getByText("Resend verification email")).toBeInTheDocument();
+      expect(
+        screen.getByText(/resend verification email/i)
+      ).toBeInTheDocument();
     });
   });
 
   describe("form validation", () => {
     it("should show error for empty email", async () => {
-      renderSigninForm();
+      renderWithStore(<SigninForm />);
       const emailInput = screen.getByPlaceholderText("Email");
       fireEvent.blur(emailInput); // Symulacja opuszczenia pola e-mail
       await waitFor(() => {
@@ -104,7 +44,7 @@ describe("SigninForm", () => {
     });
 
     it("should show error for invalid email", async () => {
-      renderSigninForm();
+      renderWithStore(<SigninForm />);
       const emailInput = screen.getByPlaceholderText("Email");
       await userEvent.type(emailInput, "invalid-email");
       fireEvent.blur(emailInput);
@@ -116,7 +56,7 @@ describe("SigninForm", () => {
     });
 
     it("should show error for empty password", async () => {
-      renderSigninForm();
+      renderWithStore(<SigninForm />);
       const passwordInput = screen.getByPlaceholderText("Password");
       fireEvent.blur(passwordInput);
       await waitFor(() => {
@@ -125,7 +65,7 @@ describe("SigninForm", () => {
     });
 
     it("should show error for password shorter than 6 characters", async () => {
-      renderSigninForm();
+      renderWithStore(<SigninForm />);
       const passwordInput = screen.getByPlaceholderText("Password");
       await userEvent.type(passwordInput, "short"); // Assuming the password must be longer than 6 characters
       fireEvent.blur(passwordInput);
@@ -137,7 +77,7 @@ describe("SigninForm", () => {
     });
 
     it("should show error for password longer than 16 characters", async () => {
-      renderSigninForm();
+      renderWithStore(<SigninForm />);
       const passwordInput = screen.getByPlaceholderText("Password");
       await userEvent.type(passwordInput, "thisIsAVeryLongPassword123"); // 27 znaków
       fireEvent.blur(passwordInput);
@@ -152,7 +92,7 @@ describe("SigninForm", () => {
   describe("form submission", () => {
     it("should handle successful submission and reset the form", async () => {
       mockDispatch.mockResolvedValueOnce({ type: "auth/logIn/fulfilled" });
-      renderSigninForm();
+      renderWithStore(<SigninForm />);
       await userEvent.type(
         screen.getByPlaceholderText("Email"),
         "test@example.com"
@@ -174,7 +114,7 @@ describe("SigninForm", () => {
         new Error("Sign in failed. Please try again.")
       );
 
-      renderSigninForm();
+      renderWithStore(<SigninForm />);
       await userEvent.type(
         screen.getByPlaceholderText("Email"),
         "test@example.com"
@@ -199,19 +139,7 @@ describe("SigninForm", () => {
         new Error("Failed to send verification email.")
       );
 
-      const storeWithError = configureStore({
-        reducer: {
-          auth: (state = { error: "Email not verified" }, action) => state,
-        },
-      });
-
-      render(
-        <Provider store={storeWithError}>
-          <BrowserRouter>
-            <SigninForm />
-          </BrowserRouter>
-        </Provider>
-      );
+      renderWithStore(<SigninForm />, { error: "Email not verified" });
 
       // Wprowadź adres e-mail do formularza
       await userEvent.type(
@@ -233,19 +161,8 @@ describe("SigninForm", () => {
     });
 
     it("should show success message if resend verification is successful", async () => {
-      const storeWithSuccess = configureStore({
-        reducer: {
-          auth: (state = { error: "Email not verified" }, action) => state,
-        },
-      });
+      renderWithStore(<SigninForm />, { error: "Email not verified" });
 
-      render(
-        <Provider store={storeWithSuccess}>
-          <BrowserRouter>
-            <SigninForm />
-          </BrowserRouter>
-        </Provider>
-      );
       await userEvent.type(
         screen.getByPlaceholderText("Email"),
         "test@example.com"
