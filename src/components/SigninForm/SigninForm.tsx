@@ -25,7 +25,7 @@ const SigninForm: React.FC = () => {
   const isRetina = window.devicePixelRatio > 1;
 
   const logoSrc = useMemo(
-    () => getLogoSrc({isDesktop, isTablet, isRetina}),
+    () => getLogoSrc({ isDesktop, isTablet, isRetina }),
     [isDesktop, isTablet, isRetina]
   );
 
@@ -109,7 +109,7 @@ const SigninForm: React.FC = () => {
             <button
               type="button"
               className={styles.resendButton}
-              onClick={() => handleResendVerification(errors.email)}
+              onClick={() => handleResendVerification(values.email)}
             >
               Resend verification email
             </button>
