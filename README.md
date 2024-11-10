@@ -176,6 +176,49 @@ npm run dev
   (mockStore.dispatch as jest.Mock) = mockDispatch;
   ```
 
+### 2. Problemy z Testami Komponentu `SigninForm`
+- **Opis**: Podczas uruchamiania testów dla komponentu `SigninForm` napotykano błędy związane z wywołaniem akcji `dispatch`, co prowadziło do nieprawidłowego zachowania testów.
+  
+- **Rozwiązanie**: Upewniłem się, że mock `dispatch` jest poprawnie skonfigurowany w testach. Wykorzystałem `jest.fn()` do stworzenia mocka, który symuluje zachowanie akcji. W testach, które sprawdzają ponowne wysyłanie e-maila weryfikacyjnego, użyłem `mockRejectedValueOnce`, aby symulować błąd:
+  ```typescript
+  jest.mock("react-redux", () => {
+    const originalModule = jest.requireActual("react-redux");
+    return {
+      ...originalModule,
+      useDispatch: jest.fn(),
+    };
+  });
+  ```
+
+### 3. Użycie `storeWithSuccess` i `storeWithError`
+- **Opis**: W testach komponentu `SigninForm` dodano `storeWithSuccess` i `storeWithError`, aby symulować różne stany aplikacji.
+  
+- **Rozwiązanie**: Użycie `storeWithSuccess` do symulacji udanego logowania oraz `storeWithError` do symulacji błędów. Przykłady:
+  ```typescript
+  const storeWithSuccess = configureStore({
+    reducer: {
+      auth: (state = { error: null }, action) => state,
+    },
+  });
+
+  const storeWithError = configureStore({
+    reducer: {
+      auth: (state = { error: "Email not verified" }, action) => state,
+    },
+  });
+  ```
+
+### 4. Mockowanie `useDispatch`
+- **Opis**: W bloku `beforeEach` dodano linijkę, która mockuje `useDispatch`, aby zapewnić, że testy będą korzystać z odpowiedniego mocka.
+  
+- **Rozwiązanie**: W bloku `beforeEach` dodano:
+  ```typescript
+  beforeEach(() => {
+    jest.clearAllMocks();
+    (require("react-redux").useDispatch as jest.Mock).mockReturnValue(mockDispatch);
+  });
+  ```
+  
 ## 👨‍💻 Autor
 
 - [Jacek Pasierb](https://github.com/JacekPasierb)
