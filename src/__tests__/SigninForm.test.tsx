@@ -54,11 +54,12 @@ describe("SigninForm", () => {
       </Provider>
     );
   };
- 
+
   beforeEach(() => {
     jest.clearAllMocks();
-    (require("react-redux").useDispatch as jest.Mock).mockReturnValue(mockDispatch);
-
+    (require("react-redux").useDispatch as jest.Mock).mockReturnValue(
+      mockDispatch
+    );
   });
 
   describe("rendering", () => {
@@ -137,7 +138,9 @@ describe("SigninForm", () => {
     });
 
     it("should handle submission error", async () => {
-      mockDispatch.mockRejectedValueOnce(new Error("Sign in failed. Please try again."));
+      mockDispatch.mockRejectedValueOnce(
+        new Error("Sign in failed. Please try again.")
+      );
 
       renderSigninForm();
       await userEvent.type(
@@ -160,8 +163,9 @@ describe("SigninForm", () => {
 
   describe("Resend Veryfication", () => {
     it("should show error message if resend verification fails", async () => {
-      mockDispatch.mockRejectedValueOnce(new Error("Failed to send verification email."));
-
+      mockDispatch.mockRejectedValueOnce(
+        new Error("Failed to send verification email.")
+      );
 
       const storeWithError = configureStore({
         reducer: {
@@ -182,15 +186,12 @@ describe("SigninForm", () => {
         screen.getByPlaceholderText("Email"),
         "test@example.com"
       );
-    
 
       // Kliknij przycisk "Resend verification email"
       const resendButton = screen.getByRole("button", {
         name: /resend verification/i,
       });
       await userEvent.click(resendButton);
-      console.log("Mock dispatch called:", mockDispatch.mock.calls.length);
-
       // Sprawdź, czy toast o błędzie został wyświetlony
       await waitFor(() => {
         expect(toast.error).toHaveBeenCalledWith(
@@ -200,12 +201,11 @@ describe("SigninForm", () => {
     });
 
     it("should show success message if resend verification is successful", async () => {
-     
-    const storeWithSuccess = configureStore({
-      reducer: {
-        auth: (state = { error: "Email not verified" }, action) => state,
-      },
-    });
+      const storeWithSuccess = configureStore({
+        reducer: {
+          auth: (state = { error: "Email not verified" }, action) => state,
+        },
+      });
 
       render(
         <Provider store={storeWithSuccess}>
@@ -219,7 +219,9 @@ describe("SigninForm", () => {
         "test@example.com"
       );
       // Kliknij przycisk "Resend verification email"
-      const resendButton = screen.getByRole('button', { name: /resend verification/i });
+      const resendButton = screen.getByRole("button", {
+        name: /resend verification/i,
+      });
       await userEvent.click(resendButton);
 
       // Sprawdź, czy toast o błędzie został wyświetlony
@@ -231,28 +233,3 @@ describe("SigninForm", () => {
     });
   });
 });
-
-// import React from "react";
-// import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-// import userEvent from "@testing-library/user-event";
-// import { BrowserRouter } from "react-router-dom";
-// import { Provider } from "react-redux";
-// import { configureStore } from "@reduxjs/toolkit";
-// import SigninForm from "../components/SigninForm/SigninForm";
-// import { toast } from "react-toastify";
-// import { getLogoSrc } from "../helpers/helpers";
-
-//   // Dodaj na początku pliku
-// jest.mock("../helpers/helpers", () => ({
-//     getLogoSrc: () => "mock-logo.png"
-//   }));
-
-// // Mock Redux store
-// const mockStore = configureStore({
-//   reducer: {
-//     auth: (state = { error: null }, action) => state,
-//   },
-// });
-
-// // Dodajemy typ dla dispatch
-// type AppDispatch = typeof mockStore.dispatch;
