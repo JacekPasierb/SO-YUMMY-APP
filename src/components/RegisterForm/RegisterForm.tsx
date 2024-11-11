@@ -44,16 +44,29 @@ const RegisterForm: React.FC = () => {
     { resetForm }: { resetForm: () => void }
   ) => {
     try {
+      console.log("Dispatching register action with values:", values); // Debugowanie
+
       const result = await dispatch(register(values));
+      console.log("Dispatch result:", result); // Debugowanie
 
       if (register.fulfilled.match(result)) {
+        console.log("Navigating to /signin");
+        
         toast.info("Verification link sent to email. Check your mail.");
+        console.log("Toast notification sent");
         resetForm();
+        console.log("Navigating to /signin");
         navigate("/signin");
+        console.log("po sign");
+        
       } else {
+        console.log("Registration failed, result did not match:", result);
+
         toast.error("Registration failed.");
       }
     } catch (error) {
+      console.log("takikk", error);
+      
       toast.error("An error occurred. Please try again.");
     }
   };

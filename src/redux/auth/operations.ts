@@ -28,10 +28,14 @@ export const register = createAsyncThunk<
   "auth/register",
   async (credentials: Pick<IUser, "email" | "password" | "name">, thunkAPI) => {
     try {
+      console.log("Registering with credentials:", credentials); // Debugowanie
+
       const res = await axios.post("/api/users/register", credentials);
       setAuthHeader(res.data.data.token);
       return res.data;
     } catch (error: any) {
+      console.error("Registration error:", error); // Debugowanie
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
