@@ -78,6 +78,78 @@ describe("RegisterForm", () => {
         password: "Password must be 6 to 12 characters",
       });
     });
+
+    it("should display success icon when the name input is valid", async () => {
+      renderWithStore(<RegisterForm />);
+      const nameInput = screen.getByPlaceholderText("Name");
+      await userEvent.type(nameInput, "John Doe");
+      fireEvent.blur(nameInput);
+
+      await waitFor(() => {
+        const successIcon = screen.getByAltText("Success Icon");
+        expect(successIcon).toBeInTheDocument();
+      });
+    });
+
+    it("should display error icon when there is a validation error for name", async () => {
+      renderWithStore(<RegisterForm />);
+      const nameInput = screen.getByPlaceholderText("Name");
+      await userEvent.type(nameInput, "Jo");
+      fireEvent.blur(nameInput);
+
+      await waitFor(() => {
+        const errorIcon = screen.getByAltText("Error Icon");
+        expect(errorIcon).toBeInTheDocument();
+      });
+    });
+
+    it("should display error icon when there is a validation error email", async () => {
+      renderWithStore(<RegisterForm />);
+      const emailInput = screen.getByPlaceholderText("Email");
+      await userEvent.type(emailInput, "invalid-email");
+      fireEvent.blur(emailInput);
+
+      await waitFor(() => {
+        const errorIcon = screen.getByAltText("Error Icon");
+        expect(errorIcon).toBeInTheDocument();
+      });
+    });
+
+    it("should display success icon when email input is valid", async () => {
+      renderWithStore(<RegisterForm />);
+      const emailInput = screen.getByPlaceholderText("Email");
+      await userEvent.type(emailInput, "valid.email@example.com");
+      fireEvent.blur(emailInput);
+
+      await waitFor(() => {
+        const successIcon = screen.getByAltText("Success Icon");
+        expect(successIcon).toBeInTheDocument();
+      });
+    });
+
+    it("should display error icon when there is a validation error for password", async () => {
+      renderWithStore(<RegisterForm />);
+      const passwordInput = screen.getByPlaceholderText("Password");
+      await userEvent.type(passwordInput, "123");
+      fireEvent.blur(passwordInput);
+
+      await waitFor(() => {
+        const errorIcon = screen.getByAltText("Error Icon");
+        expect(errorIcon).toBeInTheDocument();
+      });
+    });
+
+    it("should display success icon when the password input is valid", async () => {
+      renderWithStore(<RegisterForm />);
+      const passwordInput = screen.getByPlaceholderText("Password");
+      await userEvent.type(passwordInput, "validPass123");
+      fireEvent.blur(passwordInput);
+
+      await waitFor(() => {
+        const successIcon = screen.getByAltText("Success Icon");
+        expect(successIcon).toBeInTheDocument();
+      });
+    });
   });
 
   describe("form submission", () => {
