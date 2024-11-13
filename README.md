@@ -35,6 +35,7 @@ So Yummy to nowoczesna aplikacja kulinarna, która pomaga użytkownikom odkrywa�
 - React Loading Skeleton
 - React Media
 - SASS/SCSS Modules
+- **Testy**: Jest, React Testing Library
 
 ### Backend
 - Node.js
@@ -124,6 +125,8 @@ npm run dev
 - `npm run build` - buduje aplikację do produkcji
 - `npm run lint` - sprawdza kod pod kątem błędów (js,jsx)
 - `npm run preview` - podgląd zbudowanej aplikacji
+- `npm test` - uruchamia testy jednostkowe i integracyjne
+- `npm run test:coverage` - generuje raport pokrycia testów
 
 ### Backend
 - `npm start` - uruchamia serwer w trybie produkcyjnym
@@ -156,7 +159,6 @@ npm run dev
 ## 🔄 Planowane rozszerzenia
 
 - ✅ Testy jednostkowe (Jest)
-    - Dodanie skryptów: `npm test` i `npm run test:coverage`
 - ⏳ Testy integracyjne (React Testing Library)
 - ⏳ Testy E2E (Cypress)
 - ⏳ Wielojęzyczność (i18next)
