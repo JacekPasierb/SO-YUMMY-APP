@@ -3,6 +3,7 @@ import RegisterForm from "../components/RegisterForm/RegisterForm";
 import userEvent from "@testing-library/user-event";
 import { mockDispatch, mockNavigate, renderWithStore } from "../jest.setup";
 import { validate } from "../components/RegisterForm/RegisterFormValidations";
+import { toast } from "react-toastify";
 
 describe("RegisterForm", () => {
   beforeEach(() => {
@@ -95,10 +96,33 @@ describe("RegisterForm", () => {
 
       await userEvent.click(screen.getByRole("button", { name: "Sign up" }));
       await waitFor(() => {
+        expect(toast.info).toHaveBeenCalledWith(
+          "Verification link sent to email. Check your mail."
+        );
         expect(screen.getByPlaceholderText("Name")).toHaveValue("");
         expect(screen.getByPlaceholderText("Email")).toHaveValue("");
         expect(screen.getByPlaceholderText("Password")).toHaveValue("");
         expect(mockNavigate).toHaveBeenCalledWith("/signin");
+      });
+    });
+
+    it("should handle submission error", async () => {
+      mockDispatch.mockRejectedValueOnce(new Error("Registration failed."));
+
+      renderWithStore(<RegisterForm />);
+      await userEvent.type(screen.getByPlaceholderText("Name"), "John Doe");
+      await userEvent.type(
+        screen.getByPlaceholderText("Email"),
+        "john.doe@example.com"
+      );
+      await userEvent.type(
+        screen.getByPlaceholderText("Password"),
+        "password123"
+      );
+      await userEvent.click(screen.getByRole("button", { name: "Sign up" }));
+
+      await waitFor(() => {
+        expect(toast.error).toHaveBeenCalledWith("Registration failed.");
       });
     });
   });

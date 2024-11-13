@@ -50,11 +50,9 @@ const RegisterForm: React.FC = () => {
         toast.info("Verification link sent to email. Check your mail.");
         resetForm();
         navigate("/signin");
-      } else {
-        toast.error("Registration failed.");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.");
+      toast.error("Registration failed.");
     }
   };
 
