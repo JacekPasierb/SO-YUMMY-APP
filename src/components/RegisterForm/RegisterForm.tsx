@@ -24,13 +24,12 @@ interface FormValues {
 const RegisterForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  console.log("Navigate hook instance in component:", navigate);
 
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = window.devicePixelRatio > 1;
-  const logoSrc = useMemo(() => 
-    getLogoSrc({ isDesktop, isTablet, isRetina }), 
+  const logoSrc = useMemo(
+    () => getLogoSrc({ isDesktop, isTablet, isRetina }),
     [isDesktop, isTablet, isRetina]
   );
 
@@ -45,29 +44,16 @@ const RegisterForm: React.FC = () => {
     { resetForm }: { resetForm: () => void }
   ) => {
     try {
-      console.log("Dispatching register action with values:", values); // Debugowanie
-
       const result = await dispatch(register(values));
-      console.log("Dispatch result:", result); // Debugowanie
 
       if (register.fulfilled.match(result)) {
-        console.log("Navigating to /signin");
-        
         toast.info("Verification link sent to email. Check your mail.");
-        console.log("Toast notification sent");
         resetForm();
-        console.log("Navigating to /signin");
         navigate("/signin");
-        console.log("po sign");
-        
       } else {
-        console.log("Registration failed, result did not match:", result);
-
         toast.error("Registration failed.");
       }
     } catch (error) {
-      console.log("takikk", error);
-      
       toast.error("An error occurred. Please try again.");
     }
   };
