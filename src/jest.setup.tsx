@@ -5,6 +5,7 @@ import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 import { AppDispatch } from "./redux/store";
 
 // Mockowanie toast
@@ -21,13 +22,13 @@ jest.mock("@react-hook/media-query", () => ({
   useMediaQuery: () => false,
 }));
 
-const mockNavigate = jest.fn();
 // Mockowanie useNavigate
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockNavigate,
+jest.mock("react-router", () => ({
+  ...jest.requireActual("react-router") as any,
+  useNavigate: ()=>mockNavigate,
 }));
 
+const mockNavigate = jest.fn();
 
 const mockDispatch = jest.fn();
 // Mockowanie useDispatch
@@ -35,7 +36,7 @@ jest.mock("react-redux", () => {
   const originalModule = jest.requireActual("react-redux");
   return {
     ...originalModule,
-    useDispatch: jest.fn(),
+    useDispatch:jest.fn(),   // jest.fn(),
   };
 });
 

@@ -218,7 +218,14 @@ npm run dev
     (require("react-redux").useDispatch as jest.Mock).mockReturnValue(mockDispatch);
   });
   ```
+### 5. Problem z Importem `useNavigate`
+- **Opis**: Podczas testowania komponentu `RegisterForm` wystąpił problem z nawigacją, ponieważ `useNavigate` był importowany z niewłaściwego modułu, co powodowało, że `mockNavigate` nie był wywoływany.
   
+- **Rozwiązanie**: Upewniłem się, że `useNavigate` jest importowany z `react-router` zamiast `react-router-dom`, co rozwiązało problem z nawigacją w testach. Poprawny import wygląda następująco:
+  ```typescript
+  import { useNavigate } from "react-router";
+  ```
+
 ## 👨‍💻 Autor
 
 - [Jacek Pasierb](https://github.com/JacekPasierb)

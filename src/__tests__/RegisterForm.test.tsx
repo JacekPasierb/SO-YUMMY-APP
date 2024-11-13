@@ -1,7 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import RegisterForm from "../components/RegisterForm/RegisterForm";
-import { mockDispatch,mockNavigate,renderWithStore } from "../jest.setup";
 import userEvent from "@testing-library/user-event";
+import { mockDispatch,  mockNavigate,  renderWithStore } from "../jest.setup";
 import { validate } from "../components/RegisterForm/RegisterFormValidations";
 
 describe("RegisterForm", () => {
@@ -10,7 +10,6 @@ describe("RegisterForm", () => {
     (require("react-redux").useDispatch as jest.Mock).mockReturnValue(
       mockDispatch
     );
-    
   });
 
   describe("rendering", () => {
@@ -82,8 +81,9 @@ describe("RegisterForm", () => {
 
   describe("form submission", () => {
     it("should handle successful submission and reset the form", async () => {
+      console.log('Mock Navigate:', mockNavigate);
       mockDispatch.mockResolvedValueOnce({ type: "auth/register/fulfilled" });
-     
+
       renderWithStore(<RegisterForm />);
       // Wprowadzenie poprawnych danych
       await userEvent.type(screen.getByPlaceholderText("Name"), "John Doe");
@@ -97,12 +97,18 @@ describe("RegisterForm", () => {
       );
 
       await userEvent.click(screen.getByRole("button", { name: "Sign up" }));
-      console.log("Mock navigate calls before waitFor:", mockNavigate.mock.calls);      // Sprawdzenie, czy formularz został zresetowany
+      console.log('react-router-dom version:', require('react-router-dom/package.json').version);
+
       await waitFor(() => {
+        expect(screen.getByPlaceholderText("Name")).toHaveValue(""); // Sprawdzenie, czy pole Email jest puste
+        expect(screen.getByPlaceholderText("Email")).toHaveValue(""); // Sprawdzenie, czy pole Email jest puste
+        expect(screen.getByPlaceholderText("Password")).toHaveValue("");
+        console.log('Mock navigate calls:', mockNavigate.mock.calls);
+
         expect(mockNavigate).toHaveBeenCalledWith("/signin");
       });
-      expect(mockNavigate).toHaveBeenCalledTimes(1);
-
+       // Sprawdzenie, czy nawigacja do /signin została wywołana
+       expect(mockNavigate).toHaveBeenCalledTimes(1);
     });
   });
 });

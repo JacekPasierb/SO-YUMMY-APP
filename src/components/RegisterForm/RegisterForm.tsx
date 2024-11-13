@@ -24,6 +24,7 @@ interface FormValues {
 const RegisterForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
+  console.log("Navigate hook instance in component:", navigate);
 
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
