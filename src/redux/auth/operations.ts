@@ -9,7 +9,7 @@ import {
   UpdateUserResponse,
 } from "../../types/authTypes";
 
-axios.defaults.baseURL = "https://so-yummy-app-backend.vercel.app/";
+axios.defaults.baseURL = "so-yummy-app-backend-9mvu.vercel.app/";
 
 // Utility to add JWT
 const setAuthHeader = (token: string | null) => {

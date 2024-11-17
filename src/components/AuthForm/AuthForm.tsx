@@ -7,6 +7,7 @@ const RegisterForm = lazy(() => import("../RegisterForm/RegisterForm"));
 
 interface AuthFormProps {
   formType: "register" | "signin";
+  
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
