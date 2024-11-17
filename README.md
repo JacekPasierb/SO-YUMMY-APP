@@ -172,7 +172,7 @@ npm run dev
             ponieważ `mockNavigate` nie był wywoływany.
             
 - **Rozwiązanie**: Upewniłem się, że mockowanie `useNavigate`  
-                   jest poprawnie skonfigurowane oraz dodałem mock dla `dispatch`, aby symulować udane logowanie:
+                   jest poprawnie skonfigurowane oraz dodałem mock dla `dispatch`, aby symulować udane logowanie::
   ```typescript
   const mockDispatch = jest.fn().mockResolvedValueOnce({ type: "auth/logIn/fulfilled" });
   (mockStore.dispatch as jest.Mock) = mockDispatch;
