@@ -21,7 +21,7 @@ const FavoritesPage: React.FC = () => {
   const navigate = useNavigate();
   const { search } = useLocation();
 
-  const favoriteRecipes = useSelector(selectFavoriteRecipes) ||[];
+  const favoriteRecipes = useSelector(selectFavoriteRecipes) || [];
   const totalFavoriteRecipes = useSelector(selectTotalFavoritesRecipes);
   const isLoading = useSelector(selectIsLoading);
   const currentPage = getPageFromQueryString(search);
@@ -34,10 +34,8 @@ const FavoritesPage: React.FC = () => {
 
   const handlePageChange = (page: number) => {
     navigate(`?page=${page}`);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-
 
   return (
     <>
@@ -46,12 +44,13 @@ const FavoritesPage: React.FC = () => {
         <div className={styles.favoritesPage__container}>
           <MainTitle title={"Favorites"} />
           <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading} />
-          {favoriteRecipes.length !== 0 && 
-          <BasicPagination
-            count={Math.ceil(totalFavoriteRecipes / ITEMS_PER_PAGE)}
-            page={currentPage}
-            onPageChange={handlePageChange}
-          />}
+          {favoriteRecipes.length !== 0 && (
+            <BasicPagination
+              count={Math.ceil(totalFavoriteRecipes / ITEMS_PER_PAGE)}
+              page={currentPage}
+              onPageChange={handlePageChange}
+            />
+          )}
         </div>
       </main>
     </>
