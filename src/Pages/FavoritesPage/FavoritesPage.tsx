@@ -29,9 +29,7 @@ const FavoritesPage: React.FC = () => {
   const ITEMS_PER_PAGE = 4;
 
   useEffect(() => {
-    dispatch(getFavoriteRecipes({ page: currentPage }));
-    console.log("przepisy",favoriteRecipes);
-    
+    dispatch(getFavoriteRecipes({ page: currentPage }));    
   }, [dispatch, currentPage]);
 
   const handlePageChange = (page: number) => {

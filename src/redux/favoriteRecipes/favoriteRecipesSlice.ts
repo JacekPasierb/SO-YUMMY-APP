@@ -21,7 +21,6 @@ const favoriteRecipesSlice = createSlice({
     builder
       // Get Favorite Recipes
       .addCase(getFavoriteRecipes.fulfilled, (state, action) => {
-        console.log("Fulfilled Action Payload:", action.payload);
         state.isLoading = false;
         state.recipes = action.payload.recipes;
         state.totalRecipes = action.payload.totalRecipes;
