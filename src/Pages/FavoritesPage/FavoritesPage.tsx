@@ -30,6 +30,8 @@ const FavoritesPage: React.FC = () => {
 
   useEffect(() => {
     dispatch(getFavoriteRecipes({ page: currentPage }));
+    console.log("przepisy",favoriteRecipes);
+    
   }, [dispatch, currentPage]);
 
   const handlePageChange = (page: number) => {
