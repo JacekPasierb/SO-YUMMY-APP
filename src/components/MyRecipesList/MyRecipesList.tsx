@@ -12,6 +12,7 @@ interface MyRecipesListProps {
 
 const MyRecipesList: FC<MyRecipesListProps> = ({ recipes, isLoading }) => {
   const navigate = useNavigate();
+console.log("re",recipes);
 
   if (isLoading) {
     return <MyRecipesListSkeleton />;
