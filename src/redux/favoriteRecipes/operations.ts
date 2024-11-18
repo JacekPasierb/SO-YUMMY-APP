@@ -12,8 +12,8 @@ export const getFavoriteRecipes = createAsyncThunk<
     const { data } = await axios.get(`api/favorite?page=${page}`);
     console.log("API Response:", data);
     return {
-      recipes: data.favoriteRecipes,
-      totalRecipes: data.totalFavoritesRecipes,
+      recipes: data.data.favoriteRecipes,
+      totalRecipes: data.data.totalFavoritesRecipes,
     };
   } catch (error: any) {
     console.log("err",error);
