@@ -21,7 +21,7 @@ const FavoritesPage: React.FC = () => {
   const navigate = useNavigate();
   const { search } = useLocation();
 
-  const favoriteRecipes = useSelector(selectFavoriteRecipes);
+  const favoriteRecipes = useSelector(selectFavoriteRecipes) ||[];
   const totalFavoriteRecipes = useSelector(selectTotalFavoritesRecipes);
   const isLoading = useSelector(selectIsLoading);
   const currentPage = getPageFromQueryString(search);
@@ -48,7 +48,7 @@ const FavoritesPage: React.FC = () => {
           <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading} />
           {favoriteRecipes.length !== 0 && 
           <BasicPagination
-            count={Math.ceil(totalFavoriteRecipes / 4)}
+            count={Math.ceil(totalFavoriteRecipes / ITEMS_PER_PAGE)}
             page={currentPage}
             onPageChange={handlePageChange}
           />}
