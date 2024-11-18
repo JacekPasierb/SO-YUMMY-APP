@@ -17,6 +17,8 @@ console.log("ddata",data);
       totalRecipes: data.totalFavoritesRecipes,
     };
   } catch (error: any) {
+    console.log("err",error);
+    
     return thunkAPI.rejectWithValue(error.message);
   }
 });
