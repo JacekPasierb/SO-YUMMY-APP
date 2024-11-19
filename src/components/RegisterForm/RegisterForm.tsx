@@ -52,7 +52,8 @@ const RegisterForm: React.FC = () => {
         navigate("/signin");
       }
     } catch (error) {
-      toast.error("Registration failed.");
+      const err = error as any;
+      toast.error(err.message ||"Registration failed.");
     }
   };
 
