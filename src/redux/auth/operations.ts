@@ -36,9 +36,13 @@ export const register = createAsyncThunk<
       setAuthHeader(res.data.data.token);
       return res.data;
     } catch (error: any) {
-      console.error("Registration error:", error); // Debugowanie
+      const message =
+      error.response?.status === 409
+        ? "Email is already in use"
+        : "Registration failed";
+      console.error("Registration error:", message); // Debugowanie
 
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
