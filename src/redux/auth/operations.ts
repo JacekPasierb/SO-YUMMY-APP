@@ -41,7 +41,7 @@ export const register = createAsyncThunk<
           ? "Email is already in use"
           : "Registration failed";
       console.error("Registration error:", message); // Debugowanie
-
+      toast.error(message);
       return thunkAPI.rejectWithValue(message);
     }
   }
