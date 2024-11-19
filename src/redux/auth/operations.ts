@@ -31,6 +31,8 @@ export const register = createAsyncThunk<
       console.log("Registering with credentials:", credentials); // Debugowanie
 
       const res = await axios.post("/api/users/register", credentials);
+      console.log("res",res);
+      
       setAuthHeader(res.data.data.token);
       return res.data;
     } catch (error: any) {
