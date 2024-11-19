@@ -52,8 +52,6 @@ const RegisterForm: React.FC = () => {
         navigate("/signin");
       }
     } catch (error) {
-      console.log("oooook");
-      
       const err = error as any;
       toast.error(err.message ||"Registration failed.");
     }
