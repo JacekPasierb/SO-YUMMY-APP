@@ -31,15 +31,15 @@ export const register = createAsyncThunk<
       console.log("Registering with credentials:", credentials); // Debugowanie
 
       const res = await axios.post("/api/users/register", credentials);
-      console.log("res",res);
-      
+      console.log("res", res);
+
       setAuthHeader(res.data.data.token);
       return res.data;
     } catch (error: any) {
       const message =
-      error.response?.status === 409
-        ? "Email is already in use"
-        : "Registration failed";
+        error.response?.status === 409
+          ? "Email is already in use"
+          : "Registration failed";
       console.error("Registration error:", message); // Debugowanie
 
       return thunkAPI.rejectWithValue(message);
