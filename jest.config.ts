@@ -16,6 +16,9 @@ const config: Config = {
     "<rootDir>/src/**/__tests__/**/*.[jt]s?(x)",
     "<rootDir>/src/**/?(*.)+(spec|test).[jt]s?(x)"
   ],
+  testPathIgnorePatterns: [
+    "<rootDir>/src/__tests__/testSetup.tsx" 
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
 };
 
