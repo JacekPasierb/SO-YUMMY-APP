@@ -49,7 +49,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Register
+      // Register.
       .addCase(register.fulfilled, (state, { payload }) => {
         state.user = payload.data.user;
         state.token = payload.data.token;
