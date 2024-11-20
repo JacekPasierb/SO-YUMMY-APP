@@ -27,13 +27,17 @@ const Header: React.FC = () => {
       {small || medium ? (
         <div className={styles.header__mobile}>
           <UserLogo />
-          <HamburgerMenu />
+          <Suspense fallback={null}>
+            <HamburgerMenu />
+          </Suspense>
         </div>
       ) : (
         <>
           <Navigation />
           <UserLogo />
-          <ThemeToggler />
+          <Suspense fallback={null}>
+            <ThemeToggler />
+          </Suspense>
         </>
       )}
     </div>
