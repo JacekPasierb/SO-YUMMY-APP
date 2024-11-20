@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { useAuth } from "../../../hooks/useAuth";
@@ -57,7 +57,11 @@ const UserLogo: React.FC<UserLogoProps> = ({ className }) => {
         {user.name}
       </span>
 
-      {isUserLogoModalOpen && <UserLogoModal />}
+      {isUserLogoModalOpen && (
+        <Suspense fallback={null}>
+          <UserLogoModal />
+        </Suspense>
+      )}
     </div>
   );
 };

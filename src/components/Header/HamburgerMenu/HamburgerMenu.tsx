@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { AppDispatch } from "../../../redux/store";
@@ -42,7 +42,11 @@ const HamburgerMenu: React.FC = () => {
           <use href={`${sprite}#icon-Menu`} />
         </svg>
       </button>
-      {isMenuModalOpen && <MenuModal onClose={handleToggleMenu} />}
+      {isMenuModalOpen && (
+        <Suspense fallback={null}>
+          <MenuModal onClose={handleToggleMenu} />
+        </Suspense>
+      )}
     </>
   );
 };
