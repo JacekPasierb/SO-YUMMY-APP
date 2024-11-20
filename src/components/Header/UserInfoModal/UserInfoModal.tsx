@@ -68,8 +68,8 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
       await dispatch(updateUser(userData)).unwrap();
       toast.success("Profile updated successfully!");
       onClose();
-    } catch (error) {
-      toast.error("Failed to update profile. Please try again.");
+    } catch (error:any) {
+      toast.error("Failed to update profile. Please try again.",error.message);
     } finally {
       setSubmitting(false);
     }
