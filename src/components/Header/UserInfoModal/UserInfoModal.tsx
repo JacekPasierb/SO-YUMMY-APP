@@ -70,7 +70,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
       onClose();
     } catch (error) {
       toast.error("Failed to update profile. Please try again.");
-    }finally {
+    } finally {
       setSubmitting(false);
     }
   };
@@ -140,6 +140,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
               }}
               className={styles.userInfoModal__inputFile}
               aria-label="Upload avatar"
+              disabled={isSubmitting}
             />
 
             <div className={styles.userInfoModal__inputWrapper}>
@@ -153,6 +154,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
                 placeholder="Enter your name"
                 className={styles.userInfoModal__input}
                 aria-label="Username"
+                disabled={isSubmitting}
               />
 
               <svg
@@ -162,8 +164,12 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
                 <use href={`${sprite}#icon-edit-01`}></use>
               </svg>
             </div>
-            <button type="submit" className={styles.userInfoModal__btnSave}>
-            {isSubmitting ? "Save..." : "Save changes"}
+            <button
+              type="submit"
+              className={styles.userInfoModal__btnSave}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Save..." : "Save changes"}
             </button>
           </Form>
         )}
