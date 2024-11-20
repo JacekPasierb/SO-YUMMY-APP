@@ -122,6 +122,8 @@ export const updateUser = createAsyncThunk<
   "auth/updateUser",
   async (userData: Pick<IUser, "name" | "avatar">, thunkAPI) => {
     try {
+      console.log("userData",userData);
+      
       const response = await axios.patch("/api/users/update", userData);
       return response.data;
     } catch (error: any) {
