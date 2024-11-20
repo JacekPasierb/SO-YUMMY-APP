@@ -110,8 +110,8 @@ const authSlice = createSlice({
 
       // Update User
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        console.log("payload",payload);
-        
+        console.log("payload", payload);
+
         if (payload !== undefined && payload !== null) {
           state.user.name = payload.data.user.name;
           state.user.avatar = payload.data.user.avatar;
@@ -127,8 +127,12 @@ const authSlice = createSlice({
           state.error = "Payload updateUser is null or undefined";
         }
       })
+      // Update User
       .addCase(updateUser.rejected, (state, { payload }) => {
-        console.error("Error during user update:", payload);
+        state.error =
+          typeof payload === "string"
+            ? payload
+            : "An error occurred during user update";
       })
 
       // Resend Verification
