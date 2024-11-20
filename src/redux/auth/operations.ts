@@ -129,6 +129,8 @@ export const updateUser = createAsyncThunk<
       
       return response.data;
     } catch (error: any) {
+      console.log("blad",error);
+      
       return thunkAPI.rejectWithValue(error.message);
     }
   }
