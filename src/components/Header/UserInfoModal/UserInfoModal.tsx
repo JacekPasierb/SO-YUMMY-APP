@@ -58,7 +58,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
     };
   }, [onClose]);
 
-  const handleSubmit = async (values: FormikValues) => {
+  const handleSubmit = async (values: FormikValues, { setSubmitting }: any) => {
     console.log("Submitting form with values:", values);
     const userData: UserData = {
       name: values.name ? values.name : user.name,
@@ -70,6 +70,8 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
       onClose();
     } catch (error) {
       toast.error("Failed to update profile. Please try again.");
+    }finally {
+      setSubmitting(false);
     }
   };
   return (
@@ -88,7 +90,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({ setFieldValue, values }) => (
+        {({ setFieldValue, values, isSubmitting }) => (
           <Form className={styles.userInfoModal__form}>
             <label
               htmlFor="avatar"
@@ -161,7 +163,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
               </svg>
             </div>
             <button type="submit" className={styles.userInfoModal__btnSave}>
-              Save changes
+            {isSubmitting ? "Save..." : "Save changes"}
             </button>
           </Form>
         )}
