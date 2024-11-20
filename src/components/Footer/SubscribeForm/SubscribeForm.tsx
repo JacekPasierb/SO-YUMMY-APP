@@ -71,7 +71,7 @@ const SubscribeForm: React.FC = () => {
 
           <button
             type="submit"
-            disabled={isSubmitting || !isValid || !dirty}
+            disabled={isSubmitting || !isValid }
             className={styles.subscribeButton}
             aria-label="Subscribe to newsletter"
           >
