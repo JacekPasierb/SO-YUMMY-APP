@@ -69,6 +69,8 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
       toast.success("Profile updated successfully!");
       onClose();
     } catch (error:any) {
+      console.log("pokazuje error",error.message);
+      
       toast.error("Failed to update profile. Please try again.",error.message);
     } finally {
       setSubmitting(false);
