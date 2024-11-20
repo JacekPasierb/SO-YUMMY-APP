@@ -131,13 +131,15 @@ const App: FC = () => {
         />
         <Route
           path="/categories"
-          element={<PrivateRoute component={<CategoriesPage />} />}
+          element={<PrivateRoute component={<Suspense fallback={null}>
+          <CategoriesPage />
+        </Suspense>} />}
         >
           <Route
             path=":categoryName"
             element={
               <Suspense fallback={null}>
-                <CategoriesPage />
+                <CategoriesByName/>
               </Suspense>
             }
           />
