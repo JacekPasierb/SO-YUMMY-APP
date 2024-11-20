@@ -117,40 +117,114 @@ const App: FC = () => {
           />
         }
       >
-        <Route index element={<PrivateRoute component={<MainPage />} />} />
+        <Route
+          index
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <MainPage />
+                </Suspense>
+              }
+            />
+          }
+        />
         <Route
           path="/categories"
           element={<PrivateRoute component={<CategoriesPage />} />}
         >
-          <Route path=":categoryName" element={<CategoriesByName />} />
+          <Route
+            path=":categoryName"
+            element={
+              <Suspense fallback={null}>
+                <CategoriesPage />
+              </Suspense>
+            }
+          />
         </Route>
         <Route
           path="/favorite"
-          element={<PrivateRoute component={<FavoritesPage />} />}
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <FavoritesPage />
+                </Suspense>
+              }
+            />
+          }
         />
         <Route
           path="/ownRecipes"
-          element={<PrivateRoute component={<MyRecipesPage />} />}
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <MyRecipesPage />
+                </Suspense>
+              }
+            />
+          }
         />
         <Route
           path="/add"
-          element={<PrivateRoute component={<AddRecipePage />} />}
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <AddRecipePage />
+                </Suspense>
+              }
+            />
+          }
         />
         <Route
           path="/recipe/:recipeId"
-          element={<PrivateRoute component={<RecipePage />} />}
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <RecipePage />
+                </Suspense>
+              }
+            />
+          }
         />
         <Route
           path="/search"
-          element={<PrivateRoute component={<SearchPage />} />}
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <SearchPage />
+                </Suspense>
+              }
+            />
+          }
         />
         <Route
           path="/shopping-list"
-          element={<PrivateRoute component={<ShoppingListPage />} />}
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <ShoppingListPage />
+                </Suspense>
+              }
+            />
+          }
         />
         <Route
           path="*"
-          element={<PrivateRoute component={<NotFoundPage />} />}
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <NotFoundPage />
+                </Suspense>
+              }
+            />
+          }
         />
       </Route>
     </Routes>
