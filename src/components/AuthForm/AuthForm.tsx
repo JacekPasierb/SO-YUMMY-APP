@@ -1,5 +1,5 @@
 import styles from "./AuthForm.module.css";
-import React, {  lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 
 const SigninForm = lazy(() => import("../SigninForm/SigninForm"));
@@ -11,7 +11,7 @@ interface AuthFormProps {
 
 const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
   return (
-    <>
+    <Suspense fallback={null}>
       {formType === "register" && (
         <>
           <RegisterForm />
@@ -30,7 +30,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
           </Link>
         </>
       )}
-    </>
+    </Suspense>
   );
 };
 
