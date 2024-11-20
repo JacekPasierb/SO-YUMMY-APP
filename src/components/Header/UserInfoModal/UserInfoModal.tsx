@@ -59,6 +59,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
   }, [onClose]);
 
   const handleSubmit = async (values: FormikValues) => {
+    console.log("Submitting form with values:", values);
     const userData: UserData = {
       name: values.name ? values.name : user.name,
       avatar: values.avatar || user.avatar,
