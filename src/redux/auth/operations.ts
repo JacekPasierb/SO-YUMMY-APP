@@ -122,15 +122,19 @@ export const updateUser = createAsyncThunk<
   "auth/updateUser",
   async (userData: Pick<IUser, "name" | "avatar">, thunkAPI) => {
     try {
-      console.log("userData",userData);
-      
-      const response = await axios.patch("/api/users/update", userData);
-      console.log("response",response);
-      
+      console.log("userData", userData);
+
+      const response = await axios.patch("/api/users/update", userData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("response", response);
+
       return response.data;
     } catch (error: any) {
-      console.log("blad",error);
-      
+      console.log("blad", error);
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
