@@ -59,7 +59,6 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
   }, [onClose]);
 
   const handleSubmit = async (values: FormikValues, { setSubmitting }: any) => {
-    console.log("Submitting form with values:", values);
     const userData: UserData = {
       name: values.name ? values.name : user.name,
       avatar: values.avatar || user.avatar,
@@ -68,10 +67,8 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
       await dispatch(updateUser(userData)).unwrap();
       toast.success("Profile updated successfully!");
       onClose();
-    } catch (error:any) {
-      console.log("pokazuje error",error);
-      
-      toast.error("Failed to update profile. Please try again.",error.message);
+    } catch (error: any) {
+      toast.error("Failed to update profile. Please try again.", error.message);
     } finally {
       setSubmitting(false);
     }
