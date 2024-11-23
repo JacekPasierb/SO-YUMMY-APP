@@ -110,8 +110,6 @@ const authSlice = createSlice({
 
       // Update User
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        console.log("payload", payload);
-
         if (payload !== undefined && payload !== null) {
           state.user.name = payload.data.user.name;
           state.user.avatar = payload.data.user.avatar;
