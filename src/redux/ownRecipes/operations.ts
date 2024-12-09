@@ -9,10 +9,10 @@ import {
 // Get own recipes
 export const getOwnRecipes = createAsyncThunk<
   IRecipesResponse,
-  { userId: string; page: number }
->("ownRecipes/getOwnRecipes", async ({ userId, page }, thunkAPI) => {
+  {  page: number }
+>("ownRecipes/getOwnRecipes", async ({  page }, thunkAPI) => {
   try {
-    const { data } = await axios.get(`./api/ownRecipes/${userId}?page=${page}`);
+    const { data } = await axios.get(`./api/ownRecipes?page=${page}`);
 
     return {
       recipes: data.data.ownRecipes,
