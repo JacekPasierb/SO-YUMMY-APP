@@ -54,7 +54,6 @@ const Footer: React.FC = () => {
       <SubscribeForm />
     </div>
   );
-
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>

@@ -33,7 +33,6 @@ const MyRecipesPage: React.FC = () => {
     if (user?.userId) {
       dispatch(
         getOwnRecipes({
-          userId: user.userId,
           page: currentPage,
         })
       );
