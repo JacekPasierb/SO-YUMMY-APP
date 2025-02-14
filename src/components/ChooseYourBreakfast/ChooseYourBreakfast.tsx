@@ -20,6 +20,8 @@ const ChooseYourBreakfast: React.FC = () => {
       <img
         src={recipeImage}
         alt="Delicious dish"
+        width="315px"
+        height="291px"
         className={styles.image}
         loading="lazy"
       />
