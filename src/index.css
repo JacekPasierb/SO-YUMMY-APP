@@ -135,6 +135,15 @@ body {
   background-color: var(--color-bg-body);
 }
 
+body::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-image: url("/assets/bckg2Mobile1x-42598617.png");
+  visibility: hidden;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
