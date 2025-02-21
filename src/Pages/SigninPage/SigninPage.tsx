@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import AuthForm from "../../components/AuthForm/AuthForm";
 import styles from "./SigninPage.module.css";
-import { useLocation } from "react-router";
-import { toast } from "react-toastify";
+import {useLocation} from "react-router";
+import {toast} from "react-toastify";
 
 const SigninPage: React.FC = () => {
   const location = useLocation();
