@@ -1,11 +1,11 @@
 import React from "react";
-import { useMediaQuery } from "@react-hook/media-query";
+import {useMediaQuery} from "@react-hook/media-query";
 import styles from "./Footer.module.css";
 import logoFooter from "../../images/logoFooter.png";
 import Nav from "./Nav/Nav";
 import SubscribeForm from "./SubscribeForm/SubscribeForm";
 import FollowUs from "./FollowUs/FollowUs";
-
+import sprite from "../../assets/icons/sprite.svg";
 const FEATURES_LIST = [
   "Database of recipes that can be replenished",
   "Flexible search for desired and unwanted ingredients",
@@ -19,13 +19,10 @@ const Footer: React.FC = () => {
 
   const LogoSection = () => (
     <div className={styles.footer__logoBox}>
-      <img
-        src={logoFooter}
-        alt="So Yummy Logo"
-        width="30"
-        height="30"
-        className={styles.footer__logoImage}
-      />
+      <svg className={styles.footer__logoImage}>
+        <use href={`${sprite}#icon-logoFoot`}></use>
+      </svg>
+     
       <p className={styles.footer__logoTitle}>So Yummy</p>
     </div>
   );
