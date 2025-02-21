@@ -2,16 +2,16 @@ import React from "react";
 import logo from "../../images/logo.png";
 import AuthNav from "../../components/AuthNav/AuthNav";
 import styles from "./WelcomePage.module.css";
+import sprite from "../../assets/icons/sprite.svg";
 
 const WelcomePage: React.FC = () => {
   return (
     <div className={styles.welcomePage}>
       <div className={styles.welcomePage__container}>
-        <img
-          src={logo}
-          alt="So Yummy Logo"
-          className={styles.welcomePage__logo}
-        />
+        <svg width="54px" height="54px" className={styles.welcomePage__logo}>
+          <use href={`${sprite}#icon-logo`}></use>
+        </svg>
+
         <div className={styles.welcomePage__section}>
           <div className={styles.welcomePage__text}>
             <h1 className={styles.welcomePage__title}>Welcome to the app!</h1>
