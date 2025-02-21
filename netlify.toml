@@ -1,4 +1,3 @@
-# ✅ Nagłówki HTTP dla lepszego bezpieczeństwa i obsługi pliku robots.txt
 [[headers]]
   for = "/*"
   [headers.values]
@@ -8,29 +7,18 @@
     Content-Security-Policy = "default-src 'self'; 
       script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; 
       style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; 
-      img-src 'self' data: https://ftp.goit.study;
+      img-src 'self' data: https://ftp.goit.study; 
       font-src 'self' data:; 
       frame-ancestors 'none'; 
       connect-src 'self' https://so-yummy-app-backend-9mvu.vercel.app;"
     Permissions-Policy = "geolocation=(), microphone=()"
 
-
-
-# ✅ Nagłówki dla robots.txt
-[[headers]]
-  for = "/robots.txt"
-  [headers.values]
-    Content-Type = "text/plain"
-
-# ✅ Przekierowanie dla robots.txt, aby upewnić się, że jest dostępny
 [[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-  force = true
+from = "/robots.txt"
+to = "/robots.txt"
+status = 200
 
-# ✅ Przekierowanie wszystkich innych zapytań do index.html (Single Page App - SPA)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "/*"
+to = "/index.html"
+status = 200
