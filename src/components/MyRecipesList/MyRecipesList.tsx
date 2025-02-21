@@ -1,9 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, lazy } from "react";
 import { useNavigate } from "react-router";
 import styles from "./MyRecipesList.module.css";
-import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
 import MyRecipesListSkeleton from "../CardOwnRecipe/MyRecipesListSkelton";
 import { IRecipe } from "../../types/recipesTypes";
+const CardOwnRecipe = lazy(()=>import("../CardOwnRecipe/CardOwnRecipe"))
 
 interface MyRecipesListProps {
   recipes: IRecipe[];
