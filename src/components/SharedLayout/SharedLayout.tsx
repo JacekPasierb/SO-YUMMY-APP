@@ -1,10 +1,9 @@
-import React, { FC, Suspense } from "react";
+import React, { FC, lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
-import Footer from "../Footer/Footer";
 import Copyrights from "../Copyrights/Copyrights";
 import styles from "./SharedLayout.module.css";
-
+const Footer = lazy(()=>import("../Footer/Footer"))
 
 const SharedLayout: FC = () => {
   return (
