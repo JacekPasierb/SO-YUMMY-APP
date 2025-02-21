@@ -181,6 +181,7 @@
   .logo {
     left: -647px;
     top: 100px;
+    transform: 0;
     z-index: 0;
     width: 532px;
     height: 468px;
