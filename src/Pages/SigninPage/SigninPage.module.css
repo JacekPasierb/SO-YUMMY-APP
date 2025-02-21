@@ -8,6 +8,9 @@
   background-repeat: no-repeat;
   background-position: center top 230px;
   background-size: cover;
+  
+  position: relative;
+  z-index: -1;
 }
 
 .signinPage__container {

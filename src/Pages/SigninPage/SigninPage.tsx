@@ -8,7 +8,6 @@ const SigninPage: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // 🔥 Sprawdzamy, czy w URL jest ?verified=true
     const searchParams = new URLSearchParams(location.search);
     if (searchParams.get("verified") === "true") {
       toast.success("Konto zostało aktywowane! Możesz się teraz zalogować.");
