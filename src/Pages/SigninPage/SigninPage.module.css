@@ -91,7 +91,6 @@
 /* Desktop */
 @media screen and (min-width: 1200px) {
   .signinPage {
-    padding-bottom: 0;
     background-image: url("../../images/RectangleDesctop1x.png");
     background-position: center top 440px;
   }

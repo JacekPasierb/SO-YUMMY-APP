@@ -178,13 +178,22 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .logo {
+  /* .logo {
     left: -647px;
     top: 100px;
     transform: 0;
     z-index: 0;
     width: 532px;
     height: 468px;
+  } */
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-115%);
+    width: 532px;
+    height: 468px;
+    z-index: 2;
   }
 
   .formRegister {
