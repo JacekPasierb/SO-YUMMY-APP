@@ -18,6 +18,7 @@ const CardRecipe: FC<CardRecipeProps> = ({ title, preview }) => {
         alt={altText}
         className={styles.cardRecipe__image}
         loading="lazy"
+        style={{ marginTop: "1000px" }} // Tymczasowy test
       />
       <div className={styles.cardRecipe__titleContainer}>
         <h3 className={styles.cardRecipe__title}>
