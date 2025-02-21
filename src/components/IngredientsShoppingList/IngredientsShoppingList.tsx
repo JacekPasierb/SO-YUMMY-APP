@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import axios from "axios";
 import styles from "./IngredientsShoppingList.module.css";
-import CardIngredientShoppingList from "../CardIngredientShoppingList/CardIngredientShoppingList";
 import { toast } from "react-toastify";
+const CardIngredientShoppingList = lazy(()=>import("../CardIngredientShoppingList/CardIngredientShoppingList"))
 
 export interface Ingredient {
   ingredientId: string;
