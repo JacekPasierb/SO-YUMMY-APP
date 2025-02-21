@@ -5,15 +5,18 @@
 }
 
 .background {
-  background-image: 
-  url("../../images//bckg2Mobile1x.png"),
-    url("../../images/bg3Mobile1x.png"), 
-    url("../../images/spinachMobile1x.png");
+  background-image: url("../../images/bckg2Mobile1x.png"),
+    url("../../images/bg3Mobile1x.png"), url("../../images/spinachMobile1x.png");
   background-repeat: no-repeat;
-  background-position: 
-  top -80px right 0, 
-  top -10px right 0, 
-  top -30px left 0;
+  background-position: top -80px right 0, top -10px right 0, top -30px left 0;
+}
+
+@supports (background-image: url("../../images/bckg2Mobile1x.webp")) {
+  .background {
+    background-image: url("../../images/bckg2Mobile1x.webp"),
+      url("../../images/bg3Mobile1x.webp"),
+      url("../../images/spinachMobile1x.webp");
+  }
 }
 
 .mainPageBox {
@@ -50,6 +53,14 @@
     background-position: top 0px right 0, top 0px right 0px, top -10px left 0;
   }
 
+  @supports (background-image: url("../../images/bckg2Tablet1x.webp")) {
+    .background {
+      background-image: url("../../images/bckg2Tablet1x.webp"),
+        url("../../images/bg3Tablet1x.webp"),
+        url("../../images/spinachTablet1x.webp");
+    }
+  }
+
   .mainPageBox {
     padding-top: 95px;
   }
@@ -66,6 +77,14 @@
     background-repeat: no-repeat;
     background-position: bottom 80px right 0px, top 0px right 0px,
       top -10px left 0;
+  }
+
+  @supports (background-image: url("../../images/kisspng-pastaDesctop.webp")) {
+    .background {
+      background-image: url("../../images/kisspng-pastaDesctop.webp"),
+        url("../../images/bg3Desctop1x.webp"),
+        url("../../images/spinachDesctop1x.webp");
+    }
   }
 
   .mainPageBox {
