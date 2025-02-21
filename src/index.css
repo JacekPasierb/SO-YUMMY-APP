@@ -1,5 +1,6 @@
 /* Importing Fonts */
 @import "./stylesheet/fonts.css";
+@import "./stylesheet/modern-normalize.min.css";
 
 /* Root Variables */
 :root {
