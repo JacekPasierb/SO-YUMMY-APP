@@ -188,7 +188,7 @@
   } */
   .logo {
     position: absolute;
-    top: 0;
+    top: 100px;
     left: 0;
     transform: translateX(-115%);
     width: 532px;
