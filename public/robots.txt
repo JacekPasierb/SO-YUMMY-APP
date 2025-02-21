@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://so-yummy-jack.netlify.app/sitemap.xml
