@@ -94,7 +94,13 @@ const SigninForm: React.FC = () => {
     >
       {({values, errors, touched}) => (
         <Form className={styles.formRegister} autoComplete="off">
-          <img src={logoSrc} className={styles.logo} alt="Logo" />
+          <img
+            width="285px"
+            height="250px"
+            src={logoSrc}
+            className={styles.logo}
+            alt="Logo"
+          />
           <h2 className={styles.title}>Sign In</h2>
 
           <div className={styles.inputGroup}>

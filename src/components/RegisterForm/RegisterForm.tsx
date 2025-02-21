@@ -1,19 +1,19 @@
-import { ErrorMessage, Field, Form, Formik, FormikValues } from "formik";
-import React, { useMemo, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
-import { useMediaQuery } from "@react-hook/media-query";
-import { toast } from "react-toastify";
+import {ErrorMessage, Field, Form, Formik, FormikValues} from "formik";
+import React, {useMemo, useState} from "react";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router";
+import {useMediaQuery} from "@react-hook/media-query";
+import {toast} from "react-toastify";
 
-import { validate } from "./RegisterFormValidations";
-import { register } from "../../redux/auth/operations";
-import { AppDispatch } from "src/redux/store";
+import {validate} from "./RegisterFormValidations";
+import {register} from "../../redux/auth/operations";
+import {AppDispatch} from "src/redux/store";
 
 import icons from "../../assets/icons/sprite.svg";
 import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
 import styles from "./RegisterForm.module.css";
-import { getLogoSrc } from "../../helpers/helpers";
+import {getLogoSrc} from "../../helpers/helpers";
 
 interface FormValues {
   name: string;
@@ -27,9 +27,9 @@ const RegisterForm: React.FC = () => {
 
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
-  const isRetina = window.devicePixelRatio > 1;
+  const isRetina = Math.floor(window.devicePixelRatio) > 1;
   const logoSrc = useMemo(
-    () => getLogoSrc({ isDesktop, isTablet, isRetina }),
+    () => getLogoSrc({isDesktop, isTablet, isRetina}),
     [isDesktop, isTablet, isRetina]
   );
 
@@ -41,7 +41,7 @@ const RegisterForm: React.FC = () => {
 
   const handleSubmit = async (
     values: FormValues,
-    { resetForm }: { resetForm: () => void }
+    {resetForm}: {resetForm: () => void}
   ) => {
     try {
       const result = await dispatch(register(values));
@@ -53,7 +53,7 @@ const RegisterForm: React.FC = () => {
       }
     } catch (error) {
       const err = error as any;
-      toast.error(err.message ||"Registration failed.");
+      toast.error(err.message || "Registration failed.");
     }
   };
 
@@ -113,9 +113,15 @@ const RegisterForm: React.FC = () => {
       validate={validate}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched }) => (
+      {({errors, touched}) => (
         <Form className={styles.formRegister} autoComplete="off">
-          <img src={logoSrc} alt="Logo" className={styles.logo} />
+          <img
+            width="285px"
+            height="250px"
+            src={logoSrc}
+            alt="Logo"
+            className={styles.logo}
+          />
           <h2 className={styles.titleRegister}>Registration</h2>
           <div className={styles.boxInput}>
             {renderInputField(
