@@ -47,7 +47,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const removeIngredient = useCallback(
     (fieldId: string) => {
       setIngredients((prev) =>
-        prev.filter((ingredient) => ingredient.id !== fieldId)
+        prev.length === 1 ? [] : prev.filter((ingredient) => ingredient.id !== fieldId)
       );
     },
     [setIngredients]
