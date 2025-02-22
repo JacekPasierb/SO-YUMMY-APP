@@ -61,7 +61,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const removeIngredient = useCallback((fieldId: string) => {
     setIngredients((prev) => {
       const updated = prev.filter((ingredient) => ingredient.id !== fieldId);
-      return [...updated]; // Tworzymy nową referencję tablicy
+      return updated; // Tworzymy nową referencję tablicy
     });
   }, []);
  
@@ -81,7 +81,9 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     },
     [setIngredients]
   );
-
+  useEffect(() => {
+    console.log("Current ingredients length:", ingredients.length);
+  }, [ingredients]); // <<<< UMIEŚĆ TUTAJ, przed return
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
