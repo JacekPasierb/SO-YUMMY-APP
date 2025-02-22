@@ -66,6 +66,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
   const handleSubmit = async (values: FormValues,
     { setSubmitting }: FormikHelpers<FormValues>) => {
     const errors = validate(values); // Pobieramy błędy
+console.log("eer",errors);
 
     if (Object.keys(errors).length > 0) {
       Object.values(errors).forEach((errorMessage) => {
