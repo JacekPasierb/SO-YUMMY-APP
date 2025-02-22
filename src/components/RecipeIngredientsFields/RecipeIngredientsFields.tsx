@@ -25,40 +25,24 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
 }) => {
  
 
-  // const handleCounterChange = useCallback(
-  //   (action: "increment" | "decrement") => {
-  //     setIngredients((prevIngredients) => {
-  //       if (action === "decrement" && prevIngredients.length > 0) {
-  //         return prevIngredients.slice(0, -1);
-  //       }
-  //       if (action === "increment") {
-  //         return [
-  //           ...prevIngredients,
-  //           {id: nanoid(), selectedValue: "", selectedUnit: ""},
-  //         ];
-  //       }
-  //       return prevIngredients;
-  //     });
-  //   },
-  //   [setIngredients]
-  // );
-  const [forceRender, setForceRender] = useState(0);
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
-        let updated;
-        if (action === "decrement") {
-          updated = prevIngredients.length > 1 ? prevIngredients.slice(0, -1) : [];
-        } else {
-          updated = [...prevIngredients, { id: nanoid(), selectedValue: "", selectedUnit: "" }];
+        if (action === "decrement" && prevIngredients.length > 0) {
+          return prevIngredients.slice(0, -1);
         }
-  
-        setForceRender((prev) => prev + 1); // 🔥 Wymusza re-render komponentu
-        return updated;
+        if (action === "increment") {
+          return [
+            ...prevIngredients,
+            {id: nanoid(), selectedValue: "", selectedUnit: ""},
+          ];
+        }
+        return prevIngredients;
       });
     },
     [setIngredients]
   );
+
   const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map((ingredient) => ({
       label: ingredient.ttl,
@@ -66,21 +50,15 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  // const removeIngredient = useCallback(
-  //   (fieldId: string) => {
-  //     setIngredients((prev) =>
-  //       prev.filter((ingredient) => ingredient.id !== fieldId)
-  //     );
-  //   },
-  //   [setIngredients]
-  // );
-  const removeIngredient = useCallback((fieldId: string) => {
-    setIngredients((prev) => {
-      const updated = prev.filter((ingredient) => ingredient.id !== fieldId);
-      setForceRender((prev) => prev + 1); // 🔥 Wymusza re-render komponentu
-      return updated.length > 0 ? updated : [];
-    });
-  }, [setIngredients]);
+  const removeIngredient = useCallback(
+    (fieldId: string) => {
+      setIngredients((prev) =>
+        prev.filter((ingredient) => ingredient.id !== fieldId)
+      );
+    },
+    [setIngredients]
+  );
+ 
 
   const handleIngredientChange = useCallback(
     (index: number, selectedOption: SingleValue<Option>) => {
