@@ -1,10 +1,14 @@
-import React, { FC, useCallback, useMemo } from "react";
-import { nanoid } from "@reduxjs/toolkit";
-import Select, { SingleValue } from "react-select";
+import React, {FC, useCallback, useEffect, useMemo} from "react";
+import {nanoid} from "@reduxjs/toolkit";
+import Select, {SingleValue} from "react-select";
 import SubTitle from "../SubTitle/SubTitle";
 import UnitInput from "../UnitInput/UnitInput";
-import { FormIngredient, IngredientData, Option } from "../../types/ingredientsTypes";
-import { selectIngredient } from "./selectStyles";
+import {
+  FormIngredient,
+  IngredientData,
+  Option,
+} from "../../types/ingredientsTypes";
+import {selectIngredient} from "./selectStyles";
 import sprite from "../../assets/icons/sprite.svg";
 import styles from "./RecipeIngredientsFields.module.css";
 
@@ -19,16 +23,20 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
+  useEffect(() => {
+    console.log("ingredients", ingredients);
+  }, [ingredients]);
+
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
-        if (action === "decrement" && prevIngredients.length > -1) {
+        if (action === "decrement" && prevIngredients.length > 0) {
           return prevIngredients.slice(0, -1);
         }
         if (action === "increment") {
           return [
             ...prevIngredients,
-            { id: nanoid(), selectedValue: "", selectedUnit: "" },
+            {id: nanoid(), selectedValue: "", selectedUnit: ""},
           ];
         }
         return prevIngredients;
@@ -59,7 +67,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
 
       setIngredients((prev) => {
         const updated = [...prev];
-        updated[index] = { ...updated[index], selectedValue: selectedOption.value };
+        updated[index] = {
+          ...updated[index],
+          selectedValue: selectedOption.value,
+        };
         return updated;
       });
     },
@@ -87,7 +98,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
             </svg>
           </button>
 
-          <span className={styles.recipeIngredients__counterFont} aria-live="polite">
+          <span
+            className={styles.recipeIngredients__counterFont}
+            aria-live="polite"
+          >
             {ingredients.length}
           </span>
 
@@ -104,12 +118,17 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         </div>
       </div>
 
-      <ul className={styles.recipeIngredients__list} aria-label="Ingredients list">
+      <ul
+        className={styles.recipeIngredients__list}
+        aria-label="Ingredients list"
+      >
         {ingredients.map((ingredient, index) => (
           <li key={ingredient.id} className={styles.recipeIngredients__item}>
             <Select
               options={ingredientOptions}
-              onChange={(selectedOption) => handleIngredientChange(index, selectedOption)}
+              onChange={(selectedOption) =>
+                handleIngredientChange(index, selectedOption)
+              }
               styles={selectIngredient}
               className={styles.recipeIngredients__select}
               placeholder="Select ingredient"
@@ -120,12 +139,19 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
               menuPosition="fixed"
               value={
                 ingredient.selectedValue
-                  ? { label: ingredient.selectedValue, value: ingredient.selectedValue }
+                  ? {
+                      label: ingredient.selectedValue,
+                      value: ingredient.selectedValue,
+                    }
                   : null
               }
             />
 
-            <UnitInput ingredients={ingredients} setIngredients={setIngredients} index={index} />
+            <UnitInput
+              ingredients={ingredients}
+              setIngredients={setIngredients}
+              index={index}
+            />
 
             <button
               type="button"
