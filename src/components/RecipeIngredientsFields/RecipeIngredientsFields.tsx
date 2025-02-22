@@ -28,8 +28,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
-        if (action === "decrement" && prevIngredients.length > 0) {
-          return prevIngredients.slice(0, -1);
+        if (action === "decrement" ) {
+          return prevIngredients.length > 1 ? prevIngredients.slice(0, -1) : [];
         }
         if (action === "increment") {
           return [
