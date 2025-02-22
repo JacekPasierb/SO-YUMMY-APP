@@ -184,7 +184,7 @@ console.log("eer",errors);
             <button
               type="submit"
               className={styles.userInfoModal__btnSave}
-              disabled={isSubmitting}
+             
             >
               {isSubmitting ? "Save..." : "Save changes"}
             </button>
