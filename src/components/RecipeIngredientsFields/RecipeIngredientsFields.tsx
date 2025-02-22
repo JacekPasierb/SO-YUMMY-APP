@@ -22,8 +22,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
-        if (action === "decrement" && prevIngredients.length > 0) {
-          return prevIngredients.slice(0, -1);
+        if (action === "decrement") {
+          return prevIngredients.length > 1 ? prevIngredients.slice(0, -1) : [];
         }
         if (action === "increment") {
           return [
@@ -46,9 +46,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
 
   const removeIngredient = useCallback(
     (fieldId: string) => {
-      setIngredients((prev) =>
-        prev.length === 1 ? [] : prev.filter((ingredient) => ingredient.id !== fieldId)
-      );
+      setIngredients((prev) => {
+        const updated = prev.filter((ingredient) => ingredient.id !== fieldId);
+        return updated.length > 0 ? updated : []; // 🚀 Gwarantuje pustą tablicę
+      });
     },
     [setIngredients]
   );
