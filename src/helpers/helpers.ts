@@ -125,8 +125,6 @@ export const getLogoSrc = ({
 }: Partial<DeviceConfig>): string => {
   const format = supportsWebP() ? "webp" : "png";
   const resolution = isRetina ? "2x" : "1x";
-  console.log(window.devicePixelRatio);
-  console.log(`Format: ${format}, Retina: ${isRetina}, Resolution: ${resolution}`);
   if (isDesktop) return images.logo.desktop[format][resolution];
   if (isTablet) return images.logo.tablet[format][resolution];
   return images.logo.mobile[format][resolution];
