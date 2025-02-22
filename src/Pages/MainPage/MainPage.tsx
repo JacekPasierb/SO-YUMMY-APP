@@ -1,6 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router";
-import { useMediaQuery } from "@react-hook/media-query";
+import React, {useEffect} from "react";
+import {useNavigate} from "react-router";
+import {useMediaQuery} from "@react-hook/media-query";
 import Header from "../../components/Header/Header";
 import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYourBreakfast";
 import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
@@ -22,6 +22,15 @@ const MainPage: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = "/src/images/bckg2Mobile1x.webp";
+    link.type = "image/webp";
+    document.head.appendChild(link);
+  }, []);
+
   return (
     <>
       <Header />
@@ -41,11 +50,15 @@ const MainPage: React.FC = () => {
         </section>
 
         <section>
-          <div className={`${styles.container} ${isDesktop ? styles.mainPageBox : styles.sectionBox}`}>
+          <div
+            className={`${styles.container} ${
+              isDesktop ? styles.mainPageBox : styles.sectionBox
+            }`}
+          >
             <PreviewsCategories />
-            <ButtonOtherCategories 
-              text="Other categories" 
-              categoryName="Beef" 
+            <ButtonOtherCategories
+              text="Other categories"
+              categoryName="Beef"
             />
           </div>
         </section>
