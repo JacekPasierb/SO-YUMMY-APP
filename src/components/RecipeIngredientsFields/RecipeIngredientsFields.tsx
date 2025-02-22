@@ -22,9 +22,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
-        if (action === "decrement") {
-          const updated = prevIngredients.slice(0, -1);
-          return updated.length > 0 ? [...updated] : []; // 🚀 Tworzymy nową referencję
+        if (action === "decrement" && prevIngredients.length > -1) {
+          return prevIngredients.slice(0, -1);
         }
         if (action === "increment") {
           return [
@@ -37,7 +36,6 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     },
     [setIngredients]
   );
-  
 
   const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map((ingredient) => ({
@@ -46,12 +44,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = useCallback((fieldId: string) => {
-    setIngredients((prev) => {
-      const updated = prev.filter((ingredient) => ingredient.id !== fieldId);
-      return updated.length > 0 ? [...updated] : []; // 🚀 Tworzymy nową referencję
-    });
-  }, [setIngredients]);
+  const removeIngredient = useCallback(
+    (fieldId: string) => {
+      setIngredients((prev) =>
+        prev.filter((ingredient) => ingredient.id !== fieldId)
+      );
+    },
+    [setIngredients]
+  );
 
   const handleIngredientChange = useCallback(
     (index: number, selectedOption: SingleValue<Option>) => {
