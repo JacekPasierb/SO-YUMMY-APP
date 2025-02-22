@@ -22,7 +22,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
-        if (action === "decrement" && prevIngredients.length > 0) {
+        if (action === "decrement" && prevIngredients.length > 1) {
           return prevIngredients.slice(0, -1);
         }
         if (action === "increment") {
@@ -47,6 +47,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const removeIngredient = useCallback((fieldId: string) => {
     setIngredients((prev) => {
       const updated = prev.filter((ingredient) => ingredient.id !== fieldId);
+      console.log("Stan składników:", ingredients);
+
       return updated.length > 0 ? updated : []; // 🚀 Gwarantuje pustą tablicę
     });
   }, [setIngredients]);
