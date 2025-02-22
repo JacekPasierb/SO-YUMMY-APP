@@ -23,9 +23,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
-  useEffect(() => {
-    console.log("ingredients", ingredients);
-  }, [setIngredients]);
+ 
 
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
