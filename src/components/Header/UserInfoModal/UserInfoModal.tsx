@@ -108,14 +108,17 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({setFieldValue, values, isSubmitting, errors}) => {
-       useEffect(() => {
-        Object.values(errors).forEach((errorMessage) => {
-          if (typeof errorMessage === "string") { 
-            toast.error(errorMessage);
-          }
-        });
-      }, [errors]);
+        {({setFieldValue, values, isSubmitting, errors,touched}) => {
+useEffect(() => {
+  Object.entries(errors).forEach(([field, errorMessage]) => {
+    if (
+      touched[field as keyof typeof touched] && 
+      typeof errorMessage === "string"
+    ) {
+      toast.error(errorMessage);
+    }
+  });
+}, [errors, touched]); 
 
           return (
             <Form className={styles.userInfoModal__form}>
