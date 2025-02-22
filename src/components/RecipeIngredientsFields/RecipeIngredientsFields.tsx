@@ -119,7 +119,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
           </button>
         </div>
       </div>
-
+      {ingredients.length > 0 && (
       <ul
         className={styles.recipeIngredients__list}
         aria-label="Ingredients list"
@@ -168,7 +168,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
             </button>
           </li>
         ))}
-      </ul>
+      </ul>)}
     </div>
   );
 };
