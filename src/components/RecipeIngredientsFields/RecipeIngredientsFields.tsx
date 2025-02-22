@@ -28,13 +28,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
-        if (action === "decrement" && prevIngredients.length > 0) {
-          return prevIngredients.slice(0, -1);
+        if (action === "decrement") {
+          const updated = prevIngredients.slice(0, -1);
+          return updated.length > 0 ? [...updated] : [...updated]; // 🚀 Tworzymy nową referencję
         }
         if (action === "increment") {
           return [
             ...prevIngredients,
-            {id: nanoid(), selectedValue: "", selectedUnit: ""},
+            { id: nanoid(), selectedValue: "", selectedUnit: "" },
           ];
         }
         return prevIngredients;
@@ -50,14 +51,12 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = useCallback(
-    (fieldId: string) => {
-      setIngredients((prev) =>
-        prev.filter((ingredient) => ingredient.id !== fieldId)
-      );
-    },
-    [setIngredients]
-  );
+  const removeIngredient = useCallback((fieldId: string) => {
+    setIngredients((prev) => {
+      const updated = prev.filter((ingredient) => ingredient.id !== fieldId);
+      return updated.length > 0 ? [...updated] : [...updated]; // 🚀 Nowa referencja nawet dla pustej tablicy
+    });
+  }, [setIngredients]);
 
   const handleIngredientChange = useCallback(
     (index: number, selectedOption: SingleValue<Option>) => {
