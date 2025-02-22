@@ -1,11 +1,11 @@
-import React, { FC, useEffect, useRef, useState } from "react";
-import { Field, Formik, Form, FormikValues } from "formik";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../../../redux/auth/operations";
-import { AppDispatch } from "src/redux/store";
-import { validate } from "./UserInfoModalValidation";
-import { useAuth } from "../../../hooks/useAuth";
+import React, {FC, useEffect, useRef, useState} from "react";
+import {Field, Formik, Form, FormikValues, ErrorMessage} from "formik";
+import {toast} from "react-toastify";
+import {useDispatch} from "react-redux";
+import {updateUser} from "../../../redux/auth/operations";
+import {AppDispatch} from "src/redux/store";
+import {validate} from "./UserInfoModalValidation";
+import {useAuth} from "../../../hooks/useAuth";
 import IconCloseModal from "../../IconCloseModal/IconCloseModal";
 import styles from "./UserInfoModal.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
@@ -30,7 +30,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
   const modalRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<AppDispatch>();
 
-  const { user } = useAuth();
+  const {user} = useAuth();
   const [imageDataUrl, setImageDataUrl] = useState(user.avatar);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
     };
   }, [onClose]);
 
-  const handleSubmit = async (values: FormikValues, { setSubmitting }: any) => {
+  const handleSubmit = async (values: FormikValues, {setSubmitting}: any) => {
     const userData: UserData = {
       name: values.name ? values.name : user.name,
       avatar: values.avatar || user.avatar,
@@ -85,11 +85,11 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
       <IconCloseModal onClose={onClose} />
 
       <Formik
-        initialValues={{ avatar: user.avatar || "", name: user.name || "" }}
+        initialValues={{avatar: user.avatar || "", name: user.name || ""}}
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({ setFieldValue, values, isSubmitting }) => (
+        {({setFieldValue, values, isSubmitting, errors, touched}) => (
           <Form className={styles.userInfoModal__form}>
             <label
               htmlFor="avatar"
@@ -141,7 +141,9 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
               aria-label="Upload avatar"
               disabled={isSubmitting}
             />
-
+            {errors.avatar && touched.avatar && (
+              <p className={styles.errorText}>{errors.avatar}</p>
+            )}
             <div className={styles.userInfoModal__inputWrapper}>
               <svg className={styles.userInfoModal__iconUser}>
                 <use href={sprite + `#icon-Icon`}></use>
@@ -163,6 +165,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
                 <use href={`${sprite}#icon-edit-01`}></use>
               </svg>
             </div>
+            <ErrorMessage name="name" component="p" className={styles.errorText} />
             <button
               type="submit"
               className={styles.userInfoModal__btnSave}
