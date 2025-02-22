@@ -25,7 +25,7 @@ interface FormValues {
 
 interface UserData {
   name: string;
-  avatar: string ;
+  avatar: string;
 }
 
 const UserInfoModal: FC<UserInfoModalProps> = ({
@@ -63,10 +63,12 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
     };
   }, [onClose]);
 
-  const handleSubmit = async (values: FormValues,
-    { setSubmitting }: FormikHelpers<FormValues>) => {
+  const handleSubmit = async (
+    values: FormValues,
+    {setSubmitting}: FormikHelpers<FormValues>
+  ) => {
     const errors = validate(values); // Pobieramy błędy
-console.log("eer",errors);
+    console.log("eer", errors);
 
     if (Object.keys(errors).length > 0) {
       Object.values(errors).forEach((errorMessage) => {
@@ -106,90 +108,100 @@ console.log("eer",errors);
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({setFieldValue, values, isSubmitting}) => (
-          <Form className={styles.userInfoModal__form}>
-            <label
-              htmlFor="avatar"
-              className={styles.userInfoModal__avatarLabel}
-            >
-              {imageDataUrl ? (
-                <div className={styles.userInfoModal__avatarPreview}>
-                  <img
-                    src={imageDataUrl}
-                    alt="User avatar"
-                    style={{
-                      borderRadius: "50% ",
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    className={styles.userInfoModal__avatarImage}
-                  />
-                </div>
-              ) : (
-                <div className={styles.userInfoModal__avatarPlaceholder}>
-                  <svg className={styles.userInfoModal__iconPicture}>
-                    <use href={sprite + `#icon-Icon`}></use>
-                  </svg>
-                </div>
-              )}
-            </label>
-            <input
-              type="file"
-              accept="image/*"
-              id="avatar"
-              name="avatar"
-              onChange={(event) => {
-                const file = event.target.files && event.target.files[0];
+        {({setFieldValue, values, isSubmitting, errors}) => {
+       useEffect(() => {
+        Object.values(errors).forEach((errorMessage) => {
+          if (typeof errorMessage === "string") { 
+            toast.error(errorMessage);
+          }
+        });
+      }, [errors]);
 
-                if (file) {
-                  const reader = new FileReader();
-                  reader.onload = (event) => {
-                    if (event.target) {
-                      if (typeof event.target.result === "string") {
-                        setImageDataUrl(event.target.result);
+          return (
+            <Form className={styles.userInfoModal__form}>
+              <label
+                htmlFor="avatar"
+                className={styles.userInfoModal__avatarLabel}
+              >
+                {imageDataUrl ? (
+                  <div className={styles.userInfoModal__avatarPreview}>
+                    <img
+                      src={imageDataUrl}
+                      alt="User avatar"
+                      style={{
+                        borderRadius: "50% ",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                      className={styles.userInfoModal__avatarImage}
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.userInfoModal__avatarPlaceholder}>
+                    <svg className={styles.userInfoModal__iconPicture}>
+                      <use href={sprite + `#icon-Icon`}></use>
+                    </svg>
+                  </div>
+                )}
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                id="avatar"
+                name="avatar"
+                onChange={(event) => {
+                  const file = event.target.files && event.target.files[0];
+
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      if (event.target) {
+                        if (typeof event.target.result === "string") {
+                          setImageDataUrl(event.target.result);
+                        }
+                        setFieldValue("avatar", event.target.result);
                       }
-                      setFieldValue("avatar", event.target.result);
-                    }
-                  };
-                  reader.readAsDataURL(file);
-                }
-              }}
-              className={styles.userInfoModal__inputFile}
-              aria-label="Upload avatar"
-              disabled={isSubmitting}
-            />
-            
-            <div className={styles.userInfoModal__inputWrapper}>
-              <svg className={styles.userInfoModal__iconUser}>
-                <use href={sprite + `#icon-Icon`}></use>
-              </svg>
-
-              <Field
-                name="name"
-                type="text"
-                placeholder="Enter your name"
-                className={styles.userInfoModal__input}
-                aria-label="Username"
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }}
+                className={styles.userInfoModal__inputFile}
+                aria-label="Upload avatar"
                 disabled={isSubmitting}
               />
 
-              <svg
-                className={styles.userInfoModal__iconEdit}
-                aria-hidden="true"
+              <div className={styles.userInfoModal__inputWrapper}>
+                <svg className={styles.userInfoModal__iconUser}>
+                  <use href={sprite + `#icon-Icon`}></use>
+                </svg>
+
+                <Field
+                  name="name"
+                  type="text"
+                  placeholder="Enter your name"
+                  className={styles.userInfoModal__input}
+                  aria-label="Username"
+                  disabled={isSubmitting}
+                />
+
+                <svg
+                  className={styles.userInfoModal__iconEdit}
+                  aria-hidden="true"
+                >
+                  <use href={`${sprite}#icon-edit-01`}></use>
+                </svg>
+              </div>
+
+              <button
+                type="submit"
+                className={styles.userInfoModal__btnSave}
+                disabled={isSubmitting}
               >
-                <use href={`${sprite}#icon-edit-01`}></use>
-              </svg>
-            </div>
-            
-            <button
-              type="submit"
-              className={styles.userInfoModal__btnSave}
-             
-            >
-              {isSubmitting ? "Save..." : "Save changes"}
-            </button>
-          </Form>
-        )}
+                {isSubmitting ? "Save..." : "Save changes"}
+              </button>
+            </Form>
+          );
+        }}
       </Formik>
     </div>
   );
