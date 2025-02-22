@@ -80,6 +80,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     [setIngredients]
   );
   useEffect(() => {
+    if (ingredients.length === 0) return;
     console.log("Current ingredients length:", ingredients.length);
   }, [ingredients]); // <<<< UMIEŚĆ TUTAJ, przed return
   return (
