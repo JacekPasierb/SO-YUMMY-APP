@@ -1,9 +1,9 @@
-import React, { FC, Dispatch, SetStateAction, useCallback, useMemo } from "react";
+import React, { FC, useCallback, useMemo } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import Select, { SingleValue } from "react-select";
 import SubTitle from "../SubTitle/SubTitle";
 import UnitInput from "../UnitInput/UnitInput";
-import { FormIngredient, Ing, IngredientData, Option } from "../../types/ingredientsTypes";
+import { FormIngredient, IngredientData, Option } from "../../types/ingredientsTypes";
 import { selectIngredient } from "./selectStyles";
 import sprite from "../../assets/icons/sprite.svg";
 import styles from "./RecipeIngredientsFields.module.css";
@@ -19,57 +19,66 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
-  const handleCounterChange = useCallback((action: 'increment' | 'decrement') => {
-    if (action === 'decrement' && ingredients.length > 0) {
-      setIngredients(ingredients.slice(0, ingredients.length - 1));
-    }
-    if (action === 'increment') {
-      const newIngredient: FormIngredient = {
-        id: nanoid(),
-        selectedValue: '',
-        selectedUnit: ''
-      };
-      setIngredients([...ingredients, newIngredient]);
-    }
-  }, [ingredients, setIngredients]);
+  const handleCounterChange = useCallback(
+    (action: "increment" | "decrement") => {
+      setIngredients((prevIngredients) => {
+        if (action === "decrement" && prevIngredients.length > 0) {
+          return prevIngredients.slice(0, -1);
+        }
+        if (action === "increment") {
+          return [
+            ...prevIngredients,
+            { id: nanoid(), selectedValue: "", selectedUnit: "" },
+          ];
+        }
+        return prevIngredients;
+      });
+    },
+    [setIngredients]
+  );
 
   const ingredientOptions = useMemo((): Option[] => {
-    return ingredientsAll.map(ingredient => ({
+    return ingredientsAll.map((ingredient) => ({
       label: ingredient.ttl,
-      value: ingredient.ttl
+      value: ingredient.ttl,
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = useCallback((fieldId: string) => {
-    setIngredients(prev => prev.filter(ingredient => ingredient.id !== fieldId));
-  }, []);
+  const removeIngredient = useCallback(
+    (fieldId: string) => {
+      setIngredients((prev) =>
+        prev.filter((ingredient) => ingredient.id !== fieldId)
+      );
+    },
+    [setIngredients]
+  );
 
-  const handleIngredientChange = useCallback((
-    index: number,
-    selectedOption: SingleValue<Option>
-  ) => {
-    if (!selectedOption) return;
+  const handleIngredientChange = useCallback(
+    (index: number, selectedOption: SingleValue<Option>) => {
+      if (!selectedOption) return;
 
-    setIngredients(prev => {
-      const updated = [...prev];
-      updated[index] = {
-        ...updated[index],
-        selectedValue: selectedOption.value
-      };
-      return updated;
-    });
-  }, []);
+      setIngredients((prev) => {
+        const updated = [...prev];
+        updated[index] = { ...updated[index], selectedValue: selectedOption.value };
+        return updated;
+      });
+    },
+    [setIngredients]
+  );
 
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
         <SubTitle title="Ingredients" />
-        <div className={styles.recipeIngredients__counterBox} role="group"
-          aria-label="Ingredient counter">
+        <div
+          className={styles.recipeIngredients__counterBox}
+          role="group"
+          aria-label="Ingredient counter"
+        >
           <button
             type="button"
             className={styles.recipeIngredients__btn}
-            onClick={() => handleCounterChange('decrement')}
+            onClick={() => handleCounterChange("decrement")}
             aria-label="Remove ingredient"
             disabled={ingredients.length === 0}
           >
@@ -78,14 +87,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
             </svg>
           </button>
 
-          <span className={styles.recipeIngredients__counterFont}   aria-live="polite">
+          <span className={styles.recipeIngredients__counterFont} aria-live="polite">
             {ingredients.length}
           </span>
 
           <button
             type="button"
             className={styles.recipeIngredients__btn}
-            onClick={() => handleCounterChange('increment')}
+            onClick={() => handleCounterChange("increment")}
             aria-label="Add ingredient"
           >
             <svg className={styles.icon} aria-hidden="true">
@@ -95,17 +104,12 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         </div>
       </div>
 
-      <ul className={styles.recipeIngredients__list}  aria-label="Ingredients list">
+      <ul className={styles.recipeIngredients__list} aria-label="Ingredients list">
         {ingredients.map((ingredient, index) => (
-          <li 
-            key={ingredient.id} 
-            className={styles.recipeIngredients__item}
-          >
+          <li key={ingredient.id} className={styles.recipeIngredients__item}>
             <Select
               options={ingredientOptions}
-              onChange={(selectedOption) => 
-                handleIngredientChange(index, selectedOption)
-              }
+              onChange={(selectedOption) => handleIngredientChange(index, selectedOption)}
               styles={selectIngredient}
               className={styles.recipeIngredients__select}
               placeholder="Select ingredient"
@@ -114,13 +118,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
               required
               menuPlacement="auto"
               menuPosition="fixed"
+              value={
+                ingredient.selectedValue
+                  ? { label: ingredient.selectedValue, value: ingredient.selectedValue }
+                  : null
+              }
             />
 
-            <UnitInput
-              ingredients={ingredients}
-              setIngredients={setIngredients}
-              index={index}
-            />
+            <UnitInput ingredients={ingredients} setIngredients={setIngredients} index={index} />
 
             <button
               type="button"
