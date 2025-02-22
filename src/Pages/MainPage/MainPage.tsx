@@ -26,7 +26,7 @@ const MainPage: React.FC = () => {
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "image";
-    link.href = "/assets/images/bckg2Mobile1x-6dd32201.webp";
+    link.href = "/assets/bckg2Mobile1x-6dd32201.webp";
     link.type = "image/webp";
     document.head.appendChild(link);
   }, []);
