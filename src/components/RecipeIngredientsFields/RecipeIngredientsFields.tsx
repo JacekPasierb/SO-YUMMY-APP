@@ -124,6 +124,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         {ingredients.map((ingredient, index) => (
           <li key={ingredient.id} className={styles.recipeIngredients__item}>
             <Select
+             id={`ingredient-${index}`}
+             name={`ingredient-${index}`}
               options={ingredientOptions}
               onChange={(selectedOption) =>
                 handleIngredientChange(index, selectedOption)
@@ -154,6 +156,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
 
             <button
               type="button"
+              id={`remove-btn-${index}`}
               className={styles.recipeIngredients__btnX}
               onClick={() => removeIngredient(ingredient.id)}
               aria-label={`Remove ingredient ${index + 1}`}
