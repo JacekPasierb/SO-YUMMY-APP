@@ -67,16 +67,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
     values: FormValues,
     {setSubmitting}: FormikHelpers<FormValues>
   ) => {
-    const errors = validate(values); // Pobieramy błędy
-    console.log("eer", errors);
 
-    if (Object.keys(errors).length > 0) {
-      Object.values(errors).forEach((errorMessage) => {
-        toast.error(errorMessage);
-      });
-      setSubmitting(false);
-      return;
-    }
 
     const userData: UserData = {
       name: values.name ? values.name : user.name,
@@ -108,17 +99,17 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({setFieldValue, values, isSubmitting, errors,touched}) => {
-useEffect(() => {
-  Object.entries(errors).forEach(([field, errorMessage]) => {
-    if (
-      touched[field as keyof typeof touched] && 
-      typeof errorMessage === "string"
-    ) {
-      toast.error(errorMessage);
-    }
-  });
-}, [errors, touched]); 
+        {({setFieldValue, values, isSubmitting, errors, touched}) => {
+          useEffect(() => {
+            Object.entries(errors).forEach(([field, errorMessage]) => {
+              if (
+                touched[field as keyof typeof touched] &&
+                typeof errorMessage === "string"
+              ) {
+                toast.error(errorMessage);
+              }
+            });
+          }, [errors, touched]);
 
           return (
             <Form className={styles.userInfoModal__form}>
