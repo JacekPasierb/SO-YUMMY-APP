@@ -23,10 +23,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
         if (action === "decrement") {
-          return prevIngredients.length > 1 ? prevIngredients.slice(0, -1) : [];
+          const updated = prevIngredients.slice(0, -1);
+          return updated.length > 0 ? [...updated] : []; // 🚀 Tworzymy nową referencję
         }
         if (action === "increment") {
-          return [...prevIngredients, { id: nanoid(), selectedValue: "", selectedUnit: "" }];
+          return [
+            ...prevIngredients,
+            { id: nanoid(), selectedValue: "", selectedUnit: "" },
+          ];
         }
         return prevIngredients;
       });
@@ -45,9 +49,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const removeIngredient = useCallback((fieldId: string) => {
     setIngredients((prev) => {
       const updated = prev.filter((ingredient) => ingredient.id !== fieldId);
-      console.log("Stan składników:", ingredients);
-
-      return updated.length > 0 ? updated : []; // 🚀 Gwarantuje pustą tablicę
+      return updated.length > 0 ? [...updated] : []; // 🚀 Tworzymy nową referencję
     });
   }, [setIngredients]);
 
