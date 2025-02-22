@@ -52,12 +52,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
 
   const removeIngredient = useCallback((fieldId: string) => {
     setIngredients((prev) => {
-      // console.log("Before remove:", prev);  // Sprawdzenie stanu PRZED
-      // const updatedIngredients = prev.filter((ingredient) => ingredient.id !== fieldId);
-      // console.log("After remove:", updatedIngredients); // Sprawdzenie stanu PO
-      // return updatedIngredients;
+      console.log("Before remove:", prev);
       const updatedIngredients = prev.filter(ingredient => ingredient.id !== fieldId);
-  return prev.length === updatedIngredients.length ? prev : updatedIngredients;
+      console.log("After remove:", updatedIngredients);
+      return [...updatedIngredients]; // 👈 Wymuszenie nowej tablicy
     });
     
   }, [setIngredients]);
