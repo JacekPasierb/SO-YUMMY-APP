@@ -67,8 +67,6 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
     values: FormValues,
     {setSubmitting}: FormikHelpers<FormValues>
   ) => {
-
-
     const userData: UserData = {
       name: values.name ? values.name : user.name,
       avatar: values.avatar ?? user.avatar ?? DEFAULT_AVATAR,
