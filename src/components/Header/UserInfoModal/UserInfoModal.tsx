@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useRef, useState} from "react";
-import {Field, Formik, Form, FormikValues, ErrorMessage} from "formik";
+import {Field, Formik, Form, FormikValues, FormikHelpers} from "formik";
 import {toast} from "react-toastify";
 import {useDispatch} from "react-redux";
 import {updateUser} from "../../../redux/auth/operations";
@@ -18,9 +18,14 @@ interface UserInfoModalProps {
   id?: string;
 }
 
-interface UserData {
+interface FormValues {
   name: string;
   avatar: string;
+}
+
+interface UserData {
+  name: string;
+  avatar: string ;
 }
 
 const UserInfoModal: FC<UserInfoModalProps> = ({
@@ -58,10 +63,21 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
     };
   }, [onClose]);
 
-  const handleSubmit = async (values: FormikValues, {setSubmitting}: any) => {
+  const handleSubmit = async (values: FormValues,
+    { setSubmitting }: FormikHelpers<FormValues>) => {
+    const errors = validate(values); // Pobieramy błędy
+
+    if (Object.keys(errors).length > 0) {
+      Object.values(errors).forEach((errorMessage) => {
+        toast.error(errorMessage);
+      });
+      setSubmitting(false);
+      return;
+    }
+
     const userData: UserData = {
       name: values.name ? values.name : user.name,
-      avatar: values.avatar || user.avatar,
+      avatar: values.avatar ?? user.avatar ?? DEFAULT_AVATAR,
     };
     try {
       await dispatch(updateUser(userData)).unwrap();
@@ -89,7 +105,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
         validate={validate}
         onSubmit={handleSubmit}
       >
-        {({setFieldValue, values, isSubmitting, errors, touched}) => (
+        {({setFieldValue, values, isSubmitting}) => (
           <Form className={styles.userInfoModal__form}>
             <label
               htmlFor="avatar"
@@ -141,9 +157,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
               aria-label="Upload avatar"
               disabled={isSubmitting}
             />
-            {errors.avatar && touched.avatar && (
-              <p className={styles.errorText}>{errors.avatar}</p>
-            )}
+            
             <div className={styles.userInfoModal__inputWrapper}>
               <svg className={styles.userInfoModal__iconUser}>
                 <use href={sprite + `#icon-Icon`}></use>
@@ -165,7 +179,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
                 <use href={`${sprite}#icon-edit-01`}></use>
               </svg>
             </div>
-            <ErrorMessage name="name" component="p" className={styles.errorText} />
+            
             <button
               type="submit"
               className={styles.userInfoModal__btnSave}
