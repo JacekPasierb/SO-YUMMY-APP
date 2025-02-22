@@ -55,7 +55,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
       console.log("Before remove:", prev);
       const updatedIngredients = prev.filter(ingredient => ingredient.id !== fieldId);
       console.log("After remove:", updatedIngredients);
-      return [...updatedIngredients]; // 👈 Wymuszenie nowej tablicy
+      return updatedIngredients; // 👈 Wymuszenie nowej tablicy
     });
     
   }, [setIngredients]);
