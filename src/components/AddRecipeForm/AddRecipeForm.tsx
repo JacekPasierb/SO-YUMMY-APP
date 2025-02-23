@@ -74,9 +74,8 @@ const AddRecipeForm: React.FC = () => {
     setInstructionsRecipe,
   };
   useEffect(() => {
-    console.log("🔄 useEffect triggered - ingredients updated:", JSON.stringify(ingredients, null, 2));
-  }, [ingredients]);
-  
+    console.log("ING", JSON.stringify(ingredients));
+  }, [JSON.stringify(ingredients)]);
   
   return (
     <form

@@ -23,9 +23,7 @@ export const useRecipeForm = () => {
   const [formState, setFormState] = useState<RecipeFormState>(initialState);
   const [ingredientsAll, setIngredientsAll] = useState<IngredientData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    console.log("🔄 useEffect triggered - ingredients updated:", JSON.stringify(formState.ingredients, null, 2));
-  }, [formState.ingredients]);
+
   const dispatch: AppDispatch = useDispatch();
 
   const fetchIngredients = useCallback(async () => {
