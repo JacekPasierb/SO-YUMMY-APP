@@ -8,6 +8,8 @@
 
 @media screen and (min-width: 768px) {
   .container {
+    background-image: url("../../images/footTablet1x.png"),
+    url("../../images/foot2Tablet1x.png");
     background-position: bottom 0 right 0, bottom 330px left 0;
   }
 }
@@ -18,11 +20,3 @@
   }
 }
 
-@media (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .container {
-    background-image: url("../../images/foot2x.png"),
-      url("../../images/foot22x.png");
-  }
-}
