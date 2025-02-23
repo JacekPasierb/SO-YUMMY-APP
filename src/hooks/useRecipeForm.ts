@@ -115,8 +115,11 @@ export const useRecipeForm = () => {
     setDescriptionRecipe: (desc: string) => updateFormField('descriptionRecipe', desc),
     setCategoryRecipe: (category: string) => updateFormField('categoryRecipe', category),
     setCookingTime: (time: string) => updateFormField('cookingTime', time),
-    setIngredients:(value: React.SetStateAction<FormIngredient[]>) => 
-      updateFormField('ingredients', typeof value === 'function' ? value(formState.ingredients) : value),
+    setIngredients:(value: React.SetStateAction<FormIngredient[]>) => { setFormState((prev) => {
+      const newIngredients = typeof value === "function" ? value(prev.ingredients) : value;
+      console.log("Setting ingredients to:", newIngredients); // 🔍 Sprawdzenie, czy aktualizuje się poprawnie
+      return { ...prev, ingredients: newIngredients };
+    });},
     setInstructionsRecipe:(value: string | ((prevState: string) => string)) => 
       updateFormField('instructionsRecipe', typeof value === 'function' ? value(formState.instructionsRecipe) : value),
     ingredientsAll,
