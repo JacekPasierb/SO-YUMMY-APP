@@ -23,27 +23,23 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
-  const handleCounterChange = useCallback((action: "increment" | "decrement") => {
-    setIngredients((prevIngredients) => {
-      if (action === "increment") {
-        const newIngredients = [
-          ...prevIngredients,
-          { id: nanoid(), selectedValue: "", selectedUnit: "" },
-        ];
-        console.log("Adding ingredient:", newIngredients);
-        return newIngredients;
-      }
-      if (action === "decrement") {
-        if (prevIngredients.length === 0) return prevIngredients;
-        const newIngredients = prevIngredients.slice(0, -1);
-        console.log("Removing ingredient:", newIngredients);
-        return newIngredients;
-      }
-      return prevIngredients;
-    });
-  }, [setIngredients]);
-  
-  
+  const handleCounterChange = useCallback(
+    (action: "increment" | "decrement") => {
+      setIngredients((prevIngredients) => {
+        if (action === "increment") {
+          return [
+            ...prevIngredients,
+            {id: nanoid(), selectedValue: "", selectedUnit: ""},
+          ];
+        }
+        if (action === "decrement") {
+          return prevIngredients.slice(0, -1);
+        }
+        return prevIngredients;
+      });
+    },
+    [setIngredients]
+  );
 
   const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map((ingredient) => ({
@@ -52,12 +48,15 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
+  const removeIngredient = useCallback(
+    (fieldId: string) => {
+      setIngredients((prev) =>
+        prev.filter((ingredient) => ingredient.id !== fieldId)
+      );
+    },
+    [setIngredients]
+  );
 
-
-  const removeIngredient = useCallback((fieldId: string) => {
-    setIngredients((prev) => prev.filter((ingredient) => ingredient.id !== fieldId));
-  }, [setIngredients]);
-  
   const handleIngredientChange = useCallback(
     (index: number, selectedOption: SingleValue<Option>) => {
       if (!selectedOption) return;
@@ -76,7 +75,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   useEffect(() => {
     console.log("ING", ingredients);
   }, [ingredients]);
-  
+
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
