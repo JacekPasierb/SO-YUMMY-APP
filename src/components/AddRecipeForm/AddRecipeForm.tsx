@@ -93,4 +93,4 @@ const AddRecipeForm: React.FC = () => {
   );
 };
 
-export default memo(AddRecipeForm);
+export default AddRecipeForm;
