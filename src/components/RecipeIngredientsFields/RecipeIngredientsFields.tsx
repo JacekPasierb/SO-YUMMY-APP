@@ -54,6 +54,9 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     console.log("fieldId",fieldId);
     console.log("ingredients",ingredients);
     setIngredients([])
+    setTimeout(() => {
+      setIngredients(prev => [...prev]); // 🔥 React wymusi rerender
+    }, 10);
     
   };
 
