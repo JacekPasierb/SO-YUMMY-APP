@@ -28,19 +28,20 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
-        if (action === "decrement" ) {
-          return prevIngredients.length > 1 ? prevIngredients.slice(0, -1) : [];
-        }
         if (action === "increment") {
           return [
             ...prevIngredients,
             {id: nanoid(), selectedValue: "", selectedUnit: ""},
           ];
         }
+        if (action === "decrement" ) {
+          return prevIngredients.length > 0 ? prevIngredients.slice(0, -1) : [];
+        }
+     
         return prevIngredients;
       });
     },
-    [setIngredients]
+    []
   );
 
   const ingredientOptions = useMemo((): Option[] => {
