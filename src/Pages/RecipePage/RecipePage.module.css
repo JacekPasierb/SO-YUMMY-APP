@@ -20,50 +20,28 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  @supports (background-image: url("../../images/flat.webp")) {
-    .receipePage {
-      background-image: url("../../images/flat.webp");
-    }
+}
+
+@supports (background-image: url("../../images/flat.webp")) {
+  .receipePage {
+    background-image: url("../../images/flat.webp");
   }
+}
+
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .receipePage {
+    background-image: url("../../images/flat2x.jpg");
+  }
+}
+
+@supports (background-image: url("../../images/flat2x.webp")) {
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url("../../images/flat2x.jpg");
-    @supports (background-image: url("../../images/flat2x.webp")) {
+    .recipePage {
       background-image: url("../../images/flat2x.webp");
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    background-image: url("../../images/flatTablet.jpg");
-    margin-bottom: 50px;
-    @supports (background-image: url("../../images/flatTablet.webp")) {
-      background-image: url("../../images/flatTablet.webp");
-    }
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url("../../images/flatTablet2x.jpg");
-      @supports (background-image: url("../../images/flatTablet2x.webp")) {
-        background-image: url("../../images/flatTablet2x.webp");
-      }
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    background-image: url("../../images/flatDesctop.jpg");
-
-    @supports (background-image: url("../../images/flatDesctop.webp")) {
-      background-image: url("../../images/flatDesctop.webp");
-    }
-
-    @media (min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url("../../images/flatDesctop2x.jpg");
-      @supports (background-image: url("../../images/flatDesctop2x.webp")) {
-        background-image: url("../../images/flatDesctop2x.webp");
-      }
     }
   }
 }
