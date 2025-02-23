@@ -49,19 +49,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   }, [ingredientsAll]);
 
   const removeIngredient = (fieldId: string) => {
-    console.log("🔥 removeIngredient called with id:", fieldId);
-  
-    setIngredients(prev => {
-      console.log("📌 Before update, prev state:", JSON.stringify(prev, null, 2));
-      
-      const updatedIngredients = prev.filter(ingredient => ingredient.id !== fieldId);
-      
-      console.log("✅ After filter, new state:", JSON.stringify(updatedIngredients, null, 2));
+    setIngredients((prev) => {
+      const updatedIngredients = prev.filter(
+        (ingredient) => ingredient.id !== fieldId
+      );
+
       return updatedIngredients;
     });
   };
-  
-
 
   const handleIngredientChange = useCallback(
     (index: number, selectedOption: SingleValue<Option>) => {
@@ -79,11 +74,13 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     [setIngredients]
   );
 
-
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
-        <SubTitle title="Ingredients" /><p><b>{ingredients.length}</b></p>
+        <SubTitle title="Ingredients" />
+        <p>
+          <b>{ingredients.length}</b>
+        </p>
         <div
           className={styles.recipeIngredients__counterBox}
           role="group"
@@ -121,15 +118,15 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         </div>
       </div>
       {ingredients.length > 0 ? (
-        <ul 
+        <ul
           className={styles.recipeIngredients__list}
           aria-label="Ingredients list"
         >
           {ingredients.map((ingredient, index) => (
             <li key={ingredient.id} className={styles.recipeIngredients__item}>
               <Select
-              id={`ingredient-${ingredient.id}`} // Dodaje unikalne id
-              name={`ingredient-${index}`} // Dodaje unikalną nazwę
+                id={`ingredient-${ingredient.id}`} // Dodaje unikalne id
+                name={`ingredient-${index}`} // Dodaje unikalną nazwę
                 options={ingredientOptions}
                 onChange={(selectedOption) =>
                   handleIngredientChange(index, selectedOption)
