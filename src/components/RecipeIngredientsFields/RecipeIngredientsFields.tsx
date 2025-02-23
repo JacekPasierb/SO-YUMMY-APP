@@ -23,26 +23,26 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
-  const handleCounterChange = useCallback(
-    (action: "increment" | "decrement") => {
-      setIngredients((prevIngredients) => {
-        if (action === "increment") {
-          const newIngredients = [
-            ...prevIngredients,
-            { id: nanoid(), selectedValue: "", selectedUnit: "" },
-          ];
-          return prevIngredients.length === newIngredients.length ? prevIngredients : newIngredients;
-        }
-        if (action === "decrement") {
-          if (prevIngredients.length === 0) return prevIngredients; // Nie zmieniaj, jeśli już jest 0
-          const newIngredients = prevIngredients.slice(0, -1);
-          return prevIngredients.length === newIngredients.length ? prevIngredients : newIngredients;
-        }
-        return prevIngredients;
-      });
-    },
-    [setIngredients]
-  );
+  const handleCounterChange = useCallback((action: "increment" | "decrement") => {
+    setIngredients((prevIngredients) => {
+      if (action === "increment") {
+        const newIngredients = [
+          ...prevIngredients,
+          { id: nanoid(), selectedValue: "", selectedUnit: "" },
+        ];
+        console.log("Adding ingredient:", newIngredients);
+        return newIngredients;
+      }
+      if (action === "decrement") {
+        if (prevIngredients.length === 0) return prevIngredients;
+        const newIngredients = prevIngredients.slice(0, -1);
+        console.log("Removing ingredient:", newIngredients);
+        return newIngredients;
+      }
+      return prevIngredients;
+    });
+  }, [setIngredients]);
+  
   
 
   const ingredientOptions = useMemo((): Option[] => {
@@ -52,35 +52,12 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = async (fieldId: string) => {
-    console.log("fieldId", fieldId);
-    console.log("ingredients", ingredients);
-    setIngredients((prev) => {
-      const updatedIngredients = prev.filter(
-        (ingredient) => ingredient.id !== fieldId
-      );
 
-      return updatedIngredients; // 👈 Wymuszenie nowej tablicy
-    });
-  };
-  useEffect(() => {
-    console.log("ING", ingredients);
-  }, [removeIngredient]);
 
-  // const removeIngredient = useCallback(
-  //   (fieldId: string) => {
-  //     setIngredients((prev) => {
-  //       console.log("Before remove:", prev);
-  //       const updatedIngredients = prev.filter(
-  //         (ingredient) => ingredient.id !== fieldId
-  //       );
-  //       console.log("After remove:", updatedIngredients);
-  //       return updatedIngredients; // 👈 Wymuszenie nowej tablicy
-  //     });
-  //   },
-  //   [setIngredients]
-  // );
-
+  const removeIngredient = useCallback((fieldId: string) => {
+    setIngredients((prev) => prev.filter((ingredient) => ingredient.id !== fieldId));
+  }, [setIngredients]);
+  
   const handleIngredientChange = useCallback(
     (index: number, selectedOption: SingleValue<Option>) => {
       if (!selectedOption) return;
@@ -96,7 +73,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     },
     [setIngredients]
   );
-
+  useEffect(() => {
+    console.log("ING", ingredients);
+  }, [ingredients]);
+  
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
