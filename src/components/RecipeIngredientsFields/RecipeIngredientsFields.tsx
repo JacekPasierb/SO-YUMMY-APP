@@ -50,12 +50,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   }, [ingredientsAll]);
 
   const removeIngredient = (fieldId: string) => {
-    // setIngredients((prev) => {
-    //   prev.filter((ingredient) => ingredient.id !== fieldId);
-    // });
+ 
     console.log("fieldId",fieldId);
     console.log("ingredients",ingredients);
-    setIngredients(ingredients.filter(ing => ing.id !== fieldId))
+    setIngredients([])
     
   };
 
