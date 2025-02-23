@@ -40,10 +40,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     },
     [setIngredients]
   );
-useEffect(()=>{
-  console.log("in",ingredients);
-  
-},[])
+
   const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map((ingredient) => ({
       label: ingredient.ttl,
@@ -53,9 +50,10 @@ useEffect(()=>{
 
   const removeIngredient = useCallback(
     (fieldId: string) => {
-      setIngredients((prev) =>
-        prev.filter((ingredient) => ingredient.id !== fieldId)
-      );
+      setIngredients((prev) => {
+        const updatedIngredients = prev.filter((ingredient) => ingredient.id !== fieldId);
+        return updatedIngredients; // Upewnij się, że zwracasz zaktualizowaną listę
+      });
     },
     [setIngredients]
   );
