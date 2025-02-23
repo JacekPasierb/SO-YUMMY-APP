@@ -49,15 +49,17 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   }, [ingredientsAll]);
 
   const removeIngredient = (fieldId: string) => {
+    console.log("🔥 removeIngredient called with id:", fieldId);
+  
     setIngredients(prev => {
-        const updatedIngredients = prev.filter(ingredient => ingredient.id !== fieldId);
-        
-        return updatedIngredients; 
+      console.log("📌 Before update, prev state:", JSON.stringify(prev, null, 2));
+      
+      const updatedIngredients = prev.filter(ingredient => ingredient.id !== fieldId);
+      
+      console.log("✅ After filter, new state:", JSON.stringify(updatedIngredients, null, 2));
+      return updatedIngredients;
     });
-
-   
-};
-
+  };
   
 
 
@@ -77,6 +79,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     [setIngredients]
   );
 
+  console.log("🎨 Render - ingredients in UI:", JSON.stringify(ingredients, null, 2));
 
   return (
     <div className={styles.recipeIngredientsContainer}>
