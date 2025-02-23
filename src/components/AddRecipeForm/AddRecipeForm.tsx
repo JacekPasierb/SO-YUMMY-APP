@@ -73,7 +73,10 @@ const AddRecipeForm: React.FC = () => {
     instructionsRecipe,
     setInstructionsRecipe,
   };
-
+  useEffect(() => {
+    console.log("ING", JSON.stringify(ingredients));
+  }, [JSON.stringify(ingredients)]);
+  
   return (
     <form
       onSubmit={handleSubmit}
