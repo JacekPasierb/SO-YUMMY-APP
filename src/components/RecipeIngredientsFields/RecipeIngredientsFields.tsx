@@ -49,19 +49,29 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = useCallback(
-    (fieldId: string) => {
-      setIngredients((prev) => {
-        console.log("Before remove:", prev);
-        const updatedIngredients = prev.filter(
-          (ingredient) => ingredient.id !== fieldId
-        );
-        console.log("After remove:", updatedIngredients);
-        return updatedIngredients; // 👈 Wymuszenie nowej tablicy
-      });
-    },
-    [setIngredients]
-  );
+  const removeIngredient = (fieldId: string) => {
+    // setIngredients((prev) => {
+    //   prev.filter((ingredient) => ingredient.id !== fieldId);
+    // });
+    console.log("fieldId",fieldId);
+    console.log("ingredients",ingredients);
+    
+    
+  };
+
+  // const removeIngredient = useCallback(
+  //   (fieldId: string) => {
+  //     setIngredients((prev) => {
+  //       console.log("Before remove:", prev);
+  //       const updatedIngredients = prev.filter(
+  //         (ingredient) => ingredient.id !== fieldId
+  //       );
+  //       console.log("After remove:", updatedIngredients);
+  //       return updatedIngredients; // 👈 Wymuszenie nowej tablicy
+  //     });
+  //   },
+  //   [setIngredients]
+  // );
 
   const handleIngredientChange = useCallback(
     (index: number, selectedOption: SingleValue<Option>) => {
@@ -168,7 +178,9 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
             </li>
           ))}
         </ul>
-      ) : <p>${ingredients.length}</p>}
+      ) : (
+        <p>${ingredients.length}</p>
+      )}
     </div>
   );
 };
