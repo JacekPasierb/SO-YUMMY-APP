@@ -77,7 +77,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
-        <SubTitle title="Ingredients" />
+        <SubTitle title="Ingredients" /><p><b>{ingredients.length}</b></p>
         <div
           className={styles.recipeIngredients__counterBox}
           role="group"
