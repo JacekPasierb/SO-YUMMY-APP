@@ -49,14 +49,13 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = (fieldId: string) => {
+  const removeIngredient = async(fieldId: string) => {
  
     console.log("fieldId",fieldId);
     console.log("ingredients",ingredients);
     setIngredients(ingredients.filter(ing => ing.id !== fieldId))
-    setTimeout(() => {
-      setIngredients(prev => [...prev]); // 🔥 React wymusi rerender
-    }, 10);
+await console.log("iii",ingredients);
+
   };
 
   // const removeIngredient = useCallback(
