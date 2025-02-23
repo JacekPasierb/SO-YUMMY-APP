@@ -27,20 +27,23 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
         if (action === "increment") {
-          return [
+          const newIngredients = [
             ...prevIngredients,
-            {id: nanoid(), selectedValue: "", selectedUnit: ""},
+            { id: nanoid(), selectedValue: "", selectedUnit: "" },
           ];
+          return prevIngredients.length === newIngredients.length ? prevIngredients : newIngredients;
         }
         if (action === "decrement") {
-          return prevIngredients.length > 0 ? prevIngredients.slice(0, -1) : [];
+          if (prevIngredients.length === 0) return prevIngredients; // Nie zmieniaj, jeśli już jest 0
+          const newIngredients = prevIngredients.slice(0, -1);
+          return prevIngredients.length === newIngredients.length ? prevIngredients : newIngredients;
         }
-
         return prevIngredients;
       });
     },
     [setIngredients]
   );
+  
 
   const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map((ingredient) => ({
