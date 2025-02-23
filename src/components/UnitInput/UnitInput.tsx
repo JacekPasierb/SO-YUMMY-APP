@@ -58,6 +58,8 @@ const UnitInput: FC<UnitInputProps> = ({
   return (
     <div className={styles.unitInput__container}>
       <input
+      id={`unit-${ingredients[index].id}`}
+      name={`unit-${index}`}
         type="number"
         min={MIN_VALUE}
         max={MAX_VALUE}
