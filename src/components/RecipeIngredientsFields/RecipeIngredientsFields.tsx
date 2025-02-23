@@ -72,9 +72,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     },
     [setIngredients]
   );
-  useEffect(() => {
-    console.log("ING", ingredients);
-  }, [ingredients]);
+
 
   return (
     <div className={styles.recipeIngredientsContainer}>
