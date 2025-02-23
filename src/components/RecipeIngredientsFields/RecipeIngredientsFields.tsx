@@ -59,8 +59,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
 
       return updatedIngredients; // 👈 Wymuszenie nowej tablicy
     });
-    await console.log("iii", ingredients);
   };
+  useEffect(() => {
+    console.log("ING", ingredients);
+  }, [removeIngredient]);
 
   // const removeIngredient = useCallback(
   //   (fieldId: string) => {
