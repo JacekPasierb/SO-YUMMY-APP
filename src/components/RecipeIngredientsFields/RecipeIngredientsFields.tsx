@@ -51,17 +51,11 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const removeIngredient = (fieldId: string) => {
     setIngredients(prev => {
         const updatedIngredients = prev.filter(ingredient => ingredient.id !== fieldId);
-        console.log("Before remove:", prev);
-        console.log("After remove:", updatedIngredients);
+        
         return updatedIngredients; 
     });
 
-    setTimeout(() => {
-        setIngredients(prev => {
-            console.log("After state update:", prev);
-            return prev;
-        });
-    }, 100);
+   
 };
 
   
