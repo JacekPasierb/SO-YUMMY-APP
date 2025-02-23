@@ -50,14 +50,16 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
 
   const removeIngredient = useCallback(
     (fieldId: string) => {
-      if(ingredients.length === 1) {
-        console.log("ingedient ma 1");
-        
-        return setIngredients([])
-      }
       setIngredients((prev) => {
-        const updatedIngredients = prev.filter((ingredient) => ingredient.id !== fieldId);
-        return updatedIngredients; // Upewnij się, że zwracasz zaktualizowaną listę
+        const updatedIngredients = prev.filter(
+          (ingredient) => ingredient.id !== fieldId
+        );
+  
+        console.log("Before remove:", prev);
+        console.log("After remove:", updatedIngredients);
+  
+        // Sprawdzenie, czy faktycznie zmienia się stan
+        return [...updatedIngredients]; // Tworzymy nową referencję do tablicy
       });
     },
     [setIngredients]
