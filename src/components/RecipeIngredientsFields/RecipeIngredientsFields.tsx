@@ -53,11 +53,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
  
     console.log("fieldId",fieldId);
     console.log("ingredients",ingredients);
-    setIngredients([])
+    setIngredients(ingredients.filter(ing => ing.id !== fieldId))
     setTimeout(() => {
       setIngredients(prev => [...prev]); // 🔥 React wymusi rerender
     }, 10);
-    
   };
 
   // const removeIngredient = useCallback(
