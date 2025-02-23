@@ -23,8 +23,6 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
- 
-
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
@@ -34,14 +32,14 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
             {id: nanoid(), selectedValue: "", selectedUnit: ""},
           ];
         }
-        if (action === "decrement" ) {
+        if (action === "decrement") {
           return prevIngredients.length > 0 ? prevIngredients.slice(0, -1) : [];
         }
-     
+
         return prevIngredients;
       });
     },
-    [ingredients]
+    [setIngredients]
   );
 
   const ingredientOptions = useMemo((): Option[] => {
@@ -51,17 +49,19 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = useCallback((fieldId: string) => {
-    setIngredients((prev) => {
-      console.log("Before remove:", prev);
-      const updatedIngredients = prev.filter(ingredient => ingredient.id !== fieldId);
-      console.log("After remove:", updatedIngredients);
-      return updatedIngredients; // 👈 Wymuszenie nowej tablicy
-    });
-    
-  }, [setIngredients]);
-
- 
+  const removeIngredient = useCallback(
+    (fieldId: string) => {
+      setIngredients((prev) => {
+        console.log("Before remove:", prev);
+        const updatedIngredients = prev.filter(
+          (ingredient) => ingredient.id !== fieldId
+        );
+        console.log("After remove:", updatedIngredients);
+        return updatedIngredients; // 👈 Wymuszenie nowej tablicy
+      });
+    },
+    [setIngredients]
+  );
 
   const handleIngredientChange = useCallback(
     (index: number, selectedOption: SingleValue<Option>) => {
@@ -78,7 +78,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     },
     [setIngredients]
   );
-  
+
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
@@ -119,56 +119,56 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
           </button>
         </div>
       </div>
-      {ingredients.length > 0 && (
-      <ul
-        className={styles.recipeIngredients__list}
-        aria-label="Ingredients list"
-      >
-        {ingredients.map((ingredient, index) => (
-          <li key={ingredient.id} className={styles.recipeIngredients__item}>
-            <Select
-            
-              options={ingredientOptions}
-              onChange={(selectedOption) =>
-                handleIngredientChange(index, selectedOption)
-              }
-              styles={selectIngredient}
-              className={styles.recipeIngredients__select}
-              placeholder="Select ingredient"
-              aria-label="Select ingredient"
-              isSearchable
-              required
-              menuPlacement="auto"
-              menuPosition="fixed"
-              value={
-                ingredient.selectedValue
-                  ? {
-                      label: ingredient.selectedValue,
-                      value: ingredient.selectedValue,
-                    }
-                  : null
-              }
-            />
+      {ingredients.length > 0 ? (
+        <ul
+          className={styles.recipeIngredients__list}
+          aria-label="Ingredients list"
+        >
+          {ingredients.map((ingredient, index) => (
+            <li key={ingredient.id} className={styles.recipeIngredients__item}>
+              <Select
+                options={ingredientOptions}
+                onChange={(selectedOption) =>
+                  handleIngredientChange(index, selectedOption)
+                }
+                styles={selectIngredient}
+                className={styles.recipeIngredients__select}
+                placeholder="Select ingredient"
+                aria-label="Select ingredient"
+                isSearchable
+                required
+                menuPlacement="auto"
+                menuPosition="fixed"
+                value={
+                  ingredient.selectedValue
+                    ? {
+                        label: ingredient.selectedValue,
+                        value: ingredient.selectedValue,
+                      }
+                    : null
+                }
+              />
 
-            <UnitInput
-              ingredients={ingredients}
-              setIngredients={setIngredients}
-              index={index}
-            />
+              <UnitInput
+                ingredients={ingredients}
+                setIngredients={setIngredients}
+                index={index}
+              />
 
-            <button
-              type="button"
-              className={styles.recipeIngredients__btnX}
-              onClick={() => removeIngredient(ingredient.id)}
-              aria-label={`Remove ingredient ${index + 1}`}
-            >
-              <svg className={styles.iconX} aria-hidden="true">
-                <use href={`${sprite}#icon-X`} />
-              </svg>
-            </button>
-          </li>
-        ))}
-      </ul>)}
+              <button
+                type="button"
+                className={styles.recipeIngredients__btnX}
+                onClick={() => removeIngredient(ingredient.id)}
+                aria-label={`Remove ingredient ${index + 1}`}
+              >
+                <svg className={styles.iconX} aria-hidden="true">
+                  <use href={`${sprite}#icon-X`} />
+                </svg>
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : <p>${ingredients.length}</p>}
     </div>
   );
 };
