@@ -41,7 +41,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         return prevIngredients;
       });
     },
-    [setIngredients]
+    [ingredients]
   );
 
   const ingredientOptions = useMemo((): Option[] => {
