@@ -51,6 +51,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   const removeIngredient = useCallback(
     (fieldId: string) => {
       if(ingredients.length === 1) {
+        console.log("ingedient ma 1");
+        
         return setIngredients([])
       }
       setIngredients((prev) => {
