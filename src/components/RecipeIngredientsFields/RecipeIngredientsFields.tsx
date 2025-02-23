@@ -48,22 +48,19 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = useCallback(
-    (fieldId: string) => {
-      setIngredients((prev) => {
-        const updatedIngredients = prev.filter(
-          (ingredient) => ingredient.id !== fieldId
-        );
+  const removeIngredient = (fieldId: string) => {
+    console.log("Before remove:", ingredients);
   
-        console.log("Before remove:", prev);
-        console.log("After remove:", updatedIngredients);
+    if (ingredients.length === 1) {
+      console.log("ingredient ma 1");
+       setIngredients(prev => [...prev.slice(0, 0)]);
+      return;
+    }
   
-        // Sprawdzenie, czy faktycznie zmienia się stan
-        return [...updatedIngredients]; // Tworzymy nową referencję do tablicy
-      });
-    },
-    [setIngredients]
-  );
+    setIngredients(prev =>
+      prev.filter(ingredient => ingredient.id !== fieldId)
+    );
+  };
 
 
   const handleIngredientChange = useCallback(
