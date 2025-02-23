@@ -48,13 +48,27 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
+  // const removeIngredient = useCallback(
+  //   (fieldId: string) => {
+  //     console.log("Removing ingredient with id:", fieldId); 
+  //     setIngredients((prev) => {
+  //       const updatedIngredients = prev.filter((ingredient) => ingredient.id !== fieldId);
+  //       console.log("Updated ingredients:", updatedIngredients); 
+  //       return updatedIngredients; // Upewnij się, że zwracasz zaktualizowaną listę
+  //     });
+  //   },
+  //   [setIngredients]
+  // );
+  const [updateKey, setUpdateKey] = useState(0);
+
   const removeIngredient = useCallback(
     (fieldId: string) => {
-      console.log("Removing ingredient with id:", fieldId); 
       setIngredients((prev) => {
         const updatedIngredients = prev.filter((ingredient) => ingredient.id !== fieldId);
-        console.log("Updated ingredients:", updatedIngredients); 
-        return updatedIngredients; // Upewnij się, że zwracasz zaktualizowaną listę
+        if (updatedIngredients.length === 0) {
+          setUpdateKey((prevKey) => prevKey + 1); // Wymuś aktualizację
+        }
+        return updatedIngredients;
       });
     },
     [setIngredients]
@@ -118,7 +132,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         </div>
       </div>
       {ingredients.length > 0 ? (
-        <ul
+        <ul key={updateKey}
           className={styles.recipeIngredients__list}
           aria-label="Ingredients list"
         >
