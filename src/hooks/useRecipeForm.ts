@@ -38,7 +38,7 @@ export const useRecipeForm = () => {
 
   useEffect(() => {
     fetchIngredients();
-  }, [fetchIngredients]);
+  }, []);
 
   const updateFormField = useCallback(<K extends keyof RecipeFormState>(
     field: K,

@@ -77,10 +77,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     },
     [setIngredients]
   );
-  useEffect(() => {
-    if (ingredients.length === 0) return;
-    console.log("Current ingredients length:", ingredients.length);
-  }, [JSON.stringify(ingredients)]); // <<<< UMIEŚĆ TUTAJ, przed return
+  
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
