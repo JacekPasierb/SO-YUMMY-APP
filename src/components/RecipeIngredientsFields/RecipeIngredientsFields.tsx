@@ -40,7 +40,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     },
     [setIngredients]
   );
-
+useEffect(()=>{
+  console.log("in",ingredients);
+  
+},[handleCounterChange])
   const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map((ingredient) => ({
       label: ingredient.ttl,
