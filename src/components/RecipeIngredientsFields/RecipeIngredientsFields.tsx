@@ -55,7 +55,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     // });
     console.log("fieldId",fieldId);
     console.log("ingredients",ingredients);
-    
+    setIngredients(ingredients.filter(ing => ing.id !== fieldId))
     
   };
 
