@@ -132,6 +132,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
           {ingredients.map((ingredient, index) => (
             <li key={ingredient.id} className={styles.recipeIngredients__item}>
               <Select
+              id={`ingredient-${ingredient.id}`} // Dodaje unikalne id
+              name={`ingredient-${index}`} // Dodaje unikalną nazwę
                 options={ingredientOptions}
                 onChange={(selectedOption) =>
                   handleIngredientChange(index, selectedOption)
