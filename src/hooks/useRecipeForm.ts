@@ -116,7 +116,7 @@ export const useRecipeForm = () => {
     setCategoryRecipe: (category: string) => updateFormField('categoryRecipe', category),
     setCookingTime: (time: string) => updateFormField('cookingTime', time),
     setIngredients:(value: React.SetStateAction<FormIngredient[]>) => 
-      updateFormField('ingredients', typeof value === 'function' ? value(formState.ingredients) : value),
+      updateFormField('ingredients', typeof value === 'function' ? value(formState.ingredients) : []),
     setInstructionsRecipe:(value: string | ((prevState: string) => string)) => 
       updateFormField('instructionsRecipe', typeof value === 'function' ? value(formState.instructionsRecipe) : value),
     ingredientsAll,
