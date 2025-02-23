@@ -120,7 +120,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
         </div>
       </div>
       {ingredients.length > 0 ? (
-        <ul key={updateKey}
+        <ul 
           className={styles.recipeIngredients__list}
           aria-label="Ingredients list"
         >
