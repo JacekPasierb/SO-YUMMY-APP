@@ -79,7 +79,6 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     [setIngredients]
   );
 
-  console.log("🎨 Render - ingredients in UI:", JSON.stringify(ingredients, null, 2));
 
   return (
     <div className={styles.recipeIngredientsContainer}>
