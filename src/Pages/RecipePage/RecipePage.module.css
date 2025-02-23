@@ -45,3 +45,65 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) {
+  .receipePage {
+    background-image: url("../../images/flatTablet.jpg");
+  }
+
+  @supports (background-image: url("../../images/flatTablet.webp")) {
+    .receipePage {
+      background-image: url("../../images/flatTablet.webp");
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 768px) and (min-resolution: 192dpi),
+  screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .receipePage {
+    background-image: url("../../images/flatTablet2x.jpg");
+  }
+}
+
+@supports (background-image: url("../../images/flatTablet2x.webp")) {
+  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 768px) and (min-resolution: 192dpi),
+    screen and (min-width: 768px) and (min-resolution: 2dppx) {
+    .receipePage {
+      background-image: url("../../images/flatTablet2x.webp");
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .receipePage {
+    background-image: url("../../images/flatDesctop.jpg");
+  }
+}
+
+@supports (background-image: url("../../images/flatDesctop.webp")) {
+  @media screen and (min-width: 1200px) {
+    .receipePage {
+      background-image: url("../../images/flatDesctop.webp");
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2),
+  screen and (min-width: 1200px) and (min-resolution: 192dpi),
+  screen and (min-width: 1200px) and (min-resolution: 2dppx) {
+  .receipePage {
+    background-image: url("../../images/flatDesctop2x.jpg");
+  }
+}
+
+@supports (background-image: url("../../images/flatDesctop2x.webp")) {
+  @media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 1200px) and (min-resolution: 192dpi),
+    screen and (min-width: 1200px) and (min-resolution: 2dppx) {
+    .receipePage {
+      background-image: url("../../images/flatDesctop2x.webp");
+    }
+  }
+}
