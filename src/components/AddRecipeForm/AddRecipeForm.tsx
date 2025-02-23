@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { ClimbingBoxLoader } from "react-spinners";
 import styles from "./AddRecipeForm.module.css";
 import { useRecipeForm } from "../../hooks/useRecipeForm";
@@ -71,7 +71,10 @@ const AddRecipeForm: React.FC = () => {
     instructionsRecipe,
     setInstructionsRecipe,
   };
+useEffect(()=>{
+console.log("Add",ingredients);
 
+},[ingredients])
   return (
     <form
       onSubmit={handleSubmit}
