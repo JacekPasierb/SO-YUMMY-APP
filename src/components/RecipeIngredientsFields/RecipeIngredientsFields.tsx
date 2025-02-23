@@ -49,13 +49,17 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     }));
   }, [ingredientsAll]);
 
-  const removeIngredient = async(fieldId: string) => {
- 
-    console.log("fieldId",fieldId);
-    console.log("ingredients",ingredients);
-    setIngredients(ingredients.filter(ing => ing.id !== fieldId))
-await console.log("iii",ingredients);
+  const removeIngredient = async (fieldId: string) => {
+    console.log("fieldId", fieldId);
+    console.log("ingredients", ingredients);
+    setIngredients((prev) => {
+      const updatedIngredients = prev.filter(
+        (ingredient) => ingredient.id !== fieldId
+      );
 
+      return updatedIngredients; // 👈 Wymuszenie nowej tablicy
+    });
+    await console.log("iii", ingredients);
   };
 
   // const removeIngredient = useCallback(
