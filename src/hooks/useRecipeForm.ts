@@ -115,17 +115,8 @@ export const useRecipeForm = () => {
     setDescriptionRecipe: (desc: string) => updateFormField('descriptionRecipe', desc),
     setCategoryRecipe: (category: string) => updateFormField('categoryRecipe', category),
     setCookingTime: (time: string) => updateFormField('cookingTime', time),
-    setIngredients: (value: React.SetStateAction<FormIngredient[]>) => {
-      const updateFormField = useCallback(<K extends keyof RecipeFormState>(
-        field: K,
-        value: RecipeFormState[K] | ((prev: RecipeFormState[K]) => RecipeFormState[K])
-      ) => {
-        setFormState(prev => ({
-          ...prev,
-          [field]: typeof value === 'function' ? (value as (prev: RecipeFormState[K]) => RecipeFormState[K])(prev[field]) : value
-        }));
-      }, []);
-    },
+    setIngredients:(value: React.SetStateAction<FormIngredient[]>) => 
+      updateFormField('ingredients', typeof value === 'function' ? value(formState.ingredients) : value),
     setInstructionsRecipe:(value: string | ((prevState: string) => string)) => 
       updateFormField('instructionsRecipe', typeof value === 'function' ? value(formState.instructionsRecipe) : value),
     ingredientsAll,
