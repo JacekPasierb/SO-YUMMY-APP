@@ -1,16 +1,18 @@
-import React, { FC, lazy, Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import React, {FC, lazy, Suspense} from "react";
+import {Outlet} from "react-router-dom";
 
-import Copyrights from "../Copyrights/Copyrights";
 import styles from "./SharedLayout.module.css";
-const Footer = lazy(()=>import("../Footer/Footer"))
+const Footer = lazy(() => import("../Footer/Footer"));
+const Copyrights = lazy(() => import("../Copyrights/Copyrights"));
 
 const SharedLayout: FC = () => {
   return (
     <div className={styles.container}>
       <Outlet />
-      <Footer />
-      <Copyrights />
+      <Suspense fallback={null}>
+        <Footer />
+        <Copyrights />
+      </Suspense>
     </div>
   );
 };
