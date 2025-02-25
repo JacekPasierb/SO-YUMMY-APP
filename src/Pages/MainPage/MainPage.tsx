@@ -23,12 +23,14 @@ const MainPage: React.FC = () => {
   };
 
   useEffect(() => {
-    const link = document.createElement("link");
-    link.rel = "preload";
-    link.as = "image";
-    link.href = "/assets/bckg2Mobile1x-6dd32201.webp";
-    link.type = "image/webp";
-    document.head.appendChild(link);
+    if (!document.head.querySelector("link[rel='preload'][href='/assets/bckg2Mobile1x-6dd32201.webp']")) {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = "/assets/bckg2Mobile1x-6dd32201.webp";
+      link.type = "image/webp";
+      document.head.appendChild(link);
+    }
   }, []);
 
   return (
