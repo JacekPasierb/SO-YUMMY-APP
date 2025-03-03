@@ -78,9 +78,9 @@ const CategoriesNav: React.FC = () => {
     return <p>Failed to load categories</p>;
   }
 
-  if (isLoading || !categoriesList) {
-    return null;
-  }
+  // if (isLoading || !categoriesList) {
+  //   return null;
+  // }
 
   return (
     <Tabs
