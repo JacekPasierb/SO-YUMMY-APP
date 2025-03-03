@@ -4,8 +4,14 @@ import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import CategoriesNav from "../../components/CategoriesNav/CategoriesNav";
 import styles from "./CategoriesPage.module.css";
+import { AppDispatch } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategoriesList } from "../../redux/recipes/operations";
+import { selectCategoriesList } from "../../redux/recipes/selectors";
 
 const CategoriesPage:FC = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const categoriesList = useSelector(selectCategoriesList);
 
   useEffect(() => {
    window.scrollTo({ 
@@ -14,12 +20,16 @@ const CategoriesPage:FC = () => {
     });
   }, []);
 
+  useEffect(() => {
+    dispatch(getCategoriesList());
+  }, [dispatch]);
+
   return (
     <main className={styles.categoriesPage}>
       <Header />
       <div className={`${styles.container} ${styles.flex}`}>
         <MainTitle title={"Categories"} />
-        <CategoriesNav />
+        <CategoriesNav categoriesList={categoriesList}/>
         <Suspense>
           <Outlet />
         </Suspense>

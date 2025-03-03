@@ -45,24 +45,26 @@ const TAB_STYLES = {
   },
 };
 
-const CategoriesNav: React.FC = () => {
+interface CategoriesNavProps {
+  categoriesList: string[];
+}
+
+const CategoriesNav: React.FC<CategoriesNavProps> = ({categoriesList}) => {
   const navigate = useNavigate();
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
-  const dispatch: AppDispatch = useDispatch();
+  
 
-  const categoriesList = useSelector(selectCategoriesList);
+  // const categoriesList = useSelector(selectCategoriesList);
   const error = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
+  // const isLoading = useSelector(selectIsLoading);
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
 
-  useEffect(() => {
-    dispatch(getCategoriesList());
-  }, [dispatch]);
+//tu byl
 
   useEffect(() => {
     if (categoryName && categoriesList.length > 0) {
