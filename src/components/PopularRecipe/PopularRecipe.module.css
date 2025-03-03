@@ -20,6 +20,9 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .popularRecipe__loader {
+    min-width: 366px;
+  }
   .popularRecipe__list {
     grid-template-columns: 1fr;
     gap: 24px;
