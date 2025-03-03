@@ -4,6 +4,7 @@ import axios from "axios";
 import styles from "./IngredientsShoppingList.module.css";
 import { toast } from "react-toastify";
 import { Loader } from "../Loader/Loader";
+import { ClimbingBoxLoader } from "react-spinners";
 const CardIngredientShoppingList = lazy(()=>import("../CardIngredientShoppingList/CardIngredientShoppingList"))
 
 export interface Ingredient {
@@ -40,7 +41,7 @@ const IngredientsShoppingList: React.FC = () => {
   }, []);
 
   if (isLoading) {
-    return <Loader/>;
+    return <ClimbingBoxLoader/>;
   }
 
   if (error) {
