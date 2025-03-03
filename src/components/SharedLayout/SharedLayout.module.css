@@ -1,6 +1,6 @@
 .container {
-  background-image: url("../../images/foot1x.png"),
-    url("../../images/foot21x.png");
+  background-image: url("../../images/foot.png"),
+    url("../../images/foot2.png");
   background-repeat: no-repeat;
   background-position: bottom 0 right 0, bottom 300px left 0;
   background-size: contain;
@@ -8,8 +8,8 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    background-image: url("../../images/footTablet1x.png"),
-    url("../../images/foot2Tablet1x.png");
+    background-image: url("../../images/footTablet.png"),
+    url("../../images/foot2Tablet.png");
     background-position: bottom 0 right 0, bottom 330px left 0;
   }
 }
