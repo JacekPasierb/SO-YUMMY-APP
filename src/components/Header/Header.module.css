@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 18px;
+  padding-block: 18px;
 }
 
 .header__mobile {
@@ -22,9 +22,7 @@
     max-width: 768px;
     padding: 0 32px;
   }
-  .headerBox {
-    padding-top: 18px;
-  }
+
   .header__mobile {
     gap: 32px;
   }
