@@ -1,15 +1,19 @@
-import React, {useEffect} from "react";
+import React, {lazy, useEffect} from "react";
 import {useNavigate} from "react-router";
 import {useMediaQuery} from "@react-hook/media-query";
 import Header from "../../components/Header/Header";
 import ChooseYourBreakfast from "../../components/ChooseYourBreakfast/ChooseYourBreakfast";
-import PreviewsCategories from "../../components/PreviewCategories/PreviewsCategories";
-import ButtonOtherCategories from "../../components/ButtonOtherCategories/ButtonOtherCategories";
 import AppTitle from "../../components/AppTitle/AppTitle";
 import AppDescription from "../../components/AppDescription/AppDescription";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import styles from "./MainPage.module.css";
 
+const PreviewsCategories = lazy(
+  () => import("../../components/PreviewCategories/PreviewsCategories")
+);
+const ButtonOtherCategories = lazy(
+  () => import("../../components/ButtonOtherCategories/ButtonOtherCategories")
+);
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 768px)");
