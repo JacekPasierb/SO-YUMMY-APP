@@ -78,9 +78,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
         <SubTitle title="Ingredients" />
-        <p>
-          <b>{ingredients.length}</b>
-        </p>
+
         <div
           className={styles.recipeIngredients__counterBox}
           role="group"
@@ -117,7 +115,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
           </button>
         </div>
       </div>
-      {ingredients.length > 0 ? (
+      {ingredients.length > 0 && (
         <ul
           className={styles.recipeIngredients__list}
           aria-label="Ingredients list"
@@ -168,8 +166,6 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
             </li>
           ))}
         </ul>
-      ) : (
-        <p>${ingredients.length}</p>
       )}
     </div>
   );
