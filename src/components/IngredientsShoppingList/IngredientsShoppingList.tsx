@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import axios from "axios";
 import styles from "./IngredientsShoppingList.module.css";
 import { toast } from "react-toastify";
+import { Loader } from "../Loader/Loader";
 const CardIngredientShoppingList = lazy(()=>import("../CardIngredientShoppingList/CardIngredientShoppingList"))
 
 export interface Ingredient {
@@ -39,7 +40,7 @@ const IngredientsShoppingList: React.FC = () => {
   }, []);
 
   if (isLoading) {
-    return <div className={styles.shoppingList__loading}>Loading...</div>;
+    return <Loader/>;
   }
 
   if (error) {
