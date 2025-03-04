@@ -61,9 +61,9 @@ const App: FC = () => {
   if (isRefreshing) {
     return <Loader />;
   }
-  // useEffect(() => {
-  //   console.log("token", token);
-  // }, [token]);
+  useEffect(() => {
+    console.log("token", token)
+  }, [token]);
   return (
     <Routes>
       {/* Public routes */}
