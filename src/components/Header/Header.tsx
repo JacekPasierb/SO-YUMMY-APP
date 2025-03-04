@@ -127,7 +127,7 @@ const Header: React.FC = () => {
         <>
           <Navigation />
           <UserLogo />
-          {countdown && <p>🔔 Sesja wygasa za: {countdown}</p>}
+          {countdown && <p style={{position:"absolute", top:"0", right:"0" }}>🔔 Sesja wygasa za: {countdown}</p>}
           <Suspense fallback={null}>
             <ThemeToggler />
           </Suspense>
