@@ -54,7 +54,7 @@ const App: FC = () => {
   }, [dispatch, token]);
 
   useEffect(() => {
-  console.log("token");
+  console.log("token",token);
   
   }, [ token]);
 
