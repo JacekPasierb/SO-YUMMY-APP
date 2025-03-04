@@ -118,7 +118,6 @@ const Header: React.FC = () => {
       {small || medium ? (
         <div className={styles.header__mobile}>
           <UserLogo />
-          {countdown && <p>🔔 Sesja wygasa za: {countdown}</p>}
           <Suspense fallback={null}>
             <HamburgerMenu />
           </Suspense>
@@ -127,7 +126,6 @@ const Header: React.FC = () => {
         <>
           <Navigation />
           <UserLogo />
-          {countdown && <p style={{position:"absolute", top:"0", right:"0" }}>🔔 Sesja wygasa za: {countdown}</p>}
           <Suspense fallback={null}>
             <ThemeToggler />
           </Suspense>
