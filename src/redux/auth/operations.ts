@@ -111,6 +111,9 @@ export const refreshUser = createAsyncThunk<
 
     return response.data.data;
   } catch (error: any) {
+    if (error.response?.status === 401) {
+      thunkAPI.dispatch(logOut()); // 🚀 Automatyczne wylogowanie przy 401
+    }
     return thunkAPI.rejectWithValue(error.message);
   }
 });
