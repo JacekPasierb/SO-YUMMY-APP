@@ -63,7 +63,7 @@ const App: FC = () => {
   }
   useEffect(() => {
     console.log("token", token)
-  }, [token]);
+  }, []);
   return (
     <Routes>
       {/* Public routes */}
