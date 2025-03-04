@@ -30,7 +30,7 @@ const ChooseYourBreakfast: React.FC = () => {
       <div className={styles.recipeInfo}>
         <span className={styles.description}>
           <span className={styles.highlight}>{t("deliciousAndHealthy")}</span>
-          {t("wayToEnjoy")}
+          <span> {t("wayToEnjoy")}</span>
         </span>
 
         <NavLink
