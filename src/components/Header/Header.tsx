@@ -76,6 +76,8 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
+    console.log("");
+    
     if (!token) {
       setCountdown(null);
       return;
@@ -114,7 +116,7 @@ const Header: React.FC = () => {
     const interval = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(interval);
-  }, [token, navigate, dispatch]);
+  }, [token, navigate, dispatch,countdown]);
 
   const renderContent = ({small, medium}: MediaQueries) => (
     <div className={`${styles.header__container} ${styles.headerBox}`}>
