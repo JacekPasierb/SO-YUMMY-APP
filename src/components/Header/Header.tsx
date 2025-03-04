@@ -76,7 +76,7 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("");
+    console.log("to");
     
     if (!token) {
       setCountdown(null);
