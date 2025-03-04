@@ -135,8 +135,22 @@ const Header: React.FC = () => {
           </Suspense>
         </>
       )}
-      <button onClick={() => changeLanguage("en")}>🇬🇧 English</button>
-      <button onClick={() => changeLanguage("pl")}>🇵🇱 Polski</button>
+        <div className={styles.languageSwitcher}>
+        <button
+          onClick={() => changeLanguage("pl")}
+          className={`${styles.langButton} ${i18n.language === "pl" ? styles.active : ""}`}
+          aria-label="Zmień język na polski"
+        >
+          🇵🇱
+        </button>
+        <button
+          onClick={() => changeLanguage("en")}
+          className={`${styles.langButton} ${i18n.language === "en" ? styles.active : ""}`}
+          aria-label="Change language to English"
+        >
+          🇬🇧
+        </button>
+      </div>
     </div>
   );
 

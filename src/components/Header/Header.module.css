@@ -35,3 +35,25 @@
     max-width: 1200px;
   }
 }
+
+.languageSwitcher {
+  display: flex;
+  gap: 10px;
+}
+
+.langButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.langButton:hover {
+  transform: scale(1.1);
+}
+
+.langButton.active {
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
