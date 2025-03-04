@@ -76,37 +76,31 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log("to");
-    
     if (!token) {
       setCountdown(null);
       return;
     }
 
-    const tokenData = getTokenExpiration(token);
-
-    if (!tokenData || tokenData.timeRemaining === null) {
-      setCountdown("Błąd sesji");
-      return;
-    }
-
-    if (tokenData.isExpired) {
-      setCountdown("Token expired");
-      dispatch(logOut());
-      navigate("/signin"); // 🚀 Przekierowanie na stronę logowania
-      return;
-    }
-
     const updateCountdown = () => {
-      const remainingMs = tokenData.timeRemaining;
-      if (remainingMs === null || remainingMs <= 0) {
-        setCountdown("Token expired");
-        dispatch(logOut());
-        navigate("/signin"); // 🚀 Przekierowanie na stronę logowania
+      const tokenData = getTokenExpiration(token);
+
+      if (!tokenData || tokenData.timeRemaining === null) {
+        setCountdown("Błąd sesji");
         return;
       }
 
-      const remainingSeconds = Math.floor(remainingMs / 1000);
+      if (tokenData.isExpired) {
+        setCountdown("Token expired");
+        dispatch(logOut());
+
+        setTimeout(() => {
+          navigate("/signin"); // 🚀 Przekierowanie po wylogowaniu
+        }, 500); // 🔥 Krótka przerwa na usunięcie tokena
+
+        return;
+      }
+
+      const remainingSeconds = Math.floor(tokenData.timeRemaining / 1000);
       const minutes = Math.floor(remainingSeconds / 60);
       const seconds = remainingSeconds % 60;
       setCountdown(`${minutes} min ${seconds} sec`);
