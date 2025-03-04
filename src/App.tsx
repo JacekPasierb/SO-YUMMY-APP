@@ -8,7 +8,7 @@ import {useAuth} from "./hooks/useAuth";
 import {Loader} from "./components/Loader/Loader";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 // Lazy-loaded Pages
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
@@ -53,6 +53,9 @@ const App: FC = () => {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch, token]);
+
+ 
+
 
   // Handle theme changes
   useEffect(() => {
