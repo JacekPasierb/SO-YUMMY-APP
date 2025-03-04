@@ -1,11 +1,11 @@
-import React, { FC, Suspense, lazy, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { AppDispatch } from "./redux/store";
-import { refreshUser } from "./redux/auth/operations";
-import { selectIsRefreshing, selectTheme } from "./redux/auth/selectors";
-import { useAuth } from "./hooks/useAuth";
-import { Loader } from "./components/Loader/Loader";
+import React, {FC, Suspense, lazy, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
+import {AppDispatch} from "./redux/store";
+import {refreshUser} from "./redux/auth/operations";
+import {selectIsRefreshing, selectTheme} from "./redux/auth/selectors";
+import {useAuth} from "./hooks/useAuth";
+import {Loader} from "./components/Loader/Loader";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
@@ -37,15 +37,15 @@ const App: FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { pathname, search } = location;
+  const {pathname, search} = location;
 
   const isRefreshing = useSelector(selectIsRefreshing);
   const isDarktheme = useSelector(selectTheme);
-  const { token } = useAuth();
+  const {token} = useAuth();
 
   // Preserve current location after refresh
   useEffect(() => {
-    navigate(`${pathname}${search}`, { replace: true }); // Funkcja po odświeżeniu aplikacji użytkownik zostaje na aktualnej stronie
+    navigate(`${pathname}${search}`, {replace: true}); // Funkcja po odświeżeniu aplikacji użytkownik zostaje na aktualnej stronie
   }, [navigate, pathname, search]);
 
   // Refresh user session
@@ -61,7 +61,9 @@ const App: FC = () => {
   if (isRefreshing) {
     return <Loader />;
   }
-
+  useEffect(() => {
+    console.log("token", token);
+  }, [token]);
   return (
     <Routes>
       {/* Public routes */}
@@ -131,15 +133,21 @@ const App: FC = () => {
         />
         <Route
           path="/categories"
-          element={<PrivateRoute component={<Suspense fallback={null}>
-          <CategoriesPage />
-        </Suspense>} />}
+          element={
+            <PrivateRoute
+              component={
+                <Suspense fallback={null}>
+                  <CategoriesPage />
+                </Suspense>
+              }
+            />
+          }
         >
           <Route
             path=":categoryName"
             element={
               <Suspense fallback={null}>
-                <CategoriesByName/>
+                <CategoriesByName />
               </Suspense>
             }
           />
