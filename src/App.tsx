@@ -70,8 +70,9 @@ const App: FC = () => {
   
       return {
         expirationUtc: expirationDate.toUTCString(), // Czytelna data UTC
-        timeRemaining: timeRemaining > 0 ? timeRemaining : 0, // Pozostały czas w ms
-        isExpired: timeRemaining <= 0,
+        expirationTimestamp: expirationTime, // Timestamp do dalszego użycia
+      timeRemaining: timeRemaining > 0 ? timeRemaining : 0, // Pozostały czas w ms
+      isExpired: timeRemaining <= 0,
       };
     } catch (error) {
       console.error("Invalid token:", error);
@@ -82,7 +83,11 @@ const App: FC = () => {
   useEffect(() => {
     const a = getTokenExpiration(token)
     console.log("token",a.expirationUtc);
-    
+    if (a.timeRemaining !== null) { // Sprawdzenie, czy timeRemaining nie jest null
+      console.log("⏳ Pozostały czas:", a.timeRemaining / 1000, "sekund");
+  } else {
+      console.log("⏳ Pozostały czas: brak danych");
+  }
     }, [ token]);
 
   // Handle theme changes
