@@ -97,11 +97,13 @@ const supportsWebP = () => {
 export const getRecipeImage = ({
   isDesktop,
   isTablet,
+  isMobile,
 }: Partial<DeviceConfig>): string => {
   const format = supportsWebP() ? "webp" : "png";
 
   if (isDesktop) return images.recipes.desktop[format];
   if (isTablet) return images.recipes.tablet[format];
+  if (isMobile) return images.recipes.mobile[format];
   return images.recipes.mobile[format];
 };
 
