@@ -53,6 +53,11 @@ const App: FC = () => {
     dispatch(refreshUser());
   }, [dispatch, token]);
 
+  useEffect(() => {
+  console.log("token");
+  
+  }, [ token]);
+
   // Handle theme changes
   useEffect(() => {
     document.body.className = isDarktheme ? "dark-theme" : "";
@@ -61,9 +66,7 @@ const App: FC = () => {
   if (isRefreshing) {
     return <Loader />;
   }
-  useEffect(() => {
-    console.log("token")
-  }, []);
+
   return (
     <Routes>
       {/* Public routes */}
