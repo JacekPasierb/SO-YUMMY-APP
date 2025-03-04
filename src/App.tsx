@@ -8,6 +8,7 @@ import {useAuth} from "./hooks/useAuth";
 import {Loader} from "./components/Loader/Loader";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import { jwtDecode } from "jwt-decode";
 
 // Lazy-loaded Pages
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
@@ -53,10 +54,36 @@ const App: FC = () => {
     dispatch(refreshUser());
   }, [dispatch, token]);
 
-  useEffect(() => {
-  console.log("token",token);
+ 
+  interface TokenPayload {
+    exp: number;
+  }
+  const getTokenExpiration = (token: string | null) => {
+    if (!token) return { expirationUtc: null, timeRemaining: null, isExpired: true };
   
-  }, [ token]);
+    try {
+      const decoded: TokenPayload = jwtDecode(token);
+      const expirationTime = decoded.exp * 1000; // Konwersja na milisekundy
+      const expirationDate = new Date(expirationTime);
+      const currentTime = Date.now();
+      const timeRemaining = expirationTime - currentTime;
+  
+      return {
+        expirationUtc: expirationDate.toUTCString(), // Czytelna data UTC
+        timeRemaining: timeRemaining > 0 ? timeRemaining : 0, // Pozostały czas w ms
+        isExpired: timeRemaining <= 0,
+      };
+    } catch (error) {
+      console.error("Invalid token:", error);
+      return { expirationUtc: null, timeRemaining: null, isExpired: true };
+    }
+  };
+
+  useEffect(() => {
+    const a = getTokenExpiration(token)
+    console.log("token",a.expirationUtc, a.isExpired, a.timeRemaining);
+    
+    }, [ token]);
 
   // Handle theme changes
   useEffect(() => {
