@@ -81,7 +81,7 @@ const App: FC = () => {
 
   useEffect(() => {
     const a = getTokenExpiration(token)
-    console.log("token",a.expirationUtc, a.isExpired, a.timeRemaining);
+    console.log("token",a.expirationUtc);
     
     }, [ token]);
 
