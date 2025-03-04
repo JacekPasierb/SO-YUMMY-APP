@@ -116,7 +116,7 @@ const Header: React.FC = () => {
     const interval = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(interval);
-  }, [token, navigate, dispatch,countdown]);
+  }, [token, navigate, dispatch]);
 
   const renderContent = ({small, medium}: MediaQueries) => (
     <div className={`${styles.header__container} ${styles.headerBox}`}>
