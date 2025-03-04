@@ -6,7 +6,7 @@ import {ToastContainer} from "react-toastify";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {persistor, store} from "./redux/store.js";
 import App from "./App";
-
+import "./i18n";
 import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter(
