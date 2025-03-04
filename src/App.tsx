@@ -8,7 +8,7 @@ import {useAuth} from "./hooks/useAuth";
 import {Loader} from "./components/Loader/Loader";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 // Lazy-loaded Pages
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
@@ -53,45 +53,6 @@ const App: FC = () => {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch, token]);
-
- 
-  interface TokenPayload {
-    exp: number;
-  }
-   const getTokenExpiration = (token: string | null) => {
-    if (!token) return { expirationTime: null, formattedTime: null, isExpired: true };
-  
-    try {
-      const decoded: TokenPayload = jwtDecode(token);
-      const expirationTime = decoded.exp * 1000; // Konwersja na milisekundy
-      const expirationDate = new Date(expirationTime);
-  
-      // Formatowanie godziny w lokalnym czasie użytkownika
-      const formattedTime = expirationDate.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-  
-      return {
-        expirationTime, // Timestamp w milisekundach
-        formattedTime,  // Czytelna godzina (np. "14:30:15")
-        isExpired: expirationTime <= Date.now(),
-      };
-    } catch (error) {
-      console.error("Invalid token:", error);
-      return { expirationTime: null, formattedTime: null, isExpired: true };
-    }
-  };
-
-  useEffect(() => {
-    const a = getTokenExpiration(token)
-    if (a.formattedTime !== null) { // Sprawdzenie, czy timeRemaining nie jest null
-      console.log("⏳ Pozostały czas:", a.formattedTime );
-  } else {
-      console.log("⏳ Pozostały czas: brak danych");
-  }
-    }, [ token]);
 
   // Handle theme changes
   useEffect(() => {
