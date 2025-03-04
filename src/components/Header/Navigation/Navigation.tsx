@@ -21,7 +21,7 @@ const Navigation: React.FC = () => {
     {to: "/add", text: t("add_recipe")},
     {to: "/ownRecipes", text: t("my_recipes")},
     {to: "/favorite", text: t("favorites")},
-    {to: "/shopping-list", text: t("hopping_list")},
+    {to: "/shopping-list", text: t("shopping_list")},
     {to: "/search", icon: "icon-search", ariaLabel: t("search_button")},
   ];
   return (
