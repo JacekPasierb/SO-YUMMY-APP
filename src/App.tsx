@@ -62,7 +62,7 @@ const App: FC = () => {
     return <Loader />;
   }
   useEffect(() => {
-    console.log("token", token)
+    console.log("token")
   }, []);
   return (
     <Routes>
