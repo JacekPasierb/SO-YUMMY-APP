@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from "react";
+import React, {useState, useCallback} from "react";
 import styles from "./SearchForm.module.css";
+import {useTranslation} from "react-i18next";
 
 interface SearchFormProps {
   onSearchSubmit: (value: string) => void;
@@ -11,7 +12,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
   searchValue = "",
 }) => {
   const [inputValue, setInputValue] = useState(searchValue);
-
+  const {t} = useTranslation();
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
@@ -35,7 +36,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
         type="search"
         id="recipe-search"
         name="recipe-search"
-        placeholder="Enter recipe name..."
+        placeholder={t("search_placeholder")}
         className={styles.search__input}
         aria-label="Search for recipes"
         value={inputValue}
@@ -48,7 +49,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
         disabled={!inputValue.trim()}
         aria-label="Search"
       >
-        Search
+        {t("search_button")}
       </button>
     </form>
   );
