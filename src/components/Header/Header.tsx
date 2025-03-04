@@ -12,6 +12,7 @@ import {useNavigate} from "react-router";
 import {useDispatch} from "react-redux";
 import {logOut} from "../../redux/auth/operations";
 import {AppDispatch} from "../../redux/store";
+import { useTranslation } from "react-i18next";
 
 const HamburgerMenu = lazy(() => import("./HamburgerMenu/HamburgerMenu"));
 const ThemeToggler = lazy(() => import("./ThemeToggler/ThemeToggler"));
@@ -31,7 +32,10 @@ const Header: React.FC = () => {
   const [countdown, setCountdown] = useState<string | null>(null);
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-
+  const { i18n } = useTranslation();
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
   interface TokenPayload {
     exp: number;
   }
@@ -131,6 +135,8 @@ const Header: React.FC = () => {
           </Suspense>
         </>
       )}
+      <button onClick={() => changeLanguage("en")}>🇬🇧 English</button>
+      <button onClick={() => changeLanguage("pl")}>🇵🇱 Polski</button>
     </div>
   );
 
