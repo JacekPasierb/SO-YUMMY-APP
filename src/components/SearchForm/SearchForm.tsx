@@ -48,6 +48,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
         className={styles.search__btn}
         disabled={!inputValue.trim()}
         aria-label="Search"
+        data-empty-message={t("emptyFieldMessage")}
       >
         {t("search_button")}
       </button>

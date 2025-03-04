@@ -2,6 +2,7 @@
     "welcome": "Co ugotować? To nie tylko aplikacja z przepisami, to Twój własny cyfrowy zeszyt kuchenny.",
     "search_placeholder": "Wpisz nazwę przepisu...",
     "search_button": "Szukaj",
+    "emptyFieldMessage":"Pole jest puste!",
     "categories": "Kategorie",
     "add_recipe": "Dodaj Przepis",
     "my_recipes": "Moje Przepisy",

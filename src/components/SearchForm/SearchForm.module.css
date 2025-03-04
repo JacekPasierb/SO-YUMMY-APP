@@ -48,7 +48,7 @@
 }
 
 .search__btn:disabled:hover::after {
-  content: "Field is empty!";
+  content: attr(data-empty-message);
   position: absolute;
   top: 100%;
   left: 0;
