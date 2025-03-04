@@ -121,21 +121,7 @@ const Header: React.FC = () => {
       <Logo />
       {small || medium ? (
         <div className={styles.header__mobile}>
-          <UserLogo />
-          <Suspense fallback={null}>
-            <HamburgerMenu />
-          </Suspense>
-        </div>
-      ) : (
-        <>
-          <Navigation />
-          <UserLogo />
-          <Suspense fallback={null}>
-            <ThemeToggler />
-          </Suspense>
-        </>
-      )}
-        <div className={styles.languageSwitcher}>
+          <div className={styles.languageSwitcher}>
         <button
           onClick={() => changeLanguage("pl")}
           className={`${styles.langButton} ${i18n.language === "pl" ? styles.active : ""}`}
@@ -151,6 +137,37 @@ const Header: React.FC = () => {
           🇬🇧
         </button>
       </div>
+          <UserLogo />
+          <Suspense fallback={null}>
+            <HamburgerMenu />
+          </Suspense>
+        </div>
+      ) : (
+        <>
+          <Navigation />
+          <UserLogo />
+          <Suspense fallback={null}>
+            <ThemeToggler />
+          </Suspense>
+          <div className={styles.languageSwitcher}>
+        <button
+          onClick={() => changeLanguage("pl")}
+          className={`${styles.langButton} ${i18n.language === "pl" ? styles.active : ""}`}
+          aria-label="Zmień język na polski"
+        >
+          🇵🇱
+        </button>
+        <button
+          onClick={() => changeLanguage("en")}
+          className={`${styles.langButton} ${i18n.language === "en" ? styles.active : ""}`}
+          aria-label="Change language to English"
+        >
+          🇬🇧
+        </button>
+      </div>
+        </>
+      )}
+        
     </div>
   );
 
