@@ -61,7 +61,7 @@ const {t}=useTranslation();
           >
             <PreviewsCategories />
             <ButtonOtherCategories
-              text={t("")}
+              text={t("otherCategories")}
               categoryName="Beef"
             />
           </div>
