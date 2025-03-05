@@ -29,7 +29,7 @@ const {t}=useTranslation();
     <main className={styles.categoriesPage}>
       <Header />
       <div className={`${styles.container} ${styles.flex}`}>
-        <MainTitle title={t("Categories")} />
+        <MainTitle title={t("categories")} />
         <CategoriesNav categoriesList={categoriesList}/>
         <Suspense>
           <Outlet />
