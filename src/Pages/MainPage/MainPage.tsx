@@ -9,13 +9,14 @@ import AppTitle from "../../components/AppTitle/AppTitle";
 import AppDescription from "../../components/AppDescription/AppDescription";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import styles from "./MainPage.module.css";
+import { useTranslation } from "react-i18next";
 
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
-
+const {t}=useTranslation();
   const handleSearchSubmit = (searchValue: string) => {
     const trimmedValue = searchValue?.trim();
     if (trimmedValue) {
@@ -60,7 +61,7 @@ const MainPage: React.FC = () => {
           >
             <PreviewsCategories />
             <ButtonOtherCategories
-              text="Other categories"
+              text={t("")}
               categoryName="Beef"
             />
           </div>

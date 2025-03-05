@@ -1,15 +1,16 @@
-import React, { FC, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useMediaQuery } from "@react-hook/media-query";
-import { toast } from "react-toastify";
-import { ClimbingBoxLoader } from "react-spinners";
+import React, {FC, useEffect, useState} from "react";
+import {NavLink} from "react-router-dom";
+import {useMediaQuery} from "@react-hook/media-query";
+import {toast} from "react-toastify";
+import {ClimbingBoxLoader} from "react-spinners";
 
 import CardRecipe from "../CardRecipe/CardRecipe";
 import TitleCategories from "../TitleCategories/TitleCategories";
-import { fetchRecipesByFourCategories } from "../../API/recipesAPI";
-import { IRecipe } from "src/types/recipesTypes";
+import {fetchRecipesByFourCategories} from "../../API/recipesAPI";
+import {IRecipe} from "src/types/recipesTypes";
 
 import styles from "./PreviewsCategories.module.css";
+import {useTranslation} from "react-i18next";
 
 interface RecipesByMainCategory {
   [category: string]: IRecipe[];
@@ -28,10 +29,11 @@ const RECIPES_COUNT = {
 const PreviewsCategories: FC = () => {
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1199px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
-
+  const {t} = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [recipesMainCategories, setRecipesMainCategories] = useState<RecipesByMainCategory | null>(null);
+  const [recipesMainCategories, setRecipesMainCategories] =
+    useState<RecipesByMainCategory | null>(null);
 
   const getRecipeCount = (): number => {
     if (isDesktop) return RECIPES_COUNT.DESKTOP;
@@ -45,17 +47,16 @@ const PreviewsCategories: FC = () => {
         setIsLoading(true);
         setError(null);
         const response = await fetchRecipesByFourCategories(getRecipeCount());
-        const { data } = response as ApiResponse;
-        
-        if (!data || typeof data !== 'object') {
-          throw new Error('Invalid data format received from server');
+        const {data} = response as ApiResponse;
+
+        if (!data || typeof data !== "object") {
+          throw new Error("Invalid data format received from server");
         }
 
         setRecipesMainCategories(data);
       } catch (error) {
-        const errorMessage = error instanceof Error 
-          ? error.message 
-          : "Failed to fetch recipes";
+        const errorMessage =
+          error instanceof Error ? error.message : "Failed to fetch recipes";
         setError(errorMessage);
         toast.error("Something went wrong. Please try again later.");
       } finally {
@@ -66,22 +67,18 @@ const PreviewsCategories: FC = () => {
     fetchRecipes();
   }, [isDesktop, isTablet]);
 
-  const renderRecipes = (recipes: IRecipe[]) => (
+  const renderRecipes = (recipes: IRecipe[]) =>
     recipes.map((recipe) => (
       <li key={recipe._id} className={styles.recipesListItem}>
-        <NavLink 
+        <NavLink
           to={`/recipe/${recipe._id}`}
           className={styles.recipeLink}
           aria-label={`View recipe: ${recipe.title}`}
         >
-          <CardRecipe 
-            title={recipe.title} 
-            preview={recipe.preview} 
-          />
+          <CardRecipe title={recipe.title} preview={recipe.preview} />
         </NavLink>
       </li>
-    ))
-  );
+    ));
 
   if (isLoading) {
     return (
@@ -107,20 +104,17 @@ const PreviewsCategories: FC = () => {
     <div className={styles.previewCategories}>
       <ul className={styles.categoriesList}>
         {Object.entries(recipesMainCategories).map(([category, recipes]) => (
-          <li 
-            key={category}
-            className={styles.categoriesListItem}
-          >
+          <li key={category} className={styles.categoriesListItem}>
             <TitleCategories categories={category} />
-            <ul className={styles.recipesList}>
-              {renderRecipes(recipes)}
-            </ul>
+            <ul className={styles.recipesList}>{renderRecipes(recipes)}</ul>
             <NavLink
-              to={`/categories/${category.charAt(0).toUpperCase() + category.slice(1)}`}
+              to={`/categories/${
+                category.charAt(0).toUpperCase() + category.slice(1)
+              }`}
               className={styles.btnCategories}
               aria-label={`See all recipes in ${category}`}
             >
-              See all
+              {t("seeAll")}
             </NavLink>
           </li>
         ))}
