@@ -42,10 +42,10 @@ const Footer: React.FC = () => {
     <div className={styles.footer__subscribeSection}>
       <div className={styles.footer__subscribeTextBox}>
         <h2 className={styles.footer__subscribeTitle}>
-        t("newsletterTitle"),
+        {t("newsletterTitle")},
         </h2>
         <p className={styles.footer__subscribeDescription}>
-        t("newsletterText"),
+        {t("newsletterText")},
         </p>
       </div>
       <SubscribeForm />
