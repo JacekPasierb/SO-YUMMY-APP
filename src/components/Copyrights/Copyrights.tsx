@@ -15,7 +15,7 @@ const Copyrights: React.FC = () => {
             © {CURRENT_YEAR} {t("rights")}
           </span>
           <Link to="#" className={styles.text}>
-          t("terms")
+          {t("terms")}
           </Link>
         </div>
       </div>
