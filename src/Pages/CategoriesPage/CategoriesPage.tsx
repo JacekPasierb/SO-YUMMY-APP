@@ -8,11 +8,12 @@ import { AppDispatch } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoriesList } from "../../redux/recipes/operations";
 import { selectCategoriesList } from "../../redux/recipes/selectors";
+import { useTranslation } from "react-i18next";
 
 const CategoriesPage:FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
-
+const {t}=useTranslation();
   useEffect(() => {
    window.scrollTo({ 
       top: 0, 
@@ -28,7 +29,7 @@ const CategoriesPage:FC = () => {
     <main className={styles.categoriesPage}>
       <Header />
       <div className={`${styles.container} ${styles.flex}`}>
-        <MainTitle title={"Categories"} />
+        <MainTitle title={t("Categories")} />
         <CategoriesNav categoriesList={categoriesList}/>
         <Suspense>
           <Outlet />
