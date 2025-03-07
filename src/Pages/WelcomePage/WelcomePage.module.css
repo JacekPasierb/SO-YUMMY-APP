@@ -85,6 +85,10 @@
     background-image: url("../../images/backgroundWelcomeTablet1x.jpg");
   }
 
+  .welcomePage__section {
+    max-width: 400px;
+  }
+
   @supports (
     background-image: url("../../images/backgroundWelcomeTablet1x.webp")
   ) {
