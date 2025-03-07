@@ -12,7 +12,8 @@ import {useNavigate} from "react-router";
 import {useDispatch} from "react-redux";
 import {logOut} from "../../redux/auth/operations";
 import {AppDispatch} from "../../redux/store";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const HamburgerMenu = lazy(() => import("./HamburgerMenu/HamburgerMenu"));
 const ThemeToggler = lazy(() => import("./ThemeToggler/ThemeToggler"));
@@ -32,10 +33,7 @@ const Header: React.FC = () => {
   const [countdown, setCountdown] = useState<string | null>(null);
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const { i18n } = useTranslation();
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+ 
   interface TokenPayload {
     exp: number;
   }
@@ -121,22 +119,7 @@ const Header: React.FC = () => {
       <Logo />
       {small || medium ? (
         <div className={styles.header__mobile}>
-          <div className={styles.languageSwitcher}>
-        <button
-          onClick={() => changeLanguage("pl")}
-          className={`${styles.langButton} ${i18n.language === "pl" ? styles.active : ""}`}
-          aria-label="Zmień język na polski"
-        >
-          🇵🇱
-        </button>
-        <button
-          onClick={() => changeLanguage("en")}
-          className={`${styles.langButton} ${i18n.language === "en" ? styles.active : ""}`}
-          aria-label="Change language to English"
-        >
-          🇬🇧
-        </button>
-      </div>
+         <LanguageSwitcher/>
           <UserLogo />
           <Suspense fallback={null}>
             <HamburgerMenu />
@@ -149,25 +132,9 @@ const Header: React.FC = () => {
           <Suspense fallback={null}>
             <ThemeToggler />
           </Suspense>
-          <div className={styles.languageSwitcher}>
-        <button
-          onClick={() => changeLanguage("pl")}
-          className={`${styles.langButton} ${i18n.language === "pl" ? styles.active : ""}`}
-          aria-label="Zmień język na polski"
-        >
-          🇵🇱
-        </button>
-        <button
-          onClick={() => changeLanguage("en")}
-          className={`${styles.langButton} ${i18n.language === "en" ? styles.active : ""}`}
-          aria-label="Change language to English"
-        >
-          🇬🇧
-        </button>
-      </div>
+          <LanguageSwitcher/>
         </>
       )}
-        
     </div>
   );
 

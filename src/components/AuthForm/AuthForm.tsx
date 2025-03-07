@@ -13,6 +13,7 @@ interface AuthFormProps {
 const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
   return (
     <Suspense fallback={<Loader />}>
+      
       {formType === "register" && (
         <>
           <RegisterForm />
