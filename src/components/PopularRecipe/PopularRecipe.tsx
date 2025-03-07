@@ -7,6 +7,7 @@ import { fetchPopularRecipe } from "../../API/recipesAPI";
 import { IRecipe } from "../../types/recipesTypes";
 import CardPopularRecipe from "../CardPopularRecipe/CardPopularRecipe";
 import SubTitle from "../SubTitle/SubTitle";
+import { useTranslation } from "react-i18next";
 
 const RECIPES_COUNT = {
   MOBILE: 4,
@@ -21,7 +22,7 @@ const PopularRecipe: FC = () => {
 
   const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesktop = useMediaQuery("(min-width:1200px)");
-
+const {t}=useTranslation();
   useEffect(() => {
     const count = isDesktop
       ? RECIPES_COUNT.DESKTOP
@@ -63,7 +64,7 @@ const PopularRecipe: FC = () => {
 
   return (
     <div className={styles.popularRecipe__container}>
-      <SubTitle title={"Popular Recipes"} />
+      <SubTitle title={t("popularRecipes")} />
 
       {popularRecipes.length === 0 ? (
         <p className={styles.popularRecipe__empty}>

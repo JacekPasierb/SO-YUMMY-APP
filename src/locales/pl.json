@@ -32,5 +32,7 @@
   "signup": "Zarejestruj się",
   "name": "Imię",
   "password": "Hasło",
-  "resendVerification": "Wyślij ponownie e-mail weryfikacyjny"
+  "resendVerification": "Wyślij ponownie e-mail weryfikacyjny",
+  "followUs": "Śledź nas",
+  "popularRecipes": "Popularne przepisy"
 }

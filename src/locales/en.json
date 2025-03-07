@@ -32,5 +32,7 @@
   "signup": "Sign up",
   "name": "Name",
   "password":"Password",
-  "resendVerification": "Resend verification email"
+  "resendVerification": "Resend verification email",
+  "followUs":"Follow Us",
+  "popularRecipes": "Popular Recipes"
 }

@@ -5,6 +5,7 @@ import MainTitle from "../../components/MainTitle/PageTitle";
 import SubTitle from "../../components/SubTitle/SubTitle";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import styles from "./AddRecipePage.module.css";
+import { useTranslation } from "react-i18next";
 
 
 const PopularRecipe = lazy(
@@ -16,10 +17,10 @@ const FollowUs = lazy(
 
 const AddRecipePage: React.FC = () => {
   const isDesktop = useMediaQuery("(min-width:1200px)");
-
+const {t}=useTranslation();
   const Sidebar = () => (
     <aside className={styles.addRecipePage__sidebar}>
-      <SubTitle title="Follow Us" />
+      <SubTitle title={t("followUs")} />
       <FollowUs />
       <PopularRecipe />
     </aside>
