@@ -96,7 +96,8 @@ const Header: React.FC = () => {
         dispatch(logOut());
 
         setTimeout(() => {
-          navigate("/signin"); // 🚀 Przekierowanie po wylogowaniu
+          navigate("/signin", { replace: true });
+          window.location.reload(); // 🚀 Przekierowanie po wylogowaniu
         }, 500); // 🔥 Krótka przerwa na usunięcie tokena
 
         return;

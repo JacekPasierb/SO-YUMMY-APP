@@ -1,7 +1,7 @@
 import styles from "./AuthForm.module.css";
-import React, { lazy, Suspense } from "react";
-import { Link } from "react-router-dom";
-import { Loader } from "../Loader/Loader";
+import React, {lazy, Suspense} from "react";
+import {Link} from "react-router-dom";
+import {Loader} from "../Loader/Loader";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const SigninForm = lazy(() => import("../SigninForm/SigninForm"));
@@ -11,11 +11,13 @@ interface AuthFormProps {
   formType: "register" | "signin";
 }
 
-const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
+const AuthForm: React.FC<AuthFormProps> = ({formType}) => {
   return (
     <Suspense fallback={<Loader />}>
-      <div style={{position:"absolute", top:"0", left:"0" }}> <LanguageSwitcher/></div>
-     
+      <div style={{position: "absolute", top: "0", left: "0"}}>
+        <LanguageSwitcher />
+      </div>
+
       {formType === "register" && (
         <>
           <RegisterForm />
