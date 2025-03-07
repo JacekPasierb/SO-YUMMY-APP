@@ -4,12 +4,14 @@ import AuthNav from "../../components/AuthNav/AuthNav";
 import styles from "./WelcomePage.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher";
 
 const WelcomePage: React.FC = () => {
   const { t } = useTranslation(); 
   return (
     <div className={styles.welcomePage}>
       <div className={styles.welcomePage__container}>
+        <LanguageSwitcher/>
         <svg width="54px" height="54px" className={styles.welcomePage__logo}>
           <use href={`${sprite}#icon-logo`}></use>
         </svg>
