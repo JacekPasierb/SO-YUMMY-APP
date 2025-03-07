@@ -11,6 +11,7 @@ import {
 import {selectIngredient} from "./selectStyles";
 import sprite from "../../assets/icons/sprite.svg";
 import styles from "./RecipeIngredientsFields.module.css";
+import { useTranslation } from "react-i18next";
 
 interface RecipeIngredientsFieldsProps {
   ingredients: FormIngredient[];
@@ -23,6 +24,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
+  const {t}=useTranslation();
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
@@ -77,7 +79,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   return (
     <div className={styles.recipeIngredientsContainer}>
       <div className={styles.recipeIngredients}>
-        <SubTitle title="Ingredients" />
+        <SubTitle title={t("ingredients")} />
 
         <div
           className={styles.recipeIngredients__counterBox}
