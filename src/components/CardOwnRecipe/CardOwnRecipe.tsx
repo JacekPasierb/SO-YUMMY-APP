@@ -1,12 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
-import { AppDispatch } from "../../redux/store";
-import { deleteRecipe } from "../../redux/ownRecipes/operations";
-import { removeFromFavorite } from "../../redux/favoriteRecipes/operations";
+import {useDispatch} from "react-redux";
+import {NavLink, useLocation} from "react-router-dom";
+import {toast} from "react-toastify";
+import {AppDispatch} from "../../redux/store";
+import {deleteRecipe} from "../../redux/ownRecipes/operations";
+import {removeFromFavorite} from "../../redux/favoriteRecipes/operations";
 import styles from "./CardOwnRecipe.module.css";
 import sprite from "../../assets/icons/sprite.svg";
+import {useTranslation} from "react-i18next";
 
 interface OwnRecipe {
   _id: string;
@@ -20,11 +21,11 @@ interface CardOwnRecipeProps {
   ownRecipe: OwnRecipe;
 }
 
-const CardOwnRecipe: React.FC<CardOwnRecipeProps> = ({ ownRecipe }) => {
+const CardOwnRecipe: React.FC<CardOwnRecipeProps> = ({ownRecipe}) => {
   const dispatch: AppDispatch = useDispatch();
-  const { pathname } = useLocation();
-  const { _id, preview, title, description, time } = ownRecipe;
-
+  const {pathname} = useLocation();
+  const {_id, preview, title, description, time} = ownRecipe;
+  const {t} = useTranslation();
   const handleDelete = () => {
     dispatch(deleteRecipe(_id));
   };
@@ -54,8 +55,17 @@ const CardOwnRecipe: React.FC<CardOwnRecipeProps> = ({ ownRecipe }) => {
             className={styles.myRecipesList__deleteBtn}
             aria-label={isFavorite ? "Remove from favorites" : "Delete recipe"}
           >
-            <svg className={isFavorite ? styles.myRecipesList__iconBgRemove : styles.myRecipesList__iconBgDelete}>
-              <use href={`${sprite}#icon-trash-01`} className={styles.myRecipesList__iconDel} />
+            <svg
+              className={
+                isFavorite
+                  ? styles.myRecipesList__iconBgRemove
+                  : styles.myRecipesList__iconBgDelete
+              }
+            >
+              <use
+                href={`${sprite}#icon-trash-01`}
+                className={styles.myRecipesList__iconDel}
+              />
             </svg>
           </button>
         </div>
@@ -64,9 +74,13 @@ const CardOwnRecipe: React.FC<CardOwnRecipeProps> = ({ ownRecipe }) => {
           <p className={styles.myRecipesList__time}>{time} min</p>
           <NavLink
             to={`/recipe/${_id}`}
-            className={`${styles.myRecipesList__seeBtn} ${isFavorite ? styles.myRecipesList__txtFavBtn : styles.myRecipesList__txtBtn}`}
+            className={`${styles.myRecipesList__seeBtn} ${
+              isFavorite
+                ? styles.myRecipesList__txtFavBtn
+                : styles.myRecipesList__txtBtn
+            }`}
           >
-            See recipe
+            {t("seeRecipe")}
           </NavLink>
         </div>
       </div>

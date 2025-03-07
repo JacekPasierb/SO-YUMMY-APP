@@ -43,7 +43,11 @@
   "selectIngredient": "Wybierz składnik",
 "recipePreparation": "Przygotowanie Przepisu",
 "enterRecipeInstructions": "Wprowadź instrukcje przepisu...",
-"add": "Dodaj"
+"add": "Dodaj",
+"noRecipesAdded": "Nie dodałeś jeszcze żadnych przepisów",
+"seeRecipe": "Zobacz przepis"
+
+
 
 
 

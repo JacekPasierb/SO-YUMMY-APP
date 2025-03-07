@@ -43,5 +43,9 @@
   "selectIngredient": "Select ingredient",
   "recipePreparation": "Recipe Preparation",
   "enterRecipeInstructions": "Enter recipe instructions...",
-  "add": "Add"
+  "add": "Add",
+  "noRecipesAdded": "You haven't added any recipes yet",
+  "seeRecipe": "See recipe"
+
+
 }

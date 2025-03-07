@@ -15,6 +15,7 @@ import MainTitle from "../../components/MainTitle/PageTitle";
 import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import styles from "./MainRecipesPage.module.css";
+import { useTranslation } from "react-i18next";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -22,7 +23,7 @@ const MyRecipesPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const { search } = useLocation();
-
+const {t}=useTranslation();
   const user = useSelector(selectUser);
   const ownRecipes = useSelector(selectOwnRecipes);
   const totalOwnRecipes = useSelector(selectTotalOwnRecipes);
@@ -48,7 +49,7 @@ const MyRecipesPage: React.FC = () => {
     <main className={styles.myRecipesPage}>
       <Header />
       <div className={styles.myRecipesPage__container}>
-        <MainTitle title={"My recipes"} />
+        <MainTitle title={t("my_recipes")} />
 
         <MyRecipesList recipes={ownRecipes} isLoading={isLoading} />
         {ownRecipes.length > 0 && (
