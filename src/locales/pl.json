@@ -26,6 +26,9 @@
   "rights": "Wszystkie prawa zastrzeżone.",
   "terms": "Regulamin",
   "signin": "Zaloguj się",
-  "registration": "Rejestracja"
+  "registration": "Rejestracja",
+  "signup": "Zarejestruj się",
+   "name": "Imię",
+   "password":"Hasło"
 
 }

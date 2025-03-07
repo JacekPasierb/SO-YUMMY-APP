@@ -13,6 +13,7 @@ import {getLogoSrc} from "../../helpers/helpers";
 
 import styles from "./SigninForm.module.css";
 import icons from "../../assets/icons/sprite.svg";
+import { useTranslation } from "react-i18next";
 
 interface SigninFormValues {
   email: string;
@@ -23,7 +24,7 @@ const SigninForm: React.FC = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = Math.floor(window.devicePixelRatio) > 1;
-
+const {t}=useTranslation();
   const logoSrc = useMemo(
     () => getLogoSrc({isDesktop, isTablet, isRetina}),
     [isDesktop, isTablet, isRetina]
@@ -101,7 +102,7 @@ const SigninForm: React.FC = () => {
             className={styles.logo}
             alt="Logo"
           />
-          <h2 className={styles.title}>Sign In</h2>
+          <h2 className={styles.title}>{t("signin")}</h2>
 
           <div className={styles.inputGroup}>
             {renderField("email", "email", "Email", "mail-01")}

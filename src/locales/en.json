@@ -26,5 +26,8 @@
   "rights": "All Rights Reserved.",
   "terms": "Terms of Service",
   "signin": "Sign in",
-  "registration": "Registration"
+  "registration": "Registration",
+  "signup": "Sign up",
+  "name": "Name",
+  "password":"Password"
 }

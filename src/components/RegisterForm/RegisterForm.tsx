@@ -14,6 +14,7 @@ import errorIcon from "../../images/Errorlogo.png";
 import successIcon from "../../images/Successlogo.png";
 import styles from "./RegisterForm.module.css";
 import {getLogoSrc} from "../../helpers/helpers";
+import {useTranslation} from "react-i18next";
 
 interface FormValues {
   name: string;
@@ -24,6 +25,7 @@ interface FormValues {
 const RegisterForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
+  const {t} = useTranslation();
 
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
@@ -122,12 +124,12 @@ const RegisterForm: React.FC = () => {
             alt="Logo"
             className={styles.logo}
           />
-          <h2 className={styles.titleRegister}>Registration</h2>
+          <h2 className={styles.titleRegister}>{t("registration")}</h2>
           <div className={styles.boxInput}>
             {renderInputField(
               "name",
               "text",
-              "Name",
+              t("name"),
               "user-01",
               touched,
               errors
@@ -143,7 +145,7 @@ const RegisterForm: React.FC = () => {
             {renderInputField(
               "password",
               "password",
-              "Password",
+              t("password"),
               "lock-02",
               touched,
               errors
@@ -155,7 +157,7 @@ const RegisterForm: React.FC = () => {
             className={styles.btnRegister}
             aria-label="Sign up"
           >
-            Sign up
+             {t("signup")},
           </button>
         </Form>
       )}
