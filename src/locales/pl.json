@@ -34,5 +34,6 @@
   "password": "Hasło",
   "resendVerification": "Wyślij ponownie e-mail weryfikacyjny",
   "followUs": "Śledź nas",
-  "popularRecipes": "Popularne przepisy"
+  "popularRecipes": "Popularne Przepisy",
+  "noPopularRecipes": "Brak popularnych przepisów w tym momencie."
 }

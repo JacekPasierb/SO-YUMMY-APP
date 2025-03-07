@@ -68,7 +68,7 @@ const {t}=useTranslation();
 
       {popularRecipes.length === 0 ? (
         <p className={styles.popularRecipe__empty}>
-          No popular recipes available at this time.
+          t("noPopularRecipes")
         </p>
       ) : (
         <ul className={styles.popularRecipe__list}>

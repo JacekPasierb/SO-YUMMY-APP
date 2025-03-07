@@ -29,7 +29,7 @@ const {t}=useTranslation();
     <main className={styles.addRecipePage}>
       <Header />
       <div className={`${styles.addRecipePage__container} ${styles.flex}`}>
-        <MainTitle title={"Add recipe"} />
+        <MainTitle title={t("add_recipe")} />
         <div className={styles.addRecipePage__content}>
           <AddRecipeForm />
           {isDesktop && <Sidebar />}

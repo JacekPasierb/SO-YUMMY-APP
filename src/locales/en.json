@@ -34,5 +34,6 @@
   "password":"Password",
   "resendVerification": "Resend verification email",
   "followUs":"Follow Us",
-  "popularRecipes": "Popular Recipes"
+  "popularRecipes": "Popular Recipes",
+  "noPopularRecipes": "No popular recipes available at this time."
 }
