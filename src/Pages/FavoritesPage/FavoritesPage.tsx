@@ -43,7 +43,7 @@ const {t}=useTranslation();
       <Header />
       <main className={styles.favoritesPage}>
         <div className={styles.favoritesPage__container}>
-          <MainTitle title={t("Favorites")} />
+          <MainTitle title={t("favorites")} />
           <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading} />
           {favoriteRecipes.length !== 0 && (
             <BasicPagination
