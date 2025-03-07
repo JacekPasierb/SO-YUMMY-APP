@@ -29,5 +29,6 @@
   "registration": "Registration",
   "signup": "Sign up",
   "name": "Name",
-  "password":"Password"
+  "password":"Password",
+  "resendVerification": "Resend verification email"
 }

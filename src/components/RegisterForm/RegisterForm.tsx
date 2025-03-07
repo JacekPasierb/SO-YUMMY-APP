@@ -157,7 +157,7 @@ const RegisterForm: React.FC = () => {
             className={styles.btnRegister}
             aria-label="Sign up"
           >
-             {t("signup")},
+             {t("signup")}
           </button>
         </Form>
       )}

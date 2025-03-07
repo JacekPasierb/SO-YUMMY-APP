@@ -106,7 +106,7 @@ const {t}=useTranslation();
 
           <div className={styles.inputGroup}>
             {renderField("email", "email", "Email", "mail-01")}
-            {renderField("password", "password", "Password", "lock-02")}
+            {renderField("password", "password", t("password"), "lock-02")}
           </div>
 
           {error === "Email not verified" && (
@@ -115,7 +115,7 @@ const {t}=useTranslation();
               className={styles.resendButton}
               onClick={() => handleResendVerification(values.email)}
             >
-              Resend verification email
+               {t("resendVerification")}
             </button>
           )}
 
@@ -124,7 +124,7 @@ const {t}=useTranslation();
             className={styles.submitButton}
             aria-label="Sign in"
           >
-            Sign in
+              {t("signin")}
           </button>
         </Form>
       )}
