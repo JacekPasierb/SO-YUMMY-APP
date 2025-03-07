@@ -24,5 +24,7 @@
   "subscribe": "Subscribe",
   "subscribing": "Subscribing...",
   "rights": "All Rights Reserved.",
-  "terms": "Terms of Service"
+  "terms": "Terms of Service",
+  "signin": "Sign in",
+  "registration": "Registration"
 }
