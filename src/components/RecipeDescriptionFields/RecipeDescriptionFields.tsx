@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCategoriesList } from "../../redux/recipes/selectors";
 import { AppDispatch } from "../../redux/store";
 import { getCategoriesList } from "../../redux/recipes/operations";
+import { useTranslation } from "react-i18next";
 
 interface DataForm {
   file: File | null;
@@ -26,7 +27,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
   const [preview, setPreview] = useState<string | null>(null);
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
-
+const {t}=useTranslation();
   const timeOptionsList = () => {
     const time = [];
     for (let i = 5; i <= 120; i += 5) {
@@ -118,7 +119,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               id="title"
               value={data.titleRecipe}
               onChange={handleTitleChange}
-              placeholder="Enter recipe title"
+              placeholder={t("enterRecipeTitle")}
               className={styles.input}
               name="title"
             />
@@ -130,7 +131,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               id="about"
               value={data.descriptionRecipe}
               onChange={handleDescriptionChange}
-              placeholder="Enter about recipe"
+              placeholder={t("enterAboutRecipe")}
               className={styles.input}
               name="about"
             />
@@ -141,7 +142,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               <input
                 type="text"
                 id="category"
-                placeholder="Category"
+                placeholder={t("category")}
                 className={styles.input}
                 readOnly
                 name="category"
@@ -168,7 +169,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               <input
                 type="text"
                 id="cookingTime"
-                placeholder="Cooking time"
+                placeholder={t("cookingTime")}
                 className={styles.input}
                 readOnly
                 name="cookingTime"

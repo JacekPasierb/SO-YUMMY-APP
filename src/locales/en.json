@@ -35,5 +35,13 @@
   "resendVerification": "Resend verification email",
   "followUs":"Follow Us",
   "popularRecipes": "Popular Recipes",
-  "noPopularRecipes": "No popular recipes available at this time."
+  "noPopularRecipes": "No popular recipes available at this time.",
+  "enterRecipeTitle": "Enter recipe title",
+  "enterAboutRecipe": "Enter about recipe",
+  "category": "Category",
+  "cookingTime": "Cooking Time"
+
+
+
+
 }

@@ -35,5 +35,13 @@
   "resendVerification": "Wyślij ponownie e-mail weryfikacyjny",
   "followUs": "Śledź nas",
   "popularRecipes": "Popularne Przepisy",
-  "noPopularRecipes": "Brak popularnych przepisów w tym momencie."
+  "noPopularRecipes": "Brak popularnych przepisów w tym momencie.",
+  "enterRecipeTitle": "Wprowadź tytuł przepisu",
+  "enterAboutRecipe": "Wprowadź opis przepisu",
+  "category": "Kategoria",
+  "cookingTime": "Czas gotowania"
+
+
+
+
 }
