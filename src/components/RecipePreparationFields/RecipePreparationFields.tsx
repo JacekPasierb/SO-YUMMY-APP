@@ -24,7 +24,7 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
 
       <div className={styles.recipePreparationFields__inputWrapper}>
         <textarea
-          placeholder="Enter recipe instructions..."
+          placeholder={t("enterRecipeInstructions")}
           rows={10}
           cols={50}
           className={styles.recipePreparationFields__textarea}
@@ -39,7 +39,7 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
           className={styles.recipePreparationFields__button}
           aria-label="Add recipe instructions"
         >
-         t("add")
+         {t("add")}
         </button>
       </div>
     </div>
