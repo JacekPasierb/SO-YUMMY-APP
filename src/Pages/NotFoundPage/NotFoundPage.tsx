@@ -3,8 +3,10 @@ import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import sprite from "../../assets/icons/sprite.svg";
 import styles from "./NotFoundPage.module.css";
+import {useTranslation} from "react-i18next";
 
 const NotFoundPage: React.FC = () => {
+  const {t} = useTranslation();
   return (
     <>
       <Header />
@@ -20,10 +22,8 @@ const NotFoundPage: React.FC = () => {
           </svg>
         </div>
         <div className={styles.notFound__message}>
-          <p className={styles.notFound__title}>We are sorry,</p>
-          <p className={styles.notFound__text}>
-            but the page you were looking for can’t be found.
-          </p>
+          <p className={styles.notFound__title}>{t("notFoundTitle")}</p>
+          <p className={styles.notFound__text}>{t("notFoundText")}</p>
         </div>
       </div>
     </>

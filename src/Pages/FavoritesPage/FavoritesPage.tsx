@@ -15,12 +15,13 @@ import MyRecipesList from "../../components/MyRecipesList/MyRecipesList";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import styles from "./FavoritesPage.module.css";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useTranslation } from "react-i18next";
 
 const FavoritesPage: React.FC = () => {
   const dispatch: AppDispatch = useAppDispatch();
   const navigate = useNavigate();
   const { search } = useLocation();
-
+const {t}=useTranslation();
   const favoriteRecipes = useSelector(selectFavoriteRecipes) || [];
   const totalFavoriteRecipes = useSelector(selectTotalFavoritesRecipes);
   const isLoading = useSelector(selectIsLoading);
@@ -42,7 +43,7 @@ const FavoritesPage: React.FC = () => {
       <Header />
       <main className={styles.favoritesPage}>
         <div className={styles.favoritesPage__container}>
-          <MainTitle title={"Favorites"} />
+          <MainTitle title={t("Favorites")} />
           <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading} />
           {favoriteRecipes.length !== 0 && (
             <BasicPagination

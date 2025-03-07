@@ -45,7 +45,11 @@
 "enterRecipeInstructions": "Wprowadź instrukcje przepisu...",
 "add": "Dodaj",
 "noRecipesAdded": "Nie dodałeś jeszcze żadnych przepisów",
-"seeRecipe": "Zobacz przepis"
+"seeRecipe": "Zobacz przepis",
+"notFoundTitle": "Przepraszamy,",
+"notFoundText": "ale strona, której szukasz, nie została odnaleziona."
+
+
 
 
 
