@@ -13,7 +13,7 @@
   "wayToEnjoy": "sposób na cieszenie się różnorodnymi, świeżymi składnikami w jednym sycącym posiłku",
   "seeRecipes": "Zobacz przepisy",
   "seeAll": "Zobacz wszystkie",
-  "otherCategories":"Wszystkie Kategorie",
+  "otherCategories": "Wszystkie Kategorie",
   "description1": "Baza przepisów, którą można uzupełniać",
   "description2": "Elastyczne wyszukiwanie pożądanych i niechcianych składników",
   "description3": "Możliwość dodawania własnych przepisów ze zdjęciami",
@@ -25,11 +25,12 @@
   "subscribing": "Subskrybowanie...",
   "rights": "Wszystkie prawa zastrzeżone.",
   "terms": "Regulamin",
+  "welcomeTitle": "Witamy w aplikacji!",
+  "welcomeDescription": "Ta aplikacja to nie tylko zbiór przepisów - została zaprojektowana tak, aby stać się Twoją własną cyfrową książką kucharską. Możesz łatwo zapisywać i odzyskiwać swoje przepisy w dowolnym momencie.",
   "signin": "Zaloguj się",
   "registration": "Rejestracja",
   "signup": "Zarejestruj się",
-   "name": "Imię",
-   "password":"Hasło",
-   "resendVerification": "Wyślij ponownie e-mail weryfikacyjny"
-
+  "name": "Imię",
+  "password": "Hasło",
+  "resendVerification": "Wyślij ponownie e-mail weryfikacyjny"
 }

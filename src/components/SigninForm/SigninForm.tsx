@@ -13,7 +13,7 @@ import {getLogoSrc} from "../../helpers/helpers";
 
 import styles from "./SigninForm.module.css";
 import icons from "../../assets/icons/sprite.svg";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 
 interface SigninFormValues {
   email: string;
@@ -24,7 +24,7 @@ const SigninForm: React.FC = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
   const isRetina = Math.floor(window.devicePixelRatio) > 1;
-const {t}=useTranslation();
+  const {t} = useTranslation();
   const logoSrc = useMemo(
     () => getLogoSrc({isDesktop, isTablet, isRetina}),
     [isDesktop, isTablet, isRetina]
@@ -115,7 +115,7 @@ const {t}=useTranslation();
               className={styles.resendButton}
               onClick={() => handleResendVerification(values.email)}
             >
-               {t("resendVerification")}
+              {t("resendVerification")}
             </button>
           )}
 
@@ -124,7 +124,7 @@ const {t}=useTranslation();
             className={styles.submitButton}
             aria-label="Sign in"
           >
-              {t("signin")}
+            {t("signin")}
           </button>
         </Form>
       )}
