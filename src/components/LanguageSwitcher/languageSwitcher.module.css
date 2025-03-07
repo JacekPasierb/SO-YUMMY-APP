@@ -6,6 +6,7 @@
   .langButton {
     background: none;
     border: none;
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Twemoji", sans-serif;
     font-size: 20px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
