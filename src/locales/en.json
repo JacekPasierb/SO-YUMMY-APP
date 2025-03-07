@@ -31,17 +31,17 @@
   "registration": "Registration",
   "signup": "Sign up",
   "name": "Name",
-  "password":"Password",
+  "password": "Password",
   "resendVerification": "Resend verification email",
-  "followUs":"Follow Us",
+  "followUs": "Follow Us",
   "popularRecipes": "Popular Recipes",
   "noPopularRecipes": "No popular recipes available at this time.",
   "enterRecipeTitle": "Enter recipe title",
   "enterAboutRecipe": "Enter about recipe",
   "category": "Category",
-  "cookingTime": "Cooking Time"
-
-
-
-
+  "cookingTime": "Cooking Time",
+  "selectIngredient": "Select ingredient",
+  "recipePreparation": "Recipe Preparation",
+  "enterRecipeInstructions": "Enter recipe instructions...",
+  "add": "Add"
 }

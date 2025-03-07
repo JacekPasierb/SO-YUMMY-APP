@@ -39,8 +39,11 @@
   "enterRecipeTitle": "Wprowadź tytuł przepisu",
   "enterAboutRecipe": "Wprowadź opis przepisu",
   "category": "Kategoria",
-  "cookingTime": "Czas gotowania"
-
+  "cookingTime": "Czas gotowania",
+  "selectIngredient": "Wybierz składnik",
+"recipePreparation": "Przygotowanie Przepisu",
+"enterRecipeInstructions": "Wprowadź instrukcje przepisu...",
+"add": "Dodaj"
 
 
 

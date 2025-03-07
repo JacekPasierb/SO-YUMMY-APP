@@ -133,7 +133,7 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
                 }
                 styles={selectIngredient}
                 className={styles.recipeIngredients__select}
-                placeholder="Select ingredient"
+                placeholder={t("selectIngredient")}
                 aria-label="Select ingredient"
                 isSearchable
                 required
