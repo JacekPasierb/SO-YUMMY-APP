@@ -14,7 +14,8 @@ interface AuthFormProps {
 const AuthForm: React.FC<AuthFormProps> = ({ formType }) => {
   return (
     <Suspense fallback={<Loader />}>
-      <LanguageSwitcher/>
+      <div style={{position:"absolute", top:"0", left:"0" }}> <LanguageSwitcher/></div>
+     
       {formType === "register" && (
         <>
           <RegisterForm />
