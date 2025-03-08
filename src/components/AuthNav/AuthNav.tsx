@@ -11,13 +11,13 @@ const AuthNav: React.FC = () => {
         className={`${styles.authNav__link} ${styles.authNav__linkRegister}`}
         to="/register"
       >
-       t("registration")
+       {t("registration")}
       </Link>
       <Link
         className={`${styles.authNav__link} ${styles.authNav__linkSignin}`}
         to="/signin"
       >
-        t("signin")
+        {t("signin")}
       </Link>
     </nav>
   );
