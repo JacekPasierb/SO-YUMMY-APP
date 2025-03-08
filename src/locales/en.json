@@ -50,7 +50,9 @@
 "notFoundText": "but the page you were looking for can’t be found.",
 "product": "Product",
 "number": "Number",
-"remove": "Remove"
+"remove": "Remove",
+"editProfile":"Edit profile",
+"logOut":"Log out"
 
 
 
