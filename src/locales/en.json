@@ -78,5 +78,6 @@
     "emailInUse": "Email is already in use",
     "registrationFailed": "Registration failed",
     "loginFailed": "Login failed. Please try again.",
-    "emailNotVerified": "Email not verified"
+    "emailNotVerified": "Email not verified",
+    "enterEmail": "Enter your email address"
 }

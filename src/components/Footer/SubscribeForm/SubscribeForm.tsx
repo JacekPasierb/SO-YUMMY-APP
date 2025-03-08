@@ -57,7 +57,7 @@ const {t}=useTranslation();
                 <Field
                   type="email"
                   name="email"
-                  placeholder="Enter your email address"
+                  placeholder={t("enterEmail")}
                   className={styles.inputEmail}
                   aria-label="Email subscription"
                 />

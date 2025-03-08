@@ -78,5 +78,6 @@
   "emailInUse": "Ten adres e-mail jest już w użyciu",
   "registrationFailed": "Rejestracja nie powiodła się",
   "loginFailed": "Logowanie nie powiodło się. Spróbuj ponownie.",
-  "emailNotVerified": "Adres e-mail nie został zweryfikowany"
+  "emailNotVerified": "Adres e-mail nie został zweryfikowany",
+   "enterEmail": "Wpisz swój adres e-mail"
 }
