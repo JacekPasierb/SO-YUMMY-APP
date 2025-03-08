@@ -54,5 +54,7 @@
   "editProfile": "Edytuj profil",
   "logOut": "Wyloguj",
   "saving": "Zapisywanie...",
-  "saveChanges": "Zapisz zmiany"
+  "saveChanges": "Zapisz zmiany",
+  "logoutConfirmation": "Czy na pewno chcesz się wylogować?",
+  "cancel": "Anuluj"
 }

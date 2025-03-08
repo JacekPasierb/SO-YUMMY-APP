@@ -54,7 +54,9 @@
 "editProfile":"Edit profile",
 "logOut":"Log out",
 "saving": "Saving...",
-  "saveChanges": "Save changes"
+  "saveChanges": "Save changes",
+  "logoutConfirmation": "Are you sure you want to log out?",
+  "cancel": "Cancel"
 
 
 

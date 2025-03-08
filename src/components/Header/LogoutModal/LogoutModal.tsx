@@ -9,6 +9,7 @@ import IconCloseModal from "../../IconCloseModal/IconCloseModal";
 import { toast } from "react-toastify";
 import { AppDispatch } from "../../../redux/store";
 import styles from "./LogoutModal.module.css";
+import { useTranslation } from "react-i18next";
 
 interface LogoutModalProps {
   onClose: () => void;
@@ -20,6 +21,7 @@ const LogoutModal: React.FC<LogoutModalProps> = ({
   id = "logout-modal",
 }) => {
   const dispatch = useDispatch<AppDispatch>();
+const {t}=useTranslation();
 
   const handleLogout = async () => {
     try {
@@ -44,7 +46,7 @@ const LogoutModal: React.FC<LogoutModalProps> = ({
       <IconCloseModal onClose={onClose} className="logOutModal--position"/>
 
       <p id="logout-title" className={styles.logoutModal__text}>
-        Are you sure you want to log out?
+      {t("logoutConfirmation")}
       </p>
 
       <div className={styles.logoutModal__buttons}>
@@ -53,14 +55,14 @@ const LogoutModal: React.FC<LogoutModalProps> = ({
           onClick={handleLogout}
           className={styles.logoutModal__btnLogout}
         >
-          Log out
+          {t("logOut")}
         </button>
         <button
           type="button"
           onClick={onClose}
           className={styles.logoutModal__btnCancel}
         >
-          Cancel
+         {t("cancel")}
         </button>
       </div>
     </div>
