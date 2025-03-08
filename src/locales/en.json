@@ -74,5 +74,9 @@
   "logoutSuccess": "Logged out successfully!",
   "logoutError": "Failed to log out. Please try again.",
    "passwordTooShort": "Password must be at least {{min}} characters",
-    "passwordTooLong": "Password must be less than {{max}} characters"
+    "passwordTooLong": "Password must be less than {{max}} characters",
+    "emailInUse": "Email is already in use",
+    "registrationFailed": "Registration failed",
+    "loginFailed": "Login failed. Please try again.",
+    "emailNotVerified": "Email not verified"
 }

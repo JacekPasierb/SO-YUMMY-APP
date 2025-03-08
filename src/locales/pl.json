@@ -74,5 +74,9 @@
   "logoutSuccess": "Pomyślnie wylogowano!",
   "logoutError": "Nie udało się wylogować. Spróbuj ponownie.",
   "passwordTooShort": "Hasło musi mieć co najmniej {{min}} znaków",
-  "passwordTooLong": "Hasło musi mieć mniej niż {{max}} znaków"
+  "passwordTooLong": "Hasło musi mieć mniej niż {{max}} znaków",
+  "emailInUse": "Ten adres e-mail jest już w użyciu",
+  "registrationFailed": "Rejestracja nie powiodła się",
+  "loginFailed": "Logowanie nie powiodło się. Spróbuj ponownie.",
+  "emailNotVerified": "Adres e-mail nie został zweryfikowany"
 }
