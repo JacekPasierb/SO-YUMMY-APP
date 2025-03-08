@@ -49,7 +49,7 @@ const RegisterForm: React.FC = () => {
       const result = await dispatch(register(values));
 
       if (register.fulfilled.match(result)) {
-        toast.info("Verification link sent to email. Check your mail.");
+        toast.info(t("verificationEmailSent"));
         resetForm();
         navigate("/signin");
       }

@@ -62,9 +62,15 @@
   "selectSearchType": "Wybierz typ wyszukiwania",
   "recipeAddedSuccess": "Przepis został pomyślnie dodany",
   "nameRequired": "Imię jest wymagane",
-    "nameLength": "Imię musi mieć od {{min}} do {{max}} znaków",
-    "emailRequired": "Adres e-mail jest wymagany",
-    "invalidEmail": "Podaj prawidłowy adres e-mail",
-    "passwordRequired": "Hasło jest wymagane",
-    "passwordLength": "Hasło musi mieć od {{min}} do {{max}} znaków"
+  "nameLength": "Imię musi mieć od {{min}} do {{max}} znaków",
+  "emailRequired": "Adres e-mail jest wymagany",
+  "invalidEmail": "Podaj prawidłowy adres e-mail",
+  "passwordRequired": "Hasło jest wymagane",
+  "passwordLength": "Hasło musi mieć od {{min}} do {{max}} znaków",
+  "verificationEmailSent": "Link weryfikacyjny został wysłany na e-mail. Sprawdź swoją skrzynkę.",
+  "signinError": "Logowanie nie powiodło się. Spróbuj ponownie.",
+  "verificationEmailFailed": "Nie udało się wysłać e-maila weryfikacyjnego.",
+  "accountActivated": "Konto zostało aktywowane! Możesz się teraz zalogować.",
+  "logoutSuccess": "Pomyślnie wylogowano!",
+  "logoutError": "Nie udało się wylogować. Spróbuj ponownie."
 }

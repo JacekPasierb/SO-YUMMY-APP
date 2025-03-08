@@ -44,22 +44,22 @@ const SigninForm: React.FC = () => {
           navigate("/");
         }
       } catch (error) {
-        toast.error("Sign in failed. Please try again.");
+        toast.error(t("signinError"));
       }
     },
-    [dispatch, navigate]
+    [dispatch, navigate, t]
   );
 
   const handleResendVerification = useCallback(
     async (email: string | undefined) => {
       try {
         await dispatch(resendVerificationEmail(email as string));
-        toast.success("Verification email sent successfully!");
+        toast.success(t("verificationEmailSent"));
       } catch (error) {
-        toast.error("Failed to send verification email.");
+        toast.error(t("verificationEmailFailed"));
       }
     },
-    [dispatch]
+    [dispatch, t]
   );
 
   const renderField = (

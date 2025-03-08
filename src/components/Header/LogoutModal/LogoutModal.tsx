@@ -28,10 +28,10 @@ const {t}=useTranslation();
       await dispatch(logOut());
       dispatch(setIsLogoutModalOpen(false));
       dispatch(setIsUserLogoModalOpen(false));
-      toast.success("Logged out successfully!");
+      toast.success(t("logoutSuccess"));
     } catch (error) {
       console.error("Error during logout:", error);
-      toast.error("Failed to log out. Please try again.");
+      toast.error(t("logoutError"));
     }
   };
 
