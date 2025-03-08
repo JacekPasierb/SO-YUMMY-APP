@@ -9,6 +9,7 @@ import {useAuth} from "../../../hooks/useAuth";
 import IconCloseModal from "../../IconCloseModal/IconCloseModal";
 import styles from "./UserInfoModal.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
+import {useTranslation} from "react-i18next";
 
 export const DEFAULT_AVATAR =
   "https://res.cloudinary.com/db5awxaxs/image/upload/v1680863981/%D0%B7%D0%B0%D0%B2%D0%B0%D0%BD%D1%82%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_1_sycrzf.jpg";
@@ -34,6 +35,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<AppDispatch>();
+  const {t} = useTranslation();
 
   const {user} = useAuth();
   const [imageDataUrl, setImageDataUrl] = useState(user.avatar);
@@ -90,7 +92,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
       aria-labelledby="user-info-title"
       aria-modal="true"
     >
-      <IconCloseModal onClose={onClose} className="otherPosition"/>
+      <IconCloseModal onClose={onClose} className="otherPosition" />
 
       <Formik
         initialValues={{avatar: user.avatar || "", name: user.name || ""}}
@@ -189,7 +191,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
                 className={styles.userInfoModal__btnSave}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Save..." : "Save changes"}
+                {isSubmitting ? t("saving") : t("saveChanges")}
               </button>
             </Form>
           );

@@ -41,25 +41,18 @@
   "category": "Kategoria",
   "cookingTime": "Czas gotowania",
   "selectIngredient": "Wybierz składnik",
-"recipePreparation": "Przygotowanie Przepisu",
-"enterRecipeInstructions": "Wprowadź instrukcje przepisu...",
-"add": "Dodaj",
-"noRecipesAdded": "Nie dodałeś jeszcze żadnych przepisów",
-"seeRecipe": "Zobacz przepis",
-"notFoundTitle": "Przepraszamy,",
-"notFoundText": "ale strona, której szukasz, nie została odnaleziona.",
-"product": "Produkt",
-"number": "Ilość",
-"remove": "Usuń",
-"editProfile":"Edytuj profil",
-"logOut":"Wyloguj"
-
-
-
-
-
-
-
-
-
+  "recipePreparation": "Przygotowanie Przepisu",
+  "enterRecipeInstructions": "Wprowadź instrukcje przepisu...",
+  "add": "Dodaj",
+  "noRecipesAdded": "Nie dodałeś jeszcze żadnych przepisów",
+  "seeRecipe": "Zobacz przepis",
+  "notFoundTitle": "Przepraszamy,",
+  "notFoundText": "ale strona, której szukasz, nie została odnaleziona.",
+  "product": "Produkt",
+  "number": "Ilość",
+  "remove": "Usuń",
+  "editProfile": "Edytuj profil",
+  "logOut": "Wyloguj",
+  "saving": "Zapisywanie...",
+  "saveChanges": "Zapisz zmiany"
 }

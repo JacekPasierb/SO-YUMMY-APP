@@ -52,7 +52,9 @@
 "number": "Number",
 "remove": "Remove",
 "editProfile":"Edit profile",
-"logOut":"Log out"
+"logOut":"Log out",
+"saving": "Saving...",
+  "saveChanges": "Save changes"
 
 
 
