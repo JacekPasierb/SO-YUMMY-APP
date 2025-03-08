@@ -12,6 +12,7 @@
   cursor: pointer;
   transition: all var(--transition-duration) ease;
 }
+
 #user-info-modal .iconCloseButton {
   top:18px;
 }
