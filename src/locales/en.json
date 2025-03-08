@@ -94,6 +94,7 @@
     "missingField": "Please fill out the following field: {{field}}",
     "missingIngredients": "Please add at least one ingredient",
     "incompleteIngredient": "Please fill out all fields for each ingredient",
-    "instructionsTooShort": "Instructions are too short. Please provide more details (at least {{min}} characters)."
+    "instructionsTooShort": "Instructions are too short. Please provide more details (at least {{min}} characters).",
+    "recipeAddFailed": "Failed to add recipe. Please try again."
  
 }

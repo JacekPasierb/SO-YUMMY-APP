@@ -103,7 +103,7 @@ const {t}=useTranslation();
       }
     } catch (error) {
       console.error('Error adding recipe:', error);
-      toast.error('Failed to add recipe. Please try again');
+      toast.error(t("recipeAddFailed"));
     } finally {
       setIsLoading(false);
     }

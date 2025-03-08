@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./languageSwitcher.module.css"
 import { useTranslation } from "react-i18next";
+import plFlag from "../../assets/icons/pol.png;
+import gbFlag from "../../assets/icons/eng.png";
 
 const LanguageSwitcher = () => {
     const {i18n} = useTranslation();
@@ -16,7 +18,7 @@ const LanguageSwitcher = () => {
         }`}
         aria-label="Zmień język na polski"
       >
-        🇵🇱
+     <img src={plFlag} alt="Polish" />
       </button>
       <button
         onClick={() => changeLanguage("en")}
@@ -25,7 +27,7 @@ const LanguageSwitcher = () => {
         }`}
         aria-label="Change language to English"
       >
-        🇬🇧
+        <img src={gbFlag} alt="English" />
       </button>
     </div>
   );

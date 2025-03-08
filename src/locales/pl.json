@@ -94,6 +94,7 @@
     "missingField": "Proszę wypełnić następujące pole: {{field}}",
     "missingIngredients": "Proszę dodać co najmniej jeden składnik",
     "incompleteIngredient": "Proszę uzupełnić wszystkie pola dla każdego składnika",
-    "instructionsTooShort": "Instrukcje są za krótkie. Podaj więcej szczegółów (co najmniej {{min}} znaków)."
+    "instructionsTooShort": "Instrukcje są za krótkie. Podaj więcej szczegółów (co najmniej {{min}} znaków).",
+     "recipeAddFailed": "Nie udało się dodać przepisu. Spróbuj ponownie."
 
 }
