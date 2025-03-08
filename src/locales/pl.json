@@ -59,5 +59,12 @@
   "cancel": "Anuluj",
   "searchBy": "Szukaj według:",
   "title": "Tytuł",
-  "selectSearchType": "Wybierz typ wyszukiwania"
+  "selectSearchType": "Wybierz typ wyszukiwania",
+  "recipeAddedSuccess": "Przepis został pomyślnie dodany",
+  "nameRequired": "Imię jest wymagane",
+    "nameLength": "Imię musi mieć od {{min}} do {{max}} znaków",
+    "emailRequired": "Adres e-mail jest wymagany",
+    "invalidEmail": "Podaj prawidłowy adres e-mail",
+    "passwordRequired": "Hasło jest wymagane",
+    "passwordLength": "Hasło musi mieć od {{min}} do {{max}} znaków"
 }

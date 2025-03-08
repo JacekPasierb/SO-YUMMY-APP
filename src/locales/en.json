@@ -59,7 +59,14 @@
   "cancel": "Cancel",
   "searchBy": "Search by:",
   "title": "Title",
-  "selectSearchType": "Select search type"
+  "selectSearchType": "Select search type",
+   "recipeAddedSuccess": "Recipe added successfully",
+   "nameRequired": "Name is required",
+   "nameLength": "Name must be between {{min}} and {{max}} characters",
+   "emailRequired": "Email is required",
+   "invalidEmail": "Please enter a valid email address",
+   "passwordRequired": "Password is required",
+   "passwordLength": "Password must be between {{min}} and {{max}} characters"
 
 
 

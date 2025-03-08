@@ -8,6 +8,7 @@ import { Ing, IngredientData, Ingredient, FormIngredient } from '../types/ingred
 import { validateInputs } from '../helpers/recipeValidation';
 import { uploadImage } from '../helpers/imageUpload';
 import { RecipeInputs, RecipeFormState } from '../types/authTypes';
+import { useTranslation } from 'react-i18next';
 
 const initialState: RecipeFormState = {
   file: null,
@@ -23,7 +24,7 @@ export const useRecipeForm = () => {
   const [formState, setFormState] = useState<RecipeFormState>(initialState);
   const [ingredientsAll, setIngredientsAll] = useState<IngredientData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-
+const {t}=useTranslation();
   const dispatch: AppDispatch = useDispatch();
 
   const fetchIngredients = useCallback(async () => {
@@ -98,7 +99,7 @@ export const useRecipeForm = () => {
       const result = await dispatch(addOwnRecipes(recipeData));
       if (addOwnRecipes.fulfilled.match(result)) {
         resetForm();
-        toast.success('Recipe added successfully');
+        toast.success(t("recipeAddedSuccess"));
       }
     } catch (error) {
       console.error('Error adding recipe:', error);

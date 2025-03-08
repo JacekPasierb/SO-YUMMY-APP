@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 interface FormValues {
   name: string;
   email: string;
@@ -19,32 +21,36 @@ const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 export const validate = (values: FormValues): FormErrors => {
   const errors: FormErrors = {};
-
+const {t}=useTranslation();
   if (!values.name?.trim()) {
-    errors.name = "Name is required";
+    errors.name = t("nameRequired");
   } else if (
     values.name.length < NAME_MIN_LENGTH ||
     values.name.length > NAME_MAX_LENGTH
   ) {
-    errors.name = `Name must be ${NAME_MIN_LENGTH} to ${NAME_MAX_LENGTH} characters`;
-  }
+    errors.name = t("nameLength", {
+      min: NAME_MIN_LENGTH,
+      max: NAME_MAX_LENGTH,
+    });  }
 
   // Email validation
   if (!values.email?.trim()) {
-    errors.email = "Email is required";
+    errors.email = t("emailRequired");
   } else if (!EMAIL_REGEX.test(values.email)) {
-    errors.email = "Please enter a valid email address";
+    errors.email =t("invalidEmail");
   }
 
   // Password validation
   if (!values.password?.trim()) {
-    errors.password = "Password is required";
+    errors.password =t("passwordRequired");
   } else if (
     values.password.length < PASSWORD_MIN_LENGTH ||
     values.password.length > PASSWORD_MAX_LENGTH
   ) {
-    errors.password = `Password must be ${PASSWORD_MIN_LENGTH} to ${PASSWORD_MAX_LENGTH} characters`;
-  }
+    errors.password = t("passwordLength", {
+      min: PASSWORD_MIN_LENGTH,
+      max: PASSWORD_MAX_LENGTH,
+    });  }
 
   return errors;
 };
