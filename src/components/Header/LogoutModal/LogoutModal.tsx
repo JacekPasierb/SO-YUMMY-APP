@@ -41,7 +41,7 @@ const LogoutModal: React.FC<LogoutModalProps> = ({
       aria-labelledby="logout-title"
       aria-modal="true"
     >
-      <IconCloseModal onClose={onClose} />
+      <IconCloseModal onClose={onClose} className="logOutModal--position"/>
 
       <p id="logout-title" className={styles.logoutModal__text}>
         Are you sure you want to log out?

@@ -43,6 +43,12 @@
     padding: 6px;
   } */
 
+  .logOutModal--position {
+    right: 24px;
+    top: 24px;
+    padding: 6px;
+  }
+
   .iconClose {
     width: 24px;
     height: 24px;
