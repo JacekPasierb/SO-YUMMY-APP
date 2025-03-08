@@ -13,7 +13,7 @@
   transition: all var(--transition-duration) ease;
 }
 .otherPosition {
-  top: 18px !important;
+  top: 18px ;
 }
 
 
