@@ -37,8 +37,8 @@ export const register = createAsyncThunk<
       const t = i18n.t;
       const message =
         error.response?.status === 409
-          ? t("auth.emailInUse")
-          :t("auth.registrationFailed");
+          ? t("emailInUse")
+          :t("registrationFailed");
       toast.error(message);
       return thunkAPI.rejectWithValue(message);
     }
@@ -60,7 +60,7 @@ export const logIn = createAsyncThunk<
     } catch (error: any) {
       const t = i18n.t;
       const message =
-        error.response?.status === 403 ? t("auth.emailNotVerified") : t("auth.loginFailed");
+        error.response?.status === 403 ? t("emailNotVerified") : t("loginFailed");
 
       toast.error(message);
       thunkAPI.dispatch(setAuthError(message));
