@@ -180,3 +180,8 @@
     margin-top: 52px;
   }
 }
+
+
+.userInfoModal .iconCloseButton {
+  top:18px;
+}
