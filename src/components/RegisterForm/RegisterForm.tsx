@@ -112,7 +112,7 @@ const RegisterForm: React.FC = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validate={validate}
+      validate={(values) => validate(values, t)}
       onSubmit={handleSubmit}
     >
       {({errors, touched}) => (

@@ -1,5 +1,4 @@
-import { useTranslation } from "react-i18next";
-
+import { TFunction } from "i18next";
 interface FormValues {
   name: string;
   email: string;
@@ -19,9 +18,9 @@ const PASSWORD_MAX_LENGTH = 12;
 
 const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
-export const validate = (values: FormValues): FormErrors => {
+export const validate = (values: FormValues, t: TFunction): FormErrors => {
   const errors: FormErrors = {};
-const {t}=useTranslation();
+
   if (!values.name?.trim()) {
     errors.name = t("nameRequired");
   } else if (
