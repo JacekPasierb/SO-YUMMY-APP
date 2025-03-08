@@ -45,13 +45,13 @@ const {t}=useTranslation();
     let allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
 
     if (!allowedTypes.includes(file.type)) {
-      toast.error("Invalid file type. Please use JPEG or PNG.");
+      toast.error(t("invalidFileType"));
       data.setFile(null);
       return;
     }
 
     if (file.size > 4000000) {
-      toast.error("File is too large. Maximum size is 4MB.");
+      toast.error(t("fileTooLarge"));
       data.setFile(null);
       return;
     }

@@ -87,5 +87,7 @@
    "general": "Coś poszło nie tak..",
    "addToFavorites": "Dodaj do ulubionych przepisów",
   "removeFromFavorites": "Usuń z ulubionych",
-   "addToList":"Dodaj do listy"
+   "addToList":"Dodaj do listy",
+    "invalidFileType": "Nieprawidłowy format pliku. Użyj JPEG lub PNG.",
+    "fileTooLarge": "Plik jest za duży. Maksymalny rozmiar to 4MB."
 }
