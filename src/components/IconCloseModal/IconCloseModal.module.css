@@ -12,6 +12,9 @@
   cursor: pointer;
   transition: all var(--transition-duration) ease;
 }
+#user-info-modal .iconCloseButton {
+  top:18px;
+}
 
 .iconCloseButton:focus-visible {
   outline: 2px solid var(--color-text-highlight);
