@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./NavigationMobile.module.css";
 import sprite from "../../../assets/icons/sprite.svg";
+import { useTranslation } from "react-i18next";
 
 interface NavigationLink {
   to: string;
@@ -13,16 +14,21 @@ interface NavigationMobileProps {
   onClose: () => void;
 }
 
-const navigationLinks: NavigationLink[] = [
-  { to: "/categories/Beef", text: "Categories" },
-  { to: "/add", text: "Add Recipes" },
-  { to: "/ownRecipes", text: "My Recipes" },
-  { to: "/favorite", text: "Favorites" },
-  { to: "/shopping-list", text: "Shopping List" },
-  { to: "/search", text: "Search", icon: "icon-search" }
-];
+
 
 const NavigationMobile: FC<NavigationMobileProps> = ({ onClose }) => {
+const {t}=useTranslation();
+
+  const navigationLinks: NavigationLink[] = [
+    { to: "/categories/Beef", text: t("categories") },
+    { to: "/add", text: t("add_recipe") },
+    { to: "/ownRecipes", text: t("my_recipes") },
+    { to: "/favorite", text: t("favorites") },
+    { to: "/shopping-list", text: t("shopping_list") },
+    { to: "/search", text: t("search_button"), icon: "icon-search" }
+  ];
+
+
   return (
     <nav 
       className={styles.navigation}
