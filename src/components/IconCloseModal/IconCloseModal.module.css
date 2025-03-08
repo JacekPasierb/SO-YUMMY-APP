@@ -12,6 +12,13 @@
   cursor: pointer;
   transition: all var(--transition-duration) ease;
 }
+
+.logOutModal--position {
+ 
+  top: 24px;
+  padding: 6px;
+}
+
 .otherPosition {
   top: 18px ;
 }
