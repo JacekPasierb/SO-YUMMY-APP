@@ -44,6 +44,8 @@ const SigninForm: React.FC = () => {
           navigate("/");
         }
       } catch (error) {
+        console.log("ooo");
+        
         toast.error(t("signinError"));
       }
     },
