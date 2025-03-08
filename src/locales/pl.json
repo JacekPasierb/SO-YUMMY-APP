@@ -56,5 +56,8 @@
   "saving": "Zapisywanie...",
   "saveChanges": "Zapisz zmiany",
   "logoutConfirmation": "Czy na pewno chcesz się wylogować?",
-  "cancel": "Anuluj"
+  "cancel": "Anuluj",
+  "searchBy": "Szukaj według:",
+  "title": "Tytuł",
+  "selectSearchType": "Wybierz typ wyszukiwania"
 }

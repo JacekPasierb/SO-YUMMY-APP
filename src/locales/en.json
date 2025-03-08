@@ -56,7 +56,11 @@
 "saving": "Saving...",
   "saveChanges": "Save changes",
   "logoutConfirmation": "Are you sure you want to log out?",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "searchBy": "Search by:",
+  "title": "Title",
+  "selectSearchType": "Select search type"
+
 
 
 

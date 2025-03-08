@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { MenuItem, Select, SelectChangeEvent, styled } from "@mui/material";
 import styles from "./SearchTypeSelector.module.css";
+import { useTranslation } from "react-i18next";
 
 interface SearchTypeSelectorProps {
   onTypeChange: (type: string) => void;
@@ -43,6 +44,7 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
   onTypeChange,
   selectedType,
 }) => {
+  const {t}=useTranslation();
   const handleSelectChange = (
     event: SelectChangeEvent<unknown>,
     child: React.ReactNode
@@ -53,17 +55,17 @@ const SearchTypeSelector: React.FC<SearchTypeSelectorProps> = ({
   return (
     <div className={styles.searchTypeSelector}>
       <label htmlFor="search-type" className={styles.searchTypeSelector__label}>
-        Search by:
+      {t("searchBy")}
       </label>
       <StyledSelect
         id="search-type"
         value={selectedType}
         onChange={handleSelectChange}
         MenuProps={menuProps}
-        aria-label="Select search type"
+        aria-label={t("selectSearchType")}
       >
-        <MenuItem value="query">Title</MenuItem>
-        <MenuItem value="ingredient">Ingredients</MenuItem>
+        <MenuItem value="query">{t("title")}</MenuItem>
+        <MenuItem value="ingredient">{t("ingredients")}</MenuItem>
       </StyledSelect>
     </div>
   );

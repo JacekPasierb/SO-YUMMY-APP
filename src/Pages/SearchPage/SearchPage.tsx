@@ -25,13 +25,14 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import CardRecipe from "../../components/CardRecipe/CardRecipe";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import styles from "./SearchPage.module.css";
+import { useTranslation } from "react-i18next";
 
 const SearchPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const { search } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-
+const {t}=useTranslation();
   const initialSearchType = searchParams.get("ingredient")
     ? "ingredient"
     : "query";
@@ -98,7 +99,7 @@ const SearchPage: React.FC = () => {
     <>
       <Header />
       <div className={styles.searchPage__container}>
-        <MainTitle title="Search" />
+        <MainTitle title={t("search_button")}/>
         <SearchBar
           onTypeChange={handleSearchTypeChange}
           selectedType={searchType}
