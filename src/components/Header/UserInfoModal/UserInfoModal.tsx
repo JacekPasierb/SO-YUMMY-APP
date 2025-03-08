@@ -90,7 +90,7 @@ const UserInfoModal: FC<UserInfoModalProps> = ({
       aria-labelledby="user-info-title"
       aria-modal="true"
     >
-      <IconCloseModal onClose={onClose} />
+      <IconCloseModal onClose={onClose} className="otherPosition"/>
 
       <Formik
         initialValues={{avatar: user.avatar || "", name: user.name || ""}}
