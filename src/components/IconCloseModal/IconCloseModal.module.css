@@ -13,7 +13,7 @@
   transition: all var(--transition-duration) ease;
 }
 
-#user-info-modal .iconCloseButton {
+.userInfoModal .iconCloseButton {
   top:18px;
 }
 
