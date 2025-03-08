@@ -47,7 +47,11 @@
   "noRecipesAdded": "You haven't added any recipes yet",
   "seeRecipe": "See recipe",
   "notFoundTitle": "We are sorry,",
-"notFoundText": "but the page you were looking for can’t be found."
+"notFoundText": "but the page you were looking for can’t be found.",
+"product": "Product",
+"number": "Number",
+"remove": "Remove"
+
 
 
 

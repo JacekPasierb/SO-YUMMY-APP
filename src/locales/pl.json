@@ -47,7 +47,11 @@
 "noRecipesAdded": "Nie dodałeś jeszcze żadnych przepisów",
 "seeRecipe": "Zobacz przepis",
 "notFoundTitle": "Przepraszamy,",
-"notFoundText": "ale strona, której szukasz, nie została odnaleziona."
+"notFoundText": "ale strona, której szukasz, nie została odnaleziona.",
+"product": "Produkt",
+"number": "Ilość",
+"remove": "Usuń"
+
 
 
 
