@@ -79,5 +79,7 @@
     "registrationFailed": "Registration failed",
     "loginFailed": "Login failed. Please try again.",
     "emailNotVerified": "Email not verified",
-    "enterEmail": "Enter your email address"
+    "enterEmail": "Enter your email address",
+    "newsletterSubscribed": "Successfully subscribed to newsletter!",
+  "newsletterAlreadySubscribed": "You are already subscribed"
 }

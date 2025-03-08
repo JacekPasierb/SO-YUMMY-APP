@@ -79,5 +79,7 @@
   "registrationFailed": "Rejestracja nie powiodła się",
   "loginFailed": "Logowanie nie powiodło się. Spróbuj ponownie.",
   "emailNotVerified": "Adres e-mail nie został zweryfikowany",
-   "enterEmail": "Wpisz swój adres e-mail"
+  "enterEmail": "Wpisz swój adres e-mail",
+  "newsletterSubscribed": "Pomyślnie zapisano do newslettera!",
+  "newsletterAlreadySubscribed": "Już jesteś zapisany"
 }

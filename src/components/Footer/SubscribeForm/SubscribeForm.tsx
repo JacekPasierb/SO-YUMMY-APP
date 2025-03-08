@@ -31,10 +31,10 @@ const {t}=useTranslation();
   ) => {
     try {
       await addSubscribe({ email: values.email });
-      toast.success("Successfully subscribed to newsletter!");
+      toast.success(t("newsletterSubscribed"));
       resetForm();
     } catch (error) {
-      toast.error("You are already subscribed");
+      toast.error(t("newsletterAlreadySubscribed"));
     } finally {
       setSubmitting(false);
     }
