@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./languageSwitcher.module.css"
 import { useTranslation } from "react-i18next";
-import plFlag from "../../assets/icons/pol.png;
+import plFlag from "../../assets/icons/pol.png";
 import gbFlag from "../../assets/icons/eng.png";
 
 const LanguageSwitcher = () => {
