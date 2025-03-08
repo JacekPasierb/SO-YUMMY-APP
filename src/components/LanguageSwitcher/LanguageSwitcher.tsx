@@ -18,7 +18,7 @@ const LanguageSwitcher = () => {
         }`}
         aria-label="Zmień język na polski"
       >
-     <img src={plFlag} alt="Polish" />
+     <img src={plFlag} alt="Polish" className={styles.flagIcon}/>
       </button>
       <button
         onClick={() => changeLanguage("en")}
@@ -27,7 +27,7 @@ const LanguageSwitcher = () => {
         }`}
         aria-label="Change language to English"
       >
-        <img src={gbFlag} alt="English" />
+        <img src={gbFlag} alt="English" className={styles.flagIcon}/>
       </button>
     </div>
   );

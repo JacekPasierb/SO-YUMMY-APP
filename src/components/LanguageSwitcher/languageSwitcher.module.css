@@ -19,3 +19,9 @@
     font-weight: bold;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
   }
+
+  .flagIcon {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+  }
