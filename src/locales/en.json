@@ -89,5 +89,11 @@
   "removeFromFavorites": "Remove from favorites",
   "addToList":"Add to list",
    "invalidFileType": "Invalid file type. Please use JPEG or PNG.",
-    "fileTooLarge": "File is too large. Maximum size is 4MB."
+    "fileTooLarge": "File is too large. Maximum size is 4MB.",
+    "loadIngredients": "Failed to load ingredients",
+    "missingField": "Please fill out the following field: {{field}}",
+    "missingIngredients": "Please add at least one ingredient",
+    "incompleteIngredient": "Please fill out all fields for each ingredient",
+    "instructionsTooShort": "Instructions are too short. Please provide more details (at least {{min}} characters)."
+ 
 }

@@ -33,7 +33,7 @@ const {t}=useTranslation();
       setIngredientsAll(data.ingredients);
     } catch (error) {
       console.error('Error fetching ingredients:', error);
-      toast.error('Failed to load ingredients');
+      toast.error(t("loadIngredients"));
     }
   }, []);
 

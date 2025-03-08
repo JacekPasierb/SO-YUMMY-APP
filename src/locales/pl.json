@@ -89,5 +89,11 @@
   "removeFromFavorites": "Usuń z ulubionych",
    "addToList":"Dodaj do listy",
     "invalidFileType": "Nieprawidłowy format pliku. Użyj JPEG lub PNG.",
-    "fileTooLarge": "Plik jest za duży. Maksymalny rozmiar to 4MB."
+    "fileTooLarge": "Plik jest za duży. Maksymalny rozmiar to 4MB.",
+    "loadIngredients": "Nie udało się załadować składników",
+    "missingField": "Proszę wypełnić następujące pole: {{field}}",
+    "missingIngredients": "Proszę dodać co najmniej jeden składnik",
+    "incompleteIngredient": "Proszę uzupełnić wszystkie pola dla każdego składnika",
+    "instructionsTooShort": "Instrukcje są za krótkie. Podaj więcej szczegółów (co najmniej {{min}} znaków)."
+
 }
