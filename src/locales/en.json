@@ -61,7 +61,7 @@
   "title": "Title",
   "selectSearchType": "Select search type",
    "recipeAddedSuccess": "Recipe added successfully",
-   "nameRequired": "Name is required",
+   "nameRequired": "Name is required1",
    "nameLength": "Name must be between {{min}} and {{max}} characters",
    "emailRequired": "Email is required",
    "invalidEmail": "Please enter a valid email address",
