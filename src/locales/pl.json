@@ -81,5 +81,10 @@
   "emailNotVerified": "Adres e-mail nie został zweryfikowany",
   "enterEmail": "Wpisz swój adres e-mail",
   "newsletterSubscribed": "Pomyślnie zapisano do newslettera!",
-  "newsletterAlreadySubscribed": "Już jesteś zapisany"
+  "newsletterAlreadySubscribed": "Już jesteś zapisany",
+  "recipeRemoved": "Przepis usunięty z ulubionych",
+  "recipeAdded": "Przepis dodany do ulubionych",
+   "general": "Coś poszło nie tak..",
+   "addToFavorites": "Dodaj do ulubionych przepisów",
+  "removeFromFavorites": "Usuń z ulubionych"
 }

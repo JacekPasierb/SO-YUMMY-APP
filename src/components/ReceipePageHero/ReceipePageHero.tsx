@@ -11,6 +11,7 @@ import {
 import { IRecipe } from "../../types/recipesTypes";
 import sprite from "../../assets/icons/sprite.svg";
 import styles from "./ReceipePageHero.module.css";
+import { useTranslation } from "react-i18next";
 
 interface ReceipePageHeroProps {
   recipe: IRecipe;
@@ -21,7 +22,7 @@ const ReceipePageHero: FC<ReceipePageHeroProps> = ({ recipe, isLoading }) => {
   const { title, description, time, favorites, _id } = recipe;
   const { userId } = useSelector(selectUser);
   const dispatch = useDispatch<AppDispatch>();
-
+  const { t } = useTranslation();
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -34,16 +35,16 @@ const ReceipePageHero: FC<ReceipePageHeroProps> = ({ recipe, isLoading }) => {
     try {
       if (isFavorite) {
         await dispatch(removeFromFavorite(id));
-        toast.success("Recipe removed from favorites");
+        toast.success(t("recipeRemoved"));
       } else {
         await dispatch(addToFavorite(id));
-        toast.success("Recipe add to favorites");
+        toast.success(t("recipeAdded"));
       }
 
       setIsFavorite(!isFavorite);
     } catch (error) {
       console.error("Error:", error);
-      toast.error("Something went wrong..");
+      toast.error(t("general"));
     }
   };
 
@@ -67,7 +68,7 @@ const ReceipePageHero: FC<ReceipePageHeroProps> = ({ recipe, isLoading }) => {
         className={`${styles.recipeHero__btn} ${styles.recipeHero__btnText}`}
         onClick={() => handleFavoriteClick(_id)}
       >
-        {!isFavorite ? "Add to favorite recipes" : "Remove from favorites"}
+        {!isFavorite ? t("addToFavorites") : t("removeFromFavorites")}
       </button>
       {time && (
         <div className={styles.recipeHero__timeBox}>
