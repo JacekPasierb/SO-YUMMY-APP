@@ -90,7 +90,7 @@ const SigninForm: React.FC = () => {
   return (
     <Formik
       initialValues={{email: "", password: ""}}
-      validate={validate}
+      validate={(values) => validate(values, t)}
       onSubmit={handleSubmit}
     >
       {({values, errors, touched}) => (

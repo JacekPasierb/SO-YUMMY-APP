@@ -72,5 +72,7 @@
   "verificationEmailFailed": "Failed to send verification email.",
   "accountActivated": "Your account has been activated! You can now log in.",
   "logoutSuccess": "Logged out successfully!",
-  "logoutError": "Failed to log out. Please try again."
+  "logoutError": "Failed to log out. Please try again.",
+   "passwordTooShort": "Password must be at least {{min}} characters",
+    "passwordTooLong": "Password must be less than {{max}} characters"
 }

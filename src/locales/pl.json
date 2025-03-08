@@ -72,5 +72,7 @@
   "verificationEmailFailed": "Nie udało się wysłać e-maila weryfikacyjnego.",
   "accountActivated": "Konto zostało aktywowane! Możesz się teraz zalogować.",
   "logoutSuccess": "Pomyślnie wylogowano!",
-  "logoutError": "Nie udało się wylogować. Spróbuj ponownie."
+  "logoutError": "Nie udało się wylogować. Spróbuj ponownie.",
+  "passwordTooShort": "Hasło musi mieć co najmniej {{min}} znaków",
+  "passwordTooLong": "Hasło musi mieć mniej niż {{max}} znaków"
 }
