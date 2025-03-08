@@ -1,18 +1,16 @@
-import React, { FC, useEffect, useState, useMemo } from "react";
+import React, {FC, useEffect, useState, useMemo} from "react";
 import SubTitle from "../SubTitle/SubTitle";
 import styles from "./RecipePreparation.module.css";
+import {useTranslation} from "react-i18next";
 
 interface RecipePreparationProps {
   img: string;
   instructions: string;
 }
 
-const RecipePreparation: FC<RecipePreparationProps> = ({
-  img,
-  instructions,
-}) => {
+const RecipePreparation: FC<RecipePreparationProps> = ({img, instructions}) => {
   const [steps, setSteps] = useState<string[]>([]);
-
+  const {t} = useTranslation();
   useEffect(() => {
     if (instructions) {
       const formattedSteps = instructions
@@ -49,7 +47,7 @@ const RecipePreparation: FC<RecipePreparationProps> = ({
   return (
     <div className={styles.recipePreparation__wrapper}>
       <div className={styles.recipePreparation__content}>
-        <SubTitle title="Recipe Preparation" />
+        <SubTitle title={t("recipePreparation")} />
         <ol
           className={styles.recipePreparation__instructionsList}
           aria-label="Recipe preparation steps"

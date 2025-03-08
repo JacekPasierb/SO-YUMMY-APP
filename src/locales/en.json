@@ -86,5 +86,6 @@
   "recipeAdded": "Recipe added to favorites",
   "general": "Something went wrong..",
   "addToFavorites": "Add to favorite recipes",
-  "removeFromFavorites": "Remove from favorites"
+  "removeFromFavorites": "Remove from favorites",
+  "addToList":"Add to list"
 }
