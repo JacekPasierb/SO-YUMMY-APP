@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { RecipeInputs } from "../types/authTypes";
-import { useTranslation } from "react-i18next";
+import { TFunction } from "i18next";
 
 interface ValidationError {
     field: string;
@@ -9,10 +9,9 @@ interface ValidationError {
 
   const MINIMUM_INSTRUCTIONS_LENGTH = 50;
 
-export const validateInputs = (inputs: RecipeInputs): boolean => {
+export const validateInputs = (inputs: RecipeInputs, t: TFunction): boolean => {
     const errors: ValidationError[] = [];
     const { ingredients, instructions, ...otherInputs } = inputs;
-    const { t } = useTranslation();
     // Validate general fields
   for (const [key, value] of Object.entries(otherInputs)) {
     if (!value) {

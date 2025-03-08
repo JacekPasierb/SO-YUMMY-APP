@@ -80,7 +80,7 @@ const {t}=useTranslation();
     e.preventDefault();
     
     const inputs = buildInputs();
-    if (!validateInputs(inputs)) return;
+    if (!validateInputs(inputs, t)) return;
 
     setIsLoading(true);
     try {
