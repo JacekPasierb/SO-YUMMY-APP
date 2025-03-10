@@ -14,10 +14,17 @@ interface NavigationLink {
 const Navigation: React.FC = () => {
   const {pathname} = useLocation();
   const isRecipePage = pathname.includes("/recipe/");
-  const {t} = useTranslation();
+  const { t, i18n } = useTranslation();
+  const categoryMapping: Record<string, string> = {
+    en: "Beef",
+    pl: "Kurczak",
+  };
+
+  // 🔹 Wybieramy odpowiednią kategorię na podstawie języka
+  const category = categoryMapping[i18n.language] || "Beef";
 
   const navigationLinks = [
-    {to: "/categories/Beef", text: t("categories")},
+    {to: `/categories/${category}`, text: t("categories")},
     {to: "/add", text: t("add_recipe")},
     {to: "/ownRecipes", text: t("my_recipes")},
     {to: "/favorite", text: t("favorites")},

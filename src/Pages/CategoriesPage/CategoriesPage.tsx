@@ -16,6 +16,7 @@ const CategoriesPage:FC = () => {
 const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
 
+console.log("list",categoriesList);
 
 
   useEffect(() => {
