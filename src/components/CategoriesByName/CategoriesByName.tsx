@@ -14,9 +14,10 @@ import { IRecipe } from "../../types/recipesTypes";
 import { ClimbingBoxLoader } from "react-spinners";
 import styles from "./CategoriesByName.module.css";
 import { getPageFromQueryString } from "../../helpers/helpers";
+import { useTranslation } from "react-i18next";
 
 const ITEMS_PER_PAGE = 8;
-const DEFAULT_CATEGORY = "Beef";
+
 
 const CategoriesByName: React.FC = () => {
   const { categoryName } = useParams();
@@ -24,7 +25,10 @@ const CategoriesByName: React.FC = () => {
   const currentPage = getPageFromQueryString(search);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  const DEFAULT_CATEGORY = currentLanguage==="pl" ? "Wołowina" : "Beef";
+  
   const recipes = useSelector(selectRecipesByCategory);
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
