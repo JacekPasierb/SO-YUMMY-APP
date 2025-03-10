@@ -80,10 +80,10 @@ console.log("val",value);
     }
   }, [categoryName, categoriesList]);
 
-  if (error) {
-    toast.error("Something went wrong with categories. Please try again.");
-    return <p>Failed to load categories</p>;
-  }
+  // if (error) {
+  //   toast.error("Something went wrong with categories. Please try again.");
+  //   return <p>Failed to load categories</p>;
+  // }
 
   // if (isLoading || !categoriesList) {
   //   return null;
