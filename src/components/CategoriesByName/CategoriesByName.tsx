@@ -44,6 +44,7 @@ const CategoriesByName: React.FC = () => {
         ? categoryName
         : DEFAULT_CATEGORY;
 console.log("category",category);
+console.log("defalut",DEFAULT_CATEGORY);
 
     if (categoryName === ":categoryName" || !categoryName) {
       console.log("def",DEFAULT_CATEGORY);
