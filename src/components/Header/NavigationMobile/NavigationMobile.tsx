@@ -17,10 +17,15 @@ interface NavigationMobileProps {
 
 
 const NavigationMobile: FC<NavigationMobileProps> = ({ onClose }) => {
-const {t}=useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const currentLanguage = i18n.language;
+  // 🔹 Wybieramy odpowiednią kategorię na podstawie języka
+  const category = currentLanguage === "pl" ? "Kurczak" : "Beef";
+
 
   const navigationLinks: NavigationLink[] = [
-    { to: "/categories/Beef", text: t("categories") },
+    { to:`/categories/${category}`, text: t("categories") },
     { to: "/add", text: t("add_recipe") },
     { to: "/ownRecipes", text: t("my_recipes") },
     { to: "/favorite", text: t("favorites") },
