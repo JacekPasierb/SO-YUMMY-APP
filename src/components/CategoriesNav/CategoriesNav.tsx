@@ -63,6 +63,7 @@ console.log("val",value);
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     console.log("newval",newValue);
+    console.log("cat",categoriesList);
     
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
