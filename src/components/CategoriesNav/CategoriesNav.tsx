@@ -55,12 +55,15 @@ const CategoriesNav: React.FC<CategoriesNavProps> = ({categoriesList}) => {
   const [value, setValue] = useState(0);
   
 console.log("name",categoryName);
+console.log("val",value);
 
   // const categoriesList = useSelector(selectCategoriesList);
   const error = useSelector(selectError);
   // const isLoading = useSelector(selectIsLoading);
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
+    console.log("newval",newValue);
+    
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
