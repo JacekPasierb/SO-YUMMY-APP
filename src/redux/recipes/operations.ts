@@ -1,6 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios, { AxiosError } from "axios";
-import { IRecipesResponse } from "../../types/recipesTypes";
+import {createAsyncThunk} from "@reduxjs/toolkit";
+import axios, {AxiosError} from "axios";
+import {IRecipesResponse} from "../../types/recipesTypes";
 
 interface CategoryRecipesRequest {
   category: string;
@@ -23,9 +23,9 @@ interface CategoryRecipesResponse {
 export const getRecipes = createAsyncThunk<
   IRecipesResponse,
   IGetRecipesRequest
->("recipes/getRecipes", async ({ type, value, page, limit }, thunkAPI) => {
+>("recipes/getRecipes", async ({type, value, page, limit}, thunkAPI) => {
   try {
-    const { data } = await axios.get(
+    const {data} = await axios.get(
       `./api/recipes?${type}=${value}&page=${page}&limit=${limit} `
     );
 
@@ -45,9 +45,9 @@ export const getRecipes = createAsyncThunk<
 export const getRecipesByCategory = createAsyncThunk<
   CategoryRecipesResponse,
   CategoryRecipesRequest
->("recipes/getRecipesByCategory", async ({ category, page }, thunkAPI) => {
+>("recipes/getRecipesByCategory", async ({category, page}, thunkAPI) => {
   try {
-    const { data } = await axios.get(
+    const {data} = await axios.get(
       `./api/recipes/categories/${category}?page=${page}&limit=8`
     );
 
@@ -63,9 +63,14 @@ export const getRecipesByCategory = createAsyncThunk<
 // Get categories list
 export const getCategoriesList = createAsyncThunk(
   "recipes/getCategoriesList",
-  async (_, thunkAPI) => {
+  async (language: string, thunkAPI) => {
     try {
-      const { data } = await axios.get(`./api/recipes/category-list`);
+      const url =
+        language === "pl"
+          ? "./api/recipes/category-listPl"
+          : "./api/recipes/category-list";
+
+      const {data} = await axios.get(url);
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);

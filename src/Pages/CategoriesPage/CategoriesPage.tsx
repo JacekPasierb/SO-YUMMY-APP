@@ -1,4 +1,4 @@
-import { FC, Suspense, useEffect } from "react";
+import { FC, Suspense, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
@@ -13,7 +13,11 @@ import { useTranslation } from "react-i18next";
 const CategoriesPage:FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
-const {t}=useTranslation();
+const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+
+
   useEffect(() => {
    window.scrollTo({ 
       top: 0, 
@@ -22,8 +26,8 @@ const {t}=useTranslation();
   }, []);
 
   useEffect(() => {
-    dispatch(getCategoriesList());
-  }, [dispatch]);
+    dispatch(getCategoriesList(currentLanguage));
+  }, [dispatch,currentLanguage]);
 
   return (
     <main className={styles.categoriesPage}>
