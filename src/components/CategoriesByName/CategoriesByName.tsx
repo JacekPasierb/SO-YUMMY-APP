@@ -28,7 +28,7 @@ const CategoriesByName: React.FC = () => {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const DEFAULT_CATEGORY = currentLanguage==="pl" ? "Wołowina" : "Beef";
-  
+
   const recipes = useSelector(selectRecipesByCategory);
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
@@ -43,8 +43,11 @@ const CategoriesByName: React.FC = () => {
       categoryName && categoryName !== ":categoryName"
         ? categoryName
         : DEFAULT_CATEGORY;
+console.log("category",category);
 
     if (categoryName === ":categoryName" || !categoryName) {
+      console.log("def",DEFAULT_CATEGORY);
+      
       navigate(`/categories/${DEFAULT_CATEGORY}`);
       return;
     }
