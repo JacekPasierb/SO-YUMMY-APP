@@ -54,6 +54,7 @@ const CategoriesNav: React.FC<CategoriesNavProps> = ({categoriesList}) => {
   const { categoryName } = useParams();
   const [value, setValue] = useState(0);
   
+console.log("name",categoryName);
 
   // const categoriesList = useSelector(selectCategoriesList);
   const error = useSelector(selectError);
