@@ -15,13 +15,10 @@ const Navigation: React.FC = () => {
   const {pathname} = useLocation();
   const isRecipePage = pathname.includes("/recipe/");
   const { t, i18n } = useTranslation();
-  const categoryMapping: Record<string, string> = {
-    en: "Beef",
-    pl: "Kurczak",
-  };
 
+  const currentLanguage = i18n.language;
   // 🔹 Wybieramy odpowiednią kategorię na podstawie języka
-  const category = categoryMapping[i18n.language] || "Beef";
+  const category = currentLanguage === "pl" ? "Kurczak" : "Beef";
 
   const navigationLinks = [
     {to: `/categories/${category}`, text: t("categories")},
