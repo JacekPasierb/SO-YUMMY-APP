@@ -86,12 +86,7 @@ const CategoriesByName: React.FC = () => {
   }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
 
 
-  useEffect(() => {
-    if (!categoryName) return;
   
-    console.log(`📥 Pobieranie przepisów dla: ${categoryName} w języku ${currentLanguage}`);
-    dispatch(getRecipesByCategory({ category: categoryName, page: currentPage }));
-  }, [dispatch, categoryName, currentPage, currentLanguage]);
   if (isLoading) {
     return (
       <div className={styles.loaderContainer}>
@@ -107,13 +102,16 @@ const CategoriesByName: React.FC = () => {
   return (
     <>
       <ul className={styles.recipesList}>
-        {recipes.map((recipe: IRecipe) => (
+        {recipes && recipes.map((recipe: IRecipe) => (
           <li key={recipe._id} className={styles.recipesListItem}>
             <NavLink to={`/recipe/${recipe._id}`}>
               <CardRecipe title={recipe.title} preview={recipe.preview} />
             </NavLink>
           </li>
         ))}
+        {!recipes || recipes.length === 0 && <li><p>Brak</p></li>
+
+        }
       </ul>
       <BasicPagination
         count={Math.ceil(totalRecipes / ITEMS_PER_PAGE)}
