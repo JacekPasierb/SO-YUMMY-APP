@@ -113,13 +113,10 @@ const CategoriesByName: React.FC = () => {
     );
   }
 
-  if (!recipes || recipes.length === 0) {
-    return <p>Brak przepisów w danej kategori.</p>;
-  }
-useEffect(()=>{
-  console.log("Swiezak");
-  
-},[recipes])
+  // if (!recipes || recipes.length === 0) {
+  //   return <p>Brak przepisów w danej kategori.</p>;
+  // }
+
   return (
     <>
       <ul className={styles.recipesList}>
