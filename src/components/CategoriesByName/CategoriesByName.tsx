@@ -64,10 +64,9 @@ console.log("defalut",DEFAULT_CATEGORY);
     );
   }
 
-  // if (!recipes || recipes.length === 0) {
-  //   navigate("/*");
-  //   return null;
-  // }
+  if (!recipes || recipes.length === 0) {
+  return <p>Brak przepisów w danej kategori.</p>
+  }
 
   return (
     <>
