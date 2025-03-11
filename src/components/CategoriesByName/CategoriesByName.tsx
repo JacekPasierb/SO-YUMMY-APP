@@ -83,7 +83,7 @@ const CategoriesByName: React.FC = () => {
     }
 
     dispatch(getRecipesByCategory({category, page: currentPage}));
-  }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
+  }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage, i18n.language]);
 
   if (isLoading) {
     return (
