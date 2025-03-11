@@ -66,7 +66,7 @@ const CategoriesByName: React.FC = () => {
       console.log(`🔄 Przekierowanie: ${categoryName} -> ${translatedCategory}`);
       navigate(`/categories/${translatedCategory}`, { replace: true });
     }
-  }, [currentLanguage, categoryName, navigate]);
+  }, [dispatch,currentLanguage, categoryName, navigate]);
 
 
   React.useEffect(() => {
