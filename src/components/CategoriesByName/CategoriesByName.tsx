@@ -15,6 +15,7 @@ import {ClimbingBoxLoader} from "react-spinners";
 import styles from "./CategoriesByName.module.css";
 import {getPageFromQueryString} from "../../helpers/helpers";
 import {useTranslation} from "react-i18next";
+import { resetRecipes } from "../../redux/recipes/recipesSlice";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -81,7 +82,7 @@ const CategoriesByName: React.FC = () => {
       navigate(`/categories/${DEFAULT_CATEGORY}`);
       return;
     }
-
+    dispatch(resetRecipes());
     dispatch(getRecipesByCategory({category, page: currentPage}));
   }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
 
