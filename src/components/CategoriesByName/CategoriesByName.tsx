@@ -57,6 +57,11 @@ const CategoriesByName: React.FC = () => {
     navigate(`?page=${page}`);
     window.scrollTo({top: 0, behavior: "smooth"});
   };
+
+  console.log("🌍 Aktualny język:", currentLanguage);
+console.log("📌 Aktualna kategoria:", categoryName);
+console.log("📄 Aktualna strona:", currentPage);
+
   useEffect(() => {
     if (!categoryName) return;
 
