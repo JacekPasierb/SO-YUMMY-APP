@@ -96,6 +96,8 @@ const CategoriesByName: React.FC = () => {
     setTimeout(() => {
       console.log(`📥 Pobieranie przepisów dla: ${categoryName} w języku ${currentLanguage}`);
       dispatch(getRecipesByCategory({ category: categoryName, page: currentPage }));
+      console.log("recipe",recipes);
+      
     }, 200); // Opóźnienie 200ms dla płynnego odświeżania
   }, [dispatch, categoryName, currentPage, currentLanguage]);
 
