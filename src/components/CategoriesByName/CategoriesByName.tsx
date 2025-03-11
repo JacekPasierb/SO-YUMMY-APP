@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -18,6 +18,26 @@ import {useTranslation} from "react-i18next";
 
 const ITEMS_PER_PAGE = 8;
 
+const categoryTranslations: Record<string, Record<string, string>> = {
+  en: {
+    "Kurczak": "Chicken",
+    "Jagnięcina": "Lamb",
+    "Koźlina": "Goat",
+    "Desery": "Dessert",
+    "Dodatki": "Side",
+    "Makarony": "Pasta",
+    "Wołowina": "Beef",
+  },
+  pl: {
+    "Chicken": "Kurczak",
+    "Lamb": "Jagnięcina",
+    "Goat": "Koźlina",
+    "Dessert": "Desery",
+    "Side": "Dodatki",
+    "Pasta": "Makarony",
+    "Beef": "Wołowina",
+  }
+};
 const CategoriesByName: React.FC = () => {
   const {categoryName} = useParams();
   const {search} = useLocation();
@@ -36,6 +56,17 @@ const CategoriesByName: React.FC = () => {
     navigate(`?page=${page}`);
     window.scrollTo({top: 0, behavior: "smooth"});
   };
+  useEffect(() => {
+    
+
+    const translatedCategory = categoryTranslations[currentLanguage]?.[categoryName];
+
+    if (translatedCategory && categoryName !== translatedCategory) {
+      console.log(`🔄 Przekierowanie: ${categoryName} -> ${translatedCategory}`);
+      navigate(`/categories/${translatedCategory}`, { replace: true });
+    }
+  }, [currentLanguage, categoryName, navigate]);
+
 
   React.useEffect(() => {
     const category =
