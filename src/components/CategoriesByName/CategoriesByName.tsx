@@ -87,6 +87,7 @@ const CategoriesByName: React.FC = () => {
   // }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
 
   useEffect(() => {
+    console.log("🔥 useEffect został wywołany");
     if (!categoryName) return;
 
     console.log("🗑️ Resetowanie przepisów przed pobraniem nowych...");
