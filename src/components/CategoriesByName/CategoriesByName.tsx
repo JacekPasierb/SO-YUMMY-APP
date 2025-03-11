@@ -59,7 +59,7 @@ const CategoriesByName: React.FC = () => {
   };
   useEffect(() => {
     if (!categoryName) return; 
-
+    dispatch(resetRecipes());
     const translatedCategory = categoryTranslations[currentLanguage]?.[categoryName];
 
     if (translatedCategory && categoryName !== translatedCategory) {
