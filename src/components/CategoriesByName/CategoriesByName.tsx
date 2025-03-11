@@ -54,7 +54,7 @@ console.log("defalut",DEFAULT_CATEGORY);
     }
 
     dispatch(getRecipesByCategory({ category, page: currentPage }));
-  }, [dispatch, categoryName, currentPage, navigate]);
+  }, [dispatch, categoryName, currentPage, navigate,t]);
 
   if (isLoading) {
     return (
