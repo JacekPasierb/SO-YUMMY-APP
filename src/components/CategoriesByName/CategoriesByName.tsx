@@ -83,8 +83,15 @@ const CategoriesByName: React.FC = () => {
     }
 
     dispatch(getRecipesByCategory({category, page: currentPage}));
-  }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage, i18n.language]);
+  }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
 
+
+  useEffect(() => {
+    if (!categoryName) return;
+  
+    console.log(`📥 Pobieranie przepisów dla: ${categoryName} w języku ${currentLanguage}`);
+    dispatch(getRecipesByCategory({ category: categoryName, page: currentPage }));
+  }, [dispatch, categoryName, currentPage, currentLanguage]);
   if (isLoading) {
     return (
       <div className={styles.loaderContainer}>
