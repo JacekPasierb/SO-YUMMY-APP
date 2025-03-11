@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {
@@ -52,7 +52,7 @@ const CategoriesByName: React.FC = () => {
   const recipes = useSelector(selectRecipesByCategory);
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
-
+  const [forceUpdate, setForceUpdate] = useState(0);
   const handlePageChange = (page: number) => {
     navigate(`?page=${page}`);
     window.scrollTo({top: 0, behavior: "smooth"});
@@ -85,7 +85,10 @@ const CategoriesByName: React.FC = () => {
   //   dispatch(resetRecipes());
   //   dispatch(getRecipesByCategory({category, page: currentPage}));
   // }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
-
+  useEffect(() => {
+    console.log("🌍 Język zmieniony, wymuszam rerender...");
+    setForceUpdate((prev) => prev + 1);
+  }, [currentLanguage]);
   useEffect(() => {
     console.log("🔥 useEffect został wywołany");
     if (!categoryName) return;
