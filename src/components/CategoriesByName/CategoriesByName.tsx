@@ -57,7 +57,7 @@ const CategoriesByName: React.FC = () => {
     window.scrollTo({top: 0, behavior: "smooth"});
   };
   useEffect(() => {
-    
+    if (!categoryName) return; 
 
     const translatedCategory = categoryTranslations[currentLanguage]?.[categoryName];
 
