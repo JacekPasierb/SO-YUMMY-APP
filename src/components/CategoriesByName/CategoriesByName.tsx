@@ -59,32 +59,45 @@ const CategoriesByName: React.FC = () => {
   };
   useEffect(() => {
     if (!categoryName) return; 
-    dispatch(resetRecipes());
+   
     const translatedCategory = categoryTranslations[currentLanguage]?.[categoryName];
 
     if (translatedCategory && categoryName !== translatedCategory) {
       console.log(`🔄 Przekierowanie: ${categoryName} -> ${translatedCategory}`);
       navigate(`/categories/${translatedCategory}`, { replace: true });
     }
-  }, [dispatch,currentLanguage, categoryName, navigate]);
+  }, [currentLanguage, categoryName, navigate]);
 
 
-  React.useEffect(() => {
-    const category =
-      categoryName && categoryName !== ":categoryName"
-        ? categoryName
-        : DEFAULT_CATEGORY;
+  // React.useEffect(() => {
+  //   const category =
+  //     categoryName && categoryName !== ":categoryName"
+  //       ? categoryName
+  //       : DEFAULT_CATEGORY;
     
 
-    if (categoryName === ":categoryName" || !categoryName) {
+  //   if (categoryName === ":categoryName" || !categoryName) {
      
 
-      navigate(`/categories/${DEFAULT_CATEGORY}`);
-      return;
-    }
+  //     navigate(`/categories/${DEFAULT_CATEGORY}`);
+  //     return;
+  //   }
+  //   dispatch(resetRecipes());
+  //   dispatch(getRecipesByCategory({category, page: currentPage}));
+  // }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
+
+  useEffect(() => {
+    if (!categoryName) return;
+
+    console.log("🗑️ Resetowanie przepisów przed pobraniem nowych...");
     dispatch(resetRecipes());
-    dispatch(getRecipesByCategory({category, page: currentPage}));
-  }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
+
+    // 🔹 Opóźnienie pobrania przepisów, aby uniknąć podwójnego renderowania
+    setTimeout(() => {
+      console.log(`📥 Pobieranie przepisów dla: ${categoryName} w języku ${currentLanguage}`);
+      dispatch(getRecipesByCategory({ category: categoryName, page: currentPage }));
+    }, 200); // Opóźnienie 200ms dla płynnego odświeżania
+  }, [dispatch, categoryName, currentPage, currentLanguage]);
 
 
   
