@@ -99,7 +99,7 @@ const CategoriesByName: React.FC = () => {
     }, 200); // Opóźnienie 200ms dla płynnego odświeżania
   }, [dispatch, categoryName, currentPage, currentLanguage]);
 
-
+useEffect(()=>{},[recipes])
   
   if (isLoading) {
     return (
