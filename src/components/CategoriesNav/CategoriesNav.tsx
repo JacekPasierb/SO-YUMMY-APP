@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { Tab, Tabs } from "@mui/material";
-import { toast } from "react-toastify";
-import { AppDispatch } from "../../redux/store";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {Tab, Tabs} from "@mui/material";
+import {toast} from "react-toastify";
+import {AppDispatch} from "../../redux/store";
 import {
   selectCategoriesList,
   selectError,
   selectIsLoading,
 } from "../../redux/recipes/selectors";
-import { getCategoriesList } from "../../redux/recipes/operations";
+import {getCategoriesList} from "../../redux/recipes/operations";
 
 const COLORS = {
   primary: "#8BAA36",
@@ -51,25 +51,19 @@ interface CategoriesNavProps {
 
 const CategoriesNav: React.FC<CategoriesNavProps> = ({categoriesList}) => {
   const navigate = useNavigate();
-  const { categoryName } = useParams();
+  const {categoryName} = useParams();
   const [value, setValue] = useState(0);
-  
-console.log("name",categoryName);
-console.log("val",value);
 
   // const categoriesList = useSelector(selectCategoriesList);
   const error = useSelector(selectError);
   // const isLoading = useSelector(selectIsLoading);
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
-    console.log("newval",newValue);
-    console.log("cat",categoriesList);
-    
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
 
-//tu byl
+  //tu byl
 
   useEffect(() => {
     if (categoryName && categoriesList.length > 0) {
