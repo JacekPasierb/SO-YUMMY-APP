@@ -111,7 +111,7 @@ console.log("📄 Aktualna strona:", currentPage);
       );
       console.log("recipe", recipes);
     }, 200); // Opóźnienie 200ms dla płynnego odświeżania
-  }, [dispatch, categoryName, currentPage, currentLanguage]);
+  }, [dispatch, categoryName, currentPage, currentLanguage,forceUpdate]);
 
   if (isLoading) {
     return (
