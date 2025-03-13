@@ -28,6 +28,7 @@ const categoryTranslations: Record<string, Record<string, string>> = {
     Dodatki: "Side",
     Makarony: "Pasta",
     Wołowina: "Beef",
+    Śniadanie: "Breakfast"
   },
   pl: {
     Chicken: "Kurczak",
@@ -37,6 +38,7 @@ const categoryTranslations: Record<string, Record<string, string>> = {
     Side: "Dodatki",
     Pasta: "Makarony",
     Beef: "Wołowina",
+    Breakfast: "Śniadanie"
   },
 };
 const CategoriesByName: React.FC = () => {
