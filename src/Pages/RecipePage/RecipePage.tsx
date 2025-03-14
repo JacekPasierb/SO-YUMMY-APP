@@ -42,6 +42,7 @@ const RecipePage: React.FC = () => {
       fetchRecipe(recipeId);
     }
   }, [recipeId]);
+console.log("re",recipe?.ingredients);
 
   useEffect(() => {
     if (error) {
