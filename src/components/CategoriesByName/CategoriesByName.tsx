@@ -29,10 +29,12 @@ const categoryTranslations: Record<string, Record<string, string>> = {
     Makarony: "Pasta",
     Wołowina: "Beef",
     Śniadanie: "Breakfast",
-    Różne:"Miscellaneous",
-    Wieprzowina:"Pork",
+    Różne: "Miscellaneous",
+    Wieprzowina: "Pork",
     OwoceMorza: "Seafood",
-    Przystawki: "Starter"
+    Przystawki: "Starter",
+    Wegańskie: "Vegan",
+    Wegetariańskie: "Vegetarian",
   },
   pl: {
     Chicken: "Kurczak",
@@ -43,10 +45,12 @@ const categoryTranslations: Record<string, Record<string, string>> = {
     Pasta: "Makarony",
     Beef: "Wołowina",
     Breakfast: "Śniadanie",
-    Miscellaneous:"Różne",
-    Pork:"Wieprzowina",
+    Miscellaneous: "Różne",
+    Pork: "Wieprzowina",
     Seafood: "Owoce morza",
-     Starter: "Przystawki"
+    Starter: "Przystawki",
+    Vegan: "Wegańskie",
+    Vegetarian: "Wegetariańskie"
   },
 };
 const CategoriesByName: React.FC = () => {
@@ -69,8 +73,8 @@ const CategoriesByName: React.FC = () => {
   };
 
   console.log("🌍 Aktualny język:", currentLanguage);
-console.log("📌 Aktualna kategoria:", categoryName);
-console.log("📄 Aktualna strona:", currentPage);
+  console.log("📌 Aktualna kategoria:", categoryName);
+  console.log("📄 Aktualna strona:", currentPage);
 
   useEffect(() => {
     if (!categoryName) return;
@@ -121,7 +125,7 @@ console.log("📄 Aktualna strona:", currentPage);
       );
       console.log("recipe", recipes);
     }, 200); // Opóźnienie 200ms dla płynnego odświeżania
-  }, [dispatch, categoryName, currentPage, currentLanguage,forceUpdate]);
+  }, [dispatch, categoryName, currentPage, currentLanguage, forceUpdate]);
 
   if (isLoading) {
     return (
