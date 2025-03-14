@@ -54,17 +54,22 @@ const {t}=useTranslation();
 
   const buildInputs = useCallback((): RecipeInputs => {
     const { file, titleRecipe, descriptionRecipe, categoryRecipe, cookingTime, ingredients, instructionsRecipe } = formState;
-
+  
+    // Pobranie aktualnego języka
+    const { i18n } = useTranslation();
+    const currentLanguage = i18n.language;
+  
     const convertedIngredients: Ingredient[] = ingredients.map((ingredient) => {
       const foundIngredient = ingredientsAll.find(
-        (ing) => ing.ttl === ingredient.selectedValue
+        (ing) => ing.ttl === ingredient.selectedValue || ing.ttlPl === ingredient.selectedValue
       );
+  
       return { 
         id: foundIngredient?._id || '',
         measure: ingredient.selectedUnit 
       };
     });
-
+  
     return {
       file,
       title: titleRecipe,
@@ -75,6 +80,7 @@ const {t}=useTranslation();
       instructions: instructionsRecipe,
     };
   }, [formState, ingredientsAll]);
+  
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();

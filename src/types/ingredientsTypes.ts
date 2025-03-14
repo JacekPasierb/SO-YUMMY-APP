@@ -7,6 +7,7 @@ export interface Ing {
 export interface IngredientData {
   _id: string;
   ttl: string;
+  ttlPl: string;
   thb: string;
   t: string;
   desc: string;
