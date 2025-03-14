@@ -24,7 +24,8 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
   setIngredients,
   ingredientsAll,
 }) => {
-  const {t}=useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
   const handleCounterChange = useCallback(
     (action: "increment" | "decrement") => {
       setIngredients((prevIngredients) => {
@@ -45,10 +46,10 @@ const RecipeIngredientsFields: FC<RecipeIngredientsFieldsProps> = ({
 
   const ingredientOptions = useMemo((): Option[] => {
     return ingredientsAll.map((ingredient) => ({
-      label: ingredient.ttl,
-      value: ingredient.ttl,
+      label: currentLanguage === "pl" ? ingredient.ttlPl : ingredient.ttl, // Wybór nazwy
+      value: currentLanguage === "pl" ? ingredient.ttlPl : ingredient.ttl,
     }));
-  }, [ingredientsAll]);
+  }, [ingredientsAll, currentLanguage]);
 
   const removeIngredient = (fieldId: string) => {
     setIngredients((prev) => {
