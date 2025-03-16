@@ -96,19 +96,7 @@ const App: FC = () => {
           />
         }
       />
-      <Route
-        path="/signin"
-        element={
-          <RestrictedRoute
-            redirectTo="/"
-            component={
-              <Suspense fallback={<Loader />}>
-                <SigninPage />
-              </Suspense>
-            }
-          />
-        }
-      />
+      <Route path="/signin" element={<SigninPage />} />
       {/* Private routes */}
       <Route
         path="/"
