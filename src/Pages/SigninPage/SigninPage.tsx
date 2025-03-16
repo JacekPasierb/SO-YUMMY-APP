@@ -15,7 +15,7 @@ const SigninPage: React.FC = () => {
       console.log("Verified param detected");
       toast.success(t("accountActivated"));
     }
-  }, [location, i18n.language]);
+  }, [location, t]);
   return (
     <main className={styles.signinPage}>
       <div className={styles.signinPage__container}>
