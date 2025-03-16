@@ -14,6 +14,7 @@ import { jwtDecode } from "jwt-decode";
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
 const RegisterPage = lazy(() => import("./Pages/RegisterPage/RegisterPage"));
 import SigninPage from "./Pages/SigninPage/SigninPage";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const MainPage = lazy(() => import("./Pages/MainPage/MainPage"));
 const CategoriesPage = lazy(
@@ -102,9 +103,9 @@ const App: FC = () => {
           <RestrictedRoute
             redirectTo="/"
             component={
-              
+              <ErrorBoundary>
                 <SigninPage />
-            
+                </ErrorBoundary>
             }
           />
         }
