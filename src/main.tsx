@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
-    path: "/*",
+    path: "/",
     element: <App />,
   },
 ]);
