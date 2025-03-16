@@ -1,5 +1,4 @@
 import axios from "axios";
-import i18next from "i18next";
 
 export const fetchRecipesByFourCategories = async (count = 1) => {
   
