@@ -9,15 +9,12 @@ import App from "./App";
 import "../src/locales/i18n.js";
 import "react-toastify/dist/ReactToastify.css";
 
-const router = createBrowserRouter(
-  [
-    {
-      path: "/*",
-      element: <App />,
-    },
-  ]
-  
-);
+const router = createBrowserRouter([
+  {
+    path: "/*",
+    element: <App />,
+  },
+]);
 
 const rootElement = document.getElementById("root");
 if (rootElement) {

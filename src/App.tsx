@@ -9,11 +9,12 @@ import {Loader} from "./components/Loader/Loader";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { jwtDecode } from "jwt-decode";
+import SigninPage from "./Pages/SigninPage/SigninPage";
 
 // Lazy-loaded Pages
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
 const RegisterPage = lazy(() => import("./Pages/RegisterPage/RegisterPage"));
-const SigninPage = lazy(() => import("./Pages/SigninPage/SigninPage"));
+// const SigninPage = lazy(() => import("./Pages/SigninPage/SigninPage"));
 const MainPage = lazy(() => import("./Pages/MainPage/MainPage"));
 const CategoriesPage = lazy(
   () => import("./Pages/CategoriesPage/CategoriesPage")
