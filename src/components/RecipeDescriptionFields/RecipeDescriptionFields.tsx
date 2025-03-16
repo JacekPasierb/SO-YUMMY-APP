@@ -27,8 +27,9 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
   const [preview, setPreview] = useState<string | null>(null);
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
-const {t}=useTranslation();
-  const timeOptionsList = () => {
+  const {t, i18n} = useTranslation();
+  const currentLanguage = i18n.language;
+    const timeOptionsList = () => {
     const time = [];
     for (let i = 5; i <= 120; i += 5) {
       time.push({ label: `${i} min`, value: i });
@@ -76,8 +77,8 @@ const {t}=useTranslation();
   };
 
   useEffect(() => {
-    dispatch(getCategoriesList());
-  }, [dispatch]);
+    dispatch(getCategoriesList(currentLanguage));
+  }, [dispatch,currentLanguage]);
 
   return (
     <>
