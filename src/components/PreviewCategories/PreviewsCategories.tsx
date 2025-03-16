@@ -11,6 +11,7 @@ import {IRecipe} from "src/types/recipesTypes";
 
 import styles from "./PreviewsCategories.module.css";
 import {useTranslation} from "react-i18next";
+import i18next from "i18next";
 
 interface RecipesByMainCategory {
   [category: string]: IRecipe[];
@@ -40,13 +41,13 @@ const PreviewsCategories: FC = () => {
     if (isTablet) return RECIPES_COUNT.TABLET;
     return RECIPES_COUNT.MOBILE;
   };
-
+  const lang = i18next.language || "pl";
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await fetchRecipesByFourCategories(getRecipeCount());
+        const response = await fetchRecipesByFourCategories(getRecipeCount(),lang);
         const {data} = response as ApiResponse;
 
         if (!data || typeof data !== "object") {
