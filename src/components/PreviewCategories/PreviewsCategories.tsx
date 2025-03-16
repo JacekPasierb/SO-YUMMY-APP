@@ -54,6 +54,7 @@ const PreviewsCategories: FC = () => {
           throw new Error("Invalid data format received from server");
         }
 
+console.log("d",data);
 
         setRecipesMainCategories(data);
       } catch (error) {
