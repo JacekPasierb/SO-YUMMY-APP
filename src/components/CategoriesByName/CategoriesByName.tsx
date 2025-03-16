@@ -107,11 +107,9 @@ const CategoriesByName: React.FC = () => {
 
     // 🔹 Opóźnienie pobrania przepisów, aby uniknąć podwójnego renderowania
     setTimeout(() => {
-      console.log();
       dispatch(
         getRecipesByCategory({category: categoryName, page: currentPage})
       );
-      console.log("recipe", recipes);
     }, 200); // Opóźnienie 200ms dla płynnego odświeżania
   }, [dispatch, categoryName, currentPage, currentLanguage, forceUpdate]);
 

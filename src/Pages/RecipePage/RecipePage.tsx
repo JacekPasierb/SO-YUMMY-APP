@@ -1,9 +1,9 @@
-import React, { lazy, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, {lazy, useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import ReceipePageHero from "../../components/ReceipePageHero/ReceipePageHero";
-import { fetchRecipeById } from "../../API/recipesAPI";
-import { IRecipe } from "../../types/recipesTypes";
+import {fetchRecipeById} from "../../API/recipesAPI";
+import {IRecipe} from "../../types/recipesTypes";
 import styles from "./RecipePage.module.css";
 
 const RecipeInngredientsList = lazy(
@@ -15,7 +15,7 @@ const RecipePreparation = lazy(
 );
 
 const RecipePage: React.FC = () => {
-  const { recipeId } = useParams<{ recipeId: string }>();
+  const {recipeId} = useParams<{recipeId: string}>();
   const navigate = useNavigate();
 
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
@@ -25,7 +25,7 @@ const RecipePage: React.FC = () => {
   const fetchRecipe = async (id: string) => {
     try {
       setIsLoading(true);
-      const { data } = await fetchRecipeById(id);
+      const {data} = await fetchRecipeById(id);
       setRecipe(data.result);
     } catch (error) {
       setError(
@@ -42,7 +42,6 @@ const RecipePage: React.FC = () => {
       fetchRecipe(recipeId);
     }
   }, [recipeId]);
-console.log("re",recipe?.ingredients);
 
   useEffect(() => {
     if (error) {
