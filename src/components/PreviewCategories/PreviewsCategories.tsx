@@ -53,7 +53,7 @@ const PreviewsCategories: FC = () => {
         if (!data || typeof data !== "object") {
           throw new Error("Invalid data format received from server");
         }
-console.log("cat",data);
+
 
         setRecipesMainCategories(data);
       } catch (error) {
@@ -67,7 +67,7 @@ console.log("cat",data);
     };
 
     fetchRecipes();
-  }, [isDesktop, isTablet]);
+  }, [isDesktop, isTablet,i18next.language]);
 
   const renderRecipes = (recipes: IRecipe[]) =>
     recipes.map((recipe) => (
