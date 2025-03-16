@@ -19,7 +19,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
   return shouldRedirect ? (
     <Navigate to={redirectTo} state={{ from: location }} replace />
   ) : (
-    Component
+    <>{Component}</>
   );
 };
 
