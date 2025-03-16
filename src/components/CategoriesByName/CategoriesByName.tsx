@@ -50,7 +50,7 @@ const categoryTranslations: Record<string, Record<string, string>> = {
     Seafood: "Owoce morza",
     Starter: "Przystawki",
     Vegan: "Wegańskie",
-    Vegetarian: "Wegetariańskie"
+    Vegetarian: "Wegetariańskie",
   },
 };
 const CategoriesByName: React.FC = () => {
@@ -72,10 +72,6 @@ const CategoriesByName: React.FC = () => {
     window.scrollTo({top: 0, behavior: "smooth"});
   };
 
-  console.log("🌍 Aktualny język:", currentLanguage);
-  console.log("📌 Aktualna kategoria:", categoryName);
-  console.log("📄 Aktualna strona:", currentPage);
-
   useEffect(() => {
     if (!categoryName) return;
 
@@ -83,9 +79,6 @@ const CategoriesByName: React.FC = () => {
       categoryTranslations[currentLanguage]?.[categoryName];
 
     if (translatedCategory && categoryName !== translatedCategory) {
-      console.log(
-        `🔄 Przekierowanie: ${categoryName} -> ${translatedCategory}`
-      );
       navigate(`/categories/${translatedCategory}`, {replace: true});
     }
   }, [currentLanguage, categoryName, navigate]);
@@ -105,21 +98,16 @@ const CategoriesByName: React.FC = () => {
   //   dispatch(getRecipesByCategory({category, page: currentPage}));
   // }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
   useEffect(() => {
-    console.log("🌍 Język zmieniony, wymuszam rerender...");
     setForceUpdate((prev) => prev + 1);
   }, [currentLanguage]);
   useEffect(() => {
-    console.log("🔥 useEffect został wywołany");
     if (!categoryName) return;
 
-    console.log("🗑️ Resetowanie przepisów przed pobraniem nowych...");
     dispatch(resetRecipes());
 
     // 🔹 Opóźnienie pobrania przepisów, aby uniknąć podwójnego renderowania
     setTimeout(() => {
-      console.log(
-        `📥 Pobieranie przepisów dla: ${categoryName} w języku ${currentLanguage}`
-      );
+      console.log();
       dispatch(
         getRecipesByCategory({category: categoryName, page: currentPage})
       );
