@@ -8,14 +8,12 @@ import {useAuth} from "./hooks/useAuth";
 import {Loader} from "./components/Loader/Loader";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 // Lazy-loaded Pages
 const WelcomePage = lazy(() => import("./Pages/WelcomePage/WelcomePage"));
 const RegisterPage = lazy(() => import("./Pages/RegisterPage/RegisterPage"));
-import SigninPage from "./Pages/SigninPage/SigninPage";
-import ErrorBoundary from "./components/ErrorBoundary";
-
+const SigninPage = lazy(() => import("./Pages/SigninPage/SigninPage"));
 const MainPage = lazy(() => import("./Pages/MainPage/MainPage"));
 const CategoriesPage = lazy(
   () => import("./Pages/CategoriesPage/CategoriesPage")
@@ -55,9 +53,6 @@ const App: FC = () => {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch, token]);
-
- 
-
 
   // Handle theme changes
   useEffect(() => {
@@ -103,9 +98,9 @@ const App: FC = () => {
           <RestrictedRoute
             redirectTo="/"
             component={
-              <ErrorBoundary>
+              <Suspense fallback={<Loader />}>
                 <SigninPage />
-                </ErrorBoundary>
+              </Suspense>
             }
           />
         }

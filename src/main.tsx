@@ -8,11 +8,10 @@ import {persistor, store} from "./redux/store.js";
 import App from "./App";
 import "../src/locales/i18n.js";
 import "react-toastify/dist/ReactToastify.css";
-import ErrorBoundary from "./components/ErrorBoundary.js";
 
 const router = createBrowserRouter([
   {
-    path: "*",
+    path: "/*",
     element: <App />,
   },
 ]);
@@ -21,13 +20,13 @@ const rootElement = document.getElementById("root");
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-        <ErrorBoundary>
+       
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <RouterProvider router={router} />
           <ToastContainer />
         </PersistGate>
-      </Provider></ErrorBoundary>
+      </Provider>
     </React.StrictMode>
   );
 } else {
