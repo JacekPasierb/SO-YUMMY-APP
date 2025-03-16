@@ -7,12 +7,10 @@ import {useTranslation} from "react-i18next";
 
 const SigninPage: React.FC = () => {
   const location = useLocation();
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
   useEffect(() => {
-    console.log("Location:", location);
     const searchParams = new URLSearchParams(location.search);
     if (searchParams.get("verified") === "true") {
-      console.log("Verified param detected");
       toast.success(t("accountActivated"));
     }
   }, [location, t]);
