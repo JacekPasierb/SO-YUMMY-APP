@@ -47,7 +47,7 @@ const PreviewsCategories: FC = () => {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await fetchRecipesByFourCategories(getRecipeCount(),lang);
+        const response = await fetchRecipesByFourCategories(getRecipeCount());
         const {data} = response as ApiResponse;
 
         if (!data || typeof data !== "object") {
