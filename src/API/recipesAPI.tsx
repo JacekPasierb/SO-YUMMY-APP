@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const fetchRecipesByFourCategories = async (count = 1) => {
-  
   const { data } = await axios.get(`./api/recipes/main-page?count=${count}`);
   return data;
 };
