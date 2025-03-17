@@ -18,6 +18,9 @@ const FollowUs = lazy(
 const AddRecipePage: React.FC = () => {
   const isDesktop = useMediaQuery("(min-width:1200px)");
   const {t, i18n} = useTranslation();
+  console.log("Tłumaczenia załadowane:", i18n.isInitialized);
+console.log("Obecny język:", i18n.language);
+console.log("Dostępne języki:", i18n.languages);
   if (!i18n.isInitialized) return <p>Ładowanie...</p>;
   const Sidebar = () => (
     <aside className={styles.addRecipePage__sidebar}>
