@@ -36,12 +36,12 @@ if (rootElement) {
     <React.StrictMode>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <HelmetProvider>
             <I18nextProvider i18n={i18n}>
+          <HelmetProvider>
               <RouterProvider router={router} />
               <ToastContainer />
-            </I18nextProvider>
           </HelmetProvider>
+            </I18nextProvider>
         </PersistGate>
       </Provider>
     </React.StrictMode>
