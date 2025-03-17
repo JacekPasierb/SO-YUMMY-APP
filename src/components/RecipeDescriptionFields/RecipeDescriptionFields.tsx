@@ -1,14 +1,14 @@
 import styles from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
-import React, { ChangeEvent, FC, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCategoriesList } from "../../redux/recipes/selectors";
-import { AppDispatch } from "../../redux/store";
-import { getCategoriesList } from "../../redux/recipes/operations";
-import { useTranslation } from "react-i18next";
+import React, {ChangeEvent, FC, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {selectCategoriesList} from "../../redux/recipes/selectors";
+import {AppDispatch} from "../../redux/store";
+import {getCategoriesList} from "../../redux/recipes/operations";
+import {useTranslation} from "react-i18next";
 
 interface DataForm {
   file: File | null;
@@ -23,24 +23,22 @@ interface DataForm {
   setCookingTime: (cookingTime: string) => void;
 }
 
-const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
-  
+const RecipeDescriptionFields: React.FC<{data: DataForm}> = ({data}) => {
   const [preview, setPreview] = useState<string | null>(null);
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
-  const { t, i18n } = useTranslation();
-console.log("Czy `i18n` działa w RecipeDescriptionFields?", i18n.isInitialized);
+  const {t, i18n} = useTranslation();
   const currentLanguage = i18n.language;
-    const timeOptionsList = () => {
+  const timeOptionsList = () => {
     const time = [];
     for (let i = 5; i <= 120; i += 5) {
-      time.push({ label: `${i} min`, value: i });
+      time.push({label: `${i} min`, value: i});
     }
     return time;
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.currentTarget;
+    const {files} = event.currentTarget;
 
     if (!files || !files.length) return;
 
@@ -80,7 +78,7 @@ console.log("Czy `i18n` działa w RecipeDescriptionFields?", i18n.isInitialized)
 
   useEffect(() => {
     dispatch(getCategoriesList(currentLanguage));
-  }, [dispatch,currentLanguage]);
+  }, [dispatch, currentLanguage]);
 
   return (
     <>

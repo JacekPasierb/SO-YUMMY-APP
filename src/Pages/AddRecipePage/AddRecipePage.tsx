@@ -18,8 +18,6 @@ const FollowUs = lazy(
 const AddRecipePage: React.FC = () => {
   const isDesktop = useMediaQuery("(min-width:1200px)");
   const {t, i18n} = useTranslation();
-  console.log("Czy `i18n` jest gotowe?:", i18n.isInitialized);
-  if (!i18n.isInitialized) return <p>Ładowanie...</p>;
   const Sidebar = () => (
     <aside className={styles.addRecipePage__sidebar}>
       <SubTitle title={t("followUs")} />
