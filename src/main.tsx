@@ -8,6 +8,7 @@ import {persistor, store} from "./redux/store.js";
 import App from "./App";
 import "../src/locales/i18n.js";
 import "react-toastify/dist/ReactToastify.css";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter(
   [
@@ -33,8 +34,10 @@ if (rootElement) {
     <React.StrictMode>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
+        <HelmetProvider> 
           <RouterProvider router={router} />
           <ToastContainer />
+          </HelmetProvider>
         </PersistGate>
       </Provider>
     </React.StrictMode>
