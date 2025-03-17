@@ -1,15 +1,5 @@
 {
-  "titles": {
-    "welcome": "Witamy w So Yummy | Odkryj Nowe Przepisy",
-    "signin": "Logowanie | So Yummy",
-    "register": "Rejestracja | So Yummy",
-    "categories": "Kategorie Przepisów | So Yummy",
-    "addRecipe": "Dodaj Przepis | So Yummy",
-    "myRecipes": "Moje Przepisy | So Yummy",
-    "favorites": "Ulubione Przepisy | So Yummy",
-    "shoppingList": "Lista Zakupów | So Yummy",
-    "search": "Wyszukiwarka Przepisów | So Yummy"
-  },
+ 
   "welcome": "Co ugotować? To nie tylko aplikacja z przepisami, to Twój własny cyfrowy zeszyt kuchenny.",
   "search_placeholder": "Wpisz nazwę przepisu...",
   "search_button": "Szukaj",
