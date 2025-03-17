@@ -9,14 +9,12 @@ import { Helmet } from "react-helmet-async";
 
 const WelcomePage: React.FC = () => {
   const { t, i18n } = useTranslation();
-  if (!i18n.isInitialized) {
-    return <p>Ładowanie...</p>;
-  }
+
   return (
     <>
       <Helmet>
         <title>{t("titles.welcome")}</title> {/* 📌 Dynamiczny tytuł */}
-        <meta name="description" content={t("meta.welcomeDescription")} />
+       
       </Helmet>
       <div className={styles.welcomePage}>
         <div className={styles.welcomePage__container}>
