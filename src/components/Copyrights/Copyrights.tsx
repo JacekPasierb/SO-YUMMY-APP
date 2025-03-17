@@ -22,7 +22,7 @@ const Copyrights: React.FC = () => {
             So Yummy - Ver {packageJson.version}{" "}
           
           </span>
-          <a href="/CHANGELOG.md" target="_blank" rel="noopener noreferrer" className={styles.text}>
+          <a href="/" target="_blank" rel="noopener noreferrer" className={styles.text}>
               Zobacz zmiany
             </a>
         </div>
