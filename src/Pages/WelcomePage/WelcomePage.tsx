@@ -12,10 +12,7 @@ const WelcomePage: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{t("titles.welcome")}</title> {/* 📌 Dynamiczny tytuł */}
-       
-      </Helmet>
+ 
       <div className={styles.welcomePage}>
         <div className={styles.welcomePage__container}>
           <div style={{position: "absolute", top: "0", left: "0"}}>
