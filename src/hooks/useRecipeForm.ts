@@ -25,7 +25,7 @@ export const useRecipeForm = () => {
   const [formState, setFormState] = useState<RecipeFormState>(initialState);
   const [ingredientsAll, setIngredientsAll] = useState<IngredientData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-const {t}=useTranslation();
+const {t,i18n}=useTranslation();
   const dispatch: AppDispatch = useDispatch();
 
   const fetchIngredients = useCallback(async () => {
@@ -57,7 +57,7 @@ const {t}=useTranslation();
     const { file, titleRecipe, descriptionRecipe, categoryRecipe, cookingTime, ingredients, instructionsRecipe } = formState;
   
     // Pobranie aktualnego języka
-    const { i18n } = useTranslation();
+    
     const currentLanguage = i18n.language;
   
     const convertedIngredients: Ingredient[] = ingredients.map((ingredient) => {
