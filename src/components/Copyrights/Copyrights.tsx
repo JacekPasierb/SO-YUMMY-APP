@@ -19,7 +19,7 @@ const Copyrights: React.FC = () => {
             {t("terms")}
           </Link>
         </div>
-        <div>
+        <div className={styles.textBox}>
           <span className={styles.text}>
             So Yummy - Ver {packageJson.version}{" "}
           </span>
