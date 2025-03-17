@@ -1,14 +1,14 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect, useMemo, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {
   NavLink,
   useLocation,
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
-import { useMediaQuery } from "@react-hook/media-query";
-import { AppDispatch } from "../../redux/store";
-import { getRecipes } from "../../redux/recipes/operations";
+import {useMediaQuery} from "@react-hook/media-query";
+import {AppDispatch} from "../../redux/store";
+import {getRecipes} from "../../redux/recipes/operations";
 import {
   selectIsLoading,
   selectRecipesByCategory,
@@ -18,22 +18,22 @@ import {
   getEmptySearchImage,
   getPageFromQueryString,
 } from "../../helpers/helpers";
-import { IRecipe } from "../../types/recipesTypes";
+import {IRecipe} from "../../types/recipesTypes";
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import CardRecipe from "../../components/CardRecipe/CardRecipe";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import styles from "./SearchPage.module.css";
-import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet-async";
+import {useTranslation} from "react-i18next";
+import {Helmet} from "react-helmet-async";
 
 const SearchPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const { search } = useLocation();
+  const {search} = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
-const {t}=useTranslation();
+  const {t} = useTranslation();
   const initialSearchType = searchParams.get("ingredient")
     ? "ingredient"
     : "query";
@@ -54,7 +54,7 @@ const {t}=useTranslation();
   const limit = isDesktop ? 12 : 6;
 
   const emptySearchImage = useMemo(() => {
-    return getEmptySearchImage({ isDesktop, isTablet, isMobile, isRetina });
+    return getEmptySearchImage({isDesktop, isTablet, isMobile, isRetina});
   }, [isDesktop, isTablet, isMobile, isRetina]);
 
   const handlePageChange = (page: number) => {
@@ -63,7 +63,7 @@ const {t}=useTranslation();
       page: page.toString(),
     };
     navigate(`?${new URLSearchParams(newParams)}`);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({top: 0, behavior: "smooth"});
   };
 
   const handleSearchTypeChange = (type: string) => {
@@ -72,7 +72,7 @@ const {t}=useTranslation();
 
   const handleSearchSubmit = (value: string) => {
     const paramKey = searchType === "query" ? "query" : "ingredient";
-    setSearchParams({ [paramKey]: value });
+    setSearchParams({[paramKey]: value});
   };
 
   useEffect(() => {
@@ -87,9 +87,7 @@ const {t}=useTranslation();
     const value = searchParams.get(paramKey) || "";
 
     if (value) {
-      dispatch(
-        getRecipes({ type: searchType, value, page: currentPage, limit })
-      );
+      dispatch(getRecipes({type: searchType, value, page: currentPage, limit}));
     }
   }, [searchParams, dispatch, searchType, currentPage, limit]);
 
@@ -103,7 +101,7 @@ const {t}=useTranslation();
       </Helmet>
       <Header />
       <div className={styles.searchPage__container}>
-        <MainTitle title={t("search_button")}/>
+        <MainTitle title={t("search_button")} />
         <SearchBar
           onTypeChange={handleSearchTypeChange}
           selectedType={searchType}

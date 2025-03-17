@@ -63,7 +63,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: var(--breakpoint-tablet)) {
+@media screen and (min-width: 768px) {
   .ingredientCard {
     padding-bottom: 43px;
   }
@@ -95,7 +95,7 @@
   }
 }
 
-@media screen and (min-width: var(--breakpoint-desktop)) {
+@media screen and (min-width: 1200px) {
   .ingredientCard__measureBox {
     margin-right: 174px;
   }
