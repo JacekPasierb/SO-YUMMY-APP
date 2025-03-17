@@ -107,7 +107,10 @@ console.log("d",data);
     <div className={styles.previewCategories}>
       <ul className={styles.categoriesList}>
         {Object.entries(recipesMainCategories).map(([category, recipes]) => (
+          
+          
           <li key={category} className={styles.categoriesListItem}>
+          
             <TitleCategories categories={category} />
             <ul className={styles.recipesList}>{renderRecipes(recipes)}</ul>
             <NavLink
