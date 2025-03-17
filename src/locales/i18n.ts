@@ -21,5 +21,5 @@ i18n
       escapeValue: false,
     },
   });
-
+  console.log("Załadowane języki:", i18n.options.resources);
 export default i18n;
