@@ -47,14 +47,15 @@ const PreviewsCategories: FC = () => {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await fetchRecipesByFourCategories(getRecipeCount(),lang);
+        const response = await fetchRecipesByFourCategories(
+          getRecipeCount(),
+          lang
+        );
         const {data} = response as ApiResponse;
 
         if (!data || typeof data !== "object") {
           throw new Error("Invalid data format received from server");
         }
-
-console.log("d",data);
 
         setRecipesMainCategories(data);
       } catch (error) {
@@ -68,7 +69,7 @@ console.log("d",data);
     };
 
     fetchRecipes();
-  }, [isDesktop, isTablet,i18next.language]);
+  }, [isDesktop, isTablet, i18next.language]);
 
   const renderRecipes = (recipes: IRecipe[]) =>
     recipes.map((recipe) => (
@@ -107,10 +108,7 @@ console.log("d",data);
     <div className={styles.previewCategories}>
       <ul className={styles.categoriesList}>
         {Object.entries(recipesMainCategories).map(([category, recipes]) => (
-          
-          
           <li key={category} className={styles.categoriesListItem}>
-          
             <TitleCategories categories={category} />
             <ul className={styles.recipesList}>{renderRecipes(recipes)}</ul>
             <NavLink

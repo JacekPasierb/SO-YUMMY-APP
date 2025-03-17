@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCategoriesList} from "../../redux/recipes/operations";
 import {selectCategoriesList} from "../../redux/recipes/selectors";
 import {useTranslation} from "react-i18next";
+import {Helmet} from "react-helmet-async";
 
 const CategoriesPage: FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -28,16 +29,21 @@ const CategoriesPage: FC = () => {
   }, [dispatch, currentLanguage]);
 
   return (
-    <main className={styles.categoriesPage}>
-      <Header />
-      <div className={`${styles.container} ${styles.flex}`}>
-        <MainTitle title={t("categories")} />
-        <CategoriesNav categoriesList={categoriesList} />
-        <Suspense>
-          <Outlet />
-        </Suspense>
-      </div>
-    </main>
+    <>
+      <Helmet>
+        <title>{t("titles.categories")}</title>
+      </Helmet>
+      <main className={styles.categoriesPage}>
+        <Header />
+        <div className={`${styles.container} ${styles.flex}`}>
+          <MainTitle title={t("categories")} />
+          <CategoriesNav categoriesList={categoriesList} />
+          <Suspense>
+            <Outlet />
+          </Suspense>
+        </div>
+      </main>
+    </>
   );
 };
 

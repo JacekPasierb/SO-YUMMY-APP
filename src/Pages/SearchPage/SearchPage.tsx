@@ -26,6 +26,7 @@ import CardRecipe from "../../components/CardRecipe/CardRecipe";
 import BasicPagination from "../../components/Pagination/BasicPagination";
 import styles from "./SearchPage.module.css";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 const SearchPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -97,6 +98,9 @@ const {t}=useTranslation();
 
   return (
     <>
+      <Helmet>
+        <title>{t("titles.search")}</title>
+      </Helmet>
       <Header />
       <div className={styles.searchPage__container}>
         <MainTitle title={t("search_button")}/>

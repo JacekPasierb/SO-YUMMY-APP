@@ -10,6 +10,7 @@ import AppDescription from "../../components/AppDescription/AppDescription";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import styles from "./MainPage.module.css";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 
 const MainPage: React.FC = () => {
@@ -37,6 +38,9 @@ const {t}=useTranslation();
 
   return (
     <>
+      <Helmet>
+        <title>{t("titles.welcome")}</title>
+      </Helmet>
       <Header />
       <main>
         <section className={styles.background}>
