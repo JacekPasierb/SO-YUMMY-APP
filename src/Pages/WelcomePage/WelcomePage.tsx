@@ -8,7 +8,10 @@ import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher
 import { Helmet } from "react-helmet-async";
 
 const WelcomePage: React.FC = () => {
-  const {t} = useTranslation();
+  const { t, i18n } = useTranslation();
+  if (!i18n.isInitialized) {
+    return <p>Ładowanie...</p>;
+  }
   return (
     <>
       <Helmet>
