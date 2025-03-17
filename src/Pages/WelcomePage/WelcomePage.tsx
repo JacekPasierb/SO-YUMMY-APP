@@ -13,7 +13,7 @@ const WelcomePage: React.FC = () => {
   return (
     <>
   <Helmet>
-        <title>Login</title>
+        <title>{t("titles.welcome")}</title>
       </Helmet>
       <div className={styles.welcomePage}>
         <div className={styles.welcomePage__container}>
