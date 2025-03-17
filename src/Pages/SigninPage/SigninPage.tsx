@@ -4,6 +4,7 @@ import styles from "./SigninPage.module.css";
 import {useLocation} from "react-router";
 import {toast} from "react-toastify";
 import {useTranslation} from "react-i18next";
+import {Helmet} from "react-helmet-async";
 
 const SigninPage: React.FC = () => {
   const location = useLocation();
@@ -15,11 +16,16 @@ const SigninPage: React.FC = () => {
     }
   }, [location, t]);
   return (
-    <main className={styles.signinPage}>
-      <div className={styles.signinPage__container}>
-        <AuthForm formType="signin" />
-      </div>
-    </main>
+    <>
+      <Helmet>
+        <title>{t("titles.signin")}</title>
+      </Helmet>
+      <main className={styles.signinPage}>
+        <div className={styles.signinPage__container}>
+          <AuthForm formType="signin" />
+        </div>
+      </main>
+    </>
   );
 };
 

@@ -5,14 +5,14 @@ import styles from "./WelcomePage.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import {useTranslation} from "react-i18next";
 import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher";
-import { Helmet } from 'react-helmet-async';
+import {Helmet} from "react-helmet-async";
 
 const WelcomePage: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
 
   return (
     <>
-  <Helmet>
+      <Helmet>
         <title>{t("titles.welcome")}</title>
       </Helmet>
       <div className={styles.welcomePage}>
