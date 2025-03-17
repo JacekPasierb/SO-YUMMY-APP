@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Copyrights.module.css";
 import { useTranslation } from "react-i18next";
+import packageJson from "../../../package.json";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -17,6 +18,7 @@ const Copyrights: React.FC = () => {
           <Link to="#" className={styles.text}>
           {t("terms")}
           </Link>
+          <p>So Yummy - Wersja {packageJson.version}</p>
         </div>
       </div>
     </footer>

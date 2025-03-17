@@ -1,4 +1,15 @@
 {
+  "titles": {
+    "welcome": "Witamy w So Yummy | Odkryj Nowe Przepisy",
+    "signin": "Logowanie | So Yummy",
+    "register": "Rejestracja | So Yummy",
+    "categories": "Kategorie Przepisów | So Yummy",
+    "addRecipe": "Dodaj Przepis | So Yummy",
+    "myRecipes": "Moje Przepisy | So Yummy",
+    "favorites": "Ulubione Przepisy | So Yummy",
+    "shoppingList": "Lista Zakupów | So Yummy",
+    "search": "Wyszukiwarka Przepisów | So Yummy"
+  },
   "welcome": "Co ugotować? To nie tylko aplikacja z przepisami, to Twój własny cyfrowy zeszyt kuchenny.",
   "search_placeholder": "Wpisz nazwę przepisu...",
   "search_button": "Szukaj",
@@ -84,17 +95,16 @@
   "newsletterAlreadySubscribed": "Już jesteś zapisany",
   "recipeRemoved": "Przepis usunięty z ulubionych",
   "recipeAdded": "Przepis dodany do ulubionych",
-   "general": "Coś poszło nie tak..",
-   "addToFavorites": "Dodaj do ulubionych przepisów",
+  "general": "Coś poszło nie tak..",
+  "addToFavorites": "Dodaj do ulubionych przepisów",
   "removeFromFavorites": "Usuń z ulubionych",
-   "addToList":"Dodaj do listy",
-    "invalidFileType": "Nieprawidłowy format pliku. Użyj JPEG lub PNG.",
-    "fileTooLarge": "Plik jest za duży. Maksymalny rozmiar to 4MB.",
-    "loadIngredients": "Nie udało się załadować składników",
-    "missingField": "Proszę wypełnić następujące pole: {{field}}",
-    "missingIngredients": "Proszę dodać co najmniej jeden składnik",
-    "incompleteIngredient": "Proszę uzupełnić wszystkie pola dla każdego składnika",
-    "instructionsTooShort": "Instrukcje są za krótkie. Podaj więcej szczegółów (co najmniej {{min}} znaków).",
-     "recipeAddFailed": "Nie udało się dodać przepisu. Spróbuj ponownie."
-
+  "addToList": "Dodaj do listy",
+  "invalidFileType": "Nieprawidłowy format pliku. Użyj JPEG lub PNG.",
+  "fileTooLarge": "Plik jest za duży. Maksymalny rozmiar to 4MB.",
+  "loadIngredients": "Nie udało się załadować składników",
+  "missingField": "Proszę wypełnić następujące pole: {{field}}",
+  "missingIngredients": "Proszę dodać co najmniej jeden składnik",
+  "incompleteIngredient": "Proszę uzupełnić wszystkie pola dla każdego składnika",
+  "instructionsTooShort": "Instrukcje są za krótkie. Podaj więcej szczegółów (co najmniej {{min}} znaków).",
+  "recipeAddFailed": "Nie udało się dodać przepisu. Spróbuj ponownie."
 }
