@@ -24,10 +24,12 @@ interface DataForm {
 }
 
 const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
+  
   const [preview, setPreview] = useState<string | null>(null);
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
+console.log("Czy `i18n` działa w RecipeDescriptionFields?", i18n.isInitialized);
   const currentLanguage = i18n.language;
     const timeOptionsList = () => {
     const time = [];

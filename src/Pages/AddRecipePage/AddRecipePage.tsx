@@ -29,7 +29,9 @@ const AddRecipePage: React.FC = () => {
   );
   return (
     <>
-
+      <Helmet>
+        <title>{t("titles.addRecipe")}</title>
+      </Helmet>
       <main className={styles.addRecipePage}>
         <Header />
         <div className={`${styles.addRecipePage__container} ${styles.flex}`}>

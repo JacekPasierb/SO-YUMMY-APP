@@ -21,6 +21,7 @@ const initialState: RecipeFormState = {
 };
 
 export const useRecipeForm = () => {
+  console.log("useRecipeForm() uruchomione!");
   const [formState, setFormState] = useState<RecipeFormState>(initialState);
   const [ingredientsAll, setIngredientsAll] = useState<IngredientData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -84,7 +85,7 @@ const {t}=useTranslation();
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    console.log("Kliknięto dodanie przepisu! 🚀");
     const inputs = buildInputs();
     if (!validateInputs(inputs, t)) return;
 
