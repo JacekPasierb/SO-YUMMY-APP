@@ -18,13 +18,19 @@ const Copyrights: React.FC = () => {
           <Link to="#" className={styles.text}>
             {t("terms")}
           </Link>
+        </div>
+        <div>
           <span className={styles.text}>
             So Yummy - Ver {packageJson.version}{" "}
-          
           </span>
-          <a href="/CHANGELOG.md" target="_blank" rel="noopener noreferrer" className={styles.text}>
-              Zobacz zmiany
-            </a>
+          <a
+            href="/CHANGELOG.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.text}
+          >
+            Zobacz zmiany
+          </a>
         </div>
       </div>
     </footer>
