@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import styles from "./Copyrights.module.css";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import packageJson from "../../../package.json";
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 const Copyrights: React.FC = () => {
-  const {t}=useTranslation();
+  const {t} = useTranslation();
   return (
     <footer className={styles.copyrightsBox}>
       <div className={styles.container}>
@@ -16,9 +16,15 @@ const Copyrights: React.FC = () => {
             © {CURRENT_YEAR} {t("rights")}
           </span>
           <Link to="#" className={styles.text}>
-          {t("terms")}
+            {t("terms")}
           </Link>
-          <span className={styles.text}>So Yummy - Ver {packageJson.version}</span>
+          <span className={styles.text}>
+            So Yummy - Ver {packageJson.version}{" "}
+          
+          </span>
+          <a href="/CHANGELOG.md" target="_blank" rel="noopener noreferrer" className={styles.text}>
+              Zobacz zmiany
+            </a>
         </div>
       </div>
     </footer>
