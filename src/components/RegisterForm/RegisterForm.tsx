@@ -49,7 +49,9 @@ const RegisterForm: React.FC = () => {
       const result = await dispatch(register(values));
 
       if (register.fulfilled.match(result)) {
-        toast.info(t("verificationEmailSent"));
+        // OFF verifyEmail for sendGRid to notpay
+        // toast.info(t("verificationEmailSent"));
+        toast.info(t("registered"))
         resetForm();
         navigate("/signin");
       }

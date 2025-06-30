@@ -106,5 +106,6 @@
   "missingIngredients": "Proszę dodać co najmniej jeden składnik",
   "incompleteIngredient": "Proszę uzupełnić wszystkie pola dla każdego składnika",
   "instructionsTooShort": "Instrukcje są za krótkie. Podaj więcej szczegółów (co najmniej {{min}} znaków).",
-  "recipeAddFailed": "Nie udało się dodać przepisu. Spróbuj ponownie."
+  "recipeAddFailed": "Nie udało się dodać przepisu. Spróbuj ponownie.",
+  "registered": "Konto zostało utworzone."
 }

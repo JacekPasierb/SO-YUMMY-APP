@@ -11,6 +11,7 @@ import {
 import i18n from "../../locales/i18n";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend-9mvu.vercel.app/";
+// axios.defaults.baseURL = "http://localhost:4000/";
 
 // Utility to add JWT
 const setAuthHeader = (token: string | null) => {

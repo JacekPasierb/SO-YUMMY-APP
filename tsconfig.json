@@ -10,10 +10,10 @@
     "typeRoots": ["./node_modules/@types"],
     "baseUrl": ".",
     "jsx": "react-jsx",
-    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "types": ["node", "jest", "testing-library__jest-dom"],
     "allowUmdGlobalAccess": false,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "."
   },
   "include": [
     "./",
