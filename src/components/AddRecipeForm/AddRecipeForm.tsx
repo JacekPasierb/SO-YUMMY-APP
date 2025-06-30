@@ -1,11 +1,11 @@
-import React, { memo } from "react";
-import { ClimbingBoxLoader } from "react-spinners";
+import React, {memo, useEffect} from "react";
+import {ClimbingBoxLoader} from "react-spinners";
 import styles from "./AddRecipeForm.module.css";
-import { useRecipeForm } from "../../hooks/useRecipeForm";
+import {useRecipeForm} from "../../hooks/useRecipeForm";
 import RecipeDescriptionFields from "../RecipeDescriptionFields/RecipeDescriptionFields";
 import RecipeIngredientsFields from "../RecipeIngredientsFields/RecipeIngredientsFields";
 import RecipePreparationFields from "../RecipePreparationFields/RecipePreparationFields";
-import { FormIngredient, Ing } from "../../types/ingredientsTypes";
+import {FormIngredient, Ing} from "../../types/ingredientsTypes";
 
 interface FormData {
   file: File | null;
@@ -18,10 +18,12 @@ interface FormData {
   setCategoryRecipe: (category: string) => void;
   cookingTime: string;
   setCookingTime: (time: string) => void;
-  ingredients:FormIngredient[];
+  ingredients: FormIngredient[];
   setIngredients: (value: React.SetStateAction<FormIngredient[]>) => void;
   instructionsRecipe: string;
-  setInstructionsRecipe:(value: string | ((prevState: string) => string)) => void;
+  setInstructionsRecipe: (
+    value: string | ((prevState: string) => string)
+  ) => void;
 }
 
 const Loader = () => (
@@ -93,4 +95,4 @@ const AddRecipeForm: React.FC = () => {
   );
 };
 
-export default memo(AddRecipeForm);
+export default AddRecipeForm;

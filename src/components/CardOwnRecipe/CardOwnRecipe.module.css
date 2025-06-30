@@ -2,6 +2,12 @@
   --color-text-light: #fafafa;
 }
 
+.myRecipesList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .myRecipesList__card {
   display: flex;
   gap: 14px;
@@ -92,7 +98,7 @@
 
 .myRecipesList__seeBtn {
   padding: 6px 14px;
- 
+
   border-radius: 24px 44px;
   border: none;
   text-decoration: none;
@@ -112,6 +118,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .myRecipesList {
+    gap: 40px;
+  }
   .myRecipesList__card {
     gap: 24px;
     padding: 28px 24px;
@@ -160,6 +169,9 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .myRecipesList {
+    gap: 50px;
+  }
   .myRecipesList__card {
     gap: 40px;
     padding: 40px;

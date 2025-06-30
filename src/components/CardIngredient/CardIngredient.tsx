@@ -2,11 +2,13 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Checkbox } from "@mui/material";
 import axios from "axios";
 import styles from "./CardIngredient.module.css";
+import { useTranslation } from "react-i18next";
 
 interface Ingredient {
   _id: string;
   thb: string;
   ttl: string;
+  ttlPl?: string;
   measure: string;
 }
 
@@ -21,6 +23,9 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
 }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  const ingredientName = currentLanguage === "pl" ? ingredient.ttlPl || ingredient.ttl : ingredient.ttl;
 
   const handleApiError = useCallback((error: unknown, action: string) => {
     console.error(`Error while ${action} ingredient:`, error);
@@ -57,7 +62,7 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
         await axios.post("/api/shopping-list/add", {
           ingredientId: ingredient._id,
           thb: ingredient.thb,
-          name: ingredient.ttl,
+          name: ingredientName,
           measure: ingredient.measure,
           recipeId,
         });
@@ -77,11 +82,11 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
           src={ingredient.thb}
           width="65"
           height="65"
-          alt={ingredient.ttl}
+          alt={ingredientName}
           className={styles.ingredientCard__image}
           loading="lazy"
         />
-        <p className={styles.ingredientCard__name}>{ingredient.ttl}</p>
+        <p className={styles.ingredientCard__name}>{ingredientName}</p>
       </div>
       <div className={styles.ingredientCard__actions}>
         <div className={styles.ingredientCard__measureBox}>
@@ -93,7 +98,7 @@ const CardIngredient: React.FC<CardIngredientProps> = ({
           checked={isChecked}
           onChange={handleCheckboxChange}
           disabled={loading}
-          aria-label={`Add ${ingredient.ttl} to shopping list`}
+          aria-label={`Add ${ingredientName} to shopping list`}
           sx={{
             color: "#7E7E7E",
             padding: { xs: "4px", md: "8px" },

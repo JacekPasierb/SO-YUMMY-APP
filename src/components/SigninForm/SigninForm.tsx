@@ -1,18 +1,19 @@
-import React, { useCallback, useMemo } from "react";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import { useMediaQuery } from "@react-hook/media-query";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, {useCallback, useMemo} from "react";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
+import {useMediaQuery} from "@react-hook/media-query";
+import {useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
 
-import { AppDispatch } from "src/redux/store";
-import { logIn, resendVerificationEmail } from "../../redux/auth/operations";
-import { selectError } from "../../redux/auth/selectors";
-import { validate } from "./SigninFormValidations";
-import { getLogoSrc } from "../../helpers/helpers";
+import {AppDispatch} from "src/redux/store";
+import {logIn, resendVerificationEmail} from "../../redux/auth/operations";
+import {selectError} from "../../redux/auth/selectors";
+import {validate} from "./SigninFormValidations";
+import {getLogoSrc} from "../../helpers/helpers";
 
 import styles from "./SigninForm.module.css";
 import icons from "../../assets/icons/sprite.svg";
+import {useTranslation} from "react-i18next";
 
 interface SigninFormValues {
   email: string;
@@ -22,10 +23,10 @@ interface SigninFormValues {
 const SigninForm: React.FC = () => {
   const isTablet = useMediaQuery("(min-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
-  const isRetina = window.devicePixelRatio > 1;
-
+  const isRetina = Math.floor(window.devicePixelRatio) > 1;
+  const {t} = useTranslation();
   const logoSrc = useMemo(
-    () => getLogoSrc({ isDesktop, isTablet, isRetina }),
+    () => getLogoSrc({isDesktop, isTablet, isRetina}),
     [isDesktop, isTablet, isRetina]
   );
 
@@ -34,10 +35,7 @@ const SigninForm: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = useCallback(
-    async (
-      values: SigninFormValues,
-      { resetForm }: { resetForm: () => void }
-    ) => {
+    async (values: SigninFormValues, {resetForm}: {resetForm: () => void}) => {
       try {
         const result = await dispatch(logIn(values));
 
@@ -46,22 +44,24 @@ const SigninForm: React.FC = () => {
           navigate("/");
         }
       } catch (error) {
-        toast.error("Sign in failed. Please try again.");
+      
+        
+        toast.error(t("signinError"));
       }
     },
-    [dispatch, navigate]
+    [dispatch, navigate, t]
   );
 
   const handleResendVerification = useCallback(
     async (email: string | undefined) => {
       try {
         await dispatch(resendVerificationEmail(email as string));
-        toast.success("Verification email sent successfully!");
+        toast.success(t("verificationEmailSent"));
       } catch (error) {
-        toast.error("Failed to send verification email.");
+        toast.error(t("verificationEmailFailed"));
       }
     },
-    [dispatch]
+    [dispatch, t]
   );
 
   const renderField = (
@@ -91,18 +91,24 @@ const SigninForm: React.FC = () => {
 
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
-      validate={validate}
+      initialValues={{email: "", password: ""}}
+      validate={(values) => validate(values, t)}
       onSubmit={handleSubmit}
     >
-      {({ values, errors, touched }) => (
+      {({values, errors, touched}) => (
         <Form className={styles.formRegister} autoComplete="off">
-          <img src={logoSrc} className={styles.logo} alt="Logo" />
-          <h2 className={styles.title}>Sign In</h2>
+          <img
+            width="285px"
+            height="250px"
+            src={logoSrc}
+            className={styles.logo}
+            alt="Logo"
+          />
+          <h2 className={styles.title}>{t("signin")}</h2>
 
           <div className={styles.inputGroup}>
             {renderField("email", "email", "Email", "mail-01")}
-            {renderField("password", "password", "Password", "lock-02")}
+            {renderField("password", "password", t("password"), "lock-02")}
           </div>
 
           {error === "Email not verified" && (
@@ -111,7 +117,7 @@ const SigninForm: React.FC = () => {
               className={styles.resendButton}
               onClick={() => handleResendVerification(values.email)}
             >
-              Resend verification email
+              {t("resendVerification")}
             </button>
           )}
 
@@ -120,7 +126,7 @@ const SigninForm: React.FC = () => {
             className={styles.submitButton}
             aria-label="Sign in"
           >
-            Sign in
+            {t("signin")}
           </button>
         </Form>
       )}

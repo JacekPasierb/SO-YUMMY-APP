@@ -16,6 +16,7 @@ const CardRecipe: FC<CardRecipeProps> = ({ title, preview }) => {
       <img
         src={preview}
         alt={altText}
+       
         className={styles.cardRecipe__image}
         loading="lazy"
       />

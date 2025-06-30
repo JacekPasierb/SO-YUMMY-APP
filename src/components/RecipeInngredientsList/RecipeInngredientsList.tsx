@@ -3,6 +3,7 @@ import { fetchIngredientsById } from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
 import RecipeIngredientsListSkeleton from "./RecipeIngredientsListSkeleton";
 import styles from "./RecipeInngredientsList.module.css";
+import { useTranslation } from "react-i18next";
 
 interface RecipeIngredientsListProps {
   ingredients: Array<{
@@ -27,7 +28,7 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+const {t}=useTranslation();
   const fetchIngredientsData = useCallback(async () => {
     if (!ingredients?.length) return;
 
@@ -79,14 +80,14 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
       className={styles.recipeIngredientsList__box}
     >
       <div className={styles.recipeIngredientsList__header}>
-        <h2 className={styles.recipeIngredientsList__title}>Ingredients</h2>
+        <h2 className={styles.recipeIngredientsList__title}>{t("product")}</h2>
         <div
           className={styles.recipeIngredientsList__flexWrapper}
           aria-hidden="true"
         >
-          <span className={styles.recipeIngredientsList__title}>Number</span>
+          <span className={styles.recipeIngredientsList__title}>{t("number")}</span>
           <span className={styles.recipeIngredientsList__title}>
-            Add to list
+          {t("addToList")}
           </span>
         </div>
       </div>

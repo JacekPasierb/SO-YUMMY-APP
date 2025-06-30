@@ -6,10 +6,15 @@
   align-items: center;
   min-height: 100vh;
   padding: 35px;
-  background-image: url("../../images/backgroundWelcome1x.png");
+  background-image: url("../../images/backgroundWelcome1x.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+@supports (background-image: url("../../images/backgroundWelcome1x.webp")) {
+  .welcomePage {
+    background-image: url("../../images/backgroundWelcome1x.webp");
+  }
 }
 
 .welcomePage__container {
@@ -60,15 +65,38 @@
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .welcomePage {
-    background-image: url("../../images/backgroundWelcome2x.png");
+    background-image: url("../../images/backgroundWelcome2x.jpg");
+  }
+}
+
+@supports (background-image: url("../../images/backgroundWelcome2x.webp")) {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .welcomePage {
+      background-image: url("../../images/backgroundWelcome2x.webp");
+    }
   }
 }
 
 /* Tablet */
 @media screen and (min-width: 768px) {
   .welcomePage {
-    background-image: url("../../images/backgroundWelcomeTablet1x.png");
+    background-image: url("../../images/backgroundWelcomeTablet1x.jpg");
   }
+
+  .welcomePage__section {
+    max-width: 400px;
+  }
+
+  @supports (
+    background-image: url("../../images/backgroundWelcomeTablet1x.webp")
+  ) {
+    .welcomePage {
+      background-image: url("../../images/backgroundWelcomeTablet1x.webp");
+    }
+  }
+
   .welcomePage__container {
     gap: 44px;
   }
@@ -91,14 +119,36 @@
   screen and (min-width: 768px) and (min-resolution: 192dpi),
   screen and (min-width: 768px) and (min-resolution: 2dppx) {
   .welcomePage {
-    background-image: url("../../images/backgroundWelcomeTablet2x.png");
+    background-image: url("../../images/backgroundWelcomeTablet2x.jpg");
+  }
+}
+
+@supports (
+  background-image: url("../../images/backgroundWelcomeTablet2x.webp")
+) {
+  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 768px) and (min-resolution: 192dpi),
+    screen and (min-width: 768px) and (min-resolution: 2dppx) {
+    .welcomePage {
+      background-image: url("../../images/backgroundWelcomeTablet2x.webp");
+    }
   }
 }
 
 /* Desktop */
 @media screen and (min-width: 1200px) {
   .welcomePage {
-    background-image: url("../../images/backgroundWelcomeDesktop1x.png");
+    background-image: url("../../images/backgroundWelcomeDesktop1x.jpg");
+  }
+}
+
+@supports (
+  background-image: url("../../images/backgroundWelcomeDesktop1x.webp")
+) {
+  @media screen and (min-width: 1200px) {
+    .welcomePage {
+      background-image: url("../../images/backgroundWelcomeDesktop1x.webp");
+    }
   }
 }
 
@@ -107,6 +157,18 @@
   screen and (min-width: 1200px) and (min-resolution: 192dpi),
   screen and (min-width: 1200px) and (min-resolution: 2dppx) {
   .welcomePage {
-    background-image: url("../../images/backgroundWelcomeDesktop2x.png");
+    background-image: url("../../images/backgroundWelcomeDesktop2x.jpg");
+  }
+}
+
+@supports (
+  background-image: url("../../images/backgroundWelcomeDesktop2x.webp")
+) {
+  @media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 1200px) and (min-resolution: 192dpi),
+    screen and (min-width: 1200px) and (min-resolution: 2dppx) {
+    .welcomePage {
+      background-image: url("../../images/backgroundWelcomeDesktop2x.webp");
+    }
   }
 }

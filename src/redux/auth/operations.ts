@@ -8,6 +8,7 @@ import {
   IUser,
   UpdateUserResponse,
 } from "../../types/authTypes";
+import i18n from "../../locales/i18n";
 
 axios.defaults.baseURL = "https://so-yummy-app-backend-9mvu.vercel.app/";
 
@@ -33,10 +34,11 @@ export const register = createAsyncThunk<
       setAuthHeader(res.data.data.token);
       return res.data;
     } catch (error: any) {
+      const t = i18n.t;
       const message =
         error.response?.status === 409
-          ? "Email is already in use"
-          : "Registration failed";
+          ? t("emailInUse")
+          :t("registrationFailed");
       toast.error(message);
       return thunkAPI.rejectWithValue(message);
     }
@@ -56,8 +58,9 @@ export const logIn = createAsyncThunk<
       setAuthHeader(token);
       return response.data;
     } catch (error: any) {
+      const t = i18n.t;
       const message =
-        error.response?.status === 403 ? "Email not verified" : "Login failed";
+        error.response?.status === 403 ? t("emailNotVerified") : t("loginFailed");
 
       toast.error(message);
       thunkAPI.dispatch(setAuthError(message));
@@ -111,6 +114,7 @@ export const refreshUser = createAsyncThunk<
 
     return response.data.data;
   } catch (error: any) {
+
     return thunkAPI.rejectWithValue(error.message);
   }
 });

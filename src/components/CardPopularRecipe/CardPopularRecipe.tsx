@@ -17,6 +17,7 @@ const CardPopularRecipe: React.FC<CardPopularRecipeProps> = ({ recipe }) => {
         height="85"
         className={styles.cardPopularRecipe__image}
         alt={`${title} recipe`}
+        loading="lazy"
       />
       <div className={styles.cardPopularRecipe__info}>
         <h2 className={styles.cardPopularRecipe__title}>{title}</h2>

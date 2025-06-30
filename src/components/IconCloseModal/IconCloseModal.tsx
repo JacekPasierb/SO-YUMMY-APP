@@ -24,7 +24,7 @@ const IconCloseModal: FC<IconCloseModalProps> = ({
     <button
       type="button"
       onClick={onClose}
-      className={`${styles.iconCloseButton} ${className}`}
+      className={`${styles.iconCloseButton} ${className ? styles[className] : ''}`}
       aria-label={ariaLabel}
     >
       <svg 

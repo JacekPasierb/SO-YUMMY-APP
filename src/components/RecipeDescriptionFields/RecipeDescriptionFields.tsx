@@ -1,13 +1,14 @@
 import styles from "./RecipeDescriptionFields.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
-import React, { ChangeEvent, FC, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCategoriesList } from "../../redux/recipes/selectors";
-import { AppDispatch } from "../../redux/store";
-import { getCategoriesList } from "../../redux/recipes/operations";
+import React, {ChangeEvent, FC, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {selectCategoriesList} from "../../redux/recipes/selectors";
+import {AppDispatch} from "../../redux/store";
+import {getCategoriesList} from "../../redux/recipes/operations";
+import {useTranslation} from "react-i18next";
 
 interface DataForm {
   file: File | null;
@@ -22,21 +23,22 @@ interface DataForm {
   setCookingTime: (cookingTime: string) => void;
 }
 
-const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
+const RecipeDescriptionFields: React.FC<{data: DataForm}> = ({data}) => {
   const [preview, setPreview] = useState<string | null>(null);
   const dispatch: AppDispatch = useDispatch();
   const categoriesList = useSelector(selectCategoriesList);
-
+  const {t, i18n} = useTranslation();
+  const currentLanguage = i18n.language;
   const timeOptionsList = () => {
     const time = [];
     for (let i = 5; i <= 120; i += 5) {
-      time.push({ label: `${i} min`, value: i });
+      time.push({label: `${i} min`, value: i});
     }
     return time;
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { files } = event.currentTarget;
+    const {files} = event.currentTarget;
 
     if (!files || !files.length) return;
 
@@ -44,13 +46,13 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
     let allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
 
     if (!allowedTypes.includes(file.type)) {
-      toast.error("Invalid file type. Please use JPEG or PNG.");
+      toast.error(t("invalidFileType"));
       data.setFile(null);
       return;
     }
 
     if (file.size > 4000000) {
-      toast.error("File is too large. Maximum size is 4MB.");
+      toast.error(t("fileTooLarge"));
       data.setFile(null);
       return;
     }
@@ -75,8 +77,8 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
   };
 
   useEffect(() => {
-    dispatch(getCategoriesList());
-  }, [dispatch]);
+    dispatch(getCategoriesList(currentLanguage));
+  }, [dispatch, currentLanguage]);
 
   return (
     <>
@@ -118,7 +120,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               id="title"
               value={data.titleRecipe}
               onChange={handleTitleChange}
-              placeholder="Enter recipe title"
+              placeholder={t("enterRecipeTitle")}
               className={styles.input}
               name="title"
             />
@@ -130,7 +132,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               id="about"
               value={data.descriptionRecipe}
               onChange={handleDescriptionChange}
-              placeholder="Enter about recipe"
+              placeholder={t("enterAboutRecipe")}
               className={styles.input}
               name="about"
             />
@@ -141,7 +143,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               <input
                 type="text"
                 id="category"
-                placeholder="Category"
+                placeholder={t("category")}
                 className={styles.input}
                 readOnly
                 name="category"
@@ -168,7 +170,7 @@ const RecipeDescriptionFields: React.FC<{ data: DataForm }> = ({ data }) => {
               <input
                 type="text"
                 id="cookingTime"
-                placeholder="Cooking time"
+                placeholder={t("cookingTime")}
                 className={styles.input}
                 readOnly
                 name="cookingTime"

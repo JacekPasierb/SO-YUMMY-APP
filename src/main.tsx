@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { ToastContainer } from "react-toastify";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { persistor, store } from "./redux/store.js";
+import {Provider} from "react-redux";
+import {PersistGate} from "redux-persist/integration/react";
+import {ToastContainer} from "react-toastify";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {persistor, store} from "./redux/store.js";
 import App from "./App";
-
-import "./index.css";
+import "../src/locales/i18n.js";
 import "react-toastify/dist/ReactToastify.css";
+import {HelmetProvider} from "react-helmet-async";
+import {I18nextProvider} from "react-i18next";
+import i18n from "../src/locales/i18n.js";
 
 const router = createBrowserRouter(
   [
@@ -34,8 +36,12 @@ if (rootElement) {
     <React.StrictMode>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <RouterProvider router={router} />
-          <ToastContainer />
+          <I18nextProvider i18n={i18n}>
+            <HelmetProvider>
+              <RouterProvider router={router} />
+              <ToastContainer />
+            </HelmetProvider>
+          </I18nextProvider>
         </PersistGate>
       </Provider>
     </React.StrictMode>

@@ -6,10 +6,12 @@ import sprite from "../../../assets/icons/sprite.svg";
 import UserInfoModal from "../UserInfoModal/UserInfoModal";
 import { selectIsUserInfoModalOpen } from "../../../redux/global/globalSelectors";
 import { setIsUserInfoModalOpen } from "../../../redux/global/globalSlice";
+import { useTranslation } from "react-i18next";
 
 const BtnEditProfile: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isUserInfoModalOpen = useSelector(selectIsUserInfoModalOpen);
+const {t}=useTranslation();
 
   const handleToggleModal = () => {
     dispatch(setIsUserInfoModalOpen(!isUserInfoModalOpen));
@@ -25,7 +27,7 @@ const BtnEditProfile: React.FC = () => {
         aria-expanded={isUserInfoModalOpen}
         aria-controls="user-info-modal"
       >
-        <span className={styles.btnEditProfile__text}>Edit profile</span>
+        <span className={styles.btnEditProfile__text}>{t("editProfile")}</span>
         <svg className={styles.btnEditProfile__icon} aria-hidden="true">
           <use href={`${sprite}#icon-edit-01`} />
         </svg>

@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import styles from "./RecipePreparationFields.module.css";
 import SubTitle from "../SubTitle/SubTitle";
+import { useTranslation } from "react-i18next";
 
 interface RecipePreparationFieldsProps {
   instructionsRecipe: string;
@@ -11,6 +12,7 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
   instructionsRecipe,
   setInstructionsRecipe,
 }) => {
+  const {t}=useTranslation();
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = event.currentTarget.value;
     setInstructionsRecipe(text);
@@ -18,11 +20,11 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
 
   return (
     <div className={styles.recipePreparationFields__container}>
-      <SubTitle title="Recipe Preparation" />
+      <SubTitle title={t("recipePreparation")} />
 
       <div className={styles.recipePreparationFields__inputWrapper}>
         <textarea
-          placeholder="Enter recipe instructions..."
+          placeholder={t("enterRecipeInstructions")}
           rows={10}
           cols={50}
           className={styles.recipePreparationFields__textarea}
@@ -37,7 +39,7 @@ const RecipePreparationFields: React.FC<RecipePreparationFieldsProps> = ({
           className={styles.recipePreparationFields__button}
           aria-label="Add recipe instructions"
         >
-          Add
+         {t("add")}
         </button>
       </div>
     </div>

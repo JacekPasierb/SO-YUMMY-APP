@@ -1,7 +1,7 @@
 .iconCloseButton {
   position: absolute;
   right: 18px;
-  top: 18px;
+  /* top: 18px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,6 +12,17 @@
   cursor: pointer;
   transition: all var(--transition-duration) ease;
 }
+
+.logOutModal--position {
+ 
+  top: 24px;
+  padding: 6px;
+}
+
+.otherPosition {
+  top: 18px ;
+}
+
 
 .iconCloseButton:focus-visible {
   outline: 2px solid var(--color-text-highlight);
@@ -33,7 +44,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .iconCloseButton {
+  /* .iconCloseButton {
+    right: 24px;
+    top: 24px;
+    padding: 6px;
+  } */
+
+  .logOutModal--position {
     right: 24px;
     top: 24px;
     padding: 6px;

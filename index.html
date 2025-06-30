@@ -1,16 +1,71 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link rel="icon" type="image/svg+xml" href="./src/images/logo.svg" />
+
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+    /></noscript>
+
+    <link rel="preload" as="style" href="/src/index.css" />
+    <link
+      rel="preload"
+      href="/src/assets/fonts/Poppins-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/src/assets/fonts/Poppins-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin="anonymous"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>So Yummy - Find & Save Your Favorite Recipes</title>
+    <meta
+      name="description"
+      content="So Yummy is your ultimate cookbook app. Find, save, and organize your favorite recipes in one place. Start cooking today!"
+    />
+    <meta
+      name="keywords"
+      content="recipes, cooking, food, cookbook, easy meals, healthy recipes, So Yummy"
+    />
+    <meta name="author" content="So Yummy Team" />
+    <!-- Open Graph (Facebook, LinkedIn, Messenger) -->
+    <meta property="og:title" content="So Yummy - Your Ultimate Cookbook" />
+    <meta
+      property="og:description"
+      content="Find, save, and organize your favorite recipes in one place. Start cooking today!"
+    />
+    <meta
+      property="og:image"
+      content="https://so-yummy-jack.netlify.app/assets/so_yummy_preview.png"
+    />
+    <meta property="og:url" content="https://so-yummy-jack.netlify.app" />
+    <meta property="og:type" content="website" />
   </head>
   <body>
     <div id="root"></div>
-    <div id="modal-root"></div> 
+    <div id="modal-root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

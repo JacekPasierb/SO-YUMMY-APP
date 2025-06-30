@@ -1,34 +1,32 @@
 import React from "react";
-import { useMediaQuery } from "@react-hook/media-query";
+import {useMediaQuery} from "@react-hook/media-query";
 import styles from "./Footer.module.css";
 import logoFooter from "../../images/logoFooter.png";
 import Nav from "./Nav/Nav";
 import SubscribeForm from "./SubscribeForm/SubscribeForm";
 import FollowUs from "./FollowUs/FollowUs";
-
-const FEATURES_LIST = [
-  "Database of recipes that can be replenished",
-  "Flexible search for desired and unwanted ingredients",
-  "Ability to add your own recipes with photos",
-  "Convenient and easy to use",
-] as const;
+import sprite from "../../assets/icons/sprite.svg";
+import {useTranslation} from "react-i18next";
 
 const Footer: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
-
+  const {t} = useTranslation();
   const LogoSection = () => (
     <div className={styles.footer__logoBox}>
-      <img
-        src={logoFooter}
-        alt="So Yummy Logo"
-        width="30"
-        height="30"
-        className={styles.footer__logoImage}
-      />
+      <svg className={styles.footer__logoImage}>
+        <use href={`${sprite}#icon-logoFoot`}></use>
+      </svg>
+
       <p className={styles.footer__logoTitle}>So Yummy</p>
     </div>
   );
+  const FEATURES_LIST = [
+    t("description1"),
+    t("description2"),
+    t("description3"),
+    t("description4"),
+  ] as const;
 
   const FeaturesList = () => (
     <ul className={styles.footer__featuresList}>
@@ -44,11 +42,10 @@ const Footer: React.FC = () => {
     <div className={styles.footer__subscribeSection}>
       <div className={styles.footer__subscribeTextBox}>
         <h2 className={styles.footer__subscribeTitle}>
-          Subscribe to our Newsletter
+        {t("newsletterTitle")}
         </h2>
         <p className={styles.footer__subscribeDescription}>
-          Subscribe to our newsletter. Stay updated with the latest news and
-          special offers.
+        {t("newsletterText")}
         </p>
       </div>
       <SubscribeForm />

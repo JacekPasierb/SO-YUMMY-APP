@@ -16,7 +16,7 @@ const RestrictedRoute: FC<RestrictedRouteProps> = ({
     return <Navigate to={redirectTo} replace />;
   }
 
-  return component;
+  return  component;
 };
 
 export default RestrictedRoute;

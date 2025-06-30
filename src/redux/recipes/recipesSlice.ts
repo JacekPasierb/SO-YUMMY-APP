@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import {
   getRecipesByCategory,
   getCategoriesList,
@@ -28,7 +28,12 @@ const initialState: RecipeState = {
 const recipesSlice = createSlice({
   name: "recipes",
   initialState,
-  reducers: {},
+  reducers: {
+    resetRecipes(state) {
+      state.recipes = [];
+      state.totalRecipes = 0;
+    },
+  },
   extraReducers: (builder) =>
     builder
       // Get All Recipes
@@ -44,7 +49,7 @@ const recipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getRecipes.rejected, (state, { payload }) => {
+      .addCase(getRecipes.rejected, (state, {payload}) => {
         state.isLoading = false;
         state.error =
           typeof payload === "string" ? payload : "Failed to fetch recipes";
@@ -61,7 +66,7 @@ const recipesSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getRecipesByCategory.rejected, (state, { payload }) => {
+      .addCase(getRecipesByCategory.rejected, (state, {payload}) => {
         state.isLoading = false;
         state.error =
           typeof payload === "string"
@@ -78,10 +83,10 @@ const recipesSlice = createSlice({
       .addCase(getCategoriesList.pending, (state) => {
         state.error = null;
       })
-      .addCase(getCategoriesList.rejected, (state, { payload }) => {
+      .addCase(getCategoriesList.rejected, (state, {payload}) => {
         state.error =
           typeof payload === "string" ? payload : "Failed to fetch categories";
       }),
 });
-
+export const { resetRecipes } = recipesSlice.actions;
 export const recipesReducer = recipesSlice.reducer;

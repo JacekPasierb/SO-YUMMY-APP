@@ -9,6 +9,7 @@ import IconCloseModal from "../../IconCloseModal/IconCloseModal";
 import { toast } from "react-toastify";
 import { AppDispatch } from "../../../redux/store";
 import styles from "./LogoutModal.module.css";
+import { useTranslation } from "react-i18next";
 
 interface LogoutModalProps {
   onClose: () => void;
@@ -20,16 +21,17 @@ const LogoutModal: React.FC<LogoutModalProps> = ({
   id = "logout-modal",
 }) => {
   const dispatch = useDispatch<AppDispatch>();
+const {t}=useTranslation();
 
   const handleLogout = async () => {
     try {
       await dispatch(logOut());
       dispatch(setIsLogoutModalOpen(false));
       dispatch(setIsUserLogoModalOpen(false));
-      toast.success("Logged out successfully!");
+      toast.success(t("logoutSuccess"));
     } catch (error) {
       console.error("Error during logout:", error);
-      toast.error("Failed to log out. Please try again.");
+      toast.error(t("logoutError"));
     }
   };
 
@@ -41,10 +43,10 @@ const LogoutModal: React.FC<LogoutModalProps> = ({
       aria-labelledby="logout-title"
       aria-modal="true"
     >
-      <IconCloseModal onClose={onClose} />
+      <IconCloseModal onClose={onClose} className="logOutModal--position"/>
 
       <p id="logout-title" className={styles.logoutModal__text}>
-        Are you sure you want to log out?
+      {t("logoutConfirmation")}
       </p>
 
       <div className={styles.logoutModal__buttons}>
@@ -53,14 +55,14 @@ const LogoutModal: React.FC<LogoutModalProps> = ({
           onClick={handleLogout}
           className={styles.logoutModal__btnLogout}
         >
-          Log out
+          {t("logOut")}
         </button>
         <button
           type="button"
           onClick={onClose}
           className={styles.logoutModal__btnCancel}
         >
-          Cancel
+         {t("cancel")}
         </button>
       </div>
     </div>

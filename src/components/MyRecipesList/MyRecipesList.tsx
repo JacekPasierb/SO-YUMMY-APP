@@ -1,9 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, lazy } from "react";
 import { useNavigate } from "react-router";
 import styles from "./MyRecipesList.module.css";
-import CardOwnRecipe from "../CardOwnRecipe/CardOwnRecipe";
 import MyRecipesListSkeleton from "../CardOwnRecipe/MyRecipesListSkelton";
 import { IRecipe } from "../../types/recipesTypes";
+import { useTranslation } from "react-i18next";
+const CardOwnRecipe = lazy(()=>import("../CardOwnRecipe/CardOwnRecipe"))
 
 interface MyRecipesListProps {
   recipes: IRecipe[];
@@ -12,7 +13,7 @@ interface MyRecipesListProps {
 
 const MyRecipesList: FC<MyRecipesListProps> = ({ recipes, isLoading }) => {
   const navigate = useNavigate();
-
+const {t}=useTranslation();
   if (isLoading) {
     return <MyRecipesListSkeleton />;
   }
@@ -25,7 +26,7 @@ const MyRecipesList: FC<MyRecipesListProps> = ({ recipes, isLoading }) => {
     return (
       <div className={styles.emptyState} role="status">
         <p className={styles.emptyStateText}>
-          You haven't added any recipes yet
+         {t("noRecipesAdded")}
         </p>
       </div>
     );

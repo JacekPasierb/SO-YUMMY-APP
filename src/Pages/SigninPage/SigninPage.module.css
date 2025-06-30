@@ -8,6 +8,15 @@
   background-repeat: no-repeat;
   background-position: center top 230px;
   background-size: cover;
+
+  position: relative;
+  z-index: 0;
+}
+
+@supports (background-image: url("../../images/RectangleMobile1x.webp")) {
+  .signinPage {
+    background-image: url("../../images/RectangleMobile1x.webp");
+  }
 }
 
 .signinPage__container {
@@ -30,6 +39,16 @@
   }
 }
 
+@supports (background-image: url("../../images/RectangleMobile2x.webp")) {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .signinPage {
+      background-image: url("../../images/RectangleMobile2x.webp");
+    }
+  }
+}
+
 /* Tablet */
 @media screen and (min-width: 768px) {
   .signinPage {
@@ -42,6 +61,14 @@
   }
 }
 
+@supports (background-image: url("../../images/RectangleTablet1x.webp")) {
+  @media screen and (min-width: 768px) {
+    .signinPage {
+      background-image: url("../../images/RectangleTablet1x.webp");
+    }
+  }
+}
+
 /* Tablet Retina */
 @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
   screen and (min-width: 768px) and (min-resolution: 192dpi),
@@ -51,10 +78,19 @@
   }
 }
 
+@supports (background-image: url("../../images/RectangleTablet2x.webp")) {
+  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 768px) and (min-resolution: 192dpi),
+    screen and (min-width: 768px) and (min-resolution: 2dppx) {
+    .signinPage {
+      background-image: url("../../images/RectangleTablet2x.webp");
+    }
+  }
+}
+
 /* Desktop */
 @media screen and (min-width: 1200px) {
   .signinPage {
-    padding-bottom: 0;
     background-image: url("../../images/RectangleDesctop1x.png");
     background-position: center top 440px;
   }
@@ -64,11 +100,28 @@
   }
 }
 
+@supports (background-image: url("../../images/RectangleDesctop1x.webp")) {
+  @media screen and (min-width: 1200px) {
+    .signinPage {
+      background-image: url("../../images/RectangleDesctop1x.webp");
+    }
+  }
+}
 /* Desktop Retina */
 @media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2),
   screen and (min-width: 1200px) and (min-resolution: 192dpi),
   screen and (min-width: 1200px) and (min-resolution: 2dppx) {
   .signinPage {
     background-image: url("../../images/RectangleDesctop2x.png");
+  }
+}
+
+@supports (background-image: url("../../images/RectangleDesctop2x.webp")) {
+  @media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 1200px) and (min-resolution: 192dpi),
+    screen and (min-width: 1200px) and (min-resolution: 2dppx) {
+    .signinPage {
+      background-image: url("../../images/RectangleDesctop2x.webp");
+    }
   }
 }

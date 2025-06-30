@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./AppDescription.module.css"; 
+import { useTranslation } from "react-i18next";
 
 const AppDescription = React.memo(() => {
+  const { t } = useTranslation();
   return (
     <p className={styles.description}>
-      What to cook? is not only a recipe app, it is, in fact, your cookbook.
-      You can add your own recipes to save them for the future.
+      {t("welcome")}
     </p>
   );
 });

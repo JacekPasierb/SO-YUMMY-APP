@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import axios from "axios";
 import styles from "./IngredientsShoppingList.module.css";
-import CardIngredientShoppingList from "../CardIngredientShoppingList/CardIngredientShoppingList";
 import { toast } from "react-toastify";
+import { Loader } from "../Loader/Loader";
+import { ClimbingBoxLoader } from "react-spinners";
+import { useTranslation } from "react-i18next";
+const CardIngredientShoppingList = lazy(()=>import("../CardIngredientShoppingList/CardIngredientShoppingList"))
 
 export interface Ingredient {
   ingredientId: string;
@@ -18,7 +21,7 @@ const IngredientsShoppingList: React.FC = () => {
   const [shoppingList, setShoppingList] = useState<Ingredient[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+const {t}=useTranslation();
   const fetchShoppingList = async () => {
     try {
       setIsLoading(true);
@@ -39,7 +42,7 @@ const IngredientsShoppingList: React.FC = () => {
   }, []);
 
   if (isLoading) {
-    return <div className={styles.shoppingList__loading}>Loading...</div>;
+    return <ClimbingBoxLoader/>;
   }
 
   if (error) {
@@ -49,10 +52,10 @@ const IngredientsShoppingList: React.FC = () => {
   return (
     <div className={styles.shoppingList__box}>
       <div className={styles.shoppingList__header}>
-        <h2 className={styles.shoppingList__title}>Product</h2>
+        <h2 className={styles.shoppingList__title}>{t("product")}</h2>
         <div className={styles.shoppingList__flexWrapper}>
-          <h3 className={styles.shoppingList__title}>Number</h3>
-          <h3 className={styles.shoppingList__title}>Remove</h3>
+          <h3 className={styles.shoppingList__title}>{t("number")}</h3>
+          <h3 className={styles.shoppingList__title}>{t("remove")}</h3>
         </div>
       </div>
 

@@ -17,7 +17,7 @@ So Yummy to nowoczesna aplikacja kulinarna, która pomaga użytkownikom odkrywa�
 - 📝 Tworzenie własnych przepisów
 - 🛒 Lista zakupów
 - 🌙 Tryb ciemny/jasny
-- 🌐 Planowana obsługa wielu języków (PL/EN)
+- 🌐 Obsługa wielu języków (PL/EN)
 
 ## 🛠️ Technologie
 
@@ -161,9 +161,6 @@ npm run dev
 - ✅ Testy jednostkowe (Jest)
 - ⏳ Testy integracyjne (React Testing Library)
 - ⏳ Testy E2E (Cypress)
-- ⏳ Wielojęzyczność (i18next)
-  - 🇵🇱 Polski
-  - 🇬🇧 Angielski
 
 ## 🛠️ Problemy i Rozwiązania
 

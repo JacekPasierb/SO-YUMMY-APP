@@ -6,6 +6,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { addSubscribe } from "../../../API/subscribeAPI";
 import sprite from "../../../assets/icons/sprite.svg";
 import styles from "./SubscribeForm.module.css";
+import { useTranslation } from "react-i18next";
 
 interface FormValues {
   email: string;
@@ -19,7 +20,7 @@ const validationSchema = Yup.object().shape({
 
 const SubscribeForm: React.FC = () => {
   const { user } = useAuth();
-
+const {t}=useTranslation();
   const initialValues: FormValues = {
     email: user?.email || "",
   };
@@ -30,10 +31,10 @@ const SubscribeForm: React.FC = () => {
   ) => {
     try {
       await addSubscribe({ email: values.email });
-      toast.success("Successfully subscribed to newsletter!");
+      toast.success(t("newsletterSubscribed"));
       resetForm();
     } catch (error) {
-      toast.error("You are already subscribed");
+      toast.error(t("newsletterAlreadySubscribed"));
     } finally {
       setSubmitting(false);
     }
@@ -56,7 +57,7 @@ const SubscribeForm: React.FC = () => {
                 <Field
                   type="email"
                   name="email"
-                  placeholder="Enter your email address"
+                  placeholder={t("enterEmail")}
                   className={styles.inputEmail}
                   aria-label="Email subscription"
                 />
@@ -75,7 +76,7 @@ const SubscribeForm: React.FC = () => {
             className={styles.subscribeButton}
             aria-label="Subscribe to newsletter"
           >
-            {isSubmitting ? "Subscribing..." : "Subscribe"}
+            {isSubmitting ? t("subscribing") : t("subscribe")}
           </button>
         </Form>
       )}
