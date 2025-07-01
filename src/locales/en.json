@@ -107,5 +107,14 @@
   "incompleteIngredient": "Please fill out all fields for each ingredient",
   "instructionsTooShort": "Instructions are too short. Please provide more details (at least {{min}} characters).",
   "recipeAddFailed": "Failed to add recipe. Please try again.",
-    "registered": "Account Ready."
+    "registered": "Account Ready.",
+    "units": {
+      "tbs": "tablespoon",
+      "tsp": "teaspoon",
+      "kg": "kilogram",
+      "g": "gram",
+      "pcs": "piece",
+      "l": "liter",
+      "ml": "milliliter"
+    }
 }

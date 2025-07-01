@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { fetchIngredientsById } from "../../API/ingredientsAPI";
+import React, {useCallback, useEffect, useState} from "react";
+import {fetchIngredientsById} from "../../API/ingredientsAPI";
 import CardIngredient from "../CardIngredient/CardIngredient";
 import RecipeIngredientsListSkeleton from "./RecipeIngredientsListSkeleton";
 import styles from "./RecipeInngredientsList.module.css";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 
 interface RecipeIngredientsListProps {
   ingredients: Array<{
@@ -28,7 +28,8 @@ const RecipeInngredientsList: React.FC<RecipeIngredientsListProps> = ({
   const [ingredientsList, setIngredientsList] = useState<Ingredient[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-const {t}=useTranslation();
+  const {t} = useTranslation();
+  
   const fetchIngredientsData = useCallback(async () => {
     if (!ingredients?.length) return;
 
@@ -38,7 +39,7 @@ const {t}=useTranslation();
 
       const fetchedData = await Promise.all(
         ingredients.map(async (ing) => {
-          const { data } = await fetchIngredientsById(ing.id);
+          const {data} = await fetchIngredientsById(ing.id);
           if (!data?.ingredient) {
             throw new Error(`Failed to fetch ingredient with ID: ${ing.id}`);
           }
@@ -76,18 +77,18 @@ const {t}=useTranslation();
   }
 
   return (
-    <div
-      className={styles.recipeIngredientsList__box}
-    >
+    <div className={styles.recipeIngredientsList__box}>
       <div className={styles.recipeIngredientsList__header}>
         <h2 className={styles.recipeIngredientsList__title}>{t("product")}</h2>
         <div
           className={styles.recipeIngredientsList__flexWrapper}
           aria-hidden="true"
         >
-          <span className={styles.recipeIngredientsList__title}>{t("number")}</span>
           <span className={styles.recipeIngredientsList__title}>
-          {t("addToList")}
+            {t("number")}
+          </span>
+          <span className={styles.recipeIngredientsList__title}>
+            {t("addToList")}
           </span>
         </div>
       </div>

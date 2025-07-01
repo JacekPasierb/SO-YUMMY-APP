@@ -34,10 +34,8 @@
 }
 
 .ingredientCard__measureBox {
-  min-width: 37px;
-  max-width: 150px;
+
   padding: 4px;
-  width: 60px;
   text-align: center;
   background-color: #8baa36;
   border-radius: 4px;
@@ -48,8 +46,8 @@
   font-size: 10px;
   line-height: 1.5;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
   text-align: center;
   color: rgba(250, 250, 250, 1);
 }

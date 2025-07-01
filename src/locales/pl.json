@@ -107,5 +107,14 @@
   "incompleteIngredient": "Proszę uzupełnić wszystkie pola dla każdego składnika",
   "instructionsTooShort": "Instrukcje są za krótkie. Podaj więcej szczegółów (co najmniej {{min}} znaków).",
   "recipeAddFailed": "Nie udało się dodać przepisu. Spróbuj ponownie.",
-  "registered": "Konto zostało utworzone."
+  "registered": "Konto zostało utworzone.",
+  "units": {
+    "tbs": "łyżka",
+    "tsp": "łyżeczka",
+    "kg": "kilogram",
+    "g": "gram",
+    "pcs": "sztuka",
+    "l": "litr",
+    "ml": "mililitr"
+  }
 }

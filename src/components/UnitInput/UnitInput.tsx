@@ -3,12 +3,16 @@ import Select, { SingleValue } from "react-select";
 import { selectUnit } from "../RecipeIngredientsFields/selectStyles";
 import { Option, UnitInputProps } from "../../types/ingredientsTypes";
 import styles from "./UnitInput.module.css";
+import { useTranslation } from "react-i18next";
 
 const UNIT_OPTIONS: Option[] = [
   { label: "tbs", value: "tbs" },
   { label: "tsp", value: "tsp" },
   { label: "kg", value: "kg" },
   { label: "g", value: "g" },
+  { value: "pcs", label: "pcs" },
+  { value: "l", label: "l" },    
+  { value: "ml", label: "ml" }
 ];
 
 const MAX_VALUE = 999;
@@ -55,6 +59,13 @@ const UnitInput: FC<UnitInputProps> = ({
     });
   }, [unit, numUnit, setIngredients, index]);
 
+  const { t } = useTranslation();
+  
+  const translatedOptions = UNIT_OPTIONS.map((opt) => ({
+    ...opt,
+    label: t(`units.${opt.value}`),
+  }));
+
   return (
     <div className={styles.unitInput__container}>
       <input
@@ -69,10 +80,10 @@ const UnitInput: FC<UnitInputProps> = ({
       />
       <Select
         name="unitOpt"
-        options={UNIT_OPTIONS}
+        options={translatedOptions}
         styles={selectUnit}
         isSearchable={false}
-        defaultValue={UNIT_OPTIONS[0]}
+        defaultValue={translatedOptions[0]}
         onChange={(selectedOption) =>
           handleUnit(selectedOption as SingleValue<Option>)
         }
