@@ -47,6 +47,7 @@ const PreviewsCategories: FC = () => {
       try {
         setIsLoading(true);
         setError(null);
+
         const response = await fetchRecipesByFourCategories(
           getRecipeCount(),
           lang

@@ -1,5 +1,4 @@
 import axios from "axios";
-import i18next from "i18next";
 
 export const fetchRecipesByFourCategories = async (count = 1, lang = "pl") => {
   
@@ -7,10 +6,7 @@ export const fetchRecipesByFourCategories = async (count = 1, lang = "pl") => {
   return data;
 };
 
-// export const fetchRecipesByCategoryName = async (category,page)=>{
-//     const {data} = await axios.get(`./api/recipes/categories/${category}?page=${page}&limit=8`);
-//     return data;
-// }
+
 
 export const fetchRecipeById = async (id: string) => {
   const { data } = await axios.get(`./api/recipes/${id}`);

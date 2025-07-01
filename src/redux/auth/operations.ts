@@ -1,17 +1,14 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import {createAsyncThunk} from "@reduxjs/toolkit";
 
 import axios from "axios";
-import { toast } from "react-toastify";
-import { setAuthSuccess, setAuthError } from "./authSlice";
-import {
-  IAuthResponse,
-  IUser,
-  UpdateUserResponse,
-} from "../../types/authTypes";
+import {toast} from "react-toastify";
+import {setAuthSuccess, setAuthError} from "./authSlice";
+import {IAuthResponse, IUser, UpdateUserResponse} from "../../types/authTypes";
 import i18n from "../../locales/i18n";
 
-axios.defaults.baseURL = "https://so-yummy-app-backend-9mvu.vercel.app/";
+// axios.defaults.baseURL = "https://so-yummy-app-backend-9mvu.vercel.app/";
 // axios.defaults.baseURL = "http://localhost:4000/";
+axios.defaults.baseURL = import.meta.env.VITE_APP_API_URL;
 
 // Utility to add JWT
 const setAuthHeader = (token: string | null) => {
@@ -39,7 +36,7 @@ export const register = createAsyncThunk<
       const message =
         error.response?.status === 409
           ? t("emailInUse")
-          :t("registrationFailed");
+          : t("registrationFailed");
       toast.error(message);
       return thunkAPI.rejectWithValue(message);
     }
@@ -54,14 +51,16 @@ export const logIn = createAsyncThunk<
   async (credentials: Pick<IUser, "email" | "password">, thunkAPI) => {
     try {
       const response = await axios.post("/api/users/signin", credentials);
-      const { token, user } = response.data.data;
-      thunkAPI.dispatch(setAuthSuccess({ token, user }));
+      const {token, user} = response.data.data;
+      thunkAPI.dispatch(setAuthSuccess({token, user}));
       setAuthHeader(token);
       return response.data;
     } catch (error: any) {
       const t = i18n.t;
       const message =
-        error.response?.status === 403 ? t("emailNotVerified") : t("loginFailed");
+        error.response?.status === 403
+          ? t("emailNotVerified")
+          : t("loginFailed");
 
       toast.error(message);
       thunkAPI.dispatch(setAuthError(message));
@@ -115,7 +114,6 @@ export const refreshUser = createAsyncThunk<
 
     return response.data.data;
   } catch (error: any) {
-
     return thunkAPI.rejectWithValue(error.message);
   }
 });
