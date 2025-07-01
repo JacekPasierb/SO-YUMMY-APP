@@ -40,7 +40,7 @@ export const useRecipeForm = () => {
       console.error("Error fetching ingredients:", error);
       toast.error(t("loadIngredients"));
     }
-  }, []);
+  }, []); 
 
   useEffect(() => {
     fetchIngredients();
