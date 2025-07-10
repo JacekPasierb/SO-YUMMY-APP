@@ -1,21 +1,18 @@
-import {useState, useEffect, useCallback} from "react";
-import {useDispatch} from "react-redux";
+import React, {useCallback, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch} from "../redux/store";
+import {useTranslation} from "react-i18next";
+import {selectCategoriesList} from "../redux/recipes/selectors";
+import {getCategoriesList} from "../redux/recipes/operations";
+import {Ingredient, IngredientData, Ing} from "../types/ingredientsTypes";
 import {toast} from "react-toastify";
 import {fetchAllIngredients} from "../API/ingredientsAPI";
-import {addOwnRecipes} from "../redux/ownRecipes/operations";
-import {AppDispatch} from "../redux/store";
-import {
-  Ing,
-  IngredientData,
-  Ingredient,
-  FormIngredient,
-} from "../types/ingredientsTypes";
+import {RecipeFormState, RecipeInputs} from "../types/authTypes";
 import {validateInputs} from "../helpers/recipeValidation";
 import {uploadImage} from "../helpers/imageUpload";
-import {RecipeInputs, RecipeFormState} from "../types/authTypes";
-import {useTranslation} from "react-i18next";
+import {addOwnRecipes} from "../redux/ownRecipes/operations";
 
-const initialState: RecipeFormState = {
+const initialState = {
   file: null,
   titleRecipe: "",
   descriptionRecipe: "",
@@ -25,37 +22,52 @@ const initialState: RecipeFormState = {
   instructionsRecipe: "",
 };
 
-export const useRecipeForm = () => {
-  const [formState, setFormState] = useState<RecipeFormState>(initialState);
+const useRecipeForm = () => {
+  const [formData, setFormData] = useState<RecipeFormState>(initialState);
   const [ingredientsAll, setIngredientsAll] = useState<IngredientData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const {t, i18n} = useTranslation();
+
+  const updateField = <K extends keyof RecipeFormState>(
+    field: K,
+    value: RecipeFormState[K]
+  ) => {
+    setFormData((prev) => ({...prev, [field]: value}));
+  };
+
   const dispatch: AppDispatch = useDispatch();
+  const {t, i18n} = useTranslation();
+  const currentLanguage = i18n.language;
+
+  const categoriesList = useSelector(selectCategoriesList);
+
+  useEffect(() => {
+    dispatch(getCategoriesList(currentLanguage));
+  }, [dispatch, currentLanguage]);
 
   const fetchIngredients = useCallback(async () => {
     try {
       const {data} = await fetchAllIngredients();
+
       setIngredientsAll(data.ingredients);
     } catch (error) {
       console.error("Error fetching ingredients:", error);
       toast.error(t("loadIngredients"));
     }
-  }, []); 
+  }, []);
+
+
 
   useEffect(() => {
     fetchIngredients();
   }, [fetchIngredients]);
 
-  const updateFormField = useCallback(
-    <K extends keyof RecipeFormState>(field: K, value: RecipeFormState[K]) => {
-      setFormState((prev) => ({...prev, [field]: value}));
-    },
-    []
-  );
-
-  const resetForm = useCallback(() => {
-    setFormState(initialState);
-  }, []);
+  const timeOptionsList = () => {
+    const time = [];
+    for (let i = 5; i <= 180; i += 5) {
+      time.push({label: `${i} min`, value: i});
+    }
+    return time;
+  };
 
   const buildInputs = useCallback((): RecipeInputs => {
     const {
@@ -66,23 +78,25 @@ export const useRecipeForm = () => {
       cookingTime,
       ingredients,
       instructionsRecipe,
-    } = formState;
+    } = formData;
 
-    const currentLanguage = i18n.language;
+    // const currentLanguage = i18n.language;
+    console.log("ooo", ingredients);
 
-    const convertedIngredients: Ingredient[] = ingredients.map((ingredient) => {
+    const convertedIngredients = ingredients.map((ingredient) => {
       const foundIngredient = ingredientsAll.find(
-        (ing) =>
-          ing.ttl === ingredient.selectedValue ||
-          ing.ttlPl === ingredient.selectedValue
+        (ing) => ing.ttl === ingredient.name || ing.ttlPl === ingredient.name
       );
+      console.log("find Ingredi: ", foundIngredient);
+      console.log("find Ingredi PP: ", ingredient.amount);
+      const measureAmount = ingredient.amount + " " + ingredient.unit;
+      console.log("polaoczone: ", measureAmount);
 
       return {
         id: foundIngredient?._id || "",
-        measure: ingredient.selectedUnit,
+        measure: measureAmount,
       };
     });
-
     return {
       file,
       title: titleRecipe,
@@ -92,66 +106,54 @@ export const useRecipeForm = () => {
       ingredients: convertedIngredients,
       instructions: instructionsRecipe,
     };
-  }, [formState, ingredientsAll]);
+  }, [formData, ingredientsAll]);
 
-  const handleSubmit = useCallback(
-    async (e: React.FormEvent) => {
-      e.preventDefault();
-      const inputs = buildInputs();
-      if (!validateInputs(inputs, t)) return;
+  const resetForm = useCallback(() => {
+    setFormData(initialState);
+  }, []);
 
-      setIsLoading(true);
-      try {
-        const imageUrl = await uploadImage(formState.file);
-        if (!imageUrl) {
-          throw new Error("Failed to upload image");
-        }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-        const recipeData = {
-          ...inputs,
-          imageUrl,
-          thumb: imageUrl,
-          preview: imageUrl,
-        };
+    console.log("form", formData);
 
-        const result = await dispatch(addOwnRecipes(recipeData));
-        if (addOwnRecipes.fulfilled.match(result)) {
-          resetForm();
-          toast.success(t("recipeAddedSuccess"));
-        }
-      } catch (error) {
-        console.error("Error adding recipe:", error);
-        toast.error(t("recipeAddFailed"));
-      } finally {
-        setIsLoading(false);
+    const inputs = buildInputs();
+    if (!validateInputs(inputs, t)) return;
+
+    setIsLoading(true);
+    try {
+      const imageUrl = await uploadImage(formData.file);
+      if (!imageUrl) {
+        throw new Error("Failed to upload image");
       }
-    },
-    [buildInputs, dispatch, formState.file, resetForm]
-  );
 
+      const recipeData = {
+        ...inputs,
+        imageUrl,
+        thumb: imageUrl,
+        preview: imageUrl,
+      };
+
+      const result = await dispatch(addOwnRecipes(recipeData));
+      if (addOwnRecipes.fulfilled.match(result)) {
+        resetForm();
+        toast.success(t("recipeAddedSuccess"));
+      }
+    } catch (error) {
+      console.error("Error adding recipe:", error);
+      toast.error(t("recipeAddFailed"));
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return {
-    ...formState,
-    setFile: (file: File | null) => updateFormField("file", file),
-    setTitleRecipe: (title: string) => updateFormField("titleRecipe", title),
-    setDescriptionRecipe: (desc: string) =>
-      updateFormField("descriptionRecipe", desc),
-    setCategoryRecipe: (category: string) =>
-      updateFormField("categoryRecipe", category),
-    setCookingTime: (time: string) => updateFormField("cookingTime", time),
-    setIngredients: (value: React.SetStateAction<FormIngredient[]>) =>
-      updateFormField(
-        "ingredients",
-        typeof value === "function" ? value(formState.ingredients) : []
-      ),
-    setInstructionsRecipe: (value: string | ((prevState: string) => string)) =>
-      updateFormField(
-        "instructionsRecipe",
-        typeof value === "function"
-          ? value(formState.instructionsRecipe)
-          : value
-      ),
+    formData,
+    updateField,
+    categoriesList,
+    timeOptionsList,
     ingredientsAll,
-    isLoading,
     handleSubmit,
   };
 };
+
+export default useRecipeForm;

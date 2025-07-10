@@ -1,28 +1,28 @@
-import React, { FC, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import React, {FC, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {toast} from "react-toastify";
 import MainPageTitle from "../MainPageTitle/MainPageTitle";
-import { selectUser } from "../../redux/auth/selectors";
-import { AppDispatch } from "../../redux/store";
+import {selectUser} from "../../redux/auth/selectors";
+import {AppDispatch} from "../../redux/store";
 import {
   addToFavorite,
   removeFromFavorite,
 } from "../../redux/favoriteRecipes/operations";
-import { IRecipe } from "../../types/recipesTypes";
+import {IRecipe} from "../../types/recipesTypes";
 import sprite from "../../assets/icons/sprite.svg";
 import styles from "./ReceipePageHero.module.css";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 
 interface ReceipePageHeroProps {
   recipe: IRecipe;
   isLoading: boolean;
 }
 
-const ReceipePageHero: FC<ReceipePageHeroProps> = ({ recipe, isLoading }) => {
-  const { title, description, time, favorites, _id } = recipe;
-  const { userId } = useSelector(selectUser);
+const ReceipePageHero: FC<ReceipePageHeroProps> = ({recipe, isLoading}) => {
+  const {title, description, time, favorites, _id} = recipe;
+  const {userId} = useSelector(selectUser);
   const dispatch = useDispatch<AppDispatch>();
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {

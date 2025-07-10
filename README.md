@@ -137,7 +137,7 @@ npm run dev
 ### Autoryzacja
 - Rejestracja użytkownika
 - Logowanie
-- Weryfikacja email
+- Weryfikacja email (Zakończenie darmowego SendGrid - funkcja wyłączona - zakomentowana)
 
 ### Przepisy
 - Przeglądanie przepisów
@@ -161,6 +161,18 @@ npm run dev
 - ✅ Testy jednostkowe (Jest)
 - ⏳ Testy integracyjne (React Testing Library)
 - ⏳ Testy E2E (Cypress)
+- 🔒Email verification (opcja zakomentowana)
+
+
+## 🆕 Changelog / Historia zmian
+
+### [1.1.0] – 2025-07-08
+- 🔄 Usprawniono logikę dodawania przepisów
+- 🌐 Przepisy zależne od języka użytkownika (PL / EN)
+- 🎨 Poprawiono wygląd formularza (składniki, textarea)
+- 🧹 Refaktor: usunięto zbędny kod, poprawiono czytelność
+- 📩 [W planach] Weryfikacja email (SendGrid) – zakomentowana na razie
+
 
 ## 🛠️ Problemy i Rozwiązania
 

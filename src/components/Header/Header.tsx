@@ -117,7 +117,9 @@ const Header: React.FC = () => {
 
   const renderContent = ({small, medium}: MediaQueries) => (
     <div className={`${styles.header__container} ${styles.headerBox}`}>
+     
       <Logo />
+      <p>{countdown}</p>
       {small || medium ? (
         <div className={styles.header__mobile}>
          <LanguageSwitcher/>

@@ -7,6 +7,7 @@ import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import styles from "./AddRecipePage.module.css";
 import {useTranslation} from "react-i18next";
 import {Helmet} from "react-helmet-async";
+import RecipeForm from "../../components/RecipeForm/RecipeForm";
 
 const PopularRecipe = lazy(
   () => import("../../components/PopularRecipe/PopularRecipe")
@@ -35,7 +36,8 @@ const AddRecipePage: React.FC = () => {
         <div className={`${styles.addRecipePage__container} ${styles.flex}`}>
           <MainTitle title={t("add_recipe")} />
           <div className={styles.addRecipePage__content}>
-            <AddRecipeForm />
+            {/* <AddRecipeForm /> */}
+            <RecipeForm/>
             {isDesktop && <Sidebar />}
             {!isDesktop && <PopularRecipe />}
           </div>

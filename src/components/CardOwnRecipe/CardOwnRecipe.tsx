@@ -32,6 +32,7 @@ const CardOwnRecipe: React.FC<CardOwnRecipeProps> = ({ownRecipe}) => {
 
   const handleRemove = () => {
     dispatch(removeFromFavorite(_id));
+
     toast.success("Recipe removed from favorites");
   };
 

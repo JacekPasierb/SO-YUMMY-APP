@@ -102,19 +102,29 @@
   "invalidFileType": "Nieprawidłowy format pliku. Użyj JPEG lub PNG.",
   "fileTooLarge": "Plik jest za duży. Maksymalny rozmiar to 4MB.",
   "loadIngredients": "Nie udało się załadować składników",
-  "missingField": "Proszę wypełnić następujące pole: {{field}}",
+  "fields": {
+    "file": "Plik",
+    "title": "Tytuł",
+    "description": "Opis",
+    "category": "Kategoria",
+    "time": "Czas",
+    "instructions": "Instrukcje"
+  },
+  "missingField": "Uzupełnij pole {{field}}",
+  "missingImage": "Załącz zdjęcie przepisu",
   "missingIngredients": "Proszę dodać co najmniej jeden składnik",
   "incompleteIngredient": "Proszę uzupełnić wszystkie pola dla każdego składnika",
   "instructionsTooShort": "Instrukcje są za krótkie. Podaj więcej szczegółów (co najmniej {{min}} znaków).",
   "recipeAddFailed": "Nie udało się dodać przepisu. Spróbuj ponownie.",
   "registered": "Konto zostało utworzone.",
+  "chooseCategory": "Wybierz",
   "units": {
     "tbs": "łyżka",
     "tsp": "łyżeczka",
-    "kg": "kilogram",
-    "g": "gram",
-    "pcs": "sztuka",
-    "l": "litr",
-    "ml": "mililitr"
+    "kg": "kg",
+    "g": "g",
+    "pcs": "szt.",
+    "l": "l",
+    "ml": "ml"
   }
 }

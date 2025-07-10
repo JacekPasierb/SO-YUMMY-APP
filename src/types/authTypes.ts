@@ -1,4 +1,4 @@
-import { FormIngredient, Ingredient } from "./ingredientsTypes";
+import { FormIngredient, Ingredient, IngredientCreate } from "./ingredientsTypes";
 
 export interface IAuthState {
   user: {
@@ -45,7 +45,7 @@ export interface RecipeFormState {
   descriptionRecipe: string;
   categoryRecipe: string;
   cookingTime: string;
-  ingredients: FormIngredient[];
+  ingredients: IngredientCreate[];
   instructionsRecipe: string;
 }
 

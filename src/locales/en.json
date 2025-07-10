@@ -102,19 +102,29 @@
   "invalidFileType": "Invalid file type. Please use JPEG or PNG.",
   "fileTooLarge": "File is too large. Maximum size is 4MB.",
   "loadIngredients": "Failed to load ingredients",
+  "fields": {
+    "file": "File",
+    "title": "Title",
+    "description": "Description",
+    "category": "Category",
+    "time": "Time",
+    "instructions": "Instructions"
+  },
   "missingField": "Please fill out the following field: {{field}}",
+  "missingImage":"Add photo recipe",
   "missingIngredients": "Please add at least one ingredient",
   "incompleteIngredient": "Please fill out all fields for each ingredient",
   "instructionsTooShort": "Instructions are too short. Please provide more details (at least {{min}} characters).",
   "recipeAddFailed": "Failed to add recipe. Please try again.",
-    "registered": "Account Ready.",
-    "units": {
-      "tbs": "tablespoon",
-      "tsp": "teaspoon",
-      "kg": "kilogram",
-      "g": "gram",
-      "pcs": "piece",
-      "l": "liter",
-      "ml": "milliliter"
-    }
+  "registered": "Account Ready.",
+  "chooseCategory": "Set",
+  "units": {
+    "tbs": "tbs",
+    "tsp": "tsp",
+    "kg": "kg",
+    "g": "g",
+    "pcs": "pcs",
+    "l": "l",
+    "ml": "ml"
+  }
 }

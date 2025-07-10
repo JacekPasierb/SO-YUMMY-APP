@@ -68,8 +68,9 @@ export const selectIngredient = {
     borderRadius: "6px",
     backgroundColor: "var(--color-bg-selectMenu)",
     color: "rgba(255,255,255,0.5)",
-    
-    scrollbarColor: " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
+
+    scrollbarColor:
+      " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
 
     "@media (min-width: 768px)": {
       fontSize: "16px",
@@ -114,7 +115,6 @@ export const selectIngredient = {
     ...baseStyles,
     margin: 0,
   }),
-
 };
 
 export const selectUnit = {
@@ -137,6 +137,7 @@ export const selectUnit = {
     ...baseStyles,
     color: "var(--color-text-select)",
     fontWeight: "normal",
+    paddingLeft: "15px",
   }),
   control: (baseStyles: any, state: any) => ({
     ...baseStyles,
@@ -160,7 +161,6 @@ export const selectUnit = {
       fontSize: "16px",
       lineHeight: "1.3",
     },
- 
   }),
 
   menuList: (baseStyles: any, state: any) => ({
@@ -170,7 +170,7 @@ export const selectUnit = {
     fontWeight: "400",
     fontSize: "12px",
     lineHeight: "1.5",
-    textAlign: "left",
+    textAlign: "center",
     letterSpacing: "-0.02em",
     maxHeight: "200px",
     borderRadius: "6px",
@@ -178,8 +178,11 @@ export const selectUnit = {
 
     color: "rgba(255,255,255,0.5)",
     scrollbarWidth: "thin",
-    scrollbarColor: " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
-
+    scrollbarColor:
+      " var(--color-bg-scrollbar-thumb) var(--color-bg-scrollbar-track)",
+    position: "absolute",
+    left: "-40%",
+    width: "140%",
     "@media (min-width: 768px)": {
       fontSize: "16px",
       lineHeight: "1.3",

@@ -1,0 +1,107 @@
+
+.recipeIngredients__list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 44px;
+  list-style: none;
+}
+
+.recipeIngredients__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+
+.recipeIngredients__select {
+  flex-grow: 1;
+}
+
+
+
+
+  
+  .amountInput {
+    width: 30%;
+    height: 100%;
+    border: none;
+    padding: 6px;
+    text-align: right;
+    font-size: 14px;
+  
+    outline: none;
+  }
+  .amountInput::-webkit-inner-spin-button,
+  .amountInput::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .unitSelect {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    /* padding-left: 20px; */
+    font-size: 14px;
+    color: #4caf50;
+    cursor: pointer;
+  
+    outline: none;
+    border: none;
+   padding-left: 50%;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .unitSelect option {
+    background-color: transparent;
+  
+    font-size: 12px;
+    padding: 0;
+  }
+  
+  .recipeIngredients__btnX {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: opacity var(--transition-duration) ease;
+  }
+  
+  .recipeIngredients__btnX:hover {
+    opacity: 0.8;
+  }
+  
+  .recipeIngredients__btnX:focus-visible {
+    outline: 2px solid var(--color-text-highlight);
+    outline-offset: 2px;
+  }
+  
+  
+  .iconX {
+    width: 18px;
+    height: 18px;
+    stroke: var(--color-stroke-icon);
+  }
+
+
+
+  @media screen and (min-width: 768px) {
+    .recipeIngredients__list {
+      gap: 24px;
+      margin-bottom: 100px;
+    }
+
+    .recipeIngredients__item {
+      
+      gap: 32px;
+    }
+
+  }

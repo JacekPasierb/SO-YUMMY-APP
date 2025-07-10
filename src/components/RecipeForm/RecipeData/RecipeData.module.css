@@ -1,0 +1,159 @@
+.recipeData {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+
+  
+}
+
+.inputsWrapper {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.selectWrapper {
+    padding-bottom: 18px;
+    display: flex;
+    flex-direction: row;
+  
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-border-line);
+  
+    position: relative;
+
+    
+  }
+
+.input {
+  width: 100%;
+  padding-top: 0;
+  padding-left: 0;
+  padding-bottom: 18px;
+
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border-line);
+  outline: none;
+
+  font-size: 14px;
+  color: var(--color-text-input-secondary);
+}
+
+.input::placeholder,
+.textarea::placeholder,
+.selectWrapper label {
+  font-size: 14px;
+  color: var(--color-text-input-secondary);
+}
+
+.textarea {
+  width: 100%;
+  padding-top: 0;
+  padding-left: 0;
+  padding-bottom: 18px;
+
+  background-color: transparent;
+
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border-line);
+
+  resize: none;
+
+  font-size: 14px;
+  color: var(--color-text-input-secondary);
+}
+
+.select {
+  position: absolute;
+  right: 0;
+  z-index: 9;
+
+  min-width: 150px;
+  max-height: 200px;
+  overflow-y: auto;
+  border: none;
+  outline: none;
+  background-color: var(--color-bg-selectMenu);
+  padding-left: 20px;
+
+  color: var(--color-text-description);
+  appearance: none;
+  background-image: url(../../../images/Icon.svg);
+  background-repeat: no-repeat;
+  background-position: right center;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  font-size: var(--font-size-xs);
+}
+
+.selectTime {
+  z-index: 4;
+}
+.select option {
+  background-color: var(--color-bg-selectMenu);
+  color: var(--color-text-input-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.select option:hover {
+  background-color: var(--color-text-highlight);
+}
+
+select::-webkit-scrollbar {
+  width: 4px;
+  height: 93px;
+}
+
+select::-webkit-scrollbar-track {
+  border: none;
+  background-color: var(--color-bg-scrollbar-track);
+}
+
+select::-webkit-scrollbar-thumb {
+  border: none;
+  background-color: var(--color-bg-scrollbar-thumb);
+  border-radius: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .recipeData {
+    flex-direction: row;
+  }
+
+  .input,
+  .textarea {
+    font-size: var(--font-size-base);
+  }
+
+  .input::placeholder,
+  .textarea::placeholder,
+  .selectWrapper label {
+    font-size: var(--font-size-base);
+  }
+  .select {
+    font-size: var(--font-size-small);
+  }
+
+  .select option {
+    font-size: var(--font-size-small);
+  }
+  .inputsWrapper {
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .inputsWrapper {
+    min-width: 50%;
+  }
+
+  .recipeData {
+    gap: 50px;
+  }
+}

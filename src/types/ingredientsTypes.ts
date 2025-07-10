@@ -13,7 +13,7 @@ export interface IngredientData {
   desc: string;
 }
 
-// Dla API
+// Dla API (RecipePage pobieram przepis wg id i liste składnikow przekazuje do wyswietlenia w formie id:"sdfsdfdsf" i measure: "4 cups")
 export interface Ingredient {
   id: string;
   measure: string;
@@ -31,8 +31,15 @@ export interface Option {
 }
 
 // Dla formularza
-export interface FormIngredient {
-  id:string;
-  selectedValue: string;
-  selectedUnit: string;
-}
+// export interface FormIngredient {
+//   id:string;
+//   selectedValue: string;
+//   selectedUnit: string;
+// }
+
+export type IngredientCreate = {
+  id: string;
+  name: string;
+  amount: number;
+  unit: string;
+};
