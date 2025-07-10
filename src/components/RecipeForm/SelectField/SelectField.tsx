@@ -45,6 +45,7 @@ export const SelectField = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         className={className}
+        size={4}
       >
         <option value="" disabled>
           {t("chooseCategory")} 
