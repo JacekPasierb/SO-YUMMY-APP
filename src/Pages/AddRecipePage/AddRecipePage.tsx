@@ -36,7 +36,7 @@ const AddRecipePage: React.FC = () => {
         <div className={`${styles.addRecipePage__container} ${styles.flex}`}>
           <MainTitle title={t("add_recipe")} />
           <div className={styles.addRecipePage__content}>
-            {/* <AddRecipeForm /> */}
+          
             <RecipeForm/>
             {isDesktop && <Sidebar />}
             {!isDesktop && <PopularRecipe />}
