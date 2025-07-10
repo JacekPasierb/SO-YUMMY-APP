@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import styles from "../RecipeData/RecipeData.module.css";
 
 type Option = string | {label: string; value: string | number};
@@ -31,7 +31,7 @@ export const SelectField = ({
   };
 
   const {t, i18n} = useTranslation();
-  
+
   return (
     <div className={styles.selectWrapper}>
       <label>{label}</label>
@@ -45,10 +45,9 @@ export const SelectField = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         className={className}
-        size={4}
       >
         <option value="" disabled>
-          {t("chooseCategory")} 
+          {t("chooseCategory")}
         </option>
         {options.map((option, idx) =>
           typeof option === "string" ? (
