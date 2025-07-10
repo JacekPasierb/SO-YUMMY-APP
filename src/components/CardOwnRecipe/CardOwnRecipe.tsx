@@ -3,11 +3,12 @@ import {useDispatch} from "react-redux";
 import {NavLink, useLocation} from "react-router-dom";
 import {toast} from "react-toastify";
 import {AppDispatch} from "../../redux/store";
-import {deleteRecipe} from "../../redux/ownRecipes/operations";
+import {deleteRecipe, getOwnRecipes} from "../../redux/ownRecipes/operations";
 import {removeFromFavorite} from "../../redux/favoriteRecipes/operations";
 import styles from "./CardOwnRecipe.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import {useTranslation} from "react-i18next";
+import { getPageFromQueryString } from "../../helpers/helpers";
 
 interface OwnRecipe {
   _id: string;
@@ -26,8 +27,11 @@ const CardOwnRecipe: React.FC<CardOwnRecipeProps> = ({ownRecipe}) => {
   const {pathname} = useLocation();
   const {_id, preview, title, description, time} = ownRecipe;
   const {t} = useTranslation();
-  const handleDelete = () => {
-    dispatch(deleteRecipe(_id));
+  const { search } = useLocation();
+  const currentPage = getPageFromQueryString(search);
+  const handleDelete = async() => {
+    await dispatch(deleteRecipe(_id));
+    dispatch(getOwnRecipes({ page: currentPage }));
   };
 
   const handleRemove = () => {

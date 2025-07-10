@@ -135,6 +135,7 @@ export const getLogoSrc = ({
 export const getPageFromQueryString = (search: string) => {
   const searchParams = new URLSearchParams(search);
   const pageString = searchParams.get("page");
+
   const page = parseInt(pageString || "1", 10);
   return isNaN(page) || page < 1 ? 1 : page;
 };

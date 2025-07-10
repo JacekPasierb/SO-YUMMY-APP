@@ -26,10 +26,12 @@ const MyRecipesPage: React.FC = () => {
   const {search} = useLocation();
   const {t} = useTranslation();
   const user = useSelector(selectUser);
+
   const ownRecipes = useSelector(selectOwnRecipes);
   const totalOwnRecipes = useSelector(selectTotalOwnRecipes);
   const isLoading = useSelector(selectIsLoading);
   const currentPage = getPageFromQueryString(search);
+  console.log("Page with url:", currentPage);
 
   useEffect(() => {
     if (user?.userId) {
@@ -41,6 +43,12 @@ const MyRecipesPage: React.FC = () => {
     }
   }, [dispatch, currentPage, user.userId]);
 
+  useEffect(() => {
+    if (ownRecipes.length === 0 && currentPage > 1) {
+      navigate(`?page=${currentPage - 1}`);
+    }
+  }, [ownRecipes]);
+  
   const handlePageChange = (page: number) => {
     navigate(`?page=${page}`);
     window.scrollTo({top: 0, behavior: "smooth"});
