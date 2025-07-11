@@ -25,4 +25,37 @@ test.describe("User login to So Yummy", () => {
       "Please enter a valid email address"
     );
   });
+
+  test("unsuccessful login without email", async ({page}) => {
+    await page.goto("https://so-yummy-jack.netlify.app/");
+    await page.getByRole("link", {name: "sign in"}).click();
+
+    await page.getByTestId("email-input").fill("");
+    await page.getByTestId("email-input").blur();
+
+    await expect(page.getByTestId("email-error")).toHaveText(
+      "Email is required"
+    );
+  });
+
+  test("unsuccessful login without password", async ({page}) => {
+    await page.goto("https://so-yummy-jack.netlify.app/");
+    await page.getByRole("link", {name: "sign in"}).click();
+
+    await page.getByTestId("email-input").fill("user@test.pl");
+    await page.getByTestId("password-input").fill("");
+    await page.getByTestId("password-input").blur();
+
+    await expect(page.getByTestId("password-error")).toHaveText(
+      "Password is required"
+    );
+  });
+
+  test.only('test', async ({ page }) => {
+    // await page.addInitScript(() => {
+    //   window.localStorage.setItem("i18nextLng", "pl");
+    // });
+    await page.goto('https://so-yummy-jack.netlify.app/welcome');
+    await page.getByRole('heading', { name: 'Witamy w aplikacji!' }).click();
+  });
 });

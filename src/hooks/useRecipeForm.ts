@@ -41,8 +41,13 @@ const useRecipeForm = () => {
   const categoriesList = useSelector(selectCategoriesList);
 
   useEffect(() => {
-    dispatch(getCategoriesList(currentLanguage));
+    if (currentLanguage) {
+      dispatch(getCategoriesList(currentLanguage));
+    }
+    // dispatch(getCategoriesList(currentLanguage));
   }, [dispatch, currentLanguage]);
+
+
 
   const fetchIngredients = useCallback(async () => {
     try {
