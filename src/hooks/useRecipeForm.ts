@@ -41,13 +41,8 @@ const useRecipeForm = () => {
   const categoriesList = useSelector(selectCategoriesList);
 
   useEffect(() => {
-  //   if (!i18n.isInitialized) return;
-  // console.log("Language changed or initialized:", i18n.language);
-  // dispatch(getCategoriesList(i18n.language));
     dispatch(getCategoriesList(currentLanguage));
   }, [dispatch, currentLanguage]);
-
-
 
   const fetchIngredients = useCallback(async () => {
     try {
@@ -59,8 +54,6 @@ const useRecipeForm = () => {
       toast.error(t("loadIngredients"));
     }
   }, []);
-
-
 
   useEffect(() => {
     fetchIngredients();
