@@ -41,11 +41,11 @@ const useRecipeForm = () => {
   const categoriesList = useSelector(selectCategoriesList);
 
   useEffect(() => {
-    if (currentLanguage) {
-      dispatch(getCategoriesList(currentLanguage));
+    if (i18n.isInitialized) {
+      dispatch(getCategoriesList(i18n.language));
     }
     // dispatch(getCategoriesList(currentLanguage));
-  }, [dispatch, currentLanguage]);
+  }, [dispatch,i18n.isInitialized, currentLanguage]);
 
 
 
