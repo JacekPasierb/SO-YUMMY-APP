@@ -66,7 +66,7 @@ export const getCategoriesList = createAsyncThunk(
   async (language: string, thunkAPI) => {
     try {
       const url =
-        language === "pl"
+        language === "pl-PL"
           ? "./api/recipes/category-listPl"
           : "./api/recipes/category-list";
 
