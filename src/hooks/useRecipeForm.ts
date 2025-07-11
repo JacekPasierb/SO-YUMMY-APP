@@ -41,9 +41,9 @@ const useRecipeForm = () => {
   const categoriesList = useSelector(selectCategoriesList);
 
   useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(getCategoriesList(i18n.language));
-    }
+    if (!i18n.isInitialized) return;
+  console.log("Language changed or initialized:", i18n.language);
+  dispatch(getCategoriesList(i18n.language));
     // dispatch(getCategoriesList(currentLanguage));
   }, [dispatch,i18n.isInitialized, currentLanguage]);
 
