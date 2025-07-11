@@ -21,10 +21,8 @@ test("login with invalid format email", async ({page}) => {
   await page.getByRole("textbox", {name: "Email"}).fill("user");
   await page.getByRole("textbox", {name: "password"}).click();
 
-  await page.getByText('Podaj prawidłowy adres e-mail').click();
 
-
-  await expect(page.getByText('Podaj prawidłowy adres e-mail')).toBeVisible();
+  await expect(page.getByTestId('email-error')).toHaveText('Please enter a valid email address');
 
 
 });

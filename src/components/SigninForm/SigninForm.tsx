@@ -80,6 +80,7 @@ const SigninForm: React.FC = () => {
         placeholder={placeholder}
         className={styles.input}
         autoComplete={type === "password" ? "current-password" : "off"}
+        data-testid={`${name}-input`}
       />
       <ErrorMessage
         name={name}
