@@ -3,7 +3,6 @@ import {useMediaQuery} from "@react-hook/media-query";
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import SubTitle from "../../components/SubTitle/SubTitle";
-import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import styles from "./AddRecipePage.module.css";
 import {useTranslation} from "react-i18next";
 import {Helmet} from "react-helmet-async";

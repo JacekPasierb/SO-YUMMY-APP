@@ -89,6 +89,7 @@ const useRecipeForm = () => {
       );
       console.log("find Ingredi: ", foundIngredient);
       console.log("find Ingredi PP: ", ingredient.amount);
+      console.log("find Ingredi PP: ", ingredient.unit);
       const measureAmount = ingredient.amount + " " + ingredient.unit;
       console.log("polaoczone: ", measureAmount);
 

@@ -30,3 +30,9 @@ dist-ssr
 # Ignoring JavaScript files and source maps in the src directory
 src/**/*.js
 src/**/*.js.map
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

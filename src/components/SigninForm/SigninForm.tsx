@@ -85,6 +85,7 @@ const SigninForm: React.FC = () => {
         name={name}
         component="div"
         className={styles.errorMessage}
+        data-testid={`${name}-error`}
       />
     </div>
   );
