@@ -1,7 +1,7 @@
 import {test, expect} from "@playwright/test";
 
 test.describe("User login to So Yummy", () => {
-  test("login with correct credentials", async ({page}) => {
+  test("successful login with correct credentials", async ({page}) => {
     await page.goto("https://so-yummy-jack.netlify.app/");
 
     await page.getByRole("link", {name: "sign in"}).click();
@@ -11,10 +11,10 @@ test.describe("User login to So Yummy", () => {
 
     await page.getByRole("button", {name: "Sign in"}).click();
 
-    await expect(page.getByText("user")).toBeVisible();
+    await expect(page.getByTestId("user-name")).toHaveText("user");
   });
 
-  test("login with invalid format email", async ({page}) => {
+  test("unsuccessful login with invalid format email", async ({page}) => {
     await page.goto("https://so-yummy-jack.netlify.app/");
     await page.getByRole("link", {name: "sign in"}).click();
 

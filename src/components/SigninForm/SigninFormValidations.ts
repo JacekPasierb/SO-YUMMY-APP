@@ -1,4 +1,4 @@
-import { TFunction } from "i18next";
+import {TFunction} from "i18next";
 
 interface FormValues {
   email: string;
@@ -27,10 +27,6 @@ export const validate = (values: FormValues, t: TFunction): FormErrors => {
   // Password validation
   if (!values.password) {
     errors.password = t("passwordRequired");
-  } else if (values.password.length < PASSWORD_MIN_LENGTH) {
-    errors.password = t("validation.passwordTooShort", { min: PASSWORD_MIN_LENGTH });
-  } else if (values.password.length > PASSWORD_MAX_LENGTH) {
-    errors.password = t("validation.passwordTooLong", { max: PASSWORD_MAX_LENGTH });
   }
   return errors;
 };
