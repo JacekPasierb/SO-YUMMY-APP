@@ -49,6 +49,7 @@ const UserLogo: React.FC<UserLogoProps> = ({ className }) => {
         className={styles.boxAvatar__avatar}
       />
       <span
+       data-testid="user-name"
         className={`
           ${styles.boxAvatar__username} 
           ${isRecipePage ? styles["boxAvatar__username--inner"] : ""}
