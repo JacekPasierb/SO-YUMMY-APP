@@ -17,6 +17,8 @@ test.describe("Add Recipe Page", () => {
   });
 
   test("successful add recipe with correct data", async ({page}) => {
+    await page.getByLabel('Main navigation').getByRole('link', { name: 'Dodaj Przepis' }).click();
+
     // await page.waitForLoadState("domcontentloaded");
     // await page.locator("#root > div._container_17j48_1 > header > div > nav > a:nth-child(2)").click();
     // await page.locator("._uploadPlaceholder_voe60_1").click();
