@@ -55,6 +55,9 @@ const App: FC = () => {
       dispatch(refreshUser());
     }
   }, []);
+  // useEffect(() => { Poprzednia wersja KOPIA
+  //   dispatch(refreshUser());
+  // }, [dispatch, token]);
 
   // Handle theme changes
   useEffect(() => {
