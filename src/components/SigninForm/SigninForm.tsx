@@ -44,8 +44,6 @@ const SigninForm: React.FC = () => {
           navigate("/");
         }
       } catch (error) {
-      
-        
         toast.error(t("signinError"));
       }
     },
@@ -126,7 +124,7 @@ const SigninForm: React.FC = () => {
           <button
             type="submit"
             className={styles.submitButton}
-            aria-label={t('signin')}
+            aria-label={t("signin")}
           >
             {t("signin")}
           </button>

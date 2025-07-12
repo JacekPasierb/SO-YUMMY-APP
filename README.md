@@ -245,6 +245,8 @@ npm run dev
     - npx playwright codegen --headed
 - Odpalanie testów Playwright wielokrotnie w celu sprawdzenia Flaky stabilności testów:  
     - npx playwright test repeat-each=20
+- Odpalanie jednego pliku testów Playwright:  
+    - npx playwright test src/__tests__/e2e/login.spec.ts 
 - Odpalanie nagrywania testów Playwright:  
     - npx playwright codegen https://so-yummy-jack.netlify.app/
 - Gdy testy są szybsze niż ładowanie strony, musimy dodac:  

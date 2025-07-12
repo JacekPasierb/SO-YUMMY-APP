@@ -51,8 +51,11 @@ const App: FC = () => {
 
   // Refresh user session
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch, token]);
+  
+    if (token) {
+      dispatch(refreshUser());
+    }
+  }, []);
 
   // Handle theme changes
   useEffect(() => {
