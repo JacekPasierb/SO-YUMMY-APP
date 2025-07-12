@@ -54,7 +54,7 @@ const App: FC = () => {
     if (token) {
       dispatch(refreshUser());
     }
-  }, [token]);
+  }, []);
 
   // Handle theme changes
   useEffect(() => {
