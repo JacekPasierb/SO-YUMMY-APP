@@ -9,7 +9,7 @@ test.describe("User login to So Yummy", () => {
     await page.goto("/");
   });
 
-  test.only("successful login with correct credentials", async ({page}) => {
+  test("successful login with correct credentials", async ({page}) => {
     // Arrange
     const userEmail = "user@test.pl";
     const userPassword = "user1234";
@@ -22,14 +22,10 @@ test.describe("User login to So Yummy", () => {
     await page.getByRole("button", {name: "Zaloguj się"}).click();
 
     await page.waitForLoadState("domcontentloaded");
-    // musimy dodac czekanie na załadowanie strony Test Niestabilny - strona/komponenty sie wolno ładują
 
     // Assert
-    await expect(page.getByTestId("user-name")).toBeVisible({ timeout: 60000 });
-
-    // await expect(page.getByTestId("user-name")).toHaveText(expectedUsername, {
-    //   timeout: 7000,
-    // });
+    await expect(page.getByTestId("user-name")).toBeVisible();
+    await expect(page.getByTestId("user-name")).toHaveText(expectedUsername);
   });
 
   test("unsuccessful login with invalid format email", async ({page}) => {

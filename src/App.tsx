@@ -51,7 +51,6 @@ const App: FC = () => {
 
   // Refresh user session
   useEffect(() => {
-  
     if (token) {
       dispatch(refreshUser());
     }
