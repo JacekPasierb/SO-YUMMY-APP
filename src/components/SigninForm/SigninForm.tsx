@@ -126,7 +126,7 @@ const SigninForm: React.FC = () => {
           <button
             type="submit"
             className={styles.submitButton}
-            aria-label="Sign in"
+            aria-label={t('signin')}
           >
             {t("signin")}
           </button>

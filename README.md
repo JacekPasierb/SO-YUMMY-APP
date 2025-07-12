@@ -237,6 +237,18 @@ npm run dev
   import { useNavigate } from "react-router";
   ```
 
+## Brudnopis
+
+- Odpalanie testów Playwright:  
+    - npx playwright test
+- Odpalanie testów z trybem graficznym:  
+    - npx playwright codegen --headed
+- Odpalanie testów Playwright wielokrotnie w celu sprawdzenia Flaky stabilności testów:  
+    - npx playwright test repeat-each=20
+- Odpalanie nagrywania testów Playwright:  
+    - npx playwright codegen https://so-yummy-jack.netlify.app/
+- Gdy testy są szybsze niż ładowanie strony, musimy dodac:  
+    - await page.waitForLoadState("domcontentloaded");
 ## 👨‍💻 Autor
 
 - [Jacek Pasierb](https://github.com/JacekPasierb)

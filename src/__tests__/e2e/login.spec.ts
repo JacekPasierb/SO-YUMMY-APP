@@ -1,15 +1,21 @@
 import {test, expect} from "@playwright/test";
 
 test.describe("User login to So Yummy", () => {
-  test("successful login with correct credentials", async ({page}) => {
+  test.only("successful login with correct credentials", async ({page}) => {
+    await page.addInitScript(() => {
+      localStorage.setItem("i18nextLng", "pl-PL");
+    });
+    
     await page.goto("https://so-yummy-jack.netlify.app/");
 
-    await page.getByRole("link", {name: "sign in"}).click();
+    await page.getByRole("link", {name: "Zaloguj się"}).click();
 
     await page.getByTestId("email-input").fill("user@test.pl");
     await page.getByTestId("password-input").fill("user1234");
 
     await page.getByRole("button", {name: "Sign in"}).click();
+
+    await page.waitForLoadState("domcontentloaded");
 
     await expect(page.getByTestId("user-name")).toHaveText("user");
   });
@@ -49,13 +55,5 @@ test.describe("User login to So Yummy", () => {
     await expect(page.getByTestId("password-error")).toHaveText(
       "Password is required"
     );
-  });
-
-  test.only('test', async ({ page }) => {
-    // await page.addInitScript(() => {
-    //   window.localStorage.setItem("i18nextLng", "pl");
-    // });
-    await page.goto('https://so-yummy-jack.netlify.app/welcome');
-    await page.getByRole('heading', { name: 'Witamy w aplikacji!' }).click();
   });
 });
