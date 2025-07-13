@@ -34,7 +34,7 @@ export const SelectField = ({
 
   return (
     <div className={styles.selectWrapper}>
-      <label>{label}</label>
+      <label htmlFor={label}>{label}</label>
       <select
         value={value}
         onChange={(e) => {
@@ -45,6 +45,7 @@ export const SelectField = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         className={className}
+        name={label}
       >
         <option value="" disabled>
           {t("chooseCategory")}

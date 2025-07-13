@@ -1,9 +1,12 @@
 import {test, expect} from "@playwright/test";
+import {LoginPage} from "./pages/login.page";
+import {loginData} from "./test-data/login.data";
+import {AddRecipePage} from "./pages/addRecipe.page";
 
 test.describe("Add Recipe Page", () => {
   test.beforeEach(async ({page}) => {
-    const userEmail = "user@test.pl";
-    const userPassword = "user1234";
+    const userEmail = loginData.userEmail;
+    const userPassword = loginData.userPassword;
 
     await page.addInitScript(() => {
       localStorage.setItem("i18nextLng", "pl-PL");
@@ -11,26 +14,27 @@ test.describe("Add Recipe Page", () => {
 
     await page.goto("/");
     await page.getByRole("link", {name: "Zaloguj się"}).click();
-    await page.getByTestId("email-input").fill(userEmail);
-    await page.getByTestId("password-input").fill(userPassword);
-    await page.getByRole("button", {name: "Zaloguj się"}).click();
+
+    const loginPage = new LoginPage(page);
+    await loginPage.emailInput.fill(userEmail);
+    await loginPage.passwordInput.fill(userPassword);
+    await loginPage.loginButton.click();
+
+    const addRecipePage = new AddRecipePage(page);
+    await addRecipePage.sideMenu.addRecipeButton.click();
   });
 
   test("successful add recipe with correct data", async ({page}) => {
-    await page.getByLabel('Main navigation').getByRole('link', { name: 'Dodaj Przepis' }).click();
+    await page
+      .locator('input[type="file"]')
+      .setInputFiles("./src/__tests__/e2e/files/example.png");
+
+    await page.locator("#title").fill("sernik");
+    await page.locator("#about").fill("Opis sernika");
 
     // await page.waitForLoadState("domcontentloaded");
-    // await page.locator("#root > div._container_17j48_1 > header > div > nav > a:nth-child(2)").click();
-    // await page.locator("._uploadPlaceholder_voe60_1").click();
-    // await page
-    //   .locator("body")
-    //   .setInputFiles("Granatowa Niebieska Motywacyjna Tapeta Na Pulpit.png");
-    // await page
-    //   .getByRole("textbox", {name: "Wprowadź tytuł przepisu"})
-    //   .fill("Sernik");
-    // await page
-    //   .getByRole("textbox", {name: "Wprowadź opis przepisu"})
-    //   .fill("Opis sernika");
+
+ 
     // await page.locator("body").selectOption("Desery");
     // await page.locator("body").selectOption("70");
     // await page.getByRole("button", {name: "Add ingredient"}).click();

@@ -1,5 +1,6 @@
 import {test, expect} from "@playwright/test";
 import {loginData} from "./test-data/login.data";
+import {LoginPage} from "./pages/login.page";
 
 test.describe("User login to So Yummy", () => {
   test.beforeEach(async ({page}) => {
@@ -8,25 +9,27 @@ test.describe("User login to So Yummy", () => {
     });
 
     await page.goto("/");
+    await page.getByRole("link", {name: "Zaloguj się"}).click();
   });
 
   test("successful login with correct credentials", async ({page}) => {
     // Arrange
     const userEmail = loginData.userEmail;
-    const userPassword = loginData.password;
+    const userPassword = loginData.userPassword;
     const expectedUsername = "user";
 
     // Act
-    await page.getByRole("link", {name: "Zaloguj się"}).click();
-    await page.getByTestId("email-input").fill(userEmail);
-    await page.getByTestId("password-input").fill(userPassword);
-    await page.getByRole("button", {name: "Zaloguj się"}).click();
+    const loginPage = new LoginPage(page);
+
+    await loginPage.emailInput.fill(userEmail);
+    await loginPage.passwordInput.fill(userPassword);
+    await loginPage.loginButton.click();
 
     await page.waitForLoadState("domcontentloaded");
 
     // Assert
-    await expect(page.getByTestId("user-name")).toBeVisible({timeout: 7000});
-    await expect(page.getByTestId("user-name")).toHaveText(expectedUsername);
+    await expect(loginPage.userName).toBeVisible({timeout: 7000});
+    await expect(loginPage.userName).toHaveText(expectedUsername);
   });
 
   test("unsuccessful login with invalid format email", async ({page}) => {
@@ -36,13 +39,13 @@ test.describe("User login to So Yummy", () => {
     const expectedMessage = "Podaj prawidłowy adres e-mail";
 
     // Act
+    const loginPage = new LoginPage(page);
 
-    await page.getByRole("link", {name: "Zaloguj się"}).click();
-    await page.getByTestId("email-input").fill(invalidFormatEmail);
-    await page.getByTestId("password-input").click();
+    await loginPage.emailInput.fill(invalidFormatEmail);
+    await loginPage.passwordInput.click();
 
     // Assert
-    await expect(page.getByTestId("email-error")).toHaveText(expectedMessage);
+    await expect(loginPage.emailError).toHaveText(expectedMessage);
   });
 
   test("unsuccessful login without email", async ({page}) => {
@@ -51,13 +54,12 @@ test.describe("User login to So Yummy", () => {
     const expectedMessage = "Adres e-mail jest wymagany";
 
     // Act
-
-    await page.getByRole("link", {name: "Zaloguj się"}).click();
-    await page.getByTestId("email-input").fill("");
-    await page.getByTestId("email-input").blur();
+    const loginPage = new LoginPage(page);
+    await loginPage.emailInput.fill("");
+    await loginPage.emailInput.blur();
 
     // Assert
-    await expect(page.getByTestId("email-error")).toHaveText(expectedMessage);
+    await expect(loginPage.emailError).toHaveText(expectedMessage);
   });
 
   test("unsuccessful login without password", async ({page}) => {
@@ -67,15 +69,11 @@ test.describe("User login to So Yummy", () => {
     const expectedMessage = "Hasło jest wymagane";
 
     // Act
+    const loginPage = new LoginPage(page);
+    await loginPage.emailInput.fill(userEmail);
+    await loginPage.passwordInput.fill("");
+    await loginPage.passwordInput.blur();
 
-    await page.getByRole("link", {name: "Zaloguj się"}).click();
-
-    await page.getByTestId("email-input").fill(userEmail);
-    await page.getByTestId("password-input").fill("");
-    await page.getByTestId("password-input").blur();
-
-    await expect(page.getByTestId("password-error")).toHaveText(
-      expectedMessage
-    );
+    await expect(loginPage.passwordError).toHaveText(expectedMessage);
   });
 });
