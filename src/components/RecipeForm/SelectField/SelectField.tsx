@@ -36,34 +36,36 @@ export const SelectField = ({
 
   return (
     <div className={styles.selectWrapper}>
-      <label htmlFor={name}>{label}</label>
-      <select
-        value={value}
-        onChange={(e) => {
-          onChange(e.target.value);
-          e.target.size = 1;
-          e.target.blur();
-        }}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        className={className}
-        name={name}
-      >
-        <option value="" disabled>
-          {t("chooseCategory")}
-        </option>
-        {options.map((option, idx) =>
-          typeof option === "string" ? (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ) : (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          )
-        )}
-      </select>
+      <label>
+        {label}
+        <select
+          value={value}
+          onChange={(e) => {
+            onChange(e.target.value);
+            e.target.size = 1;
+            e.target.blur();
+          }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          className={className}
+          name={name}
+        >
+          <option value="" disabled>
+            {t("chooseCategory")}
+          </option>
+          {options.map((option, idx) =>
+            typeof option === "string" ? (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ) : (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            )
+          )}
+        </select>
+      </label>
     </div>
   );
 };
