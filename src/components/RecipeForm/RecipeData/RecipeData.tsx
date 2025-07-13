@@ -45,6 +45,7 @@ const RecipeData: FC<Props> = ({
         />
 
         <SelectField
+        name="category"
           label={t("category")}
           value={formData.categoryRecipe}
           onChange={(value) => updateField("categoryRecipe", value)}
@@ -53,6 +54,7 @@ const RecipeData: FC<Props> = ({
         />
 
         <SelectField
+        name="cookingTime"
           label={t("cookingTime")}
           value={formData.cookingTime}
           onChange={(value) => updateField("cookingTime", value)}

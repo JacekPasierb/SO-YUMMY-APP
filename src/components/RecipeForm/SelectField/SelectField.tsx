@@ -4,6 +4,7 @@ import styles from "../RecipeData/RecipeData.module.css";
 type Option = string | {label: string; value: string | number};
 
 type SelectFieldProps = {
+  name: string;
   label: string;
   value: string | number;
   onChange: (value: string) => void;
@@ -13,6 +14,7 @@ type SelectFieldProps = {
 };
 
 export const SelectField = ({
+  name,
   label,
   value,
   onChange,
@@ -34,7 +36,7 @@ export const SelectField = ({
 
   return (
     <div className={styles.selectWrapper}>
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor={name}>{label}</label>
       <select
         value={value}
         onChange={(e) => {
@@ -45,7 +47,7 @@ export const SelectField = ({
         onFocus={handleFocus}
         onBlur={handleBlur}
         className={className}
-        name={label}
+        name={name}
       >
         <option value="" disabled>
           {t("chooseCategory")}
