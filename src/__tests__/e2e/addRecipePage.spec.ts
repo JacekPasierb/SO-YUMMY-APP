@@ -31,29 +31,27 @@ test.describe("Add Recipe Page", () => {
 
     await page.locator("#title").fill("sernik");
     await page.locator("#about").fill("Opis sernika");
+    await page
+      .getByRole("combobox", {name: "Kategoria"})
+      .selectOption("Desery");
+    await page.getByRole("combobox", {name: "Czas"}).selectOption("70");
+    await page.getByRole("button", {name: "Add ingredient"}).click();
+    await page.locator("#react-select-2-input").fill("cukier");
+    await page.locator("#react-select-2-option-279").click();
+    
+    await page.getByRole("spinbutton").fill("05");
+    
+    await page.locator("#react-select-3-input").fill("kg");
+    await page.locator('#react-select-3-option-2').click();
 
     // await page.waitForLoadState("domcontentloaded");
 
- 
-    // await page.locator("body").selectOption("Desery");
-    // await page.locator("body").selectOption("70");
-    // await page.getByRole("button", {name: "Add ingredient"}).click();
-    // await page
-    //   .getByRole("list", {name: "Ingredients list"})
-    //   .locator("svg")
-    //   .first()
-    //   .click();
-    // await page.locator("#react-select-2-input").fill("ser");
-    // await page.getByRole("option", {name: "Ser", exact: true}).click();
-    // await page.getByRole("spinbutton").click();
-    // await page.getByRole("spinbutton").fill("05");
-    // await page.getByRole("option", {name: "kg"}).click();
-    // await page
-    //   .getByRole("textbox", {name: "Recipe preparation"})
-    //   .fill(
-    //     "Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. "
-    //   );
-    // await page.getByRole("button", {name: "Add recipe instructions"}).click();
-    // await page.getByText("Przepis został pomyślnie").click();
+    await page
+      .getByRole("textbox", {name: "Recipe preparation"})
+      .fill(
+        "Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. "
+      );
+    await page.getByRole("button", {name: "Add recipe instructions"}).click();
+    await page.getByText("Przepis został pomyślnie").click();
   });
 });
