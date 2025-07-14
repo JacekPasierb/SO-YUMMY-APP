@@ -50,16 +50,10 @@ test.describe("Add Recipe Page", () => {
 
     await page.getByRole("spinbutton").fill("05");
 
-    // await page
-    //   .getByRole("list", {name: "Ingredients list"})
-    //   .locator("svg")
-    //   .nth(1)
-    //   .click();
-    
-    // await page.getByRole("option", {name: "kg"}).click();
-    await page.locator('#unit-select').click();
-    await page.getByText('kg', { exact: true }).click();
-    
+
+    await page.getByTestId("unit-select").click();
+    await page.getByText("kg", {exact: true}).click();
+
     await page
       .getByRole("textbox", {name: "Recipe preparation"})
       .fill(

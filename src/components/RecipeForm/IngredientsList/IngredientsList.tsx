@@ -71,6 +71,7 @@ const IngredientsList: FC<Props> = ({ingredients, updateField}) => {
                 styles={selectIngredient}
                 isSearchable
                 className={styles.recipeIngredients__select}
+                inputId="ingredient-select"
               />
 
               <div className={styles.container}>
