@@ -45,6 +45,7 @@ const AmountWithUnit: React.FC<Props> = ({
         onChange={(selected) => onUnitChange(selected ? selected.value : "")}
         isSearchable={false}
         className={styles.manual}
+        inputId="unit-select"
       />
     </div>
   );

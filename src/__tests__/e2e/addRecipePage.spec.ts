@@ -24,27 +24,41 @@ test.describe("Add Recipe Page", () => {
     await addRecipePage.sideMenu.addRecipeButton.click();
   });
 
-  test("successful add recipe with correct data", async ({page}) => {
+  test.afterEach(async ({page}) => {
+    // zamknij toast, jeśli został
+    const toasts = page.locator(".Toastify__toast");
+    if ((await toasts.count()) > 0) {
+      await page.waitForSelector(".Toastify__toast", {state: "detached"});
+    }
+  });
+
+  test.only("successful add recipe with correct data", async ({page}) => {
+    // await page.waitForLoadState("domcontentloaded");
+
     await page
       .locator('input[type="file"]')
       .setInputFiles("./src/__tests__/e2e/files/example.png");
 
-    await page.locator("#title").fill("sernik");
+    await page.getByPlaceholder("Wprowadź tytuł przepisu").fill("Sernik");
     await page.locator("#about").fill("Opis sernika");
-    await page
-      .getByRole("combobox", {name: "Kategoria"})
-      .selectOption("Desery");
-    await page.getByRole("combobox", {name: "Czas"}).selectOption("70");
+
+    await page.getByLabel("Kategoria").selectOption({label: "Desery"});
+    await page.getByLabel("Czas").selectOption({label: "70 min"});
     await page.getByRole("button", {name: "Add ingredient"}).click();
     await page.locator("#react-select-2-input").fill("cukier");
     await page.locator("#react-select-2-option-279").click();
-    
-    await page.getByRole("spinbutton").fill("05");
-    
-    await page.locator("#react-select-3-input").fill("kg");
-    await page.locator('#react-select-3-option-2').click();
 
-    // await page.waitForLoadState("domcontentloaded");
+    await page.getByRole("spinbutton").fill("05");
+
+    // await page
+      // .getByRole("list", {name: "Ingredients list"})
+      // .locator("svg")
+      // .nth(1)
+      // .click();
+    await page
+      .locator(".manual").first().click();
+
+    await page.getByRole("option", {name: "kg"}).click();
 
     await page
       .getByRole("textbox", {name: "Recipe preparation"})
@@ -52,6 +66,11 @@ test.describe("Add Recipe Page", () => {
         "Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. "
       );
     await page.getByRole("button", {name: "Add recipe instructions"}).click();
-    await page.getByText("Przepis został pomyślnie").click();
+
+    await expect(
+      page.locator(".Toastify__toast", {
+        hasText: "Przepis został pomyślnie dodany",
+      })
+    ).toBeVisible({timeout: 15000});
   });
 });
