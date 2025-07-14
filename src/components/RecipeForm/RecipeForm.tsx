@@ -35,7 +35,7 @@ const RecipeForm = () => {
       <button
         type="submit"
         className={styles.recipePreparationFields__button}
-        aria-label="Add recipe instructions"
+        aria-label="Add recipe"
       >
         {t("add")}
       </button>

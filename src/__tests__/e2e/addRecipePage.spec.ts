@@ -24,42 +24,27 @@ test.describe("Add Recipe Page", () => {
     await addRecipePage.sideMenu.addRecipeButton.click();
   });
 
-  test.afterEach(async ({page}) => {
-    // zamknij toast, jeśli został
-    const toasts = page.locator(".Toastify__toast");
-    if ((await toasts.count()) > 0) {
-      await page.waitForSelector(".Toastify__toast", {state: "detached"});
-    }
-  });
-
   test.only("successful add recipe with correct data", async ({page}) => {
     // await page.waitForLoadState("domcontentloaded");
 
-    await page
-      .locator('input[type="file"]')
-      .setInputFiles("./src/__tests__/e2e/files/example.png");
-
-    await page.getByPlaceholder("Wprowadź tytuł przepisu").fill("Sernik");
-    await page.locator("#about").fill("Opis sernika");
-
-    await page.getByLabel("Kategoria").selectOption({label: "Desery"});
-    await page.getByLabel("Czas").selectOption({label: "70 min"});
-    await page.getByRole("button", {name: "Add ingredient"}).click();
-    
-    await page.locator("#react-select-2-input").fill("cukier");
+    // Act
+    const addRecipePage = new AddRecipePage(page);
+    await addRecipePage.fileInput.setInputFiles(
+      "./src/__tests__/e2e/files/example.png"
+    );
+    await addRecipePage.titleInput.fill("Sernik");
+    await addRecipePage.aboutInput.fill("Opis sernika");
+    await addRecipePage.categorySelect.selectOption({label: "Desery"});
+    await addRecipePage.timeSelect.selectOption({label: "70 min"});
+    await addRecipePage.addIngredientButton.click();
+    await page.locator("#ingredient-select0").fill("cukier");
     await page.locator("#react-select-2-option-279").click();
-
-    await page.getByRole("spinbutton").fill("05");
-
-
+    await addRecipePage.unitInput.fill("05");
     await page.getByTestId("unit-select").click();
     await page.getByText("kg", {exact: true}).click();
-
-    await page
-      .getByRole("textbox", {name: "Recipe preparation"})
-      .fill(
-        "Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. "
-      );
+    await addRecipePage.recipePreparationInput.fill(
+      "Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. "
+    );
     await page.getByRole("button", {name: "Add recipe instructions"}).click();
 
     await expect(
@@ -67,5 +52,8 @@ test.describe("Add Recipe Page", () => {
         hasText: "Przepis został pomyślnie dodany",
       })
     ).toBeVisible({timeout: 15000});
+    // await expect(
+    //   page.getByText("Przepis został pomyślnie dodany")
+    // ).toBeVisible({ timeout: 15000 });
   });
 });
