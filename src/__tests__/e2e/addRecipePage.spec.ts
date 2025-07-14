@@ -45,6 +45,7 @@ test.describe("Add Recipe Page", () => {
     await page.getByLabel("Kategoria").selectOption({label: "Desery"});
     await page.getByLabel("Czas").selectOption({label: "70 min"});
     await page.getByRole("button", {name: "Add ingredient"}).click();
+    
     await page.locator("#react-select-2-input").fill("cukier");
     await page.locator("#react-select-2-option-279").click();
 
