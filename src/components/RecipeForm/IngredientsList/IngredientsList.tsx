@@ -23,8 +23,8 @@ const IngredientsList: FC<Props> = ({ingredients, updateField}) => {
 
   const options = ingredientsAll.map((item) => ({
     id: item._id,
-    value: currentLanguage === "pl-PL" ? item.ttlPl : item.ttl,
-    label: currentLanguage === "pl-PL" ? item.ttlPl : item.ttl,
+    value: currentLanguage === "pl" ? item.ttlPl : item.ttl,
+    label: currentLanguage === "pl" ? item.ttlPl : item.ttl,
   }));
 
   const handleSelectChange = (index: number, value: string) => {
