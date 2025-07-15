@@ -24,7 +24,7 @@ test.describe("Add Recipe Page", () => {
     await addRecipePage.sideMenu.addRecipeButton.click();
   });
 
-  test.only("successful add recipe with correct data", async ({ page }) => {
+  test("successful add recipe with correct data", async ({ page }) => {
     // await page.waitForLoadState("domcontentloaded");
 
     // Act
