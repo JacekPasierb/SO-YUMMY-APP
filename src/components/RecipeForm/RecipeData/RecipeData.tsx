@@ -24,6 +24,10 @@ const RecipeData: FC<Props> = ({
   timeOptionsList,
 }) => {
   const {t, i18n} = useTranslation();
+  console.log("kategorie:",categoriesList); 
+  console.log("ok");
+  
+  
   return (
     <div className={styles.recipeData}>
       <ImageUploader file={formData.file} updateField={updateField} />
