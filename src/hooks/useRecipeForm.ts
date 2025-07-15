@@ -41,6 +41,8 @@ const useRecipeForm = () => {
   const categoriesList = useSelector(selectCategoriesList);
 
   useEffect(() => {
+    console.log("Language:",currentLanguage);
+    
     dispatch(getCategoriesList(currentLanguage));
   }, [dispatch, currentLanguage]);
 
