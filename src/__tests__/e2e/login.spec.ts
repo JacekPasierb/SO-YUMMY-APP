@@ -5,7 +5,7 @@ import {LoginPage} from "./pages/login.page";
 test.describe("User login to So Yummy", () => {
   test.beforeEach(async ({page}) => {
     await page.addInitScript(() => {
-      localStorage.setItem("i18nextLng", "pl-PL");
+      localStorage.setItem("i18nextLng", "pl");
     });
 
     await page.goto("/");
