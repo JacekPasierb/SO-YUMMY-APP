@@ -44,7 +44,7 @@ const useRecipeForm = () => {
     console.log("Language:",currentLanguage);
     
     dispatch(getCategoriesList(currentLanguage));
-  }, [dispatch, currentLanguage]);
+  }, [ currentLanguage]);
 
   const fetchIngredients = useCallback(async () => {
     try {
