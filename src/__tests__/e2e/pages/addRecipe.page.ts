@@ -11,6 +11,7 @@ export class AddRecipePage {
   addIngredientButton: Locator;
   unitInput: Locator;
   recipePreparationInput: Locator;
+  addRecipeButton: Locator;
 
   constructor(private page: Page) {
     this.sideMenu = new SideMenuComponent(this.page);
@@ -23,7 +24,7 @@ export class AddRecipePage {
     this.addIngredientButton = this.page.getByRole("button", {name: "Add ingredient"});
     this.unitInput = this.page.getByRole("spinbutton");
     this.recipePreparationInput = this.page.getByRole("textbox", {name: "Recipe preparation"});
-    this.addRecipeButton = this.page.getByRole("button", {name: "Add recipe instructions"});
+    this.addRecipeButton = this.page.getByRole("button", {name: "Add recipe"});
 
    
  

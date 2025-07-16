@@ -45,7 +45,7 @@ test.describe("Add Recipe Page", () => {
     await addRecipePage.recipePreparationInput.fill(
       "Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. "
     );
-    await page.getByRole("button", {name: "Add recipe instructions"}).click();
+    await addRecipePage.addRecipeButton.click();
 
     await expect(
       page.locator(".Toastify__toast", {
