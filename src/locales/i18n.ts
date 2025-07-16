@@ -28,4 +28,11 @@ i18n
     react: {useSuspense: false},
   });
 
+
+  i18n.on("languageChanged", (lng) => {
+    const shortLang = lng.split("-")[0]; // np. "pl-PL" -> "pl"
+    if (lng !== shortLang) {
+      localStorage.setItem("i18nextLng", shortLang);
+    }
+  });
 export default i18n;
