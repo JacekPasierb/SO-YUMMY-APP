@@ -29,6 +29,7 @@ const CardOwnRecipe: React.FC<CardOwnRecipeProps> = ({ownRecipe}) => {
   const {t} = useTranslation();
   const { search } = useLocation();
   const currentPage = getPageFromQueryString(search);
+  
   const handleDelete = async() => {
     await dispatch(deleteRecipe(_id));
     dispatch(getOwnRecipes({ page: currentPage }));

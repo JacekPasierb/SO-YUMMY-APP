@@ -14,19 +14,16 @@ const shortLang = rawLang.split("-")[0];
 
 localStorage.setItem("i18nextLng", shortLang);
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    lng: shortLang,             // 👈 ustawiamy ręcznie język
-    fallbackLng: "en",
-    supportedLngs: ["en", "pl"],
-    load: "languageOnly",
-    interpolation: {
-      escapeValue: false,
-    },
-    react: { useSuspense: false },
-  });
+i18n.use(initReactI18next).init({
+  resources,
+  lng: shortLang,
+  fallbackLng: "en",
+  supportedLngs: ["en", "pl"],
+  load: "languageOnly",
+  interpolation: {
+    escapeValue: false,
+  },
+  react: {useSuspense: false},
+});
 
-  
 export default i18n;
