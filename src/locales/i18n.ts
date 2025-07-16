@@ -9,30 +9,24 @@ const resources = {
   pl: {translation: translationPL},
 };
 
+const rawLang = localStorage.getItem("i18nextLng") || navigator.language;
+const shortLang = rawLang.split("-")[0];
+
+localStorage.setItem("i18nextLng", shortLang);
+
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
+    lng: shortLang,             // 👈 ustawiamy ręcznie język
     fallbackLng: "en",
     supportedLngs: ["en", "pl"],
     load: "languageOnly",
-    detection: {
-      order: ["localStorage", "navigator", "htmlTag"],
-      lookupLocalStorage: "i18nextLng",
-      caches: ["localStorage"],
-    },
     interpolation: {
       escapeValue: false,
     },
-    react: {useSuspense: false},
+    react: { useSuspense: false },
   });
 
-
-  i18n.on("languageChanged", (lng) => {
-    const shortLang = lng.split("-")[0]; // np. "pl-PL" -> "pl"
-    if (lng !== shortLang) {
-      localStorage.setItem("i18nextLng", shortLang);
-    }
-  });
+  
 export default i18n;
