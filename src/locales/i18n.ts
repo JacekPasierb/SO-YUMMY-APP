@@ -15,7 +15,13 @@ i18n
   .init({
     resources,
     fallbackLng: "en",
+    supportedLngs: ["en", "pl"],
     load: "languageOnly",
+    detection: {
+      order: ["localStorage", "navigator", "htmlTag"],
+      lookupLocalStorage: "i18nextLng",
+      caches: ["localStorage"],
+    },
     interpolation: {
       escapeValue: false,
     },
