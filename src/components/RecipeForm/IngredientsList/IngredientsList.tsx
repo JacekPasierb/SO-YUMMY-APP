@@ -1,30 +1,30 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import styles from "./IngredientsList.module.css";
 import useRecipeForm from "../../../hooks/useRecipeForm";
 import Select from "react-select";
-import {useTranslation} from "react-i18next";
-import {selectIngredient} from "../../RecipeIngredientsFields/selectStyles";
-import {IngredientCreate} from "../../../types/ingredientsTypes";
+import { useTranslation } from "react-i18next";
+import { selectIngredient } from "../../RecipeIngredientsFields/selectStyles";
+import { IngredientCreate } from "../../../types/ingredientsTypes";
 import AmountWithUnit from "../AmountWithUnit/AmountWithUnit";
 import sprite from "../../../assets/icons/sprite.svg";
-import {getUnitOptions} from "../../../data/UnitOptions";
+import { getUnitOptions } from "../../../data/UnitOptions";
 
 type Props = {
   ingredients: IngredientCreate[];
   updateField: (field: "ingredients", value: IngredientCreate[]) => void;
 };
 
-const IngredientsList: FC<Props> = ({ingredients, updateField}) => {
-  const {ingredientsAll} = useRecipeForm();
+const IngredientsList: FC<Props> = ({ ingredients, updateField }) => {
+  const { ingredientsAll } = useRecipeForm();
 
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
   const unitOptions = getUnitOptions(t);
 
   const options = ingredientsAll.map((item) => ({
     id: item._id,
-    value: currentLanguage === "pl-PL" ? item.ttlPl : item.ttl,
-    label: currentLanguage === "pl-PL" ? item.ttlPl : item.ttl,
+    value: currentLanguage === "pl" ? item.ttlPl : item.ttl,
+    label: currentLanguage === "pl" ? item.ttlPl : item.ttl,
   }));
 
   const handleSelectChange = (index: number, value: string) => {

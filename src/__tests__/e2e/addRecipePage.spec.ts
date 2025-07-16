@@ -1,19 +1,19 @@
-import {test, expect} from "@playwright/test";
-import {LoginPage} from "./pages/login.page";
-import {loginData} from "./test-data/login.data";
-import {AddRecipePage} from "./pages/addRecipe.page";
+import { test, expect } from "@playwright/test";
+import { LoginPage } from "./pages/login.page";
+import { loginData } from "./test-data/login.data";
+import { AddRecipePage } from "./pages/addRecipe.page";
 
 test.describe("Add Recipe Page", () => {
-  test.beforeEach(async ({page}) => {
+  test.beforeEach(async ({ page }) => {
     const userEmail = loginData.userEmail;
     const userPassword = loginData.userPassword;
 
     await page.addInitScript(() => {
-      localStorage.setItem("i18nextLng", "pl-PL");
+      localStorage.setItem("i18nextLng", "pl");
     });
 
     await page.goto("/");
-    await page.getByRole("link", {name: "Zaloguj się"}).click();
+    await page.getByRole("link", { name: "Zaloguj się" }).click();
 
     const loginPage = new LoginPage(page);
     await loginPage.emailInput.fill(userEmail);
@@ -24,7 +24,7 @@ test.describe("Add Recipe Page", () => {
     await addRecipePage.sideMenu.addRecipeButton.click();
   });
 
-  test.only("successful add recipe with correct data", async ({page}) => {
+  test("successful add recipe with correct data", async ({ page }) => {
     // await page.waitForLoadState("domcontentloaded");
 
     // Act
@@ -34,14 +34,14 @@ test.describe("Add Recipe Page", () => {
     );
     await addRecipePage.titleInput.fill("Sernik");
     await addRecipePage.aboutInput.fill("Opis sernika");
-    await addRecipePage.categorySelect.selectOption({label: "Desery"});
-    await addRecipePage.timeSelect.selectOption({label: "70 min"});
+    await addRecipePage.categorySelect.selectOption({ label: "Desery" });
+    await addRecipePage.timeSelect.selectOption({ label: "70 min" });
     await addRecipePage.addIngredientButton.click();
     await page.locator("#ingredient-select0").fill("cukier");
     await page.locator("#react-select-2-option-279").click();
     await addRecipePage.unitInput.fill("05");
     await page.getByTestId("unit-select").click();
-    await page.getByText("kg", {exact: true}).click();
+    await page.getByText("kg", { exact: true }).click();
     await addRecipePage.recipePreparationInput.fill(
       "Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. Przepis testowy. "
     );
@@ -51,7 +51,7 @@ test.describe("Add Recipe Page", () => {
       page.locator(".Toastify__toast", {
         hasText: "Przepis został pomyślnie dodany",
       })
-    ).toBeVisible({timeout: 15000});
+    ).toBeVisible({ timeout: 15000 });
     // await expect(
     //   page.getByText("Przepis został pomyślnie dodany")
     // ).toBeVisible({ timeout: 15000 });

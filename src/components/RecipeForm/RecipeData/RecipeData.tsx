@@ -1,11 +1,11 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import styles from "./RecipeData.module.css";
 import ImageUploader from "../ImageUploader/ImageUploader";
-import {TextInput} from "../TextInput/TextInput";
-import {SelectField} from "../SelectField/SelectField";
+import { TextInput } from "../TextInput/TextInput";
+import { SelectField } from "../SelectField/SelectField";
 import useRecipeForm from "../../../hooks/useRecipeForm";
-import {RecipeFormState} from "../../../types/authTypes";
-import {useTranslation} from "react-i18next";
+import { RecipeFormState } from "../../../types/authTypes";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   formData: RecipeFormState;
@@ -14,7 +14,7 @@ type Props = {
     value: RecipeFormState[K]
   ) => void;
   categoriesList: string[];
-  timeOptionsList: {label: string; value: number}[];
+  timeOptionsList: { label: string; value: number }[];
 };
 
 const RecipeData: FC<Props> = ({
@@ -23,7 +23,8 @@ const RecipeData: FC<Props> = ({
   categoriesList,
   timeOptionsList,
 }) => {
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
+
   return (
     <div className={styles.recipeData}>
       <ImageUploader file={formData.file} updateField={updateField} />
@@ -45,7 +46,7 @@ const RecipeData: FC<Props> = ({
         />
 
         <SelectField
-        name="category"
+          name="category"
           label={t("category")}
           value={formData.categoryRecipe}
           onChange={(value) => updateField("categoryRecipe", value)}
@@ -54,7 +55,7 @@ const RecipeData: FC<Props> = ({
         />
 
         <SelectField
-        name="cookingTime"
+          name="cookingTime"
           label={t("cookingTime")}
           value={formData.cookingTime}
           onChange={(value) => updateField("cookingTime", value)}
