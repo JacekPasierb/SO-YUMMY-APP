@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../redux/store";
-import { useTranslation } from "react-i18next";
-import { selectCategoriesList } from "../redux/recipes/selectors";
-import { getCategoriesList } from "../redux/recipes/operations";
-import { Ingredient, IngredientData, Ing } from "../types/ingredientsTypes";
-import { toast } from "react-toastify";
-import { fetchAllIngredients } from "../API/ingredientsAPI";
-import { RecipeFormState, RecipeInputs } from "../types/authTypes";
-import { validateInputs } from "../helpers/recipeValidation";
-import { uploadImage } from "../helpers/imageUpload";
-import { addOwnRecipes } from "../redux/ownRecipes/operations";
+import React, {useCallback, useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch} from "../redux/store";
+import {useTranslation} from "react-i18next";
+import {selectCategoriesList} from "../redux/recipes/selectors";
+import {getCategoriesList} from "../redux/recipes/operations";
+import {Ingredient, IngredientData, Ing} from "../types/ingredientsTypes";
+import {toast} from "react-toastify";
+import {fetchAllIngredients} from "../API/ingredientsAPI";
+import {RecipeFormState, RecipeInputs} from "../types/authTypes";
+import {validateInputs} from "../helpers/recipeValidation";
+import {uploadImage} from "../helpers/imageUpload";
+import {addOwnRecipes} from "../redux/ownRecipes/operations";
 
 const initialState = {
   file: null,
@@ -31,11 +31,11 @@ const useRecipeForm = () => {
     field: K,
     value: RecipeFormState[K]
   ) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({...prev, [field]: value}));
   };
 
   const dispatch: AppDispatch = useDispatch();
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
   const currentLanguage = i18n.language;
 
   const categoriesList = useSelector(selectCategoriesList);
@@ -46,7 +46,7 @@ const useRecipeForm = () => {
 
   const fetchIngredients = useCallback(async () => {
     try {
-      const { data } = await fetchAllIngredients();
+      const {data} = await fetchAllIngredients();
 
       setIngredientsAll(data.ingredients);
     } catch (error) {
@@ -62,7 +62,7 @@ const useRecipeForm = () => {
   const timeOptionsList = () => {
     const time = [];
     for (let i = 5; i <= 180; i += 5) {
-      time.push({ label: `${i} min`, value: i });
+      time.push({label: `${i} min`, value: i});
     }
     return time;
   };
