@@ -31,7 +31,7 @@ const MyRecipesPage: React.FC = () => {
   const totalOwnRecipes = useSelector(selectTotalOwnRecipes);
   const isLoading = useSelector(selectIsLoading);
   const currentPage = getPageFromQueryString(search);
-  console.log("Page with url:", currentPage);
+
 
   useEffect(() => {
     if (user?.userId) {
