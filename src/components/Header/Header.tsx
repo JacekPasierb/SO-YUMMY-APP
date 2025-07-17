@@ -119,7 +119,7 @@ const Header: React.FC = () => {
     <div className={`${styles.header__container} ${styles.headerBox}`}>
      
       <Logo />
-      <p>{countdown}</p>
+      {/* <p>{countdown}</p> */}
       {small || medium ? (
         <div className={styles.header__mobile}>
          <LanguageSwitcher/>
