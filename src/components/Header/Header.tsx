@@ -33,7 +33,7 @@ const Header: React.FC = () => {
   const [countdown, setCountdown] = useState<string | null>(null);
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
- 
+
   interface TokenPayload {
     exp: number;
   }
@@ -96,7 +96,7 @@ const Header: React.FC = () => {
         dispatch(logOut());
 
         setTimeout(() => {
-          navigate("/signin", { replace: true });
+          navigate("/signin", {replace: true});
           window.location.reload(); // 🚀 Przekierowanie po wylogowaniu
         }, 500); // 🔥 Krótka przerwa na usunięcie tokena
 
@@ -117,12 +117,10 @@ const Header: React.FC = () => {
 
   const renderContent = ({small, medium}: MediaQueries) => (
     <div className={`${styles.header__container} ${styles.headerBox}`}>
-     
       <Logo />
       {/* <p>{countdown}</p> */}
       {small || medium ? (
         <div className={styles.header__mobile}>
-         <LanguageSwitcher/>
           <UserLogo />
           <Suspense fallback={null}>
             <HamburgerMenu />
@@ -135,7 +133,6 @@ const Header: React.FC = () => {
           <Suspense fallback={null}>
             <ThemeToggler />
           </Suspense>
-          <LanguageSwitcher/>
         </>
       )}
     </div>

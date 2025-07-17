@@ -118,6 +118,7 @@
   "recipeAddFailed": "Failed to add recipe. Please try again.",
   "registered": "Account Ready.",
   "chooseCategory": "Set",
+  "setLanguage": "Change language",
   "units": {
     "tbs": "tbs",
     "tsp": "tsp",
