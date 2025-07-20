@@ -30,6 +30,9 @@
   gap: 24px;
 }
 
+.shoppingList__empty {
+  text-align: center;
+}
 @media screen and (min-width: 768px) {
   .shoppingList__box {
     margin-bottom: 96px;

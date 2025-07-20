@@ -1,12 +1,14 @@
-import React, { lazy, useEffect, useState } from "react";
-import { nanoid } from "nanoid";
+import React, {lazy, useEffect, useState} from "react";
+import {nanoid} from "nanoid";
 import axios from "axios";
 import styles from "./IngredientsShoppingList.module.css";
-import { toast } from "react-toastify";
-import { Loader } from "../Loader/Loader";
-import { ClimbingBoxLoader } from "react-spinners";
-import { useTranslation } from "react-i18next";
-const CardIngredientShoppingList = lazy(()=>import("../CardIngredientShoppingList/CardIngredientShoppingList"))
+import {toast} from "react-toastify";
+import {Loader} from "../Loader/Loader";
+import {ClimbingBoxLoader} from "react-spinners";
+import {useTranslation} from "react-i18next";
+const CardIngredientShoppingList = lazy(
+  () => import("../CardIngredientShoppingList/CardIngredientShoppingList")
+);
 
 export interface Ingredient {
   ingredientId: string;
@@ -21,15 +23,21 @@ const IngredientsShoppingList: React.FC = () => {
   const [shoppingList, setShoppingList] = useState<Ingredient[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-const {t}=useTranslation();
+  const {t} = useTranslation();
   const fetchShoppingList = async () => {
     try {
       setIsLoading(true);
       setError(null);
-      const response = await axios.get<{ items: Ingredient[] }>("/api/shopping-list");
+      const response = await axios.get<{items: Ingredient[]}>(
+        "/api/shopping-list"
+      );
+
       setShoppingList(response.data.items);
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Failed to fetch shopping list";
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Failed to fetch shopping list";
       setError(errorMessage);
       toast.error(errorMessage);
     } finally {
@@ -42,7 +50,7 @@ const {t}=useTranslation();
   }, []);
 
   if (isLoading) {
-    return <ClimbingBoxLoader/>;
+    return <ClimbingBoxLoader />;
   }
 
   if (error) {
@@ -60,7 +68,7 @@ const {t}=useTranslation();
       </div>
 
       {shoppingList.length === 0 ? (
-        <p className={styles.shoppingList__empty}>Your shopping list is empty</p>
+        <p className={styles.shoppingList__empty}>{t("EmptyList")}</p>
       ) : (
         <ul className={styles.shoppingList}>
           {shoppingList.map((ingredient) => (

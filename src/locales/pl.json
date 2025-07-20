@@ -119,6 +119,7 @@
   "registered": "Konto zostało utworzone.",
   "chooseCategory": "Wybierz",
   "setLanguage": "Ustaw język",
+  "EmptyList":"Lista zakupów jest pusta",
   "units": {
     "tbs": "łyżka",
     "tsp": "łyżeczka",

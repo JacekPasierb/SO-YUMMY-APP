@@ -119,6 +119,7 @@
   "registered": "Account Ready.",
   "chooseCategory": "Set",
   "setLanguage": "Change language",
+  "EmptyList":"Your shopping list is empty",
   "units": {
     "tbs": "tbs",
     "tsp": "tsp",
