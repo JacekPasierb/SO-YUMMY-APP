@@ -120,6 +120,7 @@
   "chooseCategory": "Set",
   "setLanguage": "Change language",
   "EmptyList":"Your shopping list is empty",
+  "NotFoundRecipe": "Try looking for something else..",
   "units": {
     "tbs": "tbs",
     "tsp": "tsp",

@@ -134,9 +134,7 @@ const SearchPage: React.FC = () => {
               alt="No results found"
               className={styles.noResults__image}
             />
-            <p className={styles.noResults__text}>
-              Try looking for something else..
-            </p>
+            <p className={styles.noResults__text}>{t("NotFoundRecipe")}</p>
           </div>
         )}
       </div>
