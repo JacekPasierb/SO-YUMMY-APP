@@ -7,13 +7,14 @@
 .ingredientCard {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--color-border);
 }
 
 .ingredientCard__details {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .ingredientCard__image {
