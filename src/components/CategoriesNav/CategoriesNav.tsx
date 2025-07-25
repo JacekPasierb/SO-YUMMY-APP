@@ -1,15 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
 import {Tab, Tabs} from "@mui/material";
-import {toast} from "react-toastify";
-import {AppDispatch} from "../../redux/store";
-import {
-  selectCategoriesList,
-  selectError,
-  selectIsLoading,
-} from "../../redux/recipes/selectors";
-import {getCategoriesList} from "../../redux/recipes/operations";
+import {useTranslation} from "react-i18next";
+import { categoryKeys } from "../../data/categoryKeys";
+
+
 
 const COLORS = {
   primary: "#8BAA36",
@@ -45,25 +40,20 @@ const TAB_STYLES = {
   },
 };
 
-interface CategoriesNavProps {
-  categoriesList: string[];
-}
-
-const CategoriesNav: React.FC<CategoriesNavProps> = ({categoriesList}) => {
+const CategoriesNav = () => {
   const navigate = useNavigate();
   const {categoryName} = useParams();
   const [value, setValue] = useState(0);
+  const {t, i18n} = useTranslation();
 
-  // const categoriesList = useSelector(selectCategoriesList);
-  const error = useSelector(selectError);
-  // const isLoading = useSelector(selectIsLoading);
+  const categoriesList = useMemo(() => {
+    return categoryKeys.map((key) => t(`categoriess.${key}`));
+  }, [t, i18n.language]);
 
   const handleChange = (_: React.SyntheticEvent, newValue: number) => {
     navigate(`/categories/${categoriesList[newValue]}`);
     setValue(newValue);
   };
-
-  //tu byl
 
   useEffect(() => {
     if (categoryName && categoriesList.length > 0) {
@@ -73,15 +63,6 @@ const CategoriesNav: React.FC<CategoriesNavProps> = ({categoriesList}) => {
       setValue(activeCategoryIndex !== -1 ? activeCategoryIndex : 0);
     }
   }, [categoryName, categoriesList]);
-
-  // if (error) {
-  //   toast.error("Something went wrong with categories. Please try again.");
-  //   return <p>Failed to load categories</p>;
-  // }
-
-  // if (isLoading || !categoriesList) {
-  //   return null;
-  // }
 
   return (
     <Tabs
@@ -93,7 +74,7 @@ const CategoriesNav: React.FC<CategoriesNavProps> = ({categoriesList}) => {
       aria-label="Category Navigation Tabs"
       sx={TAB_STYLES.tabs}
     >
-      {categoriesList.map((category, index) => (
+      {categoriesList.map((category) => (
         <Tab key={category} label={category} sx={TAB_STYLES.tab} />
       ))}
     </Tabs>

@@ -2,8 +2,6 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch} from "../redux/store";
 import {useTranslation} from "react-i18next";
-import {selectCategoriesList} from "../redux/recipes/selectors";
-import {getCategoriesList} from "../redux/recipes/operations";
 import {Ingredient, IngredientData, Ing} from "../types/ingredientsTypes";
 import {toast} from "react-toastify";
 import {fetchAllIngredients} from "../API/ingredientsAPI";
@@ -35,14 +33,7 @@ const useRecipeForm = () => {
   };
 
   const dispatch: AppDispatch = useDispatch();
-  const {t, i18n} = useTranslation();
-  const currentLanguage = i18n.language;
-
-  const categoriesList = useSelector(selectCategoriesList);
-
-  useEffect(() => {
-    dispatch(getCategoriesList(currentLanguage));
-  }, [dispatch, currentLanguage]);
+  const {t} = useTranslation();
 
   const fetchIngredients = useCallback(async () => {
     try {
@@ -77,8 +68,6 @@ const useRecipeForm = () => {
       ingredients,
       instructionsRecipe,
     } = formData;
-
-    // const currentLanguage = i18n.language;
 
     const convertedIngredients = ingredients.map((ingredient) => {
       const foundIngredient = ingredientsAll.find(
@@ -142,7 +131,6 @@ const useRecipeForm = () => {
   return {
     formData,
     updateField,
-    categoriesList,
     timeOptionsList,
     ingredientsAll,
     handleSubmit,

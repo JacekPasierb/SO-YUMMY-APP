@@ -129,5 +129,21 @@
     "pcs": "szt.",
     "l": "l",
     "ml": "ml"
+  },
+  "categoriess": {
+    "breakfast": "Śniadanie",
+    "chicken": "Kurczak",
+    "goat": "Koźlina",
+    "starter": "przystawki",
+    "vegetarian": "Wegetariańskie",
+    "lamb": "Jagnięcina",
+    "beef": "Wołowina",
+    "pasta": "Makarony",
+    "seafood": "Owoce morza",
+    "miscellaneous": "Różne",
+    "dessert": "Desery",
+    "vegan": "Wegańskie",
+    "side": "Dodatki",
+    "pork": "Wieprzowina"
   }
 }

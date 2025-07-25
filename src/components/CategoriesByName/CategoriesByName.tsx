@@ -19,40 +19,6 @@ import {resetRecipes} from "../../redux/recipes/recipesSlice";
 
 const ITEMS_PER_PAGE = 8;
 
-const categoryTranslations: Record<string, Record<string, string>> = {
-  en: {
-    Kurczak: "Chicken",
-    Jagnięcina: "Lamb",
-    Koźlina: "Goat",
-    Desery: "Dessert",
-    Dodatki: "Side",
-    Makarony: "Pasta",
-    Wołowina: "Beef",
-    Śniadanie: "Breakfast",
-    Różne: "Miscellaneous",
-    Wieprzowina: "Pork",
-    OwoceMorza: "Seafood",
-    Przystawki: "Starter",
-    Wegańskie: "Vegan",
-    Wegetariańskie: "Vegetarian",
-  },
-  pl: {
-    Chicken: "Kurczak",
-    Lamb: "Jagnięcina",
-    Goat: "Koźlina",
-    Dessert: "Desery",
-    Side: "Dodatki",
-    Pasta: "Makarony",
-    Beef: "Wołowina",
-    Breakfast: "Śniadanie",
-    Miscellaneous: "Różne",
-    Pork: "Wieprzowina",
-    Seafood: "Owoce morza",
-    Starter: "Przystawki",
-    Vegan: "Wegańskie",
-    Vegetarian: "Wegetariańskie",
-  },
-};
 const CategoriesByName: React.FC = () => {
   const {categoryName} = useParams();
   const {search} = useLocation();
@@ -61,48 +27,19 @@ const CategoriesByName: React.FC = () => {
   const navigate = useNavigate();
   const {t, i18n} = useTranslation();
   const currentLanguage = i18n.language;
-  const DEFAULT_CATEGORY = currentLanguage === "pl" ? "Wołowina" : "Beef";
 
   const recipes = useSelector(selectRecipesByCategory);
   const totalRecipes = useSelector(selectTotalRecipes);
   const isLoading = useSelector(selectIsLoading);
-  const [forceUpdate, setForceUpdate] = useState(0);
+
   const handlePageChange = (page: number) => {
     navigate(`?page=${page}`);
     window.scrollTo({top: 0, behavior: "smooth"});
   };
 
+
   useEffect(() => {
     if (!categoryName) return;
-
-    const translatedCategory =
-      categoryTranslations[currentLanguage]?.[categoryName];
-
-    if (translatedCategory && categoryName !== translatedCategory) {
-      navigate(`/categories/${translatedCategory}`, {replace: true});
-    }
-  }, [currentLanguage, categoryName, navigate]);
-
-  // React.useEffect(() => {
-  //   const category =
-  //     categoryName && categoryName !== ":categoryName"
-  //       ? categoryName
-  //       : DEFAULT_CATEGORY;
-
-  //   if (categoryName === ":categoryName" || !categoryName) {
-
-  //     navigate(`/categories/${DEFAULT_CATEGORY}`);
-  //     return;
-  //   }
-  //   dispatch(resetRecipes());
-  //   dispatch(getRecipesByCategory({category, page: currentPage}));
-  // }, [dispatch, categoryName, currentPage, navigate, t,currentLanguage]);
-  useEffect(() => {
-    setForceUpdate((prev) => prev + 1);
-  }, [currentLanguage]);
-  useEffect(() => {
-    if (!categoryName) return;
-
     dispatch(resetRecipes());
 
     // 🔹 Opóźnienie pobrania przepisów, aby uniknąć podwójnego renderowania
@@ -111,7 +48,7 @@ const CategoriesByName: React.FC = () => {
         getRecipesByCategory({category: categoryName, page: currentPage})
       );
     }, 200); // Opóźnienie 200ms dla płynnego odświeżania
-  }, [dispatch, categoryName, currentPage, currentLanguage, forceUpdate]);
+  }, [dispatch, categoryName, currentPage, currentLanguage]);
 
   if (isLoading) {
     return (
@@ -120,10 +57,6 @@ const CategoriesByName: React.FC = () => {
       </div>
     );
   }
-
-  // if (!recipes || recipes.length === 0) {
-  //   return <p>Brak przepisów w danej kategori.</p>;
-  // }
 
   return (
     <>
@@ -139,7 +72,7 @@ const CategoriesByName: React.FC = () => {
         {!recipes ||
           (recipes.length === 0 && (
             <li>
-              <p>Brak</p>
+              <p>Brak przepisów</p>
             </li>
           ))}
       </ul>

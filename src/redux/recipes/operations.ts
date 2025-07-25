@@ -59,22 +59,3 @@ export const getRecipesByCategory = createAsyncThunk<
     return thunkAPI.rejectWithValue(error.message);
   }
 });
-
-// Get categories list
-export const getCategoriesList = createAsyncThunk(
-  "recipes/getCategoriesList",
-  async (language: string, thunkAPI) => {
-    try {
-      const url =
-        language === "pl"
-          ? "./api/recipes/category-listPl"
-          : "./api/recipes/category-list";
-
-      const {data} = await axios.get(url);
-
-      return data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);

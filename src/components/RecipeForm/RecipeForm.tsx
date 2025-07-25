@@ -1,16 +1,20 @@
-import React from "react";
+import React, {useMemo} from "react";
 import styles from "./RecipeForm.module.css";
 import RecipeData from "./RecipeData/RecipeData";
 import IngredientsData from "./IngredientsData/IngredientsData";
 import useRecipeForm from "../../hooks/useRecipeForm";
 import RecipePreparation from "./RecipePreparation/RecipePreparation";
 import {useTranslation} from "react-i18next";
+import {categoryKeys} from "../../data/categoryKeys";
 
 const RecipeForm = () => {
-  const {formData, updateField, categoriesList, timeOptionsList, handleSubmit} =
+  const {formData, updateField, timeOptionsList, handleSubmit} =
     useRecipeForm();
+  const {t, i18n} = useTranslation();
 
-  const {t} = useTranslation();
+  const categoriesList = useMemo(() => {
+    return categoryKeys.map((key) => t(`categoriess.${key}`));
+  }, [t, i18n.language]);
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>

@@ -9,15 +9,14 @@ import AppTitle from "../../components/AppTitle/AppTitle";
 import AppDescription from "../../components/AppDescription/AppDescription";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import styles from "./MainPage.module.css";
-import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet-async";
-
+import {useTranslation} from "react-i18next";
+import {Helmet} from "react-helmet-async";
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isDesktop = useMediaQuery("(min-width: 1200px)");
-const {t}=useTranslation();
+  const {t} = useTranslation();
   const handleSearchSubmit = (searchValue: string) => {
     const trimmedValue = searchValue?.trim();
     if (trimmedValue) {
@@ -26,7 +25,11 @@ const {t}=useTranslation();
   };
 
   useEffect(() => {
-    if (!document.head.querySelector("link[rel='preload'][href='/assets/bckg2Mobile1x-6dd32201.webp']")) {
+    if (
+      !document.head.querySelector(
+        "link[rel='preload'][href='/assets/bckg2Mobile1x-6dd32201.webp']"
+      )
+    ) {
       const link = document.createElement("link");
       link.rel = "preload";
       link.as = "image";

@@ -1,9 +1,6 @@
-import { RootState } from "./recipesSlice";
+import {RootState} from "./recipesSlice";
 
 export const selectError = (state: RootState) => state.recipes.error;
-
-export const selectCategoriesList = (state: RootState) =>
-  state.recipes.categoriesList;
 
 export const selectIsLoading = (state: RootState) => state.recipes.isLoading;
 

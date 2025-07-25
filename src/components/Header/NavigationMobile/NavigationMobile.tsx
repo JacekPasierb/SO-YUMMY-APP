@@ -20,8 +20,7 @@ const NavigationMobile: FC<NavigationMobileProps> = ({ onClose }) => {
   const { t, i18n } = useTranslation();
 
   const currentLanguage = i18n.language;
-  // 🔹 Wybieramy odpowiednią kategorię na podstawie języka
-  const category = currentLanguage === "pl" ? "Kurczak" : "Beef";
+  const category = currentLanguage === "pl" ? "Śniadanie" : "Breakfast";
 
 
   const navigationLinks: NavigationLink[] = [

@@ -121,6 +121,22 @@
   "setLanguage": "Change language",
   "EmptyList":"Your shopping list is empty",
   "NotFoundRecipe": "Try looking for something else..",
+  "categoriess": {
+    "breakfast": "Breakfast",
+    "chicken": "Chicken",
+    "goat": "Goat",
+    "starter": "starter",
+    "vegetarian": "Vegetarian",
+    "lamb": "Lamb",
+    "beef": "Beef",
+    "pasta": "Pasta",
+    "seafood": "Seafood",
+    "miscellaneous": "Miscellaneous",
+    "dessert": "Desserts",
+    "vegan": "Vegan",
+    "side": "Side dishes",
+    "pork": "Pork"
+  },
   "units": {
     "tbs": "tbs",
     "tsp": "tsp",

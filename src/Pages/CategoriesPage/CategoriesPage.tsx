@@ -1,21 +1,24 @@
 import {FC, Suspense, useEffect, useMemo} from "react";
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate, useParams} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import MainTitle from "../../components/MainTitle/PageTitle";
 import CategoriesNav from "../../components/CategoriesNav/CategoriesNav";
 import styles from "./CategoriesPage.module.css";
-import {AppDispatch} from "../../redux/store";
-import {useDispatch, useSelector} from "react-redux";
-import {getCategoriesList} from "../../redux/recipes/operations";
-import {selectCategoriesList} from "../../redux/recipes/selectors";
 import {useTranslation} from "react-i18next";
 import {Helmet} from "react-helmet-async";
 
 const CategoriesPage: FC = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const categoriesList = useSelector(selectCategoriesList);
   const {t, i18n} = useTranslation();
+  const {categoryName} = useParams();
+  const navigate = useNavigate();
   const currentLanguage = i18n.language;
+  const category = currentLanguage === "pl" ? "Śniadanie" : "Breakfast";
+
+  useEffect(() => {
+    if (!categoryName) {
+      navigate(`${category}`);
+    }
+  }, [categoryName]);
 
   useEffect(() => {
     window.scrollTo({
@@ -23,10 +26,6 @@ const CategoriesPage: FC = () => {
       behavior: "smooth",
     });
   }, []);
-
-  useEffect(() => {
-    dispatch(getCategoriesList(currentLanguage));
-  }, [dispatch, currentLanguage]);
 
   return (
     <>
@@ -37,7 +36,7 @@ const CategoriesPage: FC = () => {
         <Header />
         <div className={`${styles.container} ${styles.flex}`}>
           <MainTitle title={t("categories")} />
-          <CategoriesNav categoriesList={categoriesList} />
+          <CategoriesNav />
           <Suspense>
             <Outlet />
           </Suspense>

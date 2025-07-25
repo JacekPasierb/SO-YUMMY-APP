@@ -1,14 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {
-  getRecipesByCategory,
-  getCategoriesList,
-  getRecipes,
-} from "./operations";
+import {getRecipesByCategory, getRecipes} from "./operations";
 
 interface RecipeState {
   recipes: any[];
   isLoading: boolean;
-  categoriesList: string[];
   totalRecipes: number;
   error: null | string;
 }
@@ -20,7 +15,6 @@ export interface RootState {
 const initialState: RecipeState = {
   recipes: [],
   totalRecipes: 0,
-  categoriesList: [],
   isLoading: false,
   error: null,
 };
@@ -72,21 +66,9 @@ const recipesSlice = createSlice({
           typeof payload === "string"
             ? payload
             : "Failed to fetch category recipes";
-      })
-
-      // Get Categories List
-      .addCase(getCategoriesList.fulfilled, (state, action) => {
-        state.categoriesList = action.payload.data.catArr;
-
-        state.error = null;
-      })
-      .addCase(getCategoriesList.pending, (state) => {
-        state.error = null;
-      })
-      .addCase(getCategoriesList.rejected, (state, {payload}) => {
-        state.error =
-          typeof payload === "string" ? payload : "Failed to fetch categories";
       }),
+
+  // Get Categories List
 });
-export const { resetRecipes } = recipesSlice.actions;
+export const {resetRecipes} = recipesSlice.actions;
 export const recipesReducer = recipesSlice.reducer;
