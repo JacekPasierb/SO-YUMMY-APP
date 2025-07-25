@@ -27,6 +27,7 @@ import BasicPagination from "../../components/Pagination/BasicPagination";
 import styles from "./SearchPage.module.css";
 import {useTranslation} from "react-i18next";
 import {Helmet} from "react-helmet-async";
+import NoResult from "../../components/NoResult/NoResult";
 
 const SearchPage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -47,15 +48,8 @@ const SearchPage: React.FC = () => {
   const isLoading = useSelector(selectIsLoading);
   const currentPage = getPageFromQueryString(search);
 
-  const isMobile = useMediaQuery("(max-width:768px)");
-  const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1200px)");
   const isDesktop = useMediaQuery("(min-width:1200px)");
-  const isRetina = window.devicePixelRatio > 1;
   const limit = isDesktop ? 12 : 6;
-
-  const emptySearchImage = useMemo(() => {
-    return getEmptySearchImage({isDesktop, isTablet, isMobile, isRetina});
-  }, [isDesktop, isTablet, isMobile, isRetina]);
 
   const handlePageChange = (page: number) => {
     const newParams = {
@@ -127,16 +121,7 @@ const SearchPage: React.FC = () => {
             />
           </>
         )}
-        {!isLoading && hasSearchResults && !hasRecipes && (
-          <div className={styles.noResults}>
-            <img
-              src={emptySearchImage}
-              alt="No results found"
-              className={styles.noResults__image}
-            />
-            <p className={styles.noResults__text}>{t("NotFoundRecipe")}</p>
-          </div>
-        )}
+        {!isLoading && hasSearchResults && !hasRecipes && <NoResult text="NotFoundRecipe"/>}
       </div>
     </>
   );

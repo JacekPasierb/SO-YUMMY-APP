@@ -16,6 +16,7 @@ import styles from "./CategoriesByName.module.css";
 import {getPageFromQueryString} from "../../helpers/helpers";
 import {useTranslation} from "react-i18next";
 import {resetRecipes} from "../../redux/recipes/recipesSlice";
+import NoResult from "../NoResult/NoResult";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -37,7 +38,6 @@ const CategoriesByName: React.FC = () => {
     window.scrollTo({top: 0, behavior: "smooth"});
   };
 
-
   useEffect(() => {
     if (!categoryName) return;
     dispatch(resetRecipes());
@@ -58,29 +58,31 @@ const CategoriesByName: React.FC = () => {
     );
   }
 
+  if (!recipes || recipes.length === 0) {
+    return <NoResult text="NoRecipe" />;
+  }
+
   return (
     <>
-      <ul className={styles.recipesList}>
-        {recipes &&
-          recipes.map((recipe: IRecipe) => (
-            <li key={recipe._id} className={styles.recipesListItem}>
-              <NavLink to={`/recipe/${recipe._id}`}>
-                <CardRecipe title={recipe.title} preview={recipe.preview} />
-              </NavLink>
-            </li>
-          ))}
-        {!recipes ||
-          (recipes.length === 0 && (
-            <li>
-              <p>Brak przepisów</p>
-            </li>
-          ))}
-      </ul>
-      <BasicPagination
-        count={Math.ceil(totalRecipes / ITEMS_PER_PAGE)}
-        page={currentPage}
-        onPageChange={handlePageChange}
-      />
+      {recipes && (
+        <>
+          <ul className={styles.recipesList}>
+            {recipes.map((recipe: IRecipe) => (
+              <li key={recipe._id} className={styles.recipesListItem}>
+                <NavLink to={`/recipe/${recipe._id}`}>
+                  <CardRecipe title={recipe.title} preview={recipe.preview} />
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+
+          <BasicPagination
+            count={Math.ceil(totalRecipes / ITEMS_PER_PAGE)}
+            page={currentPage}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </>
   );
 };

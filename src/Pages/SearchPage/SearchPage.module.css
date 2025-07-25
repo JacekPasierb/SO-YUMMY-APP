@@ -11,20 +11,7 @@
   margin-block: 32px;
 }
 
-.noResults {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-  margin-top: 50px;
-}
 
-.noResults__text {
-  font-size: 14px;
-  line-height: 1;
-  color: var(--color-text-subtitle);
-  text-align: center;
-}
 
 @media screen and (min-width: 768px) {
   .searchPage__container {
@@ -43,14 +30,7 @@
     margin-block: 50px;
   }
 
-  .noResults {
-    gap: 32px;
-  }
 
-  .noResults__text {
-    font-size: 24px;
-    line-height: 1;
-  }
 }
 
 @media screen and (min-width: 1200px) {

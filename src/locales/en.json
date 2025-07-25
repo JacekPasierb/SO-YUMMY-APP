@@ -121,6 +121,7 @@
   "setLanguage": "Change language",
   "EmptyList":"Your shopping list is empty",
   "NotFoundRecipe": "Try looking for something else..",
+  "NoRecipe": "There are no recipes in the selected category..",
   "categoriess": {
     "breakfast": "Breakfast",
     "chicken": "Chicken",

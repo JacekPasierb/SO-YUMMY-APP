@@ -121,6 +121,7 @@
   "setLanguage": "Ustaw język",
   "EmptyList":"Lista zakupów jest pusta",
   "NotFoundRecipe": "Spróbuj poszukać czegoś innego..",
+  "NoRecipe": "Brak przepisów wybranej kategori..",
   "units": {
     "tbs": "łyżka",
     "tsp": "łyżeczka",
