@@ -38,16 +38,23 @@ const CategoriesByName: React.FC = () => {
     window.scrollTo({top: 0, behavior: "smooth"});
   };
 
+  // useEffect(() => {
+  //   if (!categoryName) return;
+  //   dispatch(resetRecipes());
+
+  //   // 🔹 Opóźnienie pobrania przepisów, aby uniknąć podwójnego renderowania
+  //   setTimeout(() => {
+  //     dispatch(
+  //       getRecipesByCategory({category: categoryName, page: currentPage})
+  //     );
+  //   }, 200); // Opóźnienie 200ms dla płynnego odświeżania
+  // }, [dispatch, categoryName, currentPage, currentLanguage]);
+
   useEffect(() => {
     if (!categoryName) return;
     dispatch(resetRecipes());
 
-    // 🔹 Opóźnienie pobrania przepisów, aby uniknąć podwójnego renderowania
-    setTimeout(() => {
-      dispatch(
-        getRecipesByCategory({category: categoryName, page: currentPage})
-      );
-    }, 200); // Opóźnienie 200ms dla płynnego odświeżania
+    dispatch(getRecipesByCategory({category: categoryName, page: currentPage}));
   }, [dispatch, categoryName, currentPage, currentLanguage]);
 
   if (isLoading) {

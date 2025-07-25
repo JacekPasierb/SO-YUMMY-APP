@@ -16,9 +16,9 @@ const CategoriesPage: FC = () => {
 
   useEffect(() => {
     if (!categoryName) {
-      navigate(`${category}`);
+      navigate(`${category}`, {replace: true});
     }
-  }, [categoryName]);
+  }, [categoryName, navigate, category]);
 
   useEffect(() => {
     window.scrollTo({
