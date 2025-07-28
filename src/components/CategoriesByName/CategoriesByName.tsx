@@ -83,11 +83,13 @@ const CategoriesByName: React.FC = () => {
             ))}
           </ul>
 
-          <BasicPagination
-            count={Math.ceil(totalRecipes / ITEMS_PER_PAGE)}
-            page={currentPage}
-            onPageChange={handlePageChange}
-          />
+          {totalRecipes > ITEMS_PER_PAGE && (
+            <BasicPagination
+              count={Math.ceil(totalRecipes / ITEMS_PER_PAGE)}
+              page={currentPage}
+              onPageChange={handlePageChange}
+            />
+          )}
         </>
       )}
     </>

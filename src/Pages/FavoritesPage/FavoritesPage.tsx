@@ -49,7 +49,7 @@ const FavoritesPage: React.FC = () => {
         <div className={styles.favoritesPage__container}>
           <MainTitle title={t("favorites")} />
           <MyRecipesList recipes={favoriteRecipes} isLoading={isLoading} />
-          {favoriteRecipes.length !== 0 && (
+          {favoriteRecipes.length !== 0 && totalFavoriteRecipes > ITEMS_PER_PAGE && (
             <BasicPagination
               count={Math.ceil(totalFavoriteRecipes / ITEMS_PER_PAGE)}
               page={currentPage}

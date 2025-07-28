@@ -6,25 +6,25 @@ const SOCIAL_LINKS = [
   {
     name: "Facebook",
     icon: "fb",
-    url: "https://facebook.com/soyummy",
+    url: "/",
     ariaLabel: "Visit our Facebook page",
   },
   {
     name: "YouTube",
     icon: "yb",
-    url: "https://youtube.com/soyummy",
+    url: "/",
     ariaLabel: "Visit our YouTube channel",
   },
   {
     name: "Twitter",
     icon: "twitter",
-    url: "https://twitter.com/soyummy",
+    url: "/",
     ariaLabel: "Visit our Twitter profile",
   },
   {
     name: "Instagram",
     icon: "insta",
-    url: "https://instagram.com/soyummy",
+    url: "/",
     ariaLabel: "Visit our Instagram profile",
   },
 ] as const;

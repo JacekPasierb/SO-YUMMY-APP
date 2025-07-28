@@ -65,7 +65,7 @@ const MyRecipesPage: React.FC = () => {
           <MainTitle title={t("my_recipes")} />
 
           <MyRecipesList recipes={ownRecipes} isLoading={isLoading} />
-          {ownRecipes.length > 0 && (
+          {ownRecipes.length > 0 && totalOwnRecipes > ITEMS_PER_PAGE && (
             <BasicPagination
               count={Math.ceil(totalOwnRecipes / ITEMS_PER_PAGE)}
               page={currentPage}
